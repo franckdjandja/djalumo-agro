@@ -55,10 +55,10 @@ Avec l’outil Vercel, `npm run dev` remplace `scripts/serve.mjs`.
 
 ## Déployer
 
-1. Créer une base PostgreSQL (Neon, Supabase, Railway ou tout service géré) et lancer `npm run db:migrate` avec son `DATABASE_URL`.
-2. Importer le dépôt dans Vercel. La commande de construction et le dossier de sortie sont définis dans `vercel.json`.
-3. Ajouter les variables d’environnement de `.env.example` dans les réglages du projet.
-4. Pointer le domaine vers le projet et y régler `SITE_URL` et `ALLOWED_ORIGINS`.
+1. Importer le dépôt dans Vercel. La commande de construction et le dossier de sortie sont définis dans `vercel.json`. Le site est en ligne à l’adresse `votre-projet.vercel.app`, détectée automatiquement, sans `SITE_URL`.
+2. Dans le projet Vercel, ouvrir Storage et créer une base PostgreSQL Neon reliée au projet. Elle fournit `DATABASE_URL`.
+3. Redéployer : chaque construction applique `db/schema.sql` automatiquement (rejouable), les tables sont donc créées sans aucune manipulation.
+4. Ajouter les variables facultatives de `.env.example` (courriels, Turnstile, `RATE_LIMIT_SALT`). Avec votre propre domaine, régler aussi `SITE_URL` et `ALLOWED_ORIGINS`.
 5. Vérifier `https://votre-domaine/api/health` : la réponse doit contenir `"database":"ok"`.
 
 ## Variables d’environnement

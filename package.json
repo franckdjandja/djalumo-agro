@@ -6,7 +6,7 @@
   "type": "module",
   "engines": { "node": ">=20" },
   "scripts": {
-    "build": "node site/build.mjs --target=production",
+    "build": "node scripts/migrate.mjs --if-configured && node site/build.mjs --target=production",
     "build:artifact": "node site/build.mjs --target=artifact",
     "geo": "node scripts/geo.mjs",
     "db:migrate": "node scripts/migrate.mjs",
