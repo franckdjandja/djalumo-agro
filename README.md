@@ -2,7 +2,7 @@
 
 **English** · [Français](README.fr.md)
 
-The digital flagship of AfriFarm Intelligent, an agricultural decision intelligence platform that turns any budget, from 10 USD to more than 1 million, into a costed Season Plan. The site is bilingual (English first, French second), works on slow mobile networks, and runs a real backend for contact, demo and newsletter requests.
+The digital flagship of AfriFarm Intelligent, an agricultural decision intelligence platform that turns any budget, from 100 USD to more than 1 million, into a costed Season Plan. The site is bilingual (English first, French second), works on slow mobile networks, and runs a real backend for contact, demo and newsletter requests.
 
 Project leader: Franck Junior Djandja Tomwa · Pilot zone: Foumbot, West Cameroon.
 

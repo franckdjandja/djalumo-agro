@@ -2,7 +2,7 @@
 
 [English](README.md) · **Français**
 
-La vitrine numérique d’AfriFarm Intelligent, plateforme d’intelligence décisionnelle agricole qui transforme tout budget, de 10 USD à plus d’un million, en un Plan de saison chiffré. Le site est bilingue (anglais d’abord, français ensuite), fonctionne sur les réseaux mobiles lents et dispose d’un vrai backend pour les demandes de contact, de démo et la lettre d’information.
+La vitrine numérique d’AfriFarm Intelligent, plateforme d’intelligence décisionnelle agricole qui transforme tout budget, de 100 USD à plus d’un million, en un Plan de saison chiffré. Le site est bilingue (anglais d’abord, français ensuite), fonctionne sur les réseaux mobiles lents et dispose d’un vrai backend pour les demandes de contact, de démo et la lettre d’information.
 
 Porteur du projet : Franck Junior Djandja Tomwa · Zone pilote : Foumbot, Ouest Cameroun.
 

@@ -6,16 +6,16 @@ en: {
     lang: 'en', locale: 'en-US',
     title: 'AfriFarm Intelligent · Agricultural decision intelligence for Africa',
     desc: 'AfriFarm Intelligent turns any budget into a costed Season Plan: what to grow, where, when, at what cost and at what risk. Climate, soil, market and context data, in English and French.',
-    pages: { home: 'Agricultural decision intelligence for Africa', platform: 'Platform', intelligence: 'Intelligence', solutions: 'Solutions', data: 'Data', impact: 'Impact', about: 'About', contact: 'Contact', demo: 'Request a demo', newsletter: 'Newsletter', privacy: 'Privacy policy', terms: 'Terms of use', admin: 'Team inbox', nf: 'Signal not found' }
+    pages: { home: 'Agricultural decision intelligence for Africa', planner: 'Season Planner', platform: 'Platform', intelligence: 'Intelligence', solutions: 'Solutions', data: 'Data', impact: 'Impact', about: 'About', contact: 'Contact', demo: 'Request a demo', newsletter: 'Newsletter', privacy: 'Privacy policy', terms: 'Terms of use', admin: 'Team inbox', nf: 'Signal not found' }
   },
-  nav: { home: 'Home', platform: 'Platform', intelligence: 'Intelligence', solutions: 'Solutions', data: 'Data', impact: 'Impact', about: 'About', contact: 'Contact', demo: 'Request a demo', newsletter: 'Newsletter', menu: 'Menu', close: 'Close', skip: 'Skip to content', lang: 'Language' },
+  nav: { home: 'Home', planner: 'Planner', platform: 'Platform', intelligence: 'Intelligence', solutions: 'Solutions', data: 'Data', impact: 'Impact', about: 'About', contact: 'Contact', demo: 'Request a demo', newsletter: 'Newsletter', menu: 'Menu', close: 'Close', skip: 'Skip to content', lang: 'Language' },
   badge: { demo: 'Demo · illustrative', real: 'Sourced data', plan: 'Planned', mvp: 'MVP', v2: 'Version 2', v3: 'Version 3', v4: 'Version 4', field: 'Field record' },
   cta: { explore: 'Explore the platform', demo: 'Request a demo', contact: 'Contact the team', simulate: 'Simulate', more: 'Learn more', back: 'Return to AfriFarm Intelligent', read: 'Read the field evidence', sim: 'Open the Season Simulator' },
 
   home: {
     eyebrow: 'Agricultural decision intelligence · Africa',
     h1: 'Decide the season before you plant it.',
-    lead: 'AfriFarm Intelligent turns any budget, from 10 USD to more than 1 million, into a costed Season Plan: what to grow, on what area, from which date, at what cost and at what risk. Built on climate, soil, market and context data, in English and French.',
+    lead: 'AfriFarm Intelligent turns any budget, from 100 USD to more than 1 million, into a costed Season Plan: what to grow, on what area, from which date, at what cost and at what risk. Built on climate, soil, market and context data, in English and French.',
     tryLabel: 'Season Simulator · enter a capital',
     tryAria: 'Capital amount',
     chips: ['Pilot zone · Foumbot, Cameroon', 'MVP crop · Tomato', 'Stage · Design and field validation', 'English · French'],
@@ -56,16 +56,16 @@ en: {
       { t: 'Action', d: 'Alerts and the season log guide the work; real results sharpen the next plan.' }
     ],
 
-    sEyebrow: '03 · Season Simulator',
-    sH: 'Six inputs. One Season Plan.',
-    sLead: 'Enter a capital in any currency, a crop and a start month. The demonstration sizes the season to the budget, draws the crop calendar and scores every start month of the year.',
+    sEyebrow: '03 · Season Planner',
+    sH: 'Your capital, one costed season.',
+    sLead: 'Capital, crop, water and start date: the planner sizes the plot, splits the budget along the standard itinerary and estimates the return from a good harvest to a failure.',
 
     mEyebrow: '04 · Geographic intelligence',
     mH: 'One pilot zone. A continental data foundation.',
     mLead: 'Public climate and soil datasets already cover the whole continent. Field data starts in Foumbot, West Cameroon, and expands release by release. Select a country to see what exists today.',
 
     tEyebrow: '05 · Any budget',
-    tH: 'From 10 USD to more than 1 million. One engine.',
+    tH: 'From 100 USD to more than 1 million. One engine.',
     tLead: 'The tiers describe the depth of the plan, not separate products. A farmer who starts at 500 USD keeps the same account, history and data when the farm grows to 50,000 USD.',
 
     eEyebrow: '06 · Field evidence',
@@ -76,6 +76,80 @@ en: {
     cLead: 'Pilot participation in Foumbot from March 2027, data partnerships, investment and institutional collaboration.'
   },
 
+  planner: {
+    eyebrow: 'Season Planner',
+    title: 'Season Planner',
+    h1: 'Your capital, turned into a costed season.',
+    lead: 'Enter your capital, your crop, your water situation and your start date. The planner sizes the plot, follows the standard technical itinerary step by step, splits the budget line by line and estimates the return in four outcomes, from a good harvest to a failure.',
+    badge: 'Reference data · v2',
+    inputsT: 'Your season',
+    capital: 'Capital available', capitalHint: 'Minimum 100 USD, in any currency',
+    currency: 'Currency',
+    approach: 'Approach', budgetFirst: 'Budget first', areaFirst: 'Area first',
+    area: 'Area to plant (ha)',
+    crop: 'Crop',
+    waterT: 'Water on the plot',
+    water: {
+      rainfed: ['Rain only', 'No water source or equipment'],
+      manual: ['Water source, manual watering', 'Well, river or tank, watering cans or hose'],
+      existing: ['Irrigation already in place', 'Pump or drip system you already own'],
+      pump: ['Install a motor pump', 'Petrol pump with hoses, bought this season'],
+      drip: ['Install drip irrigation', 'Drip kit, tank and pump, bought this season']
+    },
+    start: 'Start date', startHint: 'Sowing, or nursery sowing for transplanted crops',
+    advanced: 'More options',
+    land: 'Land', landRent: 'Rented for the season', landOwn: 'Own land',
+    market: 'Where you sell', marketLocal: 'Local market (Foumbot, Bafoussam)', marketCity: 'City wholesale (Douala, Yaoundé)',
+    family: 'Labour done by the family', familyHint: 'Unpaid family work reduces the cash needed; the work still has to be done',
+    ownTools: 'I already own basic tools and a sprayer',
+    states: {
+      below_min: (min) => 'The capital is below the minimum of 100 USD (' + min + '). A real plot starts from this amount.',
+      upfront_exceeds: () => 'The capital does not cover the equipment of the water option chosen. Choose another water option or raise the capital.',
+      manual_limit: (min, max) => 'Manual watering is realistic up to about ' + max + '. Beyond that, plan a motor pump or drip irrigation.'
+    },
+    upfrontHint: 'Tip: with a small capital, start with manual watering or rain fed planting in the rainy season, then invest in irrigation from the first season profits.',
+    kArea: 'Plot the capital carries', plants: (n) => n + ' plants', kRequired: 'Capital required', kBudget: 'Season budget', inclReserve: 'Includes a 10% contingency reserve',
+    kMargin: 'Average outcome margin', roiAvg: (p) => 'Return ' + p + ' on the costs of the season', kSeason: 'Season length',
+    compactNote: 'Average outcome shown. The full plan details the budget line by line, the technical itinerary, the shopping list, the water balance and the risks.',
+    openFull: 'Open the full Season Plan',
+    tabs: { return: 'Return', budget: 'Budget', itinerary: 'Technical itinerary', shopping: 'Shopping list', water: 'Water and risks', sources: 'Sources' },
+    scen: {
+      good: ['Good harvest', 'Good practice yield and a firm price at harvest.'],
+      average: ['Average harvest', 'Typical yield for the zone and the usual price for the harvest months.'],
+      poor: ['Poor harvest', 'Low farmer yield and a weak price.'],
+      failure: ['Failure', 'Most of the crop lost (disease, climate, market closure): only a small part is sold.']
+    },
+    weight: (n) => 'about ' + n + '%', roi: 'Return',
+    yieldL: 'Yield', priceL: 'Price', soldL: 'Sold', revenueL: 'Revenue', costsL: 'Season costs',
+    chartMargins: 'Margin by outcome', perSeason: 'One season',
+    breakEvenT: 'Break even', beYield: 'Yield needed at the average price', bePrice: 'Price needed at the average yield',
+    expected: 'Risk weighted margin', expectedNote: 'Indicative weights by outcome, adjusted to the risks of your window. They will be replaced by measured frequencies once seasons are recorded.',
+    scenNote: '<b>How outcomes are built.</b> Yields come from published references for each crop, adjusted by the water your option supplies (FAO-33 yield response to water). Prices come from Cameroon market observations, adjusted to the months you harvest. Costs of equipment that lasts several seasons are spread over its lifespan in the margin; the full purchase is in the budget.',
+    cats: { land: 'Land', land_preparation: 'Land preparation', seed: 'Seeds', nursery: 'Nursery', fertilizer: 'Fertilizers', amendment: 'Organic manure and amendments', foliar: 'Foliar feeds and biostimulants', fungicide: 'Fungicides', insecticide: 'Insecticides', herbicide: 'Herbicides', stakes: 'Stakes', trellis: 'Trellis', irrigation: 'Irrigation running costs', labour: 'Labour', advice: 'Agronomist', harvest: 'Harvest, packaging and transport', equipment: 'Equipment bought up front', reserve: 'Contingency reserve (10%)', tools: 'Tools', ppe: 'Protective equipment', packaging: 'Packaging', transport: 'Transport', fuel: 'Fuel', other: 'Other' },
+    lifeSeasons: (n) => 'lasts about ' + n + ' seasons',
+    totalBudget: 'Total season budget',
+    th: { line: 'Line', qty: 'Quantity', unitPrice: 'Unit price (FCFA)', src: 'Source', total: 'Total', item: 'Item', cat: 'Category', need: 'Quantity needed', packs: 'To buy', cost: 'Cost', block: 'Data', conf: 'Confidence', note: 'What it rests on' },
+    budgetNote: 'Quantities follow the standard itinerary for your area. Harvest, packaging and transport lines are sized on the average outcome. Unit prices are Cameroon market references; check them with your local supplier.',
+    apps: (n) => n + ' applications', labourDays: (n) => n + ' person days of work',
+    shopNote: 'Quantities are rounded up to the packs usually sold. Equipment bought up front is listed last.',
+    waterChart: 'Crop water need and rainfall', waterSub: 'mm per month, field period', rainEff: 'dependable rain', deficit: 'deficit', cropNeed: 'crop need (ETc)',
+    waterVolume: (m3, mm) => 'Water to supply over the season: about ' + m3 + ' m³ (' + mm + ' mm of crop deficit, after application losses).',
+    risksT: 'Risks for this window',
+    riskNames: { water: 'Water stress', heat: 'Heat at flowering', disease: 'Disease pressure', market: 'Market at harvest', context: 'Context' },
+    riskText: {
+      water: (cov, def, opt) => 'Water covers about ' + cov + '% of the crop need. Rain leaves a deficit of ' + def + ' mm' + (opt === 'rainfed' ? '; without irrigation the yield falls accordingly.' : '; your water option covers it.'),
+      heat: (months, t, thr) => 'Flowering falls in ' + months + ', with average maxima near ' + t + '°C. Fruit set suffers above about ' + thr + '°C.',
+      disease: (days, note) => 'Up to ' + days + ' rainy days per month from flowering to harvest. ' + note,
+      market: (months, idx) => 'Harvest in ' + months + ': the usual price is about ' + idx + '% of the yearly average.',
+      context: 'Check elections, holidays and road conditions for your harvest weeks. The context calendar arrives with the MVP.'
+    },
+    check: 'Check',
+    windowsT: 'Start month comparison', riskScore: 'risk score', bestLine: (m) => 'Lowest risk start month with your water option: ' + m + '. Select a month to compare.',
+    levels: ['Low', 'Medium', 'High'],
+    conf: { high: 'High', medium: 'Medium', low: 'Low' },
+    assumptionsT: 'Assumptions', sourcesT: 'Sources used for this plan',
+    engineError: 'The plan could not be computed with these inputs. Check the capital and the date.'
+  },
   sim: {
     badge: 'Demo · illustrative data',
     capital: 'Capital', currency: 'Currency',
@@ -113,7 +187,7 @@ en: {
   },
 
   tiers: [
-    { n: 'Starter', r: '10 to 1,000 USD', d: 'The crop and plot size the budget can carry, an affordable input list, a nursery and planting calendar, and a clear warning when the budget is too small.', w: 'Household, student, new grower' },
+    { n: 'Starter', r: '100 to 1,000 USD', d: 'The crop and plot size the budget can carry, an affordable input list, a nursery and planting calendar, and a clear warning when the budget is too small.', w: 'Household, student, new grower' },
     { n: 'Smallholder', r: '1,000 to 10,000 USD', d: 'A full Season Plan for one to a few hectares: water plan, pest calendar, sales plan, margin in three scenarios.', w: 'Family farm, young agripreneur' },
     { n: 'Commercial', r: '10,000 to 100,000 USD', d: 'Several crops and staggered plantings, irrigation and equipment sizing, packaging and logistics options, labour plan.', w: 'Commercial farm, cooperative, diaspora investor' },
     { n: 'Industrial', r: '100,000 to 1,000,000+ USD', d: 'A portfolio of sites and crops, supply forecasts for buyers and processors, risk reports for lenders and insurers, API access.', w: 'Agribusiness, investor, processor' }
@@ -316,7 +390,7 @@ en: {
     posCols: ['', 'Global farm management platforms', 'Single link digital services', 'AfriFarm Intelligent'],
     pos: [
       ['Starting point', 'Machinery and sensor data', 'One link: advice, credit or market access', 'The user’s capital'],
-      ['Designed for', 'Mechanised, equipped farms', 'One step of the value chain', 'Any budget, from 10 USD'],
+      ['Designed for', 'Mechanised, equipped farms', 'One step of the value chain', 'Any budget, from 100 USD'],
       ['Integration', 'Farm operations', 'Single domain', 'Climate, soil, market and context in one costed plan'],
       ['Languages', 'Mostly English', 'Varies', 'English and French from the first screen']
     ]
@@ -572,16 +646,16 @@ fr: {
     lang: 'fr', locale: 'fr-FR',
     title: 'AfriFarm Intelligent · Intelligence décisionnelle agricole pour l’Afrique',
     desc: 'AfriFarm Intelligent transforme tout budget en un Plan de saison chiffré : quoi cultiver, où, quand, à quel coût et avec quel risque. Données climatiques, pédologiques, de marché et de contexte, en anglais et en français.',
-    pages: { home: 'Intelligence décisionnelle agricole pour l’Afrique', platform: 'Plateforme', intelligence: 'Intelligence', solutions: 'Solutions', data: 'Données', impact: 'Impact', about: 'À propos', contact: 'Contact', demo: 'Demander une démo', newsletter: 'Lettre d’information', privacy: 'Politique de confidentialité', terms: 'Conditions d’utilisation', admin: 'Boîte de réception', nf: 'Signal introuvable' }
+    pages: { home: 'Intelligence décisionnelle agricole pour l’Afrique', planner: 'Planificateur de saison', platform: 'Plateforme', intelligence: 'Intelligence', solutions: 'Solutions', data: 'Données', impact: 'Impact', about: 'À propos', contact: 'Contact', demo: 'Demander une démo', newsletter: 'Lettre d’information', privacy: 'Politique de confidentialité', terms: 'Conditions d’utilisation', admin: 'Boîte de réception', nf: 'Signal introuvable' }
   },
-  nav: { home: 'Accueil', platform: 'Plateforme', intelligence: 'Intelligence', solutions: 'Solutions', data: 'Données', impact: 'Impact', about: 'À propos', contact: 'Contact', demo: 'Demander une démo', newsletter: 'Lettre d’information', menu: 'Menu', close: 'Fermer', skip: 'Aller au contenu', lang: 'Langue' },
+  nav: { home: 'Accueil', planner: 'Planificateur', platform: 'Plateforme', intelligence: 'Intelligence', solutions: 'Solutions', data: 'Données', impact: 'Impact', about: 'À propos', contact: 'Contact', demo: 'Demander une démo', newsletter: 'Lettre d’information', menu: 'Menu', close: 'Fermer', skip: 'Aller au contenu', lang: 'Langue' },
   badge: { demo: 'Démo · illustratif', real: 'Données sourcées', plan: 'Prévu', mvp: 'MVP', v2: 'Version 2', v3: 'Version 3', v4: 'Version 4', field: 'Relevé terrain' },
   cta: { explore: 'Explorer la plateforme', demo: 'Demander une démo', contact: 'Contacter l’équipe', simulate: 'Simuler', more: 'En savoir plus', back: 'Retour à AfriFarm Intelligent', read: 'Voir les preuves terrain', sim: 'Ouvrir le Simulateur de saison' },
 
   home: {
     eyebrow: 'Intelligence décisionnelle agricole · Afrique',
     h1: 'Décidez la saison avant de la planter.',
-    lead: 'AfriFarm Intelligent transforme tout budget, de 10 USD à plus d’un million, en un Plan de saison chiffré : quoi cultiver, sur quelle surface, à partir de quelle date, à quel coût et avec quel risque. Fondé sur des données climatiques, pédologiques, de marché et de contexte, en anglais et en français.',
+    lead: 'AfriFarm Intelligent transforme tout budget, de 100 USD à plus d’un million, en un Plan de saison chiffré : quoi cultiver, sur quelle surface, à partir de quelle date, à quel coût et avec quel risque. Fondé sur des données climatiques, pédologiques, de marché et de contexte, en anglais et en français.',
     tryLabel: 'Simulateur de saison · saisissez un capital',
     tryAria: 'Montant du capital',
     chips: ['Zone pilote · Foumbot, Cameroun', 'Culture MVP · Tomate', 'Étape · Conception et validation terrain', 'Anglais · Français'],
@@ -622,16 +696,16 @@ fr: {
       { t: 'Action', d: 'Les alertes et le journal de saison guident le travail ; les résultats réels affinent le plan suivant.' }
     ],
 
-    sEyebrow: '03 · Simulateur de saison',
-    sH: 'Six données d’entrée. Un Plan de saison.',
-    sLead: 'Saisissez un capital dans n’importe quelle devise, une culture et un mois de démarrage. La démonstration ajuste la saison au budget, trace le calendrier cultural et évalue chaque mois de démarrage de l’année.',
+    sEyebrow: '03 · Planificateur de saison',
+    sH: 'Votre capital, une saison chiffrée.',
+    sLead: 'Capital, culture, eau et date de démarrage : le planificateur dimensionne la parcelle, répartit le budget selon l’itinéraire standard et estime le retour de la bonne récolte à l’échec.',
 
     mEyebrow: '04 · Intelligence géographique',
     mH: 'Une zone pilote. Un socle de données continental.',
     mLead: 'Les jeux de données publics sur le climat et les sols couvrent déjà tout le continent. Les données de terrain commencent à Foumbot, dans l’Ouest du Cameroun, et s’étendent version après version. Sélectionnez un pays pour voir ce qui existe aujourd’hui.',
 
     tEyebrow: '05 · Tout budget',
-    tH: 'De 10 USD à plus d’un million. Un seul moteur.',
+    tH: 'De 100 USD à plus d’un million. Un seul moteur.',
     tLead: 'Les niveaux décrivent la profondeur du plan, pas des produits distincts. Un agriculteur qui commence avec 500 USD garde le même compte, le même historique et les mêmes données quand l’exploitation atteint 50 000 USD.',
 
     eEyebrow: '06 · Preuves terrain',
@@ -642,6 +716,80 @@ fr: {
     cLead: 'Participation au pilote de Foumbot dès mars 2027, partenariats de données, investissement et collaboration institutionnelle.'
   },
 
+  planner: {
+    eyebrow: 'Planificateur de saison',
+    title: 'Planificateur de saison',
+    h1: 'Votre capital, transformé en saison chiffrée.',
+    lead: 'Saisissez votre capital, votre culture, votre situation en eau et votre date de démarrage. Le planificateur dimensionne la parcelle, suit l’itinéraire technique standard étape par étape, répartit le budget ligne par ligne et estime le retour sur investissement selon quatre issues, de la bonne récolte à l’échec.',
+    badge: 'Données de référence · v2',
+    inputsT: 'Votre saison',
+    capital: 'Capital disponible', capitalHint: 'Minimum 100 USD, dans toute devise',
+    currency: 'Devise',
+    approach: 'Approche', budgetFirst: 'Budget d’abord', areaFirst: 'Surface d’abord',
+    area: 'Surface à planter (ha)',
+    crop: 'Culture',
+    waterT: 'Eau sur la parcelle',
+    water: {
+      rainfed: ['Pluie uniquement', 'Ni source d’eau ni équipement'],
+      manual: ['Source d’eau, arrosage manuel', 'Puits, rivière ou citerne, arrosoirs ou tuyau'],
+      existing: ['Irrigation déjà en place', 'Motopompe ou goutte à goutte que vous possédez'],
+      pump: ['Installer une motopompe', 'Motopompe essence et tuyaux, achetés cette saison'],
+      drip: ['Installer un goutte à goutte', 'Kit goutte à goutte, citerne et pompe, achetés cette saison']
+    },
+    start: 'Date de démarrage', startHint: 'Semis, ou semis en pépinière pour les cultures repiquées',
+    advanced: 'Plus d’options',
+    land: 'Terrain', landRent: 'Loué pour la saison', landOwn: 'Terrain personnel',
+    market: 'Lieu de vente', marketLocal: 'Marché local (Foumbot, Bafoussam)', marketCity: 'Gros en ville (Douala, Yaoundé)',
+    family: 'Travail assuré par la famille', familyHint: 'Le travail familial non payé réduit les liquidités nécessaires ; le travail reste à faire',
+    ownTools: 'Je possède déjà les outils de base et un pulvérisateur',
+    states: {
+      below_min: (min) => 'Le capital est inférieur au minimum de 100 USD (' + min + '). Une vraie parcelle commence à partir de ce montant.',
+      upfront_exceeds: () => 'Le capital ne couvre pas l’équipement de l’option d’eau choisie. Choisissez une autre option ou augmentez le capital.',
+      manual_limit: (min, max) => 'L’arrosage manuel reste réaliste jusqu’à environ ' + max + '. Au delà, prévoyez une motopompe ou un goutte à goutte.'
+    },
+    upfrontHint: 'Conseil : avec un petit capital, commencez par l’arrosage manuel ou une culture pluviale en saison des pluies, puis investissez dans l’irrigation avec les bénéfices de la première saison.',
+    kArea: 'Parcelle que le capital couvre', plants: (n) => n + ' plants', kRequired: 'Capital nécessaire', kBudget: 'Budget de la saison', inclReserve: 'Réserve de précaution de 10 % comprise',
+    kMargin: 'Marge, issue moyenne', roiAvg: (p) => 'Rentabilité ' + p + ' sur les coûts de la saison', kSeason: 'Durée de la saison',
+    compactNote: 'Issue moyenne affichée. Le plan complet détaille le budget ligne par ligne, l’itinéraire technique, la liste d’achats, le bilan hydrique et les risques.',
+    openFull: 'Ouvrir le Plan de saison complet',
+    tabs: { return: 'Rentabilité', budget: 'Budget', itinerary: 'Itinéraire technique', shopping: 'Liste d’achats', water: 'Eau et risques', sources: 'Sources' },
+    scen: {
+      good: ['Bonne récolte', 'Rendement de bonnes pratiques et prix ferme à la récolte.'],
+      average: ['Récolte moyenne', 'Rendement courant dans la zone et prix habituel des mois de récolte.'],
+      poor: ['Mauvaise récolte', 'Rendement paysan faible et prix bas.'],
+      failure: ['Échec', 'L’essentiel de la culture perdu (maladie, climat, fermeture des marchés) : seule une petite part est vendue.']
+    },
+    weight: (n) => 'environ ' + n + ' %', roi: 'Rentabilité',
+    yieldL: 'Rendement', priceL: 'Prix', soldL: 'Vendu', revenueL: 'Recettes', costsL: 'Coûts de la saison',
+    chartMargins: 'Marge selon l’issue', perSeason: 'Une saison',
+    breakEvenT: 'Seuil de rentabilité', beYield: 'Rendement nécessaire au prix moyen', bePrice: 'Prix nécessaire au rendement moyen',
+    expected: 'Marge pondérée par le risque', expectedNote: 'Pondérations indicatives par issue, ajustées aux risques de votre fenêtre. Elles seront remplacées par des fréquences mesurées dès que des saisons seront enregistrées.',
+    scenNote: '<b>Construction des issues.</b> Les rendements proviennent des références publiées pour chaque culture, ajustés à l’eau fournie par votre option (réponse du rendement à l’eau, FAO-33). Les prix proviennent d’observations des marchés camerounais, ajustés aux mois de récolte. Le coût d’un équipement qui dure plusieurs saisons est réparti sur sa durée de vie dans la marge ; l’achat complet figure au budget.',
+    cats: { land: 'Terrain', land_preparation: 'Préparation du sol', seed: 'Semences', nursery: 'Pépinière', fertilizer: 'Engrais', amendment: 'Fumure organique et amendements', foliar: 'Engrais foliaires et biostimulants', fungicide: 'Fongicides', insecticide: 'Insecticides', herbicide: 'Herbicides', stakes: 'Tuteurs', trellis: 'Palissage', irrigation: 'Fonctionnement de l’irrigation', labour: 'Main d’œuvre', advice: 'Agronome', harvest: 'Récolte, emballage et transport', equipment: 'Équipement acheté au départ', reserve: 'Réserve de précaution (10 %)', tools: 'Outils', ppe: 'Équipement de protection', packaging: 'Emballage', transport: 'Transport', fuel: 'Carburant', other: 'Autres' },
+    lifeSeasons: (n) => 'dure environ ' + n + ' saisons',
+    totalBudget: 'Budget total de la saison',
+    th: { line: 'Ligne', qty: 'Quantité', unitPrice: 'Prix unitaire (FCFA)', src: 'Source', total: 'Total', item: 'Article', cat: 'Catégorie', need: 'Quantité nécessaire', packs: 'À acheter', cost: 'Coût', block: 'Donnée', conf: 'Confiance', note: 'Fondement' },
+    budgetNote: 'Les quantités suivent l’itinéraire standard pour votre surface. Les lignes de récolte, d’emballage et de transport sont calculées sur l’issue moyenne. Les prix unitaires sont des références du marché camerounais ; vérifiez les auprès de votre fournisseur.',
+    apps: (n) => n + ' applications', labourDays: (n) => n + ' jours de travail',
+    shopNote: 'Quantités arrondies aux conditionnements habituels. L’équipement acheté au départ figure en dernier.',
+    waterChart: 'Besoin en eau de la culture et pluie', waterSub: 'mm par mois, période au champ', rainEff: 'pluie fiable', deficit: 'déficit', cropNeed: 'besoin de la culture (ETc)',
+    waterVolume: (m3, mm) => 'Eau à apporter sur la saison : environ ' + m3 + ' m³ (' + mm + ' mm de déficit de la culture, pertes d’application comprises).',
+    risksT: 'Risques de cette fenêtre',
+    riskNames: { water: 'Stress hydrique', heat: 'Chaleur à la floraison', disease: 'Pression des maladies', market: 'Marché à la récolte', context: 'Contexte' },
+    riskText: {
+      water: (cov, def, opt) => 'L’eau couvre environ ' + cov + ' % du besoin de la culture. La pluie laisse un déficit de ' + def + ' mm' + (opt === 'rainfed' ? ' ; sans irrigation, le rendement baisse d’autant.' : ' ; votre option d’eau le couvre.'),
+      heat: (months, t, thr) => 'La floraison tombe en ' + months + ', avec des maximales moyennes proches de ' + t + ' °C. La nouaison souffre au delà d’environ ' + thr + ' °C.',
+      disease: (days, note) => 'Jusqu’à ' + days + ' jours de pluie par mois de la floraison à la récolte. ' + note,
+      market: (months, idx) => 'Récolte en ' + months + ' : le prix habituel est d’environ ' + idx + ' % de la moyenne annuelle.',
+      context: 'Vérifiez élections, fêtes et état des routes pour vos semaines de récolte. Le calendrier de contexte arrive avec le MVP.'
+    },
+    check: 'À vérifier',
+    windowsT: 'Comparaison des mois de démarrage', riskScore: 'score de risque', bestLine: (m) => 'Mois de démarrage le moins risqué avec votre option d’eau : ' + m + '. Sélectionnez un mois pour comparer.',
+    levels: ['Faible', 'Moyen', 'Élevé'],
+    conf: { high: 'Élevée', medium: 'Moyenne', low: 'Faible' },
+    assumptionsT: 'Hypothèses', sourcesT: 'Sources utilisées pour ce plan',
+    engineError: 'Le plan ne peut pas être calculé avec ces données. Vérifiez le capital et la date.'
+  },
   sim: {
     badge: 'Démo · données illustratives',
     capital: 'Capital', currency: 'Devise',
@@ -679,7 +827,7 @@ fr: {
   },
 
   tiers: [
-    { n: 'Démarrage', r: '10 à 1 000 USD', d: 'La culture et la surface que le budget peut porter, une liste d’intrants abordable, un calendrier de pépinière et de plantation, et une alerte claire quand le budget est insuffisant.', w: 'Ménage, étudiant, nouveau producteur' },
+    { n: 'Démarrage', r: '100 à 1 000 USD', d: 'La culture et la surface que le budget peut porter, une liste d’intrants abordable, un calendrier de pépinière et de plantation, et une alerte claire quand le budget est insuffisant.', w: 'Ménage, étudiant, nouveau producteur' },
     { n: 'Petit exploitant', r: '1 000 à 10 000 USD', d: 'Un Plan de saison complet pour un à quelques hectares : plan d’eau, calendrier phytosanitaire, plan de vente, marge en trois scénarios.', w: 'Exploitation familiale, jeune agripreneur' },
     { n: 'Commercial', r: '10 000 à 100 000 USD', d: 'Plusieurs cultures et plantations échelonnées, dimensionnement de l’irrigation et des équipements, options d’emballage et de logistique, plan de main d’œuvre.', w: 'Ferme commerciale, coopérative, investisseur de la diaspora' },
     { n: 'Industriel', r: '100 000 à plus de 1 000 000 USD', d: 'Un portefeuille de sites et de cultures, des prévisions d’approvisionnement pour acheteurs et transformateurs, des rapports de risque pour prêteurs et assureurs, un accès API.', w: 'Entreprise agroalimentaire, investisseur, transformateur' }
@@ -882,7 +1030,7 @@ fr: {
     posCols: ['', 'Plateformes mondiales de gestion d’exploitation', 'Services numériques sur un seul maillon', 'AfriFarm Intelligent'],
     pos: [
       ['Point de départ', 'Données des machines et capteurs', 'Un maillon : conseil, crédit ou accès au marché', 'Le capital de l’utilisateur'],
-      ['Conçu pour', 'Exploitations mécanisées et équipées', 'Une étape de la chaîne de valeur', 'Tout budget, dès 10 USD'],
+      ['Conçu pour', 'Exploitations mécanisées et équipées', 'Une étape de la chaîne de valeur', 'Tout budget, dès 100 USD'],
       ['Intégration', 'Opérations de l’exploitation', 'Un seul domaine', 'Climat, sol, marché et contexte dans un plan chiffré'],
       ['Langues', 'Surtout l’anglais', 'Variable', 'Anglais et français dès le premier écran']
     ]

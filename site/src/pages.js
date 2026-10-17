@@ -1,5 +1,5 @@
 /* ---------- Page templates, router, chrome ---------- */
-const NAV = ['platform', 'intelligence', 'solutions', 'data', 'impact', 'about', 'contact'];
+const NAV = ['planner', 'platform', 'intelligence', 'solutions', 'data', 'impact', 'about', 'contact'];
 const ey = (t) => '<div class="eyebrow"><span class="dot"></span>' + esc(t) + '</div>';
 const head = (e, h, lead) => '<div class="sec-head rv">' + ey(e) + '<h2 class="h2">' + esc(h) + '</h2>' + (lead ? '<p class="lead">' + esc(lead) + '</p>' : '<span></span>') + '</div>';
 const sec = (inner, attrs) => '<section class="sec"' + (attrs || '') + '><div class="wrap">' + inner + '</div></section>';
@@ -15,11 +15,11 @@ const PAGES = {
     html() {
       const H = L().home, C = L().cta, S = L().sim;
       const [fx, fy] = GEO.pts.foumbot, [kx, ky] = GEO.pts.kigali, [nx, ny] = GEO.pts.nairobi, pc = (v, m) => (v / m * 100).toFixed(2) + '%';
-      const cur = Object.keys(RATES).map(c => '<option' + (SIM.cur === c ? ' selected' : '') + '>' + c + '</option>').join('');
+      const cur = PL_CUR.map(c => '<option' + (PLAN.currency === c ? ' selected' : '') + '>' + c + '</option>').join('');
       const hero = '<section class="hero"><div class="grid-bg" aria-hidden="true"></div><div class="wrap hero-grid" style="position:relative"><div>' + ey(H.eyebrow) +
         '<h1 class="display" tabindex="-1">' + esc(H.h1) + '</h1><p class="lead">' + esc(H.lead) + '</p>' +
         '<div class="hero-ctas"><a class="btn btn-primary" href="#platform" data-cta="explore">' + esc(C.explore) + ARROW + '</a><a class="btn btn-ghost" href="#demo" data-cta="demo">' + esc(C.demo) + '</a></div>' +
-        '<form class="try" data-try novalidate><label for="try-amt">' + esc(H.tryLabel) + '</label><div class="try-row"><div class="field"><input id="try-amt" class="tnum" inputmode="decimal" autocomplete="off" value="' + esc(nf(SIM.amount)) + '" aria-label="' + esc(H.tryAria) + '"><select aria-label="' + esc(S.currency) + '" data-try-cur>' + cur + '</select></div><button class="btn btn-green" type="submit">' + esc(C.simulate) + ARROW + '</button></div></form>' +
+        '<form class="try" data-try novalidate><label for="try-amt">' + esc(H.tryLabel) + '</label><div class="try-row"><div class="field"><input id="try-amt" class="tnum" inputmode="decimal" autocomplete="off" value="' + esc(nf(PLAN.capital)) + '" aria-label="' + esc(H.tryAria) + '"><select aria-label="' + esc(S.currency) + '" data-try-cur>' + cur + '</select></div><button class="btn btn-green" type="submit">' + esc(C.simulate) + ARROW + '</button></div></form>' +
         '<div class="status-row">' + H.chips.map((c, i) => '<span class="chip ' + (i === 0 ? 'ok' : i === 3 ? 'sig' : '') + '"><i></i>' + esc(c) + '</span>').join('') + '</div></div>' +
         '<div class="viz" data-viz><div class="viz-map"><canvas role="img" aria-label="' + esc(H.vizAlt) + '"></canvas>' +
         '<span class="tag" data-k="pilot" style="left:' + pc(fx, GEO.W) + ';top:' + pc(fy, GEO.H) + ';transform:translate(calc(-100% - 16px),-50%)">' + esc(H.tags.pilot) + '</span>' +
@@ -31,7 +31,7 @@ const PAGES = {
         '<div class="stats rv">' + H.stats.map(s => '<div class="stat"><div class="v">' + esc(s.v) + '<small>' + esc(s.u) + '</small></div><div class="l">' + esc(s.l) + '</div></div>').join('') + '</div><p class="src">' + H.statsSrc + '</p>' +
         '<p class="close-line rv">' + esc(H.pClose) + '</p>');
       const how = sec(head(H.hEyebrow, H.hH, H.hLead) + '<div class="pipe rv"><span class="pulse" aria-hidden="true"></span>' + H.steps.map((s, i) => '<div class="st"><div class="n">0' + (i + 1) + '</div><h3>' + esc(s.t) + '</h3><p>' + esc(s.d) + '</p></div>').join('') + '</div>');
-      const sim = sec(head(H.sEyebrow, H.sH, H.sLead) + simHTML(), ' id="simulator"');
+      const sim = sec(head(H.sEyebrow, H.sH, H.sLead) + '<div class="panel planner home-planner" data-plroot>' + plannerFormHTML(true) + '<div class="planner-out" data-pout aria-live="polite"></div></div>', ' id="simulator"');
       const map = sec(head(H.mEyebrow, H.mH, H.mLead) + '<div class="rv">' + mapHTML() + '</div>');
       const tiers = sec(head(H.tEyebrow, H.tH, H.tLead) + tiersHTML());
       const ev = sec(head(H.eEyebrow, H.eH, H.eLead) + evHTML() + '<div style="margin-top:28px"><a class="btn btn-ghost" href="#impact">' + esc(C.read) + ARROW + '</a></div>');
@@ -39,20 +39,28 @@ const PAGES = {
     },
     mount(root) {
       Router.cleanups.push(heroViz($('[data-viz]', root)));
-      Router.cleanups.push(simMount(root));
+      Router.cleanups.push(plannerMount($('[data-plroot]', root), true));
       lazy.push(['#map', el => Router.cleanups.push(mapMount(el))]);
       const tf = $('[data-try]', root);
       tf.addEventListener('submit', e => {
         e.preventDefault();
         const raw = $('#try-amt', tf).value; const s = String(raw).replace(/[^\d.,]/g, '').replace(/[.,](?=\d{3}(\D|$))/g, '').replace(',', '.');
-        SIM.amount = Math.max(0, Math.min(1e12, parseFloat(s) || 0)); SIM.cur = $('[data-try-cur]', tf).value;
-        const a = $('#sim-amount', root), c = $('#sim-cur', root); if (a) a.value = nf(SIM.amount); if (c) c.value = SIM.cur;
-        simRender(root);
+        PLAN.capital = Math.max(0, Math.min(1e12, parseFloat(s) || 0)); PLAN.currency = $('[data-try-cur]', tf).value;
+        const a = $('#pl-cap', root), c = $('#pl-cur', root); if (a) a.value = nf(PLAN.capital); if (c) c.value = PLAN.currency;
+        plannerRender($('[data-plroot]', root), true);
         const t = $('#simulator', root); t.scrollIntoView({ behavior: RM.matches ? 'auto' : 'smooth', block: 'start' });
-        setTimeout(() => { const o = $('[data-out]', root); if (o) { o.setAttribute('tabindex', '-1'); o.focus({ preventScroll: true }); } }, RM.matches ? 0 : 600);
-        analytics.track('cta_click', { cta: 'hero_simulate', cur: SIM.cur });
+        setTimeout(() => { const o = $('[data-pout]', root); if (o) { o.setAttribute('tabindex', '-1'); o.focus({ preventScroll: true }); } }, RM.matches ? 0 : 600);
+        analytics.track('cta_click', { cta: 'hero_simulate', cur: PLAN.currency });
       });
     }
+  },
+
+  planner: {
+    html() {
+      const P = L().planner;
+      return pageHero(P.eyebrow, P.h1, P.lead) + sec('<div class="panel planner" data-plroot>' + plannerFormHTML(false) + '<div class="planner-out" data-pout aria-live="polite"></div></div>', ' id="plan"') + ctaBand();
+    },
+    mount(root) { Router.cleanups.push(plannerMount($('[data-plroot]', root), false)); }
   },
 
   platform: {
@@ -239,7 +247,7 @@ function footerHTML() {
   const F = L().footer, N = L().nav;
   const col = (h, ks) => '<div><h5>' + esc(h) + '</h5><ul>' + ks.map(k => '<li><a href="#' + k + '">' + esc(N[k] || L().meta.pages[k]) + '</a></li>').join('') + '</ul></div>';
   return '<footer class="ftr"><div class="wrap"><div class="ftr-grid"><div><a class="brand" href="#home" aria-label="AfriFarm Intelligent">' + LOGO + '<b>AfriFarm</b><span>Intelligent</span></a><p class="muted small" style="margin-top:16px;max-width:34ch">' + esc(F.tag) + '</p><div class="status-row" style="margin-top:18px"><span class="chip ok"><i></i>' + esc(F.status) + '</span></div></div>' +
-    col(F.cols[0], ['platform', 'intelligence', 'data']) + col(F.cols[1], ['solutions', 'impact', 'about']) + col(F.cols[2], ['contact', 'demo', 'newsletter']) +
+    col(F.cols[0], ['planner', 'platform', 'intelligence', 'data']) + col(F.cols[1], ['solutions', 'impact', 'about']) + col(F.cols[2], ['contact', 'demo', 'newsletter']) +
     '<div><h5>' + esc(F.nlH) + '</h5><div class="nl-foot">' + formHTML('newsletter', 'nl-foot', { compact: true }) + '</div></div></div>' +
     '<div class="ftr-bot"><span>' + esc(F.rights) + '</span><span>' + esc(F.place) + ' · ' + esc(F.noTrack) + ' · <a href="#privacy">' + esc(L().meta.pages.privacy) + '</a> · <a href="#terms">' + esc(L().meta.pages.terms) + '</a></span></div></div></footer>';
 }
