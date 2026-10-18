@@ -1,0 +1,516 @@
+{
+  "_about": "Field photographs of the Cam_Agri For Africa pilot and of the founder's father's plantation. 'src' is the original file name as received from the founder (WhatsApp exports and screenshots). 'plate' groups each photo with the plate of the Product Concept Report it belongs to; 'panel' is its letter on that plate (null for the field archive). 'date' comes from the file metadata when it was recorded, otherwise null.",
+  "photos": [
+    {
+      "id": "p1a",
+      "src": "IMG_8869.jpeg",
+      "plate": 1,
+      "panel": "A",
+      "date": null
+    },
+    {
+      "id": "p1b",
+      "src": "IMG_8865.jpeg",
+      "plate": 1,
+      "panel": "B",
+      "date": null
+    },
+    {
+      "id": "p1c",
+      "src": "IMG_8861.jpeg",
+      "plate": 1,
+      "panel": "C",
+      "date": null
+    },
+    {
+      "id": "p2a",
+      "src": "661feb82-ee2a-41c6-8c72-c66c8307defe.jpeg",
+      "plate": 2,
+      "panel": "A",
+      "date": null
+    },
+    {
+      "id": "p2b",
+      "src": "c781c5dc-dd39-4f28-a1a6-486e16fd67e4.jpeg",
+      "plate": 2,
+      "panel": "B",
+      "date": "2024-09-20"
+    },
+    {
+      "id": "p2c",
+      "src": "e5a71c63-6f2c-416a-b4ec-b46fb2aa454c.jpeg",
+      "plate": 2,
+      "panel": "C",
+      "date": "2024-09-20"
+    },
+    {
+      "id": "p3a",
+      "src": "5375e0b1-db37-4079-9ee5-fdc456c040aa.jpeg",
+      "plate": 3,
+      "panel": "A",
+      "date": "2024-10-22"
+    },
+    {
+      "id": "p3b",
+      "src": "57bbea57-ded1-4731-ba9f-b62a4d5bed16.jpeg",
+      "plate": 3,
+      "panel": "B",
+      "date": "2024-10-12"
+    },
+    {
+      "id": "p3c",
+      "src": "33be788f-0855-4c51-9ac2-e30a78d37f45.jpeg",
+      "plate": 3,
+      "panel": "C",
+      "date": "2024-10-28"
+    },
+    {
+      "id": "p4a",
+      "src": "393e5b91-24af-4a5e-a3ed-f67ee4ac51af.jpeg",
+      "plate": 4,
+      "panel": "A",
+      "date": "2024-11-08"
+    },
+    {
+      "id": "p4b",
+      "src": "IMG_8839.png",
+      "plate": 4,
+      "panel": "B",
+      "date": null
+    },
+    {
+      "id": "p4c",
+      "src": "IMG_8820.jpeg",
+      "plate": 4,
+      "panel": "C",
+      "date": null
+    },
+    {
+      "id": "p5a",
+      "src": "IMG_8851.png",
+      "plate": 5,
+      "panel": "A",
+      "date": null
+    },
+    {
+      "id": "p5b",
+      "src": "16c2c2ba-273f-49e2-accb-f156e2f30ecc.jpeg",
+      "plate": 5,
+      "panel": "B",
+      "date": "2025-02-20"
+    },
+    {
+      "id": "p5c",
+      "src": "78cea7d4-d116-4dad-a272-7769e8df0995.jpeg",
+      "plate": 5,
+      "panel": "C",
+      "date": "2024-10-11"
+    },
+    {
+      "id": "p6a",
+      "src": "1e753022-f336-4162-b1c2-eac3d72f55d6.jpeg",
+      "plate": 6,
+      "panel": "A",
+      "date": "2024-11-02"
+    },
+    {
+      "id": "p6b",
+      "src": "IMG_8853.png",
+      "plate": 6,
+      "panel": "B",
+      "date": null
+    },
+    {
+      "id": "p6c",
+      "src": "IMG_8845.png",
+      "plate": 6,
+      "panel": "C",
+      "date": null
+    },
+    {
+      "id": "p7a",
+      "src": "ff7096de-d460-4414-b0c4-f7d689fb117a.jpeg",
+      "plate": 7,
+      "panel": "A",
+      "date": null
+    },
+    {
+      "id": "p7b",
+      "src": "32a0f81c-7e37-4614-a93e-2a04545919c0.jpeg",
+      "plate": 7,
+      "panel": "B",
+      "date": "2025-05-08"
+    },
+    {
+      "id": "p7c",
+      "src": "IMG_8859.png",
+      "plate": 7,
+      "panel": "C",
+      "date": null
+    },
+    {
+      "id": "p8a",
+      "src": "IMG_8883.png",
+      "plate": 8,
+      "panel": "A",
+      "date": null
+    },
+    {
+      "id": "p8b",
+      "src": "IMG_8881.png",
+      "plate": 8,
+      "panel": "B",
+      "date": null
+    },
+    {
+      "id": "p8c",
+      "src": "7fbdbbe1-24ed-4edd-83e8-7e88809ba5ab.jpeg",
+      "plate": 8,
+      "panel": "C",
+      "date": null
+    },
+    {
+      "id": "x01",
+      "src": "IMG_8868.jpeg",
+      "plate": 1,
+      "panel": null,
+      "date": null
+    },
+    {
+      "id": "x02",
+      "src": "2f7456c2-b6f8-460b-a9d7-ee8282a34726.jpeg",
+      "plate": 2,
+      "panel": null,
+      "date": "2024-09-20"
+    },
+    {
+      "id": "x03",
+      "src": "ba874e8e-dd5d-47fa-94ee-8d3a2adb9fb4.jpeg",
+      "plate": 2,
+      "panel": null,
+      "date": "2024-09-20"
+    },
+    {
+      "id": "x04",
+      "src": "d8592f5d-358c-49f3-90e3-d604b67daf78.jpeg",
+      "plate": 2,
+      "panel": null,
+      "date": null
+    },
+    {
+      "id": "x05",
+      "src": "6d3243a4-2823-48f2-84df-a7c9fdca069c.jpeg",
+      "plate": 2,
+      "panel": null,
+      "date": "2024-10-08"
+    },
+    {
+      "id": "x06",
+      "src": "b16955b8-b7ec-4695-b855-e69823c4a3da.jpeg",
+      "plate": 2,
+      "panel": null,
+      "date": "2024-10-08"
+    },
+    {
+      "id": "x07",
+      "src": "798a6647-4cf6-46b3-9a3f-35a6a4733b93.jpeg",
+      "plate": 2,
+      "panel": null,
+      "date": "2024-10-08"
+    },
+    {
+      "id": "x08",
+      "src": "d9529aeb-2292-4a7c-9e5e-35d0a78be187.jpeg",
+      "plate": 2,
+      "panel": null,
+      "date": "2024-10-08"
+    },
+    {
+      "id": "x09",
+      "src": "a5d300d0-4557-4558-893d-929605badb2b.jpeg",
+      "plate": 2,
+      "panel": null,
+      "date": "2024-10-08"
+    },
+    {
+      "id": "x10",
+      "src": "0a28455c-277f-4d39-b3cb-93d74c007233.jpeg",
+      "plate": 2,
+      "panel": null,
+      "date": "2024-10-09"
+    },
+    {
+      "id": "x11",
+      "src": "cb285430-915d-4bfe-b98e-86ad12339cfd.jpeg",
+      "plate": 2,
+      "panel": null,
+      "date": "2024-10-09"
+    },
+    {
+      "id": "x12",
+      "src": "0a69f968-4114-4dd5-88b4-e8b40ae219d0.jpeg",
+      "plate": 2,
+      "panel": null,
+      "date": "2024-10-09"
+    },
+    {
+      "id": "x13",
+      "src": "b4e66405-720d-4cb1-8369-c139fe85d7f9.jpeg",
+      "plate": 3,
+      "panel": null,
+      "date": "2024-10-12"
+    },
+    {
+      "id": "x14",
+      "src": "06967dcb-57b2-4e19-b29e-e3f6416cd519.jpeg",
+      "plate": 3,
+      "panel": null,
+      "date": "2024-10-12"
+    },
+    {
+      "id": "x15",
+      "src": "0ddac40b-5f32-4a6a-9cad-62e4ea1c08c6.jpeg",
+      "plate": 3,
+      "panel": null,
+      "date": "2024-10-12"
+    },
+    {
+      "id": "x16",
+      "src": "5fd08ff8-3ebd-4581-bef1-90de447c2c8f.jpeg",
+      "plate": 3,
+      "panel": null,
+      "date": "2024-10-12"
+    },
+    {
+      "id": "x17",
+      "src": "5113e04d-3bfc-4613-bcb6-c4624c2dd2a6.jpeg",
+      "plate": 3,
+      "panel": null,
+      "date": "2024-10-17"
+    },
+    {
+      "id": "x18",
+      "src": "4de1b62a-102e-4cd9-86c9-502b36395f8e.jpeg",
+      "plate": 3,
+      "panel": null,
+      "date": null
+    },
+    {
+      "id": "x19",
+      "src": "c44ddb58-a922-4022-83fd-9a7919335f6e.jpeg",
+      "plate": 3,
+      "panel": null,
+      "date": "2024-10-22"
+    },
+    {
+      "id": "x21",
+      "src": "IMG_8838.png",
+      "plate": 4,
+      "panel": null,
+      "date": null
+    },
+    {
+      "id": "x22",
+      "src": "IMG_8842.png",
+      "plate": 4,
+      "panel": null,
+      "date": null
+    },
+    {
+      "id": "x23",
+      "src": "IMG_8854.png",
+      "plate": 4,
+      "panel": null,
+      "date": null
+    },
+    {
+      "id": "x24",
+      "src": "IMG_8850.png",
+      "plate": 5,
+      "panel": null,
+      "date": null
+    },
+    {
+      "id": "x25",
+      "src": "be6527f5-a024-4b7a-b0e0-a970d52584e0.jpeg",
+      "plate": 5,
+      "panel": null,
+      "date": "2024-10-11"
+    },
+    {
+      "id": "x26",
+      "src": "7c6c6959-7128-4ecd-96f5-216cf1b4d6e4.jpeg",
+      "plate": 5,
+      "panel": null,
+      "date": "2024-10-11"
+    },
+    {
+      "id": "x27",
+      "src": "506c19c1-1c80-4578-83e6-2512d669cb51.jpeg",
+      "plate": 5,
+      "panel": null,
+      "date": "2024-10-11"
+    },
+    {
+      "id": "x28",
+      "src": "79401265-fe03-4aaf-80bb-bb3bef251b68.jpeg",
+      "plate": 7,
+      "panel": null,
+      "date": "2025-01-04"
+    },
+    {
+      "id": "x29",
+      "src": "c0abfc61-ce65-4afe-b664-7ef5774aa45d.jpeg",
+      "plate": 6,
+      "panel": null,
+      "date": "2024-11-02"
+    },
+    {
+      "id": "x30",
+      "src": "IMG_8852.png",
+      "plate": 6,
+      "panel": null,
+      "date": null
+    },
+    {
+      "id": "x31",
+      "src": "IMG_8849.png",
+      "plate": 6,
+      "panel": null,
+      "date": null
+    },
+    {
+      "id": "x32",
+      "src": "0476e376-c1fe-4578-81dd-b6b43e121944.jpeg",
+      "plate": 6,
+      "panel": null,
+      "date": "2025-02-06"
+    },
+    {
+      "id": "x33",
+      "src": "51b1f271-1bd1-4536-86f7-9154ee4212e5.jpeg",
+      "plate": 6,
+      "panel": null,
+      "date": "2025-02-06"
+    },
+    {
+      "id": "x34",
+      "src": "81306ad0-aa5c-4f41-a147-c077113b95dd.jpeg",
+      "plate": 6,
+      "panel": null,
+      "date": "2025-06-02"
+    },
+    {
+      "id": "x35",
+      "src": "IMG_8844.png",
+      "plate": 6,
+      "panel": null,
+      "date": null
+    },
+    {
+      "id": "x36",
+      "src": "2f99f744-b7d7-473d-89a4-e7dbbcdde083.jpeg",
+      "plate": 7,
+      "panel": null,
+      "date": "2024-11-29"
+    },
+    {
+      "id": "x37",
+      "src": "6b30a534-535e-4b3b-b191-d8e5b59318c8.jpeg",
+      "plate": 7,
+      "panel": null,
+      "date": "2025-01-12"
+    },
+    {
+      "id": "x38",
+      "src": "1455bf1a-0da2-4481-9e4b-d2aaae4b0d1b.jpeg",
+      "plate": 7,
+      "panel": null,
+      "date": "2025-02-01"
+    },
+    {
+      "id": "x39",
+      "src": "3907462b-363d-4f9c-998a-deed34aa5b78.jpeg",
+      "plate": 7,
+      "panel": null,
+      "date": "2025-02-01"
+    },
+    {
+      "id": "x40",
+      "src": "2d598014-4f85-4fa4-b1bc-7d3d75ae1822.jpeg",
+      "plate": 7,
+      "panel": null,
+      "date": null
+    },
+    {
+      "id": "x41",
+      "src": "IMG_8860.png",
+      "plate": 7,
+      "panel": null,
+      "date": null
+    },
+    {
+      "id": "x42",
+      "src": "IMG_8841.png",
+      "plate": 7,
+      "panel": null,
+      "date": null
+    },
+    {
+      "id": "x43",
+      "src": "IMG_8858.png",
+      "plate": 7,
+      "panel": null,
+      "date": null
+    },
+    {
+      "id": "x44",
+      "src": "IMG_8857.png",
+      "plate": 7,
+      "panel": null,
+      "date": null
+    },
+    {
+      "id": "x45",
+      "src": "IMG_8882.png",
+      "plate": 8,
+      "panel": null,
+      "date": null
+    },
+    {
+      "id": "x46",
+      "src": "IMG_8877.png",
+      "plate": 8,
+      "panel": null,
+      "date": null
+    },
+    {
+      "id": "x47",
+      "src": "IMG_8876.png",
+      "plate": 8,
+      "panel": null,
+      "date": null
+    },
+    {
+      "id": "x48",
+      "src": "IMG_8880.png",
+      "plate": 8,
+      "panel": null,
+      "date": null
+    },
+    {
+      "id": "x49",
+      "src": "IMG_8879.png",
+      "plate": 8,
+      "panel": null,
+      "date": null
+    },
+    {
+      "id": "x50",
+      "src": "IMG_8878.png",
+      "plate": 8,
+      "panel": null,
+      "date": null
+    }
+  ]
+}

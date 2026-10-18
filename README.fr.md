@@ -10,9 +10,11 @@ Porteur du projet : Franck Junior Djandja Tomwa · Zone pilote : Foumbot, Ouest 
 
 | Domaine | Rôle |
 | --- | --- |
-| Site | 12 pages (Accueil, Plateforme, Intelligence, Solutions, Données, Impact, À propos, Contact, Demander une démo, Lettre d’information, Confidentialité, Conditions) et une page 404, adresses propres, anglais et français |
+| Site | 14 pages (Accueil, Planificateur de saison, Preuves terrain, Plateforme, Intelligence, Solutions, Données, Impact, À propos, Contact, Demander une démo, Lettre d’information, Confidentialité, Conditions) et une page 404, adresses propres, anglais et français |
+| Carte mondiale des corridors | Pièce centrale de l’accueil : carte du monde en points avec des flux animés depuis la zone de production de Foumbot vers les ports de Douala et de Kribi, puis vers l’Afrique centrale, de l’Ouest et de l’Est, l’Europe, le Moyen-Orient, la Chine, les États-Unis et l’Amérique du Sud. Filtre par corridor, détails au survol, zoom et déplacement, distances maritimes, encart « du champ au port » sur le Cameroun et quatre chiffres sourcés sur les ports et l’export |
+| Preuves terrain | 73 photographies du pilote en 8 planches (planches, légendes et lectures du rapport), chaque planche reliée à sa phase, à son problème terrain et à la fonction correspondante du Planificateur ; archives terrain, dates issues des métadonnées, visionneuse plein écran au clavier et au balayage |
 | Planificateur de saison v2 | En entrée : capital (dès 100 USD, six devises), culture, situation en eau et date de démarrage. En sortie : taille de la parcelle, itinéraire technique daté, budget ligne par ligne, liste d’achats, bilan hydrique, risques, comparaison des mois de démarrage et quatre issues (bonne, moyenne, faible, échec). Chaque chiffre renvoie à sa source |
-| Carte géographique | Carte de l’Afrique avec couches (couverture des données publiques, zone pilote, expansion prévue), survol, sélection, zoom, déplacement, pincement |
+| Carte des données en Afrique | Page Données : carte de l’Afrique avec couches (couverture des données publiques, zone pilote, expansion prévue), survol, sélection, zoom, déplacement, pincement |
 | Graphiques | Chiffres sourcés des terres et de l’irrigation au Cameroun, profondeur temporelle des données publiques, feuille de route avec jalons, explorateur d’architecture |
 | Formulaires | Contact, demande de démo, lettre d’information : validation côté client et serveur, pot de miel, piège temporel, limitation de débit, Cloudflare Turnstile en option, consentement |
 | Backend | `POST /api/contact`, `POST /api/demo`, `POST /api/newsletter`, `GET /api/unsubscribe`, `GET /api/health` |
@@ -22,7 +24,7 @@ Porteur du projet : Franck Junior Djandja Tomwa · Zone pilote : Foumbot, Ouest 
 
 ## Technologies
 
-Site statique généré à partir de modules JavaScript simples (aucun framework au chargement, environ 150 Ko compressés, données cartographiques comprises), fonctions serverless Node 20, validation Zod, pilote `postgres` avec requêtes paramétrées. Hébergement cible : Vercel (tout hébergeur Node fonctionne avec `scripts/serve.mjs`).
+Site statique généré à partir de modules JavaScript simples (aucun framework au chargement, environ 270 Ko compressés, données cartographiques et base de connaissances du Planificateur comprises), fonctions serverless Node 20, validation Zod, pilote `postgres` avec requêtes paramétrées. Hébergement cible : Vercel (tout hébergeur Node fonctionne avec `scripts/serve.mjs`).
 
 La plateforme produit proprement dite (modèles, API, application mobile) suit l’architecture du rapport produit : Python, FastAPI, PostgreSQL avec PostGIS, Flutter et Next.js. Ce dépôt est le site de l’entreprise.
 
@@ -32,7 +34,8 @@ La plateforme produit proprement dite (modèles, API, application mobile) suit l
 api/                 points d’accès serverless (un fichier par route)
 lib/                 configuration, validation, sécurité, base de données, e-mails, synchronisation newsletter, gestionnaires
 db/schema.sql        schéma PostgreSQL (rejouable)
-site/src/            sources du site : i18n.js (tout le contenu, EN et FR), core.js, viz.js, pages.js, analytics.js, styles.css
+site/src/            sources du site : i18n.js et i18n-v3.js (tout le contenu, EN et FR), core.js, viz.js, world.js (carte des corridors),
+                     field.js (preuves terrain et visionneuse), pages.js, analytics.js, styles.css
 site/src/engine.cjs  moteur du Planificateur (fonctions pures, exécutées dans le navigateur et dans les tests Node)
 site/src/planner.js  interface du Planificateur
 site/data/kb.json    base de connaissances lue par le moteur (générée, ne pas modifier à la main)
@@ -40,9 +43,13 @@ data/research/       notes de recherche par culture et sur les coûts au Camerou
 scripts/kb/          build_kb.py : transforme les notes de recherche en site/data/kb.json
 site/template.html   gabarit HTML, métadonnées, données structurées
 site/geo.json        géométrie de l’Afrique générée par scripts/geo.mjs
-site/img/            photographies de terrain optimisées (WebP)
+site/geo-world.json  carte du monde en points, corridors et encart Cameroun générés par scripts/geo-world.mjs
+site/img/field/      73 photographies de terrain en deux tailles (WebP), produites par scripts/photos/build_photos.py
+site/data/photos.json  dimensions, planche, lettre et date de chaque photographie (générées)
+data/field/          manifest.json : fichier d’origine, planche et lettre de chaque photographie
+site/img/            autres photographies optimisées (WebP)
 site/build.mjs       construction : production (public/) ou aperçu en un seul fichier (dist-artifact/)
-scripts/             migrate.mjs, serve.mjs, geo.mjs
+scripts/             migrate.mjs, serve.mjs, geo.mjs, geo-world.mjs, photos/
 tests/               tests unitaires, tests des points d’accès, tests d’intégration PostgreSQL
 ```
 
@@ -154,6 +161,18 @@ Les prix des intrants viennent du budget tomate du MINADER 2024, de l’enquête
 **Règles.** Chaque valeur porte les identifiants de ses sources, affichés à l’écran à côté de chaque ligne de budget et de chaque étape. Les valeurs calculées sont signalées comme dérivées. Les valeurs sans source sont des hypothèses d’AfriFarm, listées dans l’onglet Sources. Un prix manquant n’est jamais deviné : la ligne garde sa quantité, coûte zéro et est signalée pour un devis local. La confiance est indiquée par culture et par bloc de données.
 
 Pour mettre les données à jour : modifier ou compléter les notes de recherche, ajuster `scripts/kb/build_kb.py`, puis lancer `python3 scripts/kb/build_kb.py` et `npm test`.
+
+## Système graphique et carte mondiale (v3)
+
+L’interface adopte une lecture institutionnelle claire : fond blanc, un bleu institutionnel profond (`#0B2E59`) et un bleu de travail plus doux, un vert agricole (`#17794D`) et un or de récolte. La signature africaine est le motif en losanges indigo du tissu Ndop des Grassfields de l’Ouest Cameroun, employé avec retenue dans l’en-tête de l’accueil, le bandeau de la lettre d’information et le bandeau du pied de page. Typographie : Source Serif 4 pour les affirmations, Inter pour l’interface, IBM Plex Mono pour les étiquettes de données. Tous les jetons sont en tête de `site/src/styles.css`.
+
+La carte mondiale (`site/src/world.js`) dessine les terres en points à partir de Natural Earth 1:110m ; les points sont des traits de longueur nulle, ils gardent donc leur taille à tout niveau de zoom, et les contours apparaissent quand on zoome. Les corridors sont de deux natures, signalées partout : **flux actuels** (Cameroun et Afrique centrale, flux de marché documentés) et **corridors d’export visés** (l’objectif d’AfriFarm, pas des ventes actuelles). Les routes maritimes suivent des points de passage indicatifs sur les routes habituelles (golfe de Guinée, Canaries, Gibraltar ou la Manche, cap de Bonne-Espérance, canal du Mozambique, détroit de Malacca) ; les distances sont des longueurs orthodromiques entre ces points et les jours de mer supposent 14 nœuds, hors escales et transbordements. Régénérer avec `npm run geo:world`.
+
+Chiffres sourcés de la carte : trafic des ports du Cameroun en 2025 et part de Douala (ministère des Transports via EcoMatin, janvier 2026), tirant d’eau de Kribi (WFP Logistics Cluster), exportations de bananes en 2024 (Assobacam via Business in Cameroon), flux régionaux de légumes vers le Gabon, la Guinée équatoriale, la Centrafrique et le Tchad (Afrik.com, octobre 2026) et corridor Transcameroun (Business in Cameroon, mai 2026).
+
+## Preuves terrain (v3)
+
+`data/field/manifest.json` relie chacune des 73 photographies à son fichier d’origine, à sa planche et à sa lettre. Les huit planches et leurs légendes viennent du Rapport de concept et de conception produit ; les photographies d’archives ont leur propre légende. Les phases sont attribuées d’après les descriptions du fondateur ; les dates proviennent des métadonnées des fichiers lorsqu’elles y figurent et sont présentées comme telles. Pour reconstruire les images à partir des originaux : `npm run photos -- <dossier des originaux>`.
 
 ## Honnêteté des données
 

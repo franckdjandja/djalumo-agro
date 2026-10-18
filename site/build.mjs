@@ -20,23 +20,25 @@ const config = {
   analytics: process.env.ANALYTICS_PROVIDER ? { provider: process.env.ANALYTICS_PROVIDER, id: process.env.ANALYTICS_ID || '' } : null
 };
 
-const i18nSrc = read('src/i18n.js');
+const i18nSrc = read('src/i18n.js') + '\n' + read('src/i18n-v3.js');
 const I18N = vm.runInNewContext(i18nSrc + ';I18N');
 const geo = JSON.parse(read('geo.json'));
-const parts = ['"use strict";', `const AF_TARGET = ${JSON.stringify(target)};`, target === 'production' ? `window.AF_CONFIG = ${JSON.stringify(config)};` : '', i18nSrc, `const GEO = ${JSON.stringify(geo)};`, read('src/core.js')];
+const geoWorld = JSON.parse(read('geo-world.json'));
+const photos = JSON.parse(read('data/photos.json'));
+const parts = ['"use strict";', `const AF_TARGET = ${JSON.stringify(target)};`, target === 'production' ? `window.AF_CONFIG = ${JSON.stringify(config)};` : '', i18nSrc, `const GEO = ${JSON.stringify(geo)};`, `const GEOW = ${JSON.stringify(geoWorld)};`, `const PHOTOS = ${JSON.stringify(photos)};`, read('src/core.js')];
 if (target === 'production') parts.push(read('src/analytics.js'));
 // Season Plan engine v2 and its knowledge base (data with source ids), isolated in their own scope
 const kb = JSON.parse(read('data/kb.json'));
 parts.push(`const KB = ${JSON.stringify(kb, (k, v) => (k === 'basis' ? undefined : v))};`, `const AFEngine = (function () { const module = undefined;\n${read('src/engine.cjs')}\nreturn AFEngine; })();`);
-parts.push(read('src/viz.js'), read('src/planner.js'), read('src/pages.js'));
+parts.push(read('src/viz.js'), read('src/planner.js'), read('src/world.js'), read('src/field.js'), read('src/pages.js'));
 const js = '(function(){\n' + parts.join('\n') + '\n})();';
 const css = read('src/styles.css');
 const template = read('template.html');
 
-const ROUTES = ['home', 'planner', 'platform', 'intelligence', 'solutions', 'data', 'impact', 'about', 'contact', 'demo', 'newsletter', 'privacy', 'terms'];
+const ROUTES = ['home', 'planner', 'field', 'platform', 'intelligence', 'solutions', 'data', 'impact', 'about', 'contact', 'demo', 'newsletter', 'privacy', 'terms'];
 const EN = I18N.en;
 const leadOf = (k) => ({
-  home: EN.meta.desc, planner: EN.planner.lead, platform: EN.platform.lead, intelligence: EN.intel.lead, solutions: EN.solutions.lead, data: EN.data.lead,
+  home: EN.meta.desc, planner: EN.planner.lead, field: EN.field.lead, platform: EN.platform.lead, intelligence: EN.intel.lead, solutions: EN.solutions.lead, data: EN.data.lead,
   impact: EN.impact.lead, about: EN.about.lead, contact: EN.contact.lead, demo: EN.demo.lead, newsletter: EN.nl.lead,
   privacy: 'How AfriFarm Intelligent collects, uses and protects personal data.', terms: 'Terms of use of the AfriFarm Intelligent website.'
 }[k]);
@@ -64,7 +66,7 @@ function page(k, assets) {
 
 function copyImages(dest) {
   fs.mkdirSync(dest, { recursive: true });
-  for (const f of fs.readdirSync(path.join(root, 'img'))) fs.copyFileSync(path.join(root, 'img', f), path.join(dest, f));
+  fs.cpSync(path.join(root, 'img'), dest, { recursive: true });
 }
 
 if (target === 'artifact') {

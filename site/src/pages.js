@@ -1,5 +1,5 @@
 /* ---------- Page templates, router, chrome ---------- */
-const NAV = ['planner', 'platform', 'intelligence', 'solutions', 'data', 'impact', 'about', 'contact'];
+const NAV = ['planner', 'field', 'platform', 'intelligence', 'solutions', 'data', 'impact', 'about', 'contact'];
 const ey = (t) => '<div class="eyebrow"><span class="dot"></span>' + esc(t) + '</div>';
 const head = (e, h, lead) => '<div class="sec-head rv">' + ey(e) + '<h2 class="h2">' + esc(h) + '</h2>' + (lead ? '<p class="lead">' + esc(lead) + '</p>' : '<span></span>') + '</div>';
 const sec = (inner, attrs) => '<section class="sec"' + (attrs || '') + '><div class="wrap">' + inner + '</div></section>';
@@ -13,34 +13,21 @@ const lazy = []; // [selector, mount] pairs mounted when near the viewport
 const PAGES = {
   home: {
     html() {
-      const H = L().home, C = L().cta, S = L().sim;
-      const [fx, fy] = GEO.pts.foumbot, [kx, ky] = GEO.pts.kigali, [nx, ny] = GEO.pts.nairobi, pc = (v, m) => (v / m * 100).toFixed(2) + '%';
-      const cur = PL_CUR.map(c => '<option' + (PLAN.currency === c ? ' selected' : '') + '>' + c + '</option>').join('');
-      const hero = '<section class="hero"><div class="grid-bg" aria-hidden="true"></div><div class="wrap hero-grid" style="position:relative"><div>' + ey(H.eyebrow) +
-        '<h1 class="display" tabindex="-1">' + esc(H.h1) + '</h1><p class="lead">' + esc(H.lead) + '</p>' +
-        '<div class="hero-ctas"><a class="btn btn-primary" href="#platform" data-cta="explore">' + esc(C.explore) + ARROW + '</a><a class="btn btn-ghost" href="#demo" data-cta="demo">' + esc(C.demo) + '</a></div>' +
-        '<form class="try" data-try novalidate><label for="try-amt">' + esc(H.tryLabel) + '</label><div class="try-row"><div class="field"><input id="try-amt" class="tnum" inputmode="decimal" autocomplete="off" value="' + esc(nf(PLAN.capital)) + '" aria-label="' + esc(H.tryAria) + '"><select aria-label="' + esc(S.currency) + '" data-try-cur>' + cur + '</select></div><button class="btn btn-green" type="submit">' + esc(C.simulate) + ARROW + '</button></div></form>' +
-        '<div class="status-row">' + H.chips.map((c, i) => '<span class="chip ' + (i === 0 ? 'ok' : i === 3 ? 'sig' : '') + '"><i></i>' + esc(c) + '</span>').join('') + '</div></div>' +
-        '<div class="viz" data-viz><div class="viz-map"><canvas role="img" aria-label="' + esc(H.vizAlt) + '"></canvas>' +
-        '<span class="tag" data-k="pilot" style="left:' + pc(fx, GEO.W) + ';top:' + pc(fy, GEO.H) + ';transform:translate(calc(-100% - 16px),-50%)">' + esc(H.tags.pilot) + '</span>' +
-        '<span class="tag" data-k="kigali" style="left:' + pc(kx, GEO.W) + ';top:' + pc(ky, GEO.H) + ';transform:translate(calc(-100% - 12px),10px)">' + esc(H.tags.kigali) + '</span>' +
-        '<span class="tag" data-k="nairobi" style="left:' + pc(nx, GEO.W) + ';top:' + pc(ny, GEO.H) + ';transform:translate(12px,-22px)">' + esc(H.tags.nairobi) + '</span>' +
-        '</div><div class="readout" aria-hidden="true"><div class="rt"><i></i>' + esc(H.readTitle) + '</div><ol class="rs">' + H.readSteps.map(s => '<li data-l="' + esc(s) + '"></li>').join('') + '</ol><div class="mono" data-stage-l style="color:var(--fg-2);min-height:1.7em">' + esc(H.readSteps[0]) + '</div><dl>' + H.readLines.map(([k, v]) => '<dt>' + esc(k) + '</dt><dd>' + esc(v) + '</dd>').join('') + '</dl></div></div></div></section>';
+      const H = L().home;
+      const evidence = sec(fieldHomeHTML(), ' id="evidence"');
       const problem = sec(head(H.pEyebrow, H.pH, H.pLead) +
         '<div class="cols-5 rv">' + H.factors.map((f, i) => '<div><div class="fx-k">0' + (i + 1) + ' · ' + esc(f.k) + '</div><div class="fx-t">' + esc(f.t) + '</div><p class="fx-d">' + esc(f.d) + '</p><div class="fx-m"><b>' + esc(H.consequence) + '</b>' + esc(f.m) + '</div></div>').join('') + '</div>' +
         '<div class="stats rv">' + H.stats.map(s => '<div class="stat"><div class="v">' + esc(s.v) + '<small>' + esc(s.u) + '</small></div><div class="l">' + esc(s.l) + '</div></div>').join('') + '</div><p class="src">' + H.statsSrc + '</p>' +
         '<p class="close-line rv">' + esc(H.pClose) + '</p>');
       const how = sec(head(H.hEyebrow, H.hH, H.hLead) + '<div class="pipe rv"><span class="pulse" aria-hidden="true"></span>' + H.steps.map((s, i) => '<div class="st"><div class="n">0' + (i + 1) + '</div><h3>' + esc(s.t) + '</h3><p>' + esc(s.d) + '</p></div>').join('') + '</div>');
       const sim = sec(head(H.sEyebrow, H.sH, H.sLead) + '<div class="panel planner home-planner" data-plroot>' + plannerFormHTML(true) + '<div class="planner-out" data-pout aria-live="polite"></div></div>', ' id="simulator"');
-      const map = sec(head(H.mEyebrow, H.mH, H.mLead) + '<div class="rv">' + mapHTML() + '</div>');
       const tiers = sec(head(H.tEyebrow, H.tH, H.tLead) + tiersHTML());
-      const ev = sec(head(H.eEyebrow, H.eH, H.eLead) + evHTML() + '<div style="margin-top:28px"><a class="btn btn-ghost" href="#impact">' + esc(C.read) + ARROW + '</a></div>');
-      return hero + problem + how + sim + map + tiers + ev + nlBand('nl-home') + ctaBand();
+      return worldHeroHTML() + evidence + problem + how + sim + tiers + nlBand('nl-home') + ctaBand();
     },
     mount(root) {
-      Router.cleanups.push(heroViz($('[data-viz]', root)));
+      Router.cleanups.push(worldMount(root));
       Router.cleanups.push(plannerMount($('[data-plroot]', root), true));
-      lazy.push(['#map', el => Router.cleanups.push(mapMount(el))]);
+      fieldHomeMount(root);
       const tf = $('[data-try]', root);
       tf.addEventListener('submit', e => {
         e.preventDefault();
@@ -53,6 +40,11 @@ const PAGES = {
         analytics.track('cta_click', { cta: 'hero_simulate', cur: PLAN.currency });
       });
     }
+  },
+
+  field: {
+    html() { return fieldPageHTML(); },
+    mount(root) { Router.cleanups.push(fieldPageMount(root)); }
   },
 
   planner: {
@@ -120,9 +112,10 @@ const PAGES = {
         sec(head('02 · ' + T.srcEyebrow, T.srcH) + table(T.srcCols, T.sources.map(r => ['<b>' + esc(r[0]) + '</b>', r[2] ? '<a href="' + esc(r[2]) + '" target="_blank" rel="noopener">' + esc(r[1]) + ' ↗</a>' : esc(r[1]), esc(r[3]), '<span class="small">' + esc(r[4]) + '</span>']))) +
         sec(head('03 · ' + T.propEyebrow, T.propH) + '<div class="duo"><div class="lessons rv">' + T.prop.map(([t, d], i) => '<div class="lesson" style="grid-template-columns:40px 1fr"><span class="lede-num">0' + (i + 1) + '</span><div class="p"><b>' + esc(t) + '</b>' + esc(d) + '</div></div>').join('') + '</div><div class="panel rv" style="padding:18px"><div class="chart-box nomin" data-fly></div><p class="small muted" style="padding:0 6px 6px">' + esc(T.flyNote) + '</p></div></div>') +
         sec(head('04 · ' + T.govEyebrow, T.govH) + '<ul class="list-check rv" style="max-width:720px">' + T.gov.map(t => '<li>' + esc(t) + '</li>').join('') + '</ul>') +
+        sec(head('05 · ' + T.mapEyebrow, L().home.mH, L().home.mLead) + '<div class="rv">' + mapHTML() + '</div>') +
         nlBand('nl-data') + ctaBand();
     },
-    mount(root) { landChart($('[data-land]', root)); coverageChart($('[data-cov]', root)); flywheel($('[data-fly]', root)); }
+    mount(root) { landChart($('[data-land]', root)); coverageChart($('[data-cov]', root)); flywheel($('[data-fly]', root)); lazy.push(['#map', el => Router.cleanups.push(mapMount(el))]); }
   },
 
   impact: {
@@ -133,6 +126,7 @@ const PAGES = {
         sec(head('02 · ' + I.pilotEyebrow, I.pilotH, I.pilotLead) + phasesHTML()) +
         sec(head('03 · ' + I.lessonsEyebrow, I.lessonsH) + '<div class="lessons rv">' + I.lessons.map(([a, b, c]) => '<div class="lesson"><div class="p"><b>' + esc(a) + '</b>' + esc(b) + '</div><div class="ar" aria-hidden="true">→</div><div class="r"><small>' + esc(I.req) + '</small>' + esc(c) + '</div></div>').join('') + '</div>') +
         sec(head('04 · ' + I.photosEyebrow, I.photosH) + '<div class="ev rv">' + I.photos.map(([im, t, d]) => '<figure>' + img(im, t + '. ' + d) + '<figcaption><b>' + esc(t) + '</b>' + esc(d) + '</figcaption></figure>').join('') + '</div>' +
+          '<div style="margin-top:20px"><a class="btn btn-ghost" href="#field">' + esc(I.fieldLink) + ARROW + '</a></div>' +
           '<div class="panel rv" style="padding:clamp(22px,3vw,36px);margin-top:28px"><div class="fx-k">' + esc(I.goalH) + '</div><p style="font-size:clamp(17px,1.6vw,21px);line-height:1.55;margin-top:12px;max-width:68ch">' + esc(I.goal) + '</p></div>') +
         ctaBand();
     }
@@ -188,13 +182,12 @@ const PAGES = {
   nf: {
     html() {
       const N = L().nf;
-      return '<section class="wrap nf"><div class="nf code mono" style="min-height:0;padding:0">' + esc(N.code) + '</div><svg class="wave" viewBox="0 0 520 60" aria-hidden="true"><path d="M0 30 H170 L180 28 L186 34 L192 26 L198 31 H260" fill="none" stroke="#5BC48D" stroke-width="1.6"/><path d="M260 30 H520" fill="none" stroke="#26332E" stroke-width="1.6" stroke-dasharray="3 6"/><circle cx="260" cy="30" r="4" fill="#E26A52"/></svg><h1 class="display" tabindex="-1" style="font-size:clamp(44px,7vw,96px)">' + esc(N.h1) + '</h1><p class="lead">' + esc(N.lead) + '</p><div><a class="btn btn-primary" href="#home">' + esc(L().cta.back) + ARROW + '</a></div></section>';
+      return '<section class="wrap nf"><div class="nf code mono" style="min-height:0;padding:0">' + esc(N.code) + '</div><svg class="wave" viewBox="0 0 520 60" aria-hidden="true"><path d="M0 30 H170 L180 28 L186 34 L192 26 L198 31 H260" fill="none" stroke="#17794D" stroke-width="1.6"/><path d="M260 30 H520" fill="none" stroke="#CED8E4" stroke-width="1.6" stroke-dasharray="3 6"/><circle cx="260" cy="30" r="4" fill="#B23A2A"/></svg><h1 class="display" tabindex="-1" style="font-size:clamp(44px,7vw,96px)">' + esc(N.h1) + '</h1><p class="lead">' + esc(N.lead) + '</p><div><a class="btn btn-primary" href="#home">' + esc(L().cta.back) + ARROW + '</a></div></section>';
     }
   }
 };
 
 function tiersHTML() { return '<div class="tiers rv">' + L().tiers.map(t => '<div><div class="rng">' + esc(t.r) + '</div><h3>' + esc(t.n) + '</h3><p>' + esc(t.d) + '</p><div class="who">' + esc(t.w) + '</div></div>').join('') + '</div>'; }
-function evHTML() { return '<div class="ev rv">' + L().ev.map(e => '<figure>' + img(e.img, e.t + '. ' + e.p) + '<figcaption><b>' + esc(e.p) + '</b>' + esc(e.t) + '<span class="faint" style="display:block;font-size:12.5px;margin-top:4px">' + esc(e.r) + '</span></figcaption></figure>').join('') + '</div>'; }
 function phasesHTML() {
   return '<div class="phases rv">' + L().ev.map((e, i) => '<article class="ph">' + img(e.img, e.t + '. ' + e.p) + '<div class="b"><div class="d">' + esc(e.p) + '</div><h3>' + esc(e.t) + '</h3><p>' + esc(e.d) + '</p><div class="res"><i style="background:' + (i === 3 ? 'var(--crit)' : 'var(--warn)') + '"></i>' + esc(e.r) + '</div></div></article>').join('') + '</div>';
 }
@@ -247,7 +240,7 @@ function footerHTML() {
   const F = L().footer, N = L().nav;
   const col = (h, ks) => '<div><h5>' + esc(h) + '</h5><ul>' + ks.map(k => '<li><a href="#' + k + '">' + esc(N[k] || L().meta.pages[k]) + '</a></li>').join('') + '</ul></div>';
   return '<footer class="ftr"><div class="wrap"><div class="ftr-grid"><div><a class="brand" href="#home" aria-label="AfriFarm Intelligent">' + LOGO + '<b>AfriFarm</b><span>Intelligent</span></a><p class="muted small" style="margin-top:16px;max-width:34ch">' + esc(F.tag) + '</p><div class="status-row" style="margin-top:18px"><span class="chip ok"><i></i>' + esc(F.status) + '</span></div></div>' +
-    col(F.cols[0], ['planner', 'platform', 'intelligence', 'data']) + col(F.cols[1], ['solutions', 'impact', 'about']) + col(F.cols[2], ['contact', 'demo', 'newsletter']) +
+    col(F.cols[0], ['planner', 'field', 'platform', 'intelligence', 'data']) + col(F.cols[1], ['solutions', 'impact', 'about']) + col(F.cols[2], ['contact', 'demo', 'newsletter']) +
     '<div><h5>' + esc(F.nlH) + '</h5><div class="nl-foot">' + formHTML('newsletter', 'nl-foot', { compact: true }) + '</div></div></div>' +
     '<div class="ftr-bot"><span>' + esc(F.rights) + '</span><span>' + esc(F.place) + ' · ' + esc(F.noTrack) + ' · <a href="#privacy">' + esc(L().meta.pages.privacy) + '</a> · <a href="#terms">' + esc(L().meta.pages.terms) + '</a></span></div></div></footer>';
 }
@@ -280,7 +273,7 @@ const Router = {
     $$('[data-nav]').forEach(a => { if (a.dataset.nav === key) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
     reveal(root); mountLazy();
     if (keepScroll) window.scrollTo(0, y);
-    else if (Router.pendingAnchor) { const t = D.getElementById(Router.pendingAnchor); Router.pendingAnchor = null; if (t) setTimeout(() => t.scrollIntoView({ behavior: 'auto' }), 30); }
+    else if (Router.pendingAnchor) { const t = D.getElementById(Router.pendingAnchor); Router.pendingAnchor = null; if (t) { window.scrollTo({ top: 0, behavior: 'instant' }); setTimeout(() => t.scrollIntoView({ behavior: 'instant', block: 'start' }), 30); } }
     else if (!initial) window.scrollTo(0, 0);
     if (!initial && !keepScroll) { const h = $('h1', root); if (h) h.focus({ preventScroll: true }); }
     analytics.track('page_view', { page: key });

@@ -13,103 +13,6 @@ const placeTip = (t, box, cx, cy, html) => {
   t.style.left = clamp(x, 4, Math.max(4, r.width - tw - 4)) + 'px'; t.style.top = y + 'px';
 };
 
-/* ---------- Hero: the intelligence layer, drawn as a living data grid ---------- */
-function heroViz(wrap) {
-  const cv = wrap.querySelector('canvas'), ctx = cv.getContext('2d');
-  const W = GEO.W, H = GEO.H, dots = GEO.dots, N = dots.length;
-  const [fx, fy] = GEO.pts.foumbot, K = GEO.pts.kigali, Nb = GEO.pts.nairobi;
-  const dist = new Float32Array(N), ph = new Float32Array(N), kind = new Uint8Array(N);
-  for (let i = 0; i < N; i++) {
-    const [x, y, ci] = dots[i];
-    dist[i] = Math.hypot(x - fx, y - fy);
-    ph[i] = ((Math.sin(i * 12.9898) * 43758.5453) % 1 + 1) % 1;
-    kind[i] = ci === CM_I ? 1 : PLAN_I.includes(ci) ? 2 : 0;
-  }
-  const steps = $$('.rs li', wrap), tags = $$('.tag', wrap);
-  const cmPath = new Path2D(GEO.countries[CM_I].d), planPaths = PLAN_I.map(i => new Path2D(GEO.countries[i].d));
-  const STAGE = [0.15, 1.5, 2.3, 3.5];
-  let dpr = 1, s = 1, px = -1e4, py = -1e4, raf = 0, running = false, t0 = performance.now(), last = 0, stageSeen = -1;
-  function size() {
-    const w = cv.clientWidth || 600; dpr = Math.min(window.devicePixelRatio || 1, 2);
-    cv.width = Math.round(w * dpr); cv.height = Math.round(w * H / W * dpr); s = w / W;
-  }
-  function curve(a, b, p) { // quadratic arc between two map points, lifted northwards
-    const mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2 - Math.hypot(b[0] - a[0], b[1] - a[1]) * 0.32;
-    ctx.beginPath(); ctx.moveTo(a[0], a[1]);
-    const n = 40, m = Math.max(1, Math.round(n * p));
-    for (let k = 1; k <= m; k++) { const u = k / n; const x = (1 - u) * (1 - u) * a[0] + 2 * (1 - u) * u * mx + u * u * b[0]; const y = (1 - u) * (1 - u) * a[1] + 2 * (1 - u) * u * my + u * u * b[1]; ctx.lineTo(x, y); }
-    ctx.stroke();
-  }
-  function draw(t) {
-    ctx.setTransform(dpr * s, 0, 0, dpr * s, 0, 0);
-    ctx.clearRect(0, 0, W, H);
-    const reveal = t * 640, zone = clamp((t - 1.5) / 0.9, 0, 1), sig = t > 2.3 && !RM.matches;
-    const scanX = t > 2.9 && !RM.matches ? (((t - 2.9) % 8) / 8) * (W + 300) - 150 : -1e4;
-    if (zone > 0) { ctx.globalAlpha = zone; ctx.fillStyle = 'rgba(91,196,141,0.10)'; ctx.fill(cmPath); ctx.strokeStyle = 'rgba(91,196,141,0.55)'; ctx.lineWidth = 1.2; ctx.stroke(cmPath); ctx.globalAlpha = 1; }
-    if (t > 4.6) { ctx.globalAlpha = clamp((t - 4.6) / 0.8, 0, 1); ctx.strokeStyle = 'rgba(143,221,245,0.45)'; ctx.lineWidth = 1; ctx.setLineDash([3, 4]); planPaths.forEach(pp => ctx.stroke(pp)); ctx.setLineDash([]); ctx.globalAlpha = 1; }
-    const sz = 3.3;
-    for (let i = 0; i < N; i++) {
-      const a = clamp((reveal - dist[i]) / 140, 0, 1); if (a <= 0) continue;
-      const x = dots[i][0], y = dots[i][1];
-      let alpha = 0.26 * a, col = 0, grow = 0;
-      if (kind[i] === 1 && zone > 0) { col = 1; alpha = (0.26 + 0.7 * zone) * a; grow = 0.9 * zone; }
-      const ds = Math.abs(x - scanX); if (ds < 60) alpha = Math.min(1, alpha + (1 - ds / 60) * 0.35);
-      if (sig) { const f = ((t * 0.16 + ph[i]) % 1); if (f < 0.014) { col = 2; alpha = 1 - f / 0.014 * 0.6; grow = 1.2; } }
-      const dp = (x - px) * (x - px) + (y - py) * (y - py);
-      if (dp < 6400) { const k = 1 - Math.sqrt(dp) / 80; alpha = Math.min(1, alpha + k * 0.55); grow += k * 1.6; if (col === 0) col = 3; }
-      ctx.globalAlpha = alpha;
-      ctx.fillStyle = col === 1 ? '#5BC48D' : col === 2 ? '#8FDDF5' : col === 3 ? '#D9E6DF' : '#9FB1A8';
-      const q = sz + grow; ctx.fillRect(x - q / 2, y - q / 2, q, q);
-    }
-    ctx.globalAlpha = 1;
-    if (scanX > -200 && scanX < W + 200) {
-      const g = ctx.createLinearGradient(scanX - 90, 0, scanX + 6, 0);
-      g.addColorStop(0, 'rgba(143,221,245,0)'); g.addColorStop(1, 'rgba(143,221,245,0.10)');
-      ctx.fillStyle = g; ctx.fillRect(scanX - 90, 0, 96, H);
-      ctx.fillStyle = 'rgba(143,221,245,0.5)'; ctx.fillRect(scanX + 5, 0, 1, H);
-    }
-    if (t > 3.5) {
-      const p = clamp((t - 3.5) / 1.3, 0, 1);
-      ctx.save(); ctx.strokeStyle = 'rgba(143,221,245,0.8)'; ctx.lineWidth = 1.6; ctx.setLineDash([6, 7]); ctx.lineDashOffset = -t * 18;
-      curve([fx, fy], K, p); curve([fx, fy], Nb, p); ctx.restore();
-      if (p >= 1) [K, Nb].forEach(q => { ctx.strokeStyle = 'rgba(143,221,245,0.9)'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(q[0], q[1], 6, 0, Math.PI * 2); ctx.stroke(); ctx.fillStyle = '#8FDDF5'; ctx.beginPath(); ctx.arc(q[0], q[1], 2.4, 0, Math.PI * 2); ctx.fill(); });
-    }
-    if (t > 2.0) {
-      for (let k = 0; k < 3; k++) {
-        const u = ((t - 2.0) * 0.45 + k / 3) % 1; ctx.strokeStyle = 'rgba(91,196,141,' + (0.7 * (1 - u)).toFixed(3) + ')'; ctx.lineWidth = 1.4;
-        ctx.beginPath(); ctx.arc(fx, fy, 6 + u * 70, 0, Math.PI * 2); ctx.stroke();
-      }
-      ctx.fillStyle = '#5BC48D'; ctx.shadowColor = 'rgba(91,196,141,.9)'; ctx.shadowBlur = 16;
-      ctx.beginPath(); ctx.arc(fx, fy, 5.5, 0, Math.PI * 2); ctx.fill(); ctx.shadowBlur = 0;
-      ctx.fillStyle = '#EDF2EE'; ctx.beginPath(); ctx.arc(fx, fy, 2, 0, Math.PI * 2); ctx.fill();
-    }
-    let st = -1; STAGE.forEach((v, k) => { if (t >= v) st = k; });
-    if (st !== stageSeen) {
-      stageSeen = st; steps.forEach((li, k) => li.classList.toggle('on', k <= st)); const sl = wrap.querySelector('[data-stage-l]'); if (sl && st >= 0) sl.textContent = (st === steps.length - 1 ? '● ' : '○ ') + steps[st].dataset.l;
-      tags.forEach(tg => tg.classList.toggle('on', (tg.dataset.k === 'pilot' && st >= 1) || (tg.dataset.k !== 'pilot' && st >= 3)));
-    }
-  }
-  function frame(now) {
-    raf = requestAnimationFrame(frame);
-    if (LOWEND && now - last < 32) return; last = now;
-    draw((now - t0) / 1000);
-  }
-  const start = () => { if (running || RM.matches) return; running = true; raf = requestAnimationFrame(frame); };
-  const stop = () => { running = false; cancelAnimationFrame(raf); };
-  size();
-  if (RM.matches) draw(9); else start();
-  const io = new IntersectionObserver(es => es.forEach(e => (e.isIntersecting && !D.hidden ? start() : stop())), { threshold: 0 });
-  io.observe(cv);
-  const vis = () => (D.hidden ? stop() : start());
-  D.addEventListener('visibilitychange', vis);
-  const ro = new ResizeObserver(() => { size(); if (RM.matches) draw(9); });
-  ro.observe(cv);
-  const mv = e => { const r = cv.getBoundingClientRect(); px = (e.clientX - r.left) / r.width * W; py = (e.clientY - r.top) / r.height * H; if (RM.matches) draw(9); };
-  const lv = () => { px = py = -1e4; if (RM.matches) draw(9); };
-  cv.addEventListener('pointermove', mv); cv.addEventListener('pointerleave', lv);
-  return () => { stop(); io.disconnect(); ro.disconnect(); D.removeEventListener('visibilitychange', vis); };
-}
-
 /* ---------- Geographic intelligence map ---------- */
 const MAP_STATE = { layers: { public: true, pilot: true, plan: true }, sel: CM_I };
 function mapHTML() {
@@ -119,7 +22,7 @@ function mapHTML() {
   const layer = (k, label, sw) => '<button type="button" class="layer" data-layer="' + k + '" aria-pressed="' + MAP_STATE.layers[k] + '"><span class="sw" style="' + sw + '"></span><span class="lt">' + esc(label) + '</span><span class="tg" aria-hidden="true"></span></button>';
   return '<div class="mapwrap" id="map"><div class="map-stage" data-stage><div class="empty-out" style="position:absolute;inset:auto 16px 16px auto;border:0" data-loading><span class="mono small">' + esc(M.loading) + '</span></div></div>' +
     '<div class="map-side"><div><div class="fx-k" style="margin-bottom:10px">' + esc(M.layers) + '</div><div class="layers">' +
-    layer('public', M.lPublic, 'background:rgba(143,221,245,.55)') + layer('pilot', M.lPilot, 'background:#5BC48D') + layer('plan', M.lPlan, 'border:1px dashed #8FDDF5') +
+    layer('public', M.lPublic, 'background:rgba(31,95,173,.55)') + layer('pilot', M.lPilot, 'background:#17794D') + layer('plan', M.lPlan, 'border:1px dashed #1F5FAD') +
     '</div></div><div class="f"><label for="map-country">' + esc(M.selectAria) + '</label><select id="map-country" class="inp"><option value="">' + esc(M.select) + '</option>' + opts + '</select></div>' +
     '<div class="info" aria-live="polite" data-info></div><p class="small faint">' + esc(M.hint) + '</p></div></div>';
 }
@@ -132,10 +35,10 @@ function mapMount(root) {
   const F = G.pts.foumbot;
   stage.innerHTML = '<svg viewBox="0 0 ' + G.W + ' ' + G.H + '" role="group" aria-label="' + esc(L().home.mH) + '">' +
     '<g data-cs>' + G.countries.map((c, i) => '<path class="c" data-i="' + i + '" d="' + c.d + '"/>').join('') + '</g>' +
-    '<path data-l="public" d="' + dotsPath + '" fill="#8FDDF5" opacity=".22" pointer-events="none"/>' +
-    '<g data-l="plan" pointer-events="none"><path d="' + arc(F, G.pts.kigali) + '" fill="none" stroke="#8FDDF5" stroke-width="1.4" stroke-dasharray="5 6" vector-effect="non-scaling-stroke" opacity=".85"/><path d="' + arc(F, G.pts.nairobi) + '" fill="none" stroke="#8FDDF5" stroke-width="1.4" stroke-dasharray="5 6" vector-effect="non-scaling-stroke" opacity=".85"/>' +
-    [G.pts.kigali, G.pts.nairobi].map(p => '<circle data-r="5" cx="' + p[0] + '" cy="' + p[1] + '" r="5" fill="#0B100E" stroke="#8FDDF5" stroke-width="1.4" vector-effect="non-scaling-stroke"/>').join('') + '</g>' +
-    '<g data-l="pilot" pointer-events="none"><circle data-r="16" cx="' + F[0] + '" cy="' + F[1] + '" r="16" fill="none" stroke="#5BC48D" stroke-width="1.2" vector-effect="non-scaling-stroke"><animate attributeName="opacity" values=".9;0;.9" dur="2.4s" repeatCount="indefinite"/></circle><circle data-r="5.5" cx="' + F[0] + '" cy="' + F[1] + '" r="5.5" fill="#5BC48D"/><text data-fs="13" x="' + (F[0] - 14) + '" y="' + (F[1] + 4) + '" text-anchor="end" font-family="Geist Mono, monospace" font-size="13" fill="#EDF2EE" paint-order="stroke" stroke="#070A09" stroke-width="4" stroke-linejoin="round">' + esc(M.pilotLabel) + '</text></g></svg>' +
+    '<path data-l="public" d="' + dotsPath + '" fill="#1F5FAD" opacity=".22" pointer-events="none"/>' +
+    '<g data-l="plan" pointer-events="none"><path d="' + arc(F, G.pts.kigali) + '" fill="none" stroke="#1F5FAD" stroke-width="1.4" stroke-dasharray="5 6" vector-effect="non-scaling-stroke" opacity=".85"/><path d="' + arc(F, G.pts.nairobi) + '" fill="none" stroke="#1F5FAD" stroke-width="1.4" stroke-dasharray="5 6" vector-effect="non-scaling-stroke" opacity=".85"/>' +
+    [G.pts.kigali, G.pts.nairobi].map(p => '<circle data-r="5" cx="' + p[0] + '" cy="' + p[1] + '" r="5" fill="#FFFFFF" stroke="#1F5FAD" stroke-width="1.4" vector-effect="non-scaling-stroke"/>').join('') + '</g>' +
+    '<g data-l="pilot" pointer-events="none"><circle data-r="16" cx="' + F[0] + '" cy="' + F[1] + '" r="16" fill="none" stroke="#17794D" stroke-width="1.2" vector-effect="non-scaling-stroke"><animate attributeName="opacity" values=".9;0;.9" dur="2.4s" repeatCount="indefinite"/></circle><circle data-r="5.5" cx="' + F[0] + '" cy="' + F[1] + '" r="5.5" fill="#17794D"/><text data-fs="13" x="' + (F[0] - 14) + '" y="' + (F[1] + 4) + '" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="13" fill="#0D2137" paint-order="stroke" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round">' + esc(M.pilotLabel) + '</text></g></svg>' +
     '<div class="map-ctrl"><button type="button" data-z="in" aria-label="' + esc(M.zoomIn) + '">+</button><button type="button" data-z="out" aria-label="' + esc(M.zoomOut) + '">−</button><button type="button" data-z="reset" aria-label="' + esc(M.reset) + '"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 5V2h3M12 9v3H9M9 2h3v3M5 12H2V9" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button></div>' +
     '<div class="map-scale">' + esc(M.scaleNote) + '</div>';
   const svg = $('svg', stage), paths = $$('path.c', svg), T = tip(stage);
@@ -233,12 +136,12 @@ function mapMount(root) {
 /* ---------- Charts ---------- */
 function landChart(box) {
   const T = L().data, W = 640, H = 236, X0 = 150, X1 = W - 70;
-  const g1 = [[T.landA, 7.2, '#3E8F68'], [T.landB, 1.8, '#5BC48D']], g2 = [[T.landC, 240, '#5A93A6'], [T.landD, 33, '#8FDDF5']];
+  const g1 = [[T.landA, 7.2, '#0F5F3C'], [T.landB, 1.8, '#17794D']], g2 = [[T.landC, 240, '#3B7DD8'], [T.landD, 33, '#1F5FAD']];
   const grp = (y0, title, rows, max, unit) => {
-    let s = '<text x="0" y="' + y0 + '" font-size="11" fill="#6F7C76" font-family="Geist Mono, monospace" letter-spacing=".08em">' + esc(title.toUpperCase()) + '</text>';
+    let s = '<text x="0" y="' + y0 + '" font-size="11" fill="#66788E" font-family="IBM Plex Mono, monospace" letter-spacing=".08em">' + esc(title.toUpperCase()) + '</text>';
     rows.forEach(([lab, v, c], i) => {
       const y = y0 + 14 + i * 34, w = (X1 - X0) * v / max;
-      s += '<text x="0" y="' + (y + 16) + '" font-size="13" fill="#AAB6B0">' + esc(lab) + '</text><rect x="' + X0 + '" y="' + y + '" width="' + (X1 - X0) + '" height="22" rx="4" fill="#131B18"/><rect class="grow" data-tip="' + esc(lab + ' · ' + nf(v, v < 10 ? 1 : 0) + ' ' + unit) + '" x="' + X0 + '" y="' + y + '" width="' + w.toFixed(1) + '" height="22" rx="4" fill="' + c + '"/><text x="' + (X0 + w + 8) + '" y="' + (y + 16) + '" font-size="13" fill="#EDF2EE" font-family="Geist Mono, monospace">' + (i === 1 && unit === 'k ha' ? '< ' : '') + nf(v, v < 10 ? 1 : 0) + '</text>';
+      s += '<text x="0" y="' + (y + 16) + '" font-size="13" fill="#3D5169">' + esc(lab) + '</text><rect x="' + X0 + '" y="' + y + '" width="' + (X1 - X0) + '" height="22" rx="4" fill="#EEF3F8"/><rect class="grow" data-tip="' + esc(lab + ' · ' + nf(v, v < 10 ? 1 : 0) + ' ' + unit) + '" x="' + X0 + '" y="' + y + '" width="' + w.toFixed(1) + '" height="22" rx="4" fill="' + c + '"/><text x="' + (X0 + w + 8) + '" y="' + (y + 16) + '" font-size="13" fill="#0D2137" font-family="IBM Plex Mono, monospace">' + (i === 1 && unit === 'k ha' ? '< ' : '') + nf(v, v < 10 ? 1 : 0) + '</text>';
     });
     return s;
   };
@@ -249,24 +152,24 @@ function coverageChart(box) {
   const T = L().data, W = 640, X0 = 150, X1 = W - 16, Y0 = 1950, Y1 = 2028, px = y => X0 + (y - Y0) / (Y1 - Y0) * (X1 - X0);
   const fr = LANG === 'fr';
   const rows = [
-    ['ERA5-Land', 1950, 2026, '#5A93A6', fr ? 'Réanalyse horaire, environ 9 km' : 'Hourly reanalysis, about 9 km'],
-    ['FAOSTAT', 1961, 2026, '#3E8F68', fr ? 'Production et rendements par pays' : 'Production and yields by country'],
-    ['NASA POWER', 1981, 2026, '#5BC48D', fr ? 'Météo journalière' : 'Daily weather'],
-    ['CHIRPS', 1981, 2026, '#6FB9CF', fr ? 'Pluie, environ 5 km' : 'Rainfall, about 5 km'],
-    [fr ? 'Prix PAM Cameroun' : 'WFP prices, Cameroon', 2005, 2024, '#C9A24B', fr ? 'Prix de marché, surtout au Nord' : 'Market prices, mainly northern regions'],
-    ['Sentinel-2', 2015, 2026, '#8FDDF5', fr ? 'Indice de végétation des parcelles' : 'Vegetation index of plots'],
-    ['Cam_Agri pilot', 2024.7, 2025.8, '#EDF2EE', fr ? 'Pilote terrain, 4 phases' : 'Field pilot, four phases'],
+    ['ERA5-Land', 1950, 2026, '#3B7DD8', fr ? 'Réanalyse horaire, environ 9 km' : 'Hourly reanalysis, about 9 km'],
+    ['FAOSTAT', 1961, 2026, '#0F5F3C', fr ? 'Production et rendements par pays' : 'Production and yields by country'],
+    ['NASA POWER', 1981, 2026, '#17794D', fr ? 'Météo journalière' : 'Daily weather'],
+    ['CHIRPS', 1981, 2026, '#8DB9E8', fr ? 'Pluie, environ 5 km' : 'Rainfall, about 5 km'],
+    [fr ? 'Prix PAM Cameroun' : 'WFP prices, Cameroon', 2005, 2024, '#A87A1E', fr ? 'Prix de marché, surtout au Nord' : 'Market prices, mainly northern regions'],
+    ['Sentinel-2', 2015, 2026, '#1F5FAD', fr ? 'Indice de végétation des parcelles' : 'Vegetation index of plots'],
+    ['Cam_Agri pilot', 2024.7, 2025.8, '#0D2137', fr ? 'Pilote terrain, 4 phases' : 'Field pilot, four phases'],
     [fr ? 'Journaux de saison' : 'AfriFarm season logs', 2027.2, 2028, 'plan', fr ? 'Prévu dès mars 2027' : 'Planned from March 2027']
   ];
   if (fr) rows[6][0] = 'Pilote Cam_Agri';
   const H = 30 + rows.length * 30 + 26;
   let s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(T.covH) + '">';
-  [1950, 1960, 1970, 1980, 1990, 2000, 2010, 2020].forEach(y => { s += '<line x1="' + px(y) + '" x2="' + px(y) + '" y1="16" y2="' + (H - 22) + '" stroke="#1B2521"/><text x="' + px(y) + '" y="' + (H - 6) + '" font-size="11" text-anchor="middle" fill="#6F7C76" font-family="Geist Mono, monospace">' + y + '</text>'; });
-  s += '<line x1="' + px(2026.75) + '" x2="' + px(2026.75) + '" y1="10" y2="' + (H - 22) + '" stroke="#C9A24B" stroke-dasharray="3 3"/><text x="' + (px(2026.75) - 4) + '" y="10" font-size="10" text-anchor="end" fill="#C9A24B" font-family="Geist Mono, monospace">' + (fr ? 'AUJOURD’HUI' : 'TODAY') + '</text>';
+  [1950, 1960, 1970, 1980, 1990, 2000, 2010, 2020].forEach(y => { s += '<line x1="' + px(y) + '" x2="' + px(y) + '" y1="16" y2="' + (H - 22) + '" stroke="#E2E8F0"/><text x="' + px(y) + '" y="' + (H - 6) + '" font-size="11" text-anchor="middle" fill="#66788E" font-family="IBM Plex Mono, monospace">' + y + '</text>'; });
+  s += '<line x1="' + px(2026.75) + '" x2="' + px(2026.75) + '" y1="10" y2="' + (H - 22) + '" stroke="#A87A1E" stroke-dasharray="3 3"/><text x="' + (px(2026.75) - 4) + '" y="10" font-size="10" text-anchor="end" fill="#A87A1E" font-family="IBM Plex Mono, monospace">' + (fr ? 'AUJOURD’HUI' : 'TODAY') + '</text>';
   rows.forEach(([lab, a, b, c, d], i) => {
     const y = 24 + i * 30; const w = Math.max(3, px(b) - px(a));
-    s += '<text x="0" y="' + (y + 14) + '" font-size="12.5" fill="#AAB6B0">' + esc(lab) + '</text>';
-    s += c === 'plan' ? '<rect class="grow" data-tip="' + esc(lab + ' · ' + d) + '" x="' + px(a) + '" y="' + (y + 2) + '" width="' + w + '" height="16" rx="3" fill="none" stroke="#8FDDF5" stroke-dasharray="3 3"/>'
+    s += '<text x="0" y="' + (y + 14) + '" font-size="12.5" fill="#3D5169">' + esc(lab) + '</text>';
+    s += c === 'plan' ? '<rect class="grow" data-tip="' + esc(lab + ' · ' + d) + '" x="' + px(a) + '" y="' + (y + 2) + '" width="' + w + '" height="16" rx="3" fill="none" stroke="#1F5FAD" stroke-dasharray="3 3"/>'
       : '<rect class="grow" data-tip="' + esc(lab + ' · ' + Math.floor(a) + (b >= 2026 ? (fr ? ' à aujourd’hui' : ' to present') : (fr ? ' à ' : ' to ') + Math.floor(b)) + ' · ' + d) + '" x="' + px(a) + '" y="' + (y + 2) + '" width="' + w + '" height="16" rx="3" fill="' + c + '" opacity=".9"/>';
   });
   box.innerHTML = s + '</svg>';
@@ -277,13 +180,13 @@ function roadChart(box) {
   const start = new Date(2026, 9, 5);
   const H = 40 + A.road.length * 40 + 34;
   let s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(A.roadH) + '">';
-  for (let w = 1; w <= WK + 1; w += 4) { const d = new Date(start.getTime() + (w - 1) * 7 * 864e5); s += '<line x1="' + px(w) + '" x2="' + px(w) + '" y1="22" y2="' + (H - 30) + '" stroke="#1B2521"/><text x="' + px(w) + '" y="' + (H - 16) + '" font-size="10.5" text-anchor="middle" fill="#6F7C76" font-family="Geist Mono, monospace">' + esc(A.week[0] + w) + '</text><text x="' + px(w) + '" y="' + (H - 3) + '" font-size="10" text-anchor="middle" fill="#4E5A55" font-family="Geist Mono, monospace">' + esc(new Intl.DateTimeFormat(L().meta.locale, { day: 'numeric', month: 'short' }).format(d)) + '</text>'; }
-  s += '<line x1="' + px(1) + '" x2="' + px(1) + '" y1="10" y2="' + (H - 30) + '" stroke="#C9A24B" stroke-dasharray="3 3"/><text x="' + (px(1) + 4) + '" y="14" font-size="10" fill="#C9A24B" font-family="Geist Mono, monospace">' + esc(A.now.toUpperCase()) + '</text>';
+  for (let w = 1; w <= WK + 1; w += 4) { const d = new Date(start.getTime() + (w - 1) * 7 * 864e5); s += '<line x1="' + px(w) + '" x2="' + px(w) + '" y1="22" y2="' + (H - 30) + '" stroke="#E2E8F0"/><text x="' + px(w) + '" y="' + (H - 16) + '" font-size="10.5" text-anchor="middle" fill="#66788E" font-family="IBM Plex Mono, monospace">' + esc(A.week[0] + w) + '</text><text x="' + px(w) + '" y="' + (H - 3) + '" font-size="10" text-anchor="middle" fill="#8A99AB" font-family="IBM Plex Mono, monospace">' + esc(new Intl.DateTimeFormat(L().meta.locale, { day: 'numeric', month: 'short' }).format(d)) + '</text>'; }
+  s += '<line x1="' + px(1) + '" x2="' + px(1) + '" y1="10" y2="' + (H - 30) + '" stroke="#A87A1E" stroke-dasharray="3 3"/><text x="' + (px(1) + 4) + '" y="14" font-size="10" fill="#A87A1E" font-family="IBM Plex Mono, monospace">' + esc(A.now.toUpperCase()) + '</text>';
   A.road.forEach(([p, t, a, b, d, gate], i) => {
     const y = 30 + i * 40, x = px(a), w = px(b + 1) - px(a);
-    s += '<text x="0" y="' + (y + 12) + '" font-size="11" fill="#6F7C76" font-family="Geist Mono, monospace">' + esc(p.toUpperCase()) + '</text><text x="0" y="' + (y + 27) + '" font-size="13" fill="#EDF2EE">' + esc(t) + '</text>';
-    s += '<rect class="grow" data-tip="' + esc(p + ' · ' + t + ' · ' + A.week + ' ' + a + (LANG === 'fr' ? ' à ' : ' to ') + b + ' · ' + d) + '" x="' + x + '" y="' + (y + 4) + '" width="' + w + '" height="22" rx="4" fill="' + (i === 2 ? '#5BC48D' : i === 0 ? 'rgba(91,196,141,.6)' : 'rgba(91,196,141,.28)') + '"/>';
-    s += '<path data-tip="' + esc(A.gate + ' · ' + gate) + '" d="M' + (x + w) + ' ' + (y + 6) + 'l9 9-9 9-9-9z" fill="#C9A24B" stroke="#070A09" stroke-width="2"/>';
+    s += '<text x="0" y="' + (y + 12) + '" font-size="11" fill="#66788E" font-family="IBM Plex Mono, monospace">' + esc(p.toUpperCase()) + '</text><text x="0" y="' + (y + 27) + '" font-size="13" fill="#0D2137">' + esc(t) + '</text>';
+    s += '<rect class="grow" data-tip="' + esc(p + ' · ' + t + ' · ' + A.week + ' ' + a + (LANG === 'fr' ? ' à ' : ' to ') + b + ' · ' + d) + '" x="' + x + '" y="' + (y + 4) + '" width="' + w + '" height="22" rx="4" fill="' + (i === 2 ? '#17794D' : i === 0 ? 'rgba(23,121,77,.6)' : 'rgba(23,121,77,.28)') + '"/>';
+    s += '<path data-tip="' + esc(A.gate + ' · ' + gate) + '" d="M' + (x + w) + ' ' + (y + 6) + 'l9 9-9 9-9-9z" fill="#A87A1E" stroke="#FFFFFF" stroke-width="2"/>';
   });
   box.innerHTML = s + '</svg>';
   bindTips(box);
@@ -296,12 +199,12 @@ function bindTips(box) {
 function flywheel(box) {
   const T = L().data, cx = 200, cy = 200, R = 132;
   const pos = [[cx, cy - R], [cx + R, cy], [cx, cy + R], [cx - R, cy]];
-  let s = '<svg viewBox="0 0 400 400" role="img" aria-label="' + esc(T.flyH + ': ' + T.fly.join(', ')) + '"><circle cx="' + cx + '" cy="' + cy + '" r="' + R + '" fill="none" stroke="#26332E" stroke-width="1.2"/>' +
-    '<circle cx="' + cx + '" cy="' + cy + '" r="' + R + '" fill="none" stroke="#5BC48D" stroke-width="2" stroke-dasharray="60 770" stroke-linecap="round" class="fly-run"/>' +
-    '<text x="' + cx + '" y="' + (cy - 4) + '" text-anchor="middle" font-size="15" fill="#EDF2EE" font-weight="600">AfriFarm</text><text x="' + cx + '" y="' + (cy + 16) + '" text-anchor="middle" font-size="11" fill="#6F7C76" font-family="Geist Mono, monospace">' + esc(T.flyH.toUpperCase()) + '</text>';
+  let s = '<svg viewBox="0 0 400 400" role="img" aria-label="' + esc(T.flyH + ': ' + T.fly.join(', ')) + '"><circle cx="' + cx + '" cy="' + cy + '" r="' + R + '" fill="none" stroke="#CED8E4" stroke-width="1.2"/>' +
+    '<circle cx="' + cx + '" cy="' + cy + '" r="' + R + '" fill="none" stroke="#17794D" stroke-width="2" stroke-dasharray="60 770" stroke-linecap="round" class="fly-run"/>' +
+    '<text x="' + cx + '" y="' + (cy - 4) + '" text-anchor="middle" font-size="15" fill="#0D2137" font-weight="600">AfriFarm</text><text x="' + cx + '" y="' + (cy + 16) + '" text-anchor="middle" font-size="11" fill="#66788E" font-family="IBM Plex Mono, monospace">' + esc(T.flyH.toUpperCase()) + '</text>';
   T.fly.forEach((t, i) => {
     const [x, y] = pos[i];
-    s += '<circle cx="' + x + '" cy="' + y + '" r="7" fill="#070A09" stroke="' + (i === 3 ? '#8FDDF5' : '#5BC48D') + '" stroke-width="1.6"/><text x="' + (x + (i === 1 ? -14 : i === 3 ? 14 : 0)) + '" y="' + (y + (i === 0 ? -16 : i === 2 ? 26 : 4)) + '" text-anchor="' + (i === 1 ? 'end' : i === 3 ? 'start' : 'middle') + '" font-size="12.5" fill="#AAB6B0">' + esc(t) + '</text>';
+    s += '<circle cx="' + x + '" cy="' + y + '" r="7" fill="#FFFFFF" stroke="' + (i === 3 ? '#1F5FAD' : '#17794D') + '" stroke-width="1.6"/><text x="' + (x + (i === 1 ? -14 : i === 3 ? 14 : 0)) + '" y="' + (y + (i === 0 ? -16 : i === 2 ? 26 : 4)) + '" text-anchor="' + (i === 1 ? 'end' : i === 3 ? 'start' : 'middle') + '" font-size="12.5" fill="#3D5169">' + esc(t) + '</text>';
   });
   box.innerHTML = s + '</svg>';
 }
@@ -331,7 +234,7 @@ function archMount(root) {
       let d;
       if (eb.left > ea.right - 2) { const x1 = ea.right - br.left, y1 = ea.top + ea.height / 2 - br.top, x2 = eb.left - br.left, y2 = eb.top + eb.height / 2 - br.top, mx = (x1 + x2) / 2; d = 'M' + x1 + ' ' + y1 + 'C' + mx + ' ' + y1 + ' ' + mx + ' ' + y2 + ' ' + x2 + ' ' + y2; }
       else { const x1 = ea.left + ea.width / 2 - br.left, y1 = ea.bottom - br.top, x2 = eb.left + eb.width / 2 - br.left, y2 = eb.top - br.top, my = (y1 + y2) / 2; d = 'M' + x1 + ' ' + y1 + 'C' + x1 + ' ' + my + ' ' + x2 + ' ' + my + ' ' + x2 + ' ' + y2; }
-      s += '<path d="' + d + '" fill="none" stroke="' + (on ? '#5BC48D' : '#1F2A26') + '" stroke-width="' + (on ? 1.6 : 1) + '"' + (on ? ' stroke-dasharray="4 5" class="flowline"' : '') + ' opacity="' + (on ? .95 : .9) + '"/>';
+      s += '<path d="' + d + '" fill="none" stroke="' + (on ? '#17794D' : '#E2E8F0') + '" stroke-width="' + (on ? 1.6 : 1) + '"' + (on ? ' stroke-dasharray="4 5" class="flowline"' : '') + ' opacity="' + (on ? .95 : .9) + '"/>';
     });
     svg.innerHTML = s;
     $$('[data-node]', box).forEach(n => { n.style.opacity = rel.has(n.dataset.node) ? '1' : '.45'; n.setAttribute('aria-pressed', String(n.dataset.node === ARCH_SEL)); });

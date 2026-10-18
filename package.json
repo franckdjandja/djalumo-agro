@@ -2,16 +2,20 @@
   "name": "afrifarm-web",
   "version": "1.0.0",
   "private": true,
-  "description": "AfriFarm Intelligent: bilingual website, Season Simulator demo and form backend (contact, demo, newsletter).",
+  "description": "AfriFarm Intelligent: bilingual website, world trade corridor map, field evidence gallery, Season Planner and form backend (contact, demo, newsletter).",
   "type": "module",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "build": "node scripts/migrate.mjs --if-configured && node site/build.mjs --target=production",
     "build:artifact": "node site/build.mjs --target=artifact",
     "geo": "node scripts/geo.mjs",
     "db:migrate": "node scripts/migrate.mjs",
     "test": "node --test \"tests/*.test.js\"",
-    "dev": "vercel dev"
+    "dev": "vercel dev",
+    "geo:world": "node scripts/geo-world.mjs",
+    "photos": "python3 scripts/photos/build_photos.py"
   },
   "dependencies": {
     "postgres": "^3.4.4",
