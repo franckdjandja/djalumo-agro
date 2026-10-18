@@ -1,0 +1,370 @@
+{
+  "crop": "Green bean / French bean / haricot vert (Phaseolus vulgaris, bush type, fresh pods), open field",
+  "research_date": "2026-10-17",
+  "pilot_zone_context": "Foumbot (Noun, West Cameroon), Bamoun plateau ~1,000-1,200 m, volcanic soils, single rainy season ~mid-March to mid-November (season dates per S21).",
+  "cycle": {
+    "sowing_to_emergence_days": {"range": [4, 10], "source_ids": ["S1"]},
+    "sowing_to_first_harvest_days": {
+      "range": [40, 80],
+      "typical": [45, 60],
+      "detail": [
+        {"value": [45, 50], "where": "Kenya, warm areas (variety Serengeti 55 d; Amy and Samantha 58-60 d)", "source_ids": ["S2"]},
+        {"value": [48, 55], "where": "Senegal", "source_ids": ["S1"]},
+        {"value": [40, 40], "where": "Kenya 1,500 m, extra-fine types", "source_ids": ["S1"]},
+        {"value": [60, 60], "where": "Kenya 1,500 m, fine types", "source_ids": ["S1"]},
+        {"value": [80, 80], "where": "Kenya 2,000 m", "source_ids": ["S1"]},
+        {"value": [45, 45], "where": "Kenya (IPM guide)", "source_ids": ["S3"]},
+        {"value": [42, 56], "where": "Kenya, '6-8 weeks after planting'", "source_ids": ["S2", "S7"]},
+        {"value": [55, 60], "where": "Philippines, bush type", "source_ids": ["S17"]}
+      ],
+      "notes": "Altitude/temperature strongly drives earliness: Foumbot (~1,000-1,200 m) is closer to the Kenyan 1,000-1,500 m references than to the 2,000 m one. Pods are harvestable 15-20 days after pod set (S1)."
+    },
+    "harvest_duration_days": {
+      "range": [10, 60],
+      "detail": [
+        {"value": [10, 15], "context": "bush cultivars, export fine/extra-fine practice", "source_ids": ["S1"]},
+        {"value": [20, 30], "context": "climbing cultivars", "source_ids": ["S1"]},
+        {"value": [45, 60], "context": "Kenya smallholders, '1.5-2 months'", "source_ids": ["S2", "S7"]}
+      ]
+    },
+    "picking_frequency": {
+      "text": "Daily or every other day (S3); three times a week (S7); every 24 h for extra-fine/very fine varieties (S1); once a week reported by a Makueni (Kenya) smallholder selling to an exporter (S10).",
+      "source_ids": ["S1", "S3", "S7", "S10"]
+    },
+    "total_cycle_days": {
+      "range": [56, 84],
+      "notes": "8-10 weeks crop cycle (S1); field duration 'may be as short as 12 weeks' (S3). A Narok (Kenya) irrigated grower reports ~3 months planting to harvest and 3 crops per year (S9).",
+      "source_ids": ["S1", "S3", "S9"]
+    },
+    "crops_per_year_same_plot": {
+      "text": "Up to 3 per year with irrigation (Kenya grower, S9). Bamboutos highlands (West Cameroon) vegetable plots average 3 cycles per year (all vegetables, S19). CONFLICT: COLEACP recommends no more than one bean crop in three years on the same soil (rotation for soil-borne disease, S1); ICIPE: at least 2 years without legumes, 3 years where anthracnose/rust are endemic (S3).",
+      "source_ids": ["S1", "S3", "S9", "S19"]
+    }
+  },
+  "planting": {
+    "spacing": [
+      {"layout": "single rows 30 x 15 cm, one seed per hole, blocks of 4 rows separated by ~50 cm paths", "source_ids": ["S2"]},
+      {"layout": "double rows 60 x 30 x 10 cm", "source_ids": ["S2"]},
+      {"layout": "minimum 30 x 15 cm (IPM guide)", "source_ids": ["S3"]},
+      {"layout": "gravity/furrow: lines ~30 cm apart on ridges ~70 cm apart, seeds 4-8 cm apart in row", "source_ids": ["S1"]},
+      {"layout": "sprinkler: rows 50-70 cm, seeds 5-7 cm in row, 1 m passing strip every 10 m", "source_ids": ["S1"]},
+      {"layout": "drip: dripper lines 80 cm, seeds every 4-5 cm (7-8 cm in rainy periods), rows 70-100 cm; raised beds 2 rows = 1 m wide, 3 rows = 1.5-1.8 m, 4 rows = 2-2.2 m", "source_ids": ["S1"]},
+      {"layout": "hills 30 x 30 cm with 2-3 seeds per hill (Philippines)", "source_ids": ["S17"]}
+    ],
+    "plants_per_ha": {
+      "range": [200000, 300000],
+      "detail": [
+        {"value": [200000, 300000], "note": "target for dwarf (bush) beans", "source_ids": ["S1"]},
+        {"value": [219642, 219642], "note": "converted from 88,888 plants/acre (x 2.471)", "source_ids": ["S2"]}
+      ]
+    },
+    "seed_rate_kg_per_ha": {
+      "range": [29, 62],
+      "detail": [
+        {"value": [29, 34], "note": "average, depends on seed size", "source_ids": ["S1"]},
+        {"value": [49.4, 61.8], "note": "converted from 20-25 kg/acre", "source_ids": ["S2", "S6"]},
+        {"value": [40, 40], "note": "Philippines, bush and pole", "source_ids": ["S17"]}
+      ]
+    },
+    "sowing_depth_cm": {"range": [2, 5], "note": "3-5 cm sandy soil, 2 cm heavy soil", "source_ids": ["S1"]},
+    "seed_quality": {"text": "Germination must exceed 95% (S1).", "source_ids": ["S1"]},
+    "seed_treatment": {
+      "text": "Thiram is the usual seed treatment in Kenya (S1). IPM guide: imidacloprid 8 ml/kg seed or fipronil 4.8 ml/kg seed (bean fly, aphids, BCMV vectors) combined with captan; captan, thiram or carboxin against root rots (S3).",
+      "source_ids": ["S1", "S3"]
+    },
+    "inoculation": {
+      "value": null,
+      "note": "No source found giving a Rhizobium inoculation recommendation or rate for fresh-pod bush bean in Cameroon or comparable contexts. Gap."
+    },
+    "seed_price": {"value": 5800, "unit": "KSh per kg seed", "year": 2015, "where": "Makueni, Kenya", "source_ids": ["S10"]},
+    "staking": {"text": "Not needed for bush types. Climbing types need tutors at least 2.5 m high (S1).", "source_ids": ["S1"]}
+  },
+  "itinerary": [
+    {
+      "step": "Plot selection and rotation check",
+      "timing_days_relative_to_sowing_or_transplant": [-90, -30],
+      "description": "Choose well-drained soil, pH(H2O) 6.0-7.5, at least 40-50 cm deep, organic matter 3-6% (S1). Respect rotation: no more than one bean crop in three years (S1); at least 2 years without legumes, 3 years where anthracnose or rust are endemic (S3). Plant new fields upwind of old bean fields (S3). Windbreaks protect ~10-15x their height; keep crop 10-20 m from trees (S1).",
+      "inputs": [],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["S1", "S3"]
+    },
+    {
+      "step": "Land clearing",
+      "timing_days_relative_to_sowing_or_transplant": [-35, -21],
+      "description": "Manual clearing (Philippine budget: 20 person-days/ha for clearing). Stale seedbed recommended: prepare seedbed 2-4 weeks before sowing, let weeds germinate after rain/irrigation, destroy at 7-10 day intervals, harrow 3-5 cm deep (S1). Slash-and-burn: no source found that documents its use or quantifies its risks for green bean in Foumbot; not quantified (gap). Herbicide-based clearing: no green-bean-specific burndown rate found (see pepper file for a glyphosate rate used in a tropical pepper sheet).",
+      "inputs": [],
+      "labour_person_days_per_ha": 20,
+      "source_ids": ["S1", "S17"]
+    },
+    {
+      "step": "Ploughing, harrowing and bed/ridge formation",
+      "timing_days_relative_to_sowing_or_transplant": [-21, -7],
+      "description": "Plough 30-50 cm deep then harrow; roots should colonise the top 25-30 cm quickly (S1). Ridges ~70 cm apart for furrow irrigation, or raised beds (2 rows = 1 m wide) (S1). Philippine budget: 20 person-days/ha for bed preparation (S17).",
+      "inputs": [],
+      "labour_person_days_per_ha": 20,
+      "source_ids": ["S1", "S17"]
+    },
+    {
+      "step": "Basal organic fertilisation",
+      "timing_days_relative_to_sowing_or_transplant": [-21, -7],
+      "description": "Well-decomposed manure 10-20 t/ha, or 20-30 t/ha if soil organic matter is low (S1). Fresh manure must be applied at least 6 months before planting; compost should reach 55 degC for 3 days (S1). Philippine guide: 2-3 t/ha decomposed chicken manure, 15 person-days/ha for application (S17).",
+      "inputs": [
+        {"product": "Well-decomposed manure/compost", "category": "amendment", "rate_per_ha": 15, "unit": "t (midpoint of 10-20 t/ha; 20-30 t/ha if OM low)", "applications": 1, "source_ids": ["S1"]},
+        {"product": "Decomposed chicken manure (Philippine alternative)", "category": "amendment", "rate_per_ha": 2.5, "unit": "t (range 2-3)", "applications": 1, "source_ids": ["S17"]}
+      ],
+      "labour_person_days_per_ha": 15,
+      "source_ids": ["S1", "S17"]
+    },
+    {
+      "step": "Basal mineral fertilisation (in furrow at sowing)",
+      "timing_days_relative_to_sowing_or_transplant": [0, 0],
+      "description": "Kenya SHEP: DAP 80 kg/acre (~198 kg/ha) placed in the furrow at planting (S2). COLEACP: bottom dressing should supply about 1/2 to 3/4 of the P requirement and 1/3 of the K requirement (S1). Philippines: 3 bags (50 kg) 14-14-14 per ha basal (S17). Cameroon-specific basal rate for green bean: not found.",
+      "inputs": [
+        {"product": "DAP 18-46-0", "category": "fertilizer", "rate_per_ha": 198, "unit": "kg (converted from 80 kg/acre)", "applications": 1, "source_ids": ["S2"]},
+        {"product": "NPK 14-14-14 (Philippine alternative)", "category": "fertilizer", "rate_per_ha": 150, "unit": "kg (3 bags of 50 kg)", "applications": 1, "source_ids": ["S17"]}
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["S1", "S2", "S17"]
+    },
+    {
+      "step": "Seed treatment and sowing",
+      "timing_days_relative_to_sowing_or_transplant": [0, 0],
+      "description": "Direct sowing, one seed per hole at 30 x 15 cm (S2), 2-5 cm deep (S1). Seed dressing against bean fly/aphids/root rots (S3). Philippine budget: 10 person-days/ha planting (S17).",
+      "inputs": [
+        {"product": "Bush bean seed (e.g. Serengeti, Amy, Samantha cited in Kenya)", "category": "seed", "rate_per_ha": 34, "unit": "kg (range 29-34 kg/ha S1; 49-62 kg/ha S2)", "applications": 1, "source_ids": ["S1", "S2"]},
+        {"product": "Imidacloprid seed dressing", "category": "insecticide", "rate_per_ha": null, "unit": "8 ml per kg seed", "applications": 1, "source_ids": ["S3"]},
+        {"product": "Fipronil seed dressing (alternative)", "category": "insecticide", "rate_per_ha": null, "unit": "4.8 ml per kg seed", "applications": 1, "source_ids": ["S3"]},
+        {"product": "Captan or thiram seed dressing", "category": "fungicide", "rate_per_ha": null, "unit": "rate not given", "applications": 1, "source_ids": ["S1", "S3"]}
+      ],
+      "labour_person_days_per_ha": 10,
+      "source_ids": ["S1", "S2", "S3", "S17"]
+    },
+    {
+      "step": "Pre-emergence weed control (commercial growers)",
+      "timing_days_relative_to_sowing_or_transplant": [0, 2],
+      "description": "Pendimethalin (Stomp 455CS) 2.5 L in 400 L water per ha, pre-emergence; described as economically feasible mainly for commercial growers (S2).",
+      "inputs": [
+        {"product": "Pendimethalin 455 g/L CS (Stomp 455CS)", "category": "herbicide", "rate_per_ha": 2.5, "unit": "L product in 400 L water", "applications": 1, "source_ids": ["S2"]}
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["S2"]
+    },
+    {
+      "step": "Irrigation / water supply",
+      "timing_days_relative_to_sowing_or_transplant": [0, 70],
+      "description": "Kenya: 35 mm/week from planting to 10 days after emergence, then 50 mm/week to flowering (S2); Kenyan growers mostly overhead irrigation ~50 mm/week (S6). COLEACP: 6-10 mm/day (60-100 m3/ha/day), minimum 8 mm/day; total 3,000-8,000 m3/ha per cycle (300-800 mm) depending on soil, climate and method: furrow 6,000-8,000, sprinkler 4,000-6,500, drip 3,000-3,500 m3/ha (S1). Keep sprinkler rate below 5-6 mm/h (S1). Irrigate early morning or late afternoon; avoid furrow irrigation where root rot occurs (S3).",
+      "inputs": [
+        {"product": "Irrigation water (sprinkler)", "category": "irrigation", "rate_per_ha": 5250, "unit": "m3 per cycle (midpoint of 4,000-6,500)", "applications": null, "source_ids": ["S1"]},
+        {"product": "Irrigation water (drip)", "category": "irrigation", "rate_per_ha": 3250, "unit": "m3 per cycle (midpoint of 3,000-3,500)", "applications": null, "source_ids": ["S1"]}
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["S1", "S2", "S3", "S6"]
+    },
+    {
+      "step": "Weeding (manual and/or post-emergence herbicide)",
+      "timing_days_relative_to_sowing_or_transplant": [14, 42],
+      "description": "Weeding starts two weeks after planting and is repeated every two weeks (Kenya grower, S9). Post-emergence bentazon (Basagran, Beanclean 480 SL) 2.5-3 L in 160 L water per acre (~6.2-7.4 L/ha) against broadleaf weeds (S2). Philippine budget: weeding/hilling-up 30 person-days/ha (S17).",
+      "inputs": [
+        {"product": "Bentazon 480 g/L SL", "category": "herbicide", "rate_per_ha": 6.8, "unit": "L product (converted from 2.5-3 L/acre; range 6.2-7.4 L/ha)", "applications": 1, "source_ids": ["S2"]}
+      ],
+      "labour_person_days_per_ha": 30,
+      "source_ids": ["S2", "S9", "S17"]
+    },
+    {
+      "step": "First top dressing (first trifoliate leaf stage)",
+      "timing_days_relative_to_sowing_or_transplant": [null, null],
+      "description": "CAN 40 kg/acre (~99 kg/ha) at the first trifoliate leaf stage (S2); a Narok grower top-dresses CAN at the three-leaf stage (S9). Stage-based: sources give no day count.",
+      "inputs": [
+        {"product": "CAN (calcium ammonium nitrate)", "category": "fertilizer", "rate_per_ha": 99, "unit": "kg (converted from 40 kg/acre)", "applications": 1, "source_ids": ["S2"]}
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["S2", "S9"]
+    },
+    {
+      "step": "Foliar feeding",
+      "timing_days_relative_to_sowing_or_transplant": [14, null],
+      "description": "Foliar feeds (e.g. Bayfolan or Rapid-grow) fortnightly from the second week after planting to mid-podding (S2). Product rates not given. Number of applications not stated (fortnightly from day 14 to mid-podding implies roughly 3, analyst inference).",
+      "inputs": [
+        {"product": "Foliar fertiliser (Bayfolan or Rapid-grow cited)", "category": "foliar", "rate_per_ha": null, "unit": "rate not given", "applications": null, "source_ids": ["S2"]}
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["S2"]
+    },
+    {
+      "step": "Crop protection, vegetative to flowering",
+      "timing_days_relative_to_sowing_or_transplant": [7, null],
+      "description": "Inspect weekly. Bean fly: rely on seed dressing; foliar sprays only from week 5-6; farmer practice of weekly dimethoate/diazinon not recommended (S3). Rust: spray from 3rd trifoliate leaf to pre-flowering, e.g. hexaconazole (S3). Thrips: from flower bud development to early flowering, pyrethroids (lambda-cyhalothrin, alpha-cypermethrin, bifenthrin), dimethoate, methiocarb, spinosad, fipronil (S3). Halo blight/common bacterial blight: copper hydroxide spot application, rogue infected seedlings (S3). No fungicide after full flowering, no acaricides after flowering; no pesticides after full flowering for export (S3). Number of sprays: 4-12 per cycle in Kenyan farmer practice, IPM target about 3 or fewer (S3). In West Cameroon, one survey recorded malathion (Methane 50 EC, now banned) at 10 ml per knapsack weekly on green beans (S15). Philippine budget: 8 person-days/ha spraying (S17).",
+      "inputs": [
+        {"product": "Hexaconazole (Anvil) against rust", "category": "fungicide", "rate_per_ha": null, "unit": "rate not given in source", "applications": null, "source_ids": ["S3"]},
+        {"product": "Lambda-cyhalothrin / alpha-cypermethrin / bifenthrin against thrips", "category": "insecticide", "rate_per_ha": null, "unit": "rate not given in source", "applications": null, "source_ids": ["S3"]},
+        {"product": "Spinosad (Tracer) against Frankliniella thrips", "category": "insecticide", "rate_per_ha": null, "unit": "rate not given in source", "applications": null, "source_ids": ["S3"]},
+        {"product": "Copper hydroxide spot sprays (halo blight, common bacterial blight)", "category": "fungicide", "rate_per_ha": null, "unit": "rate not given in source", "applications": null, "source_ids": ["S3"]}
+      ],
+      "labour_person_days_per_ha": 8,
+      "source_ids": ["S3", "S15", "S17"]
+    },
+    {
+      "step": "Second top dressing (onset of flowering)",
+      "timing_days_relative_to_sowing_or_transplant": [null, null],
+      "description": "CAN 40 kg/acre (~99 kg/ha) at onset of flowering (S2, S9). Stage-based; day count not given. Since first pods are picked at 40-60 days and pods are harvestable 15-20 days after set (S1), flowering falls roughly 25-45 days after sowing (analyst inference).",
+      "inputs": [
+        {"product": "CAN (calcium ammonium nitrate)", "category": "fertilizer", "rate_per_ha": 99, "unit": "kg (converted from 40 kg/acre)", "applications": 1, "source_ids": ["S2"]}
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["S1", "S2", "S9"]
+    },
+    {
+      "step": "Harvest period protection",
+      "timing_days_relative_to_sowing_or_transplant": [40, 80],
+      "description": "African bollworm and legume pod borer (Maruca): during harvest use Bacillus thuringiensis and hand-sort pods; chemical control only for serious attacks (S3). One pod-borer larva in an export consignment can cause rejection of the whole consignment (S3).",
+      "inputs": [
+        {"product": "Bacillus thuringiensis", "category": "insecticide", "rate_per_ha": null, "unit": "rate not given", "applications": null, "source_ids": ["S3"]}
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["S3"]
+    },
+    {
+      "step": "Harvest (hand picking)",
+      "timing_days_relative_to_sowing_or_transplant": [40, 80],
+      "description": "Start 40-60 days after sowing (altitude dependent), pick daily to 3 times a week for 10-60 days (S1, S2, S3, S7). Very labour intensive: Kenyan financial analysis (large mechanised farm) found 3,283 man-hours/ha in total, of which harvesting (picking, selecting, packing ~1,300 cartons of 3 kg) took 3,030 man-hours/ha, i.e. ~379 person-days at an assumed 8 h day (S6). Philippine budget: 30 person-days/ha (S17). South African 2025/26 budget: 840 h harvesting + 450 h packing for 14 t/ha (S18). Kenya chain: ~80% of hired workers are women (S4). SHEP advises staggered planting in small portions because of high labour needs (S2).",
+      "inputs": [],
+      "labour_person_days_per_ha": [30, 379],
+      "source_ids": ["S1", "S2", "S3", "S4", "S6", "S7", "S17", "S18"]
+    },
+    {
+      "step": "Grading, packing and cooling",
+      "timing_days_relative_to_sowing_or_transplant": [40, 80],
+      "description": "Grades by pod diameter/length: extra fine <6 mm and >=10 cm long; fine 6-9 mm, 12-14 cm; bobby >9 mm (S2). Packing: 3 kg corrugated fibreboard cartons or 250 g / 500 g / 1 kg pre-packs (S2); crates of 6.8 kg and boxes of 12-14 kg also cited (S11); South African budget uses 3.5 kg boxes (S18). Storage 7-8 degC and 95-100% RH for 1-2 weeks (S2). Store in cool shade, sort pods by hand for pod borers (S3). Local Cameroonian packaging units for green beans: not found.",
+      "inputs": [
+        {"product": "Corrugated cartons 3 kg (export)", "category": "packaging", "rate_per_ha": null, "unit": "cartons; number depends on yield (e.g. 1 carton per 3 kg)", "applications": null, "source_ids": ["S2"]}
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["S2", "S3", "S11", "S18"]
+    }
+  ],
+  "fertilizer_total": {
+    "recommendations": [
+      {"name": "Kenya SHEP regime (derived from product rates)", "N_kg_ha": 87, "P2O5_kg_ha": 91, "K2O_kg_ha": 0, "derivation": "DAP 198 kg/ha (18% N, 46% P2O5) + CAN 2 x 99 kg/ha (assumed 26% N); products from S2, nutrient arithmetic by analyst", "source_ids": ["S2"]},
+      {"name": "Philippines general recommendation (adjust to soil test)", "N_kg_ha": 135, "P2O5_kg_ha": 135, "K2O_kg_ha": 112, "source_ids": ["S17"]}
+    ],
+    "crop_removal_kg_ha": {"N": [50, 100], "P2O5": [50, 100], "K2O": [100, 200], "CaO": 130, "MgO": [10, 30], "source_ids": ["S1"], "note": "Average crop 'losses' (exports) table; about 20% of applied mineral K ends up in pods (S1). Avoid excess N (S3)."},
+    "organic": {"manure_t_ha": [10, 30], "source_ids": ["S1"]},
+    "cameroon_specific": null,
+    "notes": "No Cameroonian (IRAD/MINADER) fertiliser recommendation for fresh-pod green bean was found. Kenyan practice contains no K; Foumbot volcanic soils may differ, soil test advised."
+  },
+  "pests_diseases": [
+    {"name": "Bean fly (Ophiomyia spp.)", "type": "insect", "stage": "seedling/early season", "risk_conditions": "O. spencerella predominates at higher, cooler altitudes; up to 100% seedling mortality at high infestation", "controls": "Seed dressing imidacloprid 8 ml/kg or fipronil 4.8 ml/kg; foliar sprays only from week 5-6", "source_ids": ["S3"]},
+    {"name": "Aphids (and BCMV transmission)", "type": "insect", "stage": "vegetative to early flowering", "risk_conditions": "BCMV aphid migration 22-26 degC", "controls": "Imidacloprid seed treatment; spot-spray early colonies", "source_ids": ["S3"]},
+    {"name": "Thrips (Megalurothrips sjostedti, Frankliniella occidentalis)", "type": "insect", "stage": "flower bud development to early flowering", "risk_conditions": "Megalurothrips more common in cool, rainy seasons and cool highlands", "controls": "Lambda-cyhalothrin, alpha-cypermethrin, bifenthrin, dimethoate; methiocarb, spinosad, fipronil for Frankliniella; Orius biocontrol", "source_ids": ["S3"]},
+    {"name": "African bollworm (Helicoverpa armigera)", "type": "insect", "stage": "harvest period", "risk_conditions": null, "controls": "Bt, hand-sorting of pods", "source_ids": ["S3"]},
+    {"name": "Legume pod borer (Maruca vitrata)", "type": "insect", "stage": "harvest period", "risk_conditions": "Single larva can cause export consignment rejection", "controls": "Bt, hand-sorting of pods", "source_ids": ["S3"]},
+    {"name": "Spider mites", "type": "mite", "stage": "early vegetative", "risk_conditions": null, "controls": "Avoid broad-spectrum sprays; no acaricide after flowering; acaricide PHI at least 7 days", "source_ids": ["S3"]},
+    {"name": "Whiteflies", "type": "insect", "stage": "early crop", "risk_conditions": null, "controls": "Control only if large early populations", "source_ids": ["S3"]},
+    {"name": "Rust (Uromyces appendiculatus)", "type": "fungal", "stage": "3rd trifoliate to pre-flowering", "risk_conditions": "16-25 degC with 10-18 h leaf wetness (S1); 18-27 degC with RH >95% (S3); losses up to 100% in East Africa (S7)", "controls": "Hexaconazole; resistant variety (Monel) where endemic; 3-year rotation", "source_ids": ["S1", "S3", "S7"]},
+    {"name": "Anthracnose (Colletotrichum lindemuthianum)", "type": "fungal", "stage": "seed-borne", "risk_conditions": null, "controls": "Captan seed treatment, clean seed, 3-year rotation", "source_ids": ["S3"]},
+    {"name": "Angular leaf spot", "type": "fungal", "stage": "vegetative", "risk_conditions": "20-25 degC", "controls": "Captan seed treatment; fungicide only if endemic", "source_ids": ["S3"]},
+    {"name": "Halo blight (Pseudomonas savastanoi pv. phaseolicola)", "type": "bacterial", "stage": "young plants", "risk_conditions": "16-22 degC (cool)", "controls": "Copper hydroxide spot sprays, roguing", "source_ids": ["S3"]},
+    {"name": "Common bacterial blight (Xanthomonas)", "type": "bacterial", "stage": "young plants", "risk_conditions": "28-32 degC", "controls": "Copper hydroxide spot sprays", "source_ids": ["S3"]},
+    {"name": "Fusarium root rot", "type": "fungal", "stage": "seed/seedling", "risk_conditions": "Losses up to 84% in East Africa", "controls": "Captan/thiram/carboxin seed treatment; ridges; avoid furrow irrigation", "source_ids": ["S3", "S7"]},
+    {"name": "Bean common mosaic virus (BCMV)", "type": "viral", "stage": "seed-borne + aphid", "risk_conditions": "Yield loss 35-98% cited", "controls": "Clean seed, imidacloprid seed treatment, roguing, early planting", "source_ids": ["S3", "S7"]},
+    {"name": "Root-knot nematodes", "type": "nematode", "stage": "whole cycle", "risk_conditions": null, "controls": "Rotation (details in COLEACP p. 222, not extracted)", "source_ids": ["S1"]}
+  ],
+  "sprays_per_cycle": {"range": [4, 12], "note": "Kenyan farmer practice; IPM target about 3 or fewer (S3). Cameroon green-bean spray counts: not found.", "source_ids": ["S3"]},
+  "labour_total_person_days_per_ha": [133, 410],
+  "labour_notes": "Lower bound: sum of Philippine budget items (clearing 20 + beds 20 + manure 15 + planting 10 + weeding 30 + spraying 8 + harvest 30 = 133 person-days; the guide's own labour subtotal is inconsistent with its items) (S17). Upper bound: 3,283 man-hours/ha on a Kenyan export farm divided by an assumed 8 h day = ~410 person-days, harvesting/grading/packing being 92% of it (S6). South Africa 2025/26: 1,290 h for harvest + packing alone (~161 days at 8 h) (S18). Export fine/extra-fine picking sits near the upper bound. Cameroonian wage reference: 500-2,000 FCFA per person-day depending on season, Bamboutos highlands, 2005 data (S19), outdated.",
+  "yields_t_ha": {
+    "national_or_regional_average": {
+      "value": 5.30, "year": 2020, "where": "Cameroon, FAOSTAT 'Beans, green' yield (53,046 hg/ha), 2016-2020 range 5.30-5.55 t/ha",
+      "source_ids": ["S12"],
+      "comparators_2020_t_ha": {"Kenya": 11.19, "Senegal": 13.54, "Burkina Faso": 13.42, "Rwanda": 7.36, "Ghana": 10.19, "Mali": 10.53, "Ethiopia": 4.03, "DR Congo": 4.39, "Congo": 4.04, "Morocco": 23.77, "Egypt": 9.96}
+    },
+    "farmer_rainfed": {"range": [4.0, 7.4], "source_ids": ["S4", "S6", "S12"], "notes": "No source isolates rainfed smallholder yields. 4 t/ha = low end of Kenyan range (S4); 4.45-7.41 t/ha = Kenyan smallholders 600-1,000 cartons x 3 kg per acre, 1980s, mostly overhead irrigation (S6); Cameroon national average 5.3 t/ha (S12)."},
+    "good_practice_rainfed": {"range": [7.4, 12.5], "source_ids": ["S2", "S4", "S7"], "notes": "SHEP Kenya 3,000-6,000 kg/acre = 7.4-14.8 t/ha (S2); Kenya range up to 12.5 t/ha (S4); up to 10 t/ha marketable with proper husbandry (S7). Kenya average derived 62,000 t / 7,500 ha = 8.3 t/ha (S4). Cameroon trial (Nfonta, Western Highlands, 2022): 12 pods/plant x 4.22 g with white plastic mulch, per-plant only (S16)."},
+    "irrigated_dry_season": {"range": [7.4, 14.8], "source_ids": ["S2", "S12", "S18", "S17"], "notes": "SHEP figures assume irrigation (S2); South Africa budget 14 t/ha (S18); FAOSTAT Senegal/Burkina 13.4-13.5 t/ha (dry-season irrigated export systems) (S12). Philippine budget assumes 15-20 t/ha (S17), treated as optimistic."}
+  },
+  "post_harvest_loss_pct": {
+    "range": [null, null],
+    "notes": "No direct post-harvest loss percentage found. Proxy: in Kenya ~9,000 t of rejected beans were sold domestically against 62,000 t production (~14.5% rejection share, analyst calculation from S4). Storage life 1-2 weeks at 7-8 degC (S2).",
+    "source_ids": ["S2", "S4"]
+  },
+  "prices": {
+    "unit_notes": "price_xaf_per_kg filled only for FCFA sources. XOF (Cote d'Ivoire) and XAF are both pegged at 655.957 per EUR, so XOF values are at par with XAF. Kenyan, Philippine and South African prices are kept in original currency (price_original) because no sourced exchange rate was retrieved; convert with the platform's FX table.",
+    "observations": [
+      {"market": "Cameroon (any market)", "period": null, "price_xaf_per_kg": [null, null], "year": null, "source_ids": ["S22"], "notes": "No unit price for haricot vert found in Cameroon. INS Douala April 2020 note only says haricot vert was among fresh vegetables whose prices fell that month (index data, no FCFA/kg)."},
+      {"market": "Bafou, Bamboutos (West Cameroon), 'haricot' (type unspecified)", "period": "wet season / dry season", "price_xaf_per_kg": [150, 300], "year": 2005, "source_ids": ["S19"], "notes": "200-300 FCFA/kg wet season, 150-250 dry season. Source says only 'haricot', likely not fresh green bean; do not use as haricot vert price without verification."},
+      {"market": "Abidjan, Cote d'Ivoire (retail, consumer price council)", "period": "17 January 2024", "price_xaf_per_kg": [1200, 1200], "year": 2024, "source_ids": ["S13"], "notes": "XOF at par with XAF; price reported as falling."},
+      {"market": "Abidjan, Cote d'Ivoire (retail)", "period": "25 March 2025", "price_xaf_per_kg": [800, 800], "year": 2025, "source_ids": ["S14"], "notes": "XOF at par with XAF; price reported as falling."},
+      {"market": "Kirinyaga, Kenya: farm gate (export chain)", "period": "2010-2011 survey", "price_xaf_per_kg": [null, null], "price_original": {"value": [43, 46], "currency": "KSh/kg"}, "year": 2011, "source_ids": ["S5"], "notes": "Exporter output value 187 KSh/kg; supermarket 201 KSh/kg; broker 70 KSh/kg."},
+      {"market": "Makueni, Kenya: exporter price to farmer", "period": "2015", "price_xaf_per_kg": [null, null], "price_original": {"value": [50, 50], "currency": "KSh/kg"}, "year": 2015, "source_ids": ["S10"]},
+      {"market": "Kenya: growers' price", "period": "2018", "price_xaf_per_kg": [null, null], "price_original": {"value": [40, 60], "currency": "KSh/kg"}, "year": 2018, "source_ids": ["S8"]},
+      {"market": "Narok, Kenya: local market", "period": "normal vs festive season (Nov-Dec)", "price_xaf_per_kg": [null, null], "price_original": {"value": [60, 100], "currency": "KSh/kg"}, "year": null, "source_ids": ["S9"], "notes": "Article undated (page viewed 2025-2026)."},
+      {"market": "Kenya farm gate (historical)", "period": "1980s", "price_xaf_per_kg": [null, null], "price_original": {"value": [7, 7], "currency": "KSh/kg (21 KSh per 3 kg carton)"}, "year": 1984, "source_ids": ["S6"]},
+      {"market": "Cagayan Valley, Philippines (farm budget assumption)", "period": "regular / off-season", "price_xaf_per_kg": [null, null], "price_original": {"value": [15, 25], "currency": "PHP/kg"}, "year": 2017, "source_ids": ["S17"]},
+      {"market": "South Africa (enterprise budget)", "period": "2025/26", "price_xaf_per_kg": [null, null], "price_original": {"value": [12.6, 12.6], "currency": "ZAR/kg"}, "year": 2025, "source_ids": ["S18"]}
+    ],
+    "seasonality": "Kenya export high season November-March (S8) or November-April (S6); local Kenyan price rises in November-December festive season (60 to 100 KSh/kg, S9). Abidjan retail fell from 1,200 FCFA/kg (Jan 2024) to 800 FCFA/kg (Mar 2025) (S13, S14). Cameroon seasonality for haricot vert: not documented (gap)."
+  },
+  "cost_of_production_xaf_per_ha": [
+    {"value": null, "breakdown": {}, "year": null, "where": "Cameroon", "source_ids": [], "notes": "No Cameroonian cost-of-production budget for green bean found. Gap."},
+    {"value": null, "value_original": 96230, "currency": "PHP/ha", "breakdown": {"labour": 42750, "materials": 48680, "equipment": 4800}, "year": 2017, "where": "Cagayan Valley, Philippines", "source_ids": ["S17"], "notes": "Labour line items sum to PHP 53,250, not the stated 42,750 subtotal."},
+    {"value": null, "value_original": 153057, "currency": "ZAR/ha", "breakdown": {"fertiliser_960kg": 12381, "pesticides": 5929, "seed": 514, "packaging_4114_boxes_3.5kg": 50849, "casual_labour": 49432}, "year": 2025, "where": "South Africa, irrigated commercial", "source_ids": ["S18"], "notes": "Alternative allocatable variable cost total R147,231 in same document."},
+    {"value": null, "value_original": null, "currency": "share of total cost", "breakdown": {"labour_pct": 42, "seed_pct": 18, "fertilizer_pct": 14}, "year": 2011, "where": "Kirinyaga, Kenya smallholders", "source_ids": ["S5"], "notes": "Implied farmer cost ~33,700 KSh per tonne (output value 43,000-46,000 minus gross margin 9,300-12,300 KSh/t), analyst calculation."},
+    {"value": null, "value_original": 11540, "currency": "KSh/ha (4,670 KSh/acre total variable cost)", "breakdown": {"land_preparation_per_acre": 500, "fertiliser_per_acre": 500}, "year": 1984, "where": "Kenya (near Nairobi)", "source_ids": ["S6"], "notes": "Historical; only for cost structure."}
+  ],
+  "margins": [
+    {"indicator": "Farmer gross margin per tonne", "value": [9300, 12300], "unit": "KSh/t (~22-27% of farm-gate value, analyst calc)", "year": 2011, "where": "Kirinyaga, Kenya", "source_ids": ["S5"]},
+    {"indicator": "Farmer-estimated profit", "value": 25, "unit": "% of revenue", "year": 1984, "where": "Kenya", "source_ids": ["S6"]},
+    {"indicator": "Net return per ha", "value": [203770, 278770], "unit": "PHP/ha (regular vs off-season); implied benefit-cost ratio 3.1-3.9 (analyst calc)", "year": 2017, "where": "Philippines", "source_ids": ["S17"]},
+    {"indicator": "Gross margin per ha", "value": 7119, "unit": "ZAR/ha (stated; totals in source inconsistent)", "year": 2025, "where": "South Africa", "source_ids": ["S18"]},
+    {"indicator": "Annual profit per actor", "value": {"large_fresh_farm_EUR": 12784, "linked_smallholder_EUR": 263, "scattered_smallholder_EUR": 56}, "unit": "EUR per actor per year (average smallholder area ~0.1 ha)", "year": 2016, "where": "Kenya", "source_ids": ["S4"]}
+  ],
+  "cameroon_unit_cost_references": [
+    {"item": "Casual labour wage", "value_xaf": [500, 2000], "unit": "FCFA per person-day (Nov-Feb 1,000-2,000; Mar-Jun 700-800; Jul-Oct 500-600)", "year": 2005, "where": "Bamboutos highlands, West Cameroon", "source_ids": ["S19"], "notes": "Outdated; collect current Foumbot wage."},
+    {"item": "Insecticide retail price", "value_xaf": [5000, 13000], "unit": "FCFA per litre", "year": 2013, "where": "Cameroon humid tropics", "source_ids": ["S20"]},
+    {"item": "Fungicide retail price", "value_xaf": [6000, 8500], "unit": "FCFA per kg", "year": 2013, "where": "Cameroon humid tropics", "source_ids": ["S20"]}
+  ],
+  "climate": {
+    "temperature": {
+      "germination_optimum_c": [20, 25], "germination_hampered_c": [25, 35], "germination_stops_above_c": 35,
+      "vegetative_optimum_c": [15, 25], "vegetative_hampered_above_c": 25,
+      "flowering_optimum_c": [15, 25], "flower_drop_above_c": 30,
+      "fruiting_optimum_c": [15, 30],
+      "monthly_mean_max_should_not_exceed_c": 30, "intolerant_below_c": 10,
+      "source_ids": ["S1"]
+    },
+    "humidity_rain": "Relative humidity above 90% is unfavourable (S1). Rust favoured at 16-25 degC with 10-18 h leaf wetness (S1) or 18-27 degC with RH >95% (S3); halo blight favoured by cool 16-22 degC; angular leaf spot 20-25 degC (S3). Wet, cool highland conditions therefore raise disease pressure.",
+    "altitude": "Kenyan export beans grown at 1,000-2,000 m (S6); earliness falls with altitude (40-60 days at 1,500 m vs 80 days at 2,000 m, S1).",
+    "soil": "pH(H2O) 6.0-7.5, below 6.0 not recommended; salinity loss starts at 1 mS/cm; depth >=40-50 cm (S1).",
+    "foumbot_climate_data": null,
+    "planting_windows": {
+      "sourced": "West Africa (Sahelian export context): sow October to February (S1). Foumbot rainy season mid-March to mid-November, dry season mid-November to mid-March (S21).",
+      "analyst_inference_not_sourced": "For Foumbot, candidate windows are (a) early rains, sowing mid-March to April, harvest May-June; (b) late season, sowing September to October, harvest in November-December as rains stop (supplementary irrigation); (c) dry season irrigated, sowing November to February. Avoid harvest in the wettest months because of rust, halo blight and pod rots. To be validated with IRAD/Foumbot station temperature and rainfall data, which were not retrieved."
+    },
+    "source_ids": ["S1", "S3", "S6", "S21"]
+  },
+  "sources": [
+    {"id": "S1", "title": "Green Bean Sustainable Production Guide (Crop protocols)", "publisher": "COLEAD (formerly COLEACP)", "year": 2023, "url": "https://resources.colead.link/en/system/files/file_fields/2024/05/08/-colead-production-guide-haricots-enultralight.pdf", "notes": "390 pp. Only chapters 1-6 (to p. ~72) were machine-readable; harvest, post-harvest, fertilisation splits and active-substance appendix not extracted. French version: https://resources.colead.link/fr/system/files/file_fields/2023/12/14/colead-production-guide-haricots-fr-web.pdf"},
+    {"id": "S2", "title": "French Beans Production (SHEP PLUS training material)", "publisher": "Kenya Ministry of Agriculture, Livestock and Fisheries / AFA-HCD / JICA", "year": 2016, "url": "https://www.jica.go.jp/project/english/kenya/015/materials/c8h0vm0000f7o8cj-att/materials_10.pdf", "notes": "Per-acre figures converted to per-ha (x 2.471) by analyst."},
+    {"id": "S3", "title": "A guide to IPM in French beans production, with emphasis on Kenya (Seif, Varela, Michalik, Lohr)", "publisher": "ICIPE", "year": 2001, "url": "https://cgspace.cgiar.org/bitstreams/f50ee4c8-12c2-4bd2-867e-9c13d76150ac/download", "notes": "Catalogue lists 2002; document itself dated 2001."},
+    {"id": "S4", "title": "Green beans value chain analysis in Kenya (VCA4D brief)", "publisher": "European Commission DG DEVCO / VCA4D", "year": 2018, "url": "https://capacity4dev.europa.eu/media/84453/download/6350b93c-489c-43aa-922d-b85e4a9c2f11_en", "notes": "Full report (Dec 2017) exists but PDF link not retrievable."},
+    {"id": "S5", "title": "Value Chain Analysis of Smallholder Snap Bean Production in Kirinyaga County, Kenya (Odero, Mburu, Ackello-Ogutu, Nderitu)", "publisher": "4th AAAE Conference / AgEcon Search", "year": 2013, "url": "https://ageconsearch.umn.edu/record/161526/files/Odero%20D.O%20_%20Mburu%20J._%20Ackello-Ogutu%20C._%20Nderitu%20J.H.pdf", "notes": "Survey data 2010-2011."},
+    {"id": "S6", "title": "Financial Analysis of Production of French Beans in Kenya (O.L.E. Mbatia)", "publisher": "ISHS Acta Horticulturae 158, pp. 449-456", "year": 1984, "url": "https://ishs.org/ishs-article/158_53/", "notes": "Year inferred from Acta Hort. volume 158, not displayed on page. Historical prices/costs; labour hours remain informative."},
+    {"id": "S7", "title": "Efficacy of seed-dressing and organic amendments against Fusarium root-rot of French beans in Kenya (A.G. Wagichunge, MSc thesis)", "publisher": "Kenyatta University", "year": 1998, "url": "https://ir-library.ku.ac.ke/bitstreams/d2bab375-8c06-4727-a45a-3fb2b1758cca/download", "notes": "Cites KARI 1990 for 10 t/ha potential."},
+    {"id": "S8", "title": "Kenyan French Beans", "publisher": "Paukwa", "year": 2018, "url": "https://paukwa.or.ke/kenyan-french-beans/", "notes": "Popular article; grower price 40-60 KSh/kg."},
+    {"id": "S9", "title": "Young man farming French beans (Narok County)", "publisher": "Kenya News Agency", "year": null, "url": "https://www.kenyanews.go.ke/young-man-farming-french-beans/", "notes": "Undated farmer testimony."},
+    {"id": "S10", "title": "Makueni farmer strikes gold in French beans", "publisher": "The Star (Kenya)", "year": 2015, "url": "https://www.the-star.co.ke/news/2015-06-09-makueni-farmer-strikes-gold-in-french-beans", "notes": "Farmer testimony; internal inconsistencies."},
+    {"id": "S11", "title": "French beans as labor intensive but rewarding export", "publisher": "Selina Wamucii", "year": 2018, "url": "https://www.selinawamucii.com/french-beans-as-labor-intensive-but-rewarding-export", "notes": "Trade blog; packaging and water figures."},
+    {"id": "S12", "title": "Beans, green - Yield (FAOSTAT data)", "publisher": "Helgi Library (FAOSTAT re-publication)", "year": 2020, "url": "https://www.helgilibrary.com/indicators/beans-green-yield/", "notes": "FAOSTAT API direct access was blocked; Cameroon values are often FAO estimates."},
+    {"id": "S13", "title": "Abidjan : Le prix du haricot vert en baisse", "publisher": "Fraternite Matin (Conseil National de Lutte contre la Vie Chere data)", "year": 2024, "url": "https://www.fratmat.info/article/236433/economie/microeconomie/abidjan-le-prix-du-haricot-vert-en-baisse-les-differents-produits-vivriers-sur-le-marche", "notes": "Retail, 1,200 FCFA/kg."},
+    {"id": "S14", "title": "Abidjan : Le prix du gombo et du haricot vert en baisse", "publisher": "Fraternite Matin", "year": 2025, "url": "https://www.fratmat.info/article/2632578/economie/microeconomie/abidjan-le-prix-du-gombo-et-du-haricot-vert-en-baisse", "notes": "Retail, 800 FCFA/kg."},
+    {"id": "S15", "title": "Evaluation of Farmer's Knowledge on Pests and Diseases of Vegetables and Their Management Practices in Three Agroecological Zones in Cameroon (Okolle, Ijiang, Ngome)", "publisher": "AgroViSc for AVRDC-World Vegetable Center / Humidtropics", "year": 2014, "url": "https://humidtropics.cgiar.org/wp-content/report2013docs/Cameroon%20Crop%20protect%20study%20Report.pdf", "notes": "Green beans grown in limited quantities in West Region (Bafoussam zone)."},
+    {"id": "S16", "title": "Effect of Different Mulching Materials on the Growth and Yield of Green Bean in Nfonta, Western Highlands of Cameroon (Tamu Chi, Tatah, Vugheh)", "publisher": "Sustainable Agriculture Research 11(1), CCSE", "year": 2022, "url": "https://ideas.repec.org/a/ags/ccsesa/348287.html", "notes": "Per-plant data only."},
+    {"id": "S17", "title": "Snap Beans Production Guide", "publisher": "Department of Agriculture Regional Field Office 02 (Cagayan Valley), Philippines", "year": 2017, "url": "https://cagayanvalley.da.gov.ph/wp-content/uploads/2018/02/Snap-Beans-Production-Guide.pdf", "notes": "Tropical comparator for labour structure; internal arithmetic inconsistencies."},
+    {"id": "S18", "title": "Vegetable Enterprise Budget 2025 (green beans, pp. 30-33)", "publisher": "Land Bank, South Africa", "year": 2025, "url": "https://landbank.co.za/Media-Centre/Publications/2026/Vegetable Enterprise Budget 2025 print.pdf", "notes": "Commercial irrigated benchmark; unit labels for labour inconsistent."},
+    {"id": "S19", "title": "Cultures maraicheres dans les montagnes tropicales du Cameroun occidental (C. Kaffo)", "publisher": "Cahiers Agricultures 14(6):517-524", "year": 2005, "url": "https://revues.cirad.fr/index.php/cahiers-agricultures/article/download/30546/30306/30781", "notes": "Bamboutos (Bafou); labour wages and 'haricot' prices."},
+    {"id": "S20", "title": "Vegetable growers perception of pesticide use practices, cost, and health effects in the tropical region of Cameroon (Abang, Kouame, Abang, Hannah, Fotso)", "publisher": "CGSpace / IITA", "year": 2013, "url": "https://buscador.una.edu.ni/Record/CGSpace76441", "notes": "Weekly spraying most common; pesticide unit prices."},
+    {"id": "S21", "title": "The Cultivation of Sweet Pepper (Capsicum annuum) in Foumbot Agricultural Area, West Region, Cameroon (Dieudonne et al.)", "publisher": "Advanced Journal of Social Science 8(1):54-66, AIJR", "year": 2021, "url": "https://journals.aijr.org/index.php/ajss/article/download/3306/377", "notes": "Used here only for Foumbot season dates."},
+    {"id": "S22", "title": "Note sur les prix a Douala en avril 2020", "publisher": "INS Cameroun", "year": 2020, "url": "https://ins-cameroun.cm/wp-content/uploads/2025/07/Note_sur_les_prix_a_Douala_en_Avril_2020-4.pdf", "notes": "Index-only; no FCFA/kg for haricot vert."}
+  ],
+  "confidence_notes": "MEDIUM for agronomy (cycle, density, seed rate, water, temperature thresholds, pest calendar) which rests on COLEACP 2023, SHEP/Kenya 2016 and ICIPE 2001, all from East/West African export contexts. LOW for economics: no Cameroonian price, cost or margin data for haricot vert were found; Cameroon is a minor producer (S15) and FAOSTAT yield 5.3 t/ha is likely imputed. Kenyan prices are export-chain farm-gate prices and do not transfer to Foumbot local markets. Labour range (133-410 person-days/ha) is wide because export fine-bean picking/grading is far more demanding than bulk picking; the 410 figure assumes an 8 h day applied to Mbatia's man-hours. Gaps: Cameroon prices and units of sale, Cameroonian cost of production, inoculation, post-harvest loss %, N split days, Foumbot temperatures, IRAD/MINADER varietal recommendations. FAOSTAT direct API and several French sites (chambres d'agriculture, HAL) were blocked; the web-search budget was exhausted before Infonet-Biovision and KALRO guides could be searched. Per-acre to per-ha conversions and nutrient totals are analyst arithmetic and labelled as such."
+}

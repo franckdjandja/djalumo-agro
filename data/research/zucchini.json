@@ -1,0 +1,1563 @@
+{
+  "crop": "Zucchini / courgette (Cucurbita pepo L.), bush type, harvested immature",
+  "naming_warning": "Cameroon statistics only report the FAO group 'pumpkins, squash and gourds' (mostly Cucurbita moschata/maxima and seed cucurbits), never courgette alone (S8, S1). Temple's 1998 quantification of Cameroon fruit and vegetable flows lists no courgette line at all (S13), which suggests courgette is a niche crop for urban and supermarket demand.",
+  "cycle": {
+    "establishment": "Direct sowing recommended; transplanting possible at the 3 to 4 leaf stage (S2, S4, S5). Germination in 5 to 7 days (S1, S2, S5).",
+    "sowing_to_emergence_days": {
+      "value": [
+        5,
+        7
+      ],
+      "source_ids": [
+        "S1",
+        "S2",
+        "S5"
+      ]
+    },
+    "sowing_to_first_flower_days": {
+      "value": [
+        35,
+        55
+      ],
+      "notes": "Flowering begins 30 to 40 days after seedling emergence (S1); blooms about 45 to 55 days after planting (Kenya, S5).",
+      "source_ids": [
+        "S1",
+        "S5"
+      ]
+    },
+    "sowing_to_first_harvest_days": {
+      "value": [
+        55,
+        75
+      ],
+      "observations": [
+        {
+          "value": [
+            55,
+            60
+          ],
+          "where": "PROTA, courgette harvested at 20 to 25 cm",
+          "source_ids": [
+            "S1"
+          ]
+        },
+        {
+          "value": [
+            50,
+            60
+          ],
+          "where": "PROTA, first immature fruits 50 to 60 days after germination",
+          "source_ids": [
+            "S1"
+          ]
+        },
+        {
+          "value": 56,
+          "where": "Kenya, 'harvest starts after eight weeks'",
+          "source_ids": [
+            "S3"
+          ]
+        },
+        {
+          "value": 60,
+          "where": "Kenya, about 2 months after planting",
+          "source_ids": [
+            "S4"
+          ]
+        },
+        {
+          "value": [
+            60,
+            75
+          ],
+          "where": "Kenya input supplier, about 2 to 2.5 months, fruits 10 to 20 cm",
+          "source_ids": [
+            "S2"
+          ]
+        }
+      ]
+    },
+    "harvest_duration_days": {
+      "value": [
+        30,
+        90
+      ],
+      "observations": [
+        {
+          "value": [
+            30,
+            40
+          ],
+          "where": "PROTA",
+          "source_ids": [
+            "S1"
+          ]
+        },
+        {
+          "value": 30,
+          "where": "Kenya, 'lasts about another month'",
+          "source_ids": [
+            "S3"
+          ]
+        },
+        {
+          "value": [
+            60,
+            90
+          ],
+          "where": "Kenya, 2 to 3 months",
+          "source_ids": [
+            "S2",
+            "S4"
+          ]
+        }
+      ]
+    },
+    "total_cycle_days": {
+      "value": [
+        85,
+        165
+      ],
+      "notes": "PROTA timings give 85 to 100 days (55 to 60 + 30 to 40, derived) (S1). FAO-56 stage lengths 20/30/25/15 = 90 and 25/35/25/15 = 100 days (Mediterranean/arid) (S9). Kenyan guides imply up to about 165 days (75 + 90, derived) (S2).",
+      "source_ids": [
+        "S1",
+        "S9",
+        "S2"
+      ]
+    }
+  },
+  "planting": {
+    "spacing_options": [
+      {
+        "layout": "Bush cultivars in double rows on 1.2 m beds, or hills 50 cm apart",
+        "plants_per_ha": 40000,
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "layout": "Trailing (non-bush) cultivars",
+        "plants_per_ha": [
+          5000,
+          10000
+        ],
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "layout": "60 to 100 cm x 60 cm, 2 to 3 seeds per hill, thinned to 1 plant",
+        "plants_per_ha": [
+          16667,
+          27778
+        ],
+        "notes": "Derived from spacing",
+        "source_ids": [
+          "S2",
+          "S4"
+        ]
+      },
+      {
+        "layout": "120 x 60 cm on raised beds about 25 cm high, 3 seeds per hole thinned to 1",
+        "plants_per_ha": 13889,
+        "notes": "Derived from spacing",
+        "source_ids": [
+          "S3"
+        ]
+      },
+      {
+        "layout": "Mounds about 10 inches high, up to 2 ft diameter, about 4 ft apart, 6 seeds per mound",
+        "plants_per_ha": null,
+        "notes": "Mound density not computable without row spacing; final plants per mound not stated",
+        "source_ids": [
+          "S5"
+        ]
+      },
+      {
+        "layout": "60 x 60 cm with 150 kg N/ha (research, India, best treatment)",
+        "plants_per_ha": 27778,
+        "notes": "Derived; yielded 75.59 t/ha in research plots",
+        "source_ids": [
+          "S10"
+        ]
+      }
+    ],
+    "recommended_density_plants_per_ha": {
+      "value": [
+        14000,
+        40000
+      ],
+      "notes": "Range across Kenyan guides (derived) and PROTA bush density.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ]
+    },
+    "seed_rate": {
+      "kg_per_ha": 2.25,
+      "seeds_per_ha_derived": [
+        27800,
+        120000
+      ],
+      "notes": "No source gives a seed rate in kg/ha. Derived seed count: 13,889 to 40,000 hills/ha x 2 to 3 seeds per hill (S1, S2, S3). Converting to kg needs a sourced 1000-seed weight, which was not found.",
+      "seeds_per_hill": [
+        2,
+        3
+      ],
+      "source_ids": [
+        "S1",
+        "S2",
+        "S26",
+        "S27",
+        "S3"
+      ],
+      "kg_per_ha_basis": "Only kg figure found: about 2.25 kg of seed gives enough transplants for 1 ha of cucumbers and zucchini (British Columbia, temperate) (S26). No African direct-seeding kg/ha figure found.",
+      "seeds_per_ha_direct_seeded_derived": {
+        "value": [
+          54361,
+          64245
+        ],
+        "notes": "Derived: 22,000 to 26,000 seeds per acre (S27) / 0.4047 ha per acre = 54,361 to 64,245 seeds/ha; consistent with the 27,800 to 120,000 seeds/ha derived from African spacings.",
+        "source_ids": [
+          "S27"
+        ]
+      }
+    },
+    "sowing_depth_cm": {
+      "value": [
+        1.5,
+        2.5
+      ],
+      "notes": "1.5 cm (S3); 2 cm (S2, S4); about 2.5 cm (S1). Seed soaking 3 days between wet towels, sow only partly germinated seed (S3).",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ]
+    },
+    "trellising": {
+      "practice": "Not needed for bush courgette; none of the sources describes staking.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    "mulch": {
+      "practice": "Plastic mulch may give good control of soil-linked fruit rots (Pythium, Phytophthora) if water drains freely off the mulch (S1). Avoid fruit and vines lying on wet soil (wet rot) (S4).",
+      "rate_per_ha": null,
+      "source_ids": [
+        "S1",
+        "S4"
+      ]
+    },
+    "soil_pH": {
+      "value": [
+        5.5,
+        8.0
+      ],
+      "notes": "5.6 to 8.0 (S1); 5.5 to 7.5 (S2, S4); 6 to 7.5 (S3).",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ]
+    }
+  },
+  "itinerary": [
+    {
+      "step": "Land clearing",
+      "timing_days_relative_to_sowing": [
+        -90,
+        -30
+      ],
+      "description": "Prepare land 2 to 3 months before planting (Kenya, S5). Pre-plant herbicide example from a Kenyan input supplier: Clampdown 480SL 200 ml per 20 L (active ingredient not stated) (S2). In Centre Cameroon cucurbits are commonly sown after slash and burn of fallow (S12); no quantified data on burning effects for courgette was found.",
+      "inputs": [
+        {
+          "product": "Clampdown 480SL (pre-plant herbicide; a.i. not stated in source)",
+          "category": "herbicide",
+          "rate_per_ha": null,
+          "unit": "200 ml per 20 L knapsack",
+          "applications": 1,
+          "source_ids": [
+            "S2"
+          ]
+        }
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": [
+        "S5",
+        "S2",
+        "S12"
+      ]
+    },
+    {
+      "step": "Tillage, raised beds or mounds",
+      "timing_days_relative_to_sowing": [
+        -30,
+        -3
+      ],
+      "description": "Raised beds about 25 cm high (S3) or mounds about 10 inches high and up to 2 ft in diameter about 4 ft apart (S5); double rows on 1.2 m beds for bush types (S1). Good drainage matters: heavy rain above 40 mm in one day causes waterlogging and stem splitting (S1).",
+      "inputs": [],
+      "labour_person_days_per_ha": null,
+      "source_ids": [
+        "S1",
+        "S3",
+        "S5"
+      ]
+    },
+    {
+      "step": "Basal fertilization",
+      "timing_days_relative_to_sowing": [
+        -7,
+        0
+      ],
+      "description": "Organic matter 50 to 70 t/ha in the planting hole or furrow (S1); one wheelbarrow of compost and/or manure per square metre (S3). Mineral: PROTA recommends 150 kg N, 150 kg P, 300 kg K per ha, half before planting (S1). Kenya: DAP 50 kg per acre before sowing, about 1 teaspoon per hole, mixed well with soil (S2, S4), i.e. about 124 kg/ha (derived); Humipower 1 kg per 50 kg DAP and/or 1 t manure (S2).",
+      "inputs": [
+        {
+          "product": "Manure or compost",
+          "category": "amendment",
+          "rate_per_ha": 60,
+          "unit": "t/ha (range 50 to 70)",
+          "applications": 1,
+          "source_ids": [
+            "S1"
+          ]
+        },
+        {
+          "product": "DAP 18-46-0",
+          "category": "fertilizer",
+          "rate_per_ha": 124,
+          "unit": "kg/ha (derived from 50 kg/acre)",
+          "applications": 1,
+          "source_ids": [
+            "S2",
+            "S4"
+          ]
+        },
+        {
+          "product": "Mineral NPK to supply half of 150 N / 150 P / 300 K",
+          "category": "fertilizer",
+          "rate_per_ha": null,
+          "unit": "75 N + 75 P + 150 K kg/ha (product not specified)",
+          "applications": 1,
+          "source_ids": [
+            "S1"
+          ]
+        }
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ]
+    },
+    {
+      "step": "Sowing",
+      "timing_days_relative_to_sowing": [
+        0,
+        0
+      ],
+      "description": "Direct sow 2 to 3 seeds per hill, 1.5 to 2.5 cm deep (S1, S2, S3). F1 hybrids preferred; they yield 50 to 100% more than open-pollinated cultivars (S1). Varieties named in Kenya: Ambassador F1, Simba F1, Black Beauty, Cera F1, Green Zucchini (S2, S4, S5). Seed soak option: Optimizer 20 ml/L (S2).",
+      "inputs": [
+        {
+          "product": "Courgette seed (F1 hybrid preferred)",
+          "category": "seed",
+          "rate_per_ha": null,
+          "unit": "kg/ha not sourced; 27,800 to 120,000 seeds/ha derived",
+          "applications": 1,
+          "source_ids": [
+            "S1",
+            "S2"
+          ]
+        }
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5"
+      ]
+    },
+    {
+      "step": "Thinning",
+      "timing_days_relative_to_sowing": [
+        7,
+        21
+      ],
+      "description": "Thin to one plant per hill after emergence (S2, S4) or keep the strongest plant after 2 to 3 weeks (S3).",
+      "inputs": [],
+      "labour_person_days_per_ha": null,
+      "source_ids": [
+        "S2",
+        "S3",
+        "S4"
+      ]
+    },
+    {
+      "step": "Top dressing",
+      "timing_days_relative_to_sowing": [
+        21,
+        30
+      ],
+      "description": "CAN 50 to 100 kg per acre (about 124 to 247 kg/ha, derived) 3 to 4 weeks after sowing, placed about 15 cm from the plant; urea as alternative (S2). PROTA: second half of mineral fertilizer 30 days after planting (S1). Compost top dressing at 4 weeks plus weekly liquid fertilizer 1 L in 10 L water at the root zone (S3).",
+      "inputs": [
+        {
+          "product": "CAN (calcium ammonium nitrate)",
+          "category": "fertilizer",
+          "rate_per_ha": 185,
+          "unit": "kg/ha (range 124 to 247, derived from 50 to 100 kg/acre)",
+          "applications": 1,
+          "source_ids": [
+            "S2"
+          ]
+        },
+        {
+          "product": "Mineral NPK, second half of 150 N / 150 P / 300 K",
+          "category": "fertilizer",
+          "rate_per_ha": null,
+          "unit": "75 N + 75 P + 150 K kg/ha",
+          "applications": 1,
+          "source_ids": [
+            "S1"
+          ]
+        },
+        {
+          "product": "Compost top dressing",
+          "category": "amendment",
+          "rate_per_ha": null,
+          "unit": "not quantified",
+          "applications": 1,
+          "source_ids": [
+            "S3"
+          ]
+        }
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "step": "Foliar fertilizers and biostimulants (optional)",
+      "timing_days_relative_to_sowing": [
+        7,
+        75
+      ],
+      "description": "Kenyan input-supplier programme (trade names, compositions not stated): 1 week after germination Lavender Super Starter 20 ml/20 L or Goldchance Super Start 50 g/20 L; vegetative Goldchance Super Growth 50 g/20 L or Lavender Super Vegetative 20 ml/20 L; flowering and fruiting Goldchance Super Flowers and Fruits 50 g/20 L, Dimiphite 20 ml/20 L, Goldchance Multisuper K 50 g/20 L; sticker Integra 3 ml/20 L (S2). Generic foliar 0.5 L in 20 L water (S3). No efficacy data.",
+      "inputs": [
+        {
+          "product": "Starter and growth foliars (Goldchance / Lavender ranges)",
+          "category": "foliar",
+          "rate_per_ha": null,
+          "unit": "20 ml or 50 g per 20 L",
+          "applications": null,
+          "source_ids": [
+            "S2"
+          ]
+        },
+        {
+          "product": "Flowering and fruiting foliars (Super Flowers and Fruits, Dimiphite, Multisuper K)",
+          "category": "foliar",
+          "rate_per_ha": null,
+          "unit": "20 ml or 50 g per 20 L",
+          "applications": null,
+          "source_ids": [
+            "S2"
+          ]
+        }
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": [
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "step": "Irrigation",
+      "timing_days_relative_to_sowing": [
+        0,
+        100
+      ],
+      "description": "About 2.5 cm (25 mm) of water per week (S1). Optimum supply 800 mm during vegetative growth, irrigation in dry areas (S4, S2). Keep soil moderately moist, more water at flowering and fruiting (S2). FAO-56: Kc ini 0.5 (cucurbit group value), Kc mid 0.95, Kc end 0.75 (S9).",
+      "inputs": [
+        {
+          "product": "Irrigation water",
+          "category": "irrigation",
+          "rate_per_ha": 25,
+          "unit": "mm per week",
+          "applications": null,
+          "source_ids": [
+            "S1"
+          ]
+        }
+      ],
+      "irrigation_l_per_plant_per_day": {
+        "value": null,
+        "notes": "Not found. At 25 mm/week and 14,000 to 40,000 plants/ha this would be about 0.9 to 2.6 L/plant/day (derived: 250,000 L per ha per week / 7 / plants)."
+      },
+      "labour_person_days_per_ha": null,
+      "source_ids": [
+        "S1",
+        "S2",
+        "S4",
+        "S9"
+      ]
+    },
+    {
+      "step": "Weeding",
+      "timing_days_relative_to_sowing": [
+        14,
+        50
+      ],
+      "description": "No courgette-specific weeding schedule found. Weed control reduces Zeugodacus cucurbitae infestation on cucurbits in Cote d'Ivoire (S6).",
+      "inputs": [],
+      "labour_person_days_per_ha": null,
+      "source_ids": [
+        "S6"
+      ]
+    },
+    {
+      "step": "Crop protection programme",
+      "timing_days_relative_to_sowing": [
+        0,
+        100
+      ],
+      "description": "Main threats: powdery mildew (main leaf disease), fruit flies (serious losses in West Africa), aphids, whitefly, Epilachna beetles, pickleworm and melon worm, spider mites above 30 C, fruit rots from soil splash, PRSV-W virus (S1). Kenyan supplier rates per 20 L (active ingredients not stated): fruit flies Presento 200SP 5 g, Kingcode Elite 50EC 10 ml or Profile 440EC 30 ml; aphids Kingcode Elite 10 ml, Lexus 247SC 8 ml, Pentagon 50EC 10 ml; mites Alonze 50EC 5 ml; whitefly Taurus 500SP 10 g; thrips Defender 25EC 40 ml; downy mildew Fortress Gold 720WP 40 g, Tower 720WP 50 g, Katerina 720SC 40 ml; powdery mildew Ransom 600WP 15 g, Domain 250EC 10 ml, Absolute 375SC 10 ml; anthracnose Ducasse 250EW 20 ml; preventive Cadilac 800WP 50 g; damping off Pyramid 700WP 100 g drench (S2). Avermectin-treated cucurbit plots had lower fruit fly infestation in Cote d'Ivoire; remove infested fruits; insect-proof netting (S6). Production timed for the early dry season because aphid pressure is lower (S1).",
+      "inputs": [
+        {
+          "product": "Fruit fly insecticides (Presento 200SP / Kingcode Elite 50EC / Profile 440EC)",
+          "category": "insecticide",
+          "rate_per_ha": null,
+          "unit": "5 g, 10 ml or 30 ml per 20 L",
+          "applications": null,
+          "source_ids": [
+            "S2"
+          ]
+        },
+        {
+          "product": "Aphid and whitefly insecticides (Lexus 247SC, Pentagon 50EC, Taurus 500SP)",
+          "category": "insecticide",
+          "rate_per_ha": null,
+          "unit": "8 ml, 10 ml, 10 g per 20 L",
+          "applications": null,
+          "source_ids": [
+            "S2"
+          ]
+        },
+        {
+          "product": "Powdery mildew fungicides (Ransom 600WP, Domain 250EC, Absolute 375SC)",
+          "category": "fungicide",
+          "rate_per_ha": null,
+          "unit": "15 g, 10 ml, 10 ml per 20 L",
+          "applications": null,
+          "source_ids": [
+            "S2"
+          ]
+        },
+        {
+          "product": "Downy mildew fungicides (Fortress Gold 720WP, Tower 720WP, Katerina 720SC, Gearlock Turbo 250WP)",
+          "category": "fungicide",
+          "rate_per_ha": null,
+          "unit": "40 g, 50 g, 40 ml, 25 g per 20 L",
+          "applications": null,
+          "source_ids": [
+            "S2"
+          ]
+        }
+      ],
+      "sprays_per_cycle": {
+        "value": null,
+        "notes": "No sourced spray count for courgette. The cucumber tunnel calendar in Mayotte used 13 insecticide sprays (see cucumber.json S3) and can serve only as a proxy."
+      },
+      "labour_person_days_per_ha": null,
+      "source_ids": [
+        "S1",
+        "S2",
+        "S6"
+      ]
+    },
+    {
+      "step": "Pollination management",
+      "timing_days_relative_to_sowing": [
+        35,
+        100
+      ],
+      "description": "Pollination by insects, mainly bees and wasps; placing bee hives in the field during flowering often improves pollination and yield (S1). Under cool conditions (nights 10 C, days 20 C) parthenocarpic fruit set may occur (S1). Hive density not given.",
+      "inputs": [
+        {
+          "product": "Bee hives",
+          "category": "other",
+          "rate_per_ha": null,
+          "unit": "hives/ha not stated",
+          "applications": null,
+          "source_ids": [
+            "S1"
+          ]
+        }
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "step": "Harvest",
+      "timing_days_relative_to_sowing": [
+        55,
+        165
+      ],
+      "description": "Harvest courgettes at 20 to 25 cm (S1), 10 to 20 cm (S2, S4) or about 10 cm depending on variety (S5); cut rather than pull (S3). Visit daily because fruits enlarge very quickly (S1); about three picks a week or daily (S2, S4). Bush cultivars set 5 to 8 fruits per plant (S1).",
+      "inputs": [
+        {
+          "product": "Packaging (crates/cartons)",
+          "category": "packaging",
+          "rate_per_ha": null,
+          "unit": "No Cameroon packaging norm for courgette found",
+          "applications": null,
+          "source_ids": []
+        }
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5"
+      ]
+    },
+    {
+      "step": "Post-harvest handling",
+      "timing_days_relative_to_sowing": [
+        55,
+        165
+      ],
+      "description": "Immature fruits cannot be kept beyond 5 to 6 days at 25 to 35 C; optimum storage 10 C, storage life 20 to 25 days (S1). Sell within days or cool.",
+      "inputs": [],
+      "labour_person_days_per_ha": null,
+      "source_ids": [
+        "S1"
+      ]
+    }
+  ],
+  "fertilizer_total": {
+    "kg_N_per_ha": [
+      54,
+      150
+    ],
+    "kg_P2O5_per_ha": [
+      57,
+      150
+    ],
+    "kg_K2O_per_ha": [
+      0,
+      300
+    ],
+    "organic_manure_t_per_ha": [
+      50,
+      70
+    ],
+    "basis": [
+      {
+        "programme": "PROTA: 150 kg N, 150 kg P, 300 kg K per ha, half before planting and half 30 days later, plus 50 to 70 t/ha manure",
+        "N": 150,
+        "P2O5": 150,
+        "K2O": 300,
+        "notes": "Source writes 'P' and 'K'; it is unclear whether elemental or oxide; values copied as P2O5/K2O with this caveat.",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "programme": "Kenya: DAP 50 kg/acre basal + CAN 50 to 100 kg/acre top dressing",
+        "N": [
+          54,
+          86
+        ],
+        "P2O5": 57,
+        "K2O": 0,
+        "notes": "Derived: 124 kg/ha DAP (18-46-0) = 22 N + 57 P2O5; 124 to 247 kg/ha CAN (26% N) = 32 to 64 N. No potassium in this programme.",
+        "source_ids": [
+          "S2",
+          "S4"
+        ]
+      },
+      {
+        "programme": "Brazil (cv. Caserta) N response trial",
+        "N": 322,
+        "P2O5": null,
+        "K2O": null,
+        "notes": "Economic optimum 322 kg N/ha for 29.86 t/ha; maximum yield 29.88 t/ha at 331 kg N/ha. Non-African.",
+        "source_ids": [
+          "S11"
+        ]
+      },
+      {
+        "programme": "India research, best treatment",
+        "N": 150,
+        "P2O5": null,
+        "K2O": null,
+        "notes": "60 x 60 cm with 150 kg N/ha gave 75.59 t/ha. Non-African.",
+        "source_ids": [
+          "S10"
+        ]
+      }
+    ]
+  },
+  "pests_diseases": [
+    {
+      "name": "Fruit flies (Dacus ciliatus, Zeugodacus/Bactrocera cucurbitae, Dacus bivittatus)",
+      "type": "pest",
+      "importance": "Major. PROTA: Dacus cucurbitae causes serious losses in West Africa (S1). Cote d'Ivoire 2023: pupae from 72% of sampled zucchinis; zucchini produced more pupae per fruit than cucumber; D. ciliatus more frequent on zucchini (S6). Cameroon (Yaounde, Koutaba in Noun): 36.7 to 37.1% cucurbit fruit losses, D. bivittatus and D. ciliatus major; zucchini not sampled, C. moschata among most affected (S7).",
+      "controls": "Sanitation, weed control, insect-proof netting, avermectin (S6); Kenyan products in itinerary (S2).",
+      "source_ids": [
+        "S1",
+        "S6",
+        "S7",
+        "S2"
+      ]
+    },
+    {
+      "name": "Aphids (Aphis gossypii)",
+      "type": "pest",
+      "importance": "Direct damage and virus vector; lower pressure in early dry season (S1).",
+      "controls": "See Kenyan products (S2).",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "name": "Whitefly (Bemisia tabaci B / B. argentifolia)",
+      "type": "pest",
+      "importance": "Listed (S1, S4).",
+      "controls": "Taurus 500SP 10 g/20 L, Lexus 247SC 8 ml/20 L (S2).",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S4"
+      ]
+    },
+    {
+      "name": "Epilachna and other cucurbit beetles",
+      "type": "pest",
+      "importance": "Direct damage; vectors of squash mosaic virus (S1).",
+      "controls": "Kingcode Elite 50EC 10 ml/20 L, Sinophate 750SP 20 g/20 L (S2).",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "name": "Pickleworm (Diaphania nitidalis) and melon worm (Diaphania hyalinata)",
+      "type": "pest",
+      "importance": "Listed (S1).",
+      "controls": null,
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "name": "Spider mites (Tetranychus spp.)",
+      "type": "pest",
+      "importance": "Attack leaves when day temperatures exceed 30 C (S1).",
+      "controls": "Alonze 50EC 5 ml/20 L, Bazooka 18EC 10 ml/20 L (S2).",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "name": "Thrips, leaf miners, cutworms",
+      "type": "pest",
+      "importance": "Listed by Kenyan supplier (S2).",
+      "controls": "Products listed in itinerary (S2).",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "name": "Root-knot nematodes (Meloidogyne spp.)",
+      "type": "pest",
+      "importance": "Most important root problem (S1).",
+      "controls": "Add organic matter under plants (S1).",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "name": "Powdery mildew (Erysiphe cichoracearum; Sphaerotheca fuliginea in drier conditions)",
+      "type": "disease",
+      "importance": "Main leaf disease; resistant hybrids exist (S1).",
+      "controls": "Resistant F1s (S1); Ransom 600WP, Domain 250EC, Absolute 375SC (S2).",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "name": "Downy mildew (Pseudoperonospora cubensis)",
+      "type": "disease",
+      "importance": "Usually minor localized lesions on this crop (S1); promoted by humidity and heavy rain (S3, S4).",
+      "controls": "Fortress Gold, Tower, Katerina, Gearlock Turbo (S2).",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ]
+    },
+    {
+      "name": "Anthracnose (Colletotrichum lagenarium) and scab (Cladosporium cucumerinum)",
+      "type": "disease",
+      "importance": "More likely at higher elevations because lowland temperatures exceed their optimum (S1): relevant to Foumbot at 1,000 to 1,200 m.",
+      "controls": "Ransom 600WP, Ducasse 250EW, Absolute 375SC, Katerina 720SC (S2).",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "name": "Wet rot (Choanephora cucurbitarum), Pythium and Phytophthora fruit/root rots, Rhizoctonia, Sclerotium rolfsii, Fusarium solani",
+      "type": "disease",
+      "importance": "Blossom-end and soil-contact rots, rain splash (S1); wet rot when vines lie on the ground (S4).",
+      "controls": "Plastic mulch with free drainage (S1).",
+      "source_ids": [
+        "S1",
+        "S4"
+      ]
+    },
+    {
+      "name": "Viruses: PRSV-W (main in lowland tropics), squash mosaic virus (seed-borne), CMV, WMV2, ZYMV (rare in tropics)",
+      "type": "disease",
+      "importance": "Listed (S1); mosaic virus listed in Kenya (S2, S4).",
+      "controls": "Vector control (aphids, beetles) (S1, S2).",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S4"
+      ]
+    }
+  ],
+  "labour_total_person_days_per_ha": [
+    null,
+    null
+  ],
+  "labour_notes": "No labour data for courgette found in any source. Cucumber figures (cucumber.json) without trellising (about 46 man-days in the Philippine table) are the closest proxy; frequent harvests (daily to 3 times per week) add labour.",
+  "yields_t_ha": {
+    "national_or_regional_average": {
+      "value": 20,
+      "year": 2004,
+      "where": "Tropical Africa average courgette yield level (PROTA). Cameroon has no courgette statistic; FAO group 'pumpkins, squash and gourds' for Cameroon: 122,000 t (2002, S1), 177,262 t (2020) and 183,924 t (2024) (S8), area and yield not obtained.",
+      "source_ids": [
+        "S1",
+        "S8"
+      ],
+      "kenya_national_derived": {
+        "value": [
+          9.2,
+          10.4
+        ],
+        "years": [
+          2011,
+          2013
+        ],
+        "notes": "Derived from HCDA all-county totals: 4,674.4 t / 509.1 ha = 9.2 (2011); 5,265 / 512.8 = 10.3 (2012); 6,097 / 584.3 = 10.4 t/ha (2013).",
+        "source_ids": [
+          "S23"
+        ]
+      }
+    },
+    "farmer_rainfed": [
+      {
+        "value": [
+          4.9,
+          7.4
+        ],
+        "where": "Kenya, expected well-managed yield 2 to 3 t/acre (derived t/ha)",
+        "year": 2022,
+        "source_ids": [
+          "S5"
+        ]
+      }
+    ],
+    "good_practice_rainfed": [
+      {
+        "value": 20,
+        "where": "Tropical Africa average level (PROTA); F1 hybrids yield 50 to 100% more than OP",
+        "year": 2004,
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "value": 80,
+        "where": "F1 hybrids under optimal conditions, upper bound (PROTA)",
+        "year": 2004,
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "value": 29.88,
+        "where": "Brazil N trial, max yield at 331 kg N/ha (cv. Caserta)",
+        "year": null,
+        "source_ids": [
+          "S11"
+        ]
+      },
+      {
+        "value": 75.59,
+        "where": "India research plot, 60 x 60 cm, 150 kg N/ha",
+        "year": 2017,
+        "source_ids": [
+          "S10"
+        ]
+      }
+    ],
+    "irrigated_dry_season": [
+      {
+        "value": null,
+        "where": "No measured dry-season irrigated yield found; PROTA notes tropical production is mostly at the start of the dry season",
+        "year": null,
+        "source_ids": [
+          "S1"
+        ]
+      }
+    ]
+  },
+  "post_harvest_loss_pct": null,
+  "post_harvest_notes": "No measured post-harvest loss percentage found. Immature fruit not keepable beyond 5 to 6 days at 25 to 35 C; 20 to 25 days at 10 C (S1). Field losses to fruit flies: pupae in 72% of sampled zucchinis in Cote d'Ivoire (S6).",
+  "field_losses_fruit_fly_pct": {
+    "value": 72,
+    "notes": "Share of sampled zucchini fruits yielding pupae (infestation incidence, not weight loss), Cote d'Ivoire 2023 (S6).",
+    "source_ids": [
+      "S6"
+    ]
+  },
+  "prices": {
+    "unit_notes": "Per-kg observations from Cote d'Ivoire (FCFA XOF, at par with XAF: both pegged at 655.957 per euro, entered directly as XAF), a low-reliability Cameroon retail estimate, and Kenyan implied values. No Cameroon farm-gate or wholesale observation found.",
+    "observations": [
+      {
+        "market": "Abidjan, Cote d'Ivoire (CNLVC market survey; level not stated, probably consumer)",
+        "period": "2024-03-01",
+        "price_xaf_per_kg": [
+          400,
+          400
+        ],
+        "price_local": "400 FCFA (XOF)/kg",
+        "year": 2024,
+        "source_ids": [
+          "S14"
+        ]
+      },
+      {
+        "market": "Abidjan, Cote d'Ivoire (CNLVC market survey; level not stated, probably consumer)",
+        "period": "2024-03-16",
+        "price_xaf_per_kg": [
+          400,
+          400
+        ],
+        "price_local": "400 FCFA (XOF)/kg",
+        "year": 2024,
+        "source_ids": [
+          "S15"
+        ]
+      },
+      {
+        "market": "Abidjan, Cote d'Ivoire (CNLVC market survey; level not stated, probably consumer)",
+        "period": "2024-10-26",
+        "price_xaf_per_kg": [
+          350,
+          350
+        ],
+        "price_local": "350 FCFA (XOF)/kg",
+        "year": 2024,
+        "source_ids": [
+          "S16"
+        ]
+      },
+      {
+        "market": "Abidjan, Cote d'Ivoire (CNLVC market survey; level not stated, probably consumer)",
+        "period": "2024-12-20",
+        "price_xaf_per_kg": [
+          350,
+          350
+        ],
+        "price_local": "350 FCFA (XOF)/kg",
+        "year": 2024,
+        "source_ids": [
+          "S17"
+        ]
+      },
+      {
+        "market": "Abidjan, Cote d'Ivoire (CNLVC market survey; level not stated, probably consumer)",
+        "period": "2025-02-27 (published 2025-03-27)",
+        "price_xaf_per_kg": [
+          500,
+          500
+        ],
+        "price_local": "500 FCFA (XOF)/kg",
+        "year": 2025,
+        "source_ids": [
+          "S18"
+        ]
+      },
+      {
+        "market": "Abidjan, Cote d'Ivoire (CNLVC market survey; level not stated, probably consumer)",
+        "period": "2025-08 (published 2025-08-06)",
+        "price_xaf_per_kg": [
+          500,
+          500
+        ],
+        "price_local": "500 FCFA (XOF)/kg",
+        "year": 2025,
+        "source_ids": [
+          "S19"
+        ]
+      },
+      {
+        "market": "Abidjan, Cote d'Ivoire (CNLVC market survey; level not stated, probably consumer)",
+        "period": "2025-11-06",
+        "price_xaf_per_kg": [
+          500,
+          500
+        ],
+        "price_local": "500 FCFA (XOF)/kg",
+        "year": 2025,
+        "source_ids": [
+          "S20"
+        ]
+      },
+      {
+        "market": "Abidjan, Cote d'Ivoire (Sika Finance; level not stated)",
+        "period": "latest at 19 Jul 2026",
+        "price_xaf_per_kg": [
+          500,
+          500
+        ],
+        "price_local": "500 per kg (currency not printed; FCFA XOF implied)",
+        "year": 2026,
+        "source_ids": [
+          "S21"
+        ]
+      },
+      {
+        "market": "Bouake, Cote d'Ivoire (Sika Finance; level not stated)",
+        "period": "latest at 19 Jul 2026",
+        "price_xaf_per_kg": [
+          500,
+          500
+        ],
+        "price_local": "500 per kg (currency not printed; FCFA XOF implied)",
+        "year": 2026,
+        "source_ids": [
+          "S21"
+        ]
+      },
+      {
+        "market": "Korhogo, Cote d'Ivoire (Sika Finance; level not stated)",
+        "period": "latest at 19 Jul 2026",
+        "price_xaf_per_kg": [
+          800,
+          800
+        ],
+        "price_local": "800 per kg (currency not printed; FCFA XOF implied)",
+        "year": 2026,
+        "source_ids": [
+          "S21"
+        ]
+      },
+      {
+        "market": "Man, Cote d'Ivoire (Sika Finance; level not stated)",
+        "period": "latest at 19 Jul 2026",
+        "price_xaf_per_kg": [
+          400,
+          400
+        ],
+        "price_local": "400 per kg (currency not printed; FCFA XOF implied)",
+        "year": 2026,
+        "source_ids": [
+          "S21"
+        ]
+      },
+      {
+        "market": "San-Pedro, Cote d'Ivoire (Sika Finance; level not stated)",
+        "period": "latest at 19 Jul 2026",
+        "price_xaf_per_kg": [
+          325,
+          325
+        ],
+        "price_local": "325 per kg (currency not printed; FCFA XOF implied)",
+        "year": 2026,
+        "source_ids": [
+          "S21"
+        ]
+      },
+      {
+        "market": "Yamoussoukro, Cote d'Ivoire (Sika Finance; level not stated)",
+        "period": "latest at 19 Jul 2026",
+        "price_xaf_per_kg": [
+          1000,
+          1000
+        ],
+        "price_local": "1000 per kg (currency not printed; FCFA XOF implied)",
+        "year": 2026,
+        "source_ids": [
+          "S21"
+        ]
+      },
+      {
+        "market": "Yaounde and Douala, Cameroon (retail estimate, Selina Wamucii)",
+        "period": "Oct 2026",
+        "price_xaf_per_kg": [
+          535.61,
+          714.15
+        ],
+        "year": 2026,
+        "source_ids": [
+          "S22"
+        ],
+        "notes": "Methodology undisclosed; low reliability."
+      },
+      {
+        "market": "Cameroon wholesale (Selina Wamucii)",
+        "period": "2026 approx.",
+        "price_xaf_per_kg": null,
+        "price_local": "USD 0.60 to 0.80/kg",
+        "derived_price_xaf_per_kg": [
+          375,
+          500
+        ],
+        "derivation": "Derived with the page's own implied rate: 535.61 XAF / 0.86 USD = 622.8 and 714.15 / 1.14 = 626.4, mean about 624.6 XAF/USD; 0.60 x 624.6 = 375 and 0.80 x 624.6 = 500 XAF/kg.",
+        "year": 2026,
+        "source_ids": [
+          "S22"
+        ]
+      },
+      {
+        "market": "Kenya national average value per kg (HCDA)",
+        "period": "2011 to 2013",
+        "price_xaf_per_kg": null,
+        "price_local": "Derived KES 24.5 to 38.9/kg: KES 146.9 m / 4,674.4 t = 31.4 (2011); 129 m / 5,265 t = 24.5 (2012); 237.1 m / 6,097 t = 38.9 (2013)",
+        "year": 2013,
+        "source_ids": [
+          "S23"
+        ]
+      }
+    ],
+    "seasonality": "Abidjan CNLVC series (S14 to S20): 400 FCFA/kg in Mar 2024, 350 in Oct and Dec 2024, 500 from Feb 2025 to Nov 2025 (trend mixes seasonality and inflation). Sika Finance Jul 2026 shows a wide spread between Ivorian cities, 325 (San-Pedro) to 1,000 FCFA/kg (Yamoussoukro) (S21). No Cameroon seasonality data; proxy from Yaounde vegetables generally: cheap in the rainy season, dearer in the dry season (see cucumber.json S11). PROTA judges winter export to Europe not favourable (S1).",
+    "unit_weights": {
+      "fruit_weight_g": {
+        "value": 240,
+        "where": "Mean fruit weight, cv. Caserta, Brazil N trial (7.7 fruits per plant at optimum)",
+        "source_ids": [
+          "S11"
+        ]
+      },
+      "notes": "No courgette packaging unit or fruit weight found for Cameroon."
+    }
+  },
+  "cost_of_production_xaf_per_ha": [
+    {
+      "value": null,
+      "breakdown": {},
+      "year": null,
+      "where": "Cameroon / region",
+      "source_ids": [],
+      "notes": "No courgette cost-of-production study found for Cameroon, West, Central or East Africa. Only a Kenyan soil test cost (KSh 1,500) is mentioned (S5)."
+    }
+  ],
+  "margins": [],
+  "climate": {
+    "optimal_day_temp_c": {
+      "value": [
+        24,
+        29
+      ],
+      "notes": "Best growth days 24 to 29 C, nights 16 to 24 C; tolerates monthly mean day temperatures of 18 to 28 C (S1). Kenyan sources print an optimum of 15 to 22 C (S2, S4, S5), which conflicts with PROTA.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S4",
+        "S5"
+      ]
+    },
+    "optimal_night_temp_c": {
+      "value": [
+        16,
+        24
+      ],
+      "source_ids": [
+        "S1"
+      ]
+    },
+    "tolerated_monthly_mean_temp_c": {
+      "value": [
+        18,
+        28
+      ],
+      "source_ids": [
+        "S1"
+      ]
+    },
+    "heat_stress_threshold_c": {
+      "value": 30,
+      "notes": "Not a physiological threshold: spider mites invade leaves above 30 C day temperature (S1). C. pepo is less heat resistant than C. moschata (S1).",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    "altitude_m": {
+      "value": [
+        500,
+        2000
+      ],
+      "notes": "Kenya (S2, S4). Foumbot 1,000 to 1,200 m is within range.",
+      "source_ids": [
+        "S2",
+        "S4"
+      ]
+    },
+    "rainfall_mm": {
+      "value": 800,
+      "notes": "Optimum water supply during vegetative growth (S2, S4); about 25 mm per week (S1).",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S4"
+      ]
+    },
+    "rain_humidity_sensitivity": "Heavy rain above 40 mm per day causes waterlogging and stem splitting in bush cultivars (S1); heavy rains destroy flowers and promote mildew, plant in full sun (S3, S4); crop less suited to the rainy season, production mostly at the start of the dry season (S1); Z. cucurbitae infestation higher in the rainy season May to July in Cote d'Ivoire (S6).",
+    "planting_windows_foumbot": {
+      "proposal": "Best: sow late September to November so the crop flowers and is harvested in the early dry season (mid November to February), with irrigation. Possible: sow at the onset of rains (mid March to April) so harvest ends before the heaviest rains, accepting higher mildew and fruit-fly risk. Avoid sowing that puts flowering in the peak rainy months.",
+      "basis": "Analyst inference from PROTA (early dry season production, rain damage thresholds) and Kenyan guides (avoid heavy rains); not a sourced Foumbot recommendation.",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S4"
+      ]
+    },
+    "fao56_kc": {
+      "ini": 0.5,
+      "mid": 0.95,
+      "end": 0.75,
+      "stage_days": [
+        25,
+        35,
+        25,
+        15
+      ],
+      "notes": "Kc ini is the cucurbit group value in FAO-56 Table 12.",
+      "source_ids": [
+        "S9"
+      ]
+    }
+  },
+  "varieties_cited": [
+    {
+      "name": "Ambassador F1, Simba F1, Black Beauty, Cera F1, Green Zucchini",
+      "where": "Kenya",
+      "source_ids": [
+        "S2",
+        "S4",
+        "S5"
+      ]
+    },
+    {
+      "name": "Caserta",
+      "where": "Brazil N trial",
+      "source_ids": [
+        "S11"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "title": "Cucurbita pepo L. (PROTA record)",
+      "publisher": "PROTA4U; Messiaen C.-M. and Fagbayide J.A. (Grubben and Denton eds.)",
+      "year": 2004,
+      "url": "https://plantuse.plantnet.org/en/Cucurbita_pepo_(PROTA)",
+      "notes": "Core reference for ecology, density, fertilization, harvest, yields, diseases in tropical Africa."
+    },
+    {
+      "id": "S2",
+      "title": "Courgette Farming",
+      "publisher": "Greenlife Crop Protection Africa (Kenya input supplier)",
+      "year": null,
+      "url": "https://www.greenlife.co.ke/courgette-farming/",
+      "notes": "Commercial; trade names without active ingredients."
+    },
+    {
+      "id": "S3",
+      "title": "The A to Z of farming courgettes",
+      "publisher": "Nation (Seeds of Gold), Kenya",
+      "year": null,
+      "url": "https://nation.africa/kenya/business/seeds-of-gold/the-a-to-z-of-farming-courgettes-1066196",
+      "notes": "Publication date not shown on fetched page."
+    },
+    {
+      "id": "S4",
+      "title": "All you need to know about growing zucchini",
+      "publisher": "The Standard, FarmKenya (Malaika Chunji)",
+      "year": 2019,
+      "url": "https://www.standardmedia.co.ke/farmkenya/smart-harvest/article/2001336512/all-you-need-to-know-about-growing-zucchini",
+      "notes": "3 Aug 2019."
+    },
+    {
+      "id": "S5",
+      "title": "Health benefits of courgette (zucchini)",
+      "publisher": "The Standard, FarmKenya (Jenipher Anyango)",
+      "year": 2022,
+      "url": "https://www.standardmedia.co.ke/farmkenya/article/2001439143/health-benefits-of-courgette-zucchini",
+      "notes": "2 Mar 2022; yield 2 to 3 t/acre."
+    },
+    {
+      "id": "S6",
+      "title": "Exploring biotic and abiotic factors influencing cucurbit-fruit fly damage and diversity in cucurbit crop production systems",
+      "publisher": "International Journal of Tropical Insect Science 45(6); Eypert L. et al.",
+      "year": 2025,
+      "url": "https://link.springer.com/article/10.1007/s42690-025-01622-4",
+      "notes": "Cote d'Ivoire, 2023."
+    },
+    {
+      "id": "S7",
+      "title": "Host susceptibility and pest status of fruit flies attacking cucurbits in two agroecological zones of Cameroon",
+      "publisher": "African Entomology 26(2):317-332; Mokam D.G. et al.",
+      "year": 2018,
+      "url": "https://wiki.pestinfo.org/wiki/African_Entomology_(2018)_26,_317-332",
+      "notes": "Abstract only; zucchini not among species reported in abstract."
+    },
+    {
+      "id": "S8",
+      "title": "Cameroon Fresh Zucchini: suppliers and market trends",
+      "publisher": "Tridge (FAO code 0394 and UN Comtrade HS 070993)",
+      "year": 2024,
+      "url": "https://www.tridge.com/tridge-woods/fresh-zucchini/CM",
+      "notes": "Group-level production only."
+    },
+    {
+      "id": "S9",
+      "title": "Crop evapotranspiration, FAO Irrigation and Drainage Paper 56, Tables 11 and 12",
+      "publisher": "FAO; Allen R.G. et al.",
+      "year": 1998,
+      "url": "https://www.fao.org/3/x0490e/x0490e0b.htm",
+      "notes": "Kc and stage lengths for squash/zucchini."
+    },
+    {
+      "id": "S10",
+      "title": "Effect of spacing and fertilizer levels on flowering and yield of zucchini (Cucurbita pepo L.)",
+      "publisher": "Journal of the Indian Society of Coastal Agricultural Research 35(2); Hem Lata et al.",
+      "year": 2017,
+      "url": "https://epubs.icar.org.in/index.php/JISCAR/article/view/79581",
+      "notes": "Konkan, India; non-African research plot."
+    },
+    {
+      "id": "S11",
+      "title": "Zucchini yield and nitrate accumulation in fruits as a function of the nitrogen fertilization",
+      "publisher": "Bragantia (Instituto Agronomico de Campinas, Brazil)",
+      "year": null,
+      "url": "https://qa1.scielo.br/j/brag/a/czL8PdW65nGXTXFrTpxSnJx/abstract/?lang=en",
+      "notes": "Authors and year not shown on fetched page; non-African."
+    },
+    {
+      "id": "S12",
+      "title": "Diagnostic agraire prealable a la creation d'un centre de formation en agriculture, Nyong-et-Mfoumou, Centre Cameroun",
+      "publisher": "Memoire (Reseau FAR); Cuvilliez M.",
+      "year": 2015,
+      "url": "https://www.reseau-far.com/ressources/files/fichierPDF_2015_RESAD_CUVILLIEZ.pdf",
+      "notes": "Courge on slash-and-burn plots."
+    },
+    {
+      "id": "S13",
+      "title": "Quantification des productions et des echanges de fruits et legumes au Cameroun",
+      "publisher": "Cahiers Agricultures 10:87-94; Temple L.",
+      "year": 2001,
+      "url": "https://revues.cirad.fr/index.php/cahiers-agricultures/article/download/30284/30044/30519",
+      "notes": "No courgette line in 1998 data."
+    },
+    {
+      "id": "S14",
+      "title": "Abidjan: le prix du chou et de la banane plantain en baisse, la courgette, le navet et le concombre en hausse",
+      "publisher": "Fraternite Matin (prices from Conseil National de la lutte contre la vie chere, CNLVC)",
+      "year": 2024,
+      "url": "https://www.fratmat.info/article/237870/economie/microeconomie/abidjan-le-prix-du-chou-et-de-la-banane-plantain-en-baisse-la-courgette-le-navet-et-le-concombre-en-hausse",
+      "notes": "Abidjan, FCFA per kg, price level not stated. 1 Mar 2024."
+    },
+    {
+      "id": "S15",
+      "title": "Abidjan: les prix du chou et du concombre en baisse, ceux de la banane plantain, de la courgette et du navet en hausse",
+      "publisher": "Fraternite Matin (prices from Conseil National de la lutte contre la vie chere, CNLVC)",
+      "year": 2024,
+      "url": "https://www.fratmat.info/article/238286/economie/microeconomie/abidjan-les-prix-du-chou-et-du-concombre-en-baisse-ceux-de-la-banane-plantain-de-la-courgette-et-du-navet-en-hausse",
+      "notes": "Abidjan, FCFA per kg, price level not stated. 16 Mar 2024."
+    },
+    {
+      "id": "S16",
+      "title": "Abidjan: les prix des differents produits vivriers sur le marche (26 octobre 2024)",
+      "publisher": "Fraternite Matin (prices from Conseil National de la lutte contre la vie chere, CNLVC)",
+      "year": 2024,
+      "url": "https://www.fratmat.info/article/1960055/economie/microeconomie/abidjan-les-prix-des-differents-produits-vivriers-sur-le-marche",
+      "notes": "Abidjan, FCFA per kg, price level not stated. 26 Oct 2024."
+    },
+    {
+      "id": "S17",
+      "title": "Abidjan: les prix des differents produits vivriers sur le marche (20 decembre 2024)",
+      "publisher": "Fraternite Matin (prices from Conseil National de la lutte contre la vie chere, CNLVC)",
+      "year": 2024,
+      "url": "https://www.fratmat.info/article/2467359/economie/microeconomie/abidjan-les-prix-des-differents-produits-vivriers-sur-le-marche",
+      "notes": "Abidjan, FCFA per kg, price level not stated. 20 Dec 2024."
+    },
+    {
+      "id": "S18",
+      "title": "Abidjan: le prix des differents produits vivriers",
+      "publisher": "Fraternite Matin (prices from Conseil National de la lutte contre la vie chere, CNLVC)",
+      "year": 2025,
+      "url": "https://www.fratmat.info/article/2632646/economie/microeconomie/abidjan-le-prix-des-differents-produits-vivriers",
+      "notes": "Abidjan, FCFA per kg, price level not stated. Published 27 Mar 2025; table labelled 27 Feb 2025."
+    },
+    {
+      "id": "S19",
+      "title": "Abidjan: les prix des differents produits vivriers sur le marche (aout 2025)",
+      "publisher": "Fraternite Matin (prices from Conseil National de la lutte contre la vie chere, CNLVC)",
+      "year": 2025,
+      "url": "https://www.fratmat.info/article/2635909/economie/abidjan-les-prix-des-differents-produits-vivriers-sur-le-marche",
+      "notes": "Abidjan, FCFA per kg, price level not stated. Published 6 Aug 2025; table labelled 21 Aug 2025."
+    },
+    {
+      "id": "S20",
+      "title": "Abidjan: les prix des differents produits vivriers sur le marche (6 novembre 2025)",
+      "publisher": "Fraternite Matin (prices from Conseil National de la lutte contre la vie chere, CNLVC)",
+      "year": 2025,
+      "url": "https://www.fratmat.info/article/2638015/economie/abidjan-les-prix-des-differents-produits-vivriers-sur-le-marche",
+      "notes": "Abidjan, FCFA per kg, price level not stated. 6 Nov 2025."
+    },
+    {
+      "id": "S21",
+      "title": "COURGETTE (kg), produits de saison",
+      "publisher": "Sika Finance (Cote d'Ivoire)",
+      "year": 2026,
+      "url": "https://www.sikafinance.com/conso/product/courgette_1029",
+      "notes": "Latest prices at 19/07/2026, six cities; currency not printed (FCFA XOF implied); level not stated."
+    },
+    {
+      "id": "S22",
+      "title": "What is the price of zucchini per kilogram in Cameroon today?",
+      "publisher": "Selina Wamucii",
+      "year": 2026,
+      "url": "https://www.selinawamucii.com/insights/prices/cameroon/zucchini/",
+      "notes": "Retail XAF 535.61 to 714.15/kg Yaounde and Douala; wholesale USD 0.60 to 0.80/kg; underlying source not named; low reliability."
+    },
+    {
+      "id": "S23",
+      "title": "HCDA Validated Horticulture Data 2011-2013",
+      "publisher": "Horticultural Crops Development Authority, Kenya (Ministry of Agriculture statistics portal)",
+      "year": 2014,
+      "url": "https://statistics.kilimo.go.ke/files/bookpage/HCDA_Validated_Horticulture_Data_2013-2011_1.pdf",
+      "notes": "Table 12 courgettes, all-county totals; non-standardized collection. Publication year approximate."
+    },
+    {
+      "id": "S24",
+      "title": "Green Zuchini/Courgette vegetable seeds (Vetagro and pulpers, Nairobi)",
+      "publisher": "Jiji Kenya",
+      "year": 2026,
+      "url": "https://jiji.co.ke/nairobi-central/feeds-supplements-seeds/green-zuchini-courgette-34HcmsG5SHyNrTDfj31lHX3I.html",
+      "notes": "Accessed Oct 2026; listing date not shown."
+    },
+    {
+      "id": "S25",
+      "title": "Squash Dark Green Zucchini - 10 Grams (Savannah Petgear Solutions)",
+      "publisher": "Jiji Kenya",
+      "year": 2026,
+      "url": "https://jiji.co.ke/nairobi-central/feeds-supplements-seeds/squash-dark-green-zucchini-10-grams-acd0kIiGiUQ5XMMfvsUefgVr.html",
+      "notes": "Claims 1,000 seeds per 10 g, implausible for zucchini; seed count not used."
+    },
+    {
+      "id": "S26",
+      "title": "Cucurbits production guide",
+      "publisher": "Government of British Columbia, AgriService BC",
+      "year": null,
+      "url": "https://www2.gov.bc.ca/gov/content/industry/agriservice-bc/production-guides/vegetables/cucurbits",
+      "notes": "Temperate guide; about 2.25 kg seed gives transplants for 1 ha of cucumbers and zucchini."
+    },
+    {
+      "id": "S27",
+      "title": "Vegetables: direct-seeded crop seed quantity and yield chart",
+      "publisher": "Johnny's Selected Seeds",
+      "year": null,
+      "url": "https://www.johnnyseeds.com/on/demandware.static/-/Library-Sites-JSSSharedLibrary/default/dwfaed60b0/assets/information/vegetables-direct-seeded-crop-seed-quantity-yield-chart.pdf",
+      "notes": "Zucchini 22,000 to 26,000 seeds per acre direct seeded."
+    }
+  ],
+  "confidence_notes": "OVERALL: medium for agronomy (mostly PROTA plus Kenyan extension-style articles), very low for economics. (1) No Cameroon-specific agronomic, yield, price, cost or margin data for courgette was found; courgette does not appear in Cameroon vegetable flow statistics (S13), consistent with a niche urban/supermarket crop. (2) Prices, cost of production, margins and labour are all null: these are the biggest gaps and require primary data collection in Foumbot, Bafoussam, Douala and Yaounde (supermarkets, hotel and restaurant buyers). (3) Temperature optimum conflicts: PROTA 24 to 29 C day vs Kenyan articles 15 to 22 C. (4) PROTA fertilizer 150-150-300 may be elemental or oxide; Kenyan programme supplies no potassium. (5) Seed rate in kg/ha could not be sourced. (6) Varieties named in the brief (Clarita, Diamant F1, Black Beauty in West Africa) were not found in African sources reached except Black Beauty in Kenya. (7) Research was cut short when the shared web search quota ran out; Infonet-Biovision, Martinique Chamber of Agriculture courgette sheet and FAOSTAT API were blocked. Seed company guides (Technisem, Tropicasem) and ANADER/ISRA courgette sheets remain to be checked. FOLLOW-UP ROUND (Oct 2026): added a Cote d'Ivoire per-kg price series 2024 to 2026 (CNLVC and Sika Finance), a low-reliability Cameroon retail estimate (535 to 714 XAF/kg, Selina Wamucii) with a derived wholesale of about 375 to 500 XAF/kg, Kenya HCDA 2011-13 implied prices (KES 24.5 to 38.9/kg) and yields (9.2 to 10.4 t/ha), Kenyan seed pack prices, and a temperate seed quantity of 2.25 kg/ha (transplants). Still missing: any measured Cameroon farm-gate or wholesale price, a direct-seeding kg/ha from an African source, F1 hybrid seed prices, post-harvest loss %, costs, margins and labour.",
+  "seed_prices": {
+    "notes": "No Cameroon courgette seed price found. Kenyan listings only (KES).",
+    "observations": [
+      {
+        "variety": "Green zucchini (unbranded)",
+        "seller": "Vetagro and pulpers, Nairobi (Jiji)",
+        "country": "Kenya",
+        "year": 2026,
+        "packs": [
+          {
+            "size_g": 10,
+            "price_local": 200
+          },
+          {
+            "size_g": 25,
+            "price_local": 300
+          },
+          {
+            "size_g": 50,
+            "price_local": 500
+          },
+          {
+            "size_g": 100,
+            "price_local": 900
+          }
+        ],
+        "currency": "KES",
+        "notes": "Headline price KES 210 does not match any pack.",
+        "source_ids": [
+          "S24"
+        ]
+      },
+      {
+        "variety": "Dark Green Zucchini (unbranded)",
+        "seller": "Savannah Petgear Solutions, Nairobi (Jiji)",
+        "country": "Kenya",
+        "year": 2026,
+        "packs": [
+          {
+            "size_g": 10,
+            "price_local": 220
+          }
+        ],
+        "currency": "KES",
+        "source_ids": [
+          "S25"
+        ]
+      }
+    ],
+    "derived_seed_cost_per_ha": {
+      "value_local": 20250,
+      "currency": "KES",
+      "notes": "Derived: 2.25 kg/ha (S26) x KES 900 per 100 g (S24) = 22.5 x 900 = KES 20,250/ha (open-pollinated, bulk pack). F1 hybrid prices not found.",
+      "source_ids": [
+        "S26",
+        "S24"
+      ]
+    }
+  }
+}
