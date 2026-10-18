@@ -25,10 +25,10 @@ const SEA_KMH = 14 * 1.852;
 function worldHeroHTML() {
   const Wd = L().world, H = L().home, C = L().cta, S = L().sim;
   const cur = PL_CUR.map(c => '<option' + (PLAN.currency === c ? ' selected' : '') + '>' + c + '</option>').join('');
-  const top = '<div class="wh-h">' + ey(Wd.eyebrow) + '<h1 class="display" tabindex="-1">' + esc(Wd.h1) + '</h1></div>' +
+  const top = '<div class="wh-h"><h1 class="display" tabindex="-1">' + esc(Wd.h1) + '</h1>' + '<div class="hero-links"><a href="#planner" data-cta="hero_plan">' + esc(C.plan) + ' ›</a><a href="#field" data-cta="hero_field">' + esc(C.field) + ' ›</a></div>' + '</div>' +
     '<div class="wh-l"><p class="lead">' + esc(Wd.lead) + '</p>' +
     '<form class="try" data-try novalidate><label for="try-amt">' + esc(H.tryLabel) + '</label><div class="try-row"><div class="field"><input id="try-amt" class="tnum" inputmode="decimal" autocomplete="off" value="' + esc(nf(PLAN.capital)) + '" aria-label="' + esc(H.tryAria) + '"><select aria-label="' + esc(S.currency) + '" data-try-cur>' + cur + '</select></div><button class="btn btn-green" type="submit">' + esc(C.simulate) + ARROW + '</button></div></form>' +
-    '<div class="hero-links"><a href="#planner" data-cta="hero_plan">' + esc(C.plan) + ' →</a><a href="#field" data-cta="hero_field">' + esc(C.field) + ' →</a><span>' + esc(H.tryNote) + '</span></div></div>';
+    '<p class="try-note">' + esc(H.tryNote) + '</p></div>';
   const groups = '<button type="button" class="wm-g" data-g="all" aria-pressed="' + (WMS.group === 'all') + '"><i class="all"></i><span><b>' + esc(Wd.all) + '</b><small>' + esc(Wd.allD) + '</small></span><em></em></button>' +
     WM_G.map(g => { const st = WM_R.find(r => r[1] === g)[2]; return '<button type="button" class="wm-g" data-g="' + g + '" aria-pressed="' + (WMS.group === g) + '"><i class="' + st + '"></i><span><b>' + esc(Wd.groups[g][0]) + '</b><small>' + esc(Wd.groups[g][1]) + '</small></span><em>' + esc(Wd.status[st]) + '</em></button>'; }).join('');
   const map = '<div class="wm wh-map rv" data-wm><div class="wm-main"><div class="wm-stage" data-wm-stage><div class="wm-top"><span class="fx-k">' + esc(Wd.mapTitle) + '</span></div>' +
@@ -65,18 +65,18 @@ function worldMount(root) {
   const nodes = Object.keys(WM_N).map(k => {
     const [x, y] = G.pts[k], kind = WM_N[k][0], g = wmGroupOf(k), st = (WM_R.find(r => r[3] === k) || [0, 0, 'today'])[2];
     let mk;
-    if (kind === 'z') mk = '<circle class="ring" cx="' + x + '" cy="' + y + '" fill="none" stroke="#17794D" stroke-width="1.4" vector-effect="non-scaling-stroke"/><circle class="ring" cx="' + x + '" cy="' + y + '" fill="none" stroke="#17794D" stroke-width="1.4" vector-effect="non-scaling-stroke"/><circle class="mk dot" data-px="6" cx="' + x + '" cy="' + y + '" fill="#17794D" stroke="#fff" stroke-width="2" vector-effect="non-scaling-stroke"/>';
+    if (kind === 'z') mk = '<circle class="ring" cx="' + x + '" cy="' + y + '" fill="none" stroke="#17794D" stroke-width="1.4" vector-effect="non-scaling-stroke"/><circle class="ring" cx="' + x + '" cy="' + y + '" fill="none" stroke="#17794D" stroke-width="1.4" vector-effect="non-scaling-stroke"/><circle class="mk dot z" data-px="6" cx="' + x + '" cy="' + y + '" fill="#17794D" stroke="#fff" stroke-width="2" vector-effect="non-scaling-stroke"/>';
     else if (kind === 'p') mk = '<rect class="mk sq" data-px="5" data-cx="' + x + '" data-cy="' + y + '" x="' + x + '" y="' + y + '" fill="#0B2E59" stroke="#fff" stroke-width="1.5" vector-effect="non-scaling-stroke"/>';
-    else mk = '<circle class="mk dot" data-px="' + (kind === 'c' ? 3.2 : 4.4) + '" cx="' + x + '" cy="' + y + '" fill="#fff" stroke="' + (st === 'today' ? '#17794D' : '#1F5FAD') + '" stroke-width="2" vector-effect="non-scaling-stroke"/>';
+    else mk = '<circle class="mk dot ' + (kind === 'c' ? 'c' : 'm ' + st) + '" data-px="' + (kind === 'c' ? 3.2 : 4.4) + '" cx="' + x + '" cy="' + y + '" fill="#fff" stroke="' + (st === 'today' ? '#17794D' : '#1F5FAD') + '" stroke-width="2" vector-effect="non-scaling-stroke"/>';
     return '<g class="pt" data-n="' + k + '" data-g="' + g + '" tabindex="0" role="button" aria-label="' + esc(Wd.places[k][0] + ', ' + Wd.places[k][1]) + '">' + mk + '<text class="lbl' + (kind === 'c' ? ' sm' : '') + '" data-l="' + k + '" x="' + x + '" y="' + y + '">' + esc(Wd.places[k][0]) + '</text></g>';
   }).join('');
   stage.insertAdjacentHTML('afterbegin', '<svg class="wm-svg" viewBox="0 0 ' + G.W + ' ' + G.H + '" preserveAspectRatio="xMidYMid meet" role="img" aria-label="' + esc(Wd.mapAria) + '">' +
     '<path class="sph" d="' + G.sphere + '"/><path class="grat" d="' + G.grat + '"/><path class="lnd" d="' + G.land + '" opacity="0"/>' +
-    '<path d="' + dotD(0) + '" stroke="#BFCBDA" stroke-linecap="round" stroke-width="2.6" vector-effect="non-scaling-stroke" fill="none"/>' +
-    '<path d="' + dotD(1) + '" stroke="#8FA9C6" stroke-linecap="round" stroke-width="2.8" vector-effect="non-scaling-stroke" fill="none"/>' +
+    '<path class="dk0" d="' + dotD(0) + '" stroke="#BFCBDA" stroke-linecap="round" stroke-width="2.6" vector-effect="non-scaling-stroke" fill="none"/>' +
+    '<path class="dk1" d="' + dotD(1) + '" stroke="#8FA9C6" stroke-linecap="round" stroke-width="2.8" vector-effect="non-scaling-stroke" fill="none"/>' +
     '<path class="afo" d="' + G.af + '" fill="none" stroke="#B9C7D7" stroke-width=".8" vector-effect="non-scaling-stroke" opacity="0"/>' +
     '<path class="cmo" d="' + G.cm + '"/>' +
-    '<path d="' + dotD(2) + '" stroke="#17794D" stroke-linecap="round" stroke-width="3" vector-effect="non-scaling-stroke" fill="none"/>' +
+    '<path class="dk2" d="' + dotD(2) + '" stroke="#17794D" stroke-linecap="round" stroke-width="3" vector-effect="non-scaling-stroke" fill="none"/>' +
     '<g data-routes>' + routes + '</g><g data-parts></g><g data-hits>' + hits + '</g><g data-nodes>' + nodes + '</g></svg>');
   const svg = $('svg.wm-svg', stage), T = tip(stage);
   const parts = $('[data-parts]', svg), afo = $('.afo', svg), lnd = $('.lnd', svg), rings = $$('.ring', svg);
@@ -87,11 +87,11 @@ function worldMount(root) {
   const iLbl = { foumbot: [10, -8, 'start'], douala: [-10, 5, 'end'], kribi: [-10, 6, 'end'], yaounde: [10, 6, 'start'], kyeossi: [10, 14, 'start'], libreville: [10, 6, 'start'], bata: [-10, 5, 'end'], ndjamena: [-10, 5, 'end'], bangui: [-10, -10, 'end'], penja: [-10, -6, 'end'] };
   const iPts = Object.entries(I.pts).map(([k, [x, y]]) => {
     const kind = (WM_N[k] || ['c'])[0], [dx, dy, a] = iLbl[k];
-    const mk = kind === 'z' ? '<circle cx="' + x + '" cy="' + y + '" r="9" fill="#17794D" stroke="#fff" stroke-width="3"/>' : kind === 'p' ? '<rect x="' + (x - 7) + '" y="' + (y - 7) + '" width="14" height="14" transform="rotate(45 ' + x + ' ' + y + ')" fill="#0B2E59" stroke="#fff" stroke-width="2.5"/>' : k === 'penja' ? '<circle cx="' + x + '" cy="' + y + '" r="6" fill="#A87A1E" stroke="#fff" stroke-width="2.5"/>' : '<circle cx="' + x + '" cy="' + y + '" r="7" fill="#fff" stroke="#17794D" stroke-width="3"/>';
-    return '<g class="pt" data-g="' + (k === 'penja' ? 'europe' : wmGroupOf(k)) + '">' + mk + '<text x="' + (x + dx) + '" y="' + (y + dy) + '" text-anchor="' + a + '" font-size="' + (kind === 'z' ? 23 : 20) + '" font-weight="' + (kind === 'z' || kind === 'p' ? 700 : 600) + '" fill="#0B2E59" paint-order="stroke" stroke="#fff" stroke-width="6" stroke-linejoin="round" font-family="Inter, sans-serif">' + esc(Wd.places[k][0]) + '</text></g>';
+    const mk = kind === 'z' ? '<circle class="iz" cx="' + x + '" cy="' + y + '" r="9" stroke-width="3"/>' : kind === 'p' ? '<rect class="ip" x="' + (x - 7) + '" y="' + (y - 7) + '" width="14" height="14" transform="rotate(45 ' + x + ' ' + y + ')" stroke-width="2.5"/>' : k === 'penja' ? '<circle class="ib" cx="' + x + '" cy="' + y + '" r="6" stroke-width="2.5"/>' : '<circle class="ic" cx="' + x + '" cy="' + y + '" r="7" stroke-width="3"/>';
+    return '<g class="pt" data-g="' + (k === 'penja' ? 'europe' : wmGroupOf(k)) + '">' + mk + '<text x="' + (x + dx) + '" y="' + (y + dy) + '" text-anchor="' + a + '" font-size="' + (kind === 'z' ? 23 : 20) + '" font-weight="' + (kind === 'z' || kind === 'p' ? 700 : 600) + '" fill="#0B2E59" paint-order="stroke" stroke="#fff" stroke-width="6" stroke-linejoin="round" >' + esc(Wd.places[k][0]) + '</text></g>';
   }).join('');
-  insetBox.insertAdjacentHTML('beforeend', '<svg viewBox="0 0 ' + I.W + ' ' + I.H + '" role="img" aria-label="' + esc(Wd.insetAria) + '"><rect width="' + I.W + '" height="' + I.H + '" fill="#EAF2FA"/>' +
-    I.countries.map(c => '<path d="' + c.d + '" fill="' + (c.id === '120' ? '#E6F2EA' : '#FFFFFF') + '" stroke="' + (c.id === '120' ? '#17794D' : '#BFCBDA') + '" stroke-width="' + (c.id === '120' ? 2 : 1.2) + '"/>').join('') +
+  insetBox.insertAdjacentHTML('beforeend', '<svg viewBox="0 0 ' + I.W + ' ' + I.H + '" role="img" aria-label="' + esc(Wd.insetAria) + '"><rect class="sea" width="' + I.W + '" height="' + I.H + '"/>' +
+    I.countries.map(c => '<path class="ct' + (c.id === '120' ? ' cm' : '') + '" d="' + c.d + '" stroke-width="' + (c.id === '120' ? 2 : 1.2) + '"/>').join('') +
     '<g class="wm-svg">' + iRoutes + '</g><g data-iparts></g>' + iPts + '</svg>');
   const isvg = $('svg', insetBox), iparts = $('[data-iparts]', isvg);
 
@@ -166,11 +166,11 @@ function worldMount(root) {
     WM_R.forEach(([k, g, st]) => {
       const p = $('path.rt[data-r="' + k + '"]', svg), s = sample(p, 1.5), sea = G.routes[k].mode === 'sea';
       const n = sea ? Math.max(2, Math.min(5, Math.round(s.len / 260))) : 2;
-      for (let i = 0; i < n; i++) { const c = D.createElementNS(NS, 'circle'); c.setAttribute('class', 'part'); c.setAttribute('fill', st === 'today' ? '#17794D' : '#1F5FAD'); parts.appendChild(c); flows.push({ c, s, off: i / n, v: sea ? 46 : 14, k, g, inset: false }); }
+      for (let i = 0; i < n; i++) { const c = D.createElementNS(NS, 'circle'); c.setAttribute('class', 'part ' + st); parts.appendChild(c); flows.push({ c, s, off: i / n, v: sea ? 46 : 14, k, g, inset: false }); }
     });
     $$('path.rt', isvg).forEach(p => {
       const k = p.dataset.r, s = sample(p, 3), sea = k.startsWith('sea');
-      for (let i = 0; i < 2; i++) { const c = D.createElementNS(NS, 'circle'); c.setAttribute('r', 4.2); c.setAttribute('fill', sea ? '#1F5FAD' : '#17794D'); c.setAttribute('stroke', '#fff'); c.setAttribute('stroke-width', 1.5); iparts.appendChild(c); flows.push({ c, s, off: i / 2, v: 60, k, g: p.dataset.g, inset: true }); }
+      for (let i = 0; i < 2; i++) { const c = D.createElementNS(NS, 'circle'); c.setAttribute('r', 4.2); c.setAttribute('class', 'ipart' + (sea ? ' sea' : '')); c.setAttribute('stroke-width', 1.5); iparts.appendChild(c); flows.push({ c, s, off: i / 2, v: 60, k, g: p.dataset.g, inset: true }); }
     });
   }
   let raf = 0, running = false, t0 = performance.now(), last = 0;

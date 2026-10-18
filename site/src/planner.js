@@ -19,7 +19,7 @@ const LV = () => L().planner.levels;
 function plannerFormHTML(compact) {
   const P = L().planner, S = PLAN;
   const cur = PL_CUR.map(c => '<option' + (S.currency === c ? ' selected' : '') + '>' + c + '</option>').join('');
-  const crops = Object.keys(KB.crops).map(k => '<button type="button" data-pcrop="' + k + '" aria-pressed="' + (S.crop === k) + '">' + esc(tl(KB.crops[k].name)) + '<span class="mono" style="display:block;font-size:10px;color:var(--fg-3);letter-spacing:.06em;margin-top:2px">' + esc(tl(KB.crops[k].badge).toUpperCase()) + '</span></button>').join('');
+  const crops = Object.keys(KB.crops).map(k => '<button type="button" data-pcrop="' + k + '" aria-pressed="' + (S.crop === k) + '">' + esc(tl(KB.crops[k].name)) + '<span class="mono" style="display:block;font-size:11.5px;color:var(--fg-3);font-weight:400;margin-top:2px">' + esc(tl(KB.crops[k].badge)) + '</span></button>').join('');
   const ref = KB.crops[S.crop].price.reference_xaf_kg;
   const water = PL_WATER.map(w => '<label class="wopt"><input type="radio" name="pwater" value="' + w + '"' + (S.water === w ? ' checked' : '') + '><span><b>' + esc(P.water[w][0]) + '</b><small>' + esc(P.water[w][1]) + '</small></span></label>').join('');
   return '<form class="sim-in planner-in" data-planner novalidate onsubmit="return false">' +
@@ -94,12 +94,12 @@ function tabReturn(r) {
   }
   const max = Math.max(...Object.values(sc).map(s => Math.abs(s.margin)), 1);
   const W = 640, H = 210, X0 = 150, mid = X0 + (W - X0 - 20) / 2, half = (W - X0 - 20) / 2;
-  let svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(P.chartMargins) + '"><line x1="' + mid + '" x2="' + mid + '" y1="6" y2="' + (H - 18) + '" stroke="#CED8E4"/>';
+  let svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(P.chartMargins) + '"><line x1="' + mid + '" x2="' + mid + '" y1="6" y2="' + (H - 18) + '" stroke="#C0D7CB"/>';
   ['good', 'average', 'poor', 'failure'].forEach((k, i) => {
     const s = sc[k], y = 14 + i * 46, w = Math.abs(s.margin) / max * half, x = s.margin >= 0 ? mid : mid - w;
-    svg += '<text x="0" y="' + (y + 16) + '" font-size="12.5" fill="#3D5169">' + esc(P.scen[k][0]) + '</text><rect class="grow" data-tip="' + esc(P.scen[k][0] + ' · ' + fmtCur(s.margin).replace(/<[^>]+>/g, '')) + '" x="' + x + '" y="' + y + '" width="' + Math.max(2, w) + '" height="24" rx="4" fill="' + (s.margin >= 0 ? '#17794D' : '#B23A2A') + '" opacity="' + (k === 'average' ? 1 : .75) + '"/>';
+    svg += '<text x="0" y="' + (y + 16) + '" font-size="12.5" fill="#3B564A">' + esc(P.scen[k][0]) + '</text><rect class="grow" data-tip="' + esc(P.scen[k][0] + ' · ' + fmtCur(s.margin).replace(/<[^>]+>/g, '')) + '" x="' + x + '" y="' + y + '" width="' + Math.max(2, w) + '" height="24" rx="4" fill="' + (s.margin >= 0 ? '#127A5B' : '#B0402D') + '" opacity="' + (k === 'average' ? 1 : .75) + '"/>';
   });
-  svg += '<text x="' + mid + '" y="' + (H - 4) + '" font-size="10.5" text-anchor="middle" fill="#66788E" font-family="IBM Plex Mono, monospace">0</text></svg>';
+  svg += '<text x="' + mid + '" y="' + (H - 4) + '" font-size="10.5" text-anchor="middle" fill="#667E73" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif">0</text></svg>';
   const be = r.breakEven;
   return scenarioCards(r) +
     '<div class="g2" style="margin-top:12px"><div class="card"><div class="blk-t"><h4>' + esc(P.chartMargins) + '</h4><span>' + esc(P.perSeason) + '</span></div><div class="chart-box nomin" data-ptips>' + svg + '</div></div>' +
@@ -114,7 +114,7 @@ function tabBudget(r) {
   const order = ['land', 'land_preparation', 'seed', 'nursery', 'fertilizer', 'amendment', 'foliar', 'fungicide', 'insecticide', 'herbicide', 'stakes', 'trellis', 'irrigation', 'labour', 'advice', 'harvest', 'equipment'];
   const keys = Object.keys(groups).sort((a, b) => (order.indexOf(a) + 99 * (order.indexOf(a) < 0)) - (order.indexOf(b) + 99 * (order.indexOf(b) < 0)));
   const totals = keys.map(k => [k, groups[k].reduce((a, l) => a + l.total, 0)]).concat([['reserve', B.reserve]]);
-  const colors = ['#0B2E59', '#17794D', '#1F5FAD', '#A87A1E', '#3E9B6C', '#3B7DD8', '#D2A84A', '#0F5F3C', '#8DB9E8', '#6E8BAA', '#9BD0B3', '#46607F', '#C7893A', '#B9C9DA', '#5E7C6B', '#2C5F8F', '#E3CB8C', '#7A8BA0'];
+  const colors = ['#0A3D2E', '#127A5B', '#2B7A8F', '#B0832A', '#1A9E73', '#3F95AC', '#D2A84A', '#0D5C44', '#9ACFDC', '#6E9A8A', '#9BD0B3', '#3E6B5A', '#C7893A', '#B9D3C7', '#5E7C6B', '#2C6F7F', '#E3CB8C', '#7A9488'];
   const tot = B.total || 1;
   const bar = '<div class="split" role="img" aria-label="' + esc(P.tabs.budget) + '">' + totals.map(([k, v], i) => '<span style="width:' + (v / tot * 100).toFixed(2) + '%;background:' + colors[i % colors.length] + '" title="' + esc(P.cats[k] || k) + '"></span>').join('') + '</div>' +
     '<div class="split-legend">' + totals.map(([k, v], i) => '<div><span><i style="background:' + colors[i % colors.length] + '"></i>' + esc(P.cats[k] || k) + '</span><b>' + fmtCur(v) + ' <em>' + nf(v / tot * 100, 0) + '%</em></b></div>').join('') + '</div>';
@@ -143,11 +143,11 @@ function tabWater(r) {
   const P = L().planner, wb = r.water.balance, lv = LV();
   const rows = wb.rows, W = 640, H = 200, X0 = 40, X1 = W - 10, max = Math.max(...rows.map(x => Math.max(x.etc, x.peff)), 1), bw = (X1 - X0) / rows.length;
   let svg = '<svg viewBox="0 0 ' + W + ' ' + (H + 26) + '" role="img" aria-label="' + esc(P.waterChart) + '">';
-  [0, 0.5, 1].forEach(f => { const y = H - f * (H - 10); svg += '<line x1="' + X0 + '" x2="' + X1 + '" y1="' + y + '" y2="' + y + '" stroke="#E2E8F0"/><text x="' + (X0 - 6) + '" y="' + (y + 4) + '" font-size="10" text-anchor="end" fill="#66788E" font-family="IBM Plex Mono, monospace">' + nf(max * f, 0) + '</text>'; });
+  [0, 0.5, 1].forEach(f => { const y = H - f * (H - 10); svg += '<line x1="' + X0 + '" x2="' + X1 + '" y1="' + y + '" y2="' + y + '" stroke="#D5E6DD"/><text x="' + (X0 - 6) + '" y="' + (y + 4) + '" font-size="10" text-anchor="end" fill="#667E73" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif">' + nf(max * f, 0) + '</text>'; });
   rows.forEach((x, i) => {
     const xe = X0 + i * bw + bw * 0.12, w = bw * 0.36, he = x.etc / max * (H - 10), hp = x.peff / max * (H - 10);
-    svg += '<rect data-tip="' + esc(monthName(x.month) + ' · ETc ' + nf(x.etc, 0) + ' mm · ' + P.rainEff + ' ' + nf(x.peff, 0) + ' mm · ' + P.deficit + ' ' + nf(x.deficit, 0) + ' mm') + '" x="' + xe + '" y="' + (H - he) + '" width="' + w + '" height="' + he + '" fill="#17794D" rx="2"/><rect x="' + (xe + w + 2) + '" y="' + (H - hp) + '" width="' + w + '" height="' + hp + '" fill="#1F5FAD" opacity=".75" rx="2"/>' +
-      '<text x="' + (X0 + i * bw + bw / 2) + '" y="' + (H + 16) + '" font-size="10.5" text-anchor="middle" fill="#66788E" font-family="IBM Plex Mono, monospace">' + esc(monthName(x.month, 'short')) + '</text>';
+    svg += '<rect data-tip="' + esc(monthName(x.month) + ' · ETc ' + nf(x.etc, 0) + ' mm · ' + P.rainEff + ' ' + nf(x.peff, 0) + ' mm · ' + P.deficit + ' ' + nf(x.deficit, 0) + ' mm') + '" x="' + xe + '" y="' + (H - he) + '" width="' + w + '" height="' + he + '" fill="#127A5B" rx="2"/><rect x="' + (xe + w + 2) + '" y="' + (H - hp) + '" width="' + w + '" height="' + hp + '" fill="#2B7A8F" opacity=".75" rx="2"/>' +
+      '<text x="' + (X0 + i * bw + bw / 2) + '" y="' + (H + 16) + '" font-size="10.5" text-anchor="middle" fill="#667E73" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif">' + esc(monthName(x.month, 'short')) + '</text>';
   });
   svg += '</svg>';
   const rk = r.risk, item = (k, lvl, text) => '<div class="rk lv' + lvl + '"><div class="rk-h"><span>' + esc(P.riskNames[k]) + '</span><b>' + esc(lv[lvl]) + '</b></div><p>' + esc(text) + '</p></div>';
@@ -160,7 +160,7 @@ function tabWater(r) {
     '<div class="rk"><div class="rk-h"><span>' + esc(P.riskNames.context) + '</span><b>' + esc(P.check) + '</b></div><p>' + esc(P.riskText.context) + '</p></div></div>';
   const win = '<div class="wins" role="group" aria-label="' + esc(P.windowsT) + '">' + r.windows.map(w => '<button type="button" data-pwin="' + w.month + '" class="win lv' + Math.min(2, Math.floor(w.risk.score / 2)) + (w.month === r.bestMonth ? ' best' : '') + (new Date(PLAN.start + 'T00:00:00Z').getUTCMonth() === w.month ? ' cur' : '') + '" title="' + esc(monthName(w.month) + ' · ' + P.riskScore + ' ' + w.risk.score + '/8') + '"><span>' + esc(monthName(w.month, 'short')) + '</span><small>' + w.risk.score + '</small></button>').join('') + '</div><p class="small muted" style="margin-top:8px">' + esc(P.bestLine(monthName(r.bestMonth))) + '</p>';
   const wl = r.water.grossM3 > 0 ? '<p class="small muted">' + esc(P.waterVolume(nf(r.water.grossM3, 0), nf(r.water.balance.deficit, 0))) + '</p>' : '';
-  return '<div class="card"><div class="blk-t"><h4>' + esc(P.waterChart) + '</h4><span>' + esc(P.waterSub) + '</span></div><div class="chart-box nomin" data-ptips>' + svg + '</div><div class="risk-legend"><span><i style="background:#17794D"></i>' + esc(P.cropNeed) + '</span><span><i style="background:#1F5FAD"></i>' + esc(P.rainEff) + '</span></div>' + wl + '</div>' +
+  return '<div class="card"><div class="blk-t"><h4>' + esc(P.waterChart) + '</h4><span>' + esc(P.waterSub) + '</span></div><div class="chart-box nomin" data-ptips>' + svg + '</div><div class="risk-legend"><span><i style="background:#127A5B"></i>' + esc(P.cropNeed) + '</span><span><i style="background:#2B7A8F"></i>' + esc(P.rainEff) + '</span></div>' + wl + '</div>' +
     '<h5 class="sub">' + esc(P.risksT) + '</h5>' + risks + '<h5 class="sub">' + esc(P.windowsT) + '</h5>' + win;
 }
 

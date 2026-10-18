@@ -24,7 +24,7 @@ const monthName = (m, style = 'long') => {
   return s.charAt(0).toUpperCase() + s.slice(1);
 };
 const ARROW = '<svg class="arr" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-const LOGO = '<svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#0B2E59"/><path d="M8.5 23.5C8.5 14.6 14.6 8.5 23.5 8.5c0 8.9-6.1 15-15 15Z" fill="rgba(95,192,142,.18)" stroke="#5FC08E" stroke-width="1.6"/><path d="M8.5 23.5 18.6 13.4" stroke="#E0B24A" stroke-width="1.6" stroke-linecap="round"/><circle cx="18.6" cy="13.4" r="2" fill="#E0B24A"/></svg>';
+const LOGO = '<svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#127A5B"/><path d="M8.5 23.5C8.5 14.6 14.6 8.5 23.5 8.5c0 8.9-6.1 15-15 15Z" fill="rgba(255,255,255,.16)" stroke="#fff" stroke-width="1.6"/><path d="M8.5 23.5 18.6 13.4" stroke="#E8C266" stroke-width="1.6" stroke-linecap="round"/><circle cx="18.6" cy="13.4" r="2" fill="#E8C266"/></svg>';
 
 /* ---------- Analytics abstraction ----------
    Events are queued in memory only. No provider is configured in this build, so nothing leaves the browser.
@@ -177,7 +177,7 @@ function formHTML(type, id, opts) {
   const def = FORM_DEFS[type], F = L().form, N = L().newsletter;
   const vals = FORM_STATE[id] || (FORM_STATE[id] = {});
   const hp = '<div class="hp" aria-hidden="true"><label for="' + id + '-website">' + esc(F.hp) + '</label><input id="' + id + '-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>';
-  const banner = opts.compact ? '<p class="small faint" data-preview hidden style="font-size:12px"><span style="color:var(--warn)">●</span> ' + esc(F.previewShort) + '</p>' : '<div class="preview-banner full" data-preview hidden><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" style="flex:none;margin-top:2px"><circle cx="8" cy="8" r="7" fill="none" stroke="#A86B12"/><path d="M8 4.5v4.2M8 11v.5" stroke="#A86B12" stroke-width="1.6" stroke-linecap="round"/></svg><div><b>' + esc(F.previewBanner) + '</b>' + esc(F.previewText) + '</div></div>';
+  const banner = opts.compact ? '<p class="small faint" data-preview hidden style="font-size:12px"><span style="color:var(--warn)">●</span> ' + esc(F.previewShort) + '</p>' : '<div class="preview-banner full" data-preview hidden><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" style="flex:none;margin-top:2px"><circle cx="8" cy="8" r="7" fill="none" stroke="#A26A16"/><path d="M8 4.5v4.2M8 11v.5" stroke="#A26A16" stroke-width="1.6" stroke-linecap="round"/></svg><div><b>' + esc(F.previewBanner) + '</b>' + esc(F.previewText) + '</div></div>';
   const btnLabel = type === 'newsletter' ? N.btn : F[def.submit];
   const ts = API_MODE && CFG.turnstileSiteKey ? '<div class="full" data-ts></div>' : '';
   if (opts.compact) {

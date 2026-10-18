@@ -1,9 +1,9 @@
 /* ---------- Page templates, router, chrome ---------- */
 const NAV = ['planner', 'field', 'platform', 'intelligence', 'solutions', 'data', 'impact', 'about', 'contact'];
-const ey = (t) => '<div class="eyebrow"><span class="dot"></span>' + esc(t) + '</div>';
-const head = (e, h, lead) => '<div class="sec-head rv">' + ey(e) + '<h2 class="h2">' + esc(h) + '</h2>' + (lead ? '<p class="lead">' + esc(lead) + '</p>' : '<span></span>') + '</div>';
+const ey = () => ''; // v4: no label or rule above titles
+const head = (e, h, lead) => '<div class="sec-head rv"><h2 class="h2">' + esc(h) + '</h2>' + (lead ? '<p class="lead">' + esc(lead) + '</p>' : '<span></span>') + '</div>';
 const sec = (inner, attrs) => '<section class="sec"' + (attrs || '') + '><div class="wrap">' + inner + '</div></section>';
-const pageHero = (e, h, lead, extra) => '<section class="page-hero"><div class="grid-bg" aria-hidden="true"></div><div class="wrap" style="position:relative">' + ey(e) + '<h1 class="display" tabindex="-1">' + esc(h) + '</h1><p class="lead">' + esc(lead) + '</p>' + (extra || '') + '</div></section>';
+const pageHero = (e, h, lead, extra) => '<section class="page-hero"><div class="wrap" style="position:relative"><h1 class="display" tabindex="-1">' + esc(h) + '</h1><p class="lead">' + esc(lead) + '</p>' + (extra || '') + '</div></section>';
 const rel = (k) => { const B = L().badge; const m = { mvp: ['real', B.mvp], v2: ['plan', B.v2], v3: ['plan', B.v3], v4: ['plan', B.v4], grow: ['real', L().intel.grow] }[k]; return '<span class="badge ' + m[0] + '">' + esc(m[1]) + '</span>'; };
 const table = (cols, rows, cls) => '<div class="tbl-wrap rv"><table class="tbl ' + (cls || '') + '"><thead><tr>' + cols.map(c => '<th scope="col">' + esc(c) + '</th>').join('') + '</tr></thead><tbody>' + rows.map(r => '<tr>' + r.map((c, i) => i === 0 ? '<td>' + c + '</td>' : '<td>' + c + '</td>').join('') + '</tr>').join('') + '</tbody></table></div>';
 const ctaBand = () => { const H = L().home, C = L().cta; return sec('<div class="cta-band rv"><div><h2 class="h2" style="max-width:20ch">' + esc(H.cH) + '</h2><p class="lead" style="margin-top:16px">' + esc(H.cLead) + '</p></div><div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-primary" href="#demo">' + esc(C.demo) + ARROW + '</a><a class="btn btn-ghost" href="#contact">' + esc(C.contact) + '</a></div></div>'); };
@@ -16,10 +16,10 @@ const PAGES = {
       const H = L().home;
       const evidence = sec(fieldHomeHTML(), ' id="evidence"');
       const problem = sec(head(H.pEyebrow, H.pH, H.pLead) +
-        '<div class="cols-5 rv">' + H.factors.map((f, i) => '<div><div class="fx-k">0' + (i + 1) + ' · ' + esc(f.k) + '</div><div class="fx-t">' + esc(f.t) + '</div><p class="fx-d">' + esc(f.d) + '</p><div class="fx-m"><b>' + esc(H.consequence) + '</b>' + esc(f.m) + '</div></div>').join('') + '</div>' +
+        '<div class="cols-5 rv">' + H.factors.map((f, i) => '<div><div class="fx-k">' + esc(f.k) + '</div><div class="fx-t">' + esc(f.t) + '</div><p class="fx-d">' + esc(f.d) + '</p><div class="fx-m"><b>' + esc(H.consequence) + '</b>' + esc(f.m) + '</div></div>').join('') + '</div>' +
         '<div class="stats rv">' + H.stats.map(s => '<div class="stat"><div class="v">' + esc(s.v) + '<small>' + esc(s.u) + '</small></div><div class="l">' + esc(s.l) + '</div></div>').join('') + '</div><p class="src">' + H.statsSrc + '</p>' +
         '<p class="close-line rv">' + esc(H.pClose) + '</p>');
-      const how = sec(head(H.hEyebrow, H.hH, H.hLead) + '<div class="pipe rv"><span class="pulse" aria-hidden="true"></span>' + H.steps.map((s, i) => '<div class="st"><div class="n">0' + (i + 1) + '</div><h3>' + esc(s.t) + '</h3><p>' + esc(s.d) + '</p></div>').join('') + '</div>');
+      const how = sec(head(H.hEyebrow, H.hH, H.hLead) + '<div class="pipe rv"><span class="pulse" aria-hidden="true"></span>' + H.steps.map((s, i) => '<div class="st"><div class="n">' + (i + 1) + '</div><h3>' + esc(s.t) + '</h3><p>' + esc(s.d) + '</p></div>').join('') + '</div>');
       const sim = sec(head(H.sEyebrow, H.sH, H.sLead) + '<div class="panel planner home-planner" data-plroot>' + plannerFormHTML(true) + '<div class="planner-out" data-pout aria-live="polite"></div></div>', ' id="simulator"');
       const tiers = sec(head(H.tEyebrow, H.tH, H.tLead) + tiersHTML());
       return worldHeroHTML() + evidence + problem + how + sim + tiers + nlBand('nl-home') + ctaBand();
@@ -60,10 +60,10 @@ const PAGES = {
       const P = L().platform, C = L().cta;
       return pageHero(P.eyebrow, P.h1, P.lead) +
         sec(head('01 · ' + P.eyebrow, P.waysH, P.currency) + '<div class="g2 rv">' + P.ways.map(w => '<div class="card" style="padding:28px"><div class="top"><span class="badge real">' + esc(w.k) + '</span></div><p class="quote">' + esc(w.q) + '</p><p style="margin-top:14px">' + esc(w.d) + '</p></div>').join('') + '</div><div style="margin-top:24px"><a class="btn btn-ghost" href="#home" data-to-sim>' + esc(C.sim) + ARROW + '</a></div>') +
-        sec(head('02 · ' + P.planEyebrow, P.planH, P.planLead) + '<div class="plan-grid rv">' + P.plan.map(([t, d, live], i) => '<div><span class="lede-num">' + String(i + 1).padStart(2, '0') + '</span><div><h3>' + esc(t) + '</h3><p>' + esc(d) + '</p></div>' + (live ? '<span class="badge real">' + esc(P.live) + '</span>' : '<span></span>') + '</div>').join('') + '</div>') +
+        sec(head('02 · ' + P.planEyebrow, P.planH, P.planLead) + '<div class="plan-grid rv">' + P.plan.map(([t, d, live], i) => '<div><span class="lede-num">' + (i + 1) + '</span><div><h3>' + esc(t) + '</h3><p>' + esc(d) + '</p></div>' + (live ? '<span class="badge real">' + esc(P.live) + '</span>' : '<span></span>') + '</div>').join('') + '</div>') +
         sec(head('03 · ' + P.prodEyebrow, P.prodH) + table(P.prodCols, P.products.map(r => ['<b>' + esc(r[0]) + '</b>', esc(r[1]), esc(r[2]), rel(r[3])]))) +
         sec(head('04 · ' + P.modEyebrow, P.modH) + '<div class="g3 rv">' + P.modules.map(([t, d, r], i) => '<div class="card"><div class="top"><span class="idx">M' + String(i + 1).padStart(2, '0') + '</span>' + rel(r) + '</div><h3>' + esc(t) + '</h3><p>' + esc(d) + '</p></div>').join('') + '</div>') +
-        sec(head('05 · ' + P.cycleEyebrow, P.cycleH) + '<div class="pipe c3 rv"><span class="pulse" aria-hidden="true"></span>' + P.cycle.map(([t, d], i) => '<div class="st"><div class="n">0' + (i + 1) + '</div><h3>' + esc(t) + '</h3><p>' + esc(d) + '</p></div>').join('') + '</div>') +
+        sec(head('05 · ' + P.cycleEyebrow, P.cycleH) + '<div class="pipe c3 rv"><span class="pulse" aria-hidden="true"></span>' + P.cycle.map(([t, d], i) => '<div class="st"><div class="n">' + (i + 1) + '</div><h3>' + esc(t) + '</h3><p>' + esc(d) + '</p></div>').join('') + '</div>') +
         sec(head('06 · ' + P.prinEyebrow, P.prinH) + '<div class="tiers rv">' + P.principles.map(([t, d]) => '<div><h3 style="font-size:19px">' + esc(t) + '</h3><p>' + esc(d) + '</p></div>').join('') + '</div>') +
         ctaBand();
     },
@@ -77,8 +77,8 @@ const PAGES = {
         sec(head('01 · ' + I.archEyebrow, I.archH, I.archLead) + '<div class="rv">' + archHTML() + '</div>') +
         sec(head('02 · ' + I.layersEyebrow, I.layersH) + table(I.layerCols, I.layers.map(r => ['<b>' + esc(r[0]) + '</b>', esc(r[1]), esc(r[2]), rel(r[3])]))) +
         sec(head('03 · ' + I.modelsEyebrow, I.modelsH) + table([LANG === 'fr' ? 'Modèle' : 'Model'].concat(I.modelCols), I.models.map((r, i) => ['<b>' + esc(I.modelNames[i]) + '</b>', esc(r[0]), esc(r[1]), esc(r[2]), esc(r[3])]))) +
-        sec(head('04 · ' + I.xaiEyebrow, I.xaiH, I.xaiLead) + '<div class="xai rv"><div class="card" style="padding:26px"><div class="top"><span class="idx">' + esc(I.xaiCard.toUpperCase()) + '</span><span class="badge demo">' + esc(L().badge.demo) + '</span></div><div style="display:flex;align-items:center;gap:10px"><span style="width:10px;height:10px;border-radius:50%;background:var(--crit);box-shadow:0 0 0 5px rgba(226,106,82,.12)"></span><h3 style="font-size:22px">' + esc(I.xaiFlag) + '</h3></div><p style="font-size:17px;color:var(--fg);margin-top:14px;line-height:1.5">' + esc(I.xaiText) + '</p></div>' +
-          '<div class="card" style="padding:26px"><div class="top"><span class="idx">' + esc(I.xaiDrivers.toUpperCase()) + '</span></div>' + I.drivers.map(([t, dir], i) => '<div class="drv"><span>' + esc(t) + '</span><span class="bar" title="' + esc(dir > 0 ? I.raises : I.lowers) + '"><i style="' + (dir > 0 ? 'left:50%;width:38%;background:var(--crit)' : 'right:50%;width:38%;background:var(--green)') + '"></i></span></div>').join('') + '<div style="display:flex;justify-content:space-between;font-size:11.5px;color:var(--fg-3);margin-top:8px" class="mono"><span>← ' + esc(I.lowers) + '</span><span>' + esc(I.raises) + ' →</span></div><p class="small faint" style="margin-top:14px">' + esc(I.xaiNote) + '</p></div></div>') +
+        sec(head('04 · ' + I.xaiEyebrow, I.xaiH, I.xaiLead) + '<div class="xai rv"><div class="card" style="padding:26px"><div class="top"><span class="idx">' + esc(I.xaiCard) + '</span><span class="badge demo">' + esc(L().badge.demo) + '</span></div><div style="display:flex;align-items:center;gap:10px"><span style="width:10px;height:10px;border-radius:50%;background:var(--crit);box-shadow:0 0 0 5px rgba(226,106,82,.12)"></span><h3 style="font-size:22px">' + esc(I.xaiFlag) + '</h3></div><p style="font-size:17px;color:var(--fg);margin-top:14px;line-height:1.5">' + esc(I.xaiText) + '</p></div>' +
+          '<div class="card" style="padding:26px"><div class="top"><span class="idx">' + esc(I.xaiDrivers) + '</span></div>' + I.drivers.map(([t, dir], i) => '<div class="drv"><span>' + esc(t) + '</span><span class="bar" title="' + esc(dir > 0 ? I.raises : I.lowers) + '"><i style="' + (dir > 0 ? 'left:50%;width:38%;background:var(--crit)' : 'right:50%;width:38%;background:var(--green)') + '"></i></span></div>').join('') + '<div style="display:flex;justify-content:space-between;font-size:11.5px;color:var(--fg-3);margin-top:8px" class="mono"><span>← ' + esc(I.lowers) + '</span><span>' + esc(I.raises) + ' →</span></div><p class="small faint" style="margin-top:14px">' + esc(I.xaiNote) + '</p></div></div>') +
         sec(head('05 · ' + I.paceEyebrow, I.paceH, I.paceLead) + '<div class="pipe c4 rv"><span class="pulse" aria-hidden="true"></span>' + I.pace.map(([t, d]) => '<div class="st"><div class="n">' + esc(t.charAt(0)) + '</div><h3>' + esc(t) + '</h3><p>' + esc(d) + '</p></div>').join('') + '</div>') +
         sec(head('06 · ' + I.raiEyebrow, I.raiH) + '<ul class="list-check rv" style="max-width:720px">' + I.rai.map(t => '<li>' + esc(t) + '</li>').join('') + '</ul>') +
         ctaBand();
@@ -92,7 +92,7 @@ const PAGES = {
       return pageHero(S.eyebrow, S.h1, S.lead) +
         sec(head('01 · ' + S.who, S.whoH) + '<div class="rv"><div class="tabs" role="tablist" aria-label="' + esc(S.who) + '">' + S.personas.map((p, i) => '<button type="button" role="tab" id="tab-' + i + '" aria-controls="persona" aria-selected="' + (i === 0) + '" tabindex="' + (i === 0 ? 0 : -1) + '" data-p="' + i + '">' + esc(p[0]) + '</button>').join('') + '</div><div id="persona" role="tabpanel" aria-labelledby="tab-0" data-persona>' + personaHTML(0) + '</div></div>') +
         sec(head('02 · ' + S.tiersEyebrow, S.tiersH) + tiersHTML()) +
-        sec(head('03 · ' + S.posEyebrow, S.posH) + table(S.posCols, S.pos.map(r => ['<span class="faint mono small">' + esc(r[0].toUpperCase()) + '</span>', esc(r[1]), esc(r[2]), '<b style="color:var(--fg)">' + esc(r[3]) + '</b>']))) +
+        sec(head('03 · ' + S.posEyebrow, S.posH) + table(S.posCols, S.pos.map(r => ['<span class="faint mono small">' + esc(r[0]) + '</span>', esc(r[1]), esc(r[2]), '<b style="color:var(--fg)">' + esc(r[3]) + '</b>']))) +
         ctaBand();
     },
     mount(root) {
@@ -110,7 +110,7 @@ const PAGES = {
           '<div class="panel rv" style="padding:22px"><div class="blk-t"><h4>' + esc(T.covEyebrow) + '</h4><span class="badge real">' + esc(L().badge.real) + '</span></div><div class="chart-box nomin rv" data-cov></div><p class="src" style="margin-top:12px">' + esc(T.covNote) + '</p></div></div>' +
           '<p class="muted" style="margin-top:20px;max-width:70ch">' + esc(T.covLead) + '</p>') +
         sec(head('02 · ' + T.srcEyebrow, T.srcH) + table(T.srcCols, T.sources.map(r => ['<b>' + esc(r[0]) + '</b>', r[2] ? '<a href="' + esc(r[2]) + '" target="_blank" rel="noopener">' + esc(r[1]) + ' ↗</a>' : esc(r[1]), esc(r[3]), '<span class="small">' + esc(r[4]) + '</span>']))) +
-        sec(head('03 · ' + T.propEyebrow, T.propH) + '<div class="duo"><div class="lessons rv">' + T.prop.map(([t, d], i) => '<div class="lesson" style="grid-template-columns:40px 1fr"><span class="lede-num">0' + (i + 1) + '</span><div class="p"><b>' + esc(t) + '</b>' + esc(d) + '</div></div>').join('') + '</div><div class="panel rv" style="padding:18px"><div class="chart-box nomin" data-fly></div><p class="small muted" style="padding:0 6px 6px">' + esc(T.flyNote) + '</p></div></div>') +
+        sec(head('03 · ' + T.propEyebrow, T.propH) + '<div class="duo"><div class="lessons rv">' + T.prop.map(([t, d], i) => '<div class="lesson" style="grid-template-columns:40px 1fr"><span class="lede-num">' + (i + 1) + '</span><div class="p"><b>' + esc(t) + '</b>' + esc(d) + '</div></div>').join('') + '</div><div class="panel rv" style="padding:18px"><div class="chart-box nomin" data-fly></div><p class="small muted" style="padding:0 6px 6px">' + esc(T.flyNote) + '</p></div></div>') +
         sec(head('04 · ' + T.govEyebrow, T.govH) + '<ul class="list-check rv" style="max-width:720px">' + T.gov.map(t => '<li>' + esc(t) + '</li>').join('') + '</ul>') +
         sec(head('05 · ' + T.mapEyebrow, L().home.mH, L().home.mLead) + '<div class="rv">' + mapHTML() + '</div>') +
         nlBand('nl-data') + ctaBand();
@@ -182,7 +182,7 @@ const PAGES = {
   nf: {
     html() {
       const N = L().nf;
-      return '<section class="wrap nf"><div class="nf code mono" style="min-height:0;padding:0">' + esc(N.code) + '</div><svg class="wave" viewBox="0 0 520 60" aria-hidden="true"><path d="M0 30 H170 L180 28 L186 34 L192 26 L198 31 H260" fill="none" stroke="#17794D" stroke-width="1.6"/><path d="M260 30 H520" fill="none" stroke="#CED8E4" stroke-width="1.6" stroke-dasharray="3 6"/><circle cx="260" cy="30" r="4" fill="#B23A2A"/></svg><h1 class="display" tabindex="-1" style="font-size:clamp(44px,7vw,96px)">' + esc(N.h1) + '</h1><p class="lead">' + esc(N.lead) + '</p><div><a class="btn btn-primary" href="#home">' + esc(L().cta.back) + ARROW + '</a></div></section>';
+      return '<section class="wrap nf"><div class="nf code mono" style="min-height:0;padding:0">' + esc(N.code) + '</div><svg class="wave" viewBox="0 0 520 60" aria-hidden="true"><path d="M0 30 H170 L180 28 L186 34 L192 26 L198 31 H260" fill="none" stroke="#127A5B" stroke-width="1.6"/><path d="M260 30 H520" fill="none" stroke="#C0D7CB" stroke-width="1.6" stroke-dasharray="3 6"/><circle cx="260" cy="30" r="4" fill="#B0402D"/></svg><h1 class="display" tabindex="-1" style="font-size:clamp(44px,7vw,96px)">' + esc(N.h1) + '</h1><p class="lead">' + esc(N.lead) + '</p><div><a class="btn btn-primary" href="#home">' + esc(L().cta.back) + ARROW + '</a></div></section>';
     }
   }
 };
@@ -195,7 +195,7 @@ function personaHTML(i) {
   const S = L().solutions, p = S.personas[i];
   return '<div class="persona"><div><div class="k">' + esc(S.need) + '</div><p>' + esc(p[1]) + '</p></div><div><div class="k">' + esc(S.value) + '</div><p>' + esc(p[2]) + '</p></div><div><div class="k">' + esc(S.model) + '</div><p>' + esc(p[3]) + '</p></div></div><div class="panel" style="margin-top:12px;padding:clamp(20px,3vw,32px)"><div class="fx-k">' + esc(S.ask) + '</div><p class="quote" style="margin-top:10px">“' + esc(p[4]) + '”</p></div>';
 }
-function legal(P) { return pageHero(P.updated, P.h1, '') .replace('<p class="lead"></p>', '') + sec('<div class="prose">' + P.body.map(([h, t]) => '<h2>' + esc(h) + '</h2><p>' + esc(t) + '</p>').join('') + '</div>'); }
+function legal(P) { return pageHero('', P.h1, P.updated) + sec('<div class="prose">' + P.body.map(([h, t]) => '<h2>' + esc(h) + '</h2><p>' + esc(t) + '</p>').join('') + '</div>'); }
 
 async function adminMount(box) {
   const A = L().admin;

@@ -162,9 +162,9 @@ Input prices come from the MINADER 2024 tomato budget, the MINADER survey of Wes
 
 To update the data: edit or extend the research notes, adjust `scripts/kb/build_kb.py`, then run `python3 scripts/kb/build_kb.py` and `npm test`.
 
-## Design system and world map (v3)
+## Design system (v4) and world map
 
-The interface follows a light institutional reading: white paper, a deep institutional blue (`#0B2E59`) with a softer working blue, an agricultural green (`#17794D`) and a harvest gold. The African signature is the indigo lozenge motif of the Ndop cloth of the Grassfields of West Cameroon, used sparingly in the hero, the newsletter band and the footer band. Type: Source Serif 4 for statements, Inter for the interface, IBM Plex Mono for data labels. All tokens live at the top of `site/src/styles.css`.
+The interface follows a pure emerald reading: a light emerald page (`#EDF6F1`), deep emerald bands (`#0A3D2E`) for the header, the page openings, the newsletter card and the footer, white surfaces with soft shadows, and one gold accent for the production zone. There are no labels, numbers or rules above titles. Type is the platform's own font: SF Pro on Apple devices, Segoe UI on Windows, Roboto on Android, so the site reads like a native application and loads no web font. All tokens live at the top of `site/src/styles.css`.
 
 The world map (`site/src/world.js`) draws land as a dot grid from Natural Earth 1:110m; dots are zero length strokes, so they keep their size at every zoom, and land outlines fade in when you zoom. Corridors are of two kinds and are labelled as such everywhere: **flows today** (Cameroon and Central Africa, documented market flows) and **export corridors targeted** (AfriFarm's ambition, not current sales). Sea lanes follow indicative waypoints on the usual routes (Gulf of Guinea, Canaries, Gibraltar or the Channel, Cape of Good Hope, Mozambique Channel, Strait of Malacca); distances are great circle lengths between waypoints, and days at sea assume 14 knots before port calls and transshipment. Regenerate with `npm run geo:world`.
 
