@@ -100,7 +100,8 @@ function unitPrice(kb, key) {
 /** Cost lines for one hectare, before water and before harvest related costs. */
 function hectareLines(kb, crop, opts) {
   const lines = [];
-  const add = (cat, key, label, qty, unit, price, kind, step, src) => lines.push({ cat, key, label, qty, unit, price, total: qty * price, kind: kind || 'cash', step: step || null, src: src || [] });
+  // A null price means no sourced price was found: the line keeps its quantity, costs 0 and is flagged for a local quote.
+  const add = (cat, key, label, qty, unit, price, kind, step, src) => lines.push({ cat, key, label, qty, unit, price, unpriced: price == null, total: qty * (price || 0), kind: kind || 'cash', step: step || null, src: src || [] });
   const S = kb.services;
   for (const step of crop.steps) {
     for (const inp of step.inputs || []) {
@@ -131,8 +132,10 @@ function waterPlan(kb, wb, opt, areaHint) {
   if (grossM3PerHa > 0) {
     if (o.fuel) perHa.push({ cat: 'irrigation', key: 'fuel', label: kb.items.fuel_petrol.label, qty: grossM3PerHa * W.fuel_l_per_m3, unit: 'l', price: kb.items.fuel_petrol.price, src: [].concat(kb.items.fuel_petrol.src, W.src_fuel || []) });
     if (o.m3_per_person_day) perHa.push({ cat: 'labour', key: 'labour_watering', label: o.labour_label, qty: grossM3PerHa / o.m3_per_person_day, unit: 'person day', price: kb.services.labour_day.price, kind: 'labour', src: o.src || [] });
+    if (o.labour_days_per_ha) perHa.push({ cat: 'labour', key: 'labour_watering', label: o.labour_label, qty: o.labour_days_per_ha, unit: 'person day', price: kb.services.labour_day.price, kind: 'labour', src: o.labour_src || o.src || [] });
+    if (o.maintenance_xaf_per_ha) perHa.push({ cat: 'irrigation', key: 'maintenance', label: W.maintenance_label, qty: 1, unit: 'ha season', price: o.maintenance_xaf_per_ha, src: o.maintenance_src || o.src || [] });
     if (o.maintenance_pct_capex_per_season && o.capex) {
-      const capex = o.capex.reduce((a, c) => a + c.qty_per_ha * kb.items[c.item].price, 0);
+      const capex = o.capex.reduce((a, c) => a + (c.qty_per_ha || 0) * (kb.items[c.item].price || 0), 0);
       perHa.push({ cat: 'irrigation', key: 'maintenance', label: W.maintenance_label, qty: 1, unit: 'season', price: capex * o.maintenance_pct_capex_per_season, src: o.src || [] });
     }
   }
@@ -145,14 +148,17 @@ function upfrontLines(kb, water, areaHa, opts) {
   const lines = [];
   for (const c of water.capex) {
     const it = kb.items[c.item];
-    const qty = c.per === 'farm' ? Math.max(1, Math.ceil(areaHa / (c.ha_per_unit || 1e9))) : c.qty_per_ha * areaHa;
-    lines.push({ cat: 'equipment', key: c.item, label: it.label, qty: c.per === 'farm' ? qty : qty, unit: it.unit, price: it.price, total: qty * it.price, lifeSeasons: it.life_seasons || 1, src: it.src || [] });
+    const qty = c.per === 'farm' ? Math.max(1, Math.ceil(areaHa / (c.ha_per_unit || 1e9) - 1e-9)) : c.discrete ? Math.max(1, Math.ceil(c.qty_per_ha * areaHa - 1e-9)) : c.qty_per_ha * areaHa;
+    lines.push({ cat: 'equipment', key: c.item, label: it.label, qty, unit: it.unit, price: it.price, unpriced: it.price == null, total: qty * (it.price || 0), lifeSeasons: it.life_seasons || 1, src: it.src || [] });
   }
   if (!opts.ownTools) {
     for (const t of kb.tools_kit) {
       const it = kb.items[t.item];
-      const qty = Math.max(t.min || 1, Math.ceil(areaHa * (t.per_ha || 0)));
-      lines.push({ cat: 'equipment', key: t.item, label: it.label, qty, unit: it.unit, price: it.price, total: qty * it.price, lifeSeasons: it.life_seasons || 1, src: it.src || [] });
+      if (t.from_ha && areaHa < t.from_ha) continue; // equipment only bought from a given farm size
+      const raw = areaHa * (t.per_ha || 0);
+      const qty = t.fractional ? Math.max(t.min || 0, raw) : Math.max(t.min === undefined ? 1 : t.min, Math.ceil(raw - 1e-9));
+      if (!(qty > 0)) continue;
+      lines.push({ cat: it.category === 'ppe' ? 'ppe' : 'equipment', key: t.item, label: it.label, qty, unit: it.unit, price: it.price, unpriced: it.price == null, total: qty * (it.price || 0), lifeSeasons: it.life_seasons || 1, src: it.src || [] });
     }
   }
   return lines;
@@ -162,10 +168,10 @@ function upfrontLines(kb, water, areaHa, opts) {
 function perKgCosts(kb, crop, opts) {
   const S = kb.services, out = [];
   const pk = crop.packaging;
-  if (pk) out.push({ cat: 'harvest', key: pk.item, label: kb.items[pk.item].label, perKg: kb.items[pk.item].price / pk.kg_per_unit / (pk.uses || 1), src: kb.items[pk.item].src || [] });
+  if (pk) { const it = kb.items[pk.item]; out.push({ cat: 'harvest', key: pk.item, label: it.label, perKg: (it.price || 0) / pk.kg_per_unit / (pk.uses || 1), unpriced: it.price == null, src: it.src || [] }); }
   out.push({ cat: 'harvest', key: 'harvest_labour', label: S.harvest_labour.label, perKg: S.labour_day.price / crop.harvest_kg_per_person_day, labour: true, src: [].concat(S.labour_day.src || [], crop.harvest_src || []) });
-  if (opts.market === 'city') out.push({ cat: 'harvest', key: 'transport_city', label: S.transport_city_kg.label, perKg: S.transport_city_kg.price, src: S.transport_city_kg.src || [] });
-  else out.push({ cat: 'harvest', key: 'transport_local', label: S.transport_local_kg.label, perKg: S.transport_local_kg.price, src: S.transport_local_kg.src || [] });
+  const tr = opts.market === 'city' ? S.transport_city_kg : S.transport_local_kg;
+  out.push({ cat: 'harvest', key: opts.market === 'city' ? 'transport_city' : 'transport_local', label: tr.label, perKg: tr.price || 0, unpriced: tr.price == null, src: tr.src || [] });
   return out;
 }
 
@@ -177,12 +183,12 @@ function risks(kb, crop, cal, wb, waterOpt, waterCoverage) {
   const harvestMonths = monthsBetween(cal.firstHarvest, cal.lastHarvest);
   const tmaxFlower = Math.max(...flowerMonths.map(m => C[m].tmax));
   const heat = tmaxFlower >= crop.heat_c ? 2 : tmaxFlower >= crop.heat_c - 2 ? 1 : 0;
-  const wetDays = Math.max(...reproMonths.map(m => C[m].raindays));
-  const disease = wetDays >= kb.thresholds.disease_raindays_high ? 2 : wetDays >= kb.thresholds.disease_raindays_medium ? 1 : 0;
+  const wetRain = Math.max(...reproMonths.map(m => C[m].rain));
+  const disease = wetRain >= kb.thresholds.disease_rain_mm_high ? 2 : wetRain >= kb.thresholds.disease_rain_mm_medium ? 1 : 0;
   const water = waterCoverage >= 0.9 ? 0 : waterCoverage >= 0.7 ? 1 : 2;
   const idx = harvestMonths.reduce((a, m) => a + crop.price.index[m], 0) / harvestMonths.length;
   const market = idx <= 0.85 ? 2 : idx <= 0.97 ? 1 : 0;
-  return { heat, disease, water, market, tmaxFlower, wetDays, priceIndex: idx, flowerMonths, harvestMonths, score: heat + disease + water + market };
+  return { heat, disease, water, market, tmaxFlower, wetRain, priceIndex: idx, flowerMonths, harvestMonths, score: heat + disease + water + market };
 }
 
 /* ---------- Scenarios ---------- */
@@ -220,9 +226,14 @@ function plan(kb, input) {
   const familyShare = clampN(opts.familyLabour, 0, 0.9);
   const perKgCash = kgLines.reduce((a, k) => a + k.perKg * (k.labour ? 1 - familyShare : 1), 0);
 
-  const loss = crop.loss_pct / 100;
-  const regime = (input.water === 'rainfed' || input.water === 'manual') ? 'rainfed' : 'irrigated';
-  const yields = crop.yield_t_ha[regime];
+  // Yield references are set by season: a crop whose water need is mostly met by rain is a rainy season crop
+  // (disease limited references), otherwise a dry season crop (references for irrigated dry season production).
+  const seasonOf = (b) => b.rainCoverage >= kb.limits.wet_season_rain_share ? 'wet' : 'dry';
+  const season = seasonOf(wb);
+  const city = opts.market === 'city';
+  const loss = (crop.loss_pct + (city ? (kb.market.city_extra_loss_pct || 0) : 0)) / 100;
+  const cityFactor = city ? (crop.price.city_factor || 1) : 1;
+  const yields = crop.yield_t_ha[season];
   const avgSoldKgHa = yields.average * 1000 * wf * (1 - loss);
   const budgetPerHa = perHaCash + avgSoldKgHa * perKgCash; // cash to finance one hectare until sale
   const reserveRate = kb.limits.reserve_rate;
@@ -236,17 +247,21 @@ function plan(kb, input) {
     required = (up + area * budgetPerHa) * (1 + reserveRate);
   } else {
     if (capitalXaf < minXaf) state = 'below_min';
-    // Up front items depend on the area: iterate to a fixed point (converges in a few rounds)
-    area = Math.max(0, capitalXaf / (1 + reserveRate) / budgetPerHa);
-    for (let k = 0; k < 6; k++) {
-      upfront = upfrontLines(kb, water, area, opts);
-      const up = upfront.reduce((a, l) => a + l.total, 0);
-      area = Math.max(0, (capitalXaf / (1 + reserveRate) - up) / budgetPerHa);
-    }
-    upfront = upfrontLines(kb, water, area, opts);
+    // Largest area whose field costs plus up front items fit the capital net of the reserve. Up front costs
+    // grow with the area in steps (one pump per hectare, a wheelbarrow from 0.5 ha), so the cost is monotone
+    // in the area and a bisection finds the limit exactly.
+    const net = capitalXaf / (1 + reserveRate);
+    const cost = (a) => a * budgetPerHa + upfrontLines(kb, water, a, opts).reduce((s, l) => s + l.total, 0);
+    let lo = 0, hi = Math.max(0, net / budgetPerHa);
+    if (water.maxAreaHa && hi > water.maxAreaHa) hi = water.maxAreaHa;
+    if (cost(hi) <= net) lo = hi;
+    else for (let k = 0; k < 50; k++) { const m = (lo + hi) / 2; if (cost(m) <= net) lo = m; else hi = m; }
+    area = lo < 1e-4 ? 0 : lo;
+    upfront = upfrontLines(kb, water, Math.max(area, 0), opts);
     if (area <= 0 && state === 'ok') state = 'upfront_exceeds';
+    if (water.maxAreaHa && area >= water.maxAreaHa - 1e-9 && state === 'ok') state = 'manual_limit';
   }
-  if (water.maxAreaHa && area > water.maxAreaHa) state = state === 'ok' ? 'manual_limit' : state;
+  if (input.mode === 'crop' && water.maxAreaHa && area > water.maxAreaHa) state = state === 'ok' ? 'manual_limit' : state;
 
   const upTotal = upfront.reduce((a, l) => a + l.total, 0);
   const upPerSeason = upfront.reduce((a, l) => a + l.total / (l.lifeSeasons || 1), 0);
@@ -261,7 +276,12 @@ function plan(kb, input) {
   const totalBudget = operating + upTotal + reserve;
 
   // Scenarios
-  const priceAvg = cal ? risk.harvestMonths.reduce((a, m) => a + crop.price.index[m], 0) / risk.harvestMonths.length * crop.price.reference_xaf_kg : 0;
+  // Price at harvest: the grower's own expected price when given, otherwise the reference adjusted to the harvest months.
+  const userPrice = +input.priceXafKg > 0 ? +input.priceXafKg : null;
+  const refPrice = crop.price.reference_xaf_kg;
+  const priceSource = userPrice ? 'user' : refPrice ? 'reference' : null;
+  const priceAvg = userPrice || (refPrice ? risk.priceIndex * refPrice * cityFactor : 0);
+  if (!priceSource && state === 'ok') state = 'needs_price';
   const scen = {};
   for (const s of SCEN) {
     const yHa = s === 'failure' ? yields.average * kb.scenario.failure_yield_share : yields[s] * wf;
@@ -280,7 +300,7 @@ function plan(kb, input) {
   const sa = scen.average;
   const netPrice = sa.price * (1 - kb.services.market_fee_rate.price) - perKgCash;
   const fixed = fieldCash + upPerSeason;
-  const beYieldTHa = area > 0 && netPrice > 0 ? fixed / (netPrice * 1000 * (1 - loss) * area) : null;
+  const beYieldTHa = area > 0 && netPrice > 0 && priceSource ? fixed / (netPrice * 1000 * (1 - loss) * area) : null;
   const beYieldPerUnit = sa.soldKg > 0 ? (fixed / sa.soldKg + perKgCash) / (1 - kb.services.market_fee_rate.price) : null;
 
   // Best start month for the same inputs (water option kept)
@@ -292,8 +312,9 @@ function plan(kb, input) {
     const cov2 = clampN((w2.rainMet + w2.deficit * water.covers) / w2.etcTotal, 0, 1);
     const r2 = risks(kb, crop, c2, w2, input.water, cov2);
     const hm = r2.harvestMonths, pIdx = hm.reduce((a, k) => a + crop.price.index[k], 0) / hm.length;
-    const margin = (crop.yield_t_ha[regime].average * yieldFactor(crop.ky, cov2) * 1000 * (1 - loss) * (pIdx * crop.price.reference_xaf_kg * (1 - kb.services.market_fee_rate.price) - perKgCash)) - perHaCash;
-    windows.push({ month: m, risk: r2, coverage: cov2, marginPerHa: margin });
+    const p2 = userPrice || (refPrice ? pIdx * refPrice * cityFactor : 0);
+    const margin = (crop.yield_t_ha[seasonOf(w2)].average * yieldFactor(crop.ky, cov2) * 1000 * (1 - loss) * (p2 * (1 - kb.services.market_fee_rate.price) - perKgCash)) - perHaCash;
+    windows.push({ month: m, risk: r2, coverage: cov2, season: seasonOf(w2), marginPerHa: margin });
   }
   const best = windows.slice().sort((a, b) => (a.risk.score - b.risk.score) || (b.marginPerHa - a.marginPerHa))[0].month;
 
@@ -301,17 +322,19 @@ function plan(kb, input) {
   const itinerary = crop.steps.map(s => {
     const base = s.ref === 'start' ? cal.start : s.ref === 'harvest' ? cal.firstHarvest : cal.field;
     const from = new Date(base.getTime() + s.day[0] * DAY), to = new Date(base.getTime() + s.day[1] * DAY);
-    return { id: s.id, phase: s.phase, label: s.label, detail: s.detail, from, to, labourDays: (s.labour || 0) * area, inputs: (s.inputs || []).map(i => ({ item: i.item, label: kb.items[i.item].label, qty: i.qty * (i.apps || 1) * area, unit: kb.items[i.item].unit, apps: i.apps || 1, cost: i.qty * (i.apps || 1) * area * kb.items[i.item].price })), src: s.src || [] };
+    return { id: s.id, phase: s.phase, label: s.label, detail: s.detail, from, to, labourDays: (s.labour || 0) * area, inputs: (s.inputs || []).map(i => ({ item: i.item, label: kb.items[i.item].label, qty: i.qty * (i.apps || 1) * area, unit: kb.items[i.item].unit, apps: i.apps || 1, cost: i.qty * (i.apps || 1) * area * (kb.items[i.item].price || 0), unpriced: kb.items[i.item].price == null })), src: s.src || [] };
   });
+
+  itinerary.sort((a, b) => (a.from - b.from) || (a.to - b.to));
 
   // Shopping list: inputs aggregated and rounded to the packs sold
   const shop = {};
   itinerary.forEach(st => st.inputs.forEach(i => { const it = kb.items[i.item]; shop[i.item] = shop[i.item] || { item: i.item, label: it.label, unit: it.unit, qty: 0, pack: it.pack || null, category: it.category }; shop[i.item].qty += i.qty; }));
-  Object.values(shop).forEach(s => { const it = kb.items[s.item]; if (it.pack) { s.packs = Math.ceil(s.qty / it.pack.size - 1e-9); s.packLabel = it.pack.label; s.packCost = s.packs * it.pack.size * it.price; } s.cost = s.qty * it.price; });
+  Object.values(shop).forEach(s => { const it = kb.items[s.item]; s.unpriced = it.price == null; if (it.pack) { s.packs = Math.ceil(s.qty / it.pack.size - 1e-9); s.packLabel = it.pack.label; s.packCost = s.packs * it.pack.size * (it.price || 0); } s.cost = s.qty * (it.price || 0); });
 
   return {
-    input, crop: input.crop, state, capitalXaf, minXaf, requiredXaf: required, areaHa: area, plants: Math.round(area * crop.plants_per_ha),
-    calendar: cal, water: Object.assign({}, water, { balance: wb, coverage, yieldFactor: wf, grossM3: water.grossM3PerHa * area }),
+    input, crop: input.crop, state, priceSource, unpriced: Array.from(new Set(lines.filter(l => l.unpriced).map(l => l.key))), capitalXaf, minXaf, requiredXaf: required, areaHa: area, plants: Math.round(area * crop.plants_per_ha),
+    calendar: cal, season, water: Object.assign({}, water, { balance: wb, coverage, yieldFactor: wf, grossM3: water.grossM3PerHa * area }),
     budget: { lines, operating, upfront: upTotal, upfrontPerSeason: upPerSeason, reserve, total: totalBudget, perHaCash, perKgCash },
     scenarios: scen, weights: w, expectedMargin: expected,
     breakEven: { yieldTHa: beYieldTHa, priceXafKg: beYieldPerUnit },

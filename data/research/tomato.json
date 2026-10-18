@@ -1,0 +1,523 @@
+{
+  "crop": "tomato",
+  "scientific_name": "Solanum lycopersicum",
+  "pilot_zone": "Foumbot, Noun division, West region, Cameroon",
+  "research_date": "2026-10-17",
+  "conventions": {
+    "derived_values": "Any value marked 'derived' is plain arithmetic on figures stated in the cited source (unit conversion, per-100 m2 to per-ha, nutrient content from fertilizer grade). Nothing else has been estimated.",
+    "per_100m2_to_ha": "1 ha = 100 x 100 m2, so kg per 100 m2 x 100 = kg per ha",
+    "acre_to_ha": "1 acre = 0.4047 ha"
+  },
+
+  "cycle": {
+    "nursery_days": [25, 40],
+    "nursery_days_notes": "MINADER S1: 25 to 40 days depending on variety. FAO S12: transplant after 25 to 35 days. NIHORT S14: 4 to 5 weeks. SHEP Kenya S15: 30 to 45 days.",
+    "transplant_to_first_harvest_days": [60, 85],
+    "transplant_to_first_harvest_notes": "MINADER S1: 60 to 80 days after planting out. SHEP Kenya S15: Rio Grande 75 to 85 days, hybrids about 75 days. Fovo S2 (Rio Grande, East Cameroon): first fruiting 38 to 51 days after transplanting, depending on fertilization.",
+    "harvest_duration_days": [28, 90],
+    "harvest_duration_notes": "MINADER S1: harvest spread over 2 to 3 months (60 to 90 days). Tolly and Kamtchouing S5 (Rio, West Cameroon): 4 to 6 harvests at one-week intervals (about 4 to 6 weeks; the 28-day lower bound is derived from 4 weekly harvests).",
+    "total_cycle_days": [120, 150],
+    "total_cycle_notes": "MINADER S1 gives 120 to 150 days (sowing to end of harvest). FAO S12 gives a 90 to 150 day total growing period, 90 to 120 days in the field. Tolly S5 gives about 80 days for the production cycle (field). Short-cycle hybrids: Cobra 26 F1 65 to 70 days (GIZ Mali S40), Raja F1 65 to 70 days (Keegoui S9); the cycle definition used by those sources is not stated.",
+    "determinate": {
+      "use": "Canning/processing types, plum or elongated fruit (MINADER S1)",
+      "stake_length_m": 1.1,
+      "stake_height_above_ground_m": 0.8,
+      "harvest_pattern": "Concentrated: 4 to 6 weekly harvests for Rio-type (S5)",
+      "source_ids": ["S1", "S5"]
+    },
+    "indeterminate": {
+      "use": "Fresh-market types, round fruit (MINADER S1)",
+      "stake_length_m": 2.0,
+      "stake_height_above_ground_m": 1.6,
+      "harvest_pattern": "Extended: 2 to 3 months in the open field (S1); greenhouse hybrids such as Anna F1 harvested over 8 months in Kenya (S15)",
+      "bed_layout": "Double rows 50 cm apart (S1)",
+      "source_ids": ["S1", "S15"]
+    },
+    "varieties_cameroon_sourced": [
+      {"name": "Rio Grande", "type": "determinate, open-pollinated standard", "notes": "MINADER recommended, mainly cool dry season (S1). Used in trials in East (S2) and Central (S10) Cameroon. Lowest yield of 3 varieties in Central Cameroon (4.46 t/ha) (S10). Kenya: 18,000 kg/acre potential (S15).", "source_ids": ["S1", "S2", "S10", "S15"]},
+      {"name": "Roma Savana", "type": "open-pollinated", "notes": "Savannah-adapted, mainly cool dry season (S1)", "source_ids": ["S1"]},
+      {"name": "Roma VF", "type": "open-pollinated, determinate", "notes": "Hot areas, resistant to Verticillium and Fusarium (S1); 6.05 t/ha in Central Cameroon on-farm trial as 'Roma' (S10)", "source_ids": ["S1", "S10"]},
+      {"name": "Cobra 26 F1", "type": "hybrid", "notes": "Early, high-yield, disease tolerant, hot dry and cool seasons (S1). 65 to 70 day cycle, 100 to 120 g square firm fruit (Technisem product, GIZ Mali sheet S40)", "source_ids": ["S1", "S40"]},
+      {"name": "Rossol", "type": "open-pollinated", "notes": "Highest yield (8.12 t/ha) in Central Cameroon on-farm trial, nematode resistance cited (S10)", "source_ids": ["S10"]},
+      {"name": "Raja F1", "type": "hybrid", "notes": "65 to 70 day cycle, used in Dschang trial 2024 (S9)", "source_ids": ["S9"]},
+      {"name": "Barnum (hybrid)", "type": "hybrid", "notes": "Named by a West Cameroon commercial grower, Agribusiness TV story 2016 (S41); low-rigour source", "source_ids": ["S41"]},
+      {"name": "Dona F1, Heinz 1370, Fline, Mecline, Moboline", "type": "trial varieties", "notes": "Top marketable yields 55 to 68 t/ha in sprayed trial plots, Dschang 1995 (S8)", "source_ids": ["S8"]}
+    ],
+    "varieties_not_found_in_cameroon_sources": "Mongal F1, Kiara F1 and Padma were not found in any Cameroon source consulted; not included.",
+    "hybrid_adoption_west": "94% of classified growers (119 of 127) in Foumbot, Bansoa and Dschang used hybrid seed (Titti et al. 2024, S3)",
+    "source_ids": ["S1", "S2", "S3", "S5", "S8", "S9", "S10", "S12", "S14", "S15", "S40"]
+  },
+
+  "planting": {
+    "spacing_recommended": {"between_rows_cm": 80, "within_row_cm": 50, "source_ids": ["S1"]},
+    "plants_per_ha_recommended": 25000,
+    "plants_per_ha_range_all_sources": [22222, 40000],
+    "spacing_and_density_by_source": [
+      {"source_id": "S1", "spacing": "80 x 50 cm (staggered 40 to 50 cm in row)", "plants_per_ha": 25000},
+      {"source_id": "S2", "spacing": "1.0 x 0.45 m", "plants_per_ha": 22222},
+      {"source_id": "S9", "spacing": "60 x 40 cm", "plants_per_ha": 33334},
+      {"source_id": "S14", "spacing": "75 x 50 cm", "plants_per_ha": 26667},
+      {"source_id": "S12", "spacing": "0.3 to 0.6 x 0.6 to 1.0 m", "plants_per_ha": 40000},
+      {"source_id": "S13", "spacing": "75 x 45 cm on ridges", "plants_per_ha": null, "notes": "about 29,600 derived"},
+      {"source_id": "S15", "spacing": "75 to 100 x 40 to 60 cm", "plants_per_ha": null, "notes": "6,666 to 13,333 plants per acre stated (about 16,500 to 32,900 per ha derived)"}
+    ],
+    "farmer_observed_density_west_cameroon": {"mean": 43686, "by_system": {"type1_pure_heavy_synthetic": 34665, "type2_pure_mixed_fertility": 39540, "type3_intercropped": 72045}, "source_ids": ["S3"]},
+    "seed_rate_g_per_ha": [250, 500],
+    "seed_rate_notes": "MINADER S1 gives no g/ha rate in the text but budgets 3 x 100 g seed bags (300 g) for 1 ha. NAERLS Nigeria S13: 250 to 500 g/ha. SHEP Kenya S15: 40 to 75 g per acre (about 99 to 185 g/ha derived). Hybrid seed is usually sold by seed count; no g/ha found for hybrids in Cameroon.",
+    "seed_rate_minader_budget_g_per_ha": 300,
+    "nursery_area_m2_per_ha": {"fresh_market": 60, "processing": 80, "source_ids": ["S1"]},
+    "nursery_sowing_density": "500 seeds per m2 (rows 20 cm apart, 1 seed per cm) (S1)",
+    "seedling_at_transplant": "About 15 cm tall, 5 to 6 leaves, 5 mm stem diameter (S1); 10 to 13 cm or 4 to 5 leaves (S13)",
+    "staking": {
+      "stakes_per_ha": 25000,
+      "stake_length_m": {"indeterminate": 2.0, "determinate": 1.1},
+      "material": "Canes at least 1 m high, bamboo preferred (NIHORT S14). MINADER S1 does not specify material. One West Cameroon grower ties 10 plants per support frame (S41).",
+      "stake_purchase_cost_xaf": null,
+      "stake_cost_notes": "MINADER budget has staking labour (10 + 20 person-days) but no stake purchase line. No stake price found.",
+      "source_ids": ["S1", "S14", "S41"]
+    },
+    "source_ids": ["S1", "S2", "S3", "S9", "S12", "S13", "S14", "S15"]
+  },
+
+  "itinerary": [
+    {
+      "step": "Site selection, rotation and soil check",
+      "timing_days_relative_to_transplant": null,
+      "timing_basis": "No timing given in sources; must precede land preparation",
+      "description": "Avoid plots with Solanaceae in the last 3 years (S15). Where bacterial wilt is present, rotate at least 5 years with cereals; at least 3 years for nematodes (S13). Well-drained light loam, pH 5 to 7 (FAO S12); pH 6.0 to 6.5 (NIHORT S14). Waterlogging raises bacterial wilt risk (S12). Soil analysis should set final fertilizer rates (S15); Titti et al. recommend soil-based fertilization because unregulated synthetic fertilizer use drives preharvest losses (S3).",
+      "inputs": [],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["S3", "S12", "S13", "S14", "S15"]
+    },
+    {
+      "step": "Land clearing",
+      "timing_days_relative_to_transplant": null,
+      "timing_basis": "Not stated in sources",
+      "description": "Manual clearing then avoid burning biomass (MINADER S1 explicitly advises against burning; Ghana FSRP also prohibits burning near tomato fields). Slash-and-burn is therefore not recommended; no source quantifying its effects in Foumbot was found. Herbicide option: glyphosate (Round Up) budgeted at 4 L/ha by MINADER. In Foumbot, 83% of surveyed growers used paraquat and 6% glyphosate (S4, Feb 2020); paraquat is a highly hazardous product and its registration status in Cameroon was not verified.",
+      "inputs": [
+        {"product": "Glyphosate (Round Up)", "category": "herbicide", "rate_per_ha": 4, "unit": "L", "applications": 1, "source_ids": ["S1"]}
+      ],
+      "labour_person_days_per_ha": 26,
+      "labour_notes": "20 person-days clearing + 6 person-days herbicide treatment (MINADER S1 budget)",
+      "source_ids": ["S1", "S4"]
+    },
+    {
+      "step": "Ploughing and ridging",
+      "timing_days_relative_to_transplant": null,
+      "timing_basis": "Not stated in sources",
+      "description": "Plough 30 to 50 cm deep without inverting the soil; on slopes, grass strips across the slope (S1). Ridges or beds; double rows 50 cm apart for indeterminate varieties (S1). In Central Cameroon, manual or tractor tillage with stumps removed gave higher yields than no-till with stumps (S10); tractor hire cost in Cameroon not found.",
+      "inputs": [],
+      "labour_person_days_per_ha": 90,
+      "labour_notes": "60 person-days ploughing + 30 person-days ridging (manual, MINADER S1)",
+      "source_ids": ["S1", "S10"]
+    },
+    {
+      "step": "Nursery",
+      "timing_days_relative_to_transplant": [-40, -25],
+      "timing_basis": "Nursery duration 25 to 40 days (S1)",
+      "description": "60 m2 nursery per ha for fresh-market tomato (80 m2 for processing types). Disinfect with soil disinfectant or 10 L of boiling water per m2, mulch, rest at least 1 week. Sow 500 seeds/m2 in rows 20 cm apart. Shade structure. Harden seedlings 1 to 2 weeks before transplanting (S15). Seed dressing example: Apron Star 10 g per 2.5 kg seed (S13).",
+      "inputs": [
+        {"product": "Tomato seed", "category": "seed", "rate_per_ha": 300, "unit": "g", "applications": 1, "source_ids": ["S1"]},
+        {"product": "Boiling water for nursery disinfection", "category": "other", "rate_per_ha": 600, "unit": "L (10 L/m2 x 60 m2, derived)", "applications": 1, "source_ids": ["S1"]},
+        {"product": "Nursery shade", "category": "other", "rate_per_ha": 1, "unit": "unit (20,000 XAF)", "applications": 1, "source_ids": ["S1"]}
+      ],
+      "labour_person_days_per_ha": null,
+      "labour_notes": "MINADER budgets nursery work per m2 (80 m2 x 500 XAF soil prep + 80 m2 x 1,000 XAF disinfection = 120,000 XAF), not in person-days",
+      "source_ids": ["S1", "S13", "S15"]
+    },
+    {
+      "step": "Basal fertilization (organic + mineral)",
+      "timing_days_relative_to_transplant": [-14, 0],
+      "timing_basis": "NIHORT S14: organic fertilizer 2 weeks before transplanting; MINADER S1: incorporated at land preparation",
+      "description": "MINADER: 200 to 300 kg organic matter per 100 m2 (20 to 30 t/ha derived) plus 4 kg NPK 10-10-20 per 100 m2 (400 kg/ha derived), incorporated by digging. Organic-only alternative: 30 to 50 t/ha organic matter enriched with 10% fish and bone meal. Trials: poultry manure 10 t/ha + NPK 20-10-10 at 100 g/m2 (1,000 kg/ha) gave the best value-cost ratio (2.49) in East Cameroon (S2); poultry manure 5 t/ha + 150 kg/ha NPK 20-10-10 gave 26.3 t/ha in Dschang (S9).",
+      "inputs": [
+        {"product": "Organic matter / manure", "category": "amendment", "rate_per_ha": 25000, "unit": "kg (range 20,000 to 30,000, derived from S1)", "applications": 1, "source_ids": ["S1"]},
+        {"product": "NPK 10-10-20", "category": "fertilizer", "rate_per_ha": 400, "unit": "kg", "applications": 1, "source_ids": ["S1"]},
+        {"product": "Poultry manure (trial alternative)", "category": "amendment", "rate_per_ha": 10000, "unit": "kg (S2); 5,000 kg in S9", "applications": 1, "source_ids": ["S2", "S9"]}
+      ],
+      "labour_person_days_per_ha": 35,
+      "labour_notes": "35 person-days for manure spreading (S2, East Cameroon trial); MINADER has no separate manure line",
+      "source_ids": ["S1", "S2", "S9", "S14"]
+    },
+    {
+      "step": "Transplanting",
+      "timing_days_relative_to_transplant": [0, 0],
+      "timing_basis": "Reference day",
+      "description": "Transplant seedlings about 15 cm, 5 to 6 leaves, 5 mm stem at 80 x 50 cm (about 25,000 plants/ha). Gap filling (re-sowing) afterwards.",
+      "inputs": [],
+      "labour_person_days_per_ha": 35,
+      "labour_notes": "30 person-days transplanting + 5 person-days re-sowing/gap filling (S1)",
+      "source_ids": ["S1"]
+    },
+    {
+      "step": "Staking and tying",
+      "timing_days_relative_to_transplant": null,
+      "timing_basis": "Not stated by MINADER; NIHORT S14 places staking at the peak of the rainy season",
+      "description": "About 25,000 stakes/ha; 2 m stakes (1.6 m above ground) for indeterminate, 1.1 m (0.8 m above ground) for determinate (S1). Bamboo canes at least 1 m (S14). Twine budgeted (1 roll) (S1). Determinate varieties may be left unstaked and mulched in the dry season (S15).",
+      "inputs": [
+        {"product": "Stakes (bamboo or wood)", "category": "stakes", "rate_per_ha": 25000, "unit": "stakes", "applications": 1, "source_ids": ["S1", "S14"]},
+        {"product": "Twine", "category": "stakes", "rate_per_ha": 1, "unit": "roll (3,000 XAF)", "applications": 1, "source_ids": ["S1"]}
+      ],
+      "labour_person_days_per_ha": 30,
+      "labour_notes": "10 + 20 person-days staking in two passes (S1)",
+      "source_ids": ["S1", "S14", "S15"]
+    },
+    {
+      "step": "Top dressing",
+      "timing_days_relative_to_transplant": [15, 80],
+      "timing_basis": "MINADER S1: at 15, 30, 50 and 80 days after planting out",
+      "description": "MINADER text: 2 kg NPK 20-10-10 per 100 m2 at each of 15, 30, 50 and 80 days after transplanting (about 8 g per plant per application; 200 kg/ha per application, 800 kg/ha total, derived). MINADER budget additionally lists potassium sulphate 500 kg/ha and calcium nitrate 250 kg/ha (timing not given in text) and puts total 20-10-10 at 1,200 kg/ha, which conflicts with the 800 kg/ha in the text. Comparables: NIHORT 15-15-15 200 to 250 kg/ha split at 3 weeks after transplanting and at fruit set (S14); SHEP Kenya CAN 40 kg/acre at 4 weeks and 80 kg/acre at 8 weeks (S15). West Cameroon growers use DAP, urea, 20-10-10, 13-13-21+S+B+Zn and 15-0-0+26CaO+0.3B; DAP and 13-13-21 were associated with higher preharvest losses (S3).",
+      "inputs": [
+        {"product": "NPK 20-10-10", "category": "fertilizer", "rate_per_ha": 200, "unit": "kg per application (800 kg/ha total in text; 1,200 kg/ha in budget)", "applications": 4, "source_ids": ["S1"]},
+        {"product": "Potassium sulphate (K2SO4)", "category": "fertilizer", "rate_per_ha": 500, "unit": "kg per cycle (budget only; split not specified)", "applications": null, "source_ids": ["S1"]},
+        {"product": "Calcium nitrate", "category": "fertilizer", "rate_per_ha": 250, "unit": "kg per cycle (budget only; split not specified)", "applications": null, "source_ids": ["S1"]}
+      ],
+      "labour_person_days_per_ha": 6,
+      "labour_notes": "6 person-days mineral fertilizer spreading (S1); 25 person-days in the East Cameroon trial (S2)",
+      "source_ids": ["S1", "S2", "S3", "S14", "S15"]
+    },
+    {
+      "step": "Calcium supply (blossom end rot prevention) and foliar inputs",
+      "timing_days_relative_to_transplant": null,
+      "timing_basis": "Not stated in sources",
+      "description": "Calcium nitrate 250 kg/ha is budgeted by MINADER (S1); growers in West Cameroon use a 15-0-0 + 26 CaO + 0.3 B product (S3). Liquid organic input Net Eden (N 2.7%, P 2.6%, K 3.0%, Ca 5.2%, Mg 2.5%) at 1 L/ha alone raised yield from 6.5 to 13.6 t/ha in Dschang (S9). No sourced rates were found for foliar fertilizers, biostimulants or the 'vitamins' sold to growers in Cameroon.",
+      "inputs": [
+        {"product": "Calcium nitrate", "category": "fertilizer", "rate_per_ha": 250, "unit": "kg", "applications": null, "source_ids": ["S1"]},
+        {"product": "Net Eden liquid organic input (trial)", "category": "foliar", "rate_per_ha": 1, "unit": "L", "applications": null, "source_ids": ["S9"]}
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["S1", "S3", "S9"]
+    },
+    {
+      "step": "Irrigation (dry season, or dry spells)",
+      "timing_days_relative_to_transplant": [0, 120],
+      "timing_basis": "Daily through the cycle, reduced near the end (S1); upper bound is the end of the MINADER cycle and is indicative",
+      "description": "Water daily at cool hours: 0.5 L per plant per day before fruiting and 1 L per plant per day after fruiting; frequency can drop near the end of the cycle; drip recommended (S1). At 25,000 plants/ha that is 12.5 then 25 m3/ha/day (1.25 then 2.5 mm/day, derived), which is below FAO crop water need: 400 to 600 mm after transplanting (S12), Kc mid-season 1.05 to 1.25. NAERLS Nigeria: irrigate every 5 to 7 days, 15 to 20 times, 400 to 600 mm in total (S13). Foumbot growers pump from streams with motor pumps (S4). MINADER investment: motor pump 200,000 XAF, water reserve points 300,000 XAF, fuel 30,000 XAF, pump maintenance 15,000 XAF per ha.",
+      "inputs": [
+        {"product": "Irrigation water", "category": "irrigation", "rate_per_ha": 500, "unit": "mm per cycle (FAO range 400 to 600)", "applications": null, "source_ids": ["S12", "S13"]},
+        {"product": "Motor pump", "category": "irrigation", "rate_per_ha": 1, "unit": "unit (200,000 XAF)", "applications": null, "source_ids": ["S1"]},
+        {"product": "Fuel and lubricant", "category": "irrigation", "rate_per_ha": 30000, "unit": "XAF lump sum", "applications": null, "source_ids": ["S1"]}
+      ],
+      "labour_person_days_per_ha": 25,
+      "source_ids": ["S1", "S4", "S12", "S13"]
+    },
+    {
+      "step": "Weeding and earthing up",
+      "timing_days_relative_to_transplant": [14, 42],
+      "timing_basis": "NAERLS S13: hand weeding at 2, 4 and 6 weeks after transplanting; NIHORT S14: first weeding 3 to 5 weeks after transplanting, at least twice",
+      "description": "Hand weeding and earthing up. Weeding time in Central Cameroon trial: 153 to 157 h/ha with stumps removed, 243 h/ha with stumps retained (S10). NIHORT pre-transplant metribuzin 1.0 to 1.5 kg a.i./ha 2 days before transplanting (S14); not reported as a Cameroon practice.",
+      "inputs": [],
+      "labour_person_days_per_ha": 15,
+      "source_ids": ["S1", "S10", "S13", "S14"]
+    },
+    {
+      "step": "Pruning and leaf removal",
+      "timing_days_relative_to_transplant": null,
+      "timing_basis": "Not stated in sources",
+      "description": "MINADER: general pruning not recommended; on indeterminate varieties remove lower leaves for ventilation (S1). SHEP Kenya: remove side shoots and diseased leaves, sterilize blades with bleach 1:1 (S15).",
+      "inputs": [],
+      "labour_person_days_per_ha": 15,
+      "source_ids": ["S1", "S15"]
+    },
+    {
+      "step": "Crop protection programme",
+      "timing_days_relative_to_transplant": [0, 120],
+      "timing_basis": "Weekly sprays through the cycle in Cameroon trials (S8) and common farmer practice (S19); end bound indicative",
+      "description": "MINADER first line: monitoring with pheromone and food-bait traps, neem/chilli/garlic/ginger preparation at 4 L/ha (10 L/ha for the CEFRA bio-pesticide recipes); chemicals only if resistance is confirmed: maneb 2 kg/ha, Decis (deltamethrin) 1 L/ha (S1). MINADER budget per ha nevertheless includes mancozeb 80 kg, Ridomil 20 kg (200 x 100 g), Decis 20 L. Dschang trial (S8): Ridomil Plus (metalaxyl + copper oxide) 2.0 kg/ha weekly before flowering, then maneb 1.6 kg/ha weekly after flowering. East Cameroon trial best protocol P1 (S2): 10 x mancozeb 2.5 kg/ha + 5 x lambda-cyhalothrin product 1 L/ha + 5 x second insecticide 1 L/ha. Foumbot growers (S4): lambda-cyhalothrin 100%, chlorantraniliprole 98%, cypermethrin 95%, chlorpyrifos-ethyl 87%, methomyl 80%, imidacloprid 75%, acetamiprid 72%, mancozeb 67%, emamectin benzoate 62%, alphamethrin 23%, thiamethoxam 19%, abamectin 18%; 77% increase frequency at fruiting, 93% ignore preharvest intervals, residues above MRL for lambda-cyhalothrin and cypermethrin. West growers: 91% combine contact and systemic fungicides (S3).",
+      "inputs": [
+        {"product": "Mancozeb 80 WP", "category": "fungicide", "rate_per_ha": 2.5, "unit": "kg per application (2 to 2.5)", "applications": 10, "source_ids": ["S2"]},
+        {"product": "Metalaxyl + copper oxide (Ridomil Plus 72 WP)", "category": "fungicide", "rate_per_ha": 2.0, "unit": "kg per application, weekly before flowering", "applications": null, "source_ids": ["S8"]},
+        {"product": "Maneb 80 WP", "category": "fungicide", "rate_per_ha": 1.6, "unit": "kg per application, weekly after flowering (S8); 2 kg/ha (S1)", "applications": null, "source_ids": ["S8", "S1"]},
+        {"product": "Azoxystrobin 250 SC", "category": "fungicide", "rate_per_ha": 2, "unit": "kg or L per application as reported", "applications": 1, "source_ids": ["S2"]},
+        {"product": "Lambda-cyhalothrin product (LAMIDA GOLD 90 EC)", "category": "insecticide", "rate_per_ha": 1, "unit": "L per application", "applications": 5, "source_ids": ["S2"]},
+        {"product": "Second insecticide (CIGOGNE 360 EC)", "category": "insecticide", "rate_per_ha": 1, "unit": "L per application", "applications": 5, "source_ids": ["S2"]},
+        {"product": "Deltamethrin (Decis)", "category": "insecticide", "rate_per_ha": 1, "unit": "L per application (budget 20 L per cycle)", "applications": null, "source_ids": ["S1"]},
+        {"product": "Neem-based botanical preparation", "category": "insecticide", "rate_per_ha": 4, "unit": "L per application", "applications": null, "source_ids": ["S1"]},
+        {"product": "Mancozeb (MINADER budget)", "category": "fungicide", "rate_per_ha": 80, "unit": "kg per cycle", "applications": null, "source_ids": ["S1"]},
+        {"product": "Ridomil (MINADER budget)", "category": "fungicide", "rate_per_ha": 20, "unit": "kg per cycle (200 x 100 g)", "applications": null, "source_ids": ["S1"]}
+      ],
+      "sprays_per_cycle": [10, 17],
+      "sprays_per_cycle_notes": "Fungicide applications: 10 in East Cameroon best protocol (S2); weekly spraying in Dschang trial over a March to July or July to November season (S8, count derived as roughly 15 to 17 weeks, indicative). Farmers: weekly spraying most common among Cameroon vegetable growers (S19).",
+      "labour_person_days_per_ha": 6,
+      "labour_notes": "MINADER budgets 6 person-days for all fungicide/insecticide treatments (S1); the East Cameroon trial uses 3 person-days per application, i.e. 30 to 33 person-days for 10 to 11 applications (S2)",
+      "source_ids": ["S1", "S2", "S3", "S4", "S8", "S19"]
+    },
+    {
+      "step": "Harvest",
+      "timing_days_relative_to_transplant": [60, 150],
+      "timing_basis": "First harvest 60 to 80 days after transplanting, spread over 2 to 3 months (S1)",
+      "description": "Pick by twisting the stalk. Stage: yellow-pink for delayed sale, orange-red for direct sale, bright red for processing (S1). At least one harvest per week (S14); 4 to 6 weekly harvests for Rio-type (S5). Harvest cost in East Cameroon trial: 500 XAF per 85 kg crate (S2).",
+      "inputs": [],
+      "harvest_frequency": "Weekly (S5, S14)",
+      "labour_person_days_per_ha": 40,
+      "source_ids": ["S1", "S2", "S5", "S14"]
+    },
+    {
+      "step": "Post-harvest handling, packaging and transport",
+      "timing_days_relative_to_transplant": [60, 150],
+      "timing_basis": "Concurrent with harvest",
+      "description": "Rigid crates, boxes or cartons; store in a cool dry place; ash on fruit extends shelf life; processing options: sun-dried slices, concentrate, juice, jam (S1). MINADER budget: 800 crates/baskets at 300 XAF, transport and handling 50,000 XAF/ha. Traditional crate: about 400 g empty, 20 to 25 L, 250 to 300 XAF (S5). A 20 kg crate is the sales unit in the 2024 Dschang study (S9).",
+      "inputs": [
+        {"product": "Crates / baskets", "category": "packaging", "rate_per_ha": 800, "unit": "crates (300 XAF each)", "applications": 1, "source_ids": ["S1"]}
+      ],
+      "labour_person_days_per_ha": 2,
+      "source_ids": ["S1", "S5", "S9"]
+    }
+  ],
+
+  "fertilizer_total": {
+    "minader_text_programme": {
+      "products": [
+        {"product": "Organic matter", "kg_per_ha": [20000, 30000], "notes": "200 to 300 kg per 100 m2"},
+        {"product": "NPK 10-10-20 (basal)", "kg_per_ha": 400},
+        {"product": "NPK 20-10-10 (4 top dressings)", "kg_per_ha": 800}
+      ],
+      "nutrients_kg_per_ha_derived": {"N": 200, "P2O5": 120, "K2O": 160},
+      "notes": "Mineral fertilizer only, excluding manure; derived from grades (400 kg 10-10-20 = 40-40-80; 800 kg 20-10-10 = 160-80-80)",
+      "source_ids": ["S1"]
+    },
+    "minader_budget_programme": {
+      "products": [
+        {"product": "NPK 20-10-10", "kg_per_ha": 1200, "price_xaf_per_50kg_bag": 26000},
+        {"product": "Potassium sulphate", "kg_per_ha": 500, "price_xaf_per_50kg_bag": 32500},
+        {"product": "Calcium nitrate", "kg_per_ha": 250, "price_xaf_per_50kg_bag": 13500}
+      ],
+      "nutrients_kg_per_ha_derived": {"N": 279, "P2O5": 120, "K2O": 370, "CaO_approx": null},
+      "notes": "Derived with standard grades: 20-10-10; K2SO4 50% K2O; calcium nitrate 15.5% N. Budget and text conflict (1,200 vs 800 kg 20-10-10; budget omits 10-10-20).",
+      "source_ids": ["S1"]
+    },
+    "reference_recommendations": [
+      {"source_id": "S12", "N": [100, 150], "P": [65, 110], "K": [160, 240], "unit": "kg/ha as published by FAO for high-yielding varieties (FAO page lists them as N, P, K)"},
+      {"source_id": "S13", "N": 125, "P2O5": 50, "K2O": 50, "unit": "kg/ha, NAERLS Nigeria, plus compost and lime"},
+      {"source_id": "S14", "product": "NPK 15-15-15", "kg_per_ha": [200, 250], "unit": "kg/ha product, NIHORT Nigeria"}
+    ],
+    "observed_farmer_use_west_cameroon": {
+      "synthetic_fertilizer_kg_per_ha": [592, 1210],
+      "organic_amendment_kg_per_ha": [584, 3137],
+      "formulas_used": ["DAP 18-46-0", "Urea 46-0-0", "NPK 20-10-10", "15-0-0 + 26 CaO + 0.3 B", "13-13-21 + 3 S + 0.01 B + 0.01 Zn", "Layer poultry droppings (most preferred organic)"],
+      "finding": "Heavy unregulated synthetic use (Type 1, 1,210 kg/ha) had the highest preharvest losses (14%)",
+      "source_ids": ["S3"]
+    },
+    "trial_results_cameroon": [
+      {"source_id": "S2", "treatment": "Poultry manure 10 t/ha + NPK 20-10-10 1,000 kg/ha", "yield_t_ha": 23.78, "value_cost_ratio": 2.49, "site": "East Cameroon, Rio Grande"},
+      {"source_id": "S9", "treatment": "Poultry manure 5 t/ha + NPK 20-10-10 150 kg/ha", "yield_t_ha": 26.28, "value_cost_ratio": 2.0, "site": "Dschang, West, Raja F1, 2024"},
+      {"source_id": "S9", "treatment": "Poultry manure 2.5 t/ha + Net Eden 0.5 L/ha", "yield_t_ha": 26.11, "value_cost_ratio": 2.02, "site": "Dschang, West, 2024"}
+    ],
+    "input_prices_xaf": [
+      {"item": "NPK 20-10-10", "price": [560, 760], "unit": "XAF/kg retail", "period": "Q4 2022", "source_ids": ["S17"]},
+      {"item": "Urea", "price": [700, 900], "unit": "XAF/kg retail", "period": "Q4 2022", "source_ids": ["S17"]},
+      {"item": "NPK 20-10-10", "price": 26000, "unit": "XAF per 50 kg bag", "period": "2024", "source_ids": ["S1"]},
+      {"item": "Potassium sulphate", "price": 32500, "unit": "XAF per 50 kg bag", "period": "2024", "source_ids": ["S1"]},
+      {"item": "Calcium nitrate", "price": 13500, "unit": "XAF per 50 kg bag", "period": "2024", "source_ids": ["S1"]},
+      {"item": "Mancozeb", "price": 2500, "unit": "XAF/kg", "period": "2024", "source_ids": ["S1"]},
+      {"item": "Ridomil", "price": 1000, "unit": "XAF per 100 g", "period": "2024", "source_ids": ["S1"]},
+      {"item": "Decis", "price": 16000, "unit": "XAF per 5 L", "period": "2024", "source_ids": ["S1"]},
+      {"item": "Round Up", "price": 6500, "unit": "XAF/L", "period": "2024", "source_ids": ["S1"]},
+      {"item": "Tomato seed", "price": 20000, "unit": "XAF per 100 g bag", "period": "2024", "source_ids": ["S1"]},
+      {"item": "Liquid herbicides", "price": [4000, 6700], "unit": "XAF/L", "period": "Q4 2022", "source_ids": ["S17"]},
+      {"item": "Liquid insecticides", "price": [4800, 10000], "unit": "XAF/L", "period": "Q4 2022", "source_ids": ["S17"]},
+      {"item": "Solid fungicides", "price": [4000, 15000], "unit": "XAF/kg", "period": "Q4 2022", "source_ids": ["S17"]},
+      {"item": "Poultry droppings", "price": 2000, "unit": "XAF per sack (weight not stated)", "period": "2013 survey", "source_ids": ["S39"]},
+      {"item": "Labour", "price": 2500, "unit": "XAF per person-day", "period": "2024", "source_ids": ["S1"]},
+      {"item": "Labour", "price": 1500, "unit": "XAF per person-day", "period": "East Cameroon trial, year not stated (published 2016)", "source_ids": ["S2"]},
+      {"item": "Land rent", "price": 50000, "unit": "XAF/ha", "period": "2024", "source_ids": ["S1"]}
+    ],
+    "source_ids": ["S1", "S2", "S3", "S9", "S12", "S13", "S14", "S17"]
+  },
+
+  "pests_diseases": [
+    {"name": "Late blight", "agent": "Phytophthora infestans", "type": "disease", "importance": "Most severe disease with early blight in the western highlands (S7); caused most damage in the July to November trial in Dschang; marketable yield loss up to 100% when unsprayed (S8)", "conditions": "Wet season, high humidity (S8, S12)", "active_ingredients": ["metalaxyl + copper oxide (Ridomil Plus) 2.0 kg/ha", "maneb 1.6 to 2 kg/ha", "mancozeb 2 to 2.5 kg/ha", "azoxystrobin"], "spray_interval_days": 7, "source_ids": ["S1", "S2", "S7", "S8"]},
+    {"name": "Early blight", "agent": "Alternaria solani", "type": "disease", "importance": "Main disease with late blight; more severe early in the March to July trial (S8)", "active_ingredients": ["mancozeb", "maneb", "iprodione (Rovral 50WP) 0.2% every 12 days (Nigeria)"], "spray_interval_days": [7, 12], "source_ids": ["S1", "S8", "S13"]},
+    {"name": "Bacterial wilt", "agent": "Ralstonia solanacearum", "type": "disease", "importance": "Listed by MINADER; waterlogging increases risk (FAO)", "active_ingredients": [], "management": "Rotation at least 5 years with cereals (S13); spot treatment with 10% sodium hypochlorite and soil solarization 2 to 3 months (S15); no chemical cure", "source_ids": ["S1", "S12", "S13", "S15"]},
+    {"name": "Fusarium and Verticillium wilts", "agent": "Fusarium oxysporum f. sp. lycopersici; Verticillium spp.", "type": "disease", "importance": "Listed by MINADER; Fusarium and root rot can cause 90% or more damage (Nigeria S13)", "management": "Resistant varieties such as Roma VF (S1)", "active_ingredients": [], "source_ids": ["S1", "S13"]},
+    {"name": "Downy mildew (as listed by MINADER)", "agent": "not specified", "type": "disease", "active_ingredients": ["maneb 2 kg/ha"], "source_ids": ["S1"]},
+    {"name": "Fruit flies", "agent": "Melon fruit fly (Bactrocera cucurbitae, spelled 'Bacus' in source) and others", "type": "pest", "importance": "Most prevalent insect pest in the western highlands survey 1993 to 1996 (S7)", "management": "Pheromone and food-bait traps (S1)", "active_ingredients": [], "source_ids": ["S1", "S7"]},
+    {"name": "Tomato leaf miner", "agent": "Tuta absoluta (Phthorimaea absoluta)", "type": "pest", "importance": "Present in Cameroon (EPPO, 2022 record, Bambili)", "management": "Pheromone traps 4 to 6 per acre (Kenya S15)", "active_ingredients": ["chlorantraniliprole", "emamectin benzoate", "indoxacarb", "abamectin (all used by Foumbot growers, S4; rates not reported)"], "source_ids": ["S4", "S15", "S20"]},
+    {"name": "Fruit borer / bollworm", "agent": "Helicoverpa armigera", "type": "pest", "importance": "Listed in Nigeria and Kenya guides; caterpillars listed by MINADER", "active_ingredients": ["lambda-cyhalothrin 1 L/ha product", "deltamethrin (Decis) 1 L/ha", "cypermethrin 5 ml per 10 L weekly (Nigeria)", "emamectin benzoate"], "source_ids": ["S1", "S2", "S13", "S14", "S15"]},
+    {"name": "Whiteflies", "agent": "Bemisia tabaci", "type": "pest", "importance": "Listed by MINADER", "active_ingredients": ["imidacloprid", "acetamiprid", "thiamethoxam (used by Foumbot growers, S4; rates not reported)"], "source_ids": ["S1", "S4", "S15"]},
+    {"name": "Mites", "agent": "Red spider mite (Tetranychus spp.)", "type": "pest", "importance": "Listed by MINADER and SHEP Kenya", "active_ingredients": ["abamectin (used by 18% of Foumbot growers, S4)"], "source_ids": ["S1", "S4", "S15"]},
+    {"name": "Root-knot nematodes", "agent": "Meloidogyne spp.", "type": "pest", "importance": "Listed by MINADER; 10 to 40% losses (Nigeria S13)", "management": "Rotation at least 3 years (S13); resistant varieties such as Rossol suggested (S10); carbofuran 3G 30 to 40 kg/ha appears in the Nigerian bulletin but carbofuran is banned in many countries and its status in Cameroon was not verified", "active_ingredients": [], "source_ids": ["S1", "S10", "S13"]}
+  ],
+  "pesticide_safety_notes": "Foumbot survey (S4, 100 growers, Feb 2020): 100% without protective equipment, 93% ignore preharvest intervals, 56% raise doses, 68% reuse empty containers; lambda-cyhalothrin residues above MRL in all positive samples and cypermethrin in 92.3%. Chlorpyrifos, methomyl and paraquat are widely used despite being highly hazardous; registration status not verified.",
+
+  "labour_total_person_days_per_ha": [290, 290],
+  "labour_notes": "Only one complete Cameroon breakdown found: MINADER S1 budget totals 290 person-days/ha (clearing 20, ploughing 60, ridging 30, transplanting 30, gap filling 5, staking 10 + 20, watering 25, fertilizer 6, pesticide 6, herbicide 6, weeding/earthing 15, pruning 15, harvest 40, packaging 2), at 2,500 XAF per person-day, excluding nursery work. Pesticide labour is probably underestimated: East Cameroon trial uses 3 person-days per spray (S2), i.e. about 30 for 10 sprays, plus 35 for manure spreading. Ghana comparison (S16): 35 to 97 unpaid family person-days/ha, hired labour not counted.",
+
+  "yields_t_ha": {
+    "faostat_cameroon": {"value": 19.36, "year": 2024, "production_t": 1279204, "area_ha_derived": 66082, "series_2015_2024": {"2015": 12.39, "2016": 17.65, "2017": 18.05, "2018": 18.15, "2019": 18.32, "2020": 18.01, "2021": 18.02, "2022": 18.87, "2023": 18.96, "2024": 19.36}, "source_ids": ["S11"], "notes": "FAOSTAT via Our World in Data (FAO 2025 release). The jump from 12.4 to 17.6 t/ha in 2016 suggests a series revision or imputation; MINADER S1 instead cites about 11 t/ha (range 2 to 22) for FAOSTAT 2021, and Tolly S5 cites 11.3 t/ha on 150,000 ha for 2012. Treat the national average as uncertain (11 to 19 t/ha)."},
+    "farmer_rainfed": [4.5, 25],
+    "farmer_rainfed_notes": "MINADER rainy-season yield 100 to 250 kg per 100 m2 = 10 to 25 t/ha (S1). On-farm trial Central Cameroon 4.46 to 8.12 t/ha by variety (S10). Unfertilized controls: 6.5 t/ha Dschang 2024 (S9), 1.7 to 5.7 t/ha East Cameroon (S2). West Cameroon farmer survey reports 669 to 1,587 baskets/ha (S3), but basket weight is not given, so it cannot be converted.",
+    "good_practice_rainfed": [21, 26],
+    "good_practice_rainfed_notes": "Dschang 2024, March to June, manure + mineral: 21.2 to 26.3 t/ha (S9). East Cameroon best protocol with manure + NPK: 23.8 t/ha (S2). Research-plot ceiling: 55 to 68 t/ha for the best varieties sprayed weekly in Dschang 1995 (S8). MINADER general average 20 to 50 t/ha depending on variety (S1).",
+    "irrigated_dry_season": [20, 50],
+    "irrigated_dry_season_notes": "MINADER dry-season yield 200 to 500 kg per 100 m2 = 20 to 50 t/ha (S1). FAO good commercial irrigated yield 45 to 65 t/ha (S12). Kenya Rio Grande 18,000 kg/acre = about 44 t/ha derived (S15). Ghana irrigated farmers only 5.3 to 14.6 t/ha (S16).",
+    "source_ids": ["S1", "S2", "S3", "S5", "S8", "S9", "S10", "S11", "S12", "S15", "S16"]
+  },
+
+  "post_harvest_loss_pct": [6, 40],
+  "post_harvest_loss_detail": {
+    "fao_minader_2013_west_chains": {"total_pct": 33.8, "preharvest_and_harvest_pct": 28.3, "transport_to_grouping_markets_pct": 0.5, "transport_to_urban_markets_pct": 5.0, "quality_reduction_pct": {"transport_grouping": 5.15, "transport_urban": 25.85, "retail": 18.3}, "chains": "Mbouda-Bafoussam-Douala and Foumbot-Bafoussam-Douala, Sept to Oct 2013", "source_ids": ["S6"]},
+    "foumbot_chain_tolly_2016": {"preharvest_and_harvest_pct": 31.7, "transport_pct": 5.9, "marketing_pct": 0.65, "post_harvest_only_pct_derived": 6.55, "overall_cameroon_pct": [35, 39.5], "source_ids": ["S5"]},
+    "preharvest_losses_by_system_west": {"type1_pct": 14, "type2_pct": 1, "type3_pct": 1, "source_ids": ["S3"]},
+    "policy_brief_low_reliability": {"pct": [30, 50], "source_ids": ["S42"]},
+    "comparable_nigeria": {"mean_pct": 12.51, "source_ids": ["S44"]},
+    "notes": "Lower bound 6% = transport plus marketing losses on the Foumbot chain (S5, derived sum). Upper bound 40% = overall farm-to-market losses including preharvest (S5, S6, S42)."
+  },
+
+  "prices": {
+    "unit_notes": "Cameroon media quote the 'cageot' (crate) without stating its weight. Weights found: a 20 kg crate at 5,500 XAF in Dschang 2024 (S9); an 85 kg crate in an East Cameroon trial (S2); traditional crates of 20 to 25 L volume and about 400 g empty (S5); 15 L and 20 kg buckets in the North-West (S38). Per-kg values are given only where the source gives a weight or a per-kg price; crate prices are kept in price_xaf_per_crate. Converting crate prices to per-kg needs a measured crate weight for Foumbot.",
+    "observations": [
+      {"market": "Dschang (West), producer sale", "period": "Mar to Jun 2024", "price_xaf_per_kg": [275, 275], "price_xaf_per_crate": [5500, 5500], "crate_kg": 20, "year": 2024, "source_ids": ["S9"]},
+      {"market": "Adamaoua, East, North-West, South-West department averages", "period": "Jan to Mar 2025", "price_xaf_per_kg": [169, 639], "year": 2025, "notes": "West region not covered", "source_ids": ["S18"]},
+      {"market": "East Cameroon local market / field gate", "period": "Oct to Jan, year not stated", "price_xaf_per_kg": [235, 350], "year": 2016, "notes": "350 market, 235 to 253 field gate; year is publication year", "source_ids": ["S2"]},
+      {"market": "Douala buyer from Bambui (North-West)", "period": "Dec 2005 to Sep 2006", "price_xaf_per_kg": [160, 160], "year": 2006, "notes": "3,200 XAF per 20 kg bucket; 4,032,000 XAF for 25.2 t", "source_ids": ["S38"]},
+      {"market": "Bafoussam", "period": "Sep 2026", "price_xaf_per_kg": null, "price_xaf_per_crate": [1000, 2000], "year": 2026, "notes": "Down from about 4,000 at start of 2026", "source_ids": ["S22"]},
+      {"market": "Yaoundé Mfoundi", "period": "mid-Jul 2026", "price_xaf_per_kg": null, "price_xaf_per_crate": [5800, 6500], "year": 2026, "source_ids": ["S22"]},
+      {"market": "Yaoundé Mfoundi", "period": "Sep 2026", "price_xaf_per_kg": null, "price_xaf_per_crate": [3000, 4000], "year": 2026, "source_ids": ["S22"]},
+      {"market": "Douala", "period": "Sep 2026", "price_xaf_per_kg": null, "price_xaf_per_crate": [3500, 4000], "year": 2026, "source_ids": ["S22"]},
+      {"market": "Trader purchase, Ntui (Centre)", "period": "Sep 2026", "price_xaf_per_kg": null, "price_xaf_per_crate": [1000, 1000], "year": 2026, "notes": "30 crates for 30,000 XAF plus 10,000 to 15,000 transport", "source_ids": ["S22"]},
+      {"market": "Yaoundé (Etoudi and others)", "period": "Mar 2026", "price_xaf_per_kg": null, "price_xaf_per_crate": [1000, 2500], "year": 2026, "source_ids": ["S23"]},
+      {"market": "Yaoundé", "period": "a few months before Mar 2026 (late 2025)", "price_xaf_per_kg": null, "price_xaf_per_crate": [10000, 20000], "year": 2025, "source_ids": ["S23"]},
+      {"market": "Production basins / Yaoundé", "period": "Feb 2026 glut", "price_xaf_per_kg": null, "price_xaf_per_crate": [1000, 2000], "year": 2026, "notes": "Down from about 25,000 in high season", "source_ids": ["S24"]},
+      {"market": "Yaoundé (Mfoundi and others)", "period": "Oct 2025", "price_xaf_per_kg": null, "price_xaf_per_crate": [12000, 15000], "year": 2025, "source_ids": ["S25", "S26"]},
+      {"market": "Yaoundé Messassi", "period": "May 2025", "price_xaf_per_kg": null, "price_xaf_per_crate": [3000, 6000], "year": 2025, "notes": "Doubled within two weeks", "source_ids": ["S27"]},
+      {"market": "Bafoussam (Casablanca market)", "period": "Feb 2021", "price_xaf_per_kg": null, "price_xaf_per_crate": [1000, 4000], "year": 2021, "notes": "Pre-Covid 5,000 to 7,000", "source_ids": ["S28"]},
+      {"market": "Yaoundé Marché 8e", "period": "Jun 2020", "price_xaf_per_kg": null, "price_xaf_per_crate": [1700, 2500], "year": 2020, "notes": "Usual 8,000 to 10,000", "source_ids": ["S29"]},
+      {"market": "Yaoundé Mvog-Mbi", "period": "Jul 2020", "price_xaf_per_kg": null, "price_xaf_per_crate": [4500, 7000], "year": 2020, "source_ids": ["S30"]},
+      {"market": "Farm gate (national)", "period": "2020 Covid border closure", "price_xaf_per_kg": null, "price_xaf_per_crate": [500, 3000], "year": 2020, "notes": "Fell from 3,000 to 500; break-even 1,500 farm gate", "source_ids": ["S31"]},
+      {"market": "Cameroonian towns", "period": "2020; usual vs rainy season", "price_xaf_per_kg": null, "price_xaf_per_crate": [7000, 12000], "year": 2020, "notes": "Usual 7,000; 11,000 to 12,000 in rainy seasons; 1,500 to 2,000 after border closure", "source_ids": ["S32"]},
+      {"market": "Yaoundé", "period": "Aug 2017", "price_xaf_per_kg": null, "price_xaf_per_crate": [11000, 12000], "year": 2017, "notes": "6,000 two months earlier (Jun 2017)", "source_ids": ["S33"]},
+      {"market": "Douala (Sandaga, PK14, Dakar, New Deido)", "period": "Sep to Nov 2017", "price_xaf_per_kg": null, "price_xaf_per_crate": [15000, 15000], "year": 2017, "notes": "Markets flooded in Dec 2017", "source_ids": ["S34"]},
+      {"market": "Maroua (Far North)", "period": "Jul 2019", "price_xaf_per_kg": null, "price_xaf_per_crate": [3000, 14000], "year": 2019, "notes": "3,000 three months earlier, 14,000 in July", "source_ids": ["S36"]},
+      {"market": "Libreville, Gabon (export)", "period": "2020", "price_xaf_per_kg": null, "price_xaf_per_crate": [60000, 90000], "year": 2020, "notes": "Wholesaler bought crates at 2,000 in Yaoundé; Libreville 'caisse' sold at 60,000 to 90,000 (unit likely larger than a cageot, not defined); 950,000 XAF road and customs costs per trip", "source_ids": ["S37"]}
+    ],
+    "seasonality": "Indicative, built from dated observations, no monthly price series found for Foumbot. High or scarcity prices: roughly July to November (peak rains: late blight, fruit rot, bad roads, exports to Gabon and Equatorial Guinea). Examples: Aug 2017 11,000 to 12,000 per crate, Sep to Nov 2017 15,000 in Douala, Oct 2025 12,000 to 15,000 in Yaoundé, late 2025 10,000 to 20,000, mid-Jul 2026 5,800 to 6,500. Low or glut prices: roughly December to March (dry-season irrigated harvests in the West): Dec 2017 Douala flooded, Feb 2021 Bafoussam 1,000 to 4,000, Feb to Mar 2026 1,000 to 2,500. April to June is a transition with sharp rises (May 2025 3,000 to 6,000). Exceptions: Sep 2026 was a glut (Bafoussam 1,000 to 2,000) after regular rains and simultaneous harvests across basins (S22), and 2020 prices collapsed in June because of Covid border closures. Rainy-season price premium: 11,000 to 12,000 vs 7,000 usual (S32). Intra-year range per crate: about 1,000 to 25,000 XAF (S24).",
+    "markets": "Foumbot (Noun) is the main basin, said to supply close to 40% of national output (MINADER via S22); Titti et al. cite 525,760 t/year for the Foumbot supply chain (S3). Noun department produced 26,829 t in 2010 (Agri-Stat 16, via S39). Flows: Foumbot to Bafoussam to Douala (S5, S6) and to Yaoundé (Mfoundi, Etoudi, Mvog-Mbi, Messassi markets).",
+    "exports": "Gabon and Equatorial Guinea are the main cross-border buyers (S33, S34, S35, S37); also Chad, Nigeria, Niger, Congo (S32, S34). Mostly informal: only about 120 t of fresh tomato declared exported in 2024 (WITS, via S22). Border closures in 2020 caused a price collapse (S31, S32).",
+    "source_ids": ["S2", "S3", "S5", "S6", "S9", "S18", "S22", "S23", "S24", "S25", "S26", "S27", "S28", "S29", "S30", "S31", "S32", "S33", "S34", "S35", "S36", "S37", "S38", "S39"]
+  },
+
+  "cost_of_production_xaf_per_ha": [
+    {
+      "value": 3575000,
+      "basis": "Year-1 total for 1 ha, MINADER standard budget: investments 1,088,500 + operating 2,486,500. Operating only: 2,486,500.",
+      "breakdown": {
+        "investments_total": 1088500,
+        "investments_detail": {"motor_pump": 200000, "water_reserve_points": 300000, "sprayers_2": 90000, "crates_800": 240000, "push_truck": 85000, "watering_cans_8": 48000, "wheelbarrow": 30000, "nursery_shade": 20000, "small_tools_other": 75500},
+        "inputs_total": 1616500,
+        "inputs_detail": {"land_rent": 50000, "seed_300g": 60000, "npk_20_10_10_1200kg": 624000, "potassium_sulphate_500kg": 325000, "calcium_nitrate_250kg": 67500, "mancozeb_80kg": 200000, "ridomil_20kg": 200000, "decis_20L": 64000, "round_up_4L": 26000},
+        "works_total": 665000,
+        "works_detail": {"field_labour_248_person_days_at_2500": 620000, "fuel_and_pump_maintenance": 45000, "nursery_soil_prep_and_disinfection_listed_but_not_in_subtotal": 120000},
+        "budget_arithmetic_note": "The works lines sum to 785,000 but the stated subtotal is 665,000: the 120,000 nursery lines are left out of the total. A corrected year-1 total would be 3,695,000 (derived).",
+        "harvest_postharvest_total": 155000,
+        "services_total": 50000,
+        "depreciation_year1": 170500,
+        "excluded": "No line for stakes purchase (25,000 stakes recommended) or for organic manure (20 to 30 t/ha recommended)"
+      },
+      "year": 2024,
+      "source_ids": ["S1"]
+    },
+    {
+      "value": [3012779, 3615491],
+      "basis": "Total cost per ha (CT1) by fertilizer treatment, Dschang, Raja F1; breakdown not published",
+      "breakdown": {},
+      "year": 2024,
+      "source_ids": ["S9"]
+    },
+    {
+      "value": null,
+      "basis": "Partial costs only, East Cameroon trial (Rio Grande): crop protection 188,000 to 558,900; fertilization package 1,082,909 to 1,403,018 (manure + NPK + transport + spreading + interest); harvest 22,243 to 100,654",
+      "breakdown": {"crop_protection": [188000, 558900], "fertilization": [1082909, 1403018], "harvest": [22243, 100654]},
+      "year": 2016,
+      "source_ids": ["S2"]
+    },
+    {
+      "value": null,
+      "basis": "MINADER 2020 tomato rescue plan unit allocations (derived per ha from the 1,000 ha budget): phytosanitary products 425,000 XAF/ha; hybrid seed over 1,000,000 XAF/ha",
+      "breakdown": {"phytosanitary": 425000, "hybrid_seed_min": 1000000},
+      "year": 2020,
+      "source_ids": ["S31"]
+    },
+    {
+      "value": null,
+      "basis": "Unit cost per crate: about 2,700 XAF per crate produced (agronomists and farmer organisations, 2026); break-even 1,500 XAF per crate farm gate (MINADER, 2020)",
+      "breakdown": {"cost_per_crate_2026": 2700, "break_even_per_crate_farm_gate_2020": 1500},
+      "year": 2026,
+      "source_ids": ["S23", "S31"]
+    }
+  ],
+
+  "margins": [
+    {"description": "MINADER standard budget, 1 ha, year 1: revenue 3,600,000 (800 crates x 4,500); gross margin over operating costs 1,113,500; net profit after depreciation 943,000. Two campaigns: gross margin 2,227,000, net 1,886,000. Revenue / operating cost = 1.45 (derived); revenue / total year-1 outlay = 1.01 (derived). Crate weight not stated.", "gross_margin_xaf_per_ha": 1113500, "net_profit_xaf_per_ha": 943000, "benefit_cost_ratio": 1.45, "year": 2024, "source_ids": ["S1"]},
+    {"description": "East Cameroon trial: net benefit over protection and harvest costs only, best protocol P1: 4,027,526 XAF/ha at 17.06 t/ha and 235 XAF/kg (partial budget, not full margin)", "gross_margin_xaf_per_ha": 4027526, "benefit_cost_ratio": null, "year": 2016, "source_ids": ["S2"]},
+    {"description": "East Cameroon trial: value-cost ratio of fertilization 1.49 to 2.49 (poultry manure 10 t/ha + NPK 20-10-10 best)", "value_cost_ratio": [1.49, 2.49], "year": 2016, "source_ids": ["S2"]},
+    {"description": "Dschang 2024 trial: value-cost ratio 1.23 to 2.02, economic profitability 22.7 to 102.3%; computed values could not be reproduced from the stated 275 XAF/kg", "value_cost_ratio": [1.23, 2.02], "year": 2024, "source_ids": ["S9"]},
+    {"description": "Crate-level margin 2026: production cost about 2,700 XAF per crate; at 1,000 XAF per crate in glut the producer loses 1,700 XAF per crate before transport", "year": 2026, "source_ids": ["S23"]},
+    {"description": "Retail margin 2020: retailers selling at 2,500 XAF per crate earn about 30% after expenses", "year": 2020, "source_ids": ["S32"]},
+    {"description": "Nigeria comparable: 2.93 naira returned per naira invested within 4 months (NIHORT)", "benefit_cost_ratio": 2.93, "year": null, "source_ids": ["S14"]}
+  ],
+
+  "climate": {
+    "optimal_mean_temp_c": [18, 25],
+    "optimal_day_temp_c": [21, 26],
+    "optimal_night_temp_c": [10, 20],
+    "temperature_notes": "FAO S12: optimal mean daily 18 to 25 C, nights 10 to 20 C; above 25 C with high humidity and wind yields drop; nights above 20 C with high humidity and low sunshine cause excess vegetative growth and poor fruiting. NAERLS S13: optimum 22 to 26 C day, 14 to 16 C night; flowers drop and fruit set is poor above 32 C day or night; fruit set can fail when days exceed 29.4 C and nights 22.2 C. NIHORT S14: optimum 21 to 25 C.",
+    "fruit_set_failure_temp_c": {"day_above": 32, "alt_threshold_day_night": [29.4, 22.2], "source_ids": ["S13"]},
+    "water_requirement_mm_per_cycle": [400, 600],
+    "kc": {"initial": [0.4, 0.5], "development": [0.7, 0.8], "mid": [1.05, 1.25], "late": [0.8, 0.9], "harvest": [0.6, 0.65]},
+    "ky_total": 1.05,
+    "soil": "Well-drained light loam, pH 5 to 7 (S12); pH 6.0 to 6.5 (S14); moderately salt sensitive, 0% loss at ECe 2.5, 50% at 7.6 (S12)",
+    "heavy_rain_sensitivity": "Late blight and early blight are the main constraints; untreated wet-season crops can lose up to 100% of marketable yield (S7, S8). Abundant rain causes rapid fruit rot and supply shortages (S33). MINADER yields: rainy season 10 to 25 t/ha vs dry season 20 to 50 t/ha (S1). High humidity increases pests, diseases and fruit rot (S12).",
+    "foumbot_climate": {"annual_mean_temp_c": 22.4, "annual_rain_mm": 1679, "monthly_rain_mm": {"Jan": 3, "Feb": 10, "Mar": 59, "Apr": 159, "May": 188, "Jun": 196, "Jul": 260, "Aug": 284, "Sep": 244, "Oct": 211, "Nov": 61, "Dec": 4}, "monthly_max_temp_c": {"Jan": 31.0, "Feb": 32.2, "Mar": 31.1, "Apr": 28.3, "May": 26.6, "Jun": 25.5, "Jul": 24.8, "Aug": 24.8, "Sep": 24.9, "Oct": 25.1, "Nov": 26.6, "Dec": 29.2}, "monthly_min_temp_c": {"Jan": 17.5, "Feb": 18.7, "Mar": 19.7, "Apr": 19.5, "May": 18.8, "Jun": 18.1, "Jul": 17.7, "Aug": 17.9, "Sep": 17.6, "Oct": 17.6, "Nov": 17.5, "Dec": 17.0}, "period": "1991 to 2021 model climatology", "notes": "February mean maximum 32.2 C reaches the NAERLS fruit-set limit; July to September are the coolest and wettest (highest late blight pressure).", "source_ids": ["S21"]},
+    "best_planting_periods_west_highlands": "MINADER: sowing March to April and September on the high plateaux (S1). Dschang trials used March to July and July to November seasons; late blight was worst in July to November (S8). Foumbot growers: 51% prefer the dry season, about 40% grow in both seasons, 9% rainy season only; dry-season crops are irrigated from streams with motor pumps (S4). Practical reading for Foumbot (single rainy season): a September sowing puts the harvest in the December to February dry season under irrigation, with higher yields but glut prices; a March sowing gives a rainy-season crop with high disease pressure that is harvested around June to August, when prices start to rise.",
+    "source_ids": ["S1", "S4", "S7", "S8", "S12", "S13", "S14", "S21", "S33"]
+  },
+
+  "sources": [
+    {"id": "S1", "title": "Technical and Economic Data Sheet for Tomato Production and Post-Production (PARPAC)", "publisher": "MINADER Cameroon, Sub-department of Agricultural Extension", "year": 2024, "url": "https://www.minader.cm/wp-content/uploads/2025/05/FICHE_TECHNIQUE_PRODUCTION_ET_POST_PRODUCTION_TOMATE_PARPAC_ENG.pdf", "notes": "Dated October 2024, posted May 2025. Core technical itinerary and 1 ha budget. Internal inconsistencies between text and budget (NPK quantity, pesticide quantities)."},
+    {"id": "S2", "title": "Evaluation experimentale de trois protocoles de traitement phytosanitaire et de l'effet de la fertilisation organo-minerale sur le mildiou et la rentabilite de la culture de tomate a l'Est-Cameroun", "publisher": "Revue Agriculture 11:69-79, Universite Ferhat Abbas Setif 1 (Djeugap Fovo J. et al.)", "year": 2016, "url": "https://revue-agro.univ-setif.dz/documents-agri/numero11-2016/Fovo-Evaluation.pdf", "notes": "Ndoumbi, East Cameroon, 670 m; trial year not stated; some arithmetic inconsistencies."},
+    {"id": "S3", "title": "Typology of Tomato Cropping Systems and Determinants of Preharvest Losses in Western Cameroon", "publisher": "Scientifica 2024, Article 5625648, Wiley (Titti R.W. et al., University of Dschang)", "year": 2024, "url": "https://www.researchgate.net/publication/385469148_Typology_of_Tomato_Cropping_Systems_and_Determinants_of_Preharvest_Losses_in_Western_Cameroon", "notes": "196 growers in Foumbot (60), Bansoa (69), Dschang (67), 2021 to 2022. Also at https://pmc.ncbi.nlm.nih.gov/articles/PMC11548949 (could not be opened: captcha). Yields in baskets/ha with no kg conversion; tables partly inconsistent."},
+    {"id": "S4", "title": "Phytosanitary Practices and Evaluation of 17 Pesticides Residues in Tomatoes Fruits Produced in Foumbot District, Western Highland-Cameroon", "publisher": "European Scientific Journal 17(3):30-50 (Sopkoutie N.G.K. et al.)", "year": 2021, "url": "https://eprints.whiterose.ac.uk/id/eprint/174019/", "notes": "100 Foumbot growers surveyed Feb 2020."},
+    {"id": "S5", "title": "Dynamics of Losses in Tomato Commodity Chain (Estimates based on experimental design in Cameroon)", "publisher": "ICAS VII, Rome (Tolly L.D.E. and Kamtchouing P.)", "year": 2016, "url": "https://www.istat.it/storage/icas2016/b15-tollylolo.pdf", "notes": "Fieldwork 2013; Foumbot and Mbouda chains; inconsistent totals (35% vs 39.5%)."},
+    {"id": "S6", "title": "Cameroon Food Loss Case Studies (tomato chains Mbouda/Foumbot-Bafoussam-Douala)", "publisher": "FAO Save Food", "year": 2013, "url": "https://www.fao.org/fileadmin/user_upload/save-food/presentation/Cameroon_Food_Loss_CaseStudies.pdf", "notes": "Field Sept to Oct 2013; presentation year assumed from fieldwork."},
+    {"id": "S7", "title": "Biological constraints in tomato production in the western highlands of Cameroon", "publisher": "Tropicultura 16(2):89-92 (Fontem D.A., Gumedzoe M.Y.D., Nono-Womdim R.)", "year": 1999, "url": "https://agris.fao.org/search/en/records/6472321953aa8c896301f4e4", "notes": "Survey 1993 to 1996."},
+    {"id": "S8", "title": "Quantitative Effects of Early and Late Blights on Tomato Yields in Cameroon", "publisher": "Tropicultura 21(1):36-41 (Fontem D.A.)", "year": 2003, "url": "https://www.researchgate.net/publication/45266478_Quantitative_Effects_of_Early_and_Late_Blights_on_Tomato_Yields_in_Cameroon", "notes": "Dschang 1995 trials."},
+    {"id": "S9", "title": "Assessment of Some Organic and a Mineral Fertilizer on the Yield and Profitability of Tomato in an Oxysol of West Cameroon", "publisher": "Journal of Plant Sciences 14(4):133-142, Science Publishing Group (Keegoui G. et al.)", "year": 2026, "url": "https://www.sciencepublishinggroup.com/article/10.11648/j.jps.20261404.11", "notes": "Dschang 1,400 m, Mar to Jun 2024; 20 kg crate at 5,500 XAF; economics not fully reproducible."},
+    {"id": "S10", "title": "Tillage and varietal impacts on tomato production on an ultisol in central Cameroon", "publisher": "Soil and Tillage Research 128:1-8 (Tueche J.R. et al.)", "year": 2013, "url": "https://biblio1.iita.org/handle/20.500.12478/1232", "notes": "Central Cameroon lowland forest zone; on-farm."},
+    {"id": "S11", "title": "Tomato production and Tomato yields, Cameroon (FAOSTAT data)", "publisher": "FAO via Our World in Data", "year": 2025, "url": "https://ourworldindata.org/grapher/tomato-yields", "notes": "Data to 2024. Production series: https://ourworldindata.org/grapher/tomato-production"},
+    {"id": "S12", "title": "Crop Information: Tomato", "publisher": "FAO Land and Water", "year": null, "url": "https://www.fao.org/land-water/databases-and-software/crop-information/tomato", "notes": "Temperature, water, Kc, Ky, fertilizer, yields."},
+    {"id": "S13", "title": "Heat-Tolerant Tomato Production Under Irrigation (Extension Bulletin 242)", "publisher": "NAERLS / Ahmadu Bello University, Nigeria", "year": 2016, "url": "https://naerls.gov.ng/wp-content/uploads/2022/11/Heat-Tolerant-Tomato-Production-Under-Irrigation.pdf", "notes": "Lists some products (carbofuran, dichlorvos) that are restricted in many countries."},
+    {"id": "S14", "title": "Production Guide for Tomatoes", "publisher": "NIHORT, Ibadan, Nigeria", "year": null, "url": "https://nihort.gov.ng/wp-content/uploads/2020/07/PRODUCTION-GUIDE-ON-TOMATO.pdf", "notes": "Uploaded 2020."},
+    {"id": "S15", "title": "Tomato Production (SHEP PLUS training material)", "publisher": "Kenya MOALF / JICA / AFA-HCD", "year": 2016, "url": "https://www.jica.go.jp/project/english/kenya/015/materials/c8h0vm0000f7o8cj-att/materials_15.pdf", "notes": "Per-acre figures."},
+    {"id": "S16", "title": "The Case of Tomato in Ghana: Productivity (GSSP Working Paper 19)", "publisher": "IFPRI (Robinson E.J.Z., Kolavalli S.L.)", "year": 2010, "url": "https://gssp.ifpri.info/files/2010/08/gsspwp191.pdf", "notes": "2008/09 survey, 3 regions."},
+    {"id": "S17", "title": "Bulletin trimestriel de suivi des intrants agricoles: engrais et produits phytosanitaires No 0 (Oct to Dec 2022)", "publisher": "MINADER DESA", "year": 2022, "url": "https://www.minader.cm/wp-content/uploads/2023/07/wp-1688563666713.pdf", "notes": "Retail input prices by market."},
+    {"id": "S18", "title": "Bulletin trimestriel SIM T1 2025 (agricultural product prices, 6 regions)", "publisher": "MINADER", "year": 2025, "url": "https://www.minader.cm/wp-content/uploads/2025/09/BULLETIN-TRIMESTRIEL_SIM_T1-2025-VF.pdf", "notes": "Tomato XAF/kg by department, Jan to Mar 2025; West region not covered."},
+    {"id": "S19", "title": "Vegetable growers perception of pesticide use practices, cost, and health effects in the tropical region of Cameroon", "publisher": "Int. J. Agronomy and Plant Production 4(5):873-883 (Abang A.F. et al.)", "year": 2013, "url": "https://biblio1.iita.org/handle/20.500.12478/1235", "notes": "Weekly spraying most common."},
+    {"id": "S20", "title": "Phthorimaea absoluta (Tuta absoluta) distribution: Cameroon", "publisher": "EPPO Global Database", "year": 2022, "url": "https://gd.eppo.int/taxon/GNORAB/distribution/CM", "notes": "Present, no details; ref. Heumou et al. 2022 (Bambili)."},
+    {"id": "S21", "title": "Climate Foumbot (Cameroon)", "publisher": "Climate-Data.org", "year": 2021, "url": "https://en.climate-data.org/africa/cameroon/west/foumbot-894723/", "notes": "Modelled climatology 1991 to 2021; not station data."},
+    {"id": "S22", "title": "Tomate en fruit: l'abondance de l'offre fait chuter les prix a Yaounde", "publisher": "EcoMatin", "year": 2026, "url": "https://ecomatin.net/tomate-en-fruit-labondance-de-loffre-fait-chuter-les-prix-a-yaounde", "notes": "23 Sep 2026; Foumbot about 40% of national output per MINADER; WITS 2024 export figure."},
+    {"id": "S23", "title": "Cameroun: tomates entre 2500 et 1 000 FCFA le cageot, quand l'abondance ruine le paysan", "publisher": "KOACI", "year": 2026, "url": "https://www.koaci.com/article/2026/03/09/cameroun/societe/cameroun-tomates-entre-2500-et-1-000-fcfa-le-cageot-quand-labondance-ruine-le-paysan_194954.html", "notes": "9 Mar 2026; production cost about 2,700 XAF per crate."},
+    {"id": "S24", "title": "Le prix de la tomate s'effondre au Cameroun", "publisher": "Pressenza", "year": 2026, "url": "https://www.pressenza.com/fr/2026/02/le-prix-de-la-tomate-seffondre-au-cameroun/", "notes": "25 Feb 2026."},
+    {"id": "S25", "title": "Les Camerounais confrontes a la flambee du prix de la tomate", "publisher": "APA News", "year": 2025, "url": "https://fr.apanews.net/?p=261386", "notes": "21 Oct 2025."},
+    {"id": "S26", "title": "Cameroun: en raison d'une penurie, la sauce tomate de plus en plus salee", "publisher": "Le360 Afrique", "year": 2025, "url": "https://afrique.le360.ma/economie/cameroun-en-raison-dune-penurie-la-sauce-tomate-de-plus-en-plus-salee_JMIA2VLBXNC5XOF2CVPKTLKB7M/", "notes": "21 Oct 2025."},
+    {"id": "S27", "title": "Flambee des prix a Yaounde: la tomate passe de 3 000 a 6 000 fcfa en deux semaines", "publisher": "Journal du Cameroun", "year": 2025, "url": "https://fr.journalducameroun.com/flambee-des-prix-a-yaounde-la-tomate-passe-de-3-000-a-6-000-fcfa-en-deux-semaines/", "notes": "15 May 2025."},
+    {"id": "S28", "title": "Le prix de la tomate baisse a Bafoussam", "publisher": "EcoMatin", "year": 2021, "url": "https://ecomatin.net/le-prix-de-la-tomate-baisse-a-bafoussam", "notes": "14 Feb 2021."},
+    {"id": "S29", "title": "Vivres frais: certains prix en chute libre", "publisher": "Cameroon Tribune", "year": 2020, "url": "https://www.cameroon-tribune.cm/article.html/33408/fr.html/details_2", "notes": "1 Jul 2020."},
+    {"id": "S30", "title": "Au marche: les prix remontent", "publisher": "Cameroon Tribune", "year": 2020, "url": "https://www.cameroon-tribune.cm/article.html/33707/fr.html/details_2", "notes": "20 Jul 2020."},
+    {"id": "S31", "title": "Cameroun: plus de 2 milliards Fcfa pour relancer la filiere tomate", "publisher": "Journal du Cameroun", "year": 2020, "url": "https://fr.journalducameroun.com/cameroun-plus-de-2-milliards-fcfa-pour-relancer-la-filiere-tomate-cameroun/", "notes": "20 Jul 2020; MINADER rescue plan; break-even 1,500 XAF/crate."},
+    {"id": "S32", "title": "Cameroon plans a revival plan for the tomato sector affected by border closure", "publisher": "Business in Cameroon", "year": 2020, "url": "https://www.businessincameroon.com/agriculture/1707-10558-cameroon-plans-a-revival-plan-for-the-tomato-sector-affected-by-border-closure", "notes": "17 Jul 2020."},
+    {"id": "S33", "title": "Heavy rains and exports raise tomato prices on Cameroonian market", "publisher": "Business in Cameroon", "year": 2017, "url": "https://www.businessincameroon.com/agriculture/0109-7361-heavy-rains-and-exports-raise-tomato-prices-on-cameroonian-market", "notes": "1 Sep 2017."},
+    {"id": "S34", "title": "Cameroun: le Covid-19 met les producteurs de tomates en larmes", "publisher": "Afrik.com", "year": 2020, "url": "https://www.afrik.com/cameroun-le-covid-19-met-les-producteurs-de-tomates-en-larmes", "notes": "17 Jul 2020; cites Sep to Nov 2017 Douala prices."},
+    {"id": "S35", "title": "Tomates en fruit: les prix bas peuvent-ils durer?", "publisher": "EcoMatin", "year": 2020, "url": "https://ecomatin.net/tomates-en-fruit-les-prix-bas-peuvent-ils-durer", "notes": "3 Jul 2020; reference prices 7,000 abundant / 12,000 difficult (unit implied crate)."},
+    {"id": "S36", "title": "Cameroon: affected by supply difficulties, tomato price rises significantly in the Far North", "publisher": "Business in Cameroon", "year": 2019, "url": "https://www.businessincameroon.com/agriculture/0307-9286-cameroon-affected-by-supply-difficulties-tomato-price-rises-significantly-in-the-far-north", "notes": "3 Jul 2019."},
+    {"id": "S37", "title": "Article on Cameroonian tomatoes in Libreville (L'Union No 13389)", "publisher": "L'Union (Gabon)", "year": 2020, "url": "https://lunion-archives.org/web.11/dmdocuments/N13389-06-08-2020-006.pdf", "notes": "6 Aug 2020."},
+    {"id": "S38", "title": "Vente de tomates, NOWEFOR, Cameroun", "publisher": "Inter-reseaux / CTA (Fongang G., Forbah D.N.)", "year": 2007, "url": "https://www.inter-reseaux.org/wp-content/uploads/Cameroun_Tomate_NOWEFOR_IR_Francais_2007.pdf", "notes": "North-West; bucket units inconsistent."},
+    {"id": "S39", "title": "Crise economique et emergence de l'activite maraichere: cas de la culture de la tomate dans l'arrondissement de Dschang", "publisher": "ENS Yaounde, DIPES II thesis (Fofack Mujia G.G.), via memoireonline", "year": 2016, "url": "https://www.memoireonline.com/01/17/9529/m_Crise-economique-et-emergence-de-lactivite-maraichere-cas-de-la-culture-de-la-tomate-dans-l39.html", "notes": "Survey Jan 2013; Noun 2010 production 26,829 t (Agri-Stat 16)."},
+    {"id": "S40", "title": "Fiche technique GIZ Mali: specifications techniques semences", "publisher": "GIZ Mali", "year": 2026, "url": "https://www.giz.de/sites/default/files/media/els-document/2026-09/1-specifications-technique-semences.pdf", "notes": "Cobra 26 F1 cycle; Mali context."},
+    {"id": "S41", "title": "Cameroon: New way of growing tomatoes leads to success (Agribusiness TV)", "publisher": "Farm Radio International / Barza Wire", "year": 2016, "url": "https://wire.farmradio.fm/farmer-stories/cameroon-new-way-of-growing-tomatoes-leads-to-success-agribusiness-tv/", "notes": "Anecdotal; used only for variety and staking method."},
+    {"id": "S42", "title": "Reducing Post-Harvest Loss and Food Waste in Cassava and Tomato Agro-Value Chains in Cameroon", "publisher": "CAMEPI (Tassah I., Kouam H.)", "year": 2025, "url": "https://camepi.org/wp-content/uploads/2026/04/REDUCING-POST-HARVEST-FOOD-LOSS-IN-CASSSAVA-AND-TOMATOES-REVIEWED-BY-DINGA-TAMBI.pdf", "notes": "Policy brief; loss figures inconsistent, low reliability."},
+    {"id": "S44", "title": "Farmers' Engagement in Tomato Postharvest Handling Activities and Rate of Losses in Kaduna State, Nigeria", "publisher": "Nigerian Journal of Rural Sociology 20(2) (Abolade T.J., Meludu N.T.)", "year": 2020, "url": "https://ageconsearch.umn.edu/record/347355/files/Farmers%27%20engagement%20in%20tomato%20postharvest%20handling%20activities.pdf", "notes": "Comparable context only."}
+  ],
+
+  "confidence_notes": "HIGH: technical itinerary skeleton and 1 ha budget (MINADER S1, but internal text vs budget conflicts on NPK 800 vs 1,200 kg/ha and on pesticide quantities); climate thresholds (FAO S12, NAERLS S13); pesticide use pattern in Foumbot (S4); late blight as the dominant rainy-season risk (S7, S8). MEDIUM: yields (MINADER per-100 m2 ranges; few on-farm measurements in the West; FAOSTAT Cameroon series looks revised or imputed after 2015, 19.4 t/ha in 2024 vs about 11 t/ha cited by MINADER); post-harvest losses (2013 studies, 34 to 40% farm to market, about 6 to 7% after harvest on the Foumbot chain); crate prices (many dated press observations but no monthly series, and no stated crate weight except 20 kg in S9). LOW or MISSING: crate weight standard in Foumbot (null; 20 kg in Dschang 2024, 85 kg in an East trial); farm-gate price series for Foumbot itself (null); foliar fertilizer and biostimulant ('vitamin') products and rates (null); stake purchase price and tractor ploughing cost (null); full cost studies other than MINADER (Keegoui gives totals 3.0 to 3.6 M XAF/ha without breakdown); labour per operation from field surveys (only the MINADER budget, 290 person-days/ha, likely underestimating spraying); spray counts per cycle in farmer practice (only 'weekly' and 'more at fruiting'); export volumes to Gabon and Equatorial Guinea (informal, undocumented). Mongal F1, Kiara F1 and Padma were not found in Cameroon sources. Sources not readable: PMC full text of Titti et al. 2024 (captcha; the ResearchGate version was used), Europe PMC (rate-limited). Recommended field work for the March 2027 pilot: weigh Foumbot crates, log weekly farm-gate prices at Foumbot and Bafoussam, record spray counts and labour per operation."
+}

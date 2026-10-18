@@ -91,10 +91,10 @@ en: {
     waterT: 'Water on the plot',
     water: {
       rainfed: ['Rain only', 'No water source or equipment'],
-      manual: ['Water source, manual watering', 'Well, river or tank, watering cans or hose'],
+      manual: ['Water source, manual watering', 'Well, river or tank, with watering cans'],
       existing: ['Irrigation already in place', 'Pump or drip system you already own'],
-      pump: ['Install a motor pump', 'Petrol pump with hoses, bought this season'],
-      drip: ['Install drip irrigation', 'Drip kit, tank and pump, bought this season']
+      pump: ['Install a motor pump', 'Petrol pump, water basins and watering cans, bought this season'],
+      drip: ['Install drip irrigation', 'Installed drip kit and a motor pump, bought this season']
     },
     start: 'Start date', startHint: 'Sowing, or nursery sowing for transplanted crops',
     advanced: 'More options',
@@ -102,12 +102,19 @@ en: {
     market: 'Where you sell', marketLocal: 'Local market (Foumbot, Bafoussam)', marketCity: 'City wholesale (Douala, Yaoundé)',
     family: 'Labour done by the family', familyHint: 'Unpaid family work reduces the cash needed; the work still has to be done',
     ownTools: 'I already own basic tools and a sprayer',
+    price: 'Selling price you expect (FCFA/kg)', pricePh: 'Your local price', priceOptional: 'Optional: leave empty to use this reference, adjusted to your harvest months.',
+    kBreakEven: 'Break even price', atAvgYield: 'At the average yield',
+    enterPrice: 'Enter your expected selling price in the form to see the four outcomes and the return.',
+    unpricedNote: (list) => 'No sourced price was found for: ' + list + '. These lines keep their quantity but count as zero in the budget: get a local quote before committing.',
+    toQuote: 'Quote',
+    unusedCapital: (v) => 'About ' + v + ' of your capital stays unused with this water option.',
     states: {
       below_min: (min) => 'The capital is below the minimum of 100 USD (' + min + '). A real plot starts from this amount.',
       upfront_exceeds: () => 'The capital does not cover the equipment of the water option chosen. Choose another water option or raise the capital.',
-      manual_limit: (min, max) => 'Manual watering is realistic up to about ' + max + '. Beyond that, plan a motor pump or drip irrigation.'
+      manual_limit: (min, max) => 'Manual watering is realistic up to about ' + max + ': the plan stops there. For a larger plot, choose a motor pump or drip irrigation.',
+      needs_price: (min, max, be) => 'No published farm gate price exists for this crop in Cameroon, so AfriFarm does not guess one. Enter the price you expect, in FCFA per kg, to see the four outcomes. At the average yield, the season breaks even from about ' + be + ' FCFA/kg.'
     },
-    upfrontHint: 'Tip: with a small capital, start with manual watering or rain fed planting in the rainy season, then invest in irrigation from the first season profits.',
+    upfrontHint: 'With a small capital: if you can borrow a sprayer and basic tools, tick “I already own basic tools and a sprayer” under More options; start with manual watering or rain fed planting in the rainy season, then invest in equipment from the first season profits.',
     kArea: 'Plot the capital carries', plants: (n) => n + ' plants', kRequired: 'Capital required', kBudget: 'Season budget', inclReserve: 'Includes a 10% contingency reserve',
     kMargin: 'Average outcome margin', roiAvg: (p) => 'Return ' + p + ' on the costs of the season', kSeason: 'Season length',
     compactNote: 'Average outcome shown. The full plan details the budget line by line, the technical itinerary, the shopping list, the water balance and the risks.',
@@ -124,7 +131,7 @@ en: {
     chartMargins: 'Margin by outcome', perSeason: 'One season',
     breakEvenT: 'Break even', beYield: 'Yield needed at the average price', bePrice: 'Price needed at the average yield',
     expected: 'Risk weighted margin', expectedNote: 'Indicative weights by outcome, adjusted to the risks of your window. They will be replaced by measured frequencies once seasons are recorded.',
-    scenNote: '<b>How outcomes are built.</b> Yields come from published references for each crop, adjusted by the water your option supplies (FAO-33 yield response to water). Prices come from Cameroon market observations, adjusted to the months you harvest. Costs of equipment that lasts several seasons are spread over its lifespan in the margin; the full purchase is in the budget.',
+    scenNote: '<b>How outcomes are built.</b> Yields come from published references for each crop and season (rainy or dry), adjusted by the water your option supplies (FAO-33 yield response to water). The price is the one you enter; without it, the Cameroon reference adjusted to the months you harvest. Good and poor outcomes move the price by about 20%, the usual spread seen within one market in one month. Costs of equipment that lasts several seasons are spread over its lifespan in the margin; the full purchase is in the budget.',
     cats: { land: 'Land', land_preparation: 'Land preparation', seed: 'Seeds', nursery: 'Nursery', fertilizer: 'Fertilizers', amendment: 'Organic manure and amendments', foliar: 'Foliar feeds and biostimulants', fungicide: 'Fungicides', insecticide: 'Insecticides', herbicide: 'Herbicides', stakes: 'Stakes', trellis: 'Trellis', irrigation: 'Irrigation running costs', labour: 'Labour', advice: 'Agronomist', harvest: 'Harvest, packaging and transport', equipment: 'Equipment bought up front', reserve: 'Contingency reserve (10%)', tools: 'Tools', ppe: 'Protective equipment', packaging: 'Packaging', transport: 'Transport', fuel: 'Fuel', other: 'Other' },
     lifeSeasons: (n) => 'lasts about ' + n + ' seasons',
     totalBudget: 'Total season budget',
@@ -139,7 +146,7 @@ en: {
     riskText: {
       water: (cov, def, opt) => 'Water covers about ' + cov + '% of the crop need. Rain leaves a deficit of ' + def + ' mm' + (opt === 'rainfed' ? '; without irrigation the yield falls accordingly.' : '; your water option covers it.'),
       heat: (months, t, thr) => 'Flowering falls in ' + months + ', with average maxima near ' + t + '°C. Fruit set suffers above about ' + thr + '°C.',
-      disease: (days, note) => 'Up to ' + days + ' rainy days per month from flowering to harvest. ' + note,
+      disease: (mm, note) => 'Up to ' + mm + ' mm of rain per month from flowering to the end of harvest. ' + note,
       market: (months, idx) => 'Harvest in ' + months + ': the usual price is about ' + idx + '% of the yearly average.',
       context: 'Check elections, holidays and road conditions for your harvest weeks. The context calendar arrives with the MVP.'
     },
@@ -731,10 +738,10 @@ fr: {
     waterT: 'Eau sur la parcelle',
     water: {
       rainfed: ['Pluie uniquement', 'Ni source d’eau ni équipement'],
-      manual: ['Source d’eau, arrosage manuel', 'Puits, rivière ou citerne, arrosoirs ou tuyau'],
+      manual: ['Source d’eau, arrosage manuel', 'Puits, rivière ou citerne, avec des arrosoirs'],
       existing: ['Irrigation déjà en place', 'Motopompe ou goutte à goutte que vous possédez'],
-      pump: ['Installer une motopompe', 'Motopompe essence et tuyaux, achetés cette saison'],
-      drip: ['Installer un goutte à goutte', 'Kit goutte à goutte, citerne et pompe, achetés cette saison']
+      pump: ['Installer une motopompe', 'Motopompe essence, bassins et arrosoirs, achetés cette saison'],
+      drip: ['Installer un goutte à goutte', 'Kit goutte à goutte installé et motopompe, achetés cette saison']
     },
     start: 'Date de démarrage', startHint: 'Semis, ou semis en pépinière pour les cultures repiquées',
     advanced: 'Plus d’options',
@@ -742,12 +749,19 @@ fr: {
     market: 'Lieu de vente', marketLocal: 'Marché local (Foumbot, Bafoussam)', marketCity: 'Gros en ville (Douala, Yaoundé)',
     family: 'Travail assuré par la famille', familyHint: 'Le travail familial non payé réduit les liquidités nécessaires ; le travail reste à faire',
     ownTools: 'Je possède déjà les outils de base et un pulvérisateur',
+    price: 'Prix de vente attendu (FCFA/kg)', pricePh: 'Votre prix local', priceOptional: 'Facultatif : laissez vide pour utiliser cette référence, ajustée à vos mois de récolte.',
+    kBreakEven: 'Prix d’équilibre', atAvgYield: 'Au rendement moyen',
+    enterPrice: 'Saisissez votre prix de vente attendu dans le formulaire pour voir les quatre issues et la rentabilité.',
+    unpricedNote: (list) => 'Aucun prix sourcé n’a été trouvé pour : ' + list + '. Ces lignes gardent leur quantité mais comptent pour zéro dans le budget : demandez un devis local avant de vous engager.',
+    toQuote: 'Devis',
+    unusedCapital: (v) => 'Environ ' + v + ' de votre capital reste inutilisé avec cette option d’eau.',
     states: {
       below_min: (min) => 'Le capital est inférieur au minimum de 100 USD (' + min + '). Une vraie parcelle commence à partir de ce montant.',
       upfront_exceeds: () => 'Le capital ne couvre pas l’équipement de l’option d’eau choisie. Choisissez une autre option ou augmentez le capital.',
-      manual_limit: (min, max) => 'L’arrosage manuel reste réaliste jusqu’à environ ' + max + '. Au delà, prévoyez une motopompe ou un goutte à goutte.'
+      manual_limit: (min, max) => 'L’arrosage manuel reste réaliste jusqu’à environ ' + max + ' : le plan s’arrête là. Pour une parcelle plus grande, choisissez une motopompe ou le goutte à goutte.',
+      needs_price: (min, max, be) => 'Aucun prix bord champ n’est publié pour cette culture au Cameroun : AfriFarm n’en invente pas. Saisissez le prix que vous comptez obtenir, en FCFA par kg, pour voir les quatre issues. Au rendement moyen, la saison est à l’équilibre à partir d’environ ' + be + ' FCFA/kg.'
     },
-    upfrontHint: 'Conseil : avec un petit capital, commencez par l’arrosage manuel ou une culture pluviale en saison des pluies, puis investissez dans l’irrigation avec les bénéfices de la première saison.',
+    upfrontHint: 'Avec un petit capital : si vous pouvez emprunter un pulvérisateur et des outils, cochez « Je possède déjà les outils de base et un pulvérisateur » dans Plus d’options ; commencez par l’arrosage manuel ou une culture pluviale en saison des pluies, puis investissez dans l’équipement avec les bénéfices de la première saison.'),
     kArea: 'Parcelle que le capital couvre', plants: (n) => n + ' plants', kRequired: 'Capital nécessaire', kBudget: 'Budget de la saison', inclReserve: 'Réserve de précaution de 10 % comprise',
     kMargin: 'Marge, issue moyenne', roiAvg: (p) => 'Rentabilité ' + p + ' sur les coûts de la saison', kSeason: 'Durée de la saison',
     compactNote: 'Issue moyenne affichée. Le plan complet détaille le budget ligne par ligne, l’itinéraire technique, la liste d’achats, le bilan hydrique et les risques.',
@@ -764,7 +778,7 @@ fr: {
     chartMargins: 'Marge selon l’issue', perSeason: 'Une saison',
     breakEvenT: 'Seuil de rentabilité', beYield: 'Rendement nécessaire au prix moyen', bePrice: 'Prix nécessaire au rendement moyen',
     expected: 'Marge pondérée par le risque', expectedNote: 'Pondérations indicatives par issue, ajustées aux risques de votre fenêtre. Elles seront remplacées par des fréquences mesurées dès que des saisons seront enregistrées.',
-    scenNote: '<b>Construction des issues.</b> Les rendements proviennent des références publiées pour chaque culture, ajustés à l’eau fournie par votre option (réponse du rendement à l’eau, FAO-33). Les prix proviennent d’observations des marchés camerounais, ajustés aux mois de récolte. Le coût d’un équipement qui dure plusieurs saisons est réparti sur sa durée de vie dans la marge ; l’achat complet figure au budget.',
+    scenNote: '<b>Construction des issues.</b> Les rendements proviennent des références publiées pour chaque culture et chaque saison (pluies ou sèche), ajustés à l’eau fournie par votre option (réponse du rendement à l’eau, FAO-33). Le prix est celui que vous saisissez ; sans lui, la référence camerounaise ajustée à vos mois de récolte. Les issues bonne et faible déplacent le prix d’environ 20 %, l’écart habituel observé sur un même marché au cours d’un mois. Le coût d’un équipement qui dure plusieurs saisons est réparti sur sa durée de vie dans la marge ; l’achat complet figure au budget.',
     cats: { land: 'Terrain', land_preparation: 'Préparation du sol', seed: 'Semences', nursery: 'Pépinière', fertilizer: 'Engrais', amendment: 'Fumure organique et amendements', foliar: 'Engrais foliaires et biostimulants', fungicide: 'Fongicides', insecticide: 'Insecticides', herbicide: 'Herbicides', stakes: 'Tuteurs', trellis: 'Palissage', irrigation: 'Fonctionnement de l’irrigation', labour: 'Main d’œuvre', advice: 'Agronome', harvest: 'Récolte, emballage et transport', equipment: 'Équipement acheté au départ', reserve: 'Réserve de précaution (10 %)', tools: 'Outils', ppe: 'Équipement de protection', packaging: 'Emballage', transport: 'Transport', fuel: 'Carburant', other: 'Autres' },
     lifeSeasons: (n) => 'dure environ ' + n + ' saisons',
     totalBudget: 'Budget total de la saison',
@@ -779,7 +793,7 @@ fr: {
     riskText: {
       water: (cov, def, opt) => 'L’eau couvre environ ' + cov + ' % du besoin de la culture. La pluie laisse un déficit de ' + def + ' mm' + (opt === 'rainfed' ? ' ; sans irrigation, le rendement baisse d’autant.' : ' ; votre option d’eau le couvre.'),
       heat: (months, t, thr) => 'La floraison tombe en ' + months + ', avec des maximales moyennes proches de ' + t + ' °C. La nouaison souffre au delà d’environ ' + thr + ' °C.',
-      disease: (days, note) => 'Jusqu’à ' + days + ' jours de pluie par mois de la floraison à la récolte. ' + note,
+      disease: (mm, note) => 'Jusqu’à ' + mm + ' mm de pluie par mois de la floraison à la fin de la récolte. ' + note,
       market: (months, idx) => 'Récolte en ' + months + ' : le prix habituel est d’environ ' + idx + ' % de la moyenne annuelle.',
       context: 'Vérifiez élections, fêtes et état des routes pour vos semaines de récolte. Le calendrier de contexte arrive avec le MVP.'
     },

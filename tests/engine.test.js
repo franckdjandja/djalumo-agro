@@ -11,9 +11,10 @@ function fixture() {
   const item = (price, category, unit = 'kg', extra = {}) => ({ label: { en: category }, price, category, unit, src: [], ...extra });
   return {
     fx: { USD: 1, XAF: 600, EUR: 0.9 },
-    limits: { min_capital_usd: 100, reserve_rate: 0.1 },
+    limits: { min_capital_usd: 100, reserve_rate: 0.1, wet_season_rain_share: 0.5 },
     climate: { lat: 5.51, months: [[32, 17, 1, 0], [33, 19, 6, 1], [32, 20, 45, 6], [29, 19, 144, 17], [27, 18, 197, 24], [25, 17, 234, 24], [24, 17, 311, 26], [24, 17, 328, 25], [25, 17, 322, 24], [25, 17, 197, 18], [27, 17, 43, 4], [30, 17, 1, 0]].map(([tmax, tmin, rain, raindays]) => ({ tmax, tmin, rain, raindays })) },
-    thresholds: { disease_raindays_high: 22, disease_raindays_medium: 15 },
+    thresholds: { disease_rain_mm_high: 200, disease_rain_mm_medium: 100 },
+    market: { city_extra_loss_pct: 5 },
     scenario: { failure_yield_share: 0.1, price_factor: { good: 1.15, average: 1, poor: 0.8, failure: 0.7 } },
     scenario_weights: { base: { good: 0.2, average: 0.45, poor: 0.25, failure: 0.1 }, shift_per_risk_point: 0.03 },
     items: {
@@ -41,8 +42,8 @@ function fixture() {
         name: { en: 'Tomato' }, release: 'mvp', plants_per_ha: 20000, ky: 1.05, heat_c: 32, loss_pct: 15, harvest_kg_per_person_day: 200, agronomist_visits: 4,
         kc: { ini: 0.6, mid: 1.15, end: 0.8, stages: [0.2, 0.5, 0.8] },
         cycle: { nursery_days: 30, to_first_harvest_days: 75, harvest_days: 45, flowering_before_harvest_days: 30 },
-        yield_t_ha: { rainfed: { good: 25, average: 15, poor: 8 }, irrigated: { good: 35, average: 22, poor: 12 } },
-        price: { reference_xaf_kg: 300, index: [1.3, 1.4, 1.3, 1.1, 0.9, 0.8, 0.7, 0.7, 0.8, 0.9, 1.1, 1.2] },
+        yield_t_ha: { wet: { good: 25, average: 15, poor: 8 }, dry: { good: 35, average: 22, poor: 12 } },
+        price: { reference_xaf_kg: 300, city_factor: 1.3, index: [1.3, 1.4, 1.3, 1.1, 0.9, 0.8, 0.7, 0.7, 0.8, 0.9, 1.1, 1.2] },
         packaging: { item: 'crate', kg_per_unit: 25, uses: 10 },
         steps: [
           { id: 'plough', phase: 'prep', ref: 'field', day: [-14, -10], label: { en: 'Plough' }, services: [{ key: 'ploughing', qty: 1 }], labour: 10 },
@@ -94,8 +95,46 @@ test('budget first: the plan spends the capital, never more', () => {
     const r = E.plan(kb, { ...base, capital, water: capital < 1000 ? 'manual' : 'pump' });
     assert.equal(r.state === 'below_min', false);
     assert.ok(r.areaHa > 0, 'area for ' + capital);
-    assert.ok(Math.abs(r.budget.total - r.capitalXaf) / r.capitalXaf < 0.02, 'budget ' + r.budget.total + ' vs capital ' + r.capitalXaf);
+    assert.ok(r.budget.total <= r.capitalXaf * 1.0001, 'budget ' + r.budget.total + ' above capital ' + r.capitalXaf);
+    if (r.state === 'ok') assert.ok(r.budget.total >= r.capitalXaf * 0.98, 'budget ' + r.budget.total + ' leaves capital unused ' + r.capitalXaf);
   }
+});
+
+test('equipment bought per hectare never pushes the budget above the capital', () => {
+  const kb = fixture();
+  for (const capital of [3000, 5000, 20000, 200000]) {
+    const r = E.plan(kb, { ...base, capital, water: 'drip' });
+    assert.ok(r.budget.total <= r.capitalXaf * 1.0001, capital + ': budget ' + r.budget.total + ' vs ' + r.capitalXaf);
+    assert.ok(r.areaHa > 0);
+  }
+});
+
+test('manual watering caps the area and keeps the rest of the capital', () => {
+  const kb = fixture();
+  const r = E.plan(kb, { ...base, capital: 60000, water: 'manual' });
+  assert.ok(Math.abs(r.areaHa - 0.25) < 1e-6, 'area ' + r.areaHa);
+  assert.ok(r.budget.total < r.capitalXaf);
+});
+
+test('a crop without a reference price asks for one, and the grower price is used when given', () => {
+  const kb = fixture();
+  kb.crops.tomato.price.reference_xaf_kg = null;
+  const a = E.plan(kb, base);
+  assert.equal(a.state, 'needs_price');
+  assert.ok(a.breakEven.priceXafKg > 0);
+  const b = E.plan(kb, { ...base, priceXafKg: 400 });
+  assert.equal(b.state, 'ok');
+  assert.equal(b.priceSource, 'user');
+  assert.ok(Math.abs(b.scenarios.average.price - 400) < 1e-9);
+});
+
+test('an unpriced input keeps its quantity, costs nothing and is reported', () => {
+  const kb = fixture();
+  kb.items.seed.price = null;
+  const r = E.plan(kb, base);
+  assert.ok(r.unpriced.includes('seed'));
+  const line = r.budget.lines.find(l => l.key === 'seed');
+  assert.ok(line.qty > 0 && line.total === 0 && line.unpriced);
 });
 
 test('minimum capital is 100 USD in any currency', () => {

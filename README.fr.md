@@ -11,7 +11,7 @@ Porteur du projet : Franck Junior Djandja Tomwa · Zone pilote : Foumbot, Ouest 
 | Domaine | Rôle |
 | --- | --- |
 | Site | 12 pages (Accueil, Plateforme, Intelligence, Solutions, Données, Impact, À propos, Contact, Demander une démo, Lettre d’information, Confidentialité, Conditions) et une page 404, adresses propres, anglais et français |
-| Simulateur de saison | Démo interactive : capital en six devises, budget d’abord ou culture d’abord, calendrier cultural, répartition du budget, carte des risques par mois de démarrage, indice de confiance. Clairement signalée comme illustrative |
+| Planificateur de saison v2 | En entrée : capital (dès 100 USD, six devises), culture, situation en eau et date de démarrage. En sortie : taille de la parcelle, itinéraire technique daté, budget ligne par ligne, liste d’achats, bilan hydrique, risques, comparaison des mois de démarrage et quatre issues (bonne, moyenne, faible, échec). Chaque chiffre renvoie à sa source |
 | Carte géographique | Carte de l’Afrique avec couches (couverture des données publiques, zone pilote, expansion prévue), survol, sélection, zoom, déplacement, pincement |
 | Graphiques | Chiffres sourcés des terres et de l’irrigation au Cameroun, profondeur temporelle des données publiques, feuille de route avec jalons, explorateur d’architecture |
 | Formulaires | Contact, demande de démo, lettre d’information : validation côté client et serveur, pot de miel, piège temporel, limitation de débit, Cloudflare Turnstile en option, consentement |
@@ -33,6 +33,11 @@ api/                 points d’accès serverless (un fichier par route)
 lib/                 configuration, validation, sécurité, base de données, e-mails, synchronisation newsletter, gestionnaires
 db/schema.sql        schéma PostgreSQL (rejouable)
 site/src/            sources du site : i18n.js (tout le contenu, EN et FR), core.js, viz.js, pages.js, analytics.js, styles.css
+site/src/engine.cjs  moteur du Planificateur (fonctions pures, exécutées dans le navigateur et dans les tests Node)
+site/src/planner.js  interface du Planificateur
+site/data/kb.json    base de connaissances lue par le moteur (générée, ne pas modifier à la main)
+data/research/       notes de recherche par culture et sur les coûts au Cameroun, avec toutes les sources
+scripts/kb/          build_kb.py : transforme les notes de recherche en site/data/kb.json
 site/template.html   gabarit HTML, métadonnées, données structurées
 site/geo.json        géométrie de l’Afrique générée par scripts/geo.mjs
 site/img/            photographies de terrain optimisées (WebP)
@@ -103,7 +108,7 @@ Chaque texte visible se trouve dans `site/src/i18n.js`, en deux objets parallèl
 
 ## Mesure d’audience
 
-`window.AfriFarmAnalytics` met en file les événements : `page_view`, `cta_click`, `sim_run`, `sim_window`, `map_select`, `map_layer`, `arch_select`, `persona_select`, `form_submitted`, `form_invalid`, `form_error`, `language_change`. Rien n’est envoyé tant qu’aucun fournisseur n’est configuré. Pour en brancher un autre :
+`window.AfriFarmAnalytics` met en file les événements : `page_view`, `cta_click`, `planner_run`, `planner_tab`, `planner_window`, `map_select`, `map_layer`, `arch_select`, `persona_select`, `form_submitted`, `form_invalid`, `form_error`, `language_change`. Rien n’est envoyé tant qu’aucun fournisseur n’est configuré. Pour en brancher un autre :
 
 ```js
 AfriFarmAnalytics.use({ track: (e) => monFournisseur.capture(e.name, e.props) });
@@ -122,9 +127,37 @@ TEST_DATABASE_URL=postgres://... npm test                  # ajoute les tests d�
 
 `npm run build:artifact` produit une version du site en un seul fichier, utilisée pour les aperçus privés. Dans cette version, les formulaires sont enregistrés dans le stockage propre de l’aperçu au lieu de `/api`.
 
+## Planificateur de saison : méthode et données
+
+Le planificateur répond à une question pour un producteur ou un investisseur : que devient ce capital en une saison de cette culture, ici, à partir de cette date ?
+
+**Méthode, dans l’ordre** (`site/src/engine.cjs`) :
+
+1. Calendrier : pépinière, repiquage ou semis direct, floraison, première et dernière récolte.
+2. Bilan hydrique (FAO-56) : évapotranspiration de référence par Hargreaves à partir du climat mensuel de Foumbot, coefficients culturaux sur quatre stades, pluie efficace (formule FAO/AGLW), besoin d’irrigation.
+3. Réponse du rendement à l’eau (FAO-33) : le rendement baisse avec la part du besoin que l’option d’eau choisie ne couvre pas.
+4. Saison : une culture dont le besoin est surtout couvert par la pluie utilise les références de saison des pluies ; sinon celles de saison sèche irriguée.
+5. Coûts par hectare selon l’itinéraire standard : intrants × prix unitaires, main d’œuvre × salaire, services, coûts de l’eau. L’équipement qui dure plusieurs saisons est acheté au départ et réparti sur sa durée de vie dans la marge.
+6. Dimensionnement : la plus grande parcelle dont les coûts et l’équipement tiennent dans le capital après une réserve de 10 % (bissection exacte), ou le capital nécessaire pour une surface donnée.
+7. Quatre issues, d’une bonne récolte à l’échec, avec rentabilité sur les coûts, rendement et prix d’équilibre, et marge pondérée par les risques.
+8. Risques de la période : eau, chaleur à la floraison, pression des maladies selon la pluie, niveau de prix à la récolte ; le même calcul pour les douze mois de démarrage.
+
+**Données** (`data/research/`, intégrées à `site/data/kb.json` par `scripts/kb/build_kb.py`) :
+
+| Culture | Itinéraire | Rendements | Prix à la récolte |
+| --- | --- | --- | --- |
+| Tomate | Fiche et budget MINADER 2024 pour le Cameroun, essais à Dschang et à l’Est | Fourchettes MINADER par saison | 275 FCFA/kg bord champ (Dschang 2024), indice saisonnier tiré d’observations de marché datées 2017 à 2026 |
+| Haricot vert, poivron, concombre, courgette | Fiche camerounaise et enquête de Foumbot pour le poivron ; guides COLEAD, PROTA, AVRDC, du Kenya et du Bénin | Moyennes nationales du Cameroun quand elles existent, références régionales sinon | Aucun prix bord champ publié au Cameroun : le producteur saisit son prix attendu et voit d’abord le prix d’équilibre |
+
+Les prix des intrants viennent du budget tomate du MINADER 2024, de l’enquête du MINADER sur les marchés d’intrants de la Région de l’Ouest (Foumbot, 4e trimestre 2022), des prix du carburant en vigueur en octobre 2026 et, faute de prix camerounais, d’annonces signalées des marchés voisins. Les taux de change sont ceux de la BCEAO au 16 octobre 2026.
+
+**Règles.** Chaque valeur porte les identifiants de ses sources, affichés à l’écran à côté de chaque ligne de budget et de chaque étape. Les valeurs calculées sont signalées comme dérivées. Les valeurs sans source sont des hypothèses d’AfriFarm, listées dans l’onglet Sources. Un prix manquant n’est jamais deviné : la ligne garde sa quantité, coûte zéro et est signalée pour un devis local. La confiance est indiquée par culture et par bloc de données.
+
+Pour mettre les données à jour : modifier ou compléter les notes de recherche, ajuster `scripts/kb/build_kb.py`, puis lancer `python3 scripts/kb/build_kb.py` et `npm test`.
+
 ## Honnêteté des données
 
-Le site ne présente jamais de données simulées comme réelles. Le Simulateur de saison utilise le classeur budgétaire du pilote (10 000 USD par hectare et par cycle), des règles saisonnières simplifiées et des taux de change indicatifs fixes, tous indiqués à l’écran. Les fourchettes de rendement et de revenu restent verrouillées tant que les modèles ne battent pas leur référence sur des années jamais vues. Les statistiques citées renvoient à leurs sources.
+Le site ne présente jamais de données simulées comme réelles. Le Planificateur de saison affiche ses sources, ses valeurs dérivées et ses hypothèses, et laisse le prix vide quand aucune référence fiable n’existe. Les taux de change sont fixes, pas en temps réel. Les statistiques citées renvoient à leurs sources.
 
 ## Avant la mise en ligne
 

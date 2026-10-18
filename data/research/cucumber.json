@@ -1,0 +1,2514 @@
+{
+  "crop": "Cucumber (Cucumis sativus L.), open-field slicing type",
+  "naming_warning": "In Cameroonian French, 'concombre' very often designates the seed cucurbit Cucumeropsis mannii (ngon, Ewondo), grown for dried seeds, not the fresh table cucumber Cucumis sativus (S27, S28). National statistics labelled 'concombre' or FAO 'cucumbers and gherkins' for Cameroon may mix both. Every Cameroon figure below must be read with this caveat.",
+  "cycle": {
+    "establishment": "Mostly direct sowing in the field, 2 seeds per hole (Benin, S1), 3 seeds per hill (Ngaoundere, Cameroon, S4), 2 to 3 seeds per hill (Kenya, S9). Transplanting also used: transplant age about 7 days (2 true leaves) in the tropics (S2); 3 to 4 weeks after germination in greenhouse practice (S8); trays then transplanting at about 16 days after sowing in Mayotte trial (S3).",
+    "sowing_to_emergence_days": {
+      "value": [
+        5,
+        10
+      ],
+      "notes": "Ngaoundere 2020: sown 28 Mar to 4 Apr, germination 8 Apr (rainy season); sown 15 to 18 Nov, germination 24 Nov (dry season) (S4). Range derived from those dates.",
+      "source_ids": [
+        "S4"
+      ]
+    },
+    "sowing_to_first_flower_days": {
+      "value": [
+        30,
+        45
+      ],
+      "notes": "Flowering starts 40 to 45 days after sowing, within 30 days for early cultivars (S2). Ngaoundere: germination 8 Apr, first flower 5 May 2020, i.e. about 27 days after germination (S4).",
+      "source_ids": [
+        "S2",
+        "S4"
+      ]
+    },
+    "sowing_to_first_harvest_days": {
+      "value": [
+        40,
+        60
+      ],
+      "observations": [
+        {
+          "value": 42,
+          "where": "Benin (about 6 weeks after sowing)",
+          "source_ids": [
+            "S1"
+          ]
+        },
+        {
+          "value": [
+            40,
+            60
+          ],
+          "where": "Tropical Africa general (PROTA)",
+          "source_ids": [
+            "S2"
+          ]
+        },
+        {
+          "value": [
+            45,
+            55
+          ],
+          "where": "Southern Africa seed company guide, days after planting",
+          "source_ids": [
+            "S7"
+          ]
+        },
+        {
+          "value": [
+            50,
+            60
+          ],
+          "where": "Kenya, days after planting",
+          "source_ids": [
+            "S9"
+          ]
+        },
+        {
+          "value": 45,
+          "where": "Kenya farmer, Carmen F1, 'about 45 days to maturity'",
+          "source_ids": [
+            "S10"
+          ]
+        },
+        {
+          "value": [
+            45,
+            48
+          ],
+          "where": "Mayotte tunnel trial: transplanted 16 days after sowing, first harvest 29 to 32 days after transplanting (derived)",
+          "source_ids": [
+            "S3"
+          ]
+        },
+        {
+          "value": [
+            38,
+            45
+          ],
+          "where": "Philippines slicing types, days after planting",
+          "source_ids": [
+            "S24"
+          ]
+        }
+      ]
+    },
+    "fruit_set_to_harvest_days": {
+      "value": [
+        7,
+        18
+      ],
+      "notes": "Fruits picked 1 to 2 weeks after flowering (S2); pollination to harvest 15 to 18 days (S7).",
+      "source_ids": [
+        "S2",
+        "S7"
+      ]
+    },
+    "harvest_duration_days": {
+      "value": [
+        45,
+        98
+      ],
+      "observations": [
+        {
+          "value": [
+            64,
+            67
+          ],
+          "where": "Mayotte tunnel trial, total harvest period",
+          "source_ids": [
+            "S3"
+          ]
+        },
+        {
+          "value": 98,
+          "where": "Up to 14 weeks with good pest and disease control (S7)",
+          "source_ids": [
+            "S7"
+          ]
+        },
+        {
+          "value": 84,
+          "where": "About 12 weeks (general guide)",
+          "source_ids": [
+            "S26"
+          ]
+        },
+        {
+          "value": [
+            60,
+            90
+          ],
+          "where": "Early cultivars may die after 2 to 3 months in the field (crop life, not harvest window)",
+          "source_ids": [
+            "S2"
+          ]
+        },
+        {
+          "value": null,
+          "where": "Kenya farmer: up to 8 harvests per crop before uprooting",
+          "source_ids": [
+            "S10"
+          ]
+        }
+      ]
+    },
+    "total_cycle_days": {
+      "value": [
+        90,
+        130
+      ],
+      "notes": "FAO-56 stage lengths for cucumber: 20/30/40/15 = 105 days and 25/35/50/20 = 130 days (arid regions) (S25). Mayotte trial last harvest at 96 days after transplanting, about 112 days after sowing (derived, S3). Lower bound 90 is an analyst rounding of first harvest (about 45) plus a short 45-day harvest; treat as indicative.",
+      "source_ids": [
+        "S25",
+        "S3"
+      ]
+    }
+  },
+  "planting": {
+    "spacing_options": [
+      {
+        "layout": "Twin rows 100 x 50 x 50 cm (100 cm between pairs, 50 cm between twin rows, 50 cm in row)",
+        "plants_per_ha": 26666,
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "layout": "Single rows 80 x 50 cm",
+        "plants_per_ha": 25000,
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "layout": "75 cm between rows x 50 cm in row, 3 seeds per hill (Ngaoundere, Cameroon, 1,112 m)",
+        "plants_per_ha": null,
+        "hills_per_ha_derived": 26667,
+        "source_ids": [
+          "S4"
+        ]
+      },
+      {
+        "layout": "90 x 100 cm, 2 to 3 seeds per hill (Kenya)",
+        "plants_per_ha": null,
+        "hills_per_ha_derived": 11111,
+        "source_ids": [
+          "S9",
+          "S10"
+        ]
+      },
+      {
+        "layout": "Hills 90 to 120 cm apart thinned to 2 to 3 plants, or rows 1 to 2 m apart with 30 cm in row",
+        "plants_per_ha": null,
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "layout": "Rows 1.2 to 1.8 m, 50 cm to 1 m in row; or beds 1.2 to 1.8 m with 2 rows 40 cm apart, 50 to 80 cm in row",
+        "plants_per_ha": [
+          14000,
+          40000
+        ],
+        "source_ids": [
+          "S7"
+        ]
+      },
+      {
+        "layout": "Furrows 0.75 to 1 m x 30 cm hills, 1 plant per hill after thinning (Philippines)",
+        "plants_per_ha": null,
+        "hills_per_ha_derived": [
+          33333,
+          44444
+        ],
+        "source_ids": [
+          "S24"
+        ]
+      },
+      {
+        "layout": "Beds 1.5 m between rows x 0.3 m in row, trellised single stem (tunnel, Mayotte)",
+        "plants_per_ha": 22000,
+        "source_ids": [
+          "S3"
+        ]
+      },
+      {
+        "layout": "40 x 20 cm (research plots, Ghana, best yield)",
+        "plants_per_ha": 125000,
+        "notes": "Derived density; research plot, not a farm recommendation for trellised crops",
+        "source_ids": [
+          "S19"
+        ]
+      }
+    ],
+    "recommended_density_plants_per_ha": {
+      "value": [
+        22000,
+        27000
+      ],
+      "notes": "Analyst synthesis of the trellised slicing-cucumber layouts above (S1, S3, S8: 2.2 to 2.5 plants per m2). Max yield at 40,000 plants/ha was found in a 1992 Zaria trial (S23).",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S8",
+        "S23"
+      ]
+    },
+    "seed_rate": {
+      "open_pollinated_kg_per_ha": {
+        "value": [
+          1,
+          3
+        ],
+        "source_ids": [
+          "S2",
+          "S24"
+        ],
+        "notes": "1 to 3 kg/ha depending on sowing method (S2); 2 kg/ha (Philippines, S24)."
+      },
+      "derived_from_density_kg_per_ha": {
+        "value": [
+          1.07,
+          1.87
+        ],
+        "notes": "Derived: 26,666 holes x 2 seeds (S1) x 1000-seed weight 20 to 35 g (S2).",
+        "source_ids": [
+          "S1",
+          "S2"
+        ]
+      },
+      "hybrid_g_per_ha_farmer_example": {
+        "value": 247,
+        "notes": "Derived from a Kenyan farmer using one 50 g sachet (KSh 450) of Carmen F1 on 0.5 acre (S10). Hybrids are sown more sparingly because of seed cost.",
+        "source_ids": [
+          "S10"
+        ]
+      },
+      "thousand_seed_weight_g": {
+        "value": [
+          20,
+          35
+        ],
+        "source_ids": [
+          "S2"
+        ]
+      },
+      "direct_seeded_slicing_temperate_kg_per_ha": {
+        "value": [
+          4.5,
+          5.5
+        ],
+        "notes": "Direct-seeded slicing cucumbers without precision seeder; about 2.25 kg/ha of seed gives enough transplants for 1 ha (British Columbia guide, temperate).",
+        "source_ids": [
+          "S49"
+        ]
+      },
+      "seeds_per_ha_derived": {
+        "value": 37065,
+        "notes": "Derived: 15,000 seeds per acre (Johnny's chart) / 0.4047 ha per acre = 37,065 seeds/ha.",
+        "source_ids": [
+          "S50"
+        ]
+      }
+    },
+    "sowing_depth_cm": {
+      "value": [
+        2,
+        2.8
+      ],
+      "source_ids": [
+        "S9",
+        "S7"
+      ]
+    },
+    "trellising": {
+      "practice": "Staking strongly recommended for slicing cucumber: keeps fruit and leaves off the soil, reduces rot (S1). Wood or iron bars with ropes (Benin, S1). Single-stem training on horticultural string to a top wire (Mayotte, S3).",
+      "height_m": {
+        "value": [
+          1.6,
+          1.8
+        ],
+        "source_ids": [
+          "S7"
+        ]
+      },
+      "post_spacing_m": {
+        "value": [
+          4,
+          5
+        ],
+        "source_ids": [
+          "S7",
+          "S24"
+        ]
+      },
+      "materials_described": "Poles 2.5 m long, 2 to 2.5 inch diameter, 4 to 5 m apart along rows; No. 16 wire on top plus middle and lower wires; abaca or synthetic twine tied vertically at every hill (S24).",
+      "quantities_per_ha_derived": {
+        "posts_per_ha": [
+          1667,
+          2500
+        ],
+        "wire_m_per_ha_3_lines": [
+          20000,
+          30000
+        ],
+        "twine_m_per_ha": [
+          44000,
+          53000
+        ],
+        "assumptions": "Analyst derivation, not from a source: rows 1.0 to 1.5 m apart (6,667 to 10,000 m of row per ha), one post every 4 m (S7), 3 wire lines (S24), about 2 m of twine per plant at 22,000 to 26,666 plants/ha (S1, S3). End posts and anchors not included.",
+        "source_ids": [
+          "S7",
+          "S24",
+          "S1",
+          "S3"
+        ]
+      },
+      "yield_effect": "Uniben 2024 trial: no staking 2.29 t/ha, single staking 2.95 t/ha, trellis 2.74 t/ha, differences not significant (S20). Seed company says trellising gives better yields, no figure (S7).",
+      "labour_person_days_per_ha": {
+        "value": 40,
+        "notes": "Philippines cost table, trellising 3x, 40 man-days (S24).",
+        "source_ids": [
+          "S24"
+        ]
+      }
+    },
+    "mulch": {
+      "practice": "Layer of plant debris under developing fruits to avoid soil contact (Benin, S1). No plastic mulch rate found for cucumber in African sources.",
+      "rate_per_ha": null,
+      "source_ids": [
+        "S1"
+      ]
+    },
+    "soil_pH": {
+      "value": [
+        5.5,
+        7.5
+      ],
+      "notes": "5.5 to 6.8 (S1); 6.0 to 7.0 (S2); 6.5 to 7.5 (S9, S10).",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S9",
+        "S10"
+      ]
+    }
+  },
+  "itinerary": [
+    {
+      "step": "Land clearing",
+      "timing_days_relative_to_sowing": [
+        -45,
+        -21
+      ],
+      "description": "Slash vegetation manually or with a pre-plant non-selective herbicide. In Centre Cameroon, cucurbits (courge) are typically sown on slash-and-burn plots after fallow (S30). Burning is common but no quantified study of its effects on cucumber was found; agronomic risks (loss of organic matter, nutrient losses, bushfire, weed flush) are qualitative only. A Kenyan input supplier recommends Catapult 480SL at 250 ml per 20 L before planting (active ingredient not stated on the page).",
+      "inputs": [
+        {
+          "product": "Catapult 480SL (pre-plant herbicide, Kenya; active ingredient not stated in source)",
+          "category": "herbicide",
+          "rate_per_ha": null,
+          "unit": "250 ml per 20 L knapsack",
+          "applications": 1,
+          "source_ids": [
+            "S9"
+          ]
+        }
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": [
+        "S30",
+        "S9"
+      ]
+    },
+    {
+      "step": "Tillage and bed or ridge making",
+      "timing_days_relative_to_sowing": [
+        -21,
+        -3
+      ],
+      "description": "Till to about 30 cm then level (S1). Raised beds about 10 cm high and 60 cm wide used in the Mayotte trial (S3). Philippines guide uses ploughing, harrowing then furrowing or bedding (S24).",
+      "inputs": [],
+      "labour_person_days_per_ha": 16,
+      "labour_notes": "Philippines: ploughing 6, harrowing 6, furrowing/bedding 4 man-days per ha (animal or tractor assisted context) (S24). No manual-tillage figure found for Cameroon.",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S24"
+      ]
+    },
+    {
+      "step": "Basal organic and mineral fertilization",
+      "timing_days_relative_to_sowing": [
+        -7,
+        0
+      ],
+      "description": "Well decomposed poultry manure or compost 20 t/ha placed in planting holes, 800 g per hole (S1). PROTA gives 25 to 35 t/ha organic manure (S2). Seed company guide: up to 20 t/ha manure plus 600 to 750 kg/ha Compound D basal (S7). Mayotte trial: 200 kg/ha NPK 15-12-24 at planting (S3). Philippines: 200 g manure per hill one week before planting plus about 15 g of 14-14-14 per hill (S24).",
+      "inputs": [
+        {
+          "product": "Poultry manure or compost, well decomposed",
+          "category": "amendment",
+          "rate_per_ha": 20,
+          "unit": "t/ha (range 20 to 35 across sources)",
+          "applications": 1,
+          "source_ids": [
+            "S1",
+            "S2",
+            "S7"
+          ]
+        },
+        {
+          "product": "NPK 15-12-24",
+          "category": "fertilizer",
+          "rate_per_ha": 200,
+          "unit": "kg/ha",
+          "applications": 1,
+          "source_ids": [
+            "S3"
+          ]
+        },
+        {
+          "product": "Compound D (basal compound, Southern Africa; formula not stated in source)",
+          "category": "fertilizer",
+          "rate_per_ha": 675,
+          "unit": "kg/ha (range 600 to 750)",
+          "applications": 1,
+          "source_ids": [
+            "S7"
+          ]
+        }
+      ],
+      "labour_person_days_per_ha": 8,
+      "labour_notes": "Philippines: manure application 4 + basal fertilization 4 man-days (S24).",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S7",
+        "S24"
+      ]
+    },
+    {
+      "step": "Sowing",
+      "timing_days_relative_to_sowing": [
+        0,
+        0
+      ],
+      "description": "Water holes well, sow 2 seeds per hole (S1) or 3 seeds per hill (S4), about 2 cm deep (S9). Kenyan establishment drench on input-supplier page: Pyramid 700WP 5 g/L + Loyalty 700WDG 10 g/20 L + Optimizer 1 ml/L (active ingredients not stated) (S9).",
+      "inputs": [
+        {
+          "product": "Cucumber seed, open-pollinated (e.g. Poinsett, Marketmore)",
+          "category": "seed",
+          "rate_per_ha": 2,
+          "unit": "kg/ha (range 1 to 3)",
+          "applications": 1,
+          "source_ids": [
+            "S2",
+            "S24"
+          ]
+        },
+        {
+          "product": "Cucumber seed, F1 hybrid (e.g. Tropicale F1, Kenzo F1, Sahira F1, Tokyo F1, Carmen F1, Nagano F1)",
+          "category": "seed",
+          "rate_per_ha": 0.25,
+          "unit": "kg/ha (farmer example, derived)",
+          "applications": 1,
+          "source_ids": [
+            "S10",
+            "S1",
+            "S3",
+            "S4"
+          ]
+        }
+      ],
+      "labour_person_days_per_ha": 4,
+      "labour_notes": "Philippines planting 4 man-days (S24).",
+      "source_ids": [
+        "S1",
+        "S4",
+        "S9",
+        "S24"
+      ]
+    },
+    {
+      "step": "Thinning",
+      "timing_days_relative_to_sowing": [
+        14,
+        21
+      ],
+      "description": "Thin to one healthy plant per hill 2 to 3 weeks after planting (S24); PROTA hill system keeps 2 to 3 plants per hill (S2).",
+      "inputs": [],
+      "labour_person_days_per_ha": null,
+      "source_ids": [
+        "S24",
+        "S2"
+      ]
+    },
+    {
+      "step": "First top dressing",
+      "timing_days_relative_to_sowing": [
+        14,
+        21
+      ],
+      "description": "NPK 15-15-15 at 100 kg/ha (4 g per hole) 2 weeks after sowing (Benin, S1). Seed company guide: ammonium nitrate 50 kg/ha from 2 weeks after germination, repeated every 2 weeks until first fruit set (S7). PROTA: N every 2 to 3 weeks until fruit formation (S2). Nigerian trials: NPK 15-15-15 optimum about 120 kg/ha (S21); 30 to 60 kg N/ha tested at NIHORT (S16).",
+      "inputs": [
+        {
+          "product": "NPK 15-15-15",
+          "category": "fertilizer",
+          "rate_per_ha": 100,
+          "unit": "kg/ha",
+          "applications": 1,
+          "source_ids": [
+            "S1"
+          ]
+        },
+        {
+          "product": "Ammonium nitrate (AN)",
+          "category": "fertilizer",
+          "rate_per_ha": 50,
+          "unit": "kg/ha per application, every 2 weeks until first fruit set",
+          "applications": null,
+          "source_ids": [
+            "S7"
+          ]
+        }
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": [
+        "S1",
+        "S2",
+        "S7",
+        "S16",
+        "S21"
+      ]
+    },
+    {
+      "step": "Trellising and training",
+      "timing_days_relative_to_sowing": [
+        14,
+        30
+      ],
+      "description": "Install posts (1.6 to 1.8 m high, every 4 m) and wires before vines run; tie twine at each hill; train vines up (S7, S24). Pinch main-stem tip to encourage branching in non-trellised Kenyan practice (S9). Pinching at the 6th node with poultry manure gave the most marketable fruits in a Ghana trial (S22).",
+      "inputs": [
+        {
+          "product": "Wooden or bamboo posts 2.5 m",
+          "category": "stakes",
+          "rate_per_ha": null,
+          "unit": "posts/ha (derived 1,667 to 2,500, see planting.trellising)",
+          "applications": 1,
+          "source_ids": [
+            "S24",
+            "S7"
+          ]
+        },
+        {
+          "product": "Wire No. 16 (top, middle, bottom)",
+          "category": "trellis",
+          "rate_per_ha": null,
+          "unit": "m/ha (derived 20,000 to 30,000)",
+          "applications": 1,
+          "source_ids": [
+            "S24"
+          ]
+        },
+        {
+          "product": "Twine (abaca or synthetic)",
+          "category": "trellis",
+          "rate_per_ha": null,
+          "unit": "m/ha (derived 44,000 to 53,000)",
+          "applications": 1,
+          "source_ids": [
+            "S24"
+          ]
+        }
+      ],
+      "labour_person_days_per_ha": 40,
+      "labour_notes": "Philippines trellising 3x = 40 man-days (S24).",
+      "source_ids": [
+        "S7",
+        "S9",
+        "S22",
+        "S24"
+      ]
+    },
+    {
+      "step": "Organic top-up",
+      "timing_days_relative_to_sowing": [
+        28,
+        28
+      ],
+      "description": "Second application of well decomposed organic matter, 400 g per hole at 4 weeks after sowing (Benin). Derived about 10.7 t/ha at 26,666 holes/ha.",
+      "inputs": [
+        {
+          "product": "Decomposed manure or compost",
+          "category": "amendment",
+          "rate_per_ha": 10.7,
+          "unit": "t/ha (derived from 400 g per hole)",
+          "applications": 1,
+          "source_ids": [
+            "S1"
+          ]
+        }
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "step": "Second top dressing (fruiting, potassium)",
+      "timing_days_relative_to_sowing": [
+        30,
+        60
+      ],
+      "description": "At 6 weeks after sowing: mix of urea (25%) and potassium sulphate (75%) at 4 g per hole, derived about 107 kg/ha of mix (S1). Philippines: about 20 g per hill of urea and muriate of potash (2:1) about 1 month after sowing (S24). Seed company: muriate of potash 35 kg/ha after first fruit set, then with AN every 2 weeks (S7). Mayotte: 600 kg/ha NPK 15-12-24 split at 20 and 60 days after planting, with light earthing up (S3).",
+      "inputs": [
+        {
+          "product": "Urea 46% + potassium sulphate mix (25:75)",
+          "category": "fertilizer",
+          "rate_per_ha": 107,
+          "unit": "kg/ha (derived from 4 g/hole)",
+          "applications": 1,
+          "source_ids": [
+            "S1"
+          ]
+        },
+        {
+          "product": "Muriate of potash (KCl)",
+          "category": "fertilizer",
+          "rate_per_ha": 35,
+          "unit": "kg/ha per application, repeated every 2 weeks with AN",
+          "applications": null,
+          "source_ids": [
+            "S7"
+          ]
+        },
+        {
+          "product": "NPK 15-12-24",
+          "category": "fertilizer",
+          "rate_per_ha": 300,
+          "unit": "kg/ha per split (2 splits = 600 kg/ha)",
+          "applications": 2,
+          "source_ids": [
+            "S3"
+          ]
+        }
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": [
+        "S1",
+        "S3",
+        "S7",
+        "S24"
+      ]
+    },
+    {
+      "step": "Foliar fertilizers and biostimulants (optional)",
+      "timing_days_relative_to_sowing": [
+        7,
+        70
+      ],
+      "description": "Kenyan input-supplier programme (trade names, compositions not stated): Goldchance Super Start 2.5 g/L or Lavender Super Start 1 ml/L at root development; Goldchance Super Growth 2.5 g/L or Lavender 1 ml/L at vegetative stage; Goldchance Super Flowers and Fruits 2.5 g/L, Vitabor Gold 1 ml/L (boron), Dimiphite 600 1.5 ml/L (P, K) at flowering and fruiting; Ferrari Gold 3 ml/L for calcium; sticker Integra 3 ml/20 L. No independent efficacy data found.",
+      "inputs": [
+        {
+          "product": "Starter foliar (Goldchance Super Start / Lavender Super Start)",
+          "category": "foliar",
+          "rate_per_ha": null,
+          "unit": "2.5 g/L or 1 ml/L spray",
+          "applications": null,
+          "source_ids": [
+            "S9"
+          ]
+        },
+        {
+          "product": "Flowering/fruiting foliar (Goldchance Super Flowers and Fruits, Vitabor Gold, Dimiphite 600)",
+          "category": "foliar",
+          "rate_per_ha": null,
+          "unit": "2.5 g/L; 1 ml/L; 1.5 ml/L",
+          "applications": null,
+          "source_ids": [
+            "S9"
+          ]
+        }
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": [
+        "S9"
+      ]
+    },
+    {
+      "step": "Irrigation (dry season or dry spells)",
+      "timing_days_relative_to_sowing": [
+        0,
+        110
+      ],
+      "description": "Regular watering, especially at flowering and fruit set; drip, sprinkler or watering can; avoid overhead sprinklers from flowering on to prevent flower drop (S1). About 50 mm per week from flowering through fruit development, adjusted to pan evaporation (S7). Mayotte drip: 3 x 20 min per day with 1.1 L/h emitters every 30 cm, i.e. about 1.1 L per plant per day and about 2.4 mm/day (derived, tunnel, S3). FAO-56 crop coefficients: Kc ini 0.6, Kc mid 1.00, Kc end 0.75 (S25). Optimum rainfall about 800 mm, supplemented by irrigation (Kenya, S9).",
+      "inputs": [
+        {
+          "product": "Irrigation water (drip or can)",
+          "category": "irrigation",
+          "rate_per_ha": 50,
+          "unit": "mm per week from flowering",
+          "applications": null,
+          "source_ids": [
+            "S7"
+          ]
+        }
+      ],
+      "irrigation_l_per_plant_per_day": {
+        "value": 1.1,
+        "notes": "Derived from Mayotte drip set-up in a tunnel (S3); open-field needs in Foumbot dry season not measured.",
+        "source_ids": [
+          "S3"
+        ]
+      },
+      "labour_person_days_per_ha": 4,
+      "labour_notes": "Philippines irrigation 4 man-days (furrow context) (S24); manual watering-can irrigation would need far more, no figure found.",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S7",
+        "S9",
+        "S24",
+        "S25"
+      ]
+    },
+    {
+      "step": "Weeding",
+      "timing_days_relative_to_sowing": [
+        14,
+        60
+      ],
+      "description": "Hoeing every two weeks until flowering, then hand weeding until fruit maturity (Ngaoundere, Cameroon, S4). Three weeding/cultivation passes (Philippines, S24). Weed control also reduces Zeugodacus cucurbitae infestation (Cote d'Ivoire, S6).",
+      "inputs": [],
+      "labour_person_days_per_ha": 12,
+      "labour_notes": "Philippines: weeding/cultivation 3x at 4 man-days each (S24).",
+      "source_ids": [
+        "S4",
+        "S24",
+        "S6"
+      ]
+    },
+    {
+      "step": "Crop protection programme",
+      "timing_days_relative_to_sowing": [
+        4,
+        108
+      ],
+      "description": "Reference calendar from the CIRAD Mayotte trial (days after planting, 3-day pre-harvest interval): pymetrozine (Plenum 50 WG, 5 g/10 L) at 4, 43, 71 DAP for aphids and whiteflies; tau-fluvalinate (Klartan, 3 ml/10 L) at 36, 57, 78; deltamethrin + pirimicarb (Best, 20 ml/10 L) at 64; deltamethrin (Decis Protech, 10 ml/10 L) at 13, 29, 50, 85, 92 for caterpillars; preventive fungicide (Rocky + Dithane M-45, mancozeb) 3 weeks after sowing. Total 13 insecticide applications plus at least 1 fungicide (S3). Benin sheet: fruit flies controlled by burying rotten fruits outside the field, neem products and acetamiprid + lambda-cyhalothrin sprays (no dose); mites and leaf miners with neem or approved acaricide (S1). Kenyan supplier list gives trade-name products per pest (S9). In Cote d'Ivoire plots most recently treated with avermectin had lower fruit fly infestation (S6).",
+      "inputs": [
+        {
+          "product": "Pymetrozine (Plenum 50 WG)",
+          "category": "insecticide",
+          "rate_per_ha": null,
+          "unit": "5 g per 10 L",
+          "applications": 3,
+          "source_ids": [
+            "S3"
+          ]
+        },
+        {
+          "product": "Tau-fluvalinate (Klartan)",
+          "category": "insecticide",
+          "rate_per_ha": null,
+          "unit": "3 ml per 10 L",
+          "applications": 3,
+          "source_ids": [
+            "S3"
+          ]
+        },
+        {
+          "product": "Deltamethrin (Decis Protech)",
+          "category": "insecticide",
+          "rate_per_ha": null,
+          "unit": "10 ml per 10 L",
+          "applications": 5,
+          "source_ids": [
+            "S3"
+          ]
+        },
+        {
+          "product": "Deltamethrin + pirimicarb (Best)",
+          "category": "insecticide",
+          "rate_per_ha": null,
+          "unit": "20 ml per 10 L",
+          "applications": 1,
+          "source_ids": [
+            "S3"
+          ]
+        },
+        {
+          "product": "Acetamiprid + lambda-cyhalothrin (fruit flies)",
+          "category": "insecticide",
+          "rate_per_ha": null,
+          "unit": "dose not given",
+          "applications": null,
+          "source_ids": [
+            "S1"
+          ]
+        },
+        {
+          "product": "Neem-based products (fruit flies, mites, leaf miner); neem cake (nematodes)",
+          "category": "insecticide",
+          "rate_per_ha": null,
+          "unit": "dose not given",
+          "applications": null,
+          "source_ids": [
+            "S1"
+          ]
+        },
+        {
+          "product": "Mancozeb (Dithane M-45), preventive",
+          "category": "fungicide",
+          "rate_per_ha": null,
+          "unit": "dose not given",
+          "applications": 1,
+          "source_ids": [
+            "S3"
+          ]
+        },
+        {
+          "product": "Agrochemicals all types (Kaduna farm survey)",
+          "category": "other",
+          "rate_per_ha": 11,
+          "unit": "litres/ha per cycle",
+          "applications": null,
+          "source_ids": [
+            "S17"
+          ]
+        }
+      ],
+      "sprays_per_cycle": {
+        "value": [
+          13,
+          14
+        ],
+        "notes": "Only fully documented calendar is a tunnel trial in Mayotte (S3). Philippines cost table budgets 3 L/ha insecticide (S24).",
+        "source_ids": [
+          "S3",
+          "S24"
+        ]
+      },
+      "labour_person_days_per_ha": null,
+      "source_ids": [
+        "S1",
+        "S3",
+        "S6",
+        "S9",
+        "S17",
+        "S24"
+      ]
+    },
+    {
+      "step": "Pollination management",
+      "timing_days_relative_to_sowing": [
+        30,
+        90
+      ],
+      "description": "Cucumber is insect-pollinated. At Ngaoundere (Cameroon), bagged flowers set 0% fruit versus 72.5% (rainy season) and 78.3% (dry season) for open flowers; Apis mellifera made 63.53% of flower visits in the rainy season and accounted for 86.81% of fruit set (S4). Place 2 to 3 bee hives per ha; up to 8 bee visits per flower needed (S7). Avoid insecticide sprays during bee activity (bees active from 6 a.m., S4).",
+      "inputs": [
+        {
+          "product": "Bee hives",
+          "category": "other",
+          "rate_per_ha": 2.5,
+          "unit": "hives/ha (range 2 to 3)",
+          "applications": 1,
+          "source_ids": [
+            "S7"
+          ]
+        }
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": [
+        "S4",
+        "S7"
+      ]
+    },
+    {
+      "step": "Harvest",
+      "timing_days_relative_to_sowing": [
+        40,
+        110
+      ],
+      "description": "Harvest at 15 to 20 cm length and 4 to 7 cm diameter (S7), 20 to 25 cm for tropical types (S3), seeds still small and soft (S8). Frequency: 3 times per week (S8), 2 to 3 times per week (S26), every other day to every few days (S2), about every 5 days in Benin practice (S1), daily in the Mayotte trial (S3). Kenya farmer harvests at 6 to 8 inches, up to 8 harvests (S10).",
+      "inputs": [
+        {
+          "product": "Net bags (filets) as used at Mfoundi market, Yaounde (weight not stated)",
+          "category": "packaging",
+          "rate_per_ha": null,
+          "unit": "bags",
+          "applications": null,
+          "source_ids": [
+            "S11"
+          ]
+        },
+        {
+          "product": "Crates or cartons of 12 to 14 kg or 23 to 25 kg (international standard)",
+          "category": "packaging",
+          "rate_per_ha": null,
+          "unit": "units",
+          "applications": null,
+          "source_ids": [
+            "S26"
+          ]
+        }
+      ],
+      "labour_person_days_per_ha": 10,
+      "labour_notes": "Philippines harvesting budget 10 man-days (S24), which looks low for a multi-week harvest; no African figure found.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S7",
+        "S8",
+        "S10",
+        "S11",
+        "S24",
+        "S26"
+      ]
+    },
+    {
+      "step": "Post-harvest handling",
+      "timing_days_relative_to_sowing": [
+        40,
+        112
+      ],
+      "description": "Remove field heat quickly, grade and pack (S26). Store at 10 to 13 C and 90 to 95% RH, shelf life about 10 to 14 days (S7); 13 C and 95% RH for up to 14 days (S2). Chilling injury below 10 C, rapid yellowing above 16 C; tropical marketable life about 5 days without cooling (S2).",
+      "inputs": [],
+      "labour_person_days_per_ha": null,
+      "source_ids": [
+        "S2",
+        "S7",
+        "S26"
+      ]
+    }
+  ],
+  "fertilizer_total": {
+    "kg_N_per_ha": [
+      27,
+      120
+    ],
+    "kg_P2O5_per_ha": [
+      15,
+      96
+    ],
+    "kg_K2O_per_ha": [
+      55,
+      192
+    ],
+    "organic_manure_t_per_ha": [
+      20,
+      35
+    ],
+    "basis": [
+      {
+        "programme": "Benin UAC sheet: 20 t/ha manure + 400 g/hole later; NPK 15-15-15 100 kg/ha; urea/K2SO4 mix 4 g/hole",
+        "N": 27,
+        "P2O5": 15,
+        "K2O": 55,
+        "notes": "Derived: NPK gives 15-15-15; mix about 107 kg/ha = 26.7 kg urea (12.3 kg N) + 80 kg K2SO4 (about 40 kg K2O at standard 50% K2O).",
+        "source_ids": [
+          "S1"
+        ]
+      },
+      {
+        "programme": "CIRAD Mayotte: NPK 15-12-24, 200 kg/ha basal + 2 x 300 kg/ha",
+        "N": 120,
+        "P2O5": 96,
+        "K2O": 192,
+        "notes": "Derived from 800 kg/ha total of 15-12-24; tunnel, drip, high yield.",
+        "source_ids": [
+          "S3"
+        ]
+      },
+      {
+        "programme": "PROTA: 700 kg/ha NPK mixture + N every 2 to 3 weeks until fruiting; 25 to 35 t/ha manure",
+        "N": null,
+        "P2O5": null,
+        "K2O": null,
+        "notes": "NPK grade not given, so nutrients cannot be computed.",
+        "source_ids": [
+          "S2"
+        ]
+      },
+      {
+        "programme": "Seed Co: Compound D 600 to 750 kg/ha basal, AN 50 kg/ha every 2 weeks to fruit set, KCl 35 kg/ha after fruit set, manure up to 20 t/ha",
+        "N": null,
+        "P2O5": null,
+        "K2O": null,
+        "notes": "Compound D grade not stated in source.",
+        "source_ids": [
+          "S7"
+        ]
+      },
+      {
+        "programme": "Nigeria trials: optimum NPK 15-15-15 about 120 kg/ha (18 N, 18 P2O5, 18 K2O); Ghana best: 15 t/ha chicken manure + 50 kg/ha NPK; Zaria: highest yield at 75 kg N/ha",
+        "N": [
+          18,
+          75
+        ],
+        "P2O5": null,
+        "K2O": null,
+        "source_ids": [
+          "S21",
+          "S19",
+          "S23"
+        ]
+      }
+    ]
+  },
+  "pests_diseases": [
+    {
+      "name": "Fruit flies (Dacus bivittatus, Dacus ciliatus major in Cameroon; also Zeugodacus/Bactrocera cucurbitae, D. vertebratus, D. punctatifrons)",
+      "type": "pest",
+      "importance": "Major. Cucurbit fruit losses to tephritids about 36.7% at Yaounde and 37.1% at Koutaba (Noun division, next to Foumbot) in 2009 to 2011; losses on cucumber higher at Koutaba (S5). Cote d'Ivoire 2023: 90% of cucurbit plots infested, mean 30.5% of fruits damaged; less than half of cucumbers yielded no pupae; Z. cucurbitae higher in rainy season May to July (S6).",
+      "controls": "Sanitation (collect and bury infested fruits), weed control, neem, acetamiprid + lambda-cyhalothrin (S1); avermectin associated with lower infestation (S6); insect-proof netting (S6).",
+      "source_ids": [
+        "S5",
+        "S6",
+        "S1"
+      ]
+    },
+    {
+      "name": "Aphids",
+      "type": "pest",
+      "importance": "Direct damage and virus vector (S2).",
+      "controls": "Pymetrozine 5 g/10 L; deltamethrin + pirimicarb (S3). Kenyan trade product Pentagon 50EC 0.5 ml/L (S9).",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S9"
+      ]
+    },
+    {
+      "name": "Whiteflies",
+      "type": "pest",
+      "importance": "Listed pest and virus vector (S2, S7).",
+      "controls": "Pymetrozine (S3); Profile 440EC 1.5 ml/L (Kenya, a.i. not stated) (S9).",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S7",
+        "S9"
+      ]
+    },
+    {
+      "name": "Thrips",
+      "type": "pest",
+      "importance": "Listed pest (S2).",
+      "controls": "Profile 440EC 1.5 ml/L (Kenya) (S9).",
+      "source_ids": [
+        "S2",
+        "S9"
+      ]
+    },
+    {
+      "name": "Melon worm / pickleworm (Diaphania hyalinata) and other caterpillars (armyworms, cutworms)",
+      "type": "pest",
+      "importance": "Listed pest (S2); caterpillar sprays 5 times in Mayotte (S3).",
+      "controls": "Deltamethrin 10 ml/10 L (S3); cutworm soil drench Profile 440EC 3 ml/L (S9).",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S9"
+      ]
+    },
+    {
+      "name": "Red spider mites (Tetranychus spp.)",
+      "type": "pest",
+      "importance": "Yellowing of older leaves (S1).",
+      "controls": "Neem products or acaricide (S1); Alonze 50EC 3 ml/20 L (Kenya) (S9).",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S9"
+      ]
+    },
+    {
+      "name": "Leaf miners",
+      "type": "pest",
+      "importance": "Zigzag mines (S1).",
+      "controls": "Neem; approved product (S1).",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "name": "Root-knot nematodes (Meloidogyne spp.)",
+      "type": "pest",
+      "importance": "Wilting, stunting, root galls (S1, S2).",
+      "controls": "Solarization, flooding, sanitary fallow, rotation, heavy organic matter, neem cake (S1).",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "name": "Downy mildew (Pseudoperonospora cubensis)",
+      "type": "disease",
+      "importance": "Main foliar disease in humid conditions; observed in Mayotte trial; smooth (European) varieties much more sensitive than tropical types (S2, S3).",
+      "controls": "Preventive mancozeb (S3); Kenyan trade products Gearlock Turbo 250WP 25 g/20 L (S9).",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S9"
+      ]
+    },
+    {
+      "name": "Powdery mildew (Erysiphe cichoracearum, Sphaerotheca fuliginea)",
+      "type": "disease",
+      "importance": "Listed (S2, S7); observed in Mayotte (S3).",
+      "controls": "Ransom 600WP 15 g/20 L (Kenya) (S9).",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S7",
+        "S9"
+      ]
+    },
+    {
+      "name": "Anthracnose (Colletotrichum lagenarium)",
+      "type": "disease",
+      "importance": "Listed (S2, S7).",
+      "controls": "Absolute 375SC 0.5 ml/L (Kenya) (S9).",
+      "source_ids": [
+        "S2",
+        "S7",
+        "S9"
+      ]
+    },
+    {
+      "name": "Other fungal and bacterial diseases: target leaf spot, gummy stem blight, angular leaf spot, Fusarium wilt, damping off, scab, Phytophthora fruit rot, belly rot, Alternaria, Choanephora",
+      "type": "disease",
+      "importance": "Listed for tropical Africa incl. Cote d'Ivoire (S2).",
+      "controls": "Seed and soil hygiene; Kenyan drench products for damping off and Fusarium (S9).",
+      "source_ids": [
+        "S2",
+        "S9"
+      ]
+    },
+    {
+      "name": "Viruses (CMV, ZYMV, PRSV, CVYV, CGMMV)",
+      "type": "disease",
+      "importance": "Listed (S2); unidentified viruses observed in Mayotte (S3).",
+      "controls": "Control aphid and whitefly vectors (S9).",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S9"
+      ]
+    }
+  ],
+  "labour_total_person_days_per_ha": [
+    15,
+    86
+  ],
+  "labour_notes": "No Cameroonian or itemised African figure found. Philippines DA cost table lists about 86 man-days/ha (sum of items, trellising 40, harvest 10, excluding spraying) (S24). Kaduna (Nigeria) survey reports only 15 to 17 man-days/ha, which looks understated (S17). NIHORT Ibadan: labour is 60% of total production cost (S16). Treat as low confidence; fully manual production with watering cans in Foumbot will likely exceed 86.",
+  "yields_t_ha": {
+    "national_or_regional_average": {
+      "value": [
+        4,
+        10
+      ],
+      "year": 2002,
+      "where": "Tropical Africa: DR Congo about 4 t/ha, Ghana about 10 t/ha (PROTA, about 2002 data). No Cameroon area or yield figure found; FAOSTAT Cameroon production 262,121 t in 2022 (S13) and 265,462 t in 2024 (S14), AGRISTAT 282,773 t/year vs demand 299,972 t (cited S4), but these may include Cucumeropsis mannii.",
+      "source_ids": [
+        "S2",
+        "S13",
+        "S14",
+        "S4"
+      ],
+      "kenya_national_derived": {
+        "value": [
+          10.5,
+          13.3
+        ],
+        "years": [
+          2011,
+          2013
+        ],
+        "notes": "Derived from HCDA national totals: 1,895 t / 181 ha = 10.5 (2011); 2,737 / 231 = 11.8 (2012); 3,764 / 284 = 13.3 t/ha (2013).",
+        "source_ids": [
+          "S44"
+        ]
+      }
+    },
+    "farmer_rainfed": [
+      {
+        "value": 5.37,
+        "where": "Oyo State, Nigeria, 73 smallholders (survey)",
+        "year": 2016,
+        "source_ids": [
+          "S15"
+        ]
+      },
+      {
+        "value": 2.5,
+        "where": "Kenya, one farmer, 0.5 acre, 'up to 500 kg per crop' (derived)",
+        "year": 2025,
+        "source_ids": [
+          "S10"
+        ]
+      },
+      {
+        "value": [
+          10,
+          15
+        ],
+        "where": "Philippines cost-and-return basis (off-season 10, regular 15)",
+        "year": 2017,
+        "source_ids": [
+          "S24"
+        ]
+      }
+    ],
+    "good_practice_rainfed": [
+      {
+        "value": [
+          10.3,
+          11.6
+        ],
+        "where": "Abeokuta, Nigeria, organomineral fertilizer 5 t/ha, early and late season (OMF 0 t/ha: 2.4 to 3.8)",
+        "year": 2019,
+        "source_ids": [
+          "S18"
+        ]
+      },
+      {
+        "value": [
+          9,
+          15
+        ],
+        "where": "NIHORT Ibadan, best treatments, Marketmore",
+        "year": 2020,
+        "source_ids": [
+          "S16"
+        ]
+      },
+      {
+        "value": [
+          18.2,
+          22.6
+        ],
+        "where": "Kaduna, Nigeria farm survey (organic vs inorganic), paper internally inconsistent",
+        "year": 2026,
+        "source_ids": [
+          "S17"
+        ]
+      },
+      {
+        "value": [
+          25,
+          35
+        ],
+        "where": "Philippines variety potential (Bituin), 26.5 to 27.5 for Pilmaria",
+        "year": 2017,
+        "source_ids": [
+          "S24"
+        ]
+      },
+      {
+        "value": [
+          62.5,
+          75.4
+        ],
+        "where": "Ghana Mampong research plots, 15 t/ha chicken manure + 50 kg/ha NPK at 40 x 20 cm; outlier, not farm level",
+        "year": 2023,
+        "source_ids": [
+          "S19"
+        ]
+      },
+      {
+        "value": [
+          2.3,
+          3.2
+        ],
+        "where": "Benin City, Nigeria, dry-season trial Jan to Mar 2024 (low)",
+        "year": 2024,
+        "source_ids": [
+          "S20"
+        ]
+      }
+    ],
+    "irrigated_dry_season": [
+      {
+        "value": [
+          54.4,
+          76.4
+        ],
+        "where": "Mayotte, drip, tunnel in soil, dry season, marketable at 78 DAP (total 58.8 to 121.9 at 96 DAP; Tokyo F1 best, Poinsett 66.2)",
+        "year": 2006,
+        "source_ids": [
+          "S3"
+        ]
+      },
+      {
+        "value": [
+          20,
+          40
+        ],
+        "where": "Generic open-field slicing cucumber average (international guide)",
+        "year": null,
+        "source_ids": [
+          "S26"
+        ]
+      }
+    ]
+  },
+  "post_harvest_loss_pct": null,
+  "post_harvest_notes": "No measured post-harvest loss percentage found for cucumber in Cameroon or the region. Shelf life about 5 days without cooling in the tropics, yellowing above 16 C, chilling injury below 10 C (S2). Separate field (pre-harvest) losses from fruit flies: about 36.7 to 37.1% of cucurbit fruits in Cameroon (S5) and 30.5% in Cote d'Ivoire (S6).",
+  "field_losses_fruit_fly_pct": [
+    30.5,
+    37.1
+  ],
+  "prices": {
+    "unit_notes": "Cameroon wholesale cucumbers move in net bags (filets) of unstated weight; retail in heaps (tas) or per piece (S11). Foreign prices kept in local currency because no sourced exchange rate was collected. XOF (Cote d'Ivoire) and XAF (Cameroon) are at par, both pegged at 655.957 per euro, so Ivorian FCFA prices are entered directly as XAF (analyst note, no conversion).",
+    "observations": [
+      {
+        "market": "Mfoundi market, Yaounde (wholesale, filet of cucumbers)",
+        "period": "16 Aug 2021 (rainy season glut)",
+        "price_xaf_per_kg": null,
+        "price_local": "2,000 FCFA per filet (weight not stated); a seller says a net cost 10,000 to 15,000 FCFA a few days earlier (unclear if cucumber alone or cucumber and aubergine)",
+        "year": 2021,
+        "source_ids": [
+          "S11"
+        ]
+      },
+      {
+        "market": "Mfoundi market, Yaounde (retail)",
+        "period": "16 Aug 2021",
+        "price_xaf_per_kg": null,
+        "price_local": "200 FCFA for 4 large cucumbers (50 FCFA each); heaps 200 to 500 FCFA",
+        "derived_price_xaf_per_kg": [
+          119,
+          192
+        ],
+        "derivation": "Analyst estimate: 50 FCFA per fruit / 0.42 kg = 119 FCFA/kg (largest fruit, Mayotte 426 g, S3) to 50 / 0.261 kg = 192 FCFA/kg (Poinsett measured in Kinshasa, S45); Cameroon Nagano F1 283 g gives 177 FCFA/kg (S4).",
+        "year": 2021,
+        "source_ids": [
+          "S11",
+          "S4",
+          "S3",
+          "S45"
+        ]
+      },
+      {
+        "market": "Cameroon national average (market value used for production valuation, level not specified)",
+        "period": "1998 annual",
+        "price_xaf_per_kg": [
+          359,
+          359
+        ],
+        "year": 1998,
+        "source_ids": [
+          "S12"
+        ]
+      },
+      {
+        "market": "Cameroon export unit value (UN Comtrade, tiny volumes, mainly to Equatorial Guinea)",
+        "period": "Jan 2023",
+        "price_xaf_per_kg": [
+          620,
+          620
+        ],
+        "year": 2023,
+        "source_ids": [
+          "S29",
+          "S14"
+        ]
+      },
+      {
+        "market": "Murang'a, Kenya (farm gate)",
+        "period": "2025",
+        "price_xaf_per_kg": null,
+        "price_local": "KSh 20/kg, up to KSh 50/kg when demand is high",
+        "year": 2025,
+        "source_ids": [
+          "S10"
+        ]
+      },
+      {
+        "market": "Kaduna, Nigeria",
+        "period": "survey year not stated",
+        "price_xaf_per_kg": null,
+        "price_local": "Market range NGN 2,190 to 3,066/kg reported in text; tables inconsistent (NGN 120 and NGN 2,500/kg). Note: this range is close to the Selina Wamucii Nigeria retail range (S42), possibly copied; treat as retail, not farm gate.",
+        "year": 2026,
+        "source_ids": [
+          "S17"
+        ]
+      },
+      {
+        "market": "Philippines (Region 02)",
+        "period": "regular vs off-season",
+        "price_xaf_per_kg": null,
+        "price_local": "PHP 15/kg regular season; PHP 25/kg off-season",
+        "year": 2017,
+        "source_ids": [
+          "S24"
+        ]
+      },
+      {
+        "market": "Abidjan, Cote d'Ivoire (CNLVC market survey; price level not stated, probably consumer)",
+        "period": "2024-03-01",
+        "price_xaf_per_kg": [
+          350,
+          350
+        ],
+        "price_local": "350 FCFA (XOF)/kg",
+        "year": 2024,
+        "source_ids": [
+          "S31"
+        ]
+      },
+      {
+        "market": "Abidjan, Cote d'Ivoire (CNLVC market survey; price level not stated, probably consumer)",
+        "period": "2024-03-16",
+        "price_xaf_per_kg": [
+          400,
+          400
+        ],
+        "price_local": "400 FCFA (XOF)/kg",
+        "year": 2024,
+        "source_ids": [
+          "S32"
+        ]
+      },
+      {
+        "market": "Abidjan, Cote d'Ivoire (CNLVC market survey; price level not stated, probably consumer)",
+        "period": "2024-10-26",
+        "price_xaf_per_kg": [
+          350,
+          350
+        ],
+        "price_local": "350 FCFA (XOF)/kg",
+        "year": 2024,
+        "source_ids": [
+          "S33"
+        ]
+      },
+      {
+        "market": "Abidjan, Cote d'Ivoire (CNLVC market survey; price level not stated, probably consumer)",
+        "period": "2024-12-20",
+        "price_xaf_per_kg": [
+          350,
+          350
+        ],
+        "price_local": "350 FCFA (XOF)/kg",
+        "year": 2024,
+        "source_ids": [
+          "S34"
+        ]
+      },
+      {
+        "market": "Abidjan, Cote d'Ivoire (CNLVC market survey; price level not stated, probably consumer)",
+        "period": "2025-02-27 (published 2025-03-27)",
+        "price_xaf_per_kg": [
+          500,
+          500
+        ],
+        "price_local": "500 FCFA (XOF)/kg",
+        "year": 2025,
+        "source_ids": [
+          "S35"
+        ]
+      },
+      {
+        "market": "Abidjan, Cote d'Ivoire (CNLVC market survey; price level not stated, probably consumer)",
+        "period": "2025-08 (published 2025-08-06)",
+        "price_xaf_per_kg": [
+          600,
+          600
+        ],
+        "price_local": "600 FCFA (XOF)/kg",
+        "year": 2025,
+        "source_ids": [
+          "S36"
+        ]
+      },
+      {
+        "market": "Abidjan, Cote d'Ivoire (CNLVC market survey; price level not stated, probably consumer)",
+        "period": "2025-11-06",
+        "price_xaf_per_kg": [
+          600,
+          600
+        ],
+        "price_local": "600 FCFA (XOF)/kg",
+        "year": 2025,
+        "source_ids": [
+          "S37"
+        ]
+      },
+      {
+        "market": "Abidjan, Cote d'Ivoire (Sika Finance; level not stated)",
+        "period": "latest at 27 Sep 2026",
+        "price_xaf_per_kg": [
+          600,
+          600
+        ],
+        "price_local": "600 per kg (currency not printed; FCFA XOF implied)",
+        "year": 2026,
+        "source_ids": [
+          "S38"
+        ]
+      },
+      {
+        "market": "Bouake, Cote d'Ivoire (Sika Finance; level not stated)",
+        "period": "latest at 27 Sep 2026",
+        "price_xaf_per_kg": [
+          350,
+          350
+        ],
+        "price_local": "350 per kg (currency not printed; FCFA XOF implied)",
+        "year": 2026,
+        "source_ids": [
+          "S38"
+        ]
+      },
+      {
+        "market": "Korhogo, Cote d'Ivoire (Sika Finance; level not stated)",
+        "period": "latest at 27 Sep 2026",
+        "price_xaf_per_kg": [
+          400,
+          400
+        ],
+        "price_local": "400 per kg (currency not printed; FCFA XOF implied)",
+        "year": 2026,
+        "source_ids": [
+          "S38"
+        ]
+      },
+      {
+        "market": "Man, Cote d'Ivoire (Sika Finance; level not stated)",
+        "period": "latest at 27 Sep 2026",
+        "price_xaf_per_kg": [
+          500,
+          500
+        ],
+        "price_local": "500 per kg (currency not printed; FCFA XOF implied)",
+        "year": 2026,
+        "source_ids": [
+          "S38"
+        ]
+      },
+      {
+        "market": "San-Pedro, Cote d'Ivoire (Sika Finance; level not stated)",
+        "period": "latest at 27 Sep 2026",
+        "price_xaf_per_kg": [
+          500,
+          500
+        ],
+        "price_local": "500 per kg (currency not printed; FCFA XOF implied)",
+        "year": 2026,
+        "source_ids": [
+          "S38"
+        ]
+      },
+      {
+        "market": "Yamoussoukro, Cote d'Ivoire (Sika Finance; level not stated)",
+        "period": "latest at 27 Sep 2026",
+        "price_xaf_per_kg": [
+          600,
+          600
+        ],
+        "price_local": "600 per kg (currency not printed; FCFA XOF implied)",
+        "year": 2026,
+        "source_ids": [
+          "S38"
+        ]
+      },
+      {
+        "market": "Zigida market, Kinshasa, DR Congo (crate, weight not stated)",
+        "period": "19 May to 20 Jun 2024",
+        "price_xaf_per_kg": null,
+        "price_local": "Crate rose from 53,000 to 75,000 CDF (USD 26.31 at 2,850 CDF/USD, as stated); cucumbers from Mbanza-Ngungu",
+        "year": 2024,
+        "source_ids": [
+          "S39"
+        ]
+      },
+      {
+        "market": "Cape Coast, Ghana (basket, weight not stated)",
+        "period": "Apr 2024",
+        "price_xaf_per_kg": null,
+        "price_local": "GHS 400 to 500 per basket",
+        "year": 2024,
+        "source_ids": [
+          "S40"
+        ]
+      },
+      {
+        "market": "Kenya national farmgate (FAOSTAT producer price via Selina Wamucii)",
+        "period": "Jan 2024",
+        "price_xaf_per_kg": null,
+        "price_local": "KES 26.29/kg (USD 0.19/kg)",
+        "year": 2024,
+        "source_ids": [
+          "S41"
+        ]
+      },
+      {
+        "market": "Kenya national average value per kg (HCDA)",
+        "period": "2011 to 2013",
+        "price_xaf_per_kg": null,
+        "price_local": "Derived KES 25.2 to 25.9/kg: KES 49 m / 1,895 t = 25.9 (2011); 70 m / 2,737 t = 25.6 (2012); 95 m / 3,764 t = 25.2 (2013)",
+        "year": 2013,
+        "source_ids": [
+          "S44"
+        ]
+      },
+      {
+        "market": "Abuja and Lagos, Nigeria (retail, Selina Wamucii)",
+        "period": "Oct 2026",
+        "price_xaf_per_kg": null,
+        "price_local": "NGN 2,279.49 to 3,191.29/kg; wholesale USD 3.46 to 4.85/kg (approx.)",
+        "year": 2026,
+        "source_ids": [
+          "S42"
+        ]
+      },
+      {
+        "market": "Nigeria wholesale benchmark (Tridge)",
+        "period": "2021 and 2022 annual averages",
+        "price_xaf_per_kg": null,
+        "price_local": "USD 0.08/kg (2021, range 0.05 to 0.14) and USD 0.10/kg (2022, range 0.05 to 0.15); implausibly low vs S42",
+        "year": 2022,
+        "source_ids": [
+          "S43"
+        ]
+      }
+    ],
+    "seasonality": "Yaounde: vegetables abundant and cheap in the rainy season, dearer in the dry season because fields must be irrigated (S11, Aug 2021). Kenya: price rises from KSh 20 to 50/kg in high demand periods (S10). Philippines: off-season price 67% above regular season (S24). No month-by-month cucumber price series for Foumbot, Bafoussam or Yaounde was found; INS price notes report only a vegetable index (no cucumber line). Abidjan CNLVC series (S31 to S37): 350 FCFA/kg in Mar, Oct and Dec 2024; 400 mid-Mar 2024; 500 in Feb-Mar 2025; 600 in Aug and Nov 2025, so a rising trend that mixes seasonality and inflation. Sika Finance Sep 2026: 350 (Bouake) to 600 FCFA/kg (Abidjan, Yamoussoukro) (S38). Kinshasa crate up 42% between May and June 2024, attributed partly to seasonality (S39).",
+    "unit_weights": {
+      "filet_weight_kg": null,
+      "filet_notes": "Not found in any source. The 2,000 FCFA filet (Mfoundi, Aug 2021, S11) cannot be converted to a per-kg price until weighed in the field.",
+      "fruit_weight_g": {
+        "observations": [
+          {
+            "value": 283,
+            "where": "Nagano F1, Ngaoundere, Cameroon (rainy season; 277 g dry season)",
+            "source_ids": [
+              "S4"
+            ]
+          },
+          {
+            "value": [
+              102,
+              272
+            ],
+            "where": "Measured in Kinshasa trial: Ashley 102, Marketer 189, Poinsett 261, local 264, Murano F1 272 g",
+            "source_ids": [
+              "S45"
+            ]
+          },
+          {
+            "value": [
+              200,
+              500
+            ],
+            "where": "Supplier descriptors cited in Kinshasa trial: Poinsett 200 to 300, Ashley 250, Marketer 300 to 450, Murano F1 450 to 500 g",
+            "source_ids": [
+              "S45"
+            ]
+          },
+          {
+            "value": [
+              306,
+              426
+            ],
+            "where": "Mayotte tunnel trial, 7 varieties (Poinsett 342 g)",
+            "source_ids": [
+              "S3"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "cost_of_production_xaf_per_ha": [
+    {
+      "value": null,
+      "value_local": 195000,
+      "currency": "NGN",
+      "breakdown": {
+        "seed_20kg": 19000,
+        "fertilizer_10_bags": 55000,
+        "labour_15_man_days": 75000,
+        "agrochemicals_11_L": 22000,
+        "transport": 15000,
+        "miscellaneous": 10000
+      },
+      "notes": "Inorganic system; organic system NGN 185,500 (manure 32,500; labour 85,000). Items do not sum exactly to totals in the paper; land and stakes not costed.",
+      "year": 2026,
+      "where": "Kaduna State, Nigeria",
+      "source_ids": [
+        "S17"
+      ]
+    },
+    {
+      "value": null,
+      "value_local": [
+        268110,
+        327630
+      ],
+      "currency": "NGN",
+      "breakdown": {
+        "labour_share_pct": 60
+      },
+      "notes": "Derived as gross returns minus gross margin; Iregun and Egbeda soils.",
+      "year": 2020,
+      "where": "NIHORT Ibadan, Nigeria (experimental)",
+      "source_ids": [
+        "S16"
+      ]
+    },
+    {
+      "value": null,
+      "value_local": 54610,
+      "currency": "PHP",
+      "breakdown": {
+        "labour_total": 31600,
+        "of_which_trellising": 10000,
+        "of_which_harvesting": 10000,
+        "seed_2kg": 10000,
+        "npk_14_14_14_2_bags": 2000,
+        "urea_2_bags": 1960,
+        "organic_fertilizer_20_bags": 5000,
+        "insecticides_3L": 2550,
+        "miscellaneous": 1500
+      },
+      "notes": "Excludes land rent and trellis materials.",
+      "year": 2017,
+      "where": "Cagayan Valley, Philippines",
+      "source_ids": [
+        "S24"
+      ]
+    },
+    {
+      "value": null,
+      "value_local": null,
+      "currency": "XAF",
+      "breakdown": {},
+      "notes": "No Cameroon cucumber cost of production per ha found. Only partial Cameroon cost data: land clearing by sawyer 5,000 to 15,000 FCFA for Cucumeropsis fields in Mvengue (S27), not transferable.",
+      "year": null,
+      "where": "Cameroon",
+      "source_ids": [
+        "S27"
+      ]
+    }
+  ],
+  "margins": [
+    {
+      "where": "Oyo State, Nigeria (73 smallholders)",
+      "year": 2016,
+      "net_profit_local": 239440,
+      "currency": "NGN",
+      "profit_margin_pct": 55.8,
+      "return_per_unit_invested": 1.26,
+      "source_ids": [
+        "S15"
+      ]
+    },
+    {
+      "where": "NIHORT Ibadan, Nigeria (trial, Egbeda soil)",
+      "year": 2020,
+      "gross_revenue_local": 1650000,
+      "gross_margin_local": 1322370,
+      "currency": "NGN",
+      "bcr_reported": "6:4:1 (implied about 5.0)",
+      "source_ids": [
+        "S16"
+      ]
+    },
+    {
+      "where": "NIHORT Ibadan, Nigeria (trial, Iregun soil)",
+      "year": 2020,
+      "gross_revenue_local": 1031230,
+      "gross_margin_local": 763120,
+      "currency": "NGN",
+      "bcr_reported": "3:8:1 (implied about 3.8)",
+      "source_ids": [
+        "S16"
+      ]
+    },
+    {
+      "where": "Kaduna State, Nigeria (survey)",
+      "year": 2026,
+      "gross_margin_local": [
+        2018500,
+        2537000
+      ],
+      "currency": "NGN",
+      "bcr_reported": [
+        11.77,
+        13.91
+      ],
+      "notes": "Internally inconsistent paper; low confidence.",
+      "source_ids": [
+        "S17"
+      ]
+    },
+    {
+      "where": "Philippines",
+      "year": 2017,
+      "net_income_local": [
+        170390,
+        195390
+      ],
+      "currency": "PHP",
+      "roi_pct_derived": [
+        312,
+        358
+      ],
+      "source_ids": [
+        "S24"
+      ]
+    }
+  ],
+  "climate": {
+    "optimal_day_temp_c": {
+      "value": [
+        20,
+        30
+      ],
+      "notes": "About 30 C optimum (S2); 25 to 30 C (S8); 20 to 25 C (S7); 25 C (S1); 18 to 30 C range (S9).",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S7",
+        "S8",
+        "S9"
+      ]
+    },
+    "optimal_night_temp_c": {
+      "value": [
+        18,
+        21
+      ],
+      "source_ids": [
+        "S2",
+        "S8"
+      ]
+    },
+    "minimum_temp_c": {
+      "value": 15,
+      "notes": "15 C minimum for good development (S2); growth slows below 16 C (S7); soil at least 13 C for direct seeding (S7).",
+      "source_ids": [
+        "S2",
+        "S7"
+      ]
+    },
+    "germination_temp_c": {
+      "value": [
+        25,
+        28
+      ],
+      "source_ids": [
+        "S8"
+      ]
+    },
+    "heat_stress_threshold_c": null,
+    "heat_notes": "No explicit field heat-stress threshold found in sources. Post-harvest yellowing above 16 C (S2) is a storage threshold, not a field one.",
+    "altitude_m": {
+      "value": [
+        0,
+        2000
+      ],
+      "notes": "Up to 2000 m in tropical Africa (S2); up to 1700 m (Kenya, S9). Foumbot (1,000 to 1,200 m) is inside the range; a MINADER station trial at 1,112 m in Ngaoundere succeeded in both seasons (S4).",
+      "source_ids": [
+        "S2",
+        "S9",
+        "S4"
+      ]
+    },
+    "relative_humidity_pct": {
+      "value": [
+        70,
+        90
+      ],
+      "source_ids": [
+        "S1"
+      ]
+    },
+    "rainfall_mm": {
+      "value": 800,
+      "notes": "Optimum about 800 mm, supplemented with irrigation (S9).",
+      "source_ids": [
+        "S9"
+      ]
+    },
+    "rain_humidity_sensitivity": "Humid conditions favour downy mildew, powdery mildew, anthracnose, Alternaria, Cladosporium; smooth European varieties much more sensitive than tropical types (S3). Overhead watering at flowering causes flower drop (S1). Fruit fly Z. cucurbitae and weed cover higher in the rainy season (May to July) in Cote d'Ivoire (S6).",
+    "planting_windows_foumbot": {
+      "proposal": "Window A: sow at onset of rains, mid-March to April, rainfed, harvest May to July. Window B: sow late rains, September to October, finish in early dry season (lower disease pressure, possibly better prices). Window C: dry season November to February only with irrigation.",
+      "basis": "Analyst inference, not a sourced recommendation for Foumbot. Supported by Ngaoundere (1,112 m, one rainy season) trials sown 28 Mar to 4 Apr and 15 to 18 Nov, both setting fruit well with bees (S4); dry-season price premium in Yaounde (S11); rainy-season pest peaks (S6).",
+      "source_ids": [
+        "S4",
+        "S11",
+        "S6"
+      ]
+    },
+    "fao56_kc": {
+      "ini": 0.6,
+      "mid": 1.0,
+      "end": 0.75,
+      "stage_days": [
+        20,
+        30,
+        40,
+        15
+      ],
+      "source_ids": [
+        "S25"
+      ]
+    }
+  },
+  "varieties_cited": [
+    {
+      "name": "Nagano F1",
+      "where": "Ngaoundere, Cameroon (seed from SEMAGRI Ngaoundere); fruit 283 g, 18.5 cm",
+      "source_ids": [
+        "S4"
+      ]
+    },
+    {
+      "name": "Tropicale F1, Kenzo F1, Sahira F1, Poinsett",
+      "where": "Most grown in Benin; 3 to 6 fruits per plant for the F1s",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "name": "Tokyo F1, Poinsett, Tropical F1, Vantage F1, Gemini 7 F1, Suprami F1, Stella F1",
+      "where": "Mayotte tunnel trial; Tokyo F1 highest yield",
+      "source_ids": [
+        "S3"
+      ]
+    },
+    {
+      "name": "Marketmore, Poinsett, Ashley, Betalpha, Greengo, Monalisa",
+      "where": "Nigeria trials",
+      "source_ids": [
+        "S16",
+        "S18",
+        "S21"
+      ]
+    },
+    {
+      "name": "Carmen F1",
+      "where": "Kenya farmer",
+      "source_ids": [
+        "S10"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "title": "Fiche technique synthetique pour la production du concombre (Cucumis sativus L.)",
+      "publisher": "Universite d'Abomey-Calavi, Faculte des Sciences Agronomiques (Benin); Legba E.C. et al.",
+      "year": 2020,
+      "url": "https://dspace.uac.bj/bitstreams/186134b8-1d53-4672-a12e-d3859d7bb6f3/download",
+      "notes": "Spacing, densities, fertilization per hole, pests. No yields or costs."
+    },
+    {
+      "id": "S2",
+      "title": "Cucumis sativus L. (PROTA record)",
+      "publisher": "PROTA4U, van Luijk M.N. (Grubben and Denton eds.)",
+      "year": 2004,
+      "url": "https://plantuse.plantnet.org/en/Cucumis_sativus_(PROTA)",
+      "notes": "Ecology, seed rate, manure, NPK 700 kg/ha, diseases, harvest, African yields (about 2002 data)."
+    },
+    {
+      "id": "S3",
+      "title": "Comparaison de sept varietes de concombre cultivees en pleine terre sous tunnel maraicher en saison seche 2006",
+      "publisher": "CIRAD Mayotte; Gimenez A., Soilihi I., Huat J.",
+      "year": 2007,
+      "url": "https://agritrop.cirad.fr/541646/1/ID541646.pdf",
+      "notes": "Full spray calendar with active ingredients, fertilization, drip, yields. Tunnel, not open field."
+    },
+    {
+      "id": "S4",
+      "title": "Optimisation du rendement en champ du concombre par une visite florale de Apis mellifera a la Ferme de Multiplication du Materiel Vegetal du MINADER a Ngaoundere (Cameroun)",
+      "publisher": "Journal of Animal and Plant Sciences 64(3); Mohamadou Moussa et al.",
+      "year": 2025,
+      "url": "https://www.m.elewa.org/journals/wp-content/uploads/2025/07/7.Mohamadou.pdf",
+      "notes": "Cameroon trial at 1,112 m, 2020 to 2021; pollination; cites AGRISTAT 2017 production/demand."
+    },
+    {
+      "id": "S5",
+      "title": "Host susceptibility and pest status of fruit flies (Diptera: Tephritidae) attacking cucurbits in two agroecological zones of Cameroon",
+      "publisher": "African Entomology 26(2):317-332; Mokam D.G. et al.",
+      "year": 2018,
+      "url": "https://wiki.pestinfo.org/wiki/African_Entomology_(2018)_26,_317-332",
+      "notes": "Abstract only (full text blocked); Yaounde and Koutaba (Noun)."
+    },
+    {
+      "id": "S6",
+      "title": "Exploring biotic and abiotic factors influencing cucurbit-fruit fly damage and diversity in cucurbit crop production systems",
+      "publisher": "International Journal of Tropical Insect Science 45(6); Eypert L. et al.",
+      "year": 2025,
+      "url": "https://link.springer.com/article/10.1007/s42690-025-01622-4",
+      "notes": "Cote d'Ivoire, 2023 sampling."
+    },
+    {
+      "id": "S7",
+      "title": "Cucumber production guide",
+      "publisher": "Seed Co (Botswana)",
+      "year": null,
+      "url": "https://seedcogroup.com/bw/vegetables/wp-content/uploads/2021/12/Cucumber.pdf",
+      "notes": "Uploaded Dec 2021. Spacing, fertilizer programme, irrigation 50 mm/week, trellis, hives."
+    },
+    {
+      "id": "S8",
+      "title": "Cucumber Production Guideline 2019",
+      "publisher": "Starke Ayres (South Africa)",
+      "year": 2019,
+      "url": "https://www.starkeayres.com/uploads/files/Cucumber-Production-Guideline-2019.pdf",
+      "notes": "Mostly greenhouse; temperatures, storage."
+    },
+    {
+      "id": "S9",
+      "title": "Cucumber farming in Kenya in a nutshell 2022",
+      "publisher": "Greenlife Crop Protection Africa (input supplier)",
+      "year": 2022,
+      "url": "https://www.greenlife.co.ke/?p=11696",
+      "notes": "Commercial source promoting own products; active ingredients not given."
+    },
+    {
+      "id": "S10",
+      "title": "Impact of cucumber farming on the fortunes of farmers",
+      "publisher": "Kenya News Agency (Florence Kinyua)",
+      "year": 2025,
+      "url": "https://www.kenyanews.go.ke/impact-of-cucumber-farming-on-the-fortunes-of-farmers/",
+      "notes": "Single farmer anecdote; page dated 12 Feb 2025."
+    },
+    {
+      "id": "S11",
+      "title": "Consommation : les legumes abondent au marche du Mfoundi",
+      "publisher": "EcoMatin (Cameroon)",
+      "year": 2021,
+      "url": "https://ecomatin.net/consommation-les-legumes-abondent-au-marche-du-mfoundi/",
+      "notes": "Prices observed 16 Aug 2021, Yaounde."
+    },
+    {
+      "id": "S12",
+      "title": "Quantification des productions et des echanges de fruits et legumes au Cameroun",
+      "publisher": "Cahiers Agricultures 10:87-94; Temple L.",
+      "year": 2001,
+      "url": "https://revues.cirad.fr/index.php/cahiers-agricultures/article/download/30284/30044/30519",
+      "notes": "1998: concombre 5,877 t, 359 FCFA/kg, 0.16 kg/capita; price level not specified."
+    },
+    {
+      "id": "S13",
+      "title": "List of countries by cucumber production (FAOSTAT 2022)",
+      "publisher": "Wikipedia, citing FAOSTAT",
+      "year": 2022,
+      "url": "https://en.wikipedia.org/wiki/List_of_countries_by_cucumber_production",
+      "notes": "Cameroon 262,121 t; Kenya 14,404 t; Cote d'Ivoire 20,740 t; Ghana 135 t. FAOSTAT API itself was blocked."
+    },
+    {
+      "id": "S14",
+      "title": "Cameroon Fresh Cucumber: suppliers and market trends",
+      "publisher": "Tridge (FAO and UN Comtrade data)",
+      "year": 2024,
+      "url": "https://www.tridge.com/tridge-woods/fresh-cucumber/CM",
+      "notes": "Production 265,462 t (2024), 261,363 t (2020); exports to Equatorial Guinea."
+    },
+    {
+      "id": "S15",
+      "title": "Profitability and efficiency of cucumber production among smallholder farmers in Oyo State, Nigeria",
+      "publisher": "Journal of Agricultural Sciences 61; Balogun O.",
+      "year": 2016,
+      "url": "https://publication.babcock.edu.ng/publication/view/4580",
+      "notes": "Abstract-level figures."
+    },
+    {
+      "id": "S16",
+      "title": "Economic analysis of cucumber production under different NPK and compost regime",
+      "publisher": "NIHORT HortBase; Adebayo A.G., Togun A.O., Adeoye I.B., Akintoye H.A.",
+      "year": 2020,
+      "url": "https://nihort.gov.ng/hortbase/economic-analysis-of-cucumber-production-under-different-npk-15155-and-compost-regime/",
+      "notes": "BCR notation ambiguous."
+    },
+    {
+      "id": "S17",
+      "title": "Economic and yield performance of cucumber production under organic and inorganic manure systems among smallholder farmers (Kaduna)",
+      "publisher": "NOUN Journal of Agricultural Research and Development 2(1); Esheya S.E. et al.",
+      "year": 2026,
+      "url": "https://journal.agric.nou.edu.ng/agricjournal/index.php/NJARD/article/download/86/55/153",
+      "notes": "Several internal inconsistencies; low confidence."
+    },
+    {
+      "id": "S18",
+      "title": "Effects of variety and organomineral fertiliser rate on cucumber yield and nutritional content in early and late seasons",
+      "publisher": "Agricultura Tropica et Subtropica 57; Kasali A.O. et al.",
+      "year": 2024,
+      "url": "https://agricultura.mendelu.cz/wcd/w-rek-agriculturaits/fulltexts/ats_2024-0013_kasali.pdf",
+      "notes": "Abeokuta trials 2019, 75 x 25 cm."
+    },
+    {
+      "id": "S19",
+      "title": "Growth and yield performance of cucumber as influenced by fertilizer amendments and plant spacing",
+      "publisher": "AAMUSTED Mampong (Ghana); Dwomoh A.",
+      "year": 2023,
+      "url": "https://ir.aamusted.edu.gh/handle/123456789/408",
+      "notes": "Trials 2023; very high research-plot yields."
+    },
+    {
+      "id": "S20",
+      "title": "Effect of fertilizer application and staking methods on the growth and yield of cucumber",
+      "publisher": "University of Benin (Nigeria) project; Bassey B.M.",
+      "year": 2024,
+      "url": "https://repository.uniben.edu/sites/default/files/2026-03/BASSEY%20PROJECT.pdf",
+      "notes": "Student project, small plots."
+    },
+    {
+      "id": "S21",
+      "title": "Response of three cucumber varieties to planting season and NPK fertilizer rates in lowland humid tropics",
+      "publisher": "International Journal of Agriculture and Forestry 5(1) (WorldVeg library record)",
+      "year": 2015,
+      "url": "https://worldveg.tind.io/record/54133",
+      "notes": "Optimum NPK 15-15-15 about 120 kg/ha; 2011 trials."
+    },
+    {
+      "id": "S22",
+      "title": "Effect of fertilizer type and nodal pinching on growth, flowering pattern and yield of cucumber",
+      "publisher": "KNUST (Ghana) MSc thesis; Frimpong J.",
+      "year": 2011,
+      "url": "https://ir.knust.edu.gh/items/0b591da1-d6c0-4966-97c5-88a2ad698782/full",
+      "notes": "Poultry manure 1 t/ha vs NPK 100 kg/ha; fruit counts only."
+    },
+    {
+      "id": "S23",
+      "title": "Effects of plant density and nitrogen fertilizer level on cucumber",
+      "publisher": "Ahmadu Bello University, Zaria (thesis)",
+      "year": 1994,
+      "url": "https://kubanni.abu.edu.ng/items/b2ec2afc-b5f4-4458-a9af-0ec105c53a5f/full",
+      "notes": "Max yield at 40,000 plants/ha and 75 kg N/ha (1992 rainy season)."
+    },
+    {
+      "id": "S24",
+      "title": "Cucumber Production Guide (Region 02)",
+      "publisher": "Department of Agriculture, Cagayan Valley, Philippines",
+      "year": 2017,
+      "url": "https://cagayanvalley.da.gov.ph/wp-content/uploads/2018/02/Cucumber-Production-Guide.pdf",
+      "notes": "Only itemised labour/cost table found; tropical but non-African."
+    },
+    {
+      "id": "S25",
+      "title": "Crop evapotranspiration, FAO Irrigation and Drainage Paper 56, Tables 11 and 12",
+      "publisher": "FAO; Allen R.G. et al.",
+      "year": 1998,
+      "url": "https://www.fao.org/3/x0490e/x0490e0b.htm",
+      "notes": "Kc and stage lengths."
+    },
+    {
+      "id": "S26",
+      "title": "Cucumber yield, harvest and storage",
+      "publisher": "Wikifarmer",
+      "year": null,
+      "url": "https://wikifarmer.com/library/en/article/cucumber-yield-harvest-and-storage",
+      "notes": "Generic international guide; low weight."
+    },
+    {
+      "id": "S27",
+      "title": "La culture du concombre et l'incidence socio-economique dans l'arrondissement de Mvengue (1959-2011)",
+      "publisher": "Universite de Yaounde I (ENS) memoire; Ayie S.",
+      "year": 2016,
+      "url": "https://dicames.online/jspui/bitstream/20.500.12177/4495/1/ENS_20_0303.pdf",
+      "notes": "Concerns Cucumeropsis mannii, proves the naming ambiguity."
+    },
+    {
+      "id": "S28",
+      "title": "L'agriculture autochtone au Cameroun",
+      "publisher": "Wageningen Agricultural University; Westphal E. et al.",
+      "year": 1981,
+      "url": "https://edepot.wur.nl/445713",
+      "notes": "Ngon (Cucumeropsis mannii) called concombre; Cucumis sativus grown in groundnut fields in Lekie."
+    },
+    {
+      "id": "S29",
+      "title": "Cucumber prices in Cameroon",
+      "publisher": "Selina Wamucii (UN Comtrade unit value)",
+      "year": 2023,
+      "url": "https://www.selinawamucii.com/insights/prices/cameroon/cucumber/",
+      "notes": "Export unit value only, 620 XAF/kg, Jan 2023; tiny volumes."
+    },
+    {
+      "id": "S30",
+      "title": "Diagnostic agraire prealable a la creation d'un centre de formation en agriculture, Nyong-et-Mfoumou, Centre Cameroun",
+      "publisher": "Memoire de fin d'etudes (Reseau FAR); Cuvilliez M.",
+      "year": 2015,
+      "url": "https://www.reseau-far.com/ressources/files/fichierPDF_2015_RESAD_CUVILLIEZ.pdf",
+      "notes": "Cucurbits (courge) on slash-and-burn plots; sowing campaigns March and August."
+    },
+    {
+      "id": "S31",
+      "title": "Abidjan: le prix du chou et de la banane plantain en baisse, la courgette, le navet et le concombre en hausse",
+      "publisher": "Fraternite Matin (prices from Conseil National de la lutte contre la vie chere, CNLVC)",
+      "year": 2024,
+      "url": "https://www.fratmat.info/article/237870/economie/microeconomie/abidjan-le-prix-du-chou-et-de-la-banane-plantain-en-baisse-la-courgette-le-navet-et-le-concombre-en-hausse",
+      "notes": "1 Mar 2024, Abidjan, per kg, price level not stated."
+    },
+    {
+      "id": "S32",
+      "title": "Abidjan: les prix du chou et du concombre en baisse, ceux de la banane plantain, de la courgette et du navet en hausse",
+      "publisher": "Fraternite Matin (CNLVC)",
+      "year": 2024,
+      "url": "https://www.fratmat.info/article/238286/economie/microeconomie/abidjan-les-prix-du-chou-et-du-concombre-en-baisse-ceux-de-la-banane-plantain-de-la-courgette-et-du-navet-en-hausse",
+      "notes": "16 Mar 2024; headline says cucumber down but table shows 400 FCFA/kg 'prix en hausse' (up from 350 on 1 Mar): inconsistent."
+    },
+    {
+      "id": "S33",
+      "title": "Abidjan: les prix des differents produits vivriers sur le marche (26 octobre 2024)",
+      "publisher": "Fraternite Matin (CNLVC)",
+      "year": 2024,
+      "url": "https://www.fratmat.info/article/1960055/economie/microeconomie/abidjan-les-prix-des-differents-produits-vivriers-sur-le-marche",
+      "notes": "Prices of 26 Oct 2024."
+    },
+    {
+      "id": "S34",
+      "title": "Abidjan: les prix des differents produits vivriers sur le marche (20 decembre 2024)",
+      "publisher": "Fraternite Matin (CNLVC)",
+      "year": 2024,
+      "url": "https://www.fratmat.info/article/2467359/economie/microeconomie/abidjan-les-prix-des-differents-produits-vivriers-sur-le-marche",
+      "notes": "Prices of 20 Dec 2024."
+    },
+    {
+      "id": "S35",
+      "title": "Abidjan: le prix des differents produits vivriers",
+      "publisher": "Fraternite Matin (CNLVC)",
+      "year": 2025,
+      "url": "https://www.fratmat.info/article/2632646/economie/microeconomie/abidjan-le-prix-des-differents-produits-vivriers",
+      "notes": "Published 27 Mar 2025; table labelled 27 Feb 2025 (probable typo)."
+    },
+    {
+      "id": "S36",
+      "title": "Abidjan: les prix des differents produits vivriers sur le marche (aout 2025)",
+      "publisher": "Fraternite Matin (CNLVC)",
+      "year": 2025,
+      "url": "https://www.fratmat.info/article/2635909/economie/abidjan-les-prix-des-differents-produits-vivriers-sur-le-marche",
+      "notes": "Published 6 Aug 2025; table labelled 21 Aug 2025 (inconsistent)."
+    },
+    {
+      "id": "S37",
+      "title": "Abidjan: les prix des differents produits vivriers sur le marche (6 novembre 2025)",
+      "publisher": "Fraternite Matin (CNLVC)",
+      "year": 2025,
+      "url": "https://www.fratmat.info/article/2638015/economie/abidjan-les-prix-des-differents-produits-vivriers-sur-le-marche",
+      "notes": "Prices of 6 Nov 2025."
+    },
+    {
+      "id": "S38",
+      "title": "CONCOMBRE (kg), produits de saison",
+      "publisher": "Sika Finance (Cote d'Ivoire)",
+      "year": 2026,
+      "url": "https://www.sikafinance.com/conso/product/concombre_1034",
+      "notes": "Latest prices at 27/09/2026 for six Ivorian cities; currency not printed on page (FCFA XOF implied); price level not stated."
+    },
+    {
+      "id": "S39",
+      "title": "Kinshasa: le prix d'une caisse des concombres passe de 53.000 a 75.000FC",
+      "publisher": "Agence Congolaise de Presse (ACP)",
+      "year": 2024,
+      "url": "https://acp.cd/economie/kinshasa-le-prix-dune-caisse-des-concombres-passe-de-53-000-a-75-000fc/",
+      "notes": "Zigida market, 20 Jun 2024; crate weight not stated."
+    },
+    {
+      "id": "S40",
+      "title": "Price surge in vegetables in Cape Coast, Ghana",
+      "publisher": "FreshPlaza (Ghana News Agency survey)",
+      "year": 2024,
+      "url": "https://www.freshplaza.com/article/9621188/price-surge-in-vegetables-in-cape-coast-ghana/",
+      "notes": "26 Apr 2024; basket weight not stated."
+    },
+    {
+      "id": "S41",
+      "title": "Cucumber prices in Kenya",
+      "publisher": "Selina Wamucii (citing FAOSTAT producer prices)",
+      "year": 2024,
+      "url": "https://www.selinawamucii.com/insights/prices/kenya/cucumber/",
+      "notes": "Farmgate 26.29 KES/kg (USD 0.19) as of Jan 2024."
+    },
+    {
+      "id": "S42",
+      "title": "What is the price of cucumber per kilogram in Nigeria today?",
+      "publisher": "Selina Wamucii",
+      "year": 2026,
+      "url": "https://www.selinawamucii.com/insights/prices/nigeria/cucumber/",
+      "notes": "Retail NGN 2,279.49 to 3,191.29/kg (Abuja, Lagos); underlying source not named; low reliability."
+    },
+    {
+      "id": "S43",
+      "title": "Fresh Cucumber prices and trade in Nigeria",
+      "publisher": "Tridge",
+      "year": 2022,
+      "url": "https://www.tridge.com/intelligences/cucumber/NG/price",
+      "notes": "Wholesale benchmark USD 0.08/kg (2021) and 0.10/kg (2022); implausibly low, low reliability."
+    },
+    {
+      "id": "S44",
+      "title": "HCDA Validated Horticulture Data 2011-2013",
+      "publisher": "Horticultural Crops Development Authority, Kenya (Ministry of Agriculture statistics portal)",
+      "year": 2014,
+      "url": "https://statistics.kilimo.go.ke/files/bookpage/HCDA_Validated_Horticulture_Data_2013-2011_1.pdf",
+      "notes": "Table 19 cucumber national totals; report notes non-standardized data collection. Publication year approximate (covers 2011 to 2013)."
+    },
+    {
+      "id": "S45",
+      "title": "Contribution a la caracterisation morpho-agronomique et au criblage de cinq varietes de concombre dans les conditions edapho-climatiques de Kinshasa en RDC",
+      "publisher": "Journal of Animal and Plant Sciences 65(2); Kasongo G. et al.",
+      "year": 2025,
+      "url": "https://www.m.elewa.org/journals/wp-content/uploads/2025/09/2.Kasongo-2.pdf",
+      "notes": "Measured and supplier-declared fruit weights."
+    },
+    {
+      "id": "S46",
+      "title": "Cucumber Ashley Seeds (classified listing, Vetagro and pulpers, Nairobi)",
+      "publisher": "Jiji Kenya",
+      "year": 2026,
+      "url": "https://jiji.co.ke/nairobi-central/feeds-supplements-seeds/cucumber-ashley-seeds-w6Ggi53Ng7AbgMQ6OZE79iYx.html",
+      "notes": "Accessed Oct 2026; listing date not shown."
+    },
+    {
+      "id": "S47",
+      "title": "Jardin, plein air: epandeurs et semences (category page)",
+      "publisher": "Jumia Cote d'Ivoire",
+      "year": 2026,
+      "url": "https://www.jumia.ci/jardin-plein-air-epandeurs-semences/",
+      "notes": "'Gsn concombre' 8,000 FCFA; pack size not stated. Accessed Oct 2026."
+    },
+    {
+      "id": "S48",
+      "title": "Cucumber Seeds - Ashley",
+      "publisher": "Sidai Africa (Kenya)",
+      "year": 2026,
+      "url": "https://sidai.com/?p=2363",
+      "notes": "Pack sizes 10 g and 25 g; prices not listed; 55 to 65 days to maturity."
+    },
+    {
+      "id": "S49",
+      "title": "Cucurbits production guide",
+      "publisher": "Government of British Columbia, AgriService BC",
+      "year": null,
+      "url": "https://www2.gov.bc.ca/gov/content/industry/agriservice-bc/production-guides/vegetables/cucurbits",
+      "notes": "Temperate guide; used only for seed quantity per ha."
+    },
+    {
+      "id": "S50",
+      "title": "Vegetables: direct-seeded crop seed quantity and yield chart",
+      "publisher": "Johnny's Selected Seeds",
+      "year": null,
+      "url": "https://www.johnnyseeds.com/on/demandware.static/-/Library-Sites-JSSSharedLibrary/default/dwfaed60b0/assets/information/vegetables-direct-seeded-crop-seed-quantity-yield-chart.pdf",
+      "notes": "US seed company chart; seeds per acre."
+    }
+  ],
+  "confidence_notes": "OVERALL: medium for agronomy, low for Cameroon economics. (1) Naming: Cameroon 'concombre' statistics (FAOSTAT 262,000 to 265,000 t; AGRISTAT 282,773 t) are 45 times Temple's 1998 figure of 5,877 t and dwarf Kenya (14,404 t) and Ghana (135 t); they very probably include Cucumeropsis mannii seed cucumber. Do not use them to size the fresh cucumber market without verification with MINADER/AGRISTAT. (2) No Cameroon or Foumbot farm-level cost of production, labour, or yield survey for Cucumis sativus was found. The only Cameroon field trial (Ngaoundere 2020-21, S4) reports pollination and fruit traits, not t/ha. (3) Cameroon prices: one wholesale observation (2,000 FCFA per filet of unknown weight, Yaounde, Aug 2021) and one 1998 national average (359 FCFA/kg). The filet weight is a critical gap; field measurement in Foumbot/Bafoussam markets is needed. (4) Labour figures come from the Philippines (86 man-days) and a weak Nigerian paper (15 to 17); itemised African labour data is a gap. (5) Spray calendar is from a tunnel trial in Mayotte; open-field rainy-season Foumbot conditions probably need more fungicide. (6) Several derived numbers (seed kg/ha, trellis quantities, nutrient totals, l/plant/day, price per kg from per-piece price) are marked 'derived' with their assumptions. (7) Blocked or unavailable during research: FAOSTAT API (area and yield for Cameroon), Infonet-Biovision, Martinique Chamber of Agriculture technical sheets, full text of Mokam et al. 2018; web search quota ran out before Ghana MoFA, KALRO/HCD, Technisem/Tropicasem and ANADER guides could be located. Varieties Darina F1 and others named in the brief were not found in sources and are not included. FOLLOW-UP ROUND (Oct 2026): added a Cote d'Ivoire per-kg price series (2024 to 2026, CNLVC via Fraternite Matin and Sika Finance), Kenya farmgate (FAOSTAT via Selina, Jan 2024) and HCDA 2011-13 implied prices and yields, Kinshasa crate and Cape Coast basket prices (unit weights unknown), fruit weights of varieties sold in Central Africa, Kenyan seed pack prices and temperate seed-quantity references. Still missing: any Cameroon farm-gate or wholesale price per kg after 2021, the filet weight, Cameroon seed prices, post-harvest loss %, and Cameroon cost of production. Ivorian prices are probably consumer-level and should be treated as an upper bound for farm-gate prices. Selina Wamucii and Tridge figures have undisclosed or inconsistent methodology.",
+  "seed_prices": {
+    "notes": "No Cameroon seed price found. Kenyan and Ivorian listings below; prices in local currency.",
+    "observations": [
+      {
+        "variety": "Ashley (open-pollinated)",
+        "seller": "Vetagro and pulpers, Nairobi (Jiji listing)",
+        "country": "Kenya",
+        "year": 2026,
+        "packs": [
+          {
+            "size_g": 4,
+            "price_local": 120
+          },
+          {
+            "size_g": 10,
+            "price_local": 170
+          },
+          {
+            "size_g": 25,
+            "price_local": 300
+          },
+          {
+            "size_g": 50,
+            "price_local": 550
+          },
+          {
+            "size_g": 100,
+            "price_local": 1000
+          }
+        ],
+        "currency": "KES",
+        "source_ids": [
+          "S46"
+        ]
+      },
+      {
+        "variety": "Carmen F1 (hybrid)",
+        "seller": "local agro-vet, Murang'a",
+        "country": "Kenya",
+        "year": 2025,
+        "packs": [
+          {
+            "size_g": 50,
+            "price_local": 450
+          }
+        ],
+        "currency": "KES",
+        "source_ids": [
+          "S10"
+        ]
+      },
+      {
+        "variety": "Ashley (Sidai)",
+        "seller": "Sidai Africa",
+        "country": "Kenya",
+        "year": 2026,
+        "packs": [
+          {
+            "size_g": 10,
+            "price_local": null
+          },
+          {
+            "size_g": 25,
+            "price_local": null
+          }
+        ],
+        "currency": "KES",
+        "notes": "Prices not listed.",
+        "source_ids": [
+          "S48"
+        ]
+      },
+      {
+        "variety": "'Gsn concombre' (variety not stated)",
+        "seller": "Jumia CI",
+        "country": "Cote d'Ivoire",
+        "year": 2026,
+        "packs": [
+          {
+            "size_g": null,
+            "price_local": 8000
+          }
+        ],
+        "currency": "XOF (at par with XAF)",
+        "notes": "Pack size not stated, so cost per gram cannot be computed.",
+        "source_ids": [
+          "S47"
+        ]
+      }
+    ],
+    "derived_seed_cost_per_ha": {
+      "value_local": [
+        10000,
+        20000
+      ],
+      "currency": "KES",
+      "notes": "Derived: open-pollinated seed at 1 to 2 kg/ha (S2, S24) x KES 1,000 per 100 g (S46) = KES 10,000 to 20,000/ha. Hybrid example: about 247 g/ha x KES 450 per 50 g (S10) = about KES 2,223/ha.",
+      "source_ids": [
+        "S2",
+        "S24",
+        "S46",
+        "S10"
+      ]
+    }
+  }
+}

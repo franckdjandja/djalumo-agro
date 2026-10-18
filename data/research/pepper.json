@@ -1,0 +1,411 @@
+{
+  "crop": "Sweet pepper / bell pepper / poivron (Capsicum annuum, blocky types e.g. Yolo Wonder, California Wonder), open field",
+  "research_date": "2026-10-17",
+  "pilot_zone_context": "Foumbot (Noun, West Cameroon), Bamoun plateau ~1,000-1,200 m, volcanic soils, single rainy season mid-March to mid-November, dry season mid-November to mid-March (P4). Foumbot growers: Yolo Wonder used by 55% and Simba by 45% of surveyed farmers; Lamuyo F1 also cited; 89% farm 0.5-1 ha; 80% grow pepper twice a year (P4).",
+  "cycle": {
+    "nursery_days": {
+      "range": [21, 56],
+      "detail": [
+        {"value": [21, 21], "where": "Foumbot/Bangou research trial (2020)", "source_ids": ["P5"]},
+        {"value": [28, 28], "where": "AVRDC recommendation (~4 weeks)", "source_ids": ["P1"]},
+        {"value": [35, 42], "where": "French Polynesia technical sheet (5-6 weeks)", "source_ids": ["P13"]},
+        {"value": [42, 45], "where": "Foumbot farmer practice (~1.5 months) and Kenya (about 45 days)", "source_ids": ["P4", "P9"]},
+        {"value": [42, 56], "where": "Kenya SHEP (6-8 weeks)", "source_ids": ["P2"]},
+        {"value": [30, 60], "where": "Cameroon IFATI sheet (1-2 months, 5-6 leaf stage, ~10 cm)", "source_ids": ["P3"]},
+        {"value": [35, 56], "where": "Tanzania (5-8 weeks), cited by COLEACP", "source_ids": ["P6"]}
+      ],
+      "germination_days": {"value": [8, 25], "note": "8 days at 25-35 degC, 13 days at 20 degC, 25 days at 15 degC; none below 15 or above 35 degC (P1); ~2 weeks (P3); ~10 days (P13)", "source_ids": ["P1", "P3", "P13"]}
+    },
+    "transplant_to_first_flower_days": {"value": [30, 65], "note": "~1 month (P13); Foumbot trial transplanted 24 May 2020, first flowers 28 July 2020 = 65 days (P5)", "source_ids": ["P5", "P13"]},
+    "flowering_to_first_harvest_days": {"range": [35, 50], "note": "35-40 days to optimum harvest (P1); 35-50 days to mature green (P6)", "source_ids": ["P1", "P6"]},
+    "transplant_to_first_harvest_days": {
+      "range": [60, 90],
+      "detail": [
+        {"value": [60, 60], "where": "Cameroon IFATI (~2 months, green fruit)", "source_ids": ["P3"]},
+        {"value": [60, 60], "where": "French Polynesia (2 months)", "source_ids": ["P13"]},
+        {"value": [75, 90], "where": "Kenya SHEP (75 d green, ~90 d coloured)", "source_ids": ["P2"]},
+        {"value": [75, 90], "where": "Kenya, Egerton Univ. expert (2.5-3 months)", "source_ids": ["P9"]}
+      ]
+    },
+    "harvest_duration_days": {
+      "range": [42, 180],
+      "typical_open_field": [42, 70],
+      "detail": [
+        {"value": [42, 56], "note": "3-4 harvests over 6-8 weeks (AVRDC)", "source_ids": ["P1"]},
+        {"value": [60, 60], "note": "~2 months, extendable (French Polynesia)", "source_ids": ["P13"]},
+        {"value": [70, 70], "note": "~10 weeks open field for Commandant F1 (Kenya)", "source_ids": ["P2"]},
+        {"value": [120, 180], "note": "4-6 months (Kenya expert, likely irrigated, well-managed)", "source_ids": ["P9"]}
+      ]
+    },
+    "harvest_frequency": {"text": "About twice a week (P13); fruits picked as they reach full size and firmness (P1); Foumbot growers harvest more than three times per cycle (P4).", "source_ids": ["P1", "P4", "P13"]},
+    "total_cycle_days": {
+      "range": [120, 215],
+      "notes": "Stated: ~5.5 months (~165 days) seed to end (P13); 'four months' (P11). Range is analyst sum of component ranges: nursery 21-56 + transplant-to-harvest 60-90 + open-field harvest 42-70 days.",
+      "source_ids": ["P11", "P13"]
+    },
+    "crops_per_year": {"text": "80% of Foumbot pepper farmers grow it twice a year; most prefer the rainy season, some grow year-round where irrigation (canals, motor pumps) is available (P4).", "source_ids": ["P4"]}
+  },
+  "planting": {
+    "spacing": [
+      {"layout": "1 m between rows x 0.5 m in row on 1 m beds; 200 plants per 100 m2 (Cameroon IFATI)", "plants_per_ha": 20000, "source_ids": ["P3"]},
+      {"layout": "1.5 m beds (furrow to furrow), 30 cm high, 2 rows 55 cm apart, plants 45 cm apart (AVRDC)", "plants_per_ha": 29630, "source_ids": ["P1"]},
+      {"layout": "60 x 45 cm or 70 x 30 cm by variety (Kenya SHEP); 14,814-19,047 plants/acre", "plants_per_ha": [36605, 47065], "source_ids": ["P2"]},
+      {"layout": "75 x 45 cm (Kenya expert; text states 10,000 plants/ha, inconsistent with the spacing)", "plants_per_ha": 10000, "source_ids": ["P9"]},
+      {"layout": "rows 1 m x 0.6 m in row large varieties; 45 cm in row small varieties (St Lucia)", "plants_per_ha": [18000, 24000], "source_ids": ["P12"]},
+      {"layout": "single rows 1 m x 50 cm, or double rows (1.2-1.5 m between pairs, 30-50 cm between lines, 40-50 cm in line)", "plants_per_ha": [20000, 25000], "source_ids": ["P13"]},
+      {"layout": "Foumbot/Bangou trial: 1 m wide, 20 cm high beds, 3 rows, 30 x 30 cm", "plants_per_ha": null, "source_ids": ["P5"]}
+    ],
+    "plants_per_ha": {"range": [18000, 47000], "typical": [20000, 30000], "source_ids": ["P1", "P2", "P3", "P12", "P13"]},
+    "seed_rate_g_per_ha": {
+      "range": [247, 500],
+      "detail": [
+        {"value": 300, "note": "~130 seeds/g, for 30,000 plants/ha at 90% germination and survival", "source_ids": ["P1"]},
+        {"value": 300, "note": "Cameroon IFATI", "source_ids": ["P3"]},
+        {"value": 247, "note": "converted from 100 g/acre (Kenya SHEP)", "source_ids": ["P2"]},
+        {"value": 500, "note": "nursery seed rate 0.5 kg/ha (1 kg/ha if direct sown)", "source_ids": ["P9"]}
+      ]
+    },
+    "nursery": {
+      "text": "Raised beds 1-1.2 m wide (P2, P3), drills 10-20 cm apart (P2), seed 1 cm deep every 2 cm (P3); compost/manure 2-3 kg/m2 in nursery (P6); shade then harden 1-2 weeks (P2) or 4-5 days (P1); insect-proof netting against whitefly (P2). In Foumbot 79% raise seedlings on ridges, 21% on seedbeds; seeds untreated, nursery sprayed every 1-2 weeks from about one week after emergence (P4).",
+      "source_ids": ["P1", "P2", "P3", "P4", "P6"]
+    },
+    "nursery_area_m2_per_ha": {
+      "value": [100, 300],
+      "notes": "Derived, not stated for sweet pepper: Foumbot trial used 2 g seed on 2 m2 (1 g/m2), so 300 g/ha needs ~300 m2 (P5); Benin hot-pepper sheet uses a 4 m2 nursery for 400 m2 of field, i.e. ~100 m2/ha (P23).",
+      "source_ids": ["P5", "P23"]
+    },
+    "staking": {"text": "Stake within one month after transplanting (P3). Most varieties need staking (P1). Stakes every 1.5 m with 2-3 levels of wire/string (P13); trellis stakes 2 m apart (P12). Stake quantities per ha and costs: not found.", "source_ids": ["P1", "P3", "P12", "P13"]},
+    "transplanting": {"text": "4-6 true leaves, early morning or late evening (P2); 5-6 leaves, ~10 cm (P3); 8-10 true leaves, ~20 cm (P13). Bury to half plant height (P1).", "source_ids": ["P1", "P2", "P3", "P13"]},
+    "seed_price": {"value": null, "notes": "No Cameroonian seed price found. Kenya: F1 'Green Bell' seed cost KSh 120,000 per acre (P11, low confidence)."}
+  },
+  "itinerary": [
+    {
+      "step": "Nursery establishment and care",
+      "timing_days_relative_to_sowing_or_transplant": [-56, 0],
+      "description": "Sow on raised beds or trays (see planting.nursery). Feed seedlings with 0.25% 10-10-10 solution at 2 true leaves (P1). Damping-off: metalaxyl + mancozeb (P2) or 0.25% benomyl drench (P1; benomyl withdrawn in many countries). Harden off before transplanting (P1, P2). Foumbot practice: nursery sprayed every 1-2 weeks (P4).",
+      "inputs": [
+        {"product": "Sweet pepper seed (OPV Yolo Wonder / California Wonder or F1)", "category": "seed", "rate_per_ha": 300, "unit": "g (range 247-500 g/ha)", "applications": 1, "source_ids": ["P1", "P2", "P3"]},
+        {"product": "Compost/decomposed manure for nursery beds", "category": "amendment", "rate_per_ha": null, "unit": "2-3 kg per m2 of nursery", "applications": 1, "source_ids": ["P6"]},
+        {"product": "Metalaxyl + mancozeb (e.g. Amidil 68WG)", "category": "fungicide", "rate_per_ha": null, "unit": "rate not given", "applications": null, "source_ids": ["P2"]}
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["P1", "P2", "P4", "P6"]
+    },
+    {
+      "step": "Plot selection and rotation",
+      "timing_days_relative_to_sowing_or_transplant": [-90, -30],
+      "description": "No Solanaceae (tomato, potato, eggplant) for at least 3 years (P2, P6); rotations of 3-5 years cited (P6); rotation with rice recommended, avoid potato, tomato, sweet potato (P1). Soil pH 6.5-7 (P3); 5.5-6.8 (P6); 6.0-6.5 (P9).",
+      "inputs": [],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["P1", "P2", "P3", "P6", "P9"]
+    },
+    {
+      "step": "Land clearing and pre-plant weed control",
+      "timing_days_relative_to_sowing_or_transplant": [-35, -14],
+      "description": "Glyphosate burndown at least 15 days before planting: 250 ml Glyfos per 1,000 m2 (~2.5 L/ha) (P13); Round-up about 2 weeks before transplanting (P12). Foumbot farmers use glyphosate (50%), paraquat (37%) and 2,4-D (23%), 2-3 herbicide applications per cycle (P4); paraquat is banned in many jurisdictions, check Cameroon homologation list. Stale seedbed: shallow tillage 3-5 cm (P13). Slash-and-burn: no source found documenting or quantifying it for pepper in Foumbot (gap).",
+      "inputs": [
+        {"product": "Glyphosate (Glyfos)", "category": "herbicide", "rate_per_ha": 2.5, "unit": "L product (250 ml per 1,000 m2)", "applications": 1, "source_ids": ["P13"]}
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["P4", "P12", "P13"]
+    },
+    {
+      "step": "Deep ploughing and bed formation",
+      "timing_days_relative_to_sowing_or_transplant": [-30, -7],
+      "description": "Deep ploughing to 30 cm about one month before transplanting, beds 1 m wide (P3); ploughing 30-35 cm (P13); beds 1.5 m wide, 30 cm high (P1). Mulch option: rice straw 5 t/ha or plastic mulch laid before transplanting (P1).",
+      "inputs": [
+        {"product": "Straw mulch (optional)", "category": "other", "rate_per_ha": 5, "unit": "t", "applications": 1, "source_ids": ["P1"]}
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["P1", "P3", "P13"]
+    },
+    {
+      "step": "Basal organic manure",
+      "timing_days_relative_to_sowing_or_transplant": [-15, -5],
+      "description": "At least 2 kg well-decomposed manure per planting hole (P3), i.e. ~40 t/ha at 20,000 plants/ha (analyst calculation). Kenya: 10 t/ha manure (P9); Kenya chilli 15 t/ha (P6). French Polynesia: 4-5 t per 1,000 m2 (40-50 t/ha, unusually high) (P13). Foumbot trial used poultry droppings with NPK 20-10-10, rate not given (P5).",
+      "inputs": [
+        {"product": "Well-decomposed manure", "category": "amendment", "rate_per_ha": 10, "unit": "t (range 10-40 t/ha across sources)", "applications": 1, "source_ids": ["P3", "P9", "P6"]}
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["P3", "P5", "P6", "P9", "P13"]
+    },
+    {
+      "step": "Basal mineral fertiliser",
+      "timing_days_relative_to_sowing_or_transplant": [-5, 0],
+      "description": "Cameroon IFATI: NPK 11-22-16 or 12-14-19 at 22 g per hole + potassium sulphate 8 g per hole, ~5 days before transplanting (document also says 15-30 days; inconsistent) (P3); at 20,000 plants/ha this equals ~440 kg/ha NPK + ~160 kg/ha K2SO4 (analyst calc). AVRDC: 40% of N and 50% of P and K basal (P1). Kenya SHEP: 100 kg/acre DAP or TSP (~247 kg/ha) mixed into soil (P2). St Lucia: 450 kg/ha 12-12-17+2 at planting (P12).",
+      "inputs": [
+        {"product": "NPK 11-22-16 (or 12-14-19)", "category": "fertilizer", "rate_per_ha": 440, "unit": "kg (22 g/hole x 20,000 plants)", "applications": 1, "source_ids": ["P3"]},
+        {"product": "Potassium sulphate", "category": "fertilizer", "rate_per_ha": 160, "unit": "kg (8 g/hole x 20,000 plants)", "applications": 1, "source_ids": ["P3"]},
+        {"product": "DAP or TSP (Kenya alternative)", "category": "fertilizer", "rate_per_ha": 247, "unit": "kg (100 kg/acre)", "applications": 1, "source_ids": ["P2"]}
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["P1", "P2", "P3", "P12"]
+    },
+    {
+      "step": "Transplanting",
+      "timing_days_relative_to_sowing_or_transplant": [0, 0],
+      "description": "Transplant at 4-6 true leaves (P2) / 5-6 leaves ~10 cm (P3), early morning or evening; spacing per planting.spacing. AVRDC also cites carbofuran granules in the hole (P1); carbofuran is banned in many countries and is not recommended here.",
+      "inputs": [],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["P1", "P2", "P3"]
+    },
+    {
+      "step": "Irrigation",
+      "timing_days_relative_to_sowing_or_transplant": [0, 150],
+      "description": "Total 600-800 mm per cycle (~400 mm vegetative, 200-400 mm reproductive); soil moisture 80-85% for good yields (P3). ~2 mm/day early, 3-6 mm/day from flowering to harvest, preferably morning (P13). Irrigate when available soil moisture falls to 40-50%; furrow or drip, avoid sprinklers and evening overhead watering (P1). 1-2 times a week, every two days in hot dry weather (P6). Foumbot: surface canals from mountain streams, motor pumps on farms >0.25 ha, watering cans on small plots (P4).",
+      "inputs": [
+        {"product": "Irrigation water (where rainfall insufficient)", "category": "irrigation", "rate_per_ha": 7000, "unit": "m3 per cycle (600-800 mm total crop need, midpoint; rainfall counts toward it)", "applications": null, "source_ids": ["P3"]}
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["P1", "P3", "P4", "P6", "P13"]
+    },
+    {
+      "step": "Staking",
+      "timing_days_relative_to_sowing_or_transplant": [0, 30],
+      "description": "Stake within one month after transplanting (P3); stakes every 1.5 m with 2-3 wire levels (P13).",
+      "inputs": [
+        {"product": "Stakes and string/wire", "category": "stakes", "rate_per_ha": null, "unit": "quantity not given in sources (1 stake per 1.5 m of row per P13)", "applications": 1, "source_ids": ["P13"]}
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["P3", "P13"]
+    },
+    {
+      "step": "Top dressing 1",
+      "timing_days_relative_to_sowing_or_transplant": [14, 21],
+      "description": "AVRDC: first of three equal N side-dressings (60% of N) at 2 weeks after transplanting (P1). Kenya SHEP: CAN 40 kg/acre (~99 kg/ha, 5 g/hole) at 2-3 weeks (P2). French Polynesia: 12-12-17 200 kg/ha + urea 50 kg/ha + K2SO4 60 kg/ha at transplant +15 days (P13). Foumbot practice: NPK 20-10-10, a handful per 1-2 plants, from one or two weeks after transplanting (P4).",
+      "inputs": [
+        {"product": "CAN", "category": "fertilizer", "rate_per_ha": 99, "unit": "kg (40 kg/acre)", "applications": 1, "source_ids": ["P2"]},
+        {"product": "NPK 12-12-17 (Polynesian schedule)", "category": "fertilizer", "rate_per_ha": 200, "unit": "kg", "applications": 1, "source_ids": ["P13"]}
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["P1", "P2", "P4", "P13"]
+    },
+    {
+      "step": "Top dressing 2",
+      "timing_days_relative_to_sowing_or_transplant": [28, 42],
+      "description": "AVRDC: second N side-dressing at 4 WAT plus remaining 50% of P and K (P1). Kenya SHEP: CAN 80 kg/acre (~198 kg/ha, 10 g/hole) at 4-6 weeks (P2). Polynesia: 12-12-17 90 kg/ha + K2SO4 80 kg/ha at +30 days (P13). Cameroon IFATI at flowering (~40 days after transplanting): per plant 15 g NPK 11-22-16 + 20 g K2SO4 + 2 g urea, i.e. ~300 kg NPK + 400 kg K2SO4 + 40 kg urea per ha at 20,000 plants (analyst calc) (P3). Avoid high N during flowering (P2).",
+      "inputs": [
+        {"product": "CAN", "category": "fertilizer", "rate_per_ha": 198, "unit": "kg (80 kg/acre)", "applications": 1, "source_ids": ["P2"]},
+        {"product": "NPK 11-22-16 at flowering (IFATI)", "category": "fertilizer", "rate_per_ha": 300, "unit": "kg (15 g/plant x 20,000)", "applications": 1, "source_ids": ["P3"]},
+        {"product": "Potassium sulphate at flowering (IFATI)", "category": "fertilizer", "rate_per_ha": 400, "unit": "kg (20 g/plant x 20,000)", "applications": 1, "source_ids": ["P3"]},
+        {"product": "Urea at flowering (IFATI)", "category": "fertilizer", "rate_per_ha": 40, "unit": "kg (2 g/plant x 20,000)", "applications": 1, "source_ids": ["P3"]}
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["P1", "P2", "P3", "P13"]
+    },
+    {
+      "step": "Top dressing 3 and during harvest",
+      "timing_days_relative_to_sowing_or_transplant": [42, 120],
+      "description": "AVRDC: third N side-dressing at 6 WAT (P1). Polynesia: 12-12-17 50 kg/ha + urea 30 kg/ha at +45 days (P13). St Lucia: side-dress every 4-6 weeks with 225 kg/ha CAN or 12-12-17 (P12). Foumbot practice: NPK 20-10-10 every 21 days and after each harvest (48% of farmers) (P4).",
+      "inputs": [
+        {"product": "CAN or NPK 12-12-17 (St Lucia schedule)", "category": "fertilizer", "rate_per_ha": 225, "unit": "kg per side-dressing", "applications": null, "source_ids": ["P12"]}
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["P1", "P4", "P12", "P13"]
+    },
+    {
+      "step": "Foliar fertiliser and calcium",
+      "timing_days_relative_to_sowing_or_transplant": [7, 120],
+      "description": "Foumbot: main foliar fertiliser is NPK 30-10-10, rate not reported (P4). Blossom-end rot prevention: lime, calcium nitrate, dolomite or gypsum and regular watering; calcium chloride spray cited with mancozeb against leaf spot (P2). No calcium foliar rate for open-field sweet pepper found (gap).",
+      "inputs": [
+        {"product": "Foliar NPK 30-10-10", "category": "foliar", "rate_per_ha": null, "unit": "rate not reported", "applications": null, "source_ids": ["P4"]},
+        {"product": "Calcium nitrate / calcium chloride", "category": "foliar", "rate_per_ha": null, "unit": "rate not given", "applications": null, "source_ids": ["P2"]}
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["P2", "P4"]
+    },
+    {
+      "step": "Weeding",
+      "timing_days_relative_to_sowing_or_transplant": [14, 60],
+      "description": "Weeding every two weeks until flowering (Foumbot/Bangou trial practice, P5). Post-transplant herbicide options in a tropical sheet: fluazifop-P-butyl 150 ml per 1,000 m2 (PHI 35 d), quizalofop-P-ethyl (PHI 21 d) (P13).",
+      "inputs": [
+        {"product": "Fluazifop-P-butyl (Fusilade Max), grass weeds", "category": "herbicide", "rate_per_ha": 1.5, "unit": "L product (150 ml per 1,000 m2)", "applications": null, "source_ids": ["P13"]}
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["P5", "P13"]
+    },
+    {
+      "step": "Pruning and sanitation",
+      "timing_days_relative_to_sowing_or_transplant": [20, 45],
+      "description": "Remove fruits set at the first bifurcation node and all leaves and branches below it (P1, P6); keep 3 branches and ~10 fruits per plant (P13). Dip knives in 3% trisodium phosphate or milk (P1, P6).",
+      "inputs": [],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["P1", "P6", "P13"]
+    },
+    {
+      "step": "Crop protection programme",
+      "timing_days_relative_to_sowing_or_transplant": [0, 150],
+      "description": "Scout at least twice a week (60 random plants per 0.1 ha) (P1, P6). Foumbot practice: 85% of farmers use synthetic pesticides, weekly insecticide and fungicide sprays adjusted to disease severity; cypermethrin = 63% of insecticide active ingredients, mancozeb = 85% of fungicide AIs; harvest 1-7 days after last spray (P4). West Cameroon survey for poivron: chlorpyrifos (Dursban 4E 15 ml/15 L 1-2 times a month; Greforce 480 EC 15 ml per knapsack weekly), mancozeb, chlorothalonil + carbendazim, copper oxide + metalaxyl (P7); chlorpyrifos is banned in Cameroon and the EU (P27). Cameroon IFATI: maneb or mancozeb, dimethoate for aphids (P3). See pests_diseases for targets. Typical PHI 15 days minimum for insecticides/fungicides in the Polynesian sheet (P13). Spray volume ~800 L/ha (P13). Rotate at least three modes of action (P1).",
+      "inputs": [
+        {"product": "Mancozeb", "category": "fungicide", "rate_per_ha": null, "unit": "rate not reported in Cameroon sources", "applications": null, "source_ids": ["P3", "P4", "P7"]},
+        {"product": "Cypermethrin", "category": "insecticide", "rate_per_ha": null, "unit": "10 ml per 15 L knapsack cited for pepper (P7)", "applications": null, "source_ids": ["P4", "P7"]},
+        {"product": "Metalaxyl + copper (e.g. Ridomil Gold Plus / Plantomil)", "category": "fungicide", "rate_per_ha": null, "unit": "rate not given", "applications": null, "source_ids": ["P1", "P7"]},
+        {"product": "Spinosad (thrips, fruit flies)", "category": "insecticide", "rate_per_ha": 0.2, "unit": "L product (20 ml Success 4 per 1,000 m2)", "applications": null, "source_ids": ["P13"]},
+        {"product": "Acetamiprid (aphids, whitefly)", "category": "insecticide", "rate_per_ha": 0.25, "unit": "kg product for aphids (25 g/1,000 m2); 0.5 kg for whitefly (50 g/1,000 m2)", "applications": null, "source_ids": ["P13"]},
+        {"product": "Azoxystrobin 250 g/L (cercospora)", "category": "fungicide", "rate_per_ha": 0.8, "unit": "L product (80 ml per 1,000 m2)", "applications": null, "source_ids": ["P13"]},
+        {"product": "Bifenazate 240 SC (mites)", "category": "insecticide", "rate_per_ha": 0.4, "unit": "L product (40 ml per 1,000 m2)", "applications": null, "source_ids": ["P13"]}
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["P1", "P3", "P4", "P6", "P7", "P13", "P27"]
+    },
+    {
+      "step": "Harvest",
+      "timing_days_relative_to_sowing_or_transplant": [60, 150],
+      "description": "Start ~60-90 days after transplanting at mature-green stage (P2, P3, P13); harvest at full size and firmness before colour change unless coloured fruit is targeted (P1); green fruit does not ripen after picking (P2). Pick about twice a week (P13), early morning with clean knife or scissors (P2).",
+      "inputs": [],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["P1", "P2", "P3", "P13"]
+    },
+    {
+      "step": "Grading, packing and storage",
+      "timing_days_relative_to_sowing_or_transplant": [60, 150],
+      "description": "Sort out defective fruit, grade by colour, maturity, shape and size, pack in plastic crates, keep cool, shaded, ventilated and away from ethylene sources (P2). Storage 1-4 weeks at 7-10 degC (P13). Foumbot growers store 7-15 days after harvest (P4). Local sale unit in Bafou (West Cameroon): lots of 8-10 kg (P16); Yaounde retail by heaps (tas) or by count (P15).",
+      "inputs": [
+        {"product": "Plastic crates", "category": "packaging", "rate_per_ha": null, "unit": "number not given", "applications": null, "source_ids": ["P2"]}
+      ],
+      "labour_person_days_per_ha": null,
+      "source_ids": ["P2", "P4", "P13", "P15", "P16"]
+    }
+  ],
+  "fertilizer_total": {
+    "recommendations": [
+      {"name": "AVRDC (target 28 t/ha, no soil supply assumed)", "N_kg_ha": 175, "P_kg_ha": 100, "K_kg_ha": 160, "note": "Reported as N, P, K (elemental per source wording; if elemental, ~229 kg P2O5 and ~193 kg K2O). Crop needs N 70, P 10, K 80 kg/ha. Reduce by soil test.", "source_ids": ["P1"]},
+      {"name": "French Polynesia / CIRAD Ferti-Run (needs for 10 t/ha)", "N_kg_ha": 75, "P_kg_ha": 40, "K_kg_ha": 125, "schedule_total_N_P2O5_K2O": [78, 41, 128], "note": "Schedule totals are analyst arithmetic from the 12-12-17 + urea + K2SO4 plan", "source_ids": ["P13"]},
+      {"name": "Cameroon IFATI (derived at 20,000 plants/ha)", "N_kg_ha": 100, "P2O5_kg_ha": 163, "K2O_kg_ha": 398, "note": "Analyst arithmetic: 740 kg NPK 11-22-16 + 560 kg K2SO4 (assumed 50% K2O) + 40 kg urea. K appears very high; verify with IRAD.", "source_ids": ["P3"]},
+      {"name": "Kenya SHEP (derived)", "N_kg_ha": 122, "P2O5_kg_ha": 114, "K2O_kg_ha": 0, "note": "Analyst arithmetic: 247 kg DAP + 297 kg CAN (assumed 26% N). No K.", "source_ids": ["P2"]},
+      {"name": "Benin IFDC, hot pepper (comparator)", "N_kg_ha": 100, "P2O5_kg_ha": 140, "K2O_kg_ha": 140, "source_ids": ["P23"]}
+    ],
+    "organic": {"manure_t_ha": [10, 40], "source_ids": ["P3", "P9"]},
+    "foumbot_practice": "NPK 20-10-10 by handful (no kg/ha), foliar NPK 30-10-10 (P4).",
+    "notes": "No IRAD-validated recommendation for Foumbot volcanic soils was found."
+  },
+  "pests_diseases": [
+    {"name": "Thrips", "type": "insect", "controls": "Spinosad, thiocyclam (P2); spinosad (P13); natural enemies", "source_ids": ["P2", "P13"]},
+    {"name": "Spider mites", "type": "mite", "controls": "Oxydemeton-methyl (P2); abamectin, dicofol (P1); bifenazate, hexythiazox (P13)", "source_ids": ["P1", "P2", "P13"]},
+    {"name": "Aphids", "type": "insect", "controls": "Acetamiprid (P2, P13); pirimicarb (P1); dimethoate (P3)", "source_ids": ["P1", "P2", "P3", "P13"]},
+    {"name": "Whiteflies (Bemisia) and virus vectors", "type": "insect", "risk_conditions": "25-30 degC, dry conditions (P6)", "controls": "Lambda-cyhalothrin + thiamethoxam, insect netting, yellow traps (P2); acetamiprid, pyriproxyfen (P13); avoid planting next to tomato (P1 rotation logic)", "source_ids": ["P2", "P6", "P13"]},
+    {"name": "Fruit borers (Helicoverpa etc.)", "type": "insect", "controls": "Lambda-cyhalothrin, Bt, neem, hand-picking, trap crop (P2)", "source_ids": ["P2"]},
+    {"name": "Fruit flies", "type": "insect", "risk_conditions": "optimum 26-30 degC (P6)", "controls": "Cyromazine, spinosad, methyl-eugenol (16/ha) and cue-lure (32/ha) traps (P13)", "source_ids": ["P6", "P13"]},
+    {"name": "Leaf miners", "type": "insect", "controls": "Thiocyclam, spinosad, neem (P2)", "source_ids": ["P2"]},
+    {"name": "Cutworms", "type": "insect", "controls": "Azadirachtin, imidacloprid (P2); treat if >=1% seedlings cut (P6)", "source_ids": ["P2", "P6"]},
+    {"name": "Anthracnose / ripe rot (Colletotrichum)", "type": "fungal", "risk_conditions": "optimum 27 degC, max 32 degC, RH >70% (P6)", "controls": "Propineb (P2); certified seed, sanitation", "source_ids": ["P2", "P6"]},
+    {"name": "Bacterial spot (Xanthomonas)", "type": "bacterial", "controls": "Chlorothalonil or mancozeb; mancozeb + fixed copper (P1)", "source_ids": ["P1"]},
+    {"name": "Phytophthora blight (P. capsici)", "type": "oomycete", "controls": "Metalaxyl, fixed copper (P1); drainage, raised beds", "source_ids": ["P1", "P4"]},
+    {"name": "Cercospora leaf spot", "type": "fungal", "controls": "Azoxystrobin; copper hydroxide/sulphate; mancozeb + calcium chloride spray (P2, P13)", "source_ids": ["P2", "P13"]},
+    {"name": "Powdery mildew", "type": "fungal", "risk_conditions": "optimum 27.4 degC, infection from 46% RH (P6)", "controls": "Sulphur (P2)", "source_ids": ["P2", "P6"]},
+    {"name": "Damping-off", "type": "fungal", "controls": "Metalaxyl + mancozeb, well-drained nursery (P2)", "source_ids": ["P2"]},
+    {"name": "Fusarium wilt", "type": "fungal", "risk_conditions": "optimum ~28 degC (P6)", "controls": "Rotation, liming to pH 7.0-7.5, drainage (P2)", "source_ids": ["P2", "P6"]},
+    {"name": "Bacterial wilt (Ralstonia)", "type": "bacterial", "risk_conditions": "optimum 29.7-35.3 degC (P6)", "controls": "Rogueing, nematode control, rotation (P2)", "source_ids": ["P2", "P6"]},
+    {"name": "Viruses (TMV, CMV and others)", "type": "viral", "controls": "Rogueing, oil sprays, reflective mulch, vector control (P2)", "source_ids": ["P2", "P4"]},
+    {"name": "Root-knot nematodes", "type": "nematode", "controls": "Neem products, marigold intercrop, rotation (P2)", "source_ids": ["P2"]},
+    {"name": "Blossom-end rot", "type": "physiological", "controls": "Lime, calcium nitrate, dolomite, gypsum, regular watering (P2)", "source_ids": ["P2"]}
+  ],
+  "foumbot_reported_problems": "Diseases named by Foumbot growers: mildew, cercospora, phytophthora blight, fusarium wilt, anthracnose, ripe rot, TMV, CMV, galls; pests: flea beetles, cutworms, aphids, weevils, caterpillars, grasshoppers, pepper maggots, leaf miners. 85% could not identify pests/diseases; respondents report disease-related yield loss above 50% (P4). West Cameroon pepper growers' loss estimates: 36% report 0-25%, 21% 25-50%, 33% 50-75%, 10% 75-100% (P7).",
+  "sprays_per_cycle": {"value": null, "notes": "Not reported as a count. Foumbot: weekly insecticide and fungicide sprays (P4), so roughly one spray per week of field time (~16-20 over a 4-5 month field period, analyst inference).", "source_ids": ["P4"]},
+  "labour_total_person_days_per_ha": [null, null],
+  "labour_notes": "No person-day budget for sweet pepper found. Comparators only: South Africa chillies (10 t/ha) 1,900 h harvesting + 1,102 h packing per ha (P25); Nigeria Delta State pepper, weeding 9 man-days per acre (P21); Ghana Upper East chilli labour costed only in cedis (P20). Cameroon wage reference: 500-2,000 FCFA/person-day (2005, Bamboutos) (P16).",
+  "yields_t_ha": {
+    "national_or_regional_average": {
+      "value": 2.13, "year": 2020, "where": "Cameroon, FAOSTAT 'Chillies and peppers, green' (21,345 hg/ha; 2.14 t/ha in 2022). Includes hot peppers; likely FAO-imputed.",
+      "source_ids": ["P14"],
+      "comparators_2020_t_ha": {"Ghana": 8.24, "Kenya": 7.87, "Nigeria": 7.48, "Cote d'Ivoire": 6.81, "Burkina Faso": 5.18, "Ethiopia": 5.04, "Benin": 3.59, "Rwanda": 3.50, "Gabon": 1.99}
+    },
+    "farmer_rainfed": {"range": [2.1, 7.0], "source_ids": ["P3", "P14"], "notes": "Cameroon IFATI technical sheet: 5-7 t/ha (5-7 kg per 10 m2) (P3); FAOSTAT national 2.1 t/ha (P14). Foumbot survey gives output per farm (86% harvest 0.5-20 t/yr) but no t/ha (P4)."},
+    "good_practice_rainfed": {"range": [7.5, 14.8], "source_ids": ["P2", "P8"], "notes": "Ghana open-field trial (Kade, minor season 2014-15): Yolo Wonder 7.53, California Wonder 12.57, range of 9 varieties 5.02-12.57 t/ha (P8). Kenya SHEP: OPV California/Yolo Wonder 6,000 kg/acre = 14.8 t/ha (P2)."},
+    "irrigated_dry_season": {"range": [10, 28], "source_ids": ["P1", "P12", "P13", "P10"], "notes": "Polynesia target 10 t/ha (P13); St Lucia 20-22.5 t/ha (P12); AVRDC target 28 t/ha (P1); Kenya blog 5-8 t/acre (12.4-19.8 t/ha), up to 10 t/acre (24.7 t/ha) with irrigation (P10). Seed-company-type claims for F1 Commandant/Admiral open field 25-30 t/acre (62-74 t/ha) (P2) and 25-30 t/acre (P11) are treated as non-representative."},
+    "fruit_count_basis": {"text": "Kenya: 10,000 plants/ha x 15-25 marketable fruits = 150,000-250,000 fruits/ha (P9).", "source_ids": ["P9"]}
+  },
+  "post_harvest_loss_pct": {
+    "range": [null, null],
+    "notes": "No measured post-harvest loss % found for sweet pepper in Cameroon or the region. Pre-harvest disease losses reported >50% by Foumbot respondents (P4). Shelf life 7-15 days in Foumbot practice (P4), 1-4 weeks at 7-10 degC (P13).",
+    "source_ids": ["P4", "P13"]
+  },
+  "prices": {
+    "unit_notes": "Cameroon sells pepper by heap (tas), by count, by 8-10 kg lot or sack; per-kg values are computed only when the source gives a weight. Non-FCFA prices kept in original currency.",
+    "observations": [
+      {"market": "Bafou, Bamboutos highlands (West Cameroon), producer/local market", "period": "wet season", "price_xaf_per_kg": [130, 250], "year": 2005, "source_ids": ["P16"], "notes": "1,300-2,000 FCFA per 8-10 kg (per-kg = analyst division). Publication 2005, data possibly older."},
+      {"market": "Bafou, Bamboutos highlands (West Cameroon)", "period": "dry season", "price_xaf_per_kg": [150, 313], "year": 2005, "source_ids": ["P16"], "notes": "1,500-2,500 FCFA per 8-10 kg."},
+      {"market": "Mfoundi market, Yaounde (retail)", "period": "16 August 2021 (rainy season, abundance)", "price_xaf_per_kg": [null, null], "price_per_unit": "200 FCFA for 5 large peppers; heap 200-500 FCFA by size", "year": 2021, "source_ids": ["P15"], "notes": "No weight given."},
+      {"market": "Cameroon national (INS price note)", "period": "September 2025", "price_xaf_per_kg": [null, null], "year": 2025, "source_ids": ["P17"], "notes": "Peppers among vegetables with sharpest monthly increase; vegetables index +12.9% y/y. No unit price."},
+      {"market": "Cameroon (Cameroon Tribune)", "period": "October 2025", "price_xaf_per_kg": [null, null], "year": 2025, "source_ids": ["P18"], "notes": "Poivrons among largest fresh-vegetable increases; no amounts."},
+      {"market": "Yaounde and Douala retail (aggregator estimate)", "period": "October 2026", "price_xaf_per_kg": [2096, 3893], "year": 2026, "source_ids": ["P19"], "notes": "LOW CONFIDENCE: methodology undisclosed, 'peppers (various types)'; wholesale USD 2.35-4.36/kg. Do not use as a base price without field check."},
+      {"market": "Kenya (blog synthesis)", "period": "peak vs off-peak", "price_xaf_per_kg": [null, null], "price_original": {"value": [40, 150], "currency": "KSh/kg (off-peak 40-60, peak 80-150)"}, "year": 2025, "source_ids": ["P10"]},
+      {"market": "Kenya", "period": "July 2023", "price_xaf_per_kg": [null, null], "price_original": {"value": [50, 50], "currency": "KSh/kg"}, "year": 2023, "source_ids": ["P11"]},
+      {"market": "Kenya (Egerton expert)", "period": null, "price_xaf_per_kg": [null, null], "price_original": {"value": [5, 10], "currency": "KSh per fruit"}, "year": null, "source_ids": ["P9"]},
+      {"market": "Upper East Ghana, chilli (not sweet pepper)", "period": "harvest vs later in season", "price_xaf_per_kg": [null, null], "price_original": {"value": [90, 250], "currency": "GHS per 80 kg bag"}, "year": 2021, "source_ids": ["P20"], "notes": "Seasonality illustration only."}
+    ],
+    "seasonality": "West Cameroon (Bafou): pepper prices higher in the dry season than the wet season (P16). Yaounde: vegetables more abundant in rainy season (P26); Mfoundi abundant mid-August 2021 (P15); national pepper prices rose sharply in September-October 2025 (P17, P18). Kenya: peak 80-150 vs off-peak 40-60 KSh/kg (P10). Implication (inference): dry-season irrigated production in Foumbot should capture higher prices."
+  },
+  "cost_of_production_xaf_per_ha": [
+    {"value": null, "breakdown": {}, "year": null, "where": "Cameroon", "source_ids": [], "notes": "No Cameroonian sweet-pepper cost-of-production budget found. Gap."},
+    {"value": null, "value_original": 150000, "currency": "KSh/ha", "breakdown": {}, "year": null, "where": "Kenya (Egerton expert)", "source_ids": ["P9"]},
+    {"value": null, "value_original": 95000, "currency": "KSh/acre (~234,700 KSh/ha)", "breakdown": {"land_preparation": 15000, "seed": 5000, "fertiliser_and_pesticides": 30000, "labour": 15000, "irrigation": 30000}, "year": 2025, "where": "Kenya (commercial blog example)", "source_ids": ["P10"], "notes": "Low confidence; ranges given per item."},
+    {"value": null, "value_original": 350000, "currency": "KSh/acre", "breakdown": {"F1_seed": 120000}, "year": 2023, "where": "Kenya (F1 'Green Bell', media)", "source_ids": ["P11"], "notes": "Low confidence."},
+    {"value": null, "value_original": 5254.92, "currency": "GHS/ha (total variable cost)", "breakdown": {"seed": 399.90, "land_preparation": 392.31, "planting_labour": 523.88, "weeding_labour": 572.07, "fertiliser": 1182.48, "spraying": 831.85, "harvest_labour": 1202.66, "water_levy": 150.00}, "year": 2021, "where": "Tono/Vea irrigation schemes, Upper East Ghana, CHILLI pepper", "source_ids": ["P20"], "notes": "Comparator for cost structure; not sweet pepper. Harvest labour ~23% of TVC."},
+    {"value": null, "value_original": 76600, "currency": "NGN/acre (TVC 61,300)", "breakdown": {"seedlings_14000": 8500, "poultry_droppings_400kg": 6000, "agrochemicals": 3000, "weeding_labour": 21300, "land_preparation": 10000, "tools": 4000, "harvest_transport": 8500, "fixed_costs": 15300}, "year": 2018, "where": "Delta State, Nigeria, pepper (Capsicum spp.)", "source_ids": ["P21"]}
+  ],
+  "margins": [
+    {"indicator": "Gross margin per ha / per cedi of TVC", "value": {"GHS_per_ha": 10316.75, "GM_per_cedi_TVC": 1.96}, "year": 2021, "where": "Upper East Ghana, chilli (yield 4.29 t/ha)", "source_ids": ["P20"]},
+    {"indicator": "Return per naira (TR/TC)", "value": 1.6, "year": 2018, "where": "Delta State, Nigeria, pepper (yield ~0.86 t/ha converted)", "source_ids": ["P21"]},
+    {"indicator": "Gross margin per ha; rate of return on investment", "value": {"NGN_per_ha": 167741.60, "RRI": 0.89}, "year": 2022, "where": "Abuja, Nigeria, smallholder pepper (Capsicum spp.)", "source_ids": ["P22"]},
+    {"indicator": "Turnover vs cost", "value": {"turnover_KSh_per_ha": 1000000, "cost_KSh_per_ha": 150000}, "year": null, "where": "Kenya (expert estimate, optimistic)", "source_ids": ["P9"]},
+    {"indicator": "Profit example", "value": {"profit_KSh_per_acre": 605000}, "year": 2025, "where": "Kenya (blog, 7 t/acre at 100 KSh/kg)", "source_ids": ["P10"], "notes": "Low confidence."}
+  ],
+  "cameroon_unit_cost_references": [
+    {"item": "Casual labour wage", "value_xaf": [500, 2000], "unit": "FCFA per person-day (seasonal)", "year": 2005, "where": "Bamboutos highlands", "source_ids": ["P16"]},
+    {"item": "Insecticide retail", "value_xaf": [5000, 13000], "unit": "FCFA per litre", "year": 2013, "where": "Cameroon humid tropics", "source_ids": ["P24"]},
+    {"item": "Fungicide retail", "value_xaf": [6000, 8500], "unit": "FCFA per kg", "year": 2013, "where": "Cameroon humid tropics", "source_ids": ["P24"]}
+  ],
+  "climate": {
+    "temperature": {
+      "optimum_c": [21, 24],
+      "optimum_detail": "21-24 degC (P1); 24 degC (P3); 15-25 degC (P9, P13)",
+      "decline_if_prolonged_below_c": 18, "decline_if_prolonged_above_c": 27,
+      "day_above_30_tolerated_if_nights_c": [21, 24],
+      "growth_slows_below_c": 13,
+      "fruit_set_reduced_above_c": 35,
+      "flower_drop_from_c": [28, 30],
+      "fruit_growth_stops": "RH below 60% combined with high temperature (P3)",
+      "germination_c": "optimum 25-28; none below 15 or above 35 (P1)",
+      "source_ids": ["P1", "P3", "P9", "P13"]
+    },
+    "humidity_rain": "Anthracnose infects above 70% RH, optimum 27 degC (P6); bacterial wilt favoured by 29.7-35.3 degC (P6); whitefly/virus vectors favoured by 25-30 degC dry conditions (P6). Avoid overhead and evening irrigation (P1). Foumbot growers report disease losses >50% (P4); phytophthora and anthracnose favoured by wet season (inference consistent with P6 thresholds).",
+    "altitude": "Up to 2,000 m (P9).",
+    "foumbot_climate_data": null,
+    "planting_windows": {
+      "sourced": "Foumbot: most growers plant in the rainy season (mid-March to mid-November); 80% grow two crops a year; irrigated growers produce year-round (P4). Research trial transplanted late May 2020 at Foumbot (P5). French Polynesia sows February-June for the cooler season (P13), illustrating the preference for cooler months.",
+      "analyst_inference_not_sourced": "For Foumbot: (a) nursery February-March, transplant at onset of rains (late March-April), harvest June-August; (b) nursery late August-September, transplant September-October, harvest December-February in the dry season with irrigation, which sources suggest coincides with higher prices (P16) and lower foliar disease pressure. Validate with station temperature data (not retrieved)."
+    },
+    "source_ids": ["P1", "P3", "P4", "P5", "P6", "P9", "P13", "P16"]
+  },
+  "sources": [
+    {"id": "P1", "title": "Suggested Cultural Practices for Sweet Pepper (Berke, Black, Morris, Talekar, Wang), pub. 99-497R", "publisher": "AVRDC - The World Vegetable Center", "year": 2003, "url": "https://avrdc.org/download/publications/crop-guides/peppers/e03420.pdf", "notes": "Based on Taiwan lowland conditions; some chemicals (benomyl, carbofuran, dicofol) now banned in many countries."},
+    {"id": "P2", "title": "Capsicum Production (SHEP PLUS training material)", "publisher": "Kenya MoALF / AFA-HCD / JICA", "year": 2016, "url": "https://www.jica.go.jp/project/english/kenya/015/materials/c8h0vm0000f7o8cj-att/materials_07.pdf", "notes": "Per-acre values converted x 2.471 by analyst."},
+    {"id": "P3", "title": "Technologie de production du poivron (Capsicum annum)", "publisher": "Institut de Formation en Agriculture et Technologies Innovantes (agreed by MINEFOP), hosted on minader.cm", "year": null, "url": "https://minader.cm/wp-content/uploads/2023/06/wp-1687782325413.pdf", "notes": "Cameroonian technical sheet; undated (uploaded June 2023); internal timing inconsistency."},
+    {"id": "P4", "title": "The Cultivation of Sweet Pepper (Capsicum annuum) in Foumbot Agricultural Area, West Region, Cameroon (Dieudonne, Nguefack, Dongmo Lekagne, Dakole Daboy, Azah Udom, Ndonkeu Mangoumou)", "publisher": "Advanced Journal of Social Science 8(1):54-66, AIJR", "year": 2021, "url": "https://journals.aijr.org/index.php/ajss/article/download/3306/377", "notes": "Survey May-June 2020, villages Fossang, Kouffen, Soukpen; no t/ha, prices or costs."},
+    {"id": "P5", "title": "Importance des visites d'insectes ... Capsicum annuum ... a l'Ouest-Cameroun (Pando et al.)", "publisher": "Journal of Animal & Plant Sciences 54(1):9832-9857", "year": 2022, "url": "https://www.m.elewa.org/journals/wp-content/uploads/2022/10/4.Pando_-2.pdf", "notes": "Field trial Foumbot and Bangou 2020; agronomic set-up only."},
+    {"id": "P6", "title": "Chillies and sweet peppers (crop protocol / GAP guide)", "publisher": "COLEACP", "year": 2011, "url": "https://resources.colead.link/en/system/files/file_fields/2020/12/03/piment-2011-eng-withdisclaimer.pdf", "notes": "Not updated since 2011; extraction truncated after p. 55."},
+    {"id": "P7", "title": "Evaluation of Farmer's Knowledge on Pests and Diseases of Vegetables and Their Management Practices in Three Agroecological Zones in Cameroon (Okolle, Ijiang, Ngome)", "publisher": "AgroViSc for AVRDC / Humidtropics", "year": 2014, "url": "https://humidtropics.cgiar.org/wp-content/report2013docs/Cameroon%20Crop%20protect%20study%20Report.pdf", "notes": "Includes West Region (Bafoussam)."},
+    {"id": "P8", "title": "Growth, Yield and Consumer Acceptance of Sweet Pepper as Influenced by Open Field and Greenhouse Production Systems (A. Martey, MPhil thesis)", "publisher": "University of Ghana", "year": 2015, "url": "https://ugspace.ug.edu.gh/bitstreams/54c1074e-920b-400c-b828-fb4aa663b6e9/download", "notes": "Economic tables not machine-readable; yield unit wording inconsistent in source."},
+    {"id": "P9", "title": "The A-Z of growing capsicum profitably (Prof. Mulwa, Egerton University)", "publisher": "Nation Africa, Seeds of Gold", "year": null, "url": "https://nation.africa/kenya/business/seeds-of-gold/the-a-z-of-growing-capsicum-profitably-1116324", "notes": "Undated; spacing/density inconsistent."},
+    {"id": "P10", "title": "Profitability Analysis of Capsicum Farming in Kenya: A Detailed Guide", "publisher": "Growpact Kenya (commercial blog)", "year": 2025, "url": "https://growpactkenya.com/profitability-analysis-of-capsicum-farming-in-kenya-a-detailed-guide/", "notes": "Low confidence."},
+    {"id": "P11", "title": "Capsicum: how farmers earn Ksh1.2 million per acre", "publisher": "Kenyans.co.ke", "year": 2023, "url": "https://www.kenyans.co.ke/news/91559-capsicum-how-farmers-earn-ksh12-million-acre", "notes": "Low confidence (F1 hype yields)."},
+    {"id": "P12", "title": "Technology Packs: Sweet Pepper (R. Pilgrim, CARDI)", "publisher": "Ministry of Agriculture, Saint Lucia", "year": 2015, "url": "https://moaslu.govt.lc/wp-content/uploads/2021/06/Sweet-Pepper-2017.pdf", "notes": "Tropical comparator."},
+    {"id": "P13", "title": "Itineraire technique du poivron en plein champ", "publisher": "Direction de l'agriculture, Polynesie francaise", "year": 2018, "url": "https://www.service-public.pf/dag/wp-content/uploads/sites/28/2018/12/poivron-ft-culture_SDRdag_v181212.pdf", "notes": "Tropical comparator, detailed rates per 1,000 m2 converted x10."},
+    {"id": "P14", "title": "Chillies and peppers, green - Yield (FAOSTAT data)", "publisher": "Helgi Library (FAOSTAT re-publication)", "year": 2022, "url": "https://www.helgilibrary.com/indicators/chillies-and-peppers-green-yield/", "notes": "FAOSTAT API blocked; includes hot peppers."},
+    {"id": "P15", "title": "Consommation : les legumes abondent au marche du Mfoundi", "publisher": "EcoMatin", "year": 2021, "url": "https://ecomatin.net/consommation-les-legumes-abondent-au-marche-du-mfoundi/", "notes": "Observed 16 Aug 2021."},
+    {"id": "P16", "title": "Cultures maraicheres dans les montagnes tropicales du Cameroun occidental (C. Kaffo)", "publisher": "Cahiers Agricultures 14(6):517-524", "year": 2005, "url": "https://revues.cirad.fr/index.php/cahiers-agricultures/article/download/30546/30306/30781", "notes": "Bafou prices (Table 3, from earlier ref.) and wages."},
+    {"id": "P17", "title": "Note sur les prix au Cameroun en septembre 2025", "publisher": "INS Cameroun", "year": 2025, "url": "https://ins-cameroun.cm/wp-content/uploads/2025/12/Note-sur-les-prix-au-Cameroun-en-Sept-2025.pdf", "notes": "Index only."},
+    {"id": "P18", "title": "Produits alimentaires : prix a la hausse en octobre 2025", "publisher": "Cameroon Tribune", "year": 2025, "url": "https://www.cameroon-tribune.cm/articles/10823/fr/details_2", "notes": "Paywalled excerpt."},
+    {"id": "P19", "title": "Pepper (various types) prices in Cameroon", "publisher": "Selina Wamucii (aggregator)", "year": 2026, "url": "https://www.selinawamucii.com/insights/prices/cameroon/peppers-various-types/", "notes": "Methodology not disclosed; low confidence."},
+    {"id": "P20", "title": "Estimating the Productivity and Profitability of Rice and Pepper on fields of ICOUR in Ghana (J.A. Akolgo)", "publisher": "Current Agriculture Research Journal 9(2):106-119", "year": 2021, "url": "https://agriculturejournal.org/download/10713", "notes": "Chilli, irrigated; comparator."},
+    {"id": "P21", "title": "Assessment of Pepper Production and Socio Economics of Pepper Farmers in Delta State, Nigeria (Dennis and Kentus)", "publisher": "Asian Journal of Agricultural Extension, Economics & Sociology 28(2):1-7", "year": 2018, "url": "https://ageconsearch.umn.edu/record/357541/files/Dennis2822018AJAEES44598.pdf", "notes": "Pepper spp.; internal inconsistencies."},
+    {"id": "P22", "title": "Economies of scale and technical efficiency of smallholder pepper production in Abuja, Nigeria (Alabi, Oladele, Maharazu)", "publisher": "Journal of Agricultural Sciences (Belgrade) 67(1):63-82", "year": 2022, "url": "https://doaj.org/article/8a018c17a56844afa535893d708b101d", "notes": "Capsicum spp.; abstract figures."},
+    {"id": "P23", "title": "Fiche technique 5 : itineraire technique du piment", "publisher": "IFDC Benin (ACMA2)", "year": null, "url": "https://ifdc.org/wp-content/uploads/2019/07/FICHE-TECHNIQUE-5-ITINERAIRE-TECHNIQUE-DU-PIMENT-PEPPER-TECHNICAL-ITINERARY.pdf", "notes": "Hot pepper comparator (uploaded 2019)."},
+    {"id": "P24", "title": "Vegetable growers perception of pesticide use practices, cost, and health effects in the tropical region of Cameroon (Abang et al.)", "publisher": "CGSpace / IITA", "year": 2013, "url": "https://buscador.una.edu.ni/Record/CGSpace76441", "notes": "Pesticide unit prices."},
+    {"id": "P25", "title": "Vegetable Enterprise Budget 2025 (chillies)", "publisher": "Land Bank, South Africa", "year": 2025, "url": "https://landbank.co.za/Media-Centre/Publications/2026/Vegetable Enterprise Budget 2025 print.pdf", "notes": "Green pepper budget (p. 37) not machine-readable; chilli used as labour comparator."},
+    {"id": "P26", "title": "Truck-farming supplying in the Yaounde Mfoundi market (Mfewou, Engwali, Nchoutnji)", "publisher": "Revue Agriculture 12:12-18", "year": 2016, "url": "https://revue-agro.univ-setif.dz/documents-agri/Numero-12-2016/Approvisionnement-Cameroun.pdf", "notes": "General seasonality; no pepper prices."},
+    {"id": "P27", "title": "Recherche des points critiques de contamination des produits maraichers par les pesticides ... au Cameroun (R.E. Madgan)", "publisher": "Universite de Yaounde I (DICAMES)", "year": 2025, "url": "https://dicames.online/jspui/handle/20.500.12177/13750", "notes": "Chlorpyrifos detected in 28% of vegetable samples incl. peppers; banned in Cameroon and EU."}
+  ],
+  "confidence_notes": "MEDIUM for agronomy: Cameroon-specific references exist (IFATI sheet P3, Foumbot farmer survey P4, Foumbot trial P5) and agree broadly with AVRDC/SHEP/tropical sheets on nursery 4-8 weeks, 20,000-30,000 plants/ha, ~300 g seed/ha, first harvest 60-90 DAT, temperature optimum 21-24 degC. Fertiliser totals vary widely (N 75-175, K2O 0-398 kg/ha) and the Cameroonian IFATI per-plant doses imply very high K; needs IRAD soil-based validation. LOW for economics: no Cameroonian t/ha survey yield, cost of production, margin or labour budget for sweet pepper was found; Cameroonian price data are a 2005 Bafou per-lot price (130-313 FCFA/kg) and a 2021 Yaounde per-count price; the 2026 aggregator price (2,096-3,893 FCFA/kg retail) is unverified. Ghanaian/Nigerian margin studies concern mostly chilli. Gaps: Foumbot farm-gate price per kg by season and sale unit weight (sac/filet/cageot), cost of production, labour person-days, post-harvest loss %, calcium/foliar rates, sprays per cycle count, Foumbot temperature series. FAOSTAT API, several French sites and HAL were blocked, and the shared web-search budget ran out before Technisem/Tropicasem guides and further Cameroon market articles could be searched."
+}

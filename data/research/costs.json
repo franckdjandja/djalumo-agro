@@ -1,0 +1,2124 @@
+{
+  "meta": {
+    "project": "AfriFarm Intelligent - cost lines for vegetable ROI engine (pilot zone Foumbot, Noun, West Cameroon)",
+    "compiled": "2026-10-17",
+    "currency": "XAF (CFA franc BEAC). 1 EUR = 655.957 XAF (fixed peg). XOF (CFA franc BCEAO) has the same parity, so Cote d'Ivoire listing prices in FCFA are numerically comparable but are NOT Cameroon prices.",
+    "conventions": "price_xaf = [min, max] in XAF for the stated unit. For MINADER bulletin items the range is the range of LOCAL MARKET AVERAGES across West-region towns; absolute min/max observations are in notes. 'derived' in notes means arithmetic by the compiler (per-kg x 50, currency conversion, man-days x wage), not a figure printed by the source. Non-price technical values use 'value' + 'value_unit' with price_xaf null.",
+    "search_limit_note": "The shared web-search budget for this turn ran out mid-research; remaining gaps were not searched exhaustively and can be revisited in a follow-up.",
+    "round2": "2026-10-18 follow-up: added seed listing prices with pack sizes (CI, Nigeria, Senegal), Douala classified prices (pumps, tank, PE pipe, boots, poultry manure), Benin drip kit prices, CI crate and PPE listings, Niger extension field data on pump fuel. Prices taken from listing titles in search results are marked as such."
+  },
+  "items": [
+    {
+      "key": "npk_20_10_10_50kg",
+      "label": "NPK 20-10-10, 50 kg bag (budget unit cost, national template)",
+      "category": "fertilizer",
+      "unit": "XAF per 50 kg bag",
+      "price_xaf": [
+        26000,
+        26000
+      ],
+      "year": 2024,
+      "where": "Cameroon (national MINADER/PARPAC tomato budget template, dated Oct 2024)",
+      "source_ids": [
+        "C3"
+      ],
+      "notes": "Unit cost used in MINADER/PARPAC provisional tomato operating budget (24 bags/ha budgeted, while the same sheet's agronomic guidance implies ~800 kg/ha). Budget figure, not an observed market survey price. Compare with C1 West-region market averages of Q4 2022 (33,650-34,950 per bag) after the 2022 spike."
+    },
+    {
+      "key": "npk_20_10_10_50kg_west_2022q4",
+      "label": "NPK 20-10-10, 50 kg bag, West-region retail (Q4 2022)",
+      "category": "fertilizer",
+      "unit": "XAF per 50 kg bag (derived from XAF/kg x 50)",
+      "price_xaf": [
+        33650,
+        34950
+      ],
+      "year": 2022,
+      "where": "West region markets: Foumbot, Koutaba, Dschang, Mbouda (Bafoussam not observed)",
+      "source_ids": [
+        "C1",
+        "C2"
+      ],
+      "notes": "MINADER DESA retail survey Q4 2022, XAF/kg averages: Foumbot 687 (min 620, max 840), Koutaba 684 (660-720), Dschang 673 (640-700), Mbouda 699 (650-760). Derived bag range from local averages; absolute observed range 620-840 XAF/kg = 31,000-42,000 per bag. Post-spike level."
+    },
+    {
+      "key": "urea_46_50kg_west_2022q4",
+      "label": "Urea 46% N, 50 kg bag, West-region retail (Q4 2022)",
+      "category": "fertilizer",
+      "unit": "XAF per 50 kg bag (derived from XAF/kg x 50)",
+      "price_xaf": [
+        37900,
+        40850
+      ],
+      "year": 2022,
+      "where": "West region: Foumbot, Koutaba, Dschang, Mbouda, Bafoussam 1er",
+      "source_ids": [
+        "C1",
+        "C2"
+      ],
+      "notes": "XAF/kg averages: Foumbot 758 (min 600, max 1,051), Koutaba 817 (750-880), Dschang 779 (500-860), Mbouda 793 (750-875), Bafoussam 1er 800. Absolute observed range 500-1,051 XAF/kg = 25,000-52,550 per bag. No 2024-2026 West-region urea survey price was found (gap)."
+    },
+    {
+      "key": "ammonium_sulfate_50kg_west_2022q4",
+      "label": "Ammonium sulfate (21% N), 50 kg bag, West-region retail (Q4 2022)",
+      "category": "fertilizer",
+      "unit": "XAF per 50 kg bag (derived from XAF/kg x 50)",
+      "price_xaf": [
+        23500,
+        27650
+      ],
+      "year": 2022,
+      "where": "West region: Foumbot, Koutaba, Dschang, Mbouda, Bafoussam 1er",
+      "source_ids": [
+        "C1",
+        "C2"
+      ],
+      "notes": "XAF/kg averages: Foumbot 553 (460-940), Koutaba 543 (480-600), Dschang 525 (490-560), Mbouda 507 (480-560), Bafoussam 1er 470."
+    },
+    {
+      "key": "npk_special_other_per_kg_west_2022q4",
+      "label": "Other special NPK formulas (solid), West-region retail (Q4 2022)",
+      "category": "fertilizer",
+      "unit": "XAF per kg",
+      "price_xaf": [
+        800,
+        2500
+      ],
+      "year": 2022,
+      "where": "West region: Foumbot 1,807 avg (650-4,000); Koutaba 1,697 (660-2,500); Dschang 800; Mbouda 2,500",
+      "source_ids": [
+        "C1",
+        "C2"
+      ],
+      "notes": "MINADER 'Autres NPK speciaux' class. Formula not specified (would include 12-24-12, 10-20-20, 11-22-22, 12-11-18, 14-23-14 type products); very high per-kg values suggest small retail packs. Use only as a proxy; no formula-specific 50 kg bag price found for 12-24-12, 10-20-20, 11-22-22 or 12-11-18. NPK coffee/cocoa class (15-15-30, 6-15-28, 9-5-5) Foumbot 2,013 XAF/kg (1,800-2,500)."
+    },
+    {
+      "key": "npk_12_24_12_50kg",
+      "label": "NPK 12-24-12 (or 10-20-20 / 11-22-22 / 12-11-18), 50 kg bag",
+      "category": "fertilizer",
+      "unit": "XAF per 50 kg bag",
+      "price_xaf": null,
+      "year": null,
+      "where": "Cameroon",
+      "source_ids": [
+        "C56"
+      ],
+      "notes": "Not found. PARPAC tomato sheet recommends 10-10-20 as basal fertilizer (4 kg/100 m2) but gives no price for it. A MINADER/PARPAC subsidised distribution of NPK 14-23-14-5S-1B (GRAPHICAM) was announced Feb 2024 without price (C56)."
+    },
+    {
+      "key": "potassium_sulfate_50kg",
+      "label": "Potassium sulfate (SOP), 50 kg bag",
+      "category": "fertilizer",
+      "unit": "XAF per 50 kg bag",
+      "price_xaf": [
+        32500,
+        32500
+      ],
+      "year": 2024,
+      "where": "Cameroon (MINADER/PARPAC tomato budget template)",
+      "source_ids": [
+        "C3"
+      ],
+      "notes": "Budget unit cost, 10 bags/ha budgeted. Not a market survey."
+    },
+    {
+      "key": "potassium_chloride_50kg",
+      "label": "Potassium chloride (KCl/MOP 60%), 50 kg bag",
+      "category": "fertilizer",
+      "unit": "XAF per 50 kg bag",
+      "price_xaf": null,
+      "year": null,
+      "where": "Cameroon",
+      "source_ids": [],
+      "notes": "Not found. Not covered by the MINADER Q4 2022 input bulletin."
+    },
+    {
+      "key": "calcium_nitrate_50kg",
+      "label": "Calcium nitrate, 50 kg bag",
+      "category": "fertilizer",
+      "unit": "XAF per 50 kg bag",
+      "price_xaf": [
+        13500,
+        13500
+      ],
+      "year": 2024,
+      "where": "Cameroon (MINADER/PARPAC tomato budget template)",
+      "source_ids": [
+        "C3"
+      ],
+      "notes": "Budget unit cost (5 bags/ha). Looks low versus NPK and urea; treat with caution until a market price confirms it."
+    },
+    {
+      "key": "fertilizer_generic_bag_2022_spike",
+      "label": "Generic chemical fertilizer / urea 50 kg bag: 2021 vs 2022 spike, and 30% subsidy",
+      "category": "fertilizer",
+      "unit": "XAF per 50 kg bag",
+      "price_xaf": [
+        18000,
+        45000
+      ],
+      "year": 2022,
+      "where": "Cameroon national; Yaounde; Garoua/North",
+      "source_ids": [
+        "C5",
+        "C6",
+        "C9",
+        "C10",
+        "C4",
+        "C14"
+      ],
+      "notes": "Before spike: 18,000 (May 2021, national), 19,524 (pre-crisis reference cited by MINADER), urea 17,000 (North). Peak 2022: 35,000 (May 2022, national), 40,000 (Jul 2022, minister to parliament), urea >40,000 (North), Yaounde shops 30,000-45,000. Government/AfDB 3-year emergency plan: State pays 30% (12,000 of 40,000), target subsidised price 28,000/bag (C6, Jul 2022). WFP June 2022: NPK 20-10-10 up 9%-125% Jan-Jun 2022 across 24 markets, urea up 7%-180%; Douala port 240,000-280,000/t (Jan 2022) to 700,000-750,000/t (Jun 2022). FEWS NET May 2022: urea +80%, NPK 20-10-10 +70%, NPK 13-23-13 +80% in 3 months."
+    },
+    {
+      "key": "fertilizer_subsidy_2024",
+      "label": "Fertilizer subsidy rate under PARPAC (2023-2024 campaigns)",
+      "category": "fertilizer",
+      "unit": "percent of negotiated price",
+      "price_xaf": null,
+      "value": [
+        30,
+        30
+      ],
+      "value_unit": "% subsidy",
+      "year": 2024,
+      "where": "Cameroon national (MINADER / PARPAC)",
+      "source_ids": [
+        "C7",
+        "C8",
+        "C54",
+        "C52"
+      ],
+      "notes": "2024 campaign: 80,000 t of fertilizer to be bought with 30% State support (launched 5 Apr 2024, Pouma). MINADER (Apr 2024): importers sell at wholesale price with a 30% reduction of the negotiated price. Farmers quoted in Jul 2023 said prices 'remain high' despite the subsidy. No subsidised per-bag price published for 2024-2026; access depends on producer-organisation registration."
+    },
+    {
+      "key": "fertilizer_import_unit_value",
+      "label": "Average fertilizer import unit value (all products, CIF-type value)",
+      "category": "fertilizer",
+      "unit": "XAF per 50 kg equivalent (derived from total value / tonnes)",
+      "price_xaf": [
+        8976,
+        25617
+      ],
+      "year": 2023,
+      "where": "Cameroon national imports",
+      "source_ids": [
+        "C11",
+        "C12",
+        "C13",
+        "C53",
+        "C1",
+        "C55"
+      ],
+      "notes": "Derived: 2021 36.5 bn / 203,324 t = ~180 XAF/kg (8,976 per 50 kg); 2022 66.4 bn / 129,600 t = ~512 XAF/kg (25,617 per 50 kg); 2023 70.9 bn / 228,326 t = ~311 XAF/kg (15,526 per 50 kg). H1 2025 import value 44.4 bn vs 40.2 bn in H1 2024 (tonnage not given). One source (C12) states 73,724 t for 2021, inconsistent with MINADER's 201,705 t; MINADER figure preferred. Indicates prices eased in 2023 from the 2022 peak. Use as trend indicator only; retail = import value + margins + transport. Franc-zone cross-check (Niger, Jul 2024, not CEMAC): urea avg 19,000 per 50 kg bag (16,500-22,000), NPK 20-10-10 avg 18,690 (C55)."
+    },
+    {
+      "key": "poultry_manure_50kg",
+      "label": "Poultry droppings (fiente de poule), 50 kg bag",
+      "category": "fertilizer",
+      "unit": "XAF per 50 kg bag",
+      "price_xaf": [
+        4000,
+        4000
+      ],
+      "year": 2026,
+      "where": "Yaounde classified listing (50 kg bag)",
+      "source_ids": [
+        "C84",
+        "C85",
+        "C86",
+        "C15"
+      ],
+      "notes": "LISTING (Cameroon), price from title, posting date not seen: 4,000 per 50 kg bag. Another Yaounde ad 2,000 FCFA, unit not stated (C85). CAPEF Jul 2026 tender buys 'fiente de poules pondeuses' by 50 kg bag (C86, no price). Old reference: 2,000 per 50 kg bag in Nkongsamba, 2008 (C15)."
+    },
+    {
+      "key": "organic_amendment_tonne",
+      "label": "Organic amendment (farm manure) per tonne, producer-supplied",
+      "category": "fertilizer",
+      "unit": "XAF per tonne",
+      "price_xaf": [
+        3000,
+        3000
+      ],
+      "year": 2013,
+      "where": "North Cameroon (maize trial)",
+      "source_ids": [
+        "C16"
+      ],
+      "notes": "OLD and from another region; producer-supplied amendment. Cow dung: no Cameroon price found (gap)."
+    },
+    {
+      "key": "foliar_liquid_fertilizer_per_l_west_2022q4",
+      "label": "Liquid fertilizers ('other special NPK', foliar type), per litre, West-region retail",
+      "category": "foliar",
+      "unit": "XAF per litre",
+      "price_xaf": [
+        3391,
+        13500
+      ],
+      "year": 2022,
+      "where": "Foumbot 3,391 avg (1,800-8,000); Koutaba ~4,000 (3,500-4,500, column alignment uncertain); Dschang 9,250 (9,000-10,000); Bafoussam 1er 13,500",
+      "source_ids": [
+        "C1",
+        "C2"
+      ],
+      "notes": "Class average, not brand-specific. Brand prices for Fertigofol, Agroleaf, Bayfolan, Folical, calcium-boron foliar products not found (gap). Cameroon Tribune Apr 2024 reports 6 organic biostimulants among 105 product authorisation files (C8), no prices."
+    },
+    {
+      "key": "fungicide_solid_per_kg_west_2022q4",
+      "label": "Fungicides, solid (WP/WG, e.g. mancozeb, copper, metalaxyl+mancozeb class), per kg",
+      "category": "fungicide",
+      "unit": "XAF per kg",
+      "price_xaf": [
+        5663,
+        10909
+      ],
+      "year": 2022,
+      "where": "West: Koutaba 5,663 (3,000-12,000); Foumbot 6,541 (3,100-30,000); Bafoussam 8,350 (3,500-13,000); Mbouda 9,273 (8,000-12,000); Dschang 10,909 (7,000-12,000)",
+      "source_ids": [
+        "C1",
+        "C2"
+      ],
+      "notes": "Category averages across all solid fungicides. Low end (~3,000/kg) consistent with generic mancozeb 80 WP; high end with metalaxyl-based or branded products."
+    },
+    {
+      "key": "mancozeb_80wp_per_kg",
+      "label": "Mancozeb 80 WP (e.g. Ivory 80 WP, Dithane M-45 class), per kg",
+      "category": "fungicide",
+      "unit": "XAF per kg",
+      "price_xaf": [
+        2500,
+        2500
+      ],
+      "year": 2024,
+      "where": "Cameroon (MINADER/PARPAC tomato budget template)",
+      "source_ids": [
+        "C3"
+      ],
+      "notes": "Budget unit cost; 80 kg/ha budgeted per tomato cycle (200,000 XAF). Brand not named. Consistent with the low end of C1 West-region solid fungicide prices (3,000-3,500/kg minimum)."
+    },
+    {
+      "key": "metalaxyl_mancozeb_ridomil_100g",
+      "label": "Ridomil (metalaxyl-M + mancozeb), 100 g sachet",
+      "category": "fungicide",
+      "unit": "XAF per 100 g sachet",
+      "price_xaf": [
+        1000,
+        1000
+      ],
+      "year": 2024,
+      "where": "Cameroon (MINADER/PARPAC tomato budget template)",
+      "source_ids": [
+        "C3"
+      ],
+      "notes": "Derived 10,000 XAF/kg. 200 sachets (20 kg)/ha budgeted. Budget unit cost, not shop survey."
+    },
+    {
+      "key": "fungicide_liquid_per_l_west_2022q4",
+      "label": "Fungicides, liquid (EC/SC), per litre",
+      "category": "fungicide",
+      "unit": "XAF per litre",
+      "price_xaf": [
+        6671,
+        7333
+      ],
+      "year": 2022,
+      "where": "West: Foumbot 6,671 (5,800-7,500); Koutaba 7,000; Bafoussam 1er 7,333 (7,000-8,000)",
+      "source_ids": [
+        "C1",
+        "C2"
+      ],
+      "notes": "Category average. Copper-specific products (copper oxychloride/hydroxide) not priced separately (gap)."
+    },
+    {
+      "key": "insecticide_liquid_per_l_west_2022q4",
+      "label": "Insecticides, liquid (EC; lambda-cyhalothrin, cypermethrin, abamectin, emamectin, imidacloprid class), per litre",
+      "category": "insecticide",
+      "unit": "XAF per litre",
+      "price_xaf": [
+        5492,
+        7667
+      ],
+      "year": 2022,
+      "where": "West: Bafoussam 1er 5,492 (4,000-9,000); Dschang 5,615 (4,000-8,000); Koutaba 6,018 (2,800-10,000); Foumbot 6,022 (min 2,500); Mbouda 7,667 (7,000-8,000)",
+      "source_ids": [
+        "C1",
+        "C2"
+      ],
+      "notes": "Category averages; active-ingredient-specific prices not found (gap). Pyrethroids (lambda-cyhalothrin, cypermethrin) are typically the low end, abamectin/emamectin the high end, but this split is not documented by the source."
+    },
+    {
+      "key": "deltamethrin_decis_pack",
+      "label": "Decis (deltamethrin) insecticide, pack",
+      "category": "insecticide",
+      "unit": "XAF per pack (sheet labels it '5 L' - ambiguous)",
+      "price_xaf": [
+        16000,
+        16000
+      ],
+      "year": 2024,
+      "where": "Cameroon (MINADER/PARPAC tomato budget template)",
+      "source_ids": [
+        "C3"
+      ],
+      "notes": "4 packs/ha budgeted (64,000). 16,000 for 5 L would be far below C1 litre prices; likely a smaller pack or a template error. Low confidence."
+    },
+    {
+      "key": "insecticide_solid_per_kg_west_2022q4",
+      "label": "Insecticides, solid (WG/WP/granules, e.g. emamectin benzoate WG), per kg",
+      "category": "insecticide",
+      "unit": "XAF per kg",
+      "price_xaf": [
+        13216,
+        13750
+      ],
+      "year": 2022,
+      "where": "West: Foumbot 13,216 (4,000-40,000); Koutaba 13,750 (10,000-15,000)",
+      "source_ids": [
+        "C1",
+        "C2"
+      ],
+      "notes": "Category average."
+    },
+    {
+      "key": "glyphosate_per_l",
+      "label": "Herbicide liquid (glyphosate dominant, e.g. Round Up), per litre",
+      "category": "herbicide",
+      "unit": "XAF per litre",
+      "price_xaf": [
+        4157,
+        6500
+      ],
+      "year": 2024,
+      "where": "West 2022 Q4: Mbouda 4,157 (3,500-5,000); Foumbot 4,467 (3,500-5,500); Bafoussam 4,518 (3,500-5,000); Dschang 4,965 (4,500-5,000); Koutaba 5,013 (3,500-7,400). PARPAC 2024: Round Up 6,500/L",
+      "source_ids": [
+        "C1",
+        "C2",
+        "C3",
+        "C18"
+      ],
+      "notes": "Range spans West 2022 market averages to 2024 budget price for branded Round Up. A West-region farmer (Dec 2024) spends ~9,000 XAF on herbicide for her field (volume not stated) (C18)."
+    },
+    {
+      "key": "herbicide_solid_per_kg_west_2022q4",
+      "label": "Herbicide solid (WG/SG), per kg",
+      "category": "herbicide",
+      "unit": "XAF per kg",
+      "price_xaf": [
+        11412,
+        16000
+      ],
+      "year": 2022,
+      "where": "West: Foumbot 11,412 (8,800-14,000); Koutaba 13,000; Bafoussam 16,000",
+      "source_ids": [
+        "C1",
+        "C2"
+      ],
+      "notes": "Category average."
+    },
+    {
+      "key": "tomato_seed_op_100g",
+      "label": "Tomato seed (variety not stated; likely open-pollinated such as Rio Grande / Roma VF), 100 g bag",
+      "category": "seed",
+      "unit": "XAF per 100 g bag",
+      "price_xaf": [
+        20000,
+        20000
+      ],
+      "year": 2024,
+      "where": "Cameroon (MINADER/PARPAC tomato budget template)",
+      "source_ids": [
+        "C3"
+      ],
+      "notes": "Derived 200 XAF/g. 3 bags (300 g)/ha budgeted, 80 m2 nursery. Sheet recommends Roma Savana, Rio Grande+, Roma VF (OP) and Cobra 26 F1 (hybrid). Whether the 20,000 price refers to OP or hybrid is not stated; hybrid seed normally costs several times more per gram."
+    },
+    {
+      "key": "tomato_seed_hybrid_cobra26_pack",
+      "label": "Hybrid tomato seed Cobra 26 F1 (Technisem), retail pack",
+      "category": "seed",
+      "unit": "XAF per 50 g pack (CI) / per 5 g pack (Nigeria)",
+      "price_xaf": [
+        9406,
+        65000
+      ],
+      "year": 2026,
+      "where": "Cote d'Ivoire listing 65,000 per 50 g (C61); Nigeria listings NGN 21,500 per 5 g (C58) and NGN 19,500-21,000 pack size not stated (C51)",
+      "source_ids": [
+        "C61",
+        "C58",
+        "C51",
+        "C46",
+        "C38",
+        "C67"
+      ],
+      "notes": "LISTING PRICES, not Cameroon. Per gram (derived): CI 65,000/50 g = 1,300 XAF/g; Nigeria NGN 21,500 x 0.4375 = 9,406 XAF per 5 g = 1,881 XAF/g (converted at 1,332.47 NGN/USD (C46) and 582.92 XAF/USD (C38), i.e. 1 NGN = 0.4375 XAF). Planning value ~1,300-1,900 XAF/g. At PARPAC's 300 g/ha this would be ~390,000-565,000 XAF/ha (derived), vs 60,000 in the PARPAC budget (C3), so the PARPAC seed line is likely OP seed. Uncited Cameroon blog (C67): 150-250 g hybrid seed per ha for 80,000-250,000 XAF (320-1,667 XAF/g derived)."
+    },
+    {
+      "key": "cucumber_seed",
+      "label": "Cucumber seed, hybrid (Tokyo F1) and OP (Marketer, Poinsett)",
+      "category": "seed",
+      "unit": "XAF per 50 g pack",
+      "price_xaf": [
+        15500,
+        43000
+      ],
+      "year": 2026,
+      "where": "Cote d'Ivoire listings: Tokyo F1 50 g 43,000; Marketer (OP) 50 g 15,500",
+      "source_ids": [
+        "C62",
+        "C63",
+        "C59",
+        "C65",
+        "C50",
+        "C46",
+        "C38"
+      ],
+      "notes": "LISTINGS, not Cameroon. Derived per gram: Tokyo F1 860 XAF/g; Marketer 310 XAF/g. Nigeria: Enza Corinto F1 NGN 28,400 per 1,000 seeds = 12,424 XAF (12.4 XAF/seed); Technisem cucumber (Marketer) 100 g NGN 5,000 = 2,187 XAF (unusually low, check pack size) (C59). Senegal Poinsett 5,000-20,000, pack size not stated (C65)."
+    },
+    {
+      "key": "zucchini_seed",
+      "label": "Zucchini (courgette) seed",
+      "category": "seed",
+      "unit": "XAF per sachet / per g",
+      "price_xaf": null,
+      "year": null,
+      "where": "Cameroon",
+      "source_ids": [
+        "C65"
+      ],
+      "notes": "Not found for zucchini. SPIA Senegal lists 'Courgette Waltham Butternut (Nadio)' at 3,500 XOF (pack size not stated), but Waltham Butternut is a winter squash, not zucchini (C65). Afrique Phyto Plus (Cote d'Ivoire) lists Nimba F1 zucchini without price."
+    },
+    {
+      "key": "green_bean_seed_kg",
+      "label": "Green bean seed",
+      "category": "seed",
+      "unit": "XAF per kg",
+      "price_xaf": [
+        22500,
+        22500
+      ],
+      "year": 2026,
+      "where": "Cote d'Ivoire listing: Haricot vert Cora, 1 kg",
+      "source_ids": [
+        "C64",
+        "C50"
+      ],
+      "notes": "LISTING (Cote d'Ivoire, XOF), not Cameroon. Mali GIZ spec uses 1 kg packs (Alyze, Bobby) (C50)."
+    },
+    {
+      "key": "sweet_pepper_seed_hybrid",
+      "label": "Sweet pepper seed: hybrid F1 and OP",
+      "category": "seed",
+      "unit": "XAF per pack (see notes for pack sizes)",
+      "price_xaf": [
+        3281,
+        48000
+      ],
+      "year": 2026,
+      "where": "Nigeria and Senegal listings",
+      "source_ids": [
+        "C60",
+        "C65",
+        "C50",
+        "C46",
+        "C38"
+      ],
+      "notes": "LISTINGS, not Cameroon. Nigeria: Enza Clair F1 NGN 53,000 per 1,000 seeds = 23,186 XAF (23 XAF/seed); California Wonder (OP) 100 g NGN 7,500 = 3,281 XAF (33 XAF/g); Yolo Wonder NGN 12,000 = 5,250 XAF, pack size not stated (C60). Senegal: Gambia F1 5,500-48,000 XOF, pack sizes not stated (C65). Simbad F1 price not found."
+    },
+    {
+      "key": "labour_daily_wage",
+      "label": "Casual farm labour, man-day",
+      "category": "labour",
+      "unit": "XAF per man-day",
+      "price_xaf": [
+        1500,
+        2500
+      ],
+      "year": 2024,
+      "where": "2,500: MINADER/PARPAC national tomato budget (Oct 2024). 1,500: spraying labour, Ndoumbi, East region (2016)",
+      "source_ids": [
+        "C3",
+        "C17",
+        "C18"
+      ],
+      "notes": "No West-region/Foumbot wage survey found. 2,500/man-day is the most recent official budget norm. A West-region farmer (Dec 2024) says weeding labour that cost her 15,000 XAF now costs up to 50,000 XAF (unit/area not stated) (C18), signalling rising labour cost. Monthly permanent worker wage and legal minimum wage not sourced (gap)."
+    },
+    {
+      "key": "labour_task_norms_tomato_ha",
+      "label": "Task-based labour norms per hectare of tomato (man-days x 2,500)",
+      "category": "labour",
+      "unit": "XAF per hectare per cycle (derived)",
+      "price_xaf": [
+        12500,
+        150000
+      ],
+      "year": 2024,
+      "where": "Cameroon (MINADER/PARPAC tomato budget)",
+      "source_ids": [
+        "C3"
+      ],
+      "notes": "Man-days/ha: clearing 20 (50,000); ploughing (manual) 60 (150,000); ridging 30 (75,000); transplanting 30 (75,000); staking 10+20 (75,000); watering 25 (62,500); re-sowing 5 (12,500); fertilizer spreading 6 (15,000); fungicide/insecticide treatment 6 (15,000); herbicide 6 (15,000); weeding/earthing up 15 (37,500); pruning 15 (37,500); harvest 40 (100,000); packaging 2 (5,000). Nursery soil prep 500 XAF/m2 and disinfection 1,000 XAF/m2 (80 m2). Total labour ~834,500 XAF/ha (derived). Older East-region norm: harvest 500 XAF per 85 kg crate (C17, 2016)."
+    },
+    {
+      "key": "agronomist_followup_season",
+      "label": "Technical follow-up and support (agronomist/extension) per hectare-season",
+      "category": "labour",
+      "unit": "XAF per ha per cycle (lump sum)",
+      "price_xaf": [
+        50000,
+        50000
+      ],
+      "year": 2024,
+      "where": "Cameroon (MINADER/PARPAC tomato budget)",
+      "source_ids": [
+        "C3"
+      ],
+      "notes": "Budget lump sum ('follow-up and support'). Private agronomist fee per visit or per month not found (gap)."
+    },
+    {
+      "key": "monthly_permanent_worker",
+      "label": "Permanent farm worker, monthly wage",
+      "category": "labour",
+      "unit": "XAF per month",
+      "price_xaf": null,
+      "year": null,
+      "where": "West Cameroon",
+      "source_ids": [],
+      "notes": "Not found."
+    },
+    {
+      "key": "land_rent_ha",
+      "label": "Land rental, per hectare",
+      "category": "land",
+      "unit": "XAF per ha (per cycle/season as budgeted)",
+      "price_xaf": [
+        50000,
+        50000
+      ],
+      "year": 2024,
+      "where": "Cameroon (MINADER/PARPAC tomato budget)",
+      "source_ids": [
+        "C3"
+      ],
+      "notes": "National budget template value. No Foumbot/Noun-specific rent observation found (gap); rent near Foumbot irrigable lowlands may differ substantially."
+    },
+    {
+      "key": "land_clearing_ha",
+      "label": "Land clearing (manual), per hectare",
+      "category": "land_preparation",
+      "unit": "XAF per ha (derived 20 man-days x 2,500)",
+      "price_xaf": [
+        50000,
+        50000
+      ],
+      "year": 2024,
+      "where": "Cameroon (MINADER/PARPAC)",
+      "source_ids": [
+        "C3"
+      ],
+      "notes": "Derived from man-day norm."
+    },
+    {
+      "key": "ploughing_manual_ha",
+      "label": "Ploughing / tillage (manual), per hectare",
+      "category": "land_preparation",
+      "unit": "XAF per ha (derived 60 man-days x 2,500)",
+      "price_xaf": [
+        150000,
+        150000
+      ],
+      "year": 2024,
+      "where": "Cameroon (MINADER/PARPAC)",
+      "source_ids": [
+        "C3"
+      ],
+      "notes": "Tractor ploughing hire per hectare: not found (gap)."
+    },
+    {
+      "key": "ploughing_tractor_ha",
+      "label": "Tractor ploughing hire, per hectare",
+      "category": "land_preparation",
+      "unit": "XAF per ha",
+      "price_xaf": null,
+      "year": null,
+      "where": "West Cameroon",
+      "source_ids": [],
+      "notes": "Not found."
+    },
+    {
+      "key": "ridging_manual_ha",
+      "label": "Manual ridging, per hectare",
+      "category": "land_preparation",
+      "unit": "XAF per ha (derived 30 man-days x 2,500)",
+      "price_xaf": [
+        75000,
+        75000
+      ],
+      "year": 2024,
+      "where": "Cameroon (MINADER/PARPAC)",
+      "source_ids": [
+        "C3"
+      ],
+      "notes": "Derived from man-day norm."
+    },
+    {
+      "key": "motor_pump_budget",
+      "label": "Petrol motor pump (budget value, irrigated tomato hectare)",
+      "category": "irrigation",
+      "unit": "XAF per unit",
+      "price_xaf": [
+        200000,
+        200000
+      ],
+      "year": 2024,
+      "where": "Cameroon (MINADER/PARPAC)",
+      "source_ids": [
+        "C3",
+        "C19"
+      ],
+      "notes": "Lifespan 5 years (40,000/yr depreciation). Pump maintenance 15,000 per cycle; watering reserve points (basins) 300,000 per ha, 3-year life. Government 2020 tomato plan: 500 motor pumps for 300 million XAF (600,000 each, probably larger units) (C19)."
+    },
+    {
+      "key": "motor_pump_3in_listing_ci",
+      "label": "3-inch petrol motor pump, GX160-type engine, 60 m3/h (listing)",
+      "category": "irrigation",
+      "unit": "XAF-equivalent per unit (XOF listing, par value)",
+      "price_xaf": [
+        98000,
+        125000
+      ],
+      "year": 2026,
+      "where": "Cote d'Ivoire, Jumia CI listings (brand 'Honda' not confirmed genuine; generic WP30)",
+      "source_ids": [
+        "C20",
+        "C21"
+      ],
+      "notes": "LISTING PRICES, not Cameroon; indicative for Chinese/generic units. Genuine Honda WB20XT retails ~414 EUR (271,600 XAF derived) in Europe (C25); Koshin SERH-50B 795.75 EUR incl. VAT (C29). Cameroon listings (Douala, Afribobo) are lower: see motor_pump_listing_douala."
+    },
+    {
+      "key": "pump_2in_fuel_consumption",
+      "label": "2-inch petrol pump fuel consumption (manufacturer/retailer specs)",
+      "category": "irrigation",
+      "unit": "litres petrol per hour",
+      "price_xaf": null,
+      "value": [
+        1.0,
+        1.5
+      ],
+      "value_unit": "L/h at rated speed",
+      "year": 2026,
+      "where": "Manufacturer specs (global)",
+      "source_ids": [
+        "C25",
+        "C26",
+        "C27",
+        "C28"
+      ],
+      "notes": "Honda WB20XT (GX120, 2.6 kW): 1.40 L/h (C25) or 1.1 L/h (C26), 2 L tank, ~1.4-2 h run time. Honda WB20XH (GX160, 4 kW / 5.5 PS max): 1.5 L/h, 3.1 L tank, 2.1 h (C27). Koshin SEH-50X (GX120, 4 hp): 1.0 L/h, 1.9 h (C28)."
+    },
+    {
+      "key": "pump_2in_flow_rate",
+      "label": "2-inch petrol pump maximum flow rate",
+      "category": "irrigation",
+      "unit": "m3 per hour (max, at zero head)",
+      "price_xaf": null,
+      "value": [
+        26.4,
+        37.2
+      ],
+      "value_unit": "m3/h",
+      "year": 2026,
+      "where": "Manufacturer specs (global)",
+      "source_ids": [
+        "C25",
+        "C26",
+        "C27",
+        "C28",
+        "C29",
+        "C30"
+      ],
+      "notes": "Honda WB20XT 37.2 m3/h (620 L/min), head 32 m; Honda WB20 36 m3/h; Honda WB20XH 36 m3/h (600 L/min); Koshin SEH-50X 36 m3/h, head 30 m; Koshin SERH-50B (GX160, 5.5 HP, high-head 57 m) 26.4 m3/h. 3-inch Honda WB30 (GX160): 66 m3/h."
+    },
+    {
+      "key": "pump_fuel_per_m3",
+      "label": "Fuel per m3 pumped, 2-inch petrol pump (derived)",
+      "category": "irrigation",
+      "unit": "litres petrol per m3",
+      "price_xaf": [
+        23,
+        35
+      ],
+      "value": [
+        0.028,
+        0.042
+      ],
+      "value_unit": "L/m3 at rated max flow; field value likely 2-3x higher",
+      "year": 2026,
+      "where": "Derived from C25-C28 specs",
+      "source_ids": [
+        "C25",
+        "C26",
+        "C27",
+        "C28",
+        "C32",
+        "C80",
+        "C81",
+        "C83"
+      ],
+      "notes": "Derived: 1.0 L/h / 36 m3/h = 0.028 L/m3; 1.5 L/h / 36 m3/h = 0.042 L/m3. price_xaf = derived fuel cost per m3 at 840 XAF/L super. Max flow is at zero head; with lift, friction in hoses and drip/sprinkler pressure, delivered flow is often far lower, so the compiler suggests a planning value of ~0.06-0.12 L/m3 (assumption, not sourced). Benin reference: ~768 L petrol per ha per year for motor-pump irrigation (derived from 768,000 L per 1,000 ha) and ~560,000 XOF/ha/yr fuel+lubricant saving when switching to solar (C31). PARPAC budget: fuel and lubricant 30,000 XAF per ha-cycle (~36 L super, derived) (C3), which looks low for dry-season tomato. Field references added: see pump_fuel_field_per_irrigation and pump_fuel_cost_field_sahel."
+    },
+    {
+      "key": "garden_hose_50m_1in",
+      "label": "Garden / irrigation hose, 1 inch, 50 m roll",
+      "category": "irrigation",
+      "unit": "XAF per roll",
+      "price_xaf": null,
+      "year": null,
+      "where": "Cameroon",
+      "source_ids": [
+        "C73",
+        "C72",
+        "C82"
+      ],
+      "notes": "No 3/4 or 1 inch 50/100 m garden hose price found. Closest: 2-inch lay-flat delivery hose 50 m 37,900-39,000 XOF (Jumia CI listing, C73); PE100 HDPE 40 mm PN10 100 m roll 102,000 XAF (Douala listing 2020, = 1,020 XAF/m derived, C72); flexible hose 1,500-1,800 FCFA/m (Niger, 2008, C82)."
+    },
+    {
+      "key": "drip_kit_1000m2",
+      "label": "Drip irrigation kit (installed), per 1,000 m2",
+      "category": "irrigation",
+      "unit": "XAF-equivalent per 1,000 m2 (derived from XOF kit prices)",
+      "price_xaf": [
+        237536,
+        411950
+      ],
+      "year": 2020,
+      "where": "Benin (installer price list 2020)",
+      "source_ids": [
+        "C74"
+      ],
+      "notes": "Derived: 1 ha kit 2,375,360 / 10 = 237,536 per 1,000 m2; 500 m2 kit 205,975 x 2 = 411,950 per 1,000 m2 (small kits cost more per m2). Kit prices: 250 m2 131,975; 500 m2 205,975; 0.5 ha 1,325,200; 1 ha 2,375,360; outside Benin min 1 ha from 2,795,940. Includes HDPE main line, fittings, drip tape/line, filter; excludes pump and tank. Lifespan not stated; 3-year product warranty. A Cote d'Ivoire seller lists a '1-10 ha' kit at 120,000 CFA with no size stated (ambiguous, not used)."
+    },
+    {
+      "key": "solar_pump",
+      "label": "Solar pumping kit",
+      "category": "irrigation",
+      "unit": "XAF-equivalent per kit sized for ~1 ha",
+      "price_xaf": [
+        1500000,
+        3000000
+      ],
+      "year": 2026,
+      "where": "Africa (vendor blog, uncited)",
+      "source_ids": [
+        "C75",
+        "C31"
+      ],
+      "notes": "LOW confidence: uncited vendor blog gives 1,500,000-3,000,000 XOF (2,500-5,000 USD) for a complete solar pump (panels + pump) for 1 ha (C75). No Cameroon price found."
+    },
+    {
+      "key": "water_tank_1000l",
+      "label": "Plastic water tank 1,000 L",
+      "category": "irrigation",
+      "unit": "XAF per unit",
+      "price_xaf": [
+        110000,
+        120000
+      ],
+      "year": 2022,
+      "where": "Douala (Bonanjo) listing",
+      "source_ids": [
+        "C71"
+      ],
+      "notes": "LISTING (Cameroon), posted Feb 2022: 1,000 L vertical 110,000, horizontal 120,000. Same ad: 500 L 80,000; 2,000 L 150,000-190,000; 5,000 L 300,000-450,000. Not inflation-adjusted."
+    },
+    {
+      "key": "fuel_super_petrol",
+      "label": "Super (petrol) pump price",
+      "category": "fuel",
+      "unit": "XAF per litre",
+      "price_xaf": [
+        840,
+        840
+      ],
+      "year": 2026,
+      "where": "Cameroon national administered price (Douala reference)",
+      "source_ids": [
+        "C34",
+        "C32",
+        "C33",
+        "C35",
+        "C36"
+      ],
+      "notes": "840 since 3 Feb 2024 (+110 vs ~730 before; derived 730 from Feb 2023 to Feb 2024). Still 840 in Mar 2026 (C33) and Oct 2026 (C35); INS (Jul 2026) confirms no pass-through to administered pump prices. Import cost rising (super ~703 XAF/L, Oct 2026), so a future hike is a risk."
+    },
+    {
+      "key": "fuel_gasoil_diesel",
+      "label": "Gasoil (diesel) pump price",
+      "category": "fuel",
+      "unit": "XAF per litre",
+      "price_xaf": [
+        828,
+        828
+      ],
+      "year": 2026,
+      "where": "Cameroon national administered price (Douala)",
+      "source_ids": [
+        "C34",
+        "C32",
+        "C35"
+      ],
+      "notes": "828 since 3 Feb 2024 (+108 vs ~720 before, derived). Oct 2026 import cost ~975 XAF/L, above pump price; State compensation. Kerosene (petrole lampant) 350 XAF/L (C32)."
+    },
+    {
+      "key": "bamboo_stakes",
+      "label": "Bamboo / wooden stakes for tomato",
+      "category": "stakes",
+      "unit": "XAF per stake / per 100",
+      "price_xaf": null,
+      "year": 2024,
+      "where": "Cameroon",
+      "source_ids": [
+        "C3"
+      ],
+      "notes": "Price still not found after a second search round (Cameroon press, classifieds, extension sheets). Quantity norm: ~25,000 stakes per ha (PARPAC, C3); staking labour 30 man-days/ha. Recommend local quotes from Foumbot (bamboo is usually cut locally and sold per bundle)."
+    },
+    {
+      "key": "twine_roll",
+      "label": "Twine (ficelle) for trellising, roll",
+      "category": "stakes",
+      "unit": "XAF per roll",
+      "price_xaf": [
+        3000,
+        3000
+      ],
+      "year": 2024,
+      "where": "Cameroon (MINADER/PARPAC)",
+      "source_ids": [
+        "C3"
+      ],
+      "notes": "1 roll budgeted per ha; 1-year life. Roll length not stated. Wire price not found."
+    },
+    {
+      "key": "harvest_basket",
+      "label": "Harvest basket / crate (reusable, budget value)",
+      "category": "packaging",
+      "unit": "XAF per unit",
+      "price_xaf": [
+        300,
+        300
+      ],
+      "year": 2024,
+      "where": "Cameroon (MINADER/PARPAC)",
+      "source_ids": [
+        "C3"
+      ],
+      "notes": "800 baskets/ha at 300 (240,000), treated as 1-year investment, matched to 800 crates sold. Type (woven basket vs wooden cageot) not specified. Plastic harvest crate, wooden cageot and 50 kg PP/jute sack prices: not found (gap)."
+    },
+    {
+      "key": "plastic_crate",
+      "label": "Plastic harvest crate",
+      "category": "packaging",
+      "unit": "XAF-equivalent per crate (XOF listing, par value)",
+      "price_xaf": [
+        4700,
+        9800
+      ],
+      "year": 2026,
+      "where": "Abidjan (ARIA) listing, perforated 39 L crate",
+      "source_ids": [
+        "C79"
+      ],
+      "notes": "LISTING (Cote d'Ivoire), not Cameroon: perforated 39 L 4,700 promo / 9,800 regular; 67 L 7,600 / 15,800; solid crates with handles 55-58 L 6,600-7,700 promo (13,700-16,100 regular). Most shown out of stock. A Cameroon tomato cageot holds roughly 25-30 kg (not sourced here); use a 55-67 L crate for that volume."
+    },
+    {
+      "key": "pp_sack_50kg",
+      "label": "Polypropylene or jute sack 50 kg",
+      "category": "packaging",
+      "unit": "XAF per sack",
+      "price_xaf": null,
+      "year": null,
+      "where": "Cameroon",
+      "source_ids": [],
+      "notes": "Not found. Searched Cameroon/Cote d'Ivoire/Senegal; one CI wholesaler (KG Group) lists 50 kg PP woven bags (60 x 100 cm, 80 gsm) with price visible only to registered clients."
+    },
+    {
+      "key": "transport_per_crate_to_city",
+      "label": "Transport + handling to city market, per tomato crate (trader example)",
+      "category": "transport",
+      "unit": "XAF per crate (derived)",
+      "price_xaf": [
+        333,
+        500
+      ],
+      "year": 2026,
+      "where": "To Yaounde (origin not specified; article notes Foumbot is ~341 km from Yaounde)",
+      "source_ids": [
+        "C47"
+      ],
+      "notes": "Trader: buys ~30 crates for 30,000 XAF and pays 10,000-15,000 XAF 'for transport and other charges'. Derived per crate. Includes unspecified fees. PARPAC budget: transport and handling lump sum 50,000 XAF per ha-cycle (C3). Pickup rental, per-tonne freight and motorbike rates: not found (gap)."
+    },
+    {
+      "key": "pickup_rental",
+      "label": "Pickup rental per trip Foumbot/Bafoussam to Douala/Yaounde",
+      "category": "transport",
+      "unit": "XAF per trip",
+      "price_xaf": null,
+      "year": null,
+      "where": "West Cameroon",
+      "source_ids": [
+        "C37"
+      ],
+      "notes": "Not found. Context: taxi drivers reported cost for 100 km rose from ~7,000 to 10,000 XAF after the Feb 2024 fuel hike (C37)."
+    },
+    {
+      "key": "market_fees",
+      "label": "Market tax and loading fees",
+      "category": "fees",
+      "unit": "XAF per crate / per day",
+      "price_xaf": null,
+      "year": null,
+      "where": "Cameroon",
+      "source_ids": [],
+      "notes": "Not found separately; partly embedded in the trader's 'transport and other charges' (C47)."
+    },
+    {
+      "key": "microfinance_ag_loan_rate",
+      "label": "Microfinance agricultural loan interest rate",
+      "category": "finance",
+      "unit": "% per year",
+      "price_xaf": null,
+      "year": null,
+      "where": "Cameroon",
+      "source_ids": [
+        "C17"
+      ],
+      "notes": "Not found. A 2016 academic budget (East region) used 4.25% interest on input investment as an assumption, not a market MFI rate."
+    },
+    {
+      "key": "knapsack_sprayer_16l",
+      "label": "Manual knapsack sprayer, 16 L",
+      "category": "tools",
+      "unit": "XAF per unit",
+      "price_xaf": [
+        20000,
+        45000
+      ],
+      "year": 2026,
+      "where": "45,000: MINADER/PARPAC budget (Cameroon, 2024). 20,000-24,000: Jumia CI listings (Cote d'Ivoire, XOF, Oct 2026; one shown down from 35,000)",
+      "source_ids": [
+        "C3",
+        "C22",
+        "C23",
+        "C5",
+        "C24",
+        "C19",
+        "C78",
+        "C86"
+      ],
+      "notes": "Cameroon Tribune Jul 2022 (Yaounde): class B sprayer 15,000 -> 30,000, class A 25,000 -> 50,000. PARPAC lifespan 3 years. Motorised 16 L atomiser listing: 180,000 XOF (C24). Government 2020 plan: 1,000 class A sprayers for 75 million (75,000 each) (C19). Kit listings with gloves, goggles and mask: 35,000-64,000 XOF (C78). CAPEF (Jul 2026) tender lists 'Pulverisateur manuel 16 L' without price (C86)."
+    },
+    {
+      "key": "hoe",
+      "label": "Hoe (houe)",
+      "category": "tools",
+      "unit": "XAF per unit",
+      "price_xaf": [
+        3500,
+        3500
+      ],
+      "year": 2024,
+      "where": "Cameroon (MINADER/PARPAC)",
+      "source_ids": [
+        "C3"
+      ],
+      "notes": "Lifespan 2 years."
+    },
+    {
+      "key": "machete",
+      "label": "Machete",
+      "category": "tools",
+      "unit": "XAF per unit",
+      "price_xaf": [
+        4500,
+        4500
+      ],
+      "year": 2024,
+      "where": "Cameroon (MINADER/PARPAC)",
+      "source_ids": [
+        "C3"
+      ],
+      "notes": "Lifespan 2 years. File (sharpening) 1,000 XAF."
+    },
+    {
+      "key": "rake",
+      "label": "Rake",
+      "category": "tools",
+      "unit": "XAF per unit",
+      "price_xaf": [
+        2000,
+        2000
+      ],
+      "year": 2024,
+      "where": "Cameroon (MINADER/PARPAC)",
+      "source_ids": [
+        "C3"
+      ],
+      "notes": "Listed as 'Rack' in the English sheet; interpreted as rake (rateau). Low confidence on item identity."
+    },
+    {
+      "key": "watering_can",
+      "label": "Watering can (arrosoir; capacity not stated)",
+      "category": "tools",
+      "unit": "XAF per unit",
+      "price_xaf": [
+        6000,
+        6000
+      ],
+      "year": 2024,
+      "where": "Cameroon (MINADER/PARPAC)",
+      "source_ids": [
+        "C3"
+      ],
+      "notes": "8 per ha budgeted; lifespan 3 years. Capacity (10-15 L) not stated."
+    },
+    {
+      "key": "wheelbarrow",
+      "label": "Wheelbarrow",
+      "category": "tools",
+      "unit": "XAF per unit",
+      "price_xaf": [
+        30000,
+        30000
+      ],
+      "year": 2024,
+      "where": "Cameroon (MINADER/PARPAC)",
+      "source_ids": [
+        "C3"
+      ],
+      "notes": "Lifespan 2 years. Also in budget: spade/shovel 5,000; push cart 85,000 (5 years); measuring tape 10,000; bucket 1,500; nursery shade 20,000."
+    },
+    {
+      "key": "rubber_boots",
+      "label": "Rubber boots",
+      "category": "ppe",
+      "unit": "XAF per pair",
+      "price_xaf": [
+        6500,
+        9000
+      ],
+      "year": 2026,
+      "where": "Douala classified listings",
+      "source_ids": [
+        "C76",
+        "C77"
+      ],
+      "notes": "LISTINGS (Cameroon), prices from listing titles: rain boots 6,500; high safety boots 9,000. Posting dates not seen."
+    },
+    {
+      "key": "spray_ppe_kit",
+      "label": "Spraying PPE: respirator/mask with goggles; gloves in sprayer kits",
+      "category": "ppe",
+      "unit": "XAF-equivalent per item (XOF listings)",
+      "price_xaf": [
+        7000,
+        18800
+      ],
+      "year": 2026,
+      "where": "Cote d'Ivoire, Jumia CI listings",
+      "source_ids": [
+        "C78"
+      ],
+      "notes": "LISTINGS, not Cameroon: gas mask (organic/chemical cartridge type not specified) with goggles 11,000-18,800; plastic agricultural mask 8,950-9,990; goggles + mask kit 7,000-10,000. Gloves only sold inside 16 L sprayer kits (sprayer + gloves + goggles + mask 35,000-64,000). Coveralls: not found."
+    },
+    {
+      "key": "fx_xaf_per_usd",
+      "label": "XAF per USD",
+      "category": "fx",
+      "unit": "XAF per 1 USD",
+      "price_xaf": [
+        566,
+        583
+      ],
+      "year": 2026,
+      "where": "Market/central-bank reference",
+      "source_ids": [
+        "C38",
+        "C40",
+        "C41",
+        "C39",
+        "C42"
+      ],
+      "notes": "Spot 16 Oct 2026: 582.92 (BCEAO reference rate for XOF; XAF identical parity). 2026 average ~566 (range 548-586) (C40); implied 655.957 / 1.1588 EUR/USD 2026 average = 566.1 (C39), or 655.957 x 0.8630 = 566.1 (C42). 2025 average ~581 (range 554-640) (C41, aggregator). Suggested display default: 580."
+    },
+    {
+      "key": "fx_kes_per_usd",
+      "label": "KES per USD",
+      "category": "fx",
+      "unit": "KES per 1 USD",
+      "price_xaf": null,
+      "value": [
+        128.28,
+        130.29
+      ],
+      "value_unit": "KES/USD (2026 range); 129.85 on 16 Oct 2026",
+      "year": 2026,
+      "where": "Kenya",
+      "source_ids": [
+        "C43",
+        "C44"
+      ],
+      "notes": "Cross rate derived: 1 KES = ~4.49 XAF."
+    },
+    {
+      "key": "fx_rwf_per_usd",
+      "label": "RWF per USD",
+      "category": "fx",
+      "unit": "RWF per 1 USD",
+      "price_xaf": null,
+      "value": [
+        1475.9,
+        1475.9
+      ],
+      "value_unit": "RWF/USD on 16 Oct 2026",
+      "year": 2026,
+      "where": "Rwanda",
+      "source_ids": [
+        "C45"
+      ],
+      "notes": "Cross rate derived: 1 RWF = ~0.395 XAF."
+    },
+    {
+      "key": "fx_ngn_per_usd",
+      "label": "NGN per USD",
+      "category": "fx",
+      "unit": "NGN per 1 USD",
+      "price_xaf": null,
+      "value": [
+        1332.47,
+        1375
+      ],
+      "value_unit": "NGN/USD: official NFEM 1,332.47 (13 Oct 2026); parallel 1,365 buy / 1,375 sell",
+      "year": 2026,
+      "where": "Nigeria",
+      "source_ids": [
+        "C46"
+      ],
+      "notes": "Cross rate derived (official): 1 NGN = ~0.437 XAF."
+    },
+    {
+      "key": "tomato_seed_hybrid_padma_5g",
+      "label": "Hybrid tomato seed Padma 108 F1, 5 g",
+      "category": "seed",
+      "unit": "XAF per 5 g pack (derived from NGN)",
+      "price_xaf": [
+        4375,
+        4375
+      ],
+      "year": 2026,
+      "where": "Nigeria (Lagos) listing NGN 10,000 per 5 g",
+      "source_ids": [
+        "C59",
+        "C46",
+        "C38"
+      ],
+      "notes": "LISTING, Nigeria. Derived 10,000 x 0.4375 = 4,375 XAF per 5 g = 875 XAF/g. Another Padma F1 listing NGN 17,000 without pack size (C58). PO404 F1: NGN 12,300 per 1,000 seeds = 5,381 XAF (C59)."
+    },
+    {
+      "key": "tomato_seed_tropimech_100g",
+      "label": "Tomato seed Tropimech+ (Technisem; listed as hybrid by seller), 100 g",
+      "category": "seed",
+      "unit": "XAF per 100 g pack (derived from NGN)",
+      "price_xaf": [
+        21874,
+        21874
+      ],
+      "year": 2026,
+      "where": "Nigeria (Lagos) listing NGN 50,000 per 100 g",
+      "source_ids": [
+        "C58",
+        "C46",
+        "C38",
+        "C66"
+      ],
+      "notes": "LISTING, Nigeria. Derived 219 XAF/g; close to the PARPAC OP tomato budget price of 200 XAF/g (C3). Whether Tropimech+ is OP or hybrid is not confirmed by the source. Senegal wholesale ad: hybrid F1 tomato 140,000 FCFA/kg (140 XAF/g), variety unstated (C66, title only)."
+    },
+    {
+      "key": "motor_pump_listing_douala",
+      "label": "Petrol motor pump, 2 to 3 inch, Chinese/generic (listing)",
+      "category": "irrigation",
+      "unit": "XAF per unit",
+      "price_xaf": [
+        60000,
+        130000
+      ],
+      "year": 2026,
+      "where": "Douala (Mboppi, Bonaberi) classified listings",
+      "source_ids": [
+        "C68",
+        "C69",
+        "C70"
+      ],
+      "notes": "LISTINGS (Cameroon), prices from listing titles, posting dates not seen: 2-inch 60,000; WP30X 75,000; 3-inch King Max / Covax 93,000; Tolsen 4000 W 130,000. Niger extension budgets: 3.5 CV pump 75,000-100,000, amortised over 3 years (C80, C83)."
+    },
+    {
+      "key": "layflat_hose_2in_50m",
+      "label": "Lay-flat delivery hose for motor pump, 2 inch, 50 m",
+      "category": "irrigation",
+      "unit": "XAF-equivalent per 50 m (XOF listing, par value)",
+      "price_xaf": [
+        37900,
+        39000
+      ],
+      "year": 2026,
+      "where": "Cote d'Ivoire, Jumia CI listings",
+      "source_ids": [
+        "C73"
+      ],
+      "notes": "LISTING, not Cameroon. Derived 758-780 XAF/m."
+    },
+    {
+      "key": "pe_pipe_40mm_100m",
+      "label": "HDPE PE100 pipe 40 mm PN10, 100 m roll",
+      "category": "irrigation",
+      "unit": "XAF per 100 m roll",
+      "price_xaf": [
+        102000,
+        102000
+      ],
+      "year": 2020,
+      "where": "Douala (Akwa) listing",
+      "source_ids": [
+        "C72"
+      ],
+      "notes": "LISTING (Cameroon), Jan 2020. Derived 1,020 XAF/m. PVC Californian network ~1,000 FCFA/m with 10-year life (Niger 2008, C82)."
+    },
+    {
+      "key": "pump_fuel_field_per_irrigation",
+      "label": "Field fuel use of a small petrol pump: litres per hectare per irrigation round",
+      "category": "irrigation",
+      "unit": "litres petrol per ha per irrigation round (derived)",
+      "price_xaf": [
+        92400,
+        92400
+      ],
+      "value": [
+        110,
+        110
+      ],
+      "value_unit": "L/ha per irrigation round",
+      "year": 2018,
+      "where": "Agadez, Niger (field test, pumping from a well)",
+      "source_ids": [
+        "C81",
+        "C32"
+      ],
+      "notes": "Derived: 33 L for one round on 3,000 m2 = 33 x (10,000/3,000) = 110 L/ha per round. price_xaf = 110 L x 840 XAF/L (Cameroon super, C32) = 92,400 XAF/ha per round (derived). Deep-well, sandy-valley conditions; lifting from a river or shallow well in Foumbot likely needs less. Do not multiply by a full season without local data."
+    },
+    {
+      "key": "pump_fuel_cost_field_sahel",
+      "label": "Pump fuel (and lubricant/maintenance) cost per hectare per vegetable cycle, extension budgets",
+      "category": "irrigation",
+      "unit": "XOF per ha per 80-90 day cycle (derived x10 from per-1,000 m2 figures)",
+      "price_xaf": [
+        88000,
+        383750
+      ],
+      "year": 2021,
+      "where": "Niger: Maradi cabbage 2018 (fuel + pump maintenance); Tillaberi potato 2021 (fuel + lubricant)",
+      "source_ids": [
+        "C83",
+        "C80",
+        "C31",
+        "C3"
+      ],
+      "notes": "Derived: 8,800 x 10 = 88,000 (Maradi, 2018); 38,375 x 10 = 383,750 (Tillaberi, 2021). Niger fuel prices differ from Cameroon (Agadez test implies ~600 FCFA/L, C81), so litres cannot be derived reliably. Other benchmarks: Benin ~768 L petrol/ha/yr (C31); PARPAC Cameroon tomato budget 30,000 XAF fuel and lubricant per ha-cycle (C3), which looks low against these."
+    },
+    {
+      "key": "spray_coverall_gloves",
+      "label": "Chemical-resistant coverall and nitrile gloves",
+      "category": "ppe",
+      "unit": "XAF per item",
+      "price_xaf": null,
+      "year": null,
+      "where": "Cameroon / West Africa",
+      "source_ids": [],
+      "notes": "Not found as standalone items in CFA listings."
+    }
+  ],
+  "market_price_context": [
+    {
+      "key": "tomato_crate_price_2025_2026",
+      "label": "Tomato crate (cageot) prices, for ROI revenue side (not a cost)",
+      "unit": "XAF per cageot",
+      "observations": [
+        {
+          "where": "Yaounde (Mfoundi)",
+          "date": "2026-09",
+          "price_xaf": [
+            3000,
+            4000
+          ],
+          "note": "down from 5,800-6,500 mid-July 2026",
+          "source_ids": [
+            "C47"
+          ]
+        },
+        {
+          "where": "Douala",
+          "date": "2026-09",
+          "price_xaf": [
+            3500,
+            4000
+          ],
+          "source_ids": [
+            "C47"
+          ]
+        },
+        {
+          "where": "Bafoussam",
+          "date": "2026-09",
+          "price_xaf": [
+            1000,
+            2000
+          ],
+          "note": "about 4,000 at start of 2026",
+          "source_ids": [
+            "C47"
+          ]
+        },
+        {
+          "where": "Yaounde (Etoudi)",
+          "date": "2026-03",
+          "price_xaf": [
+            1000,
+            2500
+          ],
+          "note": "glut; 10,000-20,000 a few months earlier; production cost ~2,700 XAF per cageot",
+          "source_ids": [
+            "C48"
+          ]
+        },
+        {
+          "where": "Cameroon (APA Yaounde)",
+          "date": "2025-10",
+          "price_xaf": [
+            12000,
+            15000
+          ],
+          "note": "scarcity peak",
+          "source_ids": [
+            "C49"
+          ]
+        },
+        {
+          "where": "MINADER/PARPAC budget",
+          "date": "2024-10",
+          "price_xaf": [
+            4500,
+            4500
+          ],
+          "note": "800 crates/ha assumed",
+          "source_ids": [
+            "C3"
+          ]
+        }
+      ],
+      "notes": "Extreme seasonality (1,000 to 15,000+ per cageot within 12 months) dominates tomato ROI more than any input line. INS: vegetable prices +10.1% y/y in July 2026 (C36). MINADER SIM price bulletin T1 2025 does not cover the West region (C57).",
+      "source_ids": [
+        "C36",
+        "C57"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "C1",
+      "title": "Bulletin trimestriel de suivi des intrants agricoles (engrais et produits phytosanitaires) N°0, octobre-decembre 2022",
+      "publisher": "MINADER - Direction des Enquetes et Statistiques Agricoles (DESA), financed by FODECC",
+      "year": 2023,
+      "url": "https://www.minader.cm/wp-content/uploads/2023/07/wp-1688563666713.pdf",
+      "notes": "Retail price survey Q4 2022, FCFA/kg and FCFA/L, incl. Foumbot, Koutaba, Dschang, Mbouda, Bafoussam. Only input bulletin found on MINADER site; no later issue located."
+    },
+    {
+      "id": "C2",
+      "title": "Quarterly monitoring newsletter on agricultural inputs N°0 - December 2022 (English version)",
+      "publisher": "MINADER DESA",
+      "year": 2023,
+      "url": "https://www.minader.cm/wp-content/uploads/2023/07/wp-1688563666754.pdf",
+      "notes": "Same data as C1; used to read Tables 2-4 (liquid fertilizers, solid and liquid pesticides)."
+    },
+    {
+      "id": "C3",
+      "title": "Tomato technical and economic data sheet: production and post-production (PARPAC), incl. provisional operating budget",
+      "publisher": "MINADER - Sub-department of Agricultural Extension / PARPAC (appendix source CEFRA 2023)",
+      "year": 2024,
+      "url": "https://www.minader.cm/wp-content/uploads/2025/05/FICHE_TECHNIQUE_PRODUCTION_ET_POST_PRODUCTION_TOMATE_PARPAC_ENG.pdf",
+      "notes": "Dated Oct 2024, uploaded May 2025. Budget template (apparently 1 ha), not a market survey; internal totals do not fully reconcile."
+    },
+    {
+      "id": "C4",
+      "title": "Situation of Fertilizers, June 2022 - Republic of Cameroon",
+      "publisher": "WFP (via Food Security Cluster)",
+      "year": 2022,
+      "url": "https://fscluster.org/sites/default/files/documents/2022.06_cmr_fertilizers.pdf",
+      "notes": "% price changes Jan-Jun 2022 across 24 markets; Douala port prices per tonne."
+    },
+    {
+      "id": "C5",
+      "title": "Production agricole : l'equation des engrais",
+      "publisher": "Cameroon Tribune",
+      "year": 2022,
+      "url": "https://cameroon-tribune.cm/article.html/49531/fr.html/details_2",
+      "notes": "8 Jul 2022; paywalled, partial text; also sprayer prices in Yaounde."
+    },
+    {
+      "id": "C6",
+      "title": "Agriculture : le gouvernement va subventionner le prix des engrais a hauteur de 30%",
+      "publisher": "EcoMatin",
+      "year": 2022,
+      "url": "https://ecomatin.net/agriculture-le-gouvernement-va-subventionner-le-prix-des-engrais-a-hauteur-de-30",
+      "notes": "6 Jul 2022; minister to National Assembly 1 Jul 2022."
+    },
+    {
+      "id": "C7",
+      "title": "Campagne agricole 2024 : 80 000 tonnes d'engrais subventionnees pour relever la production au Cameroun",
+      "publisher": "EcoMatin",
+      "year": 2024,
+      "url": "https://ecomatin.net/campagne-agricole-2024-80-000-tonnes-dengrais-subventionnees-pour-relever-la-production-au-cameroun",
+      "notes": "11 Apr 2024."
+    },
+    {
+      "id": "C8",
+      "title": "Engrais : 105 demandes d'autorisation en etude",
+      "publisher": "Cameroon Tribune",
+      "year": 2024,
+      "url": "https://cameroon-tribune.cm/article.html/64386/fr.html/details_2",
+      "notes": "16 Apr 2024; PARPAC 30% reduction of negotiated price."
+    },
+    {
+      "id": "C9",
+      "title": "Produit phytosanitaire : l'ivoirien Afrique Phyto Plus debarque au Cameroun",
+      "publisher": "EcoMatin",
+      "year": 2023,
+      "url": "https://ecomatin.net/produit-phytosanitaire-livoirien-afrique-phyto-plus-debarque-au-cameroun",
+      "notes": "28 Mar 2023; 19,524 -> 40,000 FCFA per 50 kg bag."
+    },
+    {
+      "id": "C10",
+      "title": "Agriculture : la CAPEF ressuscite le projet de construction d'une usine d'engrais au Cameroun",
+      "publisher": "EcoMatin",
+      "year": 2022,
+      "url": "https://ecomatin.net/agriculture-la-capef-ressuscite-le-projet-de-construction-dune-usine-dengrais-au-cameroun",
+      "notes": "8 Sep 2022; Garoua prices."
+    },
+    {
+      "id": "C11",
+      "title": "Cameroon launches 2024 agricultural campaign amid climate and cost challenges",
+      "publisher": "Business in Cameroon",
+      "year": 2024,
+      "url": "https://www.businessincameroon.com/agriculture/0804-13716-cameroon-launches-2024-agricultural-campaign-amid-climate-and-cost-challenges",
+      "notes": "Import tonnage/value 2021-2022; urea +293% Jan 2020-Jan 2022."
+    },
+    {
+      "id": "C12",
+      "title": "Cameroun - Engrais : pres de 174 milliards d'importations en 3 ans",
+      "publisher": "Camer.be",
+      "year": 2024,
+      "url": "https://www.camer.be/85844/11:1/cameroun-engrais-pres-de-174-milliards-dimportations-en-3-ans-cameroon.html",
+      "notes": "4 Jul 2024; 2023: 228,326 t for 70.9 bn FCFA."
+    },
+    {
+      "id": "C13",
+      "title": "Cameroon fertilizer imports rise to CFA44.4bn in H1 2025 despite local plans",
+      "publisher": "Business in Cameroon",
+      "year": 2026,
+      "url": "https://www.businessincameroon.com/agriculture/2301-15648-cameroon-fertilizer-imports-rise-to-cfa44-4bn-in-h1-2025-despite-local-plans",
+      "notes": "23 Jan 2026."
+    },
+    {
+      "id": "C14",
+      "title": "Cameroon Key Message Update, May 2022",
+      "publisher": "FEWS NET",
+      "year": 2022,
+      "url": "https://fews.net/west-africa/cameroon/key-message-update/may-2022",
+      "notes": "Fertilizer % increases."
+    },
+    {
+      "id": "C15",
+      "title": "Cameroon: Farmers find manure a good substitute for expensive chemical fertilizers",
+      "publisher": "Farm Radio Weekly (Farm Radio International)",
+      "year": 2008,
+      "url": "https://wire.farmradio.fm/farmer-stories/1-cameroon-farmers-find-manure-a-good-substitute-for-expensive-chemical-fertilizers-by-lilianne-nyatcha-for-farm-radio-weekly-in-douala-cameroon",
+      "notes": "Nkongsamba; old prices."
+    },
+    {
+      "id": "C16",
+      "title": "Intensifier la culture du mais pour ameliorer la securite alimentaire : le producteur du Nord Cameroun y a-t-il interet ? (Table 3)",
+      "publisher": "Cahiers Agricultures 25(6), 65006",
+      "year": 2016,
+      "url": "https://www.cahiersagricultures.fr/articles/cagri/full_html/2016/06/cagri160029/T3.html",
+      "notes": "2013 input costs, North Cameroon."
+    },
+    {
+      "id": "C17",
+      "title": "Fovo J.D. et al., evaluation of pesticide and fertilizer protocols on tomato (Ndoumbi, East Cameroon)",
+      "publisher": "Revue Agriculture 11: 69-79, Universite Ferhat Abbas Setif 1",
+      "year": 2016,
+      "url": "https://revue-agro.univ-setif.dz/documents-agri/numero11-2016/Fovo-Evaluation.pdf",
+      "notes": "Spraying labour 1,500 FCFA/person-day; harvest 500 FCFA per 85 kg crate."
+    },
+    {
+      "id": "C18",
+      "title": "Utilisation des herbicides a l'Ouest Cameroun : un enjeu economique et environnemental",
+      "publisher": "Camer.be",
+      "year": 2024,
+      "url": "https://www.camer.be/87491/11:1/utilisation-des-herbicides-a-louest-cameroun-un-enjeu-economique-et-environnemental-cameroon.html",
+      "notes": "9 Dec 2024; anecdotal farmer figures."
+    },
+    {
+      "id": "C19",
+      "title": "Cameroun : plus de 2 milliards FCFA pour relancer la filiere tomate",
+      "publisher": "Journal du Cameroun",
+      "year": 2020,
+      "url": "https://fr.journalducameroun.com/?p=370848",
+      "notes": "20 Jul 2020; government plan unit budgets for pumps and sprayers."
+    },
+    {
+      "id": "C20",
+      "title": "Honda Moto-pompe Tres Puissant (3 inch, GX160, 60 m3/h) - listing",
+      "publisher": "Jumia Cote d'Ivoire (seller IVOIRE GIM)",
+      "year": 2026,
+      "url": "https://www.jumia.ci/honda-moto-pompe-tres-puissant-19933677.html",
+      "notes": "Listing price 98,000 FCFA (XOF); authenticity not confirmed."
+    },
+    {
+      "id": "C21",
+      "title": "Generic Motopompe WP30 3 pouces - listing",
+      "publisher": "Jumia Cote d'Ivoire (seller Scientifik Distribution)",
+      "year": 2026,
+      "url": "https://www.jumia.ci/generic-motopompe-wp30-3pouces-32364364.html",
+      "notes": "Listing price 125,000 FCFA (XOF)."
+    },
+    {
+      "id": "C22",
+      "title": "WADFOW Pulverisateur manuel haute pression 16L - listing",
+      "publisher": "Jumia Cote d'Ivoire",
+      "year": 2026,
+      "url": "https://www.jumia.ci/wadfow-pulverisateur-manuel-haute-pression-16l-31771653.html",
+      "notes": "Listing price 20,000 FCFA (XOF), Oct 2026."
+    },
+    {
+      "id": "C23",
+      "title": "TOTAL Pulverisateur (pompe) 16 L - listing",
+      "publisher": "Jumia Cote d'Ivoire",
+      "year": 2026,
+      "url": "https://jumia.ci/total-pulverisateur-pompe-30149770.html",
+      "notes": "Listing price 24,000 FCFA (was 35,000)."
+    },
+    {
+      "id": "C24",
+      "title": "Generic Pulverisateur / Atomiseur 16 L motorise - listing",
+      "publisher": "Jumia Cote d'Ivoire",
+      "year": 2026,
+      "url": "https://www.jumia.ci/pulverisateur-atomiseur-16-l-motorise-durable-generic-mpg1058693.html",
+      "notes": "Listing price 180,000 FCFA."
+    },
+    {
+      "id": "C25",
+      "title": "Honda WB20XT motor pump 37 m3/h - product sheet",
+      "publisher": "Manel Service (Honda dealer, Italy)",
+      "year": 2026,
+      "url": "https://www.manelservice.com/en/engine-pumps/1030-honda-wb-20-xt-3573390030072.html",
+      "notes": "1.40 L/h, 620 L/min, 32 m head, EUR 414."
+    },
+    {
+      "id": "C26",
+      "title": "Honda WB20XT3 motor pump - specifications",
+      "publisher": "Avante (dealer, Ukraine)",
+      "year": 2026,
+      "url": "https://avante.com.ua/en/catalog/motopompa_honda_wb20_xt3_benzinovaja_dlja_vody_sredney_zagrjaznennosti-03066/",
+      "notes": "1.1 L/h, 36 m3/h."
+    },
+    {
+      "id": "C27",
+      "title": "Honda WB20XH water pump - specifications",
+      "publisher": "Honda Motor Southern Africa",
+      "year": 2026,
+      "url": "https://acc-pub-za.honda.co.za/power/wb20xh2-drx",
+      "notes": "GX160, 4 kW (5.5 PS) max, 600 L/min, 1.5 L/h, 2.1 h run time."
+    },
+    {
+      "id": "C28",
+      "title": "Koshin SEH-50X petrol pump - specifications",
+      "publisher": "Avante (dealer, Ukraine)",
+      "year": 2026,
+      "url": "https://avante.com.ua/en/catalog/motopompa_koshin_seh-50x_benzinovaja_dlja_chistoy_vody-03701/",
+      "notes": "GX120 4 hp, 36 m3/h, 1.0 L/h."
+    },
+    {
+      "id": "C29",
+      "title": "Koshin SERH-50B Honda petrol water pump 2 inch",
+      "publisher": "AgriEuro UK",
+      "year": 2026,
+      "url": "https://www.agrieuro.co.uk/koshin-serh-50b-honda-petrol-water-pump-50-mm-fittings-2-inches-self-priming-p-9025.html",
+      "notes": "GX160 5.5 HP, 440 L/min, 57 m head; EUR 795.75 incl. VAT; fuel use not listed."
+    },
+    {
+      "id": "C30",
+      "title": "Motopompes Honda WB20 / WB30 (Renson sheet)",
+      "publisher": "Motralec / Renson",
+      "year": null,
+      "url": "https://www.motralec.com/public/fichiers/docs/Renson-MOTOPOMPES-HONDA-WB-20-30.pdf",
+      "notes": "WB20 36 m3/h, WB30 66 m3/h."
+    },
+    {
+      "id": "C31",
+      "title": "Benin NAMA - attenuation par le pompage solaire pour l'irrigation",
+      "publisher": "UNEP-CCC / TECH-ACTION",
+      "year": 2022,
+      "url": "https://tech-action.unepccc.org/wp-content/uploads/sites/2/2022/05/benin-np-attenuation-pompage-solaire.pdf",
+      "notes": "768,000 L petrol per 1,000 ha; ~560,000 FCFA/ha/yr fuel+lubricant saving."
+    },
+    {
+      "id": "C32",
+      "title": "Prix du carburant au Cameroun en 2026 : super, gasoil et petrole",
+      "publisher": "Infospratiques.cm",
+      "year": 2026,
+      "url": "https://infospratiques.cm/?p=70",
+      "notes": "Published 9 Apr 2026; prices 'mars 2026' fixed by CSPH."
+    },
+    {
+      "id": "C33",
+      "title": "Cameroon gasoline prices",
+      "publisher": "GlobalPetrolPrices.com",
+      "year": 2026,
+      "url": "https://www.globalpetrolprices.com/Cameroon/gasoline_prices/",
+      "notes": "840 XAF/L, updated 9 Mar 2026, unchanged since 5 Feb 2024."
+    },
+    {
+      "id": "C34",
+      "title": "Cameroun - hausse des prix du carburant : la reaction du gouvernement face a la hausse illegale des prix de transport",
+      "publisher": "Journal du Cameroun",
+      "year": 2024,
+      "url": "https://fr.journalducameroun.com/cameroun-hausse-des-prix-du-carburant-voici-la-reaction-du-gouvernement-face-a-la-hausse-illegale-des-prix-de-transport/",
+      "notes": "6 Feb 2024; super 840 (+110), gasoil 828 (+108) from 3 Feb 2024."
+    },
+    {
+      "id": "C35",
+      "title": "Pres de 975 FCFA pour importer un litre, 828 FCFA a la pompe : l'ecart se creuse pour le gasoil au Cameroun",
+      "publisher": "Cameroun24",
+      "year": 2026,
+      "url": "https://cameroun24.net/article/76269-pres-de-975-fcfa-pour-importer-un-litre-828-fcfa-a-la-pompe-lecart-se-creuse-pour-le-gasoil-au-cameroun.html",
+      "notes": "Early Oct 2026; pump 828/840 unchanged."
+    },
+    {
+      "id": "C36",
+      "title": "Note sur les prix au Cameroun en juillet 2026",
+      "publisher": "Institut National de la Statistique (INS)",
+      "year": 2026,
+      "url": "https://ins-cameroun.cm/wp-content/uploads/2026/08/Note-sur-les-prix-au-Cameroun-en-juillet-2026.pdf",
+      "notes": "Inflation 3.4% y/y; food +7.0%; vegetables +10.1%; no pass-through to pump prices."
+    },
+    {
+      "id": "C37",
+      "title": "Cameroun : la population s'inquiete des consequences de la hausse de 12% du prix des carburants",
+      "publisher": "AllAfrica (fr)",
+      "year": 2024,
+      "url": "https://fr.allafrica.com/stories/202402050176.html",
+      "notes": "Feb 2024; taxi 100 km cost 7,000 -> 10,000 FCFA (anecdotal)."
+    },
+    {
+      "id": "C38",
+      "title": "Cours de reference des principales devises contre Franc CFA (16 Oct 2026)",
+      "publisher": "BCEAO",
+      "year": 2026,
+      "url": "https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa",
+      "notes": "USD = 582.92 FCFA (XOF; XAF same parity to EUR)."
+    },
+    {
+      "id": "C39",
+      "title": "Euro-U.S. Dollar history 2026",
+      "publisher": "Pound Sterling Live",
+      "year": 2026,
+      "url": "https://www.poundsterlinglive.com/history/EUR-USD-2026",
+      "notes": "2026 average 1.1588; 16 Oct 2026 1.1239."
+    },
+    {
+      "id": "C40",
+      "title": "USD to XAF history 2026",
+      "publisher": "fulusly.soft9.us (FX aggregator)",
+      "year": 2026,
+      "url": "https://fulusly.soft9.us/history/usd-to-xaf/2026",
+      "notes": "2026 avg 566, high 586, low 548. Aggregator, medium confidence."
+    },
+    {
+      "id": "C41",
+      "title": "USD to XAF history 2025",
+      "publisher": "fulusly.soft9.us (FX aggregator)",
+      "year": 2025,
+      "url": "https://fulusly.soft9.us/history/usd-to-xaf/2025",
+      "notes": "2025 avg 581, high 640, low 554. Aggregator, medium confidence."
+    },
+    {
+      "id": "C42",
+      "title": "USD to EUR exchange rate history (8 Jun 2026 page, 2026 average)",
+      "publisher": "Exchange-Rates.org",
+      "year": 2026,
+      "url": "https://www.exchange-rates.org/exchange-rate-history/usd-eur-2026-06-08",
+      "notes": "2026 average 0.8630 EUR per USD."
+    },
+    {
+      "id": "C43",
+      "title": "Kenyan shilling - currency",
+      "publisher": "Trading Economics",
+      "year": 2026,
+      "url": "https://tradingeconomics.com/kenya/currency",
+      "notes": "USD/KES 129.85 on 16 Oct 2026."
+    },
+    {
+      "id": "C44",
+      "title": "KES to USD 2026 historical exchange rates",
+      "publisher": "ValutaFX",
+      "year": 2026,
+      "url": "https://www.valutafx.com/history/kes-usd-2026",
+      "notes": "2026 range 128.28-130.29 KES/USD."
+    },
+    {
+      "id": "C45",
+      "title": "Rwandan franc - currency",
+      "publisher": "Trading Economics",
+      "year": 2026,
+      "url": "https://tradingeconomics.com/rwanda/currency",
+      "notes": "USD/RWF 1,475.945 on 16 Oct 2026."
+    },
+    {
+      "id": "C46",
+      "title": "Dollar to naira exchange rate today, October 14, 2026",
+      "publisher": "TechEconomy.ng",
+      "year": 2026,
+      "url": "https://techeconomy.ng/dollar-to-naira-exchange-rate-today-october-14-2026",
+      "notes": "NFEM 1,332.47 (13 Oct); parallel 1,365/1,375."
+    },
+    {
+      "id": "C47",
+      "title": "Tomate en fruit : l'abondance de l'offre fait chuter les prix a Yaounde",
+      "publisher": "EcoMatin",
+      "year": 2026,
+      "url": "https://ecomatin.net/tomate-en-fruit-labondance-de-loffre-fait-chuter-les-prix-a-yaounde",
+      "notes": "23 Sep 2026; crate prices Yaounde/Douala/Bafoussam; trader transport for ~30 crates."
+    },
+    {
+      "id": "C48",
+      "title": "Cameroun : tomates entre 2500 et 1 000 FCFA le cageot, quand l'abondance ruine le paysan",
+      "publisher": "Koaci",
+      "year": 2026,
+      "url": "https://www.koaci.com/article/2026/03/09/cameroun/societe/cameroun-tomates-entre-2500-et-1-000-fcfa-le-cageot-quand-labondance-ruine-le-paysan_194954.html",
+      "notes": "9 Mar 2026; production cost ~2,700 FCFA per cageot."
+    },
+    {
+      "id": "C49",
+      "title": "Les Camerounais confrontes a la flambee du prix de la tomate",
+      "publisher": "APA news (Yaounde)",
+      "year": 2025,
+      "url": "https://fr.apanews.net/?p=261386",
+      "notes": "21 Oct 2025; cageot 12,000-15,000; farmer: fertilizer 'bought at 3,000 now 13,000' (unit unstated)."
+    },
+    {
+      "id": "C50",
+      "title": "Fiche technique - specifications techniques semences maraicheres (Sikasso, Bougouni, Koutiala)",
+      "publisher": "GIZ Mali",
+      "year": 2026,
+      "url": "https://www.giz.de/sites/default/files/media/els-document/2026-09/1-specifications-technique-semences.pdf",
+      "notes": "Package sizes and varieties only (Cobra 26 F1 50 g; F1 Tokyo cucumber 50 g; F1 Simbad sweet pepper 50 g; green bean 1 kg). No prices."
+    },
+    {
+      "id": "C51",
+      "title": "Cobra 26 F1 Tomato - Technisem (marketplace listing)",
+      "publisher": "Jiji Nigeria",
+      "year": 2026,
+      "url": "https://jiji.ng/ibadan/feeds-supplements-seeds/cobra-26-f1-tomato-technisem-8qWsimXCTpZn6U2U5yyCTXXW.html",
+      "notes": "NGN 19,500-21,000; pack size not stated; listing price."
+    },
+    {
+      "id": "C52",
+      "title": "Rapport Pays 2024 Cameroun - The African Seed Access Index (TASAI)",
+      "publisher": "TASAI (hosted by MINADER)",
+      "year": 2025,
+      "url": "https://www.minader.cm/wp-content/uploads/2025/12/CMR_2024_fr_country-report_Nov2025_web.pdf",
+      "notes": "Covers maize, rice, sorghum, soybean; no vegetable seed prices; cites Arrete 068/PM of 28 Aug 2019 on input subsidies."
+    },
+    {
+      "id": "C53",
+      "title": "Cameroon's fertilizer imports soar 76% amid stalled production projects",
+      "publisher": "Milling Middle East & Africa",
+      "year": 2024,
+      "url": "https://millingmea.com/cameroons-fertilizer-imports-soar-76-amid-stalled-production-projects/",
+      "notes": "21 Jun 2024; 2021-2023 imports."
+    },
+    {
+      "id": "C54",
+      "title": "Cameroun : trois usines de production d'engrais en gestation",
+      "publisher": "Journal du Cameroun",
+      "year": 2023,
+      "url": "https://fr.journalducameroun.com/?p=429949",
+      "notes": "17 Jul 2023; 30% subsidy, prices still high."
+    },
+    {
+      "id": "C55",
+      "title": "Prix des engrais au Niger, juillet 2024 (RECA / CRA)",
+      "publisher": "RECA Niger",
+      "year": 2024,
+      "url": "https://reca-niger.org/IMG/pdf/prix_engrais_niger_juillet_2024_reca_et_cra.pdf",
+      "notes": "Franc-zone cross-check only (not CEMAC): urea avg 19,000/50 kg (16,500-22,000); NPK 20-10-10 avg 18,690; ammonium sulfate 18,000-31,000."
+    },
+    {
+      "id": "C56",
+      "title": "OCP Africa vulgarise les bonnes pratiques agricoles au Cameroun",
+      "publisher": "EcoMatin (sponsored content)",
+      "year": 2024,
+      "url": "https://ecomatin.net/ocp-africa-vulgarise-les-bonnes-pratiques-agricoles-au-cameroun",
+      "notes": "1 Mar 2024; MINADER/PARPAC subsidised NPK 14-23-14-5S-1B; no price."
+    },
+    {
+      "id": "C57",
+      "title": "Bulletin trimestriel SIM T1 2025 (prix des produits agricoles)",
+      "publisher": "MINADER DESA",
+      "year": 2025,
+      "url": "https://www.minader.cm/wp-content/uploads/2025/09/BULLETIN-TRIMESTRIEL_SIM_T1-2025-VF.pdf",
+      "notes": "Does NOT cover the West region and has no input prices (checked, documents a gap)."
+    },
+    {
+      "id": "C58",
+      "title": "Hybrid vegetable seeds, Lagos (category listing page)",
+      "publisher": "Jiji Nigeria",
+      "year": 2026,
+      "url": "https://jiji.ng/lagos/288-seeds/hybrid",
+      "notes": "LISTINGS (Nigeria): Hybrid Tomato Cobra F1 5 g NGN 21,500; 'Hybrid Tomato Seed (Tropimech +)' 100 g NGN 50,000; Technisem hot pepper 5 g NGN 11,000; Padma F1 tomato NGN 17,000 (size not stated); hybrid cucumber NGN 5,000-19,500 (size not stated). Retrieved Oct 2026."
+    },
+    {
+      "id": "C59",
+      "title": "Vegetable seeds, Igando-Ikotun Lagos (category listing page)",
+      "publisher": "Jiji Nigeria",
+      "year": 2026,
+      "url": "https://jiji.ng/igando-ikotun/288-seeds/plant",
+      "notes": "LISTINGS (Nigeria): Padma 108 F1 tomato 5 g NGN 10,000; PO404 F1 tomato 1,000 seeds NGN 12,300; Elpida F1 beef tomato 1,000 seeds NGN 63,999; Enza Zaden Corinto F1 cucumber 1,000 seeds NGN 28,400; Technisem cucumber (Marketer) 100 g NGN 5,000. Retrieved Oct 2026."
+    },
+    {
+      "id": "C60",
+      "title": "Bell pepper seeds (category listing page)",
+      "publisher": "Jiji Nigeria",
+      "year": 2026,
+      "url": "https://jiji.ng/kano/288-pepper-seeds/bell",
+      "notes": "LISTINGS (Nigeria): California Wonder 100 g NGN 7,500; Enza Zaden Clair F1 1,000 seeds NGN 53,000; Yolo Wonder NGN 12,000, Mekong F1 (East-West) NGN 19,000, Kaveri F1 NGN 20,000 (pack sizes not stated). Retrieved Oct 2026."
+    },
+    {
+      "id": "C61",
+      "title": "Semence hybride de TOMATE F1 COBRA 26 50 gr",
+      "publisher": "TM Business (TMCI), Abidjan",
+      "year": 2026,
+      "url": "https://tmbusiness.ci/produit/semence-de-tomate-f1-cobra-26-50-gr-2/",
+      "notes": "LISTING (Cote d'Ivoire, XOF): 65,000 CFA per 50 g. Retrieved Oct 2026."
+    },
+    {
+      "id": "C62",
+      "title": "Semence de CONCOMBRE TOKYO F1 50 gr",
+      "publisher": "TM Business (TMCI), Abidjan",
+      "year": 2026,
+      "url": "https://tmbusiness.ci/produit/semence-de-concombre-tokyo-f1-50-gr/",
+      "notes": "LISTING (Cote d'Ivoire, XOF): 43,000 CFA per 50 g."
+    },
+    {
+      "id": "C63",
+      "title": "Semence de CONCOMBRE MARKETER 50 gr",
+      "publisher": "TM Business (TMCI), Abidjan",
+      "year": 2026,
+      "url": "https://tmbusiness.ci/produit/semence-de-concombre-marketer-50-gr/",
+      "notes": "LISTING (Cote d'Ivoire, XOF): 15,500 CFA per 50 g. Same page: Roundup XL 360 SL 1 L 6,000; Roundup Turbo 450 SL 1 L 7,000; Banzai biostimulant 2 x 800 ml 19,000."
+    },
+    {
+      "id": "C64",
+      "title": "Semence de HARICOT VERT CORA 1 kg",
+      "publisher": "TM Business (TMCI), Abidjan",
+      "year": 2026,
+      "url": "https://tmbusiness.ci/produit/semence-de-haricot-vert-cora-1-kg/",
+      "notes": "LISTING (Cote d'Ivoire, XOF): 22,500 CFA per 1 kg."
+    },
+    {
+      "id": "C65",
+      "title": "Semences maraicheres (category page)",
+      "publisher": "SPIA, Dakar",
+      "year": 2026,
+      "url": "https://spia-sn.com/categorie-produit/semences-maraicheres/",
+      "notes": "LISTING (Senegal, XOF), pack sizes not stated: Poivron Gambia F1 5,500-48,000; Concombre Poinsett 5,000-20,000; Courgette Waltham Butternut (Nadio) 3,500."
+    },
+    {
+      "id": "C66",
+      "title": "Semences hybride tomate F1 - 140000 FCFA / kg - sac 1 kg (wholesale offer)",
+      "publisher": "EspaceAgro (Senegal wholesaler ad)",
+      "year": 2026,
+      "url": "https://www.espaceagro.com/fruits-legumes/semences-hybride-tomate-f1_i285227.html",
+      "notes": "Price taken from the ad title in search results (page not opened); variety not stated. Wholesale offer, low confidence."
+    },
+    {
+      "id": "C67",
+      "title": "Culture de la tomate au Cameroun : cout, budget et rentabilite d'1 hectare en 2026",
+      "publisher": "Maison Agricole (blog, author Cedric Ngondi)",
+      "year": 2026,
+      "url": "https://maisonagricole.com/agriculture/culture-de-la-tomate-au-cameroun-cout-budget-et-rentabilite-d1-hectare-en-2026/",
+      "notes": "9 Jun 2026; uncited estimates: hybrid seed 150-250 g/ha costing 80,000-250,000 FCFA; total 1.37-3.7 million FCFA/ha. Low confidence."
+    },
+    {
+      "id": "C68",
+      "title": "Motopompe unique diametre 50, sortie 2 pouces - 60 000 Fcfa (Mboppi, Douala)",
+      "publisher": "Afribobo (Cameroon classifieds)",
+      "year": 2026,
+      "url": "https://www.afribobo.com/douala/motopompe-unique-diametre-50-taille-de-sortie-2pouces-105549.html",
+      "notes": "LISTING (Cameroon); price from listing title; posting date not seen."
+    },
+    {
+      "id": "C69",
+      "title": "Motopompe a essence WP30X - 75 000 Fcfa (Mboppi, Douala)",
+      "publisher": "Afribobo (Cameroon classifieds)",
+      "year": 2026,
+      "url": "https://www.afribobo.com/douala/motopompe-a-essence-wp30x-argent-2521.html",
+      "notes": "LISTING (Cameroon); price from listing title; posting date not seen."
+    },
+    {
+      "id": "C70",
+      "title": "Motopompe King Max diametre 80, sortie 3 pouces - 93 000 Fcfa (Mboppi, Douala)",
+      "publisher": "Afribobo (Cameroon classifieds)",
+      "year": 2026,
+      "url": "https://www.afribobo.com/douala/motopompe-king-max-diametre-80-taille-de-sortie-3--105537.html",
+      "notes": "LISTING (Cameroon); same price for Covax 3-inch; Tolsen 4000 W pump listed at 130,000 (Bonaberi). Prices from listing titles."
+    },
+    {
+      "id": "C71",
+      "title": "Cubitenaires de contenances allant de 500 a 5000 litres (Bonanjo, Douala)",
+      "publisher": "Afribobo (Cameroon classifieds)",
+      "year": 2022,
+      "url": "https://www.afribobo.com/douala/cubitenaires-de-contenances-allant-de-500-a-5000-litres-98597.html",
+      "notes": "LISTING (Cameroon), posted 4 Feb 2022: 500 L 80,000; 1,000 L 110,000 vertical / 120,000 horizontal; 2,000 L 150,000/190,000; 5,000 L 300,000/450,000."
+    },
+    {
+      "id": "C72",
+      "title": "Tube Panaflex PE100 PEHD 40 mm, epaisseur 2,4, PN10, 100 m - 102 000 Fcfa (Akwa, Douala)",
+      "publisher": "Afribobo (Cameroon classifieds)",
+      "year": 2020,
+      "url": "https://www.afribobo.com/douala/tube-panaflex-pe100-pehd-40-mm-epaisseur-2-4-noir-6000.html",
+      "notes": "LISTING (Cameroon), posted 26 Jan 2020."
+    },
+    {
+      "id": "C73",
+      "title": "Tuyau irrigation 50m (search listing page)",
+      "publisher": "Jumia Cote d'Ivoire",
+      "year": 2026,
+      "url": "https://www.jumia.ci/slp/tuyau-irrigation-50m",
+      "notes": "LISTINGS (Cote d'Ivoire, XOF): 2-inch motor-pump delivery hose 50 m 37,900-39,000; WP-30 pump + 50 m delivery hose bundles 136,500-138,800. No 3/4 or 1 inch 50/100 m hose listed."
+    },
+    {
+      "id": "C74",
+      "title": "Couts des prestations en installation de systeme d'irrigation goutte a goutte, annee 2020",
+      "publisher": "PRUMARX Groupe (Benin)",
+      "year": 2020,
+      "url": "https://prumarxgroupe.over-blog.com/2019/12/prix-installation-de-systeme-d-irrigation-goutte-a-goutte-2020.html",
+      "notes": "Installed kit prices (Benin, XOF): 250 m2 131,975; 500 m2 205,975; 0.5 ha 1,325,200; 1 ha 2,375,360; outside Benin min 1 ha from 2,795,940. Includes HDPE main, fittings, drip tape/line, filter. 3-year product warranty plus 1 year free maintenance; lifespan not stated."
+    },
+    {
+      "id": "C75",
+      "title": "Irrigation goutte a goutte pour petites parcelles en Afrique : guide et couts",
+      "publisher": "machine-agricole.com (vendor blog)",
+      "year": 2026,
+      "url": "https://machine-agricole.com/blogs/news/irrigation-goutte-a-goutte-petites-parcelles-afrique",
+      "notes": "1 Jan 2026; uncited: complete solar pump (panel + pump) for 1 ha 1,500,000-3,000,000 XOF. Low confidence."
+    },
+    {
+      "id": "C76",
+      "title": "Bottes de pluie - 6 500 Fcfa (Bepanda, Douala)",
+      "publisher": "Afribobo (Cameroon classifieds)",
+      "year": 2026,
+      "url": "https://www.afribobo.com/douala/bottes-de-pluie-179318.html",
+      "notes": "LISTING (Cameroon); price from listing title. Also 'Bottes de securite montantes pro - 9 000 Fcfa' (C77)."
+    },
+    {
+      "id": "C77",
+      "title": "Bottes de securite montantes pro - 9 000 Fcfa (BP Cite, Douala)",
+      "publisher": "Afribobo (Cameroon classifieds)",
+      "year": 2026,
+      "url": "https://www.afribobo.com/douala/bottes-de-securite-montantes-pro-177732.html",
+      "notes": "LISTING (Cameroon); price from listing title."
+    },
+    {
+      "id": "C78",
+      "title": "Masque pour agriculture (search listing page)",
+      "publisher": "Jumia Cote d'Ivoire",
+      "year": 2026,
+      "url": "https://www.jumia.ci/slp/masque-pour-agriculture",
+      "notes": "LISTINGS (Cote d'Ivoire, XOF): chemical/organic gas mask with goggles 11,000-18,800; plastic agricultural mask 8,950-9,990; goggles+mask kit 7,000-10,000; 16 L knapsack sprayer kits incl. gloves, goggles, mask 35,000-64,000. No coveralls listed."
+    },
+    {
+      "id": "C79",
+      "title": "Caisses plastiques pleines et perforees",
+      "publisher": "ARIA, Abidjan",
+      "year": 2026,
+      "url": "https://aria.ci/caisses-plastiques-abidjan/",
+      "notes": "LISTING (Cote d'Ivoire, XOF): perforated crates 39 L 4,700 promo (9,800 regular), 67 L 7,600 promo (15,800 regular); solid crates with handles 55-58 L 6,600-7,700 promo (13,700-16,100 regular). Most shown out of stock."
+    },
+    {
+      "id": "C80",
+      "title": "Fiche technico-economique pomme de terre, Bonkoukou (CRA Tillaberi)",
+      "publisher": "Chambre Regionale d'Agriculture de Tillaberi / RECA Niger",
+      "year": 2021,
+      "url": "https://reca-niger.org/IMG/pdf/fte_pomme_de_terre_bonkoukou_cra_tillaberi_fevrier_2021.pdf",
+      "notes": "Per 1,000 m2, ~90-day cycle: fuel and lubricant 38,375 FCFA; 3.5 CV motor pump 75,000 (3-yr amortisation); hoses 15,000 (2 yrs); 12 m PVC tube well 30,000 (5 yrs). Irrigation 2-3 times per week."
+    },
+    {
+      "id": "C81",
+      "title": "Note sur l'irrigation au gaz butane (CRA Agadez)",
+      "publisher": "Chambre Regionale d'Agriculture d'Agadez / RECA Niger",
+      "year": 2018,
+      "url": "https://reca-niger.org/IMG/pdf/Note-Irrigation-gaz_butane.pdf",
+      "notes": "Field test: 33 L petrol (19,800 FCFA) for one irrigation round of a 3,000 m2 plot pumped from a well; 2.5 L tank refilled every ~3 h. Year inferred (~2018)."
+    },
+    {
+      "id": "C82",
+      "title": "Manuel technique de l'irrigant prive (fiches 19-22)",
+      "publisher": "PIP2 Niger (via RECA Niger)",
+      "year": 2008,
+      "url": "https://reca-niger.org/IMG/pdf/Manuel_Technique_irrigant_prive.pdf",
+      "notes": "Flexible hose (Tricoflex type) 1,500-1,800 FCFA/m; PVC 'Californian' network ~1,000 FCFA/m, 10-year life; petrol pump (Robin) ~220,000 FCFA; operating range 2 L/s at 4 m to 4 L/s at 10 m head. OLD."
+    },
+    {
+      "id": "C83",
+      "title": "Fiche technico-economique chou, Maradi (version 2, aout 2018)",
+      "publisher": "Chambre Regionale d'Agriculture de Maradi / RECA Niger",
+      "year": 2018,
+      "url": "https://reca-niger.org/IMG/pdf/Fiche_technico-economique_chou_Maradi_version2_aout_2018.pdf",
+      "notes": "Per 1,000 m2, 80-90-day cycle: fuel/maintenance of pump 8,800 FCFA; 3.5 CV pump 100,000 (3 yrs); 17 m Californian network 37,000."
+    },
+    {
+      "id": "C84",
+      "title": "Fiente de poules pour fertilisation du sol - 50kg - 4 000 Fcfa (Yaounde)",
+      "publisher": "Afribobo (Cameroon classifieds)",
+      "year": 2026,
+      "url": "https://www.afribobo.com/yaounde/fiante-de-poules-pour-fertilisation-du-sol-50kg-169434.html",
+      "notes": "LISTING (Cameroon); price from listing title; posting date not seen. Another Yaounde (Messassi) ad: 'Fiente de poule en vente - 2 000 Fcfa', unit not in title (C85)."
+    },
+    {
+      "id": "C85",
+      "title": "Fiente de poule en vente - 2 000 Fcfa (Messassi, Yaounde)",
+      "publisher": "Afribobo (Cameroon classifieds)",
+      "year": 2026,
+      "url": "https://www.afribobo.com/yaounde/fiente-de-poule-en-vente-99343.html",
+      "notes": "LISTING (Cameroon); unit not stated in title."
+    },
+    {
+      "id": "C86",
+      "title": "Demande de cotation N0008/DC/CAPEF/CIPM/2026 - semences, intrants et materiel agricoles",
+      "publisher": "CAPEF (Chambre d'Agriculture du Cameroun) via ARMP",
+      "year": 2026,
+      "url": "https://pridesoft.armp.cm/_lib/file/doc/0903/2026/07/20/CAPEF/DC INTRANTS SEMENCES MATERIELS.pdf",
+      "notes": "17 Jul 2026; quantities only, price columns blank. Confirms market units: 'Fiente de poules pondeuses, sac de 50 kg', 16 L manual sprayer, NPK 20-10-10 50 kg."
+    }
+  ],
+  "gaps": "Still not found (null): bamboo/wooden stake prices; 3/4 or 1 inch 50-100 m garden hose; wooden cageot and 50 kg PP sack prices; standalone gloves and coveralls; zucchini seed price; any Cameroon shop price for vegetable seeds (all seed prices are from Cote d'Ivoire, Nigeria or Senegal listings); drip system lifespan (only a 3-year warranty); a Cameroon or humid-zone measurement of pump fuel per ha per season. From round 1, still open: 2024-2026 West-region fertilizer survey prices, NPK 12-24-12/KCl, foliar brands, active-ingredient pesticide prices, tractor hire, Foumbot land rent and wages, transport per trip/tonne, market fees, MFI rates. Quickest fix: phone/WhatsApp price checks with Foumbot and Bafoussam agro-dealers and transporters.",
+  "confidence_notes": "HIGH: fuel prices (super 840, gasoil 828 XAF/L since 3 Feb 2024, confirmed through Oct 2026, with a real risk of a hike given import costs above pump prices); FX (BCEAO and Trading Economics, Oct 2026); MINADER Q4 2022 West-region input survey (official, includes Foumbot, but 2022 post-spike prices; import unit values fell ~40% from 2022 to 2023, so 2024-2026 retail is probably lower than Q4 2022 but this is not measured). MEDIUM: MINADER/PARPAC Oct 2024 tomato budget (official national template, not a market survey; some lines look inconsistent, e.g. calcium nitrate 13,500/bag, Decis 16,000 per '5 L', fuel 30,000 per ha-cycle; totals do not reconcile); pump technical specs (manufacturer data at max flow, real field output lower, so derived L/m3 understates fuel use). LOW: Jumia Cote d'Ivoire and Jiji Nigeria listing prices (other countries, listing not transaction, brand authenticity uncertain); 2008-2016 figures (manure, labour 1,500/day East region, maize-trial organic amendment); anecdotal press quotes (weeding labour 15,000 -> 50,000; trader transport). General: CPI vegetables +10.1% y/y and food +7.0% (Jul 2026), so older figures should be inflated before use. XOF prices are numerically comparable to XAF at the same EUR peg but reflect another market. ROUND 2: Seed prices are LISTINGS from Cote d'Ivoire (TM Business), Nigeria (Jiji, converted from NGN) and Senegal (SPIA); medium-low confidence for Cameroon use, but per-gram values are consistent (hybrid tomato ~875-1,900 XAF/g; OP tomato ~200-220 XAF/g; hybrid cucumber ~860 XAF/g). Douala classified prices (Afribobo) are real Cameroon listings but some posting dates are 2020-2022 or not visible, and several prices come only from listing titles. Drip kit prices are a Benin installer's 2020 list. Pump field fuel data come from Sahel extension sheets (deep wells, sandy soils), so treat them as upper bounds for Foumbot."
+}

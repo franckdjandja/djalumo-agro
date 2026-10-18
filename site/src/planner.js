@@ -3,7 +3,9 @@ const tl = (x) => (x && typeof x === 'object' && !Array.isArray(x)) ? (x[LANG] |
 const PL_CUR = ['USD', 'XAF', 'EUR', 'RWF', 'KES', 'NGN'];
 const PL_WATER = ['rainfed', 'manual', 'existing', 'pump', 'drip'];
 const nextMonthStart = () => { const d = new Date(); return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + 1, 1)).toISOString().slice(0, 10); };
-const PLAN = { capital: 1000, currency: 'USD', mode: 'budget', area: 0.25, crop: 'tomato', water: 'pump', start: nextMonthStart(), land: 'rent', market: 'local', familyLabour: 0, ownTools: false, tab: 'return' };
+const PLAN = { capital: 5000, currency: 'USD', mode: 'budget', area: 0.25, crop: 'tomato', water: 'pump', start: nextMonthStart(), land: 'rent', market: 'local', familyLabour: 0, ownTools: false, tab: 'return', prices: {} };
+const plPrice = () => PLAN.prices[PLAN.crop] || null;
+const priceHint = (k) => { const c = KB.crops[k]; return tl(c.price.note) + (c.price.observed ? ' ' + tl(c.price.observed) : '') + (c.price.reference_xaf_kg ? ' ' + L().planner.priceOptional : ''); };
 
 const fmtXaf = (v) => money(Math.round(v), 'XAF');
 const fmtCur = (xaf) => { const c = PLAN.currency; if (c === 'XAF') return fmtXaf(xaf); return money(xaf / KB.fx.XAF * KB.fx[c], c); };
@@ -17,7 +19,8 @@ const LV = () => L().planner.levels;
 function plannerFormHTML(compact) {
   const P = L().planner, S = PLAN;
   const cur = PL_CUR.map(c => '<option' + (S.currency === c ? ' selected' : '') + '>' + c + '</option>').join('');
-  const crops = Object.keys(KB.crops).map(k => '<button type="button" data-pcrop="' + k + '" aria-pressed="' + (S.crop === k) + '">' + esc(tl(KB.crops[k].name)) + '<span class="mono" style="display:block;font-size:10px;color:var(--fg-3);letter-spacing:.08em;margin-top:2px">' + esc(KB.crops[k].release.toUpperCase()) + '</span></button>').join('');
+  const crops = Object.keys(KB.crops).map(k => '<button type="button" data-pcrop="' + k + '" aria-pressed="' + (S.crop === k) + '">' + esc(tl(KB.crops[k].name)) + '<span class="mono" style="display:block;font-size:10px;color:var(--fg-3);letter-spacing:.06em;margin-top:2px">' + esc(tl(KB.crops[k].badge).toUpperCase()) + '</span></button>').join('');
+  const ref = KB.crops[S.crop].price.reference_xaf_kg;
   const water = PL_WATER.map(w => '<label class="wopt"><input type="radio" name="pwater" value="' + w + '"' + (S.water === w ? ' checked' : '') + '><span><b>' + esc(P.water[w][0]) + '</b><small>' + esc(P.water[w][1]) + '</small></span></label>').join('');
   return '<form class="sim-in planner-in" data-planner novalidate onsubmit="return false">' +
     '<div class="blk-t"><h4>' + esc(P.inputsT) + '</h4><span class="badge plan">' + esc(P.badge) + '</span></div>' +
@@ -26,12 +29,12 @@ function plannerFormHTML(compact) {
     '<div class="f"><span class="lbl" id="pl-mode-l">' + esc(P.approach) + '</span><div class="seg" role="group" aria-labelledby="pl-mode-l"><button type="button" data-pmode="budget" aria-pressed="' + (S.mode === 'budget') + '">' + esc(P.budgetFirst) + '</button><button type="button" data-pmode="crop" aria-pressed="' + (S.mode === 'crop') + '">' + esc(P.areaFirst) + '</button></div></div>' +
     '<div class="f" data-parea' + (S.mode === 'crop' ? '' : ' hidden') + '><label for="pl-area">' + esc(P.area) + '</label><input class="inp tnum" id="pl-area" type="number" min="0.001" step="0.01" inputmode="decimal" value="' + S.area + '"></div>' +
     '<div class="f"><span class="lbl" id="pl-crop-l">' + esc(P.crop) + '</span><div class="crops" role="group" aria-labelledby="pl-crop-l">' + crops + '</div></div>' +
+    '<div class="f"><label for="pl-price">' + esc(P.price) + '</label><input class="inp tnum" id="pl-price" inputmode="decimal" autocomplete="off" placeholder="' + esc(ref ? nf(ref) : P.pricePh) + '" value="' + esc(plPrice() ? nf(plPrice()) : '') + '"><span class="hint" data-phint>' + esc(priceHint(S.crop)) + '</span></div>' +
     '<fieldset class="f" style="border:0;padding:0;margin:0"><legend class="lbl" style="font-size:13px;color:var(--fg-2);font-weight:500;margin-bottom:7px">' + esc(P.waterT) + '</legend><div class="wopts">' + water + '</div></fieldset>' +
     '<div class="f"><label for="pl-start">' + esc(P.start) + '</label><input class="inp" id="pl-start" type="date" value="' + S.start + '"><span class="hint">' + esc(P.startHint) + '</span></div>' +
     (compact ? '' :
     '<details class="adv"' + (S.advOpen ? ' open' : '') + '><summary>' + esc(P.advanced) + '</summary><div class="stack" style="--s:14px;margin-top:14px">' +
     '<div class="f"><label for="pl-land">' + esc(P.land) + '</label><select class="inp" id="pl-land"><option value="rent"' + (S.land === 'rent' ? ' selected' : '') + '>' + esc(P.landRent) + '</option><option value="own"' + (S.land === 'own' ? ' selected' : '') + '>' + esc(P.landOwn) + '</option></select></div>' +
-    '<div class="f"><label for="pl-market">' + esc(P.market) + '</label><select class="inp" id="pl-market"><option value="local"' + (S.market === 'local' ? ' selected' : '') + '>' + esc(P.marketLocal) + '</option><option value="city"' + (S.market === 'city' ? ' selected' : '') + '>' + esc(P.marketCity) + '</option></select></div>' +
     '<div class="f"><label for="pl-fam">' + esc(P.family) + '</label><select class="inp" id="pl-fam">' + [0, 0.25, 0.5, 0.75].map(v => '<option value="' + v + '"' + (S.familyLabour === v ? ' selected' : '') + '>' + (v * 100) + '%</option>').join('') + '</select><span class="hint">' + esc(P.familyHint) + '</span></div>' +
     '<label class="chk"><input type="checkbox" id="pl-tools"' + (S.ownTools ? ' checked' : '') + '> ' + esc(P.ownTools) + '</label></div></details>') +
     '</form>';
@@ -39,16 +42,26 @@ function plannerFormHTML(compact) {
 
 function plannerOutHTML(r, compact) {
   const P = L().planner, crop = KB.crops[PLAN.crop];
-  const state = r.state !== 'ok' ? '<p class="notice" style="border-left-color:var(--warn)">' + esc(P.states[r.state] ? P.states[r.state](fmtCur(r.minXaf), plArea(r.water.maxAreaHa || 0)) : '') + '</p>' : '';
-  if (r.state === 'below_min' || r.state === 'upfront_exceeds') return state + (r.state === 'upfront_exceeds' ? '<p class="small muted">' + esc(P.upfrontHint) + '</p>' : '');
+  const priced = !!r.priceSource;
+  const be = r.breakEven.priceXafKg;
+  const msg = (k) => P.states[k] ? P.states[k](fmtCur(r.minXaf), plArea(r.water.maxAreaHa || 0), be ? nf(be, 0) : '·') : '';
+  let state = r.state !== 'ok' && r.state !== 'needs_price' ? '<p class="notice" style="border-left-color:var(--warn)">' + esc(msg(r.state)) + '</p>' : '';
+  if (r.state === 'manual_limit' && PLAN.mode === 'budget' && r.capitalXaf > r.budget.total) state += '<p class="small muted">' + esc(P.unusedCapital(fmtCur(r.capitalXaf - r.budget.total).replace(/<[^>]+>/g, ''))) + '</p>';
+  if (!priced) state += '<p class="notice" style="border-left-color:var(--info, #8FDDF5)">' + esc(msg('needs_price')) + '</p>';
+  if (r.state === 'below_min' || r.state === 'upfront_exceeds') {
+    if (r.state === 'below_min') return state;
+    const up = r.budget.lines.filter(l => l.upfront);
+    return state + '<div class="tbl-wrap" style="margin-top:12px"><table class="tbl ptbl"><thead><tr><th>' + esc(P.th.item) + '</th><th>' + esc(P.th.cost) + '</th></tr></thead><tbody>' + up.map(l => '<tr><td>' + esc(tl(l.label)) + '</td><td class="tnum">' + fmtCur(l.total) + '</td></tr>').join('') + '</tbody></table></div><p class="small muted" style="margin-top:10px">' + esc(P.upfrontHint) + '</p>';
+  }
   const sc = r.scenarios, area = r.areaHa;
   const kpis = '<div class="kpis kpis4">' +
     '<div><div class="k">' + esc(P.kArea) + '</div><div class="v">' + plArea(area) + '</div><div class="s">' + esc(P.plants(nf(r.plants))) + '</div></div>' +
     '<div><div class="k">' + esc(PLAN.mode === 'crop' ? P.kRequired : P.kBudget) + '</div><div class="v vsm">' + fmtCur(PLAN.mode === 'crop' ? r.requiredXaf : r.budget.total) + '</div><div class="s">' + esc(P.inclReserve) + '</div></div>' +
-    '<div><div class="k">' + esc(P.kMargin) + '</div><div class="v vsm" style="color:' + (sc.average.margin >= 0 ? 'var(--green)' : 'var(--crit)') + '">' + fmtCur(sc.average.margin) + '</div><div class="s">' + esc(P.roiAvg(pct(sc.average.roi))) + '</div></div>' +
+    (priced ? '<div><div class="k">' + esc(P.kMargin) + '</div><div class="v vsm" style="color:' + (sc.average.margin >= 0 ? 'var(--green)' : 'var(--crit)') + '">' + fmtCur(sc.average.margin) + '</div><div class="s">' + esc(P.roiAvg(pct(sc.average.roi))) + '</div></div>'
+      : '<div><div class="k">' + esc(P.kBreakEven) + '</div><div class="v vsm">' + (be ? nf(be, 0) + '<small> FCFA/kg</small>' : '·') + '</div><div class="s">' + esc(P.atAvgYield) + '</div></div>') +
     '<div><div class="k">' + esc(P.kSeason) + '</div><div class="v vsm">' + Math.round(r.calendar.totalDays / 7) + '<small>' + esc(L().sim.weeks) + '</small></div><div class="s">' + esc(fmtDateS(r.calendar.start) + ' → ' + fmtDateS(r.calendar.lastHarvest)) + '</div></div></div>';
   if (compact) {
-    return state + kpis + scenarioCards(r, true) + '<p class="small muted" style="margin-top:12px">' + esc(P.compactNote) + '</p><div><a class="btn btn-primary" href="#planner" data-cta="home_planner">' + esc(P.openFull) + ARROW + '</a></div>';
+    return state + kpis + (priced ? scenarioCards(r, true) : '') + unpricedNote(r) + '<p class="small muted" style="margin-top:12px">' + esc(P.compactNote) + '</p><div><a class="btn btn-primary" href="#planner" data-cta="home_planner">' + esc(P.openFull) + ARROW + '</a></div>';
   }
   const tabs = ['return', 'budget', 'itinerary', 'shopping', 'water', 'sources'];
   const tabBar = '<div class="tabs" role="tablist" aria-label="' + esc(P.title) + '">' + tabs.map(t => '<button type="button" role="tab" id="pt-' + t + '" aria-selected="' + (PLAN.tab === t) + '" aria-controls="pt-panel" tabindex="' + (PLAN.tab === t ? 0 : -1) + '" data-ptab="' + t + '">' + esc(P.tabs[t]) + '</button>').join('') + '</div>';
@@ -67,8 +80,18 @@ function scenarioCards(r, compact) {
   }).join('') + '</div>';
 }
 
+function unpricedNote(r) {
+  if (!r.unpriced || !r.unpriced.length) return '';
+  const names = r.unpriced.map(k => tl((KB.items[k] || KB.services[k] || {}).label) || k);
+  return '<p class="small notice" style="margin-top:12px">' + esc(L().planner.unpricedNote(names.join(', '))) + '</p>';
+}
+
 function tabReturn(r) {
   const P = L().planner, sc = r.scenarios;
+  if (!r.priceSource) {
+    const be = r.breakEven;
+    return '<div class="card"><div class="blk-t"><h4>' + esc(P.breakEvenT) + '</h4></div><dl class="kv2"><dt>' + esc(P.bePrice) + '</dt><dd>' + (be.priceXafKg ? nf(be.priceXafKg, 0) + ' FCFA/kg' : '·') + '</dd><dt>' + esc(P.yieldL) + '</dt><dd>' + nf(sc.average.yieldTHa, 1) + ' t/ha</dd></dl><p class="small faint" style="margin-top:10px">' + esc(P.enterPrice) + '</p></div>';
+  }
   const max = Math.max(...Object.values(sc).map(s => Math.abs(s.margin)), 1);
   const W = 640, H = 210, X0 = 150, mid = X0 + (W - X0 - 20) / 2, half = (W - X0 - 20) / 2;
   let svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(P.chartMargins) + '"><line x1="' + mid + '" x2="' + mid + '" y1="6" y2="' + (H - 18) + '" stroke="#26332E"/>';
@@ -96,9 +119,9 @@ function tabBudget(r) {
   const bar = '<div class="split" role="img" aria-label="' + esc(P.tabs.budget) + '">' + totals.map(([k, v], i) => '<span style="width:' + (v / tot * 100).toFixed(2) + '%;background:' + colors[i % colors.length] + '" title="' + esc(P.cats[k] || k) + '"></span>').join('') + '</div>' +
     '<div class="split-legend">' + totals.map(([k, v], i) => '<div><span><i style="background:' + colors[i % colors.length] + '"></i>' + esc(P.cats[k] || k) + '</span><b>' + fmtCur(v) + ' <em>' + nf(v / tot * 100, 0) + '%</em></b></div>').join('') + '</div>';
   const rows = keys.map(k => '<tr class="grp"><td colspan="4">' + esc(P.cats[k] || k) + '</td><td class="tnum">' + fmtCur(groups[k].reduce((a, l) => a + l.total, 0)) + '</td></tr>' +
-    groups[k].map(l => '<tr><td>' + esc(tl(l.label)) + (l.upfront && l.lifeSeasons > 1 ? ' <span class="faint small">· ' + esc(P.lifeSeasons(l.lifeSeasons)) + '</span>' : '') + '</td><td class="tnum">' + fmtQty(l.qty, l.unit) + '</td><td class="tnum">' + nf(l.price, 0) + '</td><td class="small faint">' + srcLinks(l.src) + '</td><td class="tnum">' + fmtCur(l.total) + '</td></tr>').join('')).join('') +
+    groups[k].map(l => '<tr><td>' + esc(tl(l.label)) + (l.upfront && l.lifeSeasons > 1 ? ' <span class="faint small">· ' + esc(P.lifeSeasons(l.lifeSeasons)) + '</span>' : '') + '</td><td class="tnum">' + fmtQty(l.qty, l.unit) + '</td><td class="tnum">' + (l.unpriced ? '<span class="badge demo">' + esc(P.toQuote) + '</span>' : nf(l.price, l.price < 10 ? 1 : 0)) + '</td><td class="small faint">' + srcLinks(l.src) + '</td><td class="tnum">' + (l.unpriced ? '·' : fmtCur(l.total)) + '</td></tr>').join('')).join('') +
     '<tr class="grp"><td colspan="4">' + esc(P.cats.reserve) + '</td><td class="tnum">' + fmtCur(B.reserve) + '</td></tr><tr class="tot"><td colspan="4">' + esc(P.totalBudget) + '</td><td class="tnum">' + fmtCur(B.total) + '</td></tr>';
-  return '<div class="card" style="padding:18px">' + bar + '</div><div class="tbl-wrap" style="margin-top:12px"><table class="tbl ptbl"><thead><tr><th>' + esc(P.th.line) + '</th><th>' + esc(P.th.qty) + '</th><th>' + esc(P.th.unitPrice) + '</th><th>' + esc(P.th.src) + '</th><th>' + esc(P.th.total) + '</th></tr></thead><tbody>' + rows + '</tbody></table></div><p class="small faint" style="margin-top:10px">' + esc(P.budgetNote) + '</p>';
+  return '<div class="card" style="padding:18px">' + bar + '</div>' + unpricedNote(r) + '<div class="tbl-wrap" style="margin-top:12px"><table class="tbl ptbl"><thead><tr><th>' + esc(P.th.line) + '</th><th>' + esc(P.th.qty) + '</th><th>' + esc(P.th.unitPrice) + '</th><th>' + esc(P.th.src) + '</th><th>' + esc(P.th.total) + '</th></tr></thead><tbody>' + rows + '</tbody></table></div><p class="small faint" style="margin-top:10px">' + esc(P.budgetNote) + '</p>';
 }
 
 function tabItinerary(r) {
@@ -111,8 +134,8 @@ function tabItinerary(r) {
 
 function tabShopping(r) {
   const P = L().planner;
-  const rows = r.shopping.sort((a, b) => a.category.localeCompare(b.category)).map(s => '<tr><td>' + esc(tl(s.label)) + '</td><td class="small faint">' + esc(P.cats[s.category] || s.category) + '</td><td class="tnum">' + fmtQty(s.qty, s.unit) + '</td><td class="tnum">' + (s.packs ? s.packs + ' × ' + esc(tl(s.packLabel)) : '·') + '</td><td class="tnum">' + fmtCur(s.packCost || s.cost) + '</td></tr>').join('');
-  const up = r.budget.lines.filter(l => l.upfront).map(l => '<tr><td>' + esc(tl(l.label)) + '</td><td class="small faint">' + esc(P.cats.equipment) + '</td><td class="tnum">' + fmtQty(l.qty, l.unit) + '</td><td class="tnum">·</td><td class="tnum">' + fmtCur(l.total) + '</td></tr>').join('');
+  const rows = r.shopping.sort((a, b) => a.category.localeCompare(b.category)).map(s => '<tr><td>' + esc(tl(s.label)) + '</td><td class="small faint">' + esc(P.cats[s.category] || s.category) + '</td><td class="tnum">' + fmtQty(s.qty, s.unit) + '</td><td class="tnum">' + (s.packs ? s.packs + ' × ' + esc(tl(s.packLabel)) : '·') + '</td><td class="tnum">' + (s.unpriced ? '<span class="badge demo">' + esc(P.toQuote) + '</span>' : fmtCur(s.packCost || s.cost)) + '</td></tr>').join('');
+  const up = r.budget.lines.filter(l => l.upfront).map(l => '<tr><td>' + esc(tl(l.label)) + '</td><td class="small faint">' + esc(P.cats.equipment) + '</td><td class="tnum">' + fmtQty(l.qty, l.unit) + '</td><td class="tnum">·</td><td class="tnum">' + (l.unpriced ? '<span class="badge demo">' + esc(P.toQuote) + '</span>' : fmtCur(l.total)) + '</td></tr>').join('');
   return '<div class="tbl-wrap"><table class="tbl ptbl"><thead><tr><th>' + esc(P.th.item) + '</th><th>' + esc(P.th.cat) + '</th><th>' + esc(P.th.need) + '</th><th>' + esc(P.th.packs) + '</th><th>' + esc(P.th.cost) + '</th></tr></thead><tbody>' + rows + up + '</tbody></table></div><p class="small faint" style="margin-top:10px">' + esc(P.shopNote) + '</p>';
 }
 
@@ -132,7 +155,7 @@ function tabWater(r) {
   const risks = '<div class="rks">' +
     item('water', rk.water, P.riskText.water(nf(r.water.coverage * 100, 0), nf(wb.deficit, 0), r.input.water)) +
     item('heat', rk.heat, P.riskText.heat(months(rk.flowerMonths), nf(rk.tmaxFlower, 0), KB.crops[PLAN.crop].heat_c)) +
-    item('disease', rk.disease, P.riskText.disease(rk.wetDays, tl(KB.crops[PLAN.crop].disease_note))) +
+    item('disease', rk.disease, P.riskText.disease(nf(rk.wetRain, 0), tl(KB.crops[PLAN.crop].disease_note))) +
     item('market', rk.market, P.riskText.market(months(rk.harvestMonths), nf(rk.priceIndex * 100, 0))) +
     '<div class="rk"><div class="rk-h"><span>' + esc(P.riskNames.context) + '</span><b>' + esc(P.check) + '</b></div><p>' + esc(P.riskText.context) + '</p></div></div>';
   const win = '<div class="wins" role="group" aria-label="' + esc(P.windowsT) + '">' + r.windows.map(w => '<button type="button" data-pwin="' + w.month + '" class="win lv' + Math.min(2, Math.floor(w.risk.score / 2)) + (w.month === r.bestMonth ? ' best' : '') + (new Date(PLAN.start + 'T00:00:00Z').getUTCMonth() === w.month ? ' cur' : '') + '" title="' + esc(monthName(w.month) + ' · ' + P.riskScore + ' ' + w.risk.score + '/8') + '"><span>' + esc(monthName(w.month, 'short')) + '</span><small>' + w.risk.score + '</small></button>').join('') + '</div><p class="small muted" style="margin-top:8px">' + esc(P.bestLine(monthName(r.bestMonth))) + '</p>';
@@ -147,7 +170,7 @@ function srcLinks(ids) {
 }
 function tabSources(r) {
   const P = L().planner, crop = KB.crops[PLAN.crop];
-  const conf = (KB.confidence || []).map(c => '<tr><td>' + esc(tl(c.block)) + '</td><td><span class="badge ' + (c.level === 'medium' ? 'plan' : c.level === 'high' ? 'real' : 'demo') + '">' + esc(P.conf[c.level]) + '</span></td><td class="small">' + esc(tl(c.note)) + '</td></tr>').join('');
+  const conf = (crop.confidence || KB.confidence || []).map(c => '<tr><td>' + esc(tl(c.block)) + '</td><td><span class="badge ' + (c.level === 'medium' ? 'plan' : c.level === 'high' ? 'real' : 'demo') + '">' + esc(P.conf[c.level]) + '</span></td><td class="small">' + esc(tl(c.note)) + '</td></tr>').join('');
   const used = new Set();
   r.budget.lines.forEach(l => (l.src || []).forEach(s => used.add(s)));
   r.itinerary.forEach(s => (s.src || []).forEach(x => used.add(x)));
@@ -162,7 +185,7 @@ function plannerRender(root, compact) {
   const out = $('[data-pout]', root);
   if (!out) return;
   let r;
-  try { r = AFEngine.plan(KB, Object.assign({}, PLAN, { capital: PLAN.capital })); }
+  try { r = AFEngine.plan(KB, Object.assign({}, PLAN, { capital: PLAN.capital, priceXafKg: plPrice() })); }
   catch (e) { out.innerHTML = '<p class="notice">' + esc(L().planner.engineError) + '</p>'; return; }
   out.innerHTML = plannerOutHTML(r, compact);
   $$('[data-ptips]', out).forEach(b => bindTips(b));
@@ -184,14 +207,21 @@ function plannerMount(root, compact) {
     else if (id === 'pl-market') PLAN.market = e.target.value;
     else if (id === 'pl-fam') PLAN.familyLabour = parseFloat(e.target.value) || 0;
     else if (id === 'pl-tools') PLAN.ownTools = e.target.checked;
+    else if (id === 'pl-price') { const v = parseAmt(e.target.value); PLAN.prices[PLAN.crop] = v > 0 ? v : null; }
     else if (e.target.name === 'pwater') PLAN.water = e.target.value;
     changed();
   });
-  form.addEventListener('change', e => { if (e.target.id === 'pl-cap') e.target.value = nf(PLAN.capital); });
+  form.addEventListener('change', e => { if (e.target.id === 'pl-cap') e.target.value = nf(PLAN.capital); if (e.target.id === 'pl-price') e.target.value = plPrice() ? nf(plPrice()) : ''; });
   form.addEventListener('click', e => {
     const m = e.target.closest('[data-pmode]'), c = e.target.closest('[data-pcrop]');
     if (m) { PLAN.mode = m.dataset.pmode; $$('[data-pmode]', form).forEach(b => b.setAttribute('aria-pressed', String(b === m))); const a = $('[data-parea]', form); if (a) a.hidden = PLAN.mode !== 'crop'; changed(); }
-    if (c) { PLAN.crop = c.dataset.pcrop; $$('[data-pcrop]', form).forEach(b => b.setAttribute('aria-pressed', String(b === c))); changed(); }
+    if (c) {
+      PLAN.crop = c.dataset.pcrop; $$('[data-pcrop]', form).forEach(b => b.setAttribute('aria-pressed', String(b === c)));
+      const pi = $('#pl-price', form), ph = $('[data-phint]', form), ref = KB.crops[PLAN.crop].price.reference_xaf_kg;
+      if (pi) { pi.value = plPrice() ? nf(plPrice()) : ''; pi.placeholder = ref ? nf(ref) : L().planner.pricePh; }
+      if (ph) ph.textContent = priceHint(PLAN.crop);
+      changed();
+    }
   });
   const adv = $('details.adv', form); if (adv) adv.addEventListener('toggle', () => { PLAN.advOpen = adv.open; });
   const out = $('[data-pout]', root);

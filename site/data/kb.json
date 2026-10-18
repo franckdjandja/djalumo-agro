@@ -1,0 +1,4469 @@
+{
+ "version": "2.0.0",
+ "built": "2026-10-18",
+ "fx": {
+  "USD": 1,
+  "XAF": 582.92,
+  "EUR": 0.8887,
+  "RWF": 1475.9,
+  "KES": 129.85,
+  "NGN": 1332.47
+ },
+ "fx_src": [
+  "C38",
+  "C43",
+  "C45",
+  "C46"
+ ],
+ "limits": {
+  "min_capital_usd": 100,
+  "reserve_rate": 0.1,
+  "wet_season_rain_share": 0.5
+ },
+ "climate": {
+  "site": {
+   "en": "Foumbot, Noun, West Cameroon",
+   "fr": "Foumbot, Noun, Ouest Cameroun"
+  },
+  "lat": 5.5,
+  "months": [
+   {
+    "tmax": 31.0,
+    "tmin": 17.5,
+    "rain": 3
+   },
+   {
+    "tmax": 32.2,
+    "tmin": 18.7,
+    "rain": 10
+   },
+   {
+    "tmax": 31.1,
+    "tmin": 19.7,
+    "rain": 59
+   },
+   {
+    "tmax": 28.3,
+    "tmin": 19.5,
+    "rain": 159
+   },
+   {
+    "tmax": 26.6,
+    "tmin": 18.8,
+    "rain": 188
+   },
+   {
+    "tmax": 25.5,
+    "tmin": 18.1,
+    "rain": 196
+   },
+   {
+    "tmax": 24.8,
+    "tmin": 17.7,
+    "rain": 260
+   },
+   {
+    "tmax": 24.8,
+    "tmin": 17.9,
+    "rain": 284
+   },
+   {
+    "tmax": 24.9,
+    "tmin": 17.6,
+    "rain": 244
+   },
+   {
+    "tmax": 25.1,
+    "tmin": 17.6,
+    "rain": 211
+   },
+   {
+    "tmax": 26.6,
+    "tmin": 17.5,
+    "rain": 61
+   },
+   {
+    "tmax": 29.2,
+    "tmin": 17.0,
+    "rain": 4
+   }
+  ],
+  "src": [
+   "T21"
+  ],
+  "basis": "Modelled climatology 1991 to 2021, annual rain about 1,680 mm (T21)."
+ },
+ "thresholds": {
+  "disease_rain_mm_high": 200,
+  "disease_rain_mm_medium": 100
+ },
+ "market": {
+  "city_extra_loss_pct": 5
+ },
+ "scenario": {
+  "failure_yield_share": 0.1,
+  "price_factor": {
+   "good": 1.2,
+   "average": 1,
+   "poor": 0.8,
+   "failure": 0.8
+  },
+  "basis": "Price factors: median half range of 12 dated crate price ranges within one market and one period is 0.20 (T22 to T36, derived)."
+ },
+ "scenario_weights": {
+  "base": {
+   "good": 0.2,
+   "average": 0.45,
+   "poor": 0.25,
+   "failure": 0.1
+  },
+  "shift_per_risk_point": 0.03
+ },
+ "items": {
+  "seed_tomato": {
+   "label": {
+    "en": "Tomato seed (MINADER reference price)",
+    "fr": "Semence de tomate (prix de référence MINADER)"
+   },
+   "price": 200.0,
+   "category": "seed",
+   "unit": "g",
+   "src": [
+    "T1"
+   ],
+   "pack": {
+    "size": 100,
+    "label": {
+     "en": "100 g bag",
+     "fr": "sachet de 100 g"
+    }
+   },
+   "basis": "20,000 XAF per 100 g bag (C3). Variety not stated; hybrid F1 seed usually costs more per gram."
+  },
+  "seed_greenbean": {
+   "label": {
+    "en": "Green bean seed, dwarf type (Abidjan listing price)",
+    "fr": "Semence d’haricot vert nain (prix d’annonce à Abidjan)"
+   },
+   "price": 22500,
+   "category": "seed",
+   "unit": "kg",
+   "src": [
+    "C64"
+   ],
+   "pack": {
+    "size": 1,
+    "label": {
+     "en": "1 kg pack",
+     "fr": "paquet de 1 kg"
+    }
+   },
+   "basis": "No Cameroon price found. Cora, 22,500 FCFA per kg, Abidjan listing 2026 (C64)."
+  },
+  "seed_pepper": {
+   "label": {
+    "en": "Sweet pepper seed, open pollinated (Nigeria listing price)",
+    "fr": "Semence de poivron, variété fixée (prix d’annonce au Nigeria)"
+   },
+   "price": 32.8,
+   "category": "seed",
+   "unit": "g",
+   "src": [
+    "C60",
+    "C46",
+    "C38"
+   ],
+   "pack": {
+    "size": 100,
+    "label": {
+     "en": "100 g pack",
+     "fr": "sachet de 100 g"
+    }
+   },
+   "basis": "No Cameroon price found. California Wonder, NGN 7,500 per 100 g (C60), converted at the October 2026 rates (C46, C38). F1 hybrids cost far more (about 23 FCFA per seed)."
+  },
+  "seed_cucumber": {
+   "label": {
+    "en": "Cucumber seed, open pollinated (Abidjan listing price)",
+    "fr": "Semence de concombre, variété fixée (prix d’annonce à Abidjan)"
+   },
+   "price": 310000,
+   "category": "seed",
+   "unit": "kg",
+   "src": [
+    "C63"
+   ],
+   "pack": {
+    "size": 0.05,
+    "label": {
+     "en": "50 g pack",
+     "fr": "sachet de 50 g"
+    }
+   },
+   "basis": "No Cameroon price found. Marketer, 15,500 FCFA per 50 g, Abidjan listing 2026 (C63). A bulk Nairobi listing is cheaper (KES 1,000 per 100 g, CU46)."
+  },
+  "seed_zucchini": {
+   "label": {
+    "en": "Zucchini seed (Kenya listing price)",
+    "fr": "Semence de courgette (prix d’annonce au Kenya)"
+   },
+   "price": 40403,
+   "category": "seed",
+   "unit": "kg",
+   "src": [
+    "Z24",
+    "C38",
+    "C43"
+   ],
+   "pack": {
+    "size": 0.1,
+    "label": {
+     "en": "100 g pack",
+     "fr": "sachet de 100 g"
+    }
+   },
+   "basis": "No Cameroon price found. KES 900 per 100 g in Nairobi (Z24), converted at the October 2026 rates (C38, C43)."
+  },
+  "nursery_shade": {
+   "label": {
+    "en": "Nursery shade structure",
+    "fr": "Ombrière de pépinière"
+   },
+   "price": 20000,
+   "category": "nursery",
+   "unit": "unit",
+   "src": [
+    "T1"
+   ]
+  },
+  "npk_20_10_10": {
+   "label": {
+    "en": "NPK 20-10-10",
+    "fr": "NPK 20-10-10"
+   },
+   "price": 520.0,
+   "category": "fertilizer",
+   "unit": "kg",
+   "src": [
+    "T1"
+   ],
+   "pack": {
+    "size": 50,
+    "label": {
+     "en": "50 kg bag",
+     "fr": "sac de 50 kg"
+    }
+   },
+   "basis": "26,000 XAF per 50 kg bag (C3, 2024). West region retail Q4 2022: 33,650 to 34,950 per bag (C1)."
+  },
+  "npk_15_15_15": {
+   "label": {
+    "en": "NPK 15-15-15 (price of NPK 20-10-10 used)",
+    "fr": "NPK 15-15-15 (prix du NPK 20-10-10 utilisé)"
+   },
+   "price": 520.0,
+   "category": "fertilizer",
+   "unit": "kg",
+   "src": [
+    "T1"
+   ],
+   "pack": {
+    "size": 50,
+    "label": {
+     "en": "50 kg bag",
+     "fr": "sac de 50 kg"
+    }
+   },
+   "basis": "No Cameroon price for this formula (C1 gap); the MINADER NPK 20-10-10 price is used as a proxy."
+  },
+  "npk_11_22_16": {
+   "label": {
+    "en": "NPK 11-22-16 (price of NPK 20-10-10 used)",
+    "fr": "NPK 11-22-16 (prix du NPK 20-10-10 utilisé)"
+   },
+   "price": 520.0,
+   "category": "fertilizer",
+   "unit": "kg",
+   "src": [
+    "T1"
+   ],
+   "pack": {
+    "size": 50,
+    "label": {
+     "en": "50 kg bag",
+     "fr": "sac de 50 kg"
+    }
+   },
+   "basis": "No Cameroon price for this formula (C1 gap); the MINADER NPK 20-10-10 price is used as a proxy."
+  },
+  "npk_15_12_24": {
+   "label": {
+    "en": "NPK 15-12-24 (price of NPK 20-10-10 used)",
+    "fr": "NPK 15-12-24 (prix du NPK 20-10-10 utilisé)"
+   },
+   "price": 520.0,
+   "category": "fertilizer",
+   "unit": "kg",
+   "src": [
+    "T1"
+   ],
+   "pack": {
+    "size": 50,
+    "label": {
+     "en": "50 kg bag",
+     "fr": "sac de 50 kg"
+    }
+   },
+   "basis": "No Cameroon price for this formula (C1 gap); the MINADER NPK 20-10-10 price is used as a proxy."
+  },
+  "dap": {
+   "label": {
+    "en": "DAP 18-46-0 (price of NPK 20-10-10 used)",
+    "fr": "DAP 18-46-0 (prix du NPK 20-10-10 utilisé)"
+   },
+   "price": 520.0,
+   "category": "fertilizer",
+   "unit": "kg",
+   "src": [
+    "T1"
+   ],
+   "pack": {
+    "size": 50,
+    "label": {
+     "en": "50 kg bag",
+     "fr": "sac de 50 kg"
+    }
+   },
+   "basis": "No Cameroon DAP price found; the MINADER NPK 20-10-10 price is used as a proxy."
+  },
+  "urea": {
+   "label": {
+    "en": "Urea 46% N",
+    "fr": "Urée 46 % N"
+   },
+   "price": 758,
+   "category": "fertilizer",
+   "unit": "kg",
+   "src": [
+    "T17",
+    "C2"
+   ],
+   "pack": {
+    "size": 50,
+    "label": {
+     "en": "50 kg bag",
+     "fr": "sac de 50 kg"
+    }
+   },
+   "basis": "Foumbot market average, Q4 2022 (C1). Latest survey covering Foumbot."
+  },
+  "can": {
+   "label": {
+    "en": "Calcium ammonium nitrate (price of ammonium sulphate used)",
+    "fr": "Ammonitrate calcique (prix du sulfate d’ammonium utilisé)"
+   },
+   "price": 553,
+   "category": "fertilizer",
+   "unit": "kg",
+   "src": [
+    "T17",
+    "C2"
+   ],
+   "pack": {
+    "size": 50,
+    "label": {
+     "en": "50 kg bag",
+     "fr": "sac de 50 kg"
+    }
+   },
+   "basis": "No CAN price found; Foumbot ammonium sulphate average, Q4 2022 (C1) used as a proxy."
+  },
+  "k2so4": {
+   "label": {
+    "en": "Potassium sulphate",
+    "fr": "Sulfate de potassium"
+   },
+   "price": 650.0,
+   "category": "fertilizer",
+   "unit": "kg",
+   "src": [
+    "T1"
+   ],
+   "pack": {
+    "size": 50,
+    "label": {
+     "en": "50 kg bag",
+     "fr": "sac de 50 kg"
+    }
+   }
+  },
+  "calcium_nitrate": {
+   "label": {
+    "en": "Calcium nitrate",
+    "fr": "Nitrate de calcium"
+   },
+   "price": 270.0,
+   "category": "fertilizer",
+   "unit": "kg",
+   "src": [
+    "T1"
+   ],
+   "pack": {
+    "size": 50,
+    "label": {
+     "en": "50 kg bag",
+     "fr": "sac de 50 kg"
+    }
+   },
+   "basis": "13,500 XAF per 50 kg bag in the MINADER budget (C3); looks low, to confirm locally."
+  },
+  "poultry_manure": {
+   "label": {
+    "en": "Poultry manure",
+    "fr": "Fiente de volaille"
+   },
+   "price": 80.0,
+   "category": "amendment",
+   "unit": "kg",
+   "src": [
+    "C84"
+   ],
+   "pack": {
+    "size": 50,
+    "label": {
+     "en": "50 kg bag",
+     "fr": "sac de 50 kg"
+    }
+   },
+   "basis": "4,000 FCFA per 50 kg bag, Yaoundé classified listing 2026 (C84)."
+  },
+  "farmyard_manure": {
+   "label": {
+    "en": "Compost or farmyard manure",
+    "fr": "Compost ou fumier"
+   },
+   "price": 3.0,
+   "category": "amendment",
+   "unit": "kg",
+   "src": [
+    "C16"
+   ],
+   "pack": {
+    "size": 1000,
+    "label": {
+     "en": "tonne",
+     "fr": "tonne"
+    }
+   },
+   "basis": "3,000 XAF per tonne for a producer supplied amendment, 2013, another region (C16); low confidence, transport not included."
+  },
+  "glyphosate": {
+   "label": {
+    "en": "Glyphosate herbicide",
+    "fr": "Herbicide glyphosate"
+   },
+   "price": 6500,
+   "category": "herbicide",
+   "unit": "l",
+   "src": [
+    "T1"
+   ],
+   "pack": {
+    "size": 1,
+    "label": {
+     "en": "1 L can",
+     "fr": "bidon de 1 L"
+    }
+   }
+  },
+  "mancozeb": {
+   "label": {
+    "en": "Mancozeb 80 WP fungicide",
+    "fr": "Fongicide mancozèbe 80 WP"
+   },
+   "price": 2500,
+   "category": "fungicide",
+   "unit": "kg",
+   "src": [
+    "T1"
+   ],
+   "pack": {
+    "size": 1,
+    "label": {
+     "en": "1 kg bag",
+     "fr": "sachet de 1 kg"
+    }
+   }
+  },
+  "metalaxyl_mz": {
+   "label": {
+    "en": "Metalaxyl based fungicide (Ridomil type)",
+    "fr": "Fongicide à base de métalaxyl (type Ridomil)"
+   },
+   "price": 10000,
+   "category": "fungicide",
+   "unit": "kg",
+   "src": [
+    "T1"
+   ],
+   "pack": {
+    "size": 0.1,
+    "label": {
+     "en": "100 g sachet",
+     "fr": "sachet de 100 g"
+    }
+   },
+   "basis": "1,000 XAF per 100 g sachet (C3)."
+  },
+  "deltamethrin": {
+   "label": {
+    "en": "Deltamethrin insecticide (Decis type), pack",
+    "fr": "Insecticide deltaméthrine (type Decis), conditionnement"
+   },
+   "price": 16000,
+   "category": "insecticide",
+   "unit": "pack",
+   "src": [
+    "T1"
+   ],
+   "basis": "16,000 XAF per pack in the MINADER budget (C3); pack size ambiguous."
+  },
+  "insecticide_l": {
+   "label": {
+    "en": "Insecticide, liquid (West region average price)",
+    "fr": "Insecticide liquide (prix moyen Région de l’Ouest)"
+   },
+   "price": 6580,
+   "category": "insecticide",
+   "unit": "l",
+   "src": [
+    "T17",
+    "C2"
+   ],
+   "pack": {
+    "size": 1,
+    "label": {
+     "en": "1 L can",
+     "fr": "bidon de 1 L"
+    }
+   },
+   "basis": "Midpoint of West region town averages 5,492 to 7,667 XAF per litre, Q4 2022 (C1, derived)."
+  },
+  "fungicide_l": {
+   "label": {
+    "en": "Fungicide, liquid (West region average price)",
+    "fr": "Fongicide liquide (prix moyen Région de l’Ouest)"
+   },
+   "price": 7002,
+   "category": "fungicide",
+   "unit": "l",
+   "src": [
+    "T17",
+    "C2"
+   ],
+   "pack": {
+    "size": 1,
+    "label": {
+     "en": "1 L can",
+     "fr": "bidon de 1 L"
+    }
+   },
+   "basis": "Midpoint of West region town averages 6,671 to 7,333 XAF per litre, Q4 2022 (C1, derived)."
+  },
+  "stake": {
+   "label": {
+    "en": "Stakes (bamboo or wood)",
+    "fr": "Tuteurs (bambou ou bois)"
+   },
+   "price": null,
+   "category": "stakes",
+   "unit": "stake",
+   "src": [
+    "T1"
+   ],
+   "basis": "Quantity norm 25,000 per ha (T1); no price found, ask for a local quote."
+  },
+  "twine": {
+   "label": {
+    "en": "Twine",
+    "fr": "Ficelle"
+   },
+   "price": 3000,
+   "category": "stakes",
+   "unit": "roll",
+   "src": [
+    "T1"
+   ]
+  },
+  "trellis_set": {
+   "label": {
+    "en": "Trellis posts, wire and twine (per ha set)",
+    "fr": "Poteaux, fil et ficelle de palissage (lot par ha)"
+   },
+   "price": null,
+   "category": "trellis",
+   "unit": "set",
+   "src": [
+    "CU24",
+    "CU7"
+   ],
+   "basis": "Quantities derived from row spacing (CU24, CU7); no price found."
+  },
+  "crate": {
+   "label": {
+    "en": "Harvest crate or basket",
+    "fr": "Cageot ou panier de récolte"
+   },
+   "price": 300,
+   "category": "packaging",
+   "unit": "unit",
+   "src": [
+    "T1"
+   ]
+  },
+  "fuel_petrol": {
+   "label": {
+    "en": "Petrol (super) for the pump",
+    "fr": "Essence (super) pour la motopompe"
+   },
+   "price": 840,
+   "category": "fuel",
+   "unit": "l",
+   "src": [
+    "C32",
+    "C34",
+    "C35"
+   ],
+   "basis": "840 XAF per litre since 3 Feb 2024, still in force in Oct 2026 (C32, C35)."
+  },
+  "motor_pump": {
+   "label": {
+    "en": "Petrol motor pump",
+    "fr": "Motopompe à essence"
+   },
+   "price": 200000,
+   "category": "irrigation",
+   "unit": "unit",
+   "src": [
+    "T1"
+   ],
+   "life_seasons": 10
+  },
+  "water_basins": {
+   "label": {
+    "en": "Water reserve points (basins)",
+    "fr": "Points de réserve d’eau (bassins)"
+   },
+   "price": 300000,
+   "category": "irrigation",
+   "unit": "ha",
+   "src": [
+    "T1"
+   ],
+   "life_seasons": 6
+  },
+  "watering_can": {
+   "label": {
+    "en": "Watering can",
+    "fr": "Arrosoir"
+   },
+   "price": 6000,
+   "category": "irrigation",
+   "unit": "unit",
+   "src": [
+    "T1"
+   ],
+   "life_seasons": 6
+  },
+  "drip_kit": {
+   "label": {
+    "en": "Drip irrigation kit, installed",
+    "fr": "Kit goutte à goutte, installé"
+   },
+   "price": 2375360,
+   "category": "irrigation",
+   "unit": "ha",
+   "src": [
+    "C74"
+   ],
+   "life_seasons": 6,
+   "basis": "1 ha kit 2,375,360 FCFA, Benin installer price list 2020 (C74); small kits cost up to 4.1 million per ha equivalent. Life taken as the 3 year warranty."
+  },
+  "sprayer": {
+   "label": {
+    "en": "Knapsack sprayer 16 L",
+    "fr": "Pulvérisateur à dos 16 L"
+   },
+   "price": 45000,
+   "category": "tools",
+   "unit": "unit",
+   "src": [
+    "T1"
+   ],
+   "life_seasons": 6
+  },
+  "wheelbarrow": {
+   "label": {
+    "en": "Wheelbarrow",
+    "fr": "Brouette"
+   },
+   "price": 30000,
+   "category": "tools",
+   "unit": "unit",
+   "src": [
+    "T1"
+   ],
+   "life_seasons": 4
+  },
+  "push_cart": {
+   "label": {
+    "en": "Push cart",
+    "fr": "Pousse pousse"
+   },
+   "price": 85000,
+   "category": "tools",
+   "unit": "unit",
+   "src": [
+    "T1"
+   ],
+   "life_seasons": 10
+  },
+  "small_tools": {
+   "label": {
+    "en": "Small tools set (hoes, machetes, rake, spade, bucket, tape)",
+    "fr": "Petit outillage (houes, machettes, râteau, pelle, seau, mètre)"
+   },
+   "price": 75500,
+   "category": "tools",
+   "unit": "ha",
+   "src": [
+    "T1"
+   ],
+   "life_seasons": 4,
+   "basis": "75,500 XAF of small tools per ha in the MINADER budget (T1); scaled to the area."
+  },
+  "ppe_kit": {
+   "label": {
+    "en": "Spraying protection: boots, mask and goggles",
+    "fr": "Protection pour traitements : bottes, masque et lunettes"
+   },
+   "price": 15000,
+   "category": "ppe",
+   "unit": "unit",
+   "src": [
+    "C76",
+    "C78",
+    "T4"
+   ],
+   "life_seasons": 4,
+   "basis": "Boots 6,500 FCFA (Douala listing, C76) plus mask and goggles kit 7,000 to 10,000 (C78, midpoint). Gloves and coverall not priced. In Foumbot, 100% of 100 surveyed tomato growers sprayed without protection (T4)."
+  }
+ },
+ "services": {
+  "labour_day": {
+   "label": {
+    "en": "Farm labour",
+    "fr": "Main d’œuvre agricole"
+   },
+   "price": 2500,
+   "unit": "person day",
+   "category": "labour",
+   "src": [
+    "T1"
+   ],
+   "basis": "2,500 XAF per person day, MINADER budget 2024 (C3). No Foumbot wage survey found; labour costs are rising (C18)."
+  },
+  "land_rent_season": {
+   "label": {
+    "en": "Land rent for the season",
+    "fr": "Location du terrain pour la saison"
+   },
+   "price": 50000,
+   "unit": "ha",
+   "category": "land",
+   "src": [
+    "T1"
+   ],
+   "basis": "50,000 XAF per ha (C3); no Foumbot observation found."
+  },
+  "agronomist_visit": {
+   "label": {
+    "en": "Agronomist follow up and support",
+    "fr": "Suivi et appui d’un agronome"
+   },
+   "price": 50000,
+   "unit": "ha season",
+   "category": "advice",
+   "src": [
+    "T1"
+   ],
+   "basis": "Follow up and support, 50,000 XAF per ha per cycle (C3)."
+  },
+  "harvest_labour": {
+   "label": {
+    "en": "Harvest labour (picking and carrying)",
+    "fr": "Main d’œuvre de récolte (cueillette et transport au bord du champ)"
+   }
+  },
+  "transport_local_kg": {
+   "label": {
+    "en": "Transport and handling to the local market",
+    "fr": "Transport et manutention vers le marché local"
+   },
+   "price": 3.1,
+   "unit": "kg",
+   "src": [
+    "T1",
+    "T9"
+   ],
+   "basis": "Derived: 50,000 XAF per ha cycle (C3) over 800 crates (C3) of 20 kg (T9)."
+  },
+  "transport_city_kg": {
+   "label": {
+    "en": "Transport and charges to Douala or Yaoundé",
+    "fr": "Transport et frais vers Douala ou Yaoundé"
+   },
+   "price": 20.8,
+   "unit": "kg",
+   "src": [
+    "T22",
+    "T9"
+   ],
+   "basis": "Derived: 333 to 500 XAF per crate paid by a trader (C47), crate of 20 kg (T9)."
+  },
+  "market_fee_rate": {
+   "label": {
+    "en": "Market fees",
+    "fr": "Taxes de marché"
+   },
+   "price": 0,
+   "src": [],
+   "basis": "Not found separately (C47 includes them in transport charges); not added."
+  },
+  "nursery_prep_m2": {
+   "label": {
+    "en": "Nursery soil preparation",
+    "fr": "Préparation du sol de pépinière"
+   },
+   "price": 500,
+   "unit": "m2",
+   "category": "nursery",
+   "src": [
+    "T1"
+   ]
+  },
+  "nursery_disinfection_m2": {
+   "label": {
+    "en": "Nursery soil disinfection",
+    "fr": "Désinfection du sol de pépinière"
+   },
+   "price": 1000,
+   "unit": "m2",
+   "category": "nursery",
+   "src": [
+    "T1"
+   ]
+  }
+ },
+ "water": {
+  "fuel_l_per_m3": 0.042,
+  "src_fuel": [
+   "C25",
+   "C26",
+   "C27",
+   "C28"
+  ],
+  "fuel_basis": "Derived from 2 inch pump specifications: 1.0 to 1.5 L per hour at about 36 m3 per hour (C25 to C28), upper value. Field use is higher with lift and hose friction, so this is a floor.",
+  "maintenance_label": {
+   "en": "Pump maintenance",
+   "fr": "Entretien de la motopompe"
+  },
+  "options": {
+   "rainfed": {
+    "covers": 0,
+    "efficiency": 1
+   },
+   "manual": {
+    "covers": 1,
+    "efficiency": 0.6,
+    "labour_days_per_ha": 25,
+    "labour_src": [
+     "T1"
+    ],
+    "labour_label": {
+     "en": "Watering by hand",
+     "fr": "Arrosage manuel"
+    },
+    "capex": [
+     {
+      "item": "watering_can",
+      "qty_per_ha": 8,
+      "discrete": true
+     }
+    ],
+    "max_area_ha": 0.25,
+    "src": [
+     "M7",
+     "T1"
+    ]
+   },
+   "existing": {
+    "covers": 1,
+    "efficiency": 0.6,
+    "fuel": true,
+    "labour_days_per_ha": 25,
+    "labour_src": [
+     "T1"
+    ],
+    "labour_label": {
+     "en": "Watering",
+     "fr": "Arrosage"
+    },
+    "maintenance_xaf_per_ha": 15000,
+    "maintenance_src": [
+     "T1"
+    ],
+    "capex": [],
+    "src": [
+     "M7",
+     "T1"
+    ]
+   },
+   "pump": {
+    "covers": 1,
+    "efficiency": 0.6,
+    "fuel": true,
+    "labour_days_per_ha": 25,
+    "labour_src": [
+     "T1"
+    ],
+    "labour_label": {
+     "en": "Watering",
+     "fr": "Arrosage"
+    },
+    "maintenance_xaf_per_ha": 15000,
+    "maintenance_src": [
+     "T1"
+    ],
+    "capex": [
+     {
+      "item": "motor_pump",
+      "per": "farm",
+      "ha_per_unit": 1
+     },
+     {
+      "item": "water_basins",
+      "qty_per_ha": 1
+     },
+     {
+      "item": "watering_can",
+      "qty_per_ha": 8,
+      "discrete": true
+     }
+    ],
+    "src": [
+     "M7",
+     "T1"
+    ]
+   },
+   "drip": {
+    "covers": 1,
+    "efficiency": 0.9,
+    "fuel": true,
+    "maintenance_xaf_per_ha": 15000,
+    "maintenance_src": [
+     "T1"
+    ],
+    "capex": [
+     {
+      "item": "drip_kit",
+      "qty_per_ha": 1
+     },
+     {
+      "item": "motor_pump",
+      "per": "farm",
+      "ha_per_unit": 1
+     }
+    ],
+    "src": [
+     "M7",
+     "T1"
+    ]
+   }
+  }
+ },
+ "tools_kit": [
+  {
+   "item": "sprayer",
+   "min": 1,
+   "per_ha": 2
+  },
+  {
+   "item": "ppe_kit",
+   "min": 1,
+   "per_ha": 2
+  },
+  {
+   "item": "small_tools",
+   "per_ha": 1,
+   "fractional": true,
+   "min": 0.1
+  },
+  {
+   "item": "wheelbarrow",
+   "min": 0,
+   "per_ha": 1,
+   "from_ha": 0.5
+  },
+  {
+   "item": "push_cart",
+   "min": 0,
+   "per_ha": 1,
+   "from_ha": 1
+  }
+ ],
+ "phases": {
+  "prep": {
+   "en": "Land preparation",
+   "fr": "Préparation du terrain"
+  },
+  "nursery": {
+   "en": "Nursery",
+   "fr": "Pépinière"
+  },
+  "planting": {
+   "en": "Planting and basal feeding",
+   "fr": "Plantation et fumure de fond"
+  },
+  "care": {
+   "en": "Crop care",
+   "fr": "Entretien de la culture"
+  },
+  "protection": {
+   "en": "Crop protection",
+   "fr": "Protection de la culture"
+  },
+  "harvest": {
+   "en": "Harvest and sale",
+   "fr": "Récolte et vente"
+  }
+ },
+ "units": {
+  "kg": {
+   "en": "kg",
+   "fr": "kg"
+  },
+  "g": {
+   "en": "g",
+   "fr": "g"
+  },
+  "l": {
+   "en": "L",
+   "fr": "L"
+  },
+  "unit": {
+   "en": "units",
+   "fr": "unités"
+  },
+  "person day": {
+   "en": "person days",
+   "fr": "jours de travail"
+  },
+  "ha": {
+   "en": "ha",
+   "fr": "ha"
+  },
+  "m2": {
+   "en": "m²",
+   "fr": "m²"
+  },
+  "stake": {
+   "en": "stakes",
+   "fr": "tuteurs"
+  },
+  "roll": {
+   "en": "rolls",
+   "fr": "rouleaux"
+  },
+  "pack": {
+   "en": "packs",
+   "fr": "conditionnements"
+  },
+  "set": {
+   "en": "sets",
+   "fr": "lots"
+  },
+  "season": {
+   "en": "season",
+   "fr": "saison"
+  },
+  "ha season": {
+   "en": "ha × season",
+   "fr": "ha × saison"
+  },
+  "m3": {
+   "en": "m³",
+   "fr": "m³"
+  }
+ },
+ "crops": {
+  "tomato": {
+   "name": {
+    "en": "Tomato",
+    "fr": "Tomate"
+   },
+   "release": "cm",
+   "badge": {
+    "en": "Cameroon data",
+    "fr": "Données Cameroun"
+   },
+   "plants_per_ha": 25000,
+   "ky": 1.05,
+   "heat_c": 32,
+   "loss_pct": 6.5,
+   "harvest_kg_per_person_day": 400,
+   "agronomist_visits": 1,
+   "kc": {
+    "ini": 0.6,
+    "mid": 1.15,
+    "end": 0.8,
+    "stages": [
+     0.222,
+     0.519,
+     0.815
+    ]
+   },
+   "cycle": {
+    "nursery_days": 30,
+    "to_first_harvest_days": 70,
+    "harvest_days": 60,
+    "flowering_before_harvest_days": 26
+   },
+   "yield_t_ha": {
+    "wet": {
+     "poor": 10,
+     "average": 17.5,
+     "good": 25
+    },
+    "dry": {
+     "poor": 20,
+     "average": 35.0,
+     "good": 50
+    }
+   },
+   "price": {
+    "reference_xaf_kg": 275,
+    "index": [
+     0.737,
+     0.737,
+     0.737,
+     1.0,
+     1.0,
+     1.0,
+     1.263,
+     1.263,
+     1.263,
+     1.263,
+     1.263,
+     0.737
+    ],
+    "src": [
+     "T9",
+     "T35",
+     "T22",
+     "T23",
+     "T25",
+     "T27",
+     "T28",
+     "T33"
+    ],
+    "note": {
+     "en": "Reference: 275 FCFA/kg at the farm gate (5,500 FCFA per 20 kg crate, Dschang, March to June 2024). Prices are lowest from December to March and highest from July to November.",
+     "fr": "Référence : 275 FCFA/kg bord champ (5 500 FCFA le cageot de 20 kg, Dschang, mars à juin 2024). Les prix sont au plus bas de décembre à mars et au plus haut de juillet à novembre."
+    }
+   },
+   "packaging": {
+    "item": "crate",
+    "kg_per_unit": 20,
+    "uses": 1
+   },
+   "harvest_src": [
+    "T1",
+    "T9"
+   ],
+   "disease_note": {
+    "en": "Late blight (Phytophthora infestans) is the main rainy season threat in the West highlands; unsprayed crops can lose all marketable fruit (T7, T8). Spray preventively and rotate active ingredients.",
+    "fr": "Le mildiou (Phytophthora infestans) est la principale menace de la saison des pluies sur les hauts plateaux de l’Ouest ; une culture non traitée peut perdre toute sa récolte commercialisable (T7, T8). Traiter en préventif et alterner les matières actives."
+   },
+   "steps": [
+    {
+     "id": "site",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -50,
+      -45
+     ],
+     "label": {
+      "en": "Plot choice, rotation and soil test",
+      "fr": "Choix de la parcelle, rotation et analyse de sol"
+     },
+     "detail": {
+      "en": "Avoid plots that carried tomato, pepper, eggplant or potato in the last 3 years; keep 5 years where bacterial wilt was seen. Well drained loam, pH 5 to 7. A soil test sets the final fertilizer rates.",
+      "fr": "Éviter les parcelles ayant porté tomate, poivron, aubergine ou pomme de terre depuis 3 ans ; 5 ans si le flétrissement bactérien a été observé. Sol limoneux bien drainé, pH 5 à 7. Une analyse de sol fixe les doses finales d’engrais."
+     },
+     "src": [
+      "T15",
+      "T13",
+      "T12",
+      "T3"
+     ]
+    },
+    {
+     "id": "clear",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -40,
+      -30
+     ],
+     "label": {
+      "en": "Clearing, without burning",
+      "fr": "Défrichage, sans brûlis"
+     },
+     "detail": {
+      "en": "Clear by hand, then one glyphosate pass if weeds persist. MINADER advises against burning: it destroys the organic matter the crop needs. Paraquat, common in Foumbot, is highly hazardous and should not be used.",
+      "fr": "Défricher à la main, puis un passage de glyphosate si les adventices persistent. Le MINADER déconseille le brûlis : il détruit la matière organique dont la culture a besoin. Le paraquat, courant à Foumbot, est très dangereux et ne doit pas être utilisé."
+     },
+     "src": [
+      "T1",
+      "T4"
+     ],
+     "inputs": [
+      {
+       "item": "glyphosate",
+       "qty": 4,
+       "src": [
+        "T1"
+       ]
+      }
+     ],
+     "labour": 26
+    },
+    {
+     "id": "plough",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -30,
+      -15
+     ],
+     "label": {
+      "en": "Ploughing and ridging",
+      "fr": "Labour et billonnage"
+     },
+     "detail": {
+      "en": "Plough 30 to 50 cm deep without turning the soil over, then form ridges or beds; on slopes, keep grass strips across the slope. Indeterminate varieties go in double rows 50 cm apart.",
+      "fr": "Labourer sur 30 à 50 cm sans retourner le sol, puis former billons ou planches ; en pente, garder des bandes enherbées en travers. Les variétés à croissance indéterminée se plantent en doubles rangs espacés de 50 cm."
+     },
+     "src": [
+      "T1",
+      "T10"
+     ],
+     "labour": 90
+    },
+    {
+     "id": "nursery",
+     "phase": "nursery",
+     "ref": "start",
+     "day": [
+      0,
+      30
+     ],
+     "label": {
+      "en": "Nursery",
+      "fr": "Pépinière"
+     },
+     "detail": {
+      "en": "About 60 m² of nursery per hectare. Disinfect the beds (10 L of boiling water per m² works), sow in rows 20 cm apart, keep under shade and harden the seedlings 1 to 2 weeks before transplanting. The seed price is the MINADER one; F1 hybrid seed such as Cobra 26 F1 costs about 1,300 to 1,900 FCFA per gram in neighbouring markets.",
+      "fr": "Environ 60 m² de pépinière par hectare. Désinfecter les planches (10 L d’eau bouillante par m² suffisent), semer en lignes espacées de 20 cm, garder sous ombrière et endurcir les plants 1 à 2 semaines avant le repiquage. Le prix de semence est celui du MINADER ; une semence hybride F1 comme Cobra 26 F1 coûte environ 1 300 à 1 900 FCFA le gramme dans les pays voisins."
+     },
+     "src": [
+      "T1",
+      "T13",
+      "T15",
+      "C61",
+      "C51"
+     ],
+     "inputs": [
+      {
+       "item": "seed_tomato",
+       "qty": 300,
+       "src": [
+        "T1"
+       ]
+      },
+      {
+       "item": "nursery_shade",
+       "qty": 1,
+       "src": [
+        "T1"
+       ]
+      }
+     ],
+     "services": [
+      {
+       "key": "nursery_prep_m2",
+       "qty": 60
+      },
+      {
+       "key": "nursery_disinfection_m2",
+       "qty": 60
+      }
+     ]
+    },
+    {
+     "id": "basal",
+     "phase": "planting",
+     "ref": "field",
+     "day": [
+      -14,
+      0
+     ],
+     "label": {
+      "en": "Basal fertilization",
+      "fr": "Fumure de fond"
+     },
+     "detail": {
+      "en": "Poultry manure plus mineral NPK, worked into the ridges before transplanting. MINADER recommends 20 to 30 t of organic matter per ha; a 2024 Dschang trial reached 26 t/ha of tomato with 5 t of poultry manure. The MINADER text names NPK 10-10-20 for this dressing; its budget prices NPK 20-10-10, used here.",
+      "fr": "Fiente de volaille et NPK minéral, incorporés aux billons avant le repiquage. Le MINADER recommande 20 à 30 t de matière organique par ha ; un essai de 2024 à Dschang a atteint 26 t/ha de tomate avec 5 t de fiente. Le texte du MINADER cite le NPK 10-10-20 pour cette fumure ; son budget chiffre le NPK 20-10-10, retenu ici."
+     },
+     "src": [
+      "T1",
+      "T2",
+      "T9",
+      "T14"
+     ],
+     "inputs": [
+      {
+       "item": "poultry_manure",
+       "qty": 5000,
+       "src": [
+        "T9"
+       ]
+      },
+      {
+       "item": "npk_20_10_10",
+       "qty": 400,
+       "src": [
+        "T1"
+       ]
+      }
+     ],
+     "labour": 35
+    },
+    {
+     "id": "transplant",
+     "phase": "planting",
+     "ref": "field",
+     "day": [
+      0,
+      2
+     ],
+     "label": {
+      "en": "Transplanting",
+      "fr": "Repiquage"
+     },
+     "detail": {
+      "en": "Transplant seedlings with 5 to 6 leaves at 80 × 50 cm, about 25,000 plants per ha, in the cool hours; replace missing plants in the following days.",
+      "fr": "Repiquer les plants à 5 ou 6 feuilles à 80 × 50 cm, soit environ 25 000 plants par ha, aux heures fraîches ; remplacer les manquants les jours suivants."
+     },
+     "src": [
+      "T1"
+     ],
+     "labour": 35
+    },
+    {
+     "id": "water",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      0,
+      125
+     ],
+     "label": {
+      "en": "Watering",
+      "fr": "Arrosage"
+     },
+     "detail": {
+      "en": "Water at cool hours: about 0.5 L per plant per day before fruiting and 1 L after, less at the end of the cycle. Drip saves water. The volume in your plan comes from the water balance.",
+      "fr": "Arroser aux heures fraîches : environ 0,5 L par plant et par jour avant la fructification et 1 L après, moins en fin de cycle. Le goutte à goutte économise l’eau. Le volume de votre plan vient du bilan hydrique."
+     },
+     "src": [
+      "T1",
+      "T12",
+      "T13"
+     ]
+    },
+    {
+     "id": "stake",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      10,
+      25
+     ],
+     "label": {
+      "en": "Staking and tying",
+      "fr": "Tuteurage et attachage"
+     },
+     "detail": {
+      "en": "One stake per plant: 2 m stakes for indeterminate varieties, 1.1 m for determinate ones, tied with twine in two passes.",
+      "fr": "Un tuteur par plant : 2 m pour les variétés indéterminées, 1,1 m pour les déterminées, attachés à la ficelle en deux passages."
+     },
+     "src": [
+      "T1",
+      "T14"
+     ],
+     "inputs": [
+      {
+       "item": "stake",
+       "qty": 25000,
+       "src": [
+        "T1"
+       ]
+      },
+      {
+       "item": "twine",
+       "qty": 1,
+       "src": [
+        "T1"
+       ]
+      }
+     ],
+     "labour": 30
+    },
+    {
+     "id": "top",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      15,
+      80
+     ],
+     "label": {
+      "en": "Top dressing",
+      "fr": "Fumure d’entretien"
+     },
+     "detail": {
+      "en": "NPK 20-10-10 at 15, 30, 50 and 80 days after transplanting, about 8 g per plant each time, placed around the foot and covered.",
+      "fr": "NPK 20-10-10 à 15, 30, 50 et 80 jours après le repiquage, environ 8 g par plant à chaque passage, au pied puis recouvert."
+     },
+     "src": [
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "npk_20_10_10",
+       "qty": 200,
+       "apps": 4,
+       "src": [
+        "T1"
+       ]
+      }
+     ],
+     "labour": 6
+    },
+    {
+     "id": "fruiting",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      30,
+      80
+     ],
+     "label": {
+      "en": "Potassium and calcium for fruiting",
+      "fr": "Potassium et calcium pour la fructification"
+     },
+     "detail": {
+      "en": "Potassium sulphate for fruit quality and calcium nitrate against blossom end rot, as budgeted by MINADER (split not specified). No sourced rate was found for the foliar feeds and “vitamins” sold to growers; ask the agronomist before adding them.",
+      "fr": "Sulfate de potassium pour la qualité des fruits et nitrate de calcium contre la nécrose apicale, comme dans le budget du MINADER (fractionnement non précisé). Aucune dose sourcée n’a été trouvée pour les engrais foliaires et « vitamines » vendus aux producteurs ; demander l’avis de l’agronome avant d’en ajouter."
+     },
+     "src": [
+      "T1",
+      "T3",
+      "T9"
+     ],
+     "inputs": [
+      {
+       "item": "k2so4",
+       "qty": 500,
+       "src": [
+        "T1"
+       ]
+      },
+      {
+       "item": "calcium_nitrate",
+       "qty": 250,
+       "src": [
+        "T1"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "weed",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      14,
+      42
+     ],
+     "label": {
+      "en": "Weeding and earthing up",
+      "fr": "Sarclage et buttage"
+     },
+     "detail": {
+      "en": "Hand weeding at about 2, 4 and 6 weeks after transplanting, with earthing up.",
+      "fr": "Sarclage manuel à environ 2, 4 et 6 semaines après le repiquage, avec buttage."
+     },
+     "src": [
+      "T1",
+      "T13",
+      "T14"
+     ],
+     "labour": 15
+    },
+    {
+     "id": "prune",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      30,
+      90
+     ],
+     "label": {
+      "en": "Leaf removal and sanitation",
+      "fr": "Effeuillage et assainissement"
+     },
+     "detail": {
+      "en": "Remove lower and diseased leaves on indeterminate varieties to ventilate the crop; disinfect blades between plants.",
+      "fr": "Retirer les feuilles basses et malades des variétés indéterminées pour aérer la culture ; désinfecter les lames entre les plants."
+     },
+     "src": [
+      "T1",
+      "T15"
+     ],
+     "labour": 15
+    },
+    {
+     "id": "protect",
+     "phase": "protection",
+     "ref": "field",
+     "day": [
+      0,
+      125
+     ],
+     "label": {
+      "en": "Crop protection programme",
+      "fr": "Programme de protection"
+     },
+     "detail": {
+      "en": "Weekly scouting and preventive sprays: a metalaxyl based fungicide before flowering, mancozeb after, and an insecticide against fruit borers and the tomato leaf miner. Quantities follow the MINADER budget. Wear the protection kit and respect pre harvest intervals.",
+      "fr": "Surveillance hebdomadaire et traitements préventifs : un fongicide à base de métalaxyl avant la floraison, du mancozèbe ensuite, et un insecticide contre les foreurs de fruits et la mineuse de la tomate. Les quantités suivent le budget du MINADER. Porter le kit de protection et respecter les délais avant récolte."
+     },
+     "src": [
+      "T1",
+      "T2",
+      "T4",
+      "T8",
+      "T19"
+     ],
+     "inputs": [
+      {
+       "item": "metalaxyl_mz",
+       "qty": 20,
+       "src": [
+        "T1"
+       ]
+      },
+      {
+       "item": "mancozeb",
+       "qty": 80,
+       "src": [
+        "T1"
+       ]
+      },
+      {
+       "item": "deltamethrin",
+       "qty": 4,
+       "src": [
+        "T1"
+       ]
+      }
+     ],
+     "labour": 30
+    },
+    {
+     "id": "harvest",
+     "phase": "harvest",
+     "ref": "harvest",
+     "day": [
+      0,
+      60
+     ],
+     "label": {
+      "en": "Harvest",
+      "fr": "Récolte"
+     },
+     "detail": {
+      "en": "Pick at least once a week by twisting the stalk: yellow pink for a delayed sale, orange red for a direct sale.",
+      "fr": "Récolter au moins une fois par semaine en tournant le pédoncule : jaune rosé pour une vente différée, rouge orangé pour une vente directe."
+     },
+     "src": [
+      "T1",
+      "T5",
+      "T14"
+     ]
+    },
+    {
+     "id": "sell",
+     "phase": "harvest",
+     "ref": "harvest",
+     "day": [
+      0,
+      60
+     ],
+     "label": {
+      "en": "Packing, transport and sale",
+      "fr": "Conditionnement, transport et vente"
+     },
+     "detail": {
+      "en": "Pack in crates of about 20 kg and keep in the shade. Prices swing from about 1,000 to 15,000 FCFA per crate within a year: plan sales outside the December to March glut where you can. Selling in Douala or Yaoundé can pay more but adds transport (333 to 500 FCFA per crate) and transit losses.",
+      "fr": "Conditionner en cageots d’environ 20 kg et garder à l’ombre. Le prix varie d’environ 1 000 à 15 000 FCFA le cageot dans l’année : viser les ventes hors de la saturation de décembre à mars quand c’est possible. Vendre à Douala ou Yaoundé peut rapporter plus mais ajoute le transport (333 à 500 FCFA le cageot) et des pertes en route."
+     },
+     "src": [
+      "T1",
+      "T9",
+      "T22",
+      "T6"
+     ],
+     "labour": 2
+    }
+   ],
+   "src": [
+    "T1",
+    "T12",
+    "T13",
+    "T9",
+    "T5",
+    "M1"
+   ],
+   "basis": {
+    "plants_per_ha": "25,000 plants per ha at 80 × 50 cm (T1).",
+    "ky": "FAO-33 yield response factor 1.05 (T12).",
+    "heat_c": "Flowers drop and fruit set is poor above 32 °C (T13).",
+    "kc": "FAO-56 Table 12: Kc ini 0.6, mid 1.15, end 0.7 to 0.9 (0.8 used); stage lengths 30/40/40/25 days, Table 11 (M1).",
+    "cycle": "Nursery 25 to 40 days (T1, 30 used); first harvest 60 to 80 days after transplanting (T1, 70 used); harvest over 2 to 3 months (T1, 60 days used); flowering derived as first harvest minus first fruit set 38 to 51 days after transplanting (T2).",
+    "yield_t_ha": "MINADER per 100 m² ranges converted to t/ha: rainy season 10 to 25, dry season 20 to 50 (T1). Poor and good are the bounds, average the midpoint.",
+    "loss_pct": "Post harvest losses on the Foumbot chain: transport 5.9% plus marketing 0.65% (T5, derived 6.55%). Pre harvest losses are inside the yield ranges.",
+    "harvest_kg_per_person_day": "Derived: 40 person days of harvest per ha (T1) for 800 crates (T1) of 20 kg (T9).",
+    "price": "Reference 275 XAF/kg (T9); seasonal levels 7,000 and 12,000 per crate for abundant and difficult periods (T35); months from dated observations (T22 to T34)."
+   },
+   "confidence": [
+    {
+     "block": {
+      "en": "Technical itinerary and 1 ha budget",
+      "fr": "Itinéraire technique et budget de 1 ha"
+     },
+     "level": "high",
+     "note": {
+      "en": "MINADER 2024 data sheet for Cameroon, cross checked with trials in Dschang and East Cameroon.",
+      "fr": "Fiche MINADER 2024 pour le Cameroun, recoupée avec des essais à Dschang et à l’Est."
+     }
+    },
+    {
+     "block": {
+      "en": "Yields",
+      "fr": "Rendements"
+     },
+     "level": "medium",
+     "note": {
+      "en": "MINADER ranges by season; few on farm measurements in Foumbot.",
+      "fr": "Fourchettes MINADER par saison ; peu de mesures en exploitation à Foumbot."
+     }
+    },
+    {
+     "block": {
+      "en": "Prices at harvest",
+      "fr": "Prix à la récolte"
+     },
+     "level": "medium",
+     "note": {
+      "en": "Dated market observations 2017 to 2026; no monthly series for Foumbot; crate weights vary.",
+      "fr": "Observations datées 2017 à 2026 ; pas de série mensuelle pour Foumbot ; le poids du cageot varie."
+     }
+    },
+    {
+     "block": {
+      "en": "Input prices",
+      "fr": "Prix des intrants"
+     },
+     "level": "medium",
+     "note": {
+      "en": "MINADER budget 2024 and West region survey 2022; stakes and protection kit not priced.",
+      "fr": "Budget MINADER 2024 et enquête Région de l’Ouest 2022 ; tuteurs et kit de protection non chiffrés."
+     }
+    },
+    {
+     "block": {
+      "en": "Climate and water",
+      "fr": "Climat et eau"
+     },
+     "level": "medium",
+     "note": {
+      "en": "Modelled Foumbot climatology 1991 to 2021 with FAO-56 methods; not station data.",
+      "fr": "Climatologie modélisée de Foumbot 1991 à 2021 et méthodes FAO-56 ; pas de données de station."
+     }
+    }
+   ]
+  },
+  "greenbean": {
+   "name": {
+    "en": "Green bean",
+    "fr": "Haricot vert"
+   },
+   "release": "regional",
+   "badge": {
+    "en": "Regional references",
+    "fr": "Références régionales"
+   },
+   "plants_per_ha": 250000,
+   "ky": 1.15,
+   "heat_c": 30,
+   "loss_pct": 6.5,
+   "harvest_kg_per_person_day": 87,
+   "agronomist_visits": 1,
+   "kc": {
+    "ini": 0.5,
+    "mid": 1.05,
+    "end": 0.9,
+    "stages": [
+     0.222,
+     0.556,
+     0.889
+    ]
+   },
+   "cycle": {
+    "nursery_days": 0,
+    "to_first_harvest_days": 52,
+    "harvest_days": 45,
+    "flowering_before_harvest_days": 18
+   },
+   "yield_t_ha": {
+    "wet": {
+     "poor": 4.0,
+     "average": 5.3,
+     "good": 10.0
+    },
+    "dry": {
+     "poor": 7.4,
+     "average": 11.1,
+     "good": 14.8
+    }
+   },
+   "price": {
+    "reference_xaf_kg": null,
+    "index": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "note": {
+     "en": "No published farm gate price for Cameroon: enter the price you expect to get.",
+     "fr": "Aucun prix bord champ publié pour le Cameroun : saisissez le prix que vous comptez obtenir."
+    },
+    "observed": {
+     "en": "Observed elsewhere: Abidjan retail 800 to 1,200 FCFA/kg (2024 to 2025).",
+     "fr": "Observé ailleurs : Abidjan au détail 800 à 1 200 FCFA/kg (2024 à 2025)."
+    },
+    "src": [
+     "G13",
+     "G14"
+    ]
+   },
+   "packaging": {
+    "item": "crate",
+    "kg_per_unit": 20,
+    "uses": 1
+   },
+   "harvest_src": [
+    "G18"
+   ],
+   "disease_note": {
+    "en": "Rust, anthracnose and halo blight thrive in cool, wet highland weather and leaf wetness (G1, G3).",
+    "fr": "La rouille, l’anthracnose et la graisse se développent par temps frais et humide d’altitude et feuillage mouillé (G1, G3)."
+   },
+   "steps": [
+    {
+     "id": "site",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -60,
+      -50
+     ],
+     "label": {
+      "en": "Plot choice and rotation",
+      "fr": "Choix de la parcelle et rotation"
+     },
+     "detail": {
+      "en": "Well drained soil, pH 6.0 to 7.5, at least 40 cm deep. No more than one bean crop in three years on the same soil; at least two years without legumes where rust or anthracnose are present.",
+      "fr": "Sol bien drainé, pH 6,0 à 7,5, profond d’au moins 40 cm. Pas plus d’une culture de haricot en trois ans sur le même sol ; au moins deux ans sans légumineuse si la rouille ou l’anthracnose sont présentes."
+     },
+     "src": [
+      "G1",
+      "G3"
+     ]
+    },
+    {
+     "id": "clear",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -35,
+      -21
+     ],
+     "label": {
+      "en": "Clearing and stale seedbed",
+      "fr": "Défrichage et faux semis"
+     },
+     "detail": {
+      "en": "Clear by hand, then prepare the seedbed 2 to 4 weeks ahead and destroy the weeds that emerge. No source documents burning for this crop; it is not recommended.",
+      "fr": "Défricher à la main, puis préparer le lit de semence 2 à 4 semaines avant et détruire les adventices qui lèvent. Aucune source ne documente le brûlis pour cette culture ; il n’est pas recommandé."
+     },
+     "src": [
+      "G1",
+      "G17"
+     ],
+     "labour": 20
+    },
+    {
+     "id": "plough",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -21,
+      -7
+     ],
+     "label": {
+      "en": "Ploughing and beds",
+      "fr": "Labour et planches"
+     },
+     "detail": {
+      "en": "Plough 30 to 50 cm, harrow, then form ridges about 70 cm apart or raised beds of two rows.",
+      "fr": "Labourer sur 30 à 50 cm, herser, puis former des billons espacés d’environ 70 cm ou des planches de deux rangs."
+     },
+     "src": [
+      "G1",
+      "G17"
+     ],
+     "labour": 20
+    },
+    {
+     "id": "basal",
+     "phase": "planting",
+     "ref": "field",
+     "day": [
+      -21,
+      -7
+     ],
+     "label": {
+      "en": "Organic manure",
+      "fr": "Fumure organique"
+     },
+     "detail": {
+      "en": "Well decomposed manure or compost, 10 to 20 t per ha; fresh manure must go on at least 6 months ahead.",
+      "fr": "Fumier ou compost bien décomposé, 10 à 20 t par ha ; un fumier frais doit être épandu au moins 6 mois avant."
+     },
+     "src": [
+      "G1",
+      "G17"
+     ],
+     "inputs": [
+      {
+       "item": "farmyard_manure",
+       "qty": 10000,
+       "src": [
+        "G1"
+       ]
+      }
+     ],
+     "labour": 15
+    },
+    {
+     "id": "sow",
+     "phase": "planting",
+     "ref": "field",
+     "day": [
+      0,
+      0
+     ],
+     "label": {
+      "en": "Sowing with DAP in the furrow",
+      "fr": "Semis avec DAP dans le sillon"
+     },
+     "detail": {
+      "en": "Direct sowing, one seed per hole at 30 × 15 cm, 2 to 5 cm deep, with DAP placed in the furrow. A seed dressing protects against bean fly and root rots.",
+      "fr": "Semis direct, une graine par poquet à 30 × 15 cm, à 2 à 5 cm de profondeur, avec le DAP placé dans le sillon. Un traitement de semence protège contre la mouche du haricot et les pourritures racinaires."
+     },
+     "src": [
+      "G1",
+      "G2",
+      "G3",
+      "G17"
+     ],
+     "inputs": [
+      {
+       "item": "seed_greenbean",
+       "qty": 34,
+       "src": [
+        "G1"
+       ]
+      },
+      {
+       "item": "dap",
+       "qty": 198,
+       "src": [
+        "G2"
+       ]
+      }
+     ],
+     "labour": 10
+    },
+    {
+     "id": "water",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      0,
+      95
+     ],
+     "label": {
+      "en": "Watering",
+      "fr": "Arrosage"
+     },
+     "detail": {
+      "en": "About 35 mm a week until 10 days after emergence, then 50 mm a week to flowering; 300 to 800 mm per cycle in total.",
+      "fr": "Environ 35 mm par semaine jusqu’à 10 jours après la levée, puis 50 mm par semaine jusqu’à la floraison ; 300 à 800 mm par cycle au total."
+     },
+     "src": [
+      "G1",
+      "G2",
+      "G6"
+     ]
+    },
+    {
+     "id": "weed",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      14,
+      42
+     ],
+     "label": {
+      "en": "Weeding",
+      "fr": "Sarclage"
+     },
+     "detail": {
+      "en": "Weed two weeks after sowing, then every two weeks until the canopy closes.",
+      "fr": "Sarcler deux semaines après le semis, puis toutes les deux semaines jusqu’à la fermeture du couvert."
+     },
+     "src": [
+      "G9",
+      "G17"
+     ],
+     "labour": 30
+    },
+    {
+     "id": "top",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      14,
+      35
+     ],
+     "label": {
+      "en": "Top dressing",
+      "fr": "Fumure d’entretien"
+     },
+     "detail": {
+      "en": "Calcium ammonium nitrate at the first trifoliate leaf and again at the onset of flowering. Avoid excess nitrogen.",
+      "fr": "Ammonitrate calcique au stade première feuille trifoliée, puis au début de la floraison. Éviter l’excès d’azote."
+     },
+     "src": [
+      "G2",
+      "G3",
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "can",
+       "qty": 99,
+       "apps": 2,
+       "src": [
+        "G2"
+       ]
+      }
+     ],
+     "labour": 6
+    },
+    {
+     "id": "protect",
+     "phase": "protection",
+     "ref": "field",
+     "day": [
+      7,
+      95
+     ],
+     "label": {
+      "en": "Crop protection",
+      "fr": "Protection de la culture"
+     },
+     "detail": {
+      "en": "Weekly scouting. Seed dressing first against bean fly; rust and anthracnose sprays from the third trifoliate leaf; thrips at flower bud stage; biological control against pod borers during harvest. Kenyan growers spray 4 to 12 times per cycle; the plan uses 8, half fungicide, half insecticide, at the tomato rates as proxies.",
+      "fr": "Surveillance hebdomadaire. D’abord le traitement de semence contre la mouche du haricot ; traitements contre la rouille et l’anthracnose dès la troisième feuille trifoliée ; thrips au stade boutons floraux ; lutte biologique contre les foreurs de gousses pendant la récolte. Au Kenya, 4 à 12 traitements par cycle ; le plan en retient 8, moitié fongicide, moitié insecticide, aux doses de la tomate comme substitut."
+     },
+     "src": [
+      "G3",
+      "G17",
+      "T2"
+     ],
+     "inputs": [
+      {
+       "item": "mancozeb",
+       "qty": 2.5,
+       "apps": 4,
+       "src": [
+        "T2"
+       ]
+      },
+      {
+       "item": "insecticide_l",
+       "qty": 1,
+       "apps": 4,
+       "src": [
+        "T2"
+       ]
+      }
+     ],
+     "labour": 8
+    },
+    {
+     "id": "harvest",
+     "phase": "harvest",
+     "ref": "harvest",
+     "day": [
+      0,
+      45
+     ],
+     "label": {
+      "en": "Harvest",
+      "fr": "Récolte"
+     },
+     "detail": {
+      "en": "Pick every one to three days for 1.5 to 2 months; pods are ready 15 to 20 days after pod set. Picking is the largest labour item of the crop.",
+      "fr": "Récolter tous les un à trois jours pendant 1,5 à 2 mois ; les gousses sont prêtes 15 à 20 jours après la nouaison. La cueillette est le premier poste de main d’œuvre de la culture."
+     },
+     "src": [
+      "G1",
+      "G2",
+      "G18"
+     ]
+    },
+    {
+     "id": "sell",
+     "phase": "harvest",
+     "ref": "harvest",
+     "day": [
+      0,
+      45
+     ],
+     "label": {
+      "en": "Grading, packing and sale",
+      "fr": "Tri, conditionnement et vente"
+     },
+     "detail": {
+      "en": "Grade by pod size, keep cool and sell fast: 1 to 2 weeks of storage life at 7 to 8 °C, much less in the open.",
+      "fr": "Trier selon le calibre, garder au frais et vendre vite : 1 à 2 semaines de conservation à 7 ou 8 °C, beaucoup moins à l’air libre."
+     },
+     "src": [
+      "G2",
+      "G11"
+     ],
+     "labour": 2
+    }
+   ],
+   "src": [
+    "G1",
+    "G2",
+    "G12",
+    "M1",
+    "M4"
+   ],
+   "basis": {
+    "plants_per_ha": "200,000 to 300,000 plants per ha for dwarf beans (G1), midpoint.",
+    "ky": "FAO yield response factor for beans 1.15 (M4).",
+    "heat_c": "Flowers drop above 30 °C (G1).",
+    "kc": "FAO-56 green beans: Kc 0.5, 1.05, 0.9; stage lengths 20/30/30/10 days (M1).",
+    "cycle": "First pick typically 45 to 60 days after sowing (G1, G2), 52 used; picking over 1.5 to 2 months (G2, G7), 45 days used; pods ready 15 to 20 days after set (G1).",
+    "yield_t_ha": "Rainy season: poor 4.0 (G4), average 5.3 = Cameroon national average (G12), good 10 (G7). Dry season irrigated: 7.4 to 14.8 (G2), midpoint as average.",
+    "harvest_kg_per_person_day": "Derived: 14 t/ha harvested and packed in 1,290 hours, 8 hour days (G18, South Africa).",
+    "loss_pct": "No measured loss found; Foumbot tomato chain value used as a proxy (T5)."
+   },
+   "confidence": [
+    {
+     "block": {
+      "en": "Technical itinerary",
+      "fr": "Itinéraire technique"
+     },
+     "level": "medium",
+     "note": {
+      "en": "Kenyan, COLEAD and Philippine guides; no Cameroon itinerary found.",
+      "fr": "Guides du Kenya, du COLEAD et des Philippines ; pas d’itinéraire camerounais trouvé."
+     }
+    },
+    {
+     "block": {
+      "en": "Yields",
+      "fr": "Rendements"
+     },
+     "level": "low",
+     "note": {
+      "en": "Cameroon national average plus Kenyan references.",
+      "fr": "Moyenne nationale du Cameroun et références du Kenya."
+     }
+    },
+    {
+     "block": {
+      "en": "Prices at harvest",
+      "fr": "Prix à la récolte"
+     },
+     "level": "low",
+     "note": {
+      "en": "No Cameroon price; you enter your own.",
+      "fr": "Pas de prix au Cameroun ; vous saisissez le vôtre."
+     }
+    },
+    {
+     "block": {
+      "en": "Input prices",
+      "fr": "Prix des intrants"
+     },
+     "level": "medium",
+     "note": {
+      "en": "Cameroon references where they exist (MINADER 2024, West region survey 2022); proxies and gaps are named line by line.",
+      "fr": "Références camerounaises quand elles existent (MINADER 2024, enquête Région de l’Ouest 2022) ; les substituts et manques sont signalés ligne par ligne."
+     }
+    },
+    {
+     "block": {
+      "en": "Climate and water",
+      "fr": "Climat et eau"
+     },
+     "level": "medium",
+     "note": {
+      "en": "Modelled Foumbot climatology 1991 to 2021 with FAO-56 methods.",
+      "fr": "Climatologie modélisée de Foumbot 1991 à 2021 et méthodes FAO-56."
+     }
+    }
+   ]
+  },
+  "pepper": {
+   "name": {
+    "en": "Sweet pepper",
+    "fr": "Poivron"
+   },
+   "release": "regional",
+   "badge": {
+    "en": "Regional references",
+    "fr": "Références régionales"
+   },
+   "plants_per_ha": 20000,
+   "ky": 1.1,
+   "heat_c": 30,
+   "loss_pct": 6.5,
+   "harvest_kg_per_person_day": 42,
+   "agronomist_visits": 1,
+   "kc": {
+    "ini": 0.6,
+    "mid": 1.05,
+    "end": 0.9,
+    "stages": [
+     0.208,
+     0.5,
+     0.833
+    ]
+   },
+   "cycle": {
+    "nursery_days": 42,
+    "to_first_harvest_days": 75,
+    "harvest_days": 56,
+    "flowering_before_harvest_days": 42
+   },
+   "yield_t_ha": {
+    "wet": {
+     "poor": 2.1,
+     "average": 6.0,
+     "good": 12.6
+    },
+    "dry": {
+     "poor": 10.0,
+     "average": 19.0,
+     "good": 28.0
+    }
+   },
+   "price": {
+    "reference_xaf_kg": null,
+    "index": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "note": {
+     "en": "No published farm gate price for Cameroon: enter the price you expect to get.",
+     "fr": "Aucun prix bord champ publié pour le Cameroun : saisissez le prix que vous comptez obtenir."
+    },
+    "observed": {
+     "en": "Observed: Bafou (West) 130 to 313 FCFA/kg, publication 2005.",
+     "fr": "Observé : Bafou (Ouest) 130 à 313 FCFA/kg, publication de 2005."
+    },
+    "src": [
+     "G19"
+    ]
+   },
+   "packaging": {
+    "item": "crate",
+    "kg_per_unit": 20,
+    "uses": 1
+   },
+   "harvest_src": [
+    "G18"
+   ],
+   "disease_note": {
+    "en": "Anthracnose and phytophthora are favoured by the wet season; Foumbot growers report disease losses above 50% (P4, P6).",
+    "fr": "L’anthracnose et le phytophthora sont favorisés par la saison des pluies ; les producteurs de Foumbot déclarent plus de 50 % de pertes par maladie (P4, P6)."
+   },
+   "steps": [
+    {
+     "id": "nursery",
+     "phase": "nursery",
+     "ref": "start",
+     "day": [
+      0,
+      42
+     ],
+     "label": {
+      "en": "Nursery",
+      "fr": "Pépinière"
+     },
+     "detail": {
+      "en": "Sow on raised beds or trays, feed seedlings lightly at two true leaves, protect against damping off and harden them before transplanting at 5 to 6 leaves. Foumbot growers keep seedlings about 6 weeks.",
+      "fr": "Semer sur planches surélevées ou plateaux, nourrir légèrement les plants à deux vraies feuilles, protéger contre la fonte des semis et endurcir avant le repiquage à 5 ou 6 feuilles. À Foumbot, les plants restent environ 6 semaines en pépinière."
+     },
+     "src": [
+      "P1",
+      "P2",
+      "P3",
+      "G21",
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "seed_pepper",
+       "qty": 300,
+       "src": [
+        "P1",
+        "P3"
+       ]
+      }
+     ],
+     "services": [
+      {
+       "key": "nursery_prep_m2",
+       "qty": 100
+      },
+      {
+       "key": "nursery_disinfection_m2",
+       "qty": 100
+      }
+     ]
+    },
+    {
+     "id": "site",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -60,
+      -50
+     ],
+     "label": {
+      "en": "Plot choice and rotation",
+      "fr": "Choix de la parcelle et rotation"
+     },
+     "detail": {
+      "en": "No tomato, potato or eggplant on the plot for at least 3 years. Soil pH 6.0 to 7.0.",
+      "fr": "Pas de tomate, pomme de terre ni aubergine sur la parcelle depuis au moins 3 ans. pH du sol 6,0 à 7,0."
+     },
+     "src": [
+      "P2",
+      "P6",
+      "P3"
+     ]
+    },
+    {
+     "id": "clear",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -35,
+      -14
+     ],
+     "label": {
+      "en": "Clearing and weed control",
+      "fr": "Défrichage et désherbage"
+     },
+     "detail": {
+      "en": "Clear, then a glyphosate burndown at least 15 days before transplanting if needed. Paraquat and 2,4-D are used in Foumbot; paraquat is highly hazardous.",
+      "fr": "Défricher, puis un passage de glyphosate au moins 15 jours avant le repiquage si nécessaire. Le paraquat et le 2,4-D sont utilisés à Foumbot ; le paraquat est très dangereux."
+     },
+     "src": [
+      "P13",
+      "G21",
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "glyphosate",
+       "qty": 2.5,
+       "src": [
+        "P13"
+       ]
+      }
+     ],
+     "labour": 20
+    },
+    {
+     "id": "plough",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -30,
+      -7
+     ],
+     "label": {
+      "en": "Deep ploughing and beds",
+      "fr": "Labour profond et planches"
+     },
+     "detail": {
+      "en": "Plough to about 30 cm a month before transplanting and form beds about 1 m wide.",
+      "fr": "Labourer à environ 30 cm un mois avant le repiquage et former des planches d’environ 1 m de large."
+     },
+     "src": [
+      "P3",
+      "P13",
+      "T1"
+     ],
+     "labour": 90
+    },
+    {
+     "id": "basal",
+     "phase": "planting",
+     "ref": "field",
+     "day": [
+      -15,
+      0
+     ],
+     "label": {
+      "en": "Basal manure and fertilizer",
+      "fr": "Fumure de fond"
+     },
+     "detail": {
+      "en": "Well decomposed manure, then NPK and potassium sulphate in the planting holes a few days before transplanting (22 g NPK and 8 g potassium sulphate per hole in the Cameroon sheet).",
+      "fr": "Fumier bien décomposé, puis NPK et sulfate de potassium dans les trous de plantation quelques jours avant le repiquage (22 g de NPK et 8 g de sulfate de potassium par trou dans la fiche camerounaise)."
+     },
+     "src": [
+      "P3",
+      "P9",
+      "T2"
+     ],
+     "inputs": [
+      {
+       "item": "farmyard_manure",
+       "qty": 10000,
+       "src": [
+        "P9"
+       ]
+      },
+      {
+       "item": "npk_11_22_16",
+       "qty": 440,
+       "src": [
+        "P3"
+       ]
+      },
+      {
+       "item": "k2so4",
+       "qty": 160,
+       "src": [
+        "P3"
+       ]
+      }
+     ],
+     "labour": 35
+    },
+    {
+     "id": "transplant",
+     "phase": "planting",
+     "ref": "field",
+     "day": [
+      0,
+      2
+     ],
+     "label": {
+      "en": "Transplanting",
+      "fr": "Repiquage"
+     },
+     "detail": {
+      "en": "Transplant at 1 m between rows and 0.5 m on the row, about 20,000 plants per ha, in the early morning or evening.",
+      "fr": "Repiquer à 1 m entre les rangs et 0,5 m sur le rang, soit environ 20 000 plants par ha, tôt le matin ou le soir."
+     },
+     "src": [
+      "P3",
+      "P2",
+      "T1"
+     ],
+     "labour": 35
+    },
+    {
+     "id": "water",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      0,
+      131
+     ],
+     "label": {
+      "en": "Watering",
+      "fr": "Arrosage"
+     },
+     "detail": {
+      "en": "600 to 800 mm per cycle; about 2 mm a day early, 3 to 6 mm a day from flowering to harvest. Avoid evening overhead watering.",
+      "fr": "600 à 800 mm par cycle ; environ 2 mm par jour au début, 3 à 6 mm par jour de la floraison à la récolte. Éviter l’aspersion le soir."
+     },
+     "src": [
+      "P3",
+      "P13",
+      "P1"
+     ]
+    },
+    {
+     "id": "stake",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      0,
+      30
+     ],
+     "label": {
+      "en": "Staking",
+      "fr": "Tuteurage"
+     },
+     "detail": {
+      "en": "Stake within a month of transplanting: one stake every 1.5 m of row with string at two or three levels.",
+      "fr": "Tuteurer dans le mois qui suit le repiquage : un tuteur tous les 1,5 m de rang avec de la ficelle sur deux ou trois niveaux."
+     },
+     "src": [
+      "P3",
+      "P13",
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "stake",
+       "qty": 6667,
+       "src": [
+        "P13"
+       ]
+      },
+      {
+       "item": "twine",
+       "qty": 1,
+       "src": [
+        "T1"
+       ]
+      }
+     ],
+     "labour": 30
+    },
+    {
+     "id": "top",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      35,
+      45
+     ],
+     "label": {
+      "en": "Fertilizer at flowering",
+      "fr": "Fumure à la floraison"
+     },
+     "detail": {
+      "en": "At flowering, about 40 days after transplanting: 15 g NPK, 20 g potassium sulphate and 2 g urea per plant (Cameroon sheet).",
+      "fr": "À la floraison, environ 40 jours après le repiquage : 15 g de NPK, 20 g de sulfate de potassium et 2 g d’urée par plant (fiche camerounaise)."
+     },
+     "src": [
+      "P3",
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "npk_11_22_16",
+       "qty": 300,
+       "src": [
+        "P3"
+       ]
+      },
+      {
+       "item": "k2so4",
+       "qty": 400,
+       "src": [
+        "P3"
+       ]
+      },
+      {
+       "item": "urea",
+       "qty": 40,
+       "src": [
+        "P3"
+       ]
+      }
+     ],
+     "labour": 6
+    },
+    {
+     "id": "weed",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      14,
+      60
+     ],
+     "label": {
+      "en": "Weeding",
+      "fr": "Sarclage"
+     },
+     "detail": {
+      "en": "Weed every two weeks until flowering.",
+      "fr": "Sarcler toutes les deux semaines jusqu’à la floraison."
+     },
+     "src": [
+      "P5",
+      "T1"
+     ],
+     "labour": 15
+    },
+    {
+     "id": "prune",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      20,
+      45
+     ],
+     "label": {
+      "en": "Pruning and sanitation",
+      "fr": "Taille et assainissement"
+     },
+     "detail": {
+      "en": "Remove the first fruits at the first fork and the leaves below it; disinfect knives.",
+      "fr": "Retirer les premiers fruits à la première bifurcation et les feuilles en dessous ; désinfecter les couteaux."
+     },
+     "src": [
+      "P1",
+      "P6",
+      "T1"
+     ],
+     "labour": 15
+    },
+    {
+     "id": "protect",
+     "phase": "protection",
+     "ref": "field",
+     "day": [
+      0,
+      131
+     ],
+     "label": {
+      "en": "Crop protection",
+      "fr": "Protection de la culture"
+     },
+     "detail": {
+      "en": "Scout twice a week. Foumbot growers spray weekly, mostly mancozeb and cypermethrin, and report disease losses above 50%. The plan keeps weekly sprays at the tomato rates as proxies. Chlorpyrifos, still found in Foumbot, is banned in Cameroon.",
+      "fr": "Surveiller deux fois par semaine. Les producteurs de Foumbot traitent chaque semaine, surtout au mancozèbe et à la cyperméthrine, et déclarent plus de 50 % de pertes par maladie. Le plan garde des traitements hebdomadaires aux doses de la tomate comme substitut. Le chlorpyrifos, encore trouvé à Foumbot, est interdit au Cameroun."
+     },
+     "src": [
+      "G21",
+      "P1",
+      "P6",
+      "T2"
+     ],
+     "inputs": [
+      {
+       "item": "mancozeb",
+       "qty": 2.5,
+       "apps": 18,
+       "src": [
+        "T2"
+       ]
+      },
+      {
+       "item": "insecticide_l",
+       "qty": 1,
+       "apps": 18,
+       "src": [
+        "T2"
+       ]
+      }
+     ],
+     "labour": 54
+    },
+    {
+     "id": "harvest",
+     "phase": "harvest",
+     "ref": "harvest",
+     "day": [
+      0,
+      56
+     ],
+     "label": {
+      "en": "Harvest",
+      "fr": "Récolte"
+     },
+     "detail": {
+      "en": "Pick at the mature green stage about twice a week with a clean knife; green fruit does not ripen after picking.",
+      "fr": "Récolter au stade vert mûr environ deux fois par semaine avec un couteau propre ; le fruit vert ne mûrit plus après la cueillette."
+     },
+     "src": [
+      "P2",
+      "P3",
+      "P13"
+     ]
+    },
+    {
+     "id": "sell",
+     "phase": "harvest",
+     "ref": "harvest",
+     "day": [
+      0,
+      56
+     ],
+     "label": {
+      "en": "Grading, packing and sale",
+      "fr": "Tri, conditionnement et vente"
+     },
+     "detail": {
+      "en": "Sort, grade and pack in crates in the shade. Foumbot growers keep peppers 7 to 15 days; in Bafou peppers sell in lots of 8 to 10 kg.",
+      "fr": "Trier, calibrer et mettre en cageots à l’ombre. À Foumbot, les poivrons se gardent 7 à 15 jours ; à Bafou, ils se vendent par lots de 8 à 10 kg."
+     },
+     "src": [
+      "P2",
+      "G21",
+      "G19"
+     ],
+     "labour": 2
+    }
+   ],
+   "src": [
+    "P3",
+    "G21",
+    "P1",
+    "P14",
+    "M1",
+    "M5"
+   ],
+   "basis": {
+    "plants_per_ha": "20,000 plants per ha at 1 m × 0.5 m (P3, Cameroon).",
+    "ky": "FAO yield response factor for pepper 1.1 (M5).",
+    "heat_c": "Flower drop from 28 to 30 °C (P1, P3); 30 used.",
+    "kc": "FAO-56 sweet peppers: Kc 0.6, 1.05, 0.9; stage lengths 25/35/40/20 days (M1).",
+    "cycle": "Nursery about 6 weeks in Foumbot (P4); first harvest 60 to 90 days after transplanting (P2, P3, P13), 75 used; harvest 6 to 10 weeks, 8 used; flowering to harvest 35 to 50 days (P1, P6), 42 used.",
+    "yield_t_ha": "Rainy season: poor 2.1 = Cameroon national average (P14), average 6 = Cameroon sheet 5 to 7 (P3), good 12.6 (P8, Ghana open field). Dry season irrigated: 10 (P13) to 28 (P1), midpoint as average.",
+    "harvest_kg_per_person_day": "Derived from a chilli budget: 10 t/ha picked in 1,900 hours, 8 hour days (P25); sweet pepper fruits are larger, so this is conservative.",
+    "loss_pct": "No measured loss found; Foumbot tomato chain value used as a proxy (T5)."
+   },
+   "confidence": [
+    {
+     "block": {
+      "en": "Technical itinerary",
+      "fr": "Itinéraire technique"
+     },
+     "level": "medium",
+     "note": {
+      "en": "Cameroon IFATI sheet and Foumbot survey, completed with AVRDC and Kenyan guides.",
+      "fr": "Fiche IFATI du Cameroun et enquête de Foumbot, complétées par les guides AVRDC et du Kenya."
+     }
+    },
+    {
+     "block": {
+      "en": "Yields",
+      "fr": "Rendements"
+     },
+     "level": "low",
+     "note": {
+      "en": "Cameroon sheet and national average; irrigated values from outside Cameroon.",
+      "fr": "Fiche camerounaise et moyenne nationale ; valeurs irriguées hors Cameroun."
+     }
+    },
+    {
+     "block": {
+      "en": "Prices at harvest",
+      "fr": "Prix à la récolte"
+     },
+     "level": "low",
+     "note": {
+      "en": "Only an old Bafou observation; you enter your own price.",
+      "fr": "Seulement une ancienne observation à Bafou ; vous saisissez votre prix."
+     }
+    },
+    {
+     "block": {
+      "en": "Input prices",
+      "fr": "Prix des intrants"
+     },
+     "level": "medium",
+     "note": {
+      "en": "Cameroon references where they exist (MINADER 2024, West region survey 2022); proxies and gaps are named line by line.",
+      "fr": "Références camerounaises quand elles existent (MINADER 2024, enquête Région de l’Ouest 2022) ; les substituts et manques sont signalés ligne par ligne."
+     }
+    },
+    {
+     "block": {
+      "en": "Climate and water",
+      "fr": "Climat et eau"
+     },
+     "level": "medium",
+     "note": {
+      "en": "Modelled Foumbot climatology 1991 to 2021 with FAO-56 methods.",
+      "fr": "Climatologie modélisée de Foumbot 1991 à 2021 et méthodes FAO-56."
+     }
+    }
+   ]
+  },
+  "cucumber": {
+   "name": {
+    "en": "Cucumber",
+    "fr": "Concombre"
+   },
+   "release": "regional",
+   "badge": {
+    "en": "Regional references",
+    "fr": "Références régionales"
+   },
+   "plants_per_ha": 26667,
+   "ky": 1.1,
+   "heat_c": 30,
+   "loss_pct": 6.5,
+   "harvest_kg_per_person_day": 1000,
+   "agronomist_visits": 1,
+   "kc": {
+    "ini": 0.6,
+    "mid": 1.0,
+    "end": 0.75,
+    "stages": [
+     0.19,
+     0.476,
+     0.857
+    ]
+   },
+   "cycle": {
+    "nursery_days": 0,
+    "to_first_harvest_days": 50,
+    "harvest_days": 45,
+    "flowering_before_harvest_days": 12
+   },
+   "yield_t_ha": {
+    "wet": {
+     "poor": 5.4,
+     "average": 10.2,
+     "good": 15.0
+    },
+    "dry": {
+     "poor": 5.4,
+     "average": 10.2,
+     "good": 15.0
+    }
+   },
+   "price": {
+    "reference_xaf_kg": null,
+    "index": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "note": {
+     "en": "No published farm gate price for Cameroon: enter the price you expect to get.",
+     "fr": "Aucun prix bord champ publié pour le Cameroun : saisissez le prix que vous comptez obtenir."
+    },
+    "observed": {
+     "en": "Observed: Yaoundé retail about 119 to 192 FCFA/kg (2021, derived per fruit); Abidjan 350 to 600 FCFA/kg (2024 to 2026, level not stated).",
+     "fr": "Observé : Yaoundé au détail environ 119 à 192 FCFA/kg (2021, calculé par fruit) ; Abidjan 350 à 600 FCFA/kg (2024 à 2026, niveau non précisé)."
+    },
+    "src": [
+     "CU11",
+     "CU31",
+     "CU38"
+    ]
+   },
+   "packaging": {
+    "item": "crate",
+    "kg_per_unit": 20,
+    "uses": 1
+   },
+   "harvest_src": [
+    "CU24"
+   ],
+   "disease_note": {
+    "en": "Downy and powdery mildew rise with humidity; fruit flies are worse in the rainy season (CU3, CU6).",
+    "fr": "Le mildiou et l’oïdium augmentent avec l’humidité ; les mouches des fruits sont plus nombreuses en saison des pluies (CU3, CU6)."
+   },
+   "steps": [
+    {
+     "id": "clear",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -45,
+      -21
+     ],
+     "label": {
+      "en": "Clearing, without burning",
+      "fr": "Défrichage, sans brûlis"
+     },
+     "detail": {
+      "en": "Slash by hand. Cucurbits are often sown after burning fallow in Cameroon; burning wastes organic matter and is not recommended.",
+      "fr": "Défricher à la main. Au Cameroun, les cucurbitacées sont souvent semées après brûlis de jachère ; le brûlis gaspille la matière organique et n’est pas recommandé."
+     },
+     "src": [
+      "CU30",
+      "T1"
+     ],
+     "labour": 20
+    },
+    {
+     "id": "plough",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -21,
+      -3
+     ],
+     "label": {
+      "en": "Tillage and beds",
+      "fr": "Labour et planches"
+     },
+     "detail": {
+      "en": "Till to about 30 cm, level and form beds or ridges.",
+      "fr": "Labourer à environ 30 cm, niveler et former planches ou billons."
+     },
+     "src": [
+      "CU1",
+      "CU3",
+      "CU24"
+     ],
+     "labour": 16
+    },
+    {
+     "id": "basal",
+     "phase": "planting",
+     "ref": "field",
+     "day": [
+      -7,
+      0
+     ],
+     "label": {
+      "en": "Basal manure",
+      "fr": "Fumure de fond"
+     },
+     "detail": {
+      "en": "Well decomposed poultry manure or compost, 800 g per planting hole, about 20 t per ha.",
+      "fr": "Fiente bien décomposée ou compost, 800 g par trou de plantation, soit environ 20 t par ha."
+     },
+     "src": [
+      "CU1",
+      "CU2"
+     ],
+     "inputs": [
+      {
+       "item": "farmyard_manure",
+       "qty": 20000,
+       "src": [
+        "CU1"
+       ]
+      }
+     ],
+     "labour": 8
+    },
+    {
+     "id": "sow",
+     "phase": "planting",
+     "ref": "field",
+     "day": [
+      0,
+      0
+     ],
+     "label": {
+      "en": "Sowing",
+      "fr": "Semis"
+     },
+     "detail": {
+      "en": "Two seeds per hole about 2 cm deep in twin rows 100 × 50 × 50 cm (about 26,700 plants per ha), then thin to one plant.",
+      "fr": "Deux graines par poquet à environ 2 cm de profondeur en doubles rangs 100 × 50 × 50 cm (environ 26 700 plants par ha), puis démarier à un plant."
+     },
+     "src": [
+      "CU1",
+      "CU4",
+      "CU9"
+     ],
+     "inputs": [
+      {
+       "item": "seed_cucumber",
+       "qty": 2,
+       "src": [
+        "CU2",
+        "CU24"
+       ]
+      }
+     ],
+     "labour": 4
+    },
+    {
+     "id": "water",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      0,
+      95
+     ],
+     "label": {
+      "en": "Watering",
+      "fr": "Arrosage"
+     },
+     "detail": {
+      "en": "Regular watering, about 50 mm a week from flowering; no overhead watering at flowering, which drops the flowers.",
+      "fr": "Arrosage régulier, environ 50 mm par semaine dès la floraison ; pas d’aspersion à la floraison, qui fait tomber les fleurs."
+     },
+     "src": [
+      "CU1",
+      "CU7"
+     ]
+    },
+    {
+     "id": "top1",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      14,
+      14
+     ],
+     "label": {
+      "en": "First top dressing",
+      "fr": "Première fumure d’entretien"
+     },
+     "detail": {
+      "en": "NPK 15-15-15, 4 g per hole, two weeks after sowing.",
+      "fr": "NPK 15-15-15, 4 g par poquet, deux semaines après le semis."
+     },
+     "src": [
+      "CU1",
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "npk_15_15_15",
+       "qty": 100,
+       "src": [
+        "CU1"
+       ]
+      }
+     ],
+     "labour": 6
+    },
+    {
+     "id": "trellis",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      14,
+      30
+     ],
+     "label": {
+      "en": "Trellising and training",
+      "fr": "Palissage et conduite"
+     },
+     "detail": {
+      "en": "Posts 1.6 to 1.8 m high every 4 to 5 m with wires and twine, set before the vines run; train the vines up.",
+      "fr": "Poteaux de 1,6 à 1,8 m tous les 4 à 5 m avec fils et ficelle, posés avant que les tiges ne courent ; guider les tiges vers le haut."
+     },
+     "src": [
+      "CU7",
+      "CU24"
+     ],
+     "inputs": [
+      {
+       "item": "trellis_set",
+       "qty": 1,
+       "src": [
+        "CU24",
+        "CU7"
+       ]
+      }
+     ],
+     "labour": 40
+    },
+    {
+     "id": "organic2",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      28,
+      28
+     ],
+     "label": {
+      "en": "Organic top up",
+      "fr": "Complément organique"
+     },
+     "detail": {
+      "en": "A second 400 g of decomposed manure per hole at four weeks.",
+      "fr": "Un second apport de 400 g de fumier décomposé par poquet à quatre semaines."
+     },
+     "src": [
+      "CU1"
+     ],
+     "inputs": [
+      {
+       "item": "farmyard_manure",
+       "qty": 10700,
+       "src": [
+        "CU1"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "top2",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      42,
+      42
+     ],
+     "label": {
+      "en": "Fruiting dressing",
+      "fr": "Fumure de fructification"
+     },
+     "detail": {
+      "en": "At six weeks, a mix of urea (25%) and potassium sulphate (75%), 4 g per hole.",
+      "fr": "À six semaines, un mélange d’urée (25 %) et de sulfate de potassium (75 %), 4 g par poquet."
+     },
+     "src": [
+      "CU1"
+     ],
+     "inputs": [
+      {
+       "item": "urea",
+       "qty": 27,
+       "src": [
+        "CU1"
+       ]
+      },
+      {
+       "item": "k2so4",
+       "qty": 80,
+       "src": [
+        "CU1"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "weed",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      14,
+      60
+     ],
+     "label": {
+      "en": "Weeding",
+      "fr": "Sarclage"
+     },
+     "detail": {
+      "en": "Hoe every two weeks until flowering, then hand weed; clean plots also carry fewer fruit flies.",
+      "fr": "Biner toutes les deux semaines jusqu’à la floraison, puis désherber à la main ; une parcelle propre attire aussi moins de mouches des fruits."
+     },
+     "src": [
+      "CU4",
+      "CU6",
+      "CU24"
+     ],
+     "labour": 12
+    },
+    {
+     "id": "pollinate",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      30,
+      90
+     ],
+     "label": {
+      "en": "Pollination",
+      "fr": "Pollinisation"
+     },
+     "detail": {
+      "en": "Cucumber needs bees: in a Ngaoundéré trial, flowers kept away from insects set no fruit. Place 2 to 3 hives per ha and avoid insecticides when bees forage.",
+      "fr": "Le concombre a besoin des abeilles : dans un essai à Ngaoundéré, les fleurs isolées des insectes n’ont donné aucun fruit. Placer 2 à 3 ruches par ha et éviter les insecticides quand les abeilles butinent."
+     },
+     "src": [
+      "CU4",
+      "CU7"
+     ]
+    },
+    {
+     "id": "protect",
+     "phase": "protection",
+     "ref": "field",
+     "day": [
+      4,
+      95
+     ],
+     "label": {
+      "en": "Crop protection",
+      "fr": "Protection de la culture"
+     },
+     "detail": {
+      "en": "Fruit flies destroy about 37% of cucurbit fruits at Koutaba, next to Foumbot: trap, bag or treat early and remove stung fruits. The plan follows the only full cucumber spray calendar found (13 insecticide sprays and one preventive mancozeb), at the tomato rates as proxies.",
+      "fr": "Les mouches des fruits détruisent environ 37 % des fruits de cucurbitacées à Koutaba, à côté de Foumbot : piéger, ensacher ou traiter tôt et retirer les fruits piqués. Le plan suit le seul calendrier complet trouvé pour le concombre (13 insecticides et un mancozèbe préventif), aux doses de la tomate comme substitut."
+     },
+     "src": [
+      "CU3",
+      "CU5",
+      "CU1",
+      "T2"
+     ],
+     "inputs": [
+      {
+       "item": "insecticide_l",
+       "qty": 1,
+       "apps": 13,
+       "src": [
+        "T2"
+       ]
+      },
+      {
+       "item": "mancozeb",
+       "qty": 2.5,
+       "src": [
+        "T2"
+       ]
+      }
+     ],
+     "labour": 42
+    },
+    {
+     "id": "harvest",
+     "phase": "harvest",
+     "ref": "harvest",
+     "day": [
+      0,
+      45
+     ],
+     "label": {
+      "en": "Harvest",
+      "fr": "Récolte"
+     },
+     "detail": {
+      "en": "Harvest at 15 to 25 cm, two or three times a week, before the seeds harden.",
+      "fr": "Récolter à 15 à 25 cm, deux ou trois fois par semaine, avant que les graines ne durcissent."
+     },
+     "src": [
+      "CU7",
+      "CU3",
+      "CU8"
+     ]
+    },
+    {
+     "id": "sell",
+     "phase": "harvest",
+     "ref": "harvest",
+     "day": [
+      0,
+      45
+     ],
+     "label": {
+      "en": "Packing and sale",
+      "fr": "Conditionnement et vente"
+     },
+     "detail": {
+      "en": "About 5 days of shelf life in the open: sell quickly. In Yaoundé cucumbers sell by net bag or by piece. In Cameroonian French, “concombre” often means the seed cucurbit (ngon); be precise with buyers.",
+      "fr": "Environ 5 jours de conservation à l’air libre : vendre vite. À Yaoundé, le concombre se vend au filet ou à la pièce. En français du Cameroun, « concombre » désigne souvent la cucurbitacée à graines (ngon) ; être précis avec les acheteurs."
+     },
+     "src": [
+      "CU2",
+      "CU11",
+      "CU27"
+     ],
+     "labour": 2
+    }
+   ],
+   "src": [
+    "CU1",
+    "CU2",
+    "CU3",
+    "CU4",
+    "CU5",
+    "M1",
+    "M6"
+   ],
+   "basis": {
+    "plants_per_ha": "Twin rows 100 × 50 × 50 cm, 26,666 plants per ha (CU1).",
+    "ky": "No FAO value for cucumber; watermelon value 1.1 used as a cucurbit proxy (M6).",
+    "heat_c": "Optimum about 30 °C (CU2); no field heat threshold found, the optimum is used as the limit.",
+    "kc": "FAO-56 cucumber: Kc 0.6, 1.0, 0.75; stage lengths 20/30/40/15 days (M1).",
+    "cycle": "First harvest 40 to 60 days after sowing (CU2), 50 used; harvest 45 to 98 days, 45 used; first flowers 30 to 45 days after sowing (CU2, CU4).",
+    "yield_t_ha": "Poor 5.4 = Nigerian smallholders (CU15); good 15 = best NIHORT treatments (CU16); average the midpoint. No irrigated open field reference: same values in both seasons.",
+    "harvest_kg_per_person_day": "Derived: 10 person days of harvest per ha for 10 to 15 t/ha (CU24), lower value.",
+    "loss_pct": "No measured loss found; Foumbot tomato chain value used as a proxy (T5)."
+   },
+   "confidence": [
+    {
+     "block": {
+      "en": "Technical itinerary",
+      "fr": "Itinéraire technique"
+     },
+     "level": "medium",
+     "note": {
+      "en": "Benin sheet, PROTA and a CIRAD trial; one Cameroon pollination trial.",
+      "fr": "Fiche du Bénin, PROTA et un essai du CIRAD ; un essai de pollinisation au Cameroun."
+     }
+    },
+    {
+     "block": {
+      "en": "Yields",
+      "fr": "Rendements"
+     },
+     "level": "low",
+     "note": {
+      "en": "Nigerian surveys and trials; no Cameroon yield measurement.",
+      "fr": "Enquêtes et essais au Nigeria ; pas de mesure de rendement au Cameroun."
+     }
+    },
+    {
+     "block": {
+      "en": "Prices at harvest",
+      "fr": "Prix à la récolte"
+     },
+     "level": "low",
+     "note": {
+      "en": "One old Yaoundé observation and Abidjan series; you enter your own price.",
+      "fr": "Une ancienne observation à Yaoundé et des séries d’Abidjan ; vous saisissez votre prix."
+     }
+    },
+    {
+     "block": {
+      "en": "Input prices",
+      "fr": "Prix des intrants"
+     },
+     "level": "medium",
+     "note": {
+      "en": "Cameroon references where they exist (MINADER 2024, West region survey 2022); proxies and gaps are named line by line.",
+      "fr": "Références camerounaises quand elles existent (MINADER 2024, enquête Région de l’Ouest 2022) ; les substituts et manques sont signalés ligne par ligne."
+     }
+    },
+    {
+     "block": {
+      "en": "Climate and water",
+      "fr": "Climat et eau"
+     },
+     "level": "medium",
+     "note": {
+      "en": "Modelled Foumbot climatology 1991 to 2021 with FAO-56 methods.",
+      "fr": "Climatologie modélisée de Foumbot 1991 à 2021 et méthodes FAO-56."
+     }
+    }
+   ]
+  },
+  "zucchini": {
+   "name": {
+    "en": "Zucchini",
+    "fr": "Courgette"
+   },
+   "release": "regional",
+   "badge": {
+    "en": "Regional references",
+    "fr": "Références régionales"
+   },
+   "plants_per_ha": 22222,
+   "ky": 1.1,
+   "heat_c": 30,
+   "loss_pct": 6.5,
+   "harvest_kg_per_person_day": 1000,
+   "agronomist_visits": 1,
+   "kc": {
+    "ini": 0.5,
+    "mid": 0.95,
+    "end": 0.75,
+    "stages": [
+     0.25,
+     0.6,
+     0.85
+    ]
+   },
+   "cycle": {
+    "nursery_days": 0,
+    "to_first_harvest_days": 58,
+    "harvest_days": 30,
+    "flowering_before_harvest_days": 13
+   },
+   "yield_t_ha": {
+    "wet": {
+     "poor": 4.9,
+     "average": 12.45,
+     "good": 20.0
+    },
+    "dry": {
+     "poor": 4.9,
+     "average": 12.45,
+     "good": 20.0
+    }
+   },
+   "price": {
+    "reference_xaf_kg": null,
+    "index": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "note": {
+     "en": "No published farm gate price for Cameroon: enter the price you expect to get.",
+     "fr": "Aucun prix bord champ publié pour le Cameroun : saisissez le prix que vous comptez obtenir."
+    },
+    "observed": {
+     "en": "Observed: Abidjan 350 to 500 FCFA/kg (2024 to 2026, level not stated).",
+     "fr": "Observé : Abidjan 350 à 500 FCFA/kg (2024 à 2026, niveau non précisé)."
+    },
+    "src": [
+     "CU31",
+     "Z21"
+    ]
+   },
+   "packaging": {
+    "item": "crate",
+    "kg_per_unit": 20,
+    "uses": 1
+   },
+   "harvest_src": [
+    "CU24"
+   ],
+   "disease_note": {
+    "en": "Heavy rain splits stems and favours mildew; production does best at the start of the dry season (Z1, Z3).",
+    "fr": "Les fortes pluies fendent les tiges et favorisent le mildiou ; la production réussit mieux au début de la saison sèche (Z1, Z3)."
+   },
+   "steps": [
+    {
+     "id": "clear",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -60,
+      -30
+     ],
+     "label": {
+      "en": "Clearing, without burning",
+      "fr": "Défrichage, sans brûlis"
+     },
+     "detail": {
+      "en": "Prepare the land 1 to 2 months ahead. Cucurbits often follow burnt fallow in Cameroon; burning is not recommended.",
+      "fr": "Préparer le terrain 1 à 2 mois à l’avance. Au Cameroun, les cucurbitacées suivent souvent un brûlis de jachère ; le brûlis n’est pas recommandé."
+     },
+     "src": [
+      "Z5",
+      "CU30",
+      "T1"
+     ],
+     "labour": 20
+    },
+    {
+     "id": "plough",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -30,
+      -3
+     ],
+     "label": {
+      "en": "Tillage and raised beds",
+      "fr": "Labour et planches surélevées"
+     },
+     "detail": {
+      "en": "Raised beds about 25 cm high, well drained: more than 40 mm of rain in a day waterlogs the plants and splits the stems.",
+      "fr": "Planches surélevées d’environ 25 cm, bien drainées : plus de 40 mm de pluie en un jour engorge les plants et fend les tiges."
+     },
+     "src": [
+      "Z3",
+      "Z1",
+      "CU24"
+     ],
+     "labour": 16
+    },
+    {
+     "id": "basal",
+     "phase": "planting",
+     "ref": "field",
+     "day": [
+      -7,
+      0
+     ],
+     "label": {
+      "en": "Basal manure and DAP",
+      "fr": "Fumure de fond et DAP"
+     },
+     "detail": {
+      "en": "Organic matter 50 to 70 t per ha in the holes or furrows, plus DAP before sowing.",
+      "fr": "Matière organique 50 à 70 t par ha dans les trous ou sillons, plus du DAP avant le semis."
+     },
+     "src": [
+      "Z1",
+      "Z2",
+      "Z4",
+      "T2"
+     ],
+     "inputs": [
+      {
+       "item": "farmyard_manure",
+       "qty": 50000,
+       "src": [
+        "Z1"
+       ]
+      },
+      {
+       "item": "dap",
+       "qty": 124,
+       "src": [
+        "Z2",
+        "Z4"
+       ]
+      }
+     ],
+     "labour": 35
+    },
+    {
+     "id": "sow",
+     "phase": "planting",
+     "ref": "field",
+     "day": [
+      0,
+      0
+     ],
+     "label": {
+      "en": "Sowing",
+      "fr": "Semis"
+     },
+     "detail": {
+      "en": "Two or three seeds per hill, 1.5 to 2.5 cm deep, at 60 to 100 × 60 cm; thin to one plant. F1 hybrids yield 50 to 100% more than open pollinated seed.",
+      "fr": "Deux ou trois graines par poquet, à 1,5 à 2,5 cm de profondeur, à 60 à 100 × 60 cm ; démarier à un plant. Les hybrides F1 rendent 50 à 100 % de plus que les variétés fixées."
+     },
+     "src": [
+      "Z1",
+      "Z2",
+      "Z4",
+      "CU1"
+     ],
+     "inputs": [
+      {
+       "item": "seed_zucchini",
+       "qty": 2.25,
+       "src": [
+        "CU49"
+       ]
+      }
+     ],
+     "labour": 4
+    },
+    {
+     "id": "water",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      0,
+      88
+     ],
+     "label": {
+      "en": "Watering",
+      "fr": "Arrosage"
+     },
+     "detail": {
+      "en": "About 25 mm a week, more at flowering and fruiting; keep the soil moist but never waterlogged.",
+      "fr": "Environ 25 mm par semaine, davantage à la floraison et à la fructification ; sol frais mais jamais engorgé."
+     },
+     "src": [
+      "Z1",
+      "Z2"
+     ]
+    },
+    {
+     "id": "top",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      21,
+      30
+     ],
+     "label": {
+      "en": "Top dressing",
+      "fr": "Fumure d’entretien"
+     },
+     "detail": {
+      "en": "Calcium ammonium nitrate 3 to 4 weeks after sowing, about 15 cm from the plant.",
+      "fr": "Ammonitrate calcique 3 à 4 semaines après le semis, à environ 15 cm du plant."
+     },
+     "src": [
+      "Z2",
+      "Z1",
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "can",
+       "qty": 185,
+       "src": [
+        "Z2"
+       ]
+      }
+     ],
+     "labour": 6
+    },
+    {
+     "id": "weed",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      14,
+      50
+     ],
+     "label": {
+      "en": "Weeding",
+      "fr": "Sarclage"
+     },
+     "detail": {
+      "en": "Keep the plot clean until the leaves cover the ground; weeds also shelter fruit flies.",
+      "fr": "Garder la parcelle propre jusqu’à la couverture du sol ; les adventices abritent aussi les mouches des fruits."
+     },
+     "src": [
+      "CU6",
+      "CU4"
+     ],
+     "labour": 12
+    },
+    {
+     "id": "pollinate",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      35,
+      88
+     ],
+     "label": {
+      "en": "Pollination",
+      "fr": "Pollinisation"
+     },
+     "detail": {
+      "en": "Bees and wasps pollinate the flowers; hives during flowering often raise the yield.",
+      "fr": "Abeilles et guêpes pollinisent les fleurs ; des ruches pendant la floraison augmentent souvent le rendement."
+     },
+     "src": [
+      "Z1"
+     ]
+    },
+    {
+     "id": "protect",
+     "phase": "protection",
+     "ref": "field",
+     "day": [
+      0,
+      88
+     ],
+     "label": {
+      "en": "Crop protection",
+      "fr": "Protection de la culture"
+     },
+     "detail": {
+      "en": "Powdery mildew is the main leaf disease; fruit flies, aphids and whiteflies follow, and mites above 30 °C. No courgette spray count was found: the plan uses the cucumber calendar as a cucurbit proxy.",
+      "fr": "L’oïdium est la principale maladie des feuilles ; viennent ensuite les mouches des fruits, les pucerons et les aleurodes, et les acariens au dessus de 30 °C. Aucun nombre de traitements n’a été trouvé pour la courgette : le plan reprend le calendrier du concombre comme substitut."
+     },
+     "src": [
+      "Z1",
+      "Z2",
+      "CU3",
+      "T2"
+     ],
+     "inputs": [
+      {
+       "item": "insecticide_l",
+       "qty": 1,
+       "apps": 13,
+       "src": [
+        "T2"
+       ]
+      },
+      {
+       "item": "mancozeb",
+       "qty": 2.5,
+       "src": [
+        "T2"
+       ]
+      }
+     ],
+     "labour": 42
+    },
+    {
+     "id": "harvest",
+     "phase": "harvest",
+     "ref": "harvest",
+     "day": [
+      0,
+      30
+     ],
+     "label": {
+      "en": "Harvest",
+      "fr": "Récolte"
+     },
+     "detail": {
+      "en": "Cut the fruits at 10 to 25 cm, daily or three times a week: they grow very fast.",
+      "fr": "Couper les fruits à 10 à 25 cm, chaque jour ou trois fois par semaine : ils grossissent très vite."
+     },
+     "src": [
+      "Z1",
+      "Z2",
+      "Z3"
+     ]
+    },
+    {
+     "id": "sell",
+     "phase": "harvest",
+     "ref": "harvest",
+     "day": [
+      0,
+      30
+     ],
+     "label": {
+      "en": "Packing and sale",
+      "fr": "Conditionnement et vente"
+     },
+     "detail": {
+      "en": "Immature fruits keep only 5 to 6 days at 25 to 35 °C: plan buyers before harvest.",
+      "fr": "Les fruits jeunes ne se gardent que 5 à 6 jours à 25 à 35 °C : trouver les acheteurs avant la récolte."
+     },
+     "src": [
+      "Z1"
+     ],
+     "labour": 2
+    }
+   ],
+   "src": [
+    "Z1",
+    "Z2",
+    "Z5",
+    "M1",
+    "M6"
+   ],
+   "basis": {
+    "plants_per_ha": "Derived: 60 to 100 cm × 60 cm gives 16,667 to 27,778 plants per ha (Z2, Z4), midpoint.",
+    "ky": "No FAO value for zucchini; watermelon value 1.1 used as a cucurbit proxy (M6).",
+    "heat_c": "Spider mites invade above 30 °C (Z1); not a physiological limit.",
+    "kc": "FAO-56 squash and zucchini: Kc 0.5, 0.95, 0.75; stage lengths 25/35/25/15 days (M1).",
+    "cycle": "First harvest 55 to 60 days (Z1), 58 used; harvest 30 to 40 days (Z1), 30 used; first flowers 35 to 55 days after sowing (Z1, Z5).",
+    "yield_t_ha": "Poor 4.9 = Kenyan well managed farms, low value (Z5); good 20 = tropical Africa level (Z1); average the midpoint. No irrigated reference: same values in both seasons.",
+    "harvest_kg_per_person_day": "Cucumber value used as a proxy (CU24).",
+    "loss_pct": "No measured loss found; Foumbot tomato chain value used as a proxy (T5)."
+   },
+   "confidence": [
+    {
+     "block": {
+      "en": "Technical itinerary",
+      "fr": "Itinéraire technique"
+     },
+     "level": "medium",
+     "note": {
+      "en": "PROTA and Kenyan guides; no Cameroon itinerary found.",
+      "fr": "PROTA et guides du Kenya ; pas d’itinéraire camerounais trouvé."
+     }
+    },
+    {
+     "block": {
+      "en": "Yields",
+      "fr": "Rendements"
+     },
+     "level": "low",
+     "note": {
+      "en": "PROTA level and Kenyan farm values only.",
+      "fr": "Niveau PROTA et valeurs d’exploitations du Kenya seulement."
+     }
+    },
+    {
+     "block": {
+      "en": "Prices at harvest",
+      "fr": "Prix à la récolte"
+     },
+     "level": "low",
+     "note": {
+      "en": "No Cameroon price; you enter your own.",
+      "fr": "Pas de prix au Cameroun ; vous saisissez le vôtre."
+     }
+    },
+    {
+     "block": {
+      "en": "Input prices",
+      "fr": "Prix des intrants"
+     },
+     "level": "medium",
+     "note": {
+      "en": "Cameroon references where they exist (MINADER 2024, West region survey 2022); proxies and gaps are named line by line.",
+      "fr": "Références camerounaises quand elles existent (MINADER 2024, enquête Région de l’Ouest 2022) ; les substituts et manques sont signalés ligne par ligne."
+     }
+    },
+    {
+     "block": {
+      "en": "Climate and water",
+      "fr": "Climat et eau"
+     },
+     "level": "medium",
+     "note": {
+      "en": "Modelled Foumbot climatology 1991 to 2021 with FAO-56 methods.",
+      "fr": "Climatologie modélisée de Foumbot 1991 à 2021 et méthodes FAO-56."
+     }
+    }
+   ]
+  }
+ },
+ "assumptions": [
+  {
+   "en": "Two growing seasons a year on the same plot, as in the MINADER budget: equipment lifespans in years are doubled into seasons.",
+   "fr": "Deux saisons de culture par an sur la même parcelle, comme dans le budget du MINADER : la durée de vie du matériel en années est doublée en saisons."
+  },
+  {
+   "en": "A crop is treated as a rainy season crop when rain covers at least half of its water need, otherwise as a dry season crop with the irrigated yield references.",
+   "fr": "Une culture est traitée comme culture de saison des pluies quand la pluie couvre au moins la moitié de ses besoins en eau, sinon comme culture de saison sèche avec les références de rendement irriguées."
+  },
+  {
+   "en": "Poor and good yields are the bounds of the published range for the season; the average is the midpoint unless a national average exists.",
+   "fr": "Les rendements faible et bon sont les bornes de la fourchette publiée pour la saison ; la moyenne est le point milieu sauf s’il existe une moyenne nationale."
+  },
+  {
+   "en": "In the failure outcome, 10% of the average yield is sold. Outcome weights (20%, 45%, 25%, 10%) are indicative and shift toward poor outcomes by 3 points per risk level.",
+   "fr": "En cas d’échec, 10 % du rendement moyen est vendu. Les poids des issues (20 %, 45 %, 25 %, 10 %) sont indicatifs et glissent vers les mauvaises issues de 3 points par niveau de risque."
+  },
+  {
+   "en": "Disease pressure is high when a month from flowering to the end of harvest receives 200 mm of rain or more, medium from 100 mm, matching the months of worst late blight reported in the West.",
+   "fr": "La pression des maladies est forte quand un mois entre la floraison et la fin de la récolte reçoit 200 mm de pluie ou plus, moyenne à partir de 100 mm, ce qui correspond aux mois de mildiou les plus graves signalés à l’Ouest."
+  },
+  {
+   "en": "Watering cans and hoses are treated as surface application (FAO efficiency 60%); drip 90%. Manual watering is capped at 0.25 ha.",
+   "fr": "Arrosoirs et tuyaux sont traités comme une irrigation de surface (efficience FAO 60 %) ; goutte à goutte 90 %. L’arrosage manuel est limité à 0,25 ha."
+  },
+  {
+   "en": "Pump fuel uses the manufacturer flow and consumption at full flow, a floor: lift and long hoses raise real use.",
+   "fr": "Le carburant de la pompe suit le débit et la consommation constructeur à plein débit, un minimum : la hauteur d’aspiration et les longs tuyaux augmentent la consommation réelle."
+  },
+  {
+   "en": "Where a crop source gives no labour figure, the MINADER tomato norms per hectare are used; where it gives no spray rate, the tomato rates are used. Each case is named in the itinerary.",
+   "fr": "Quand une source ne donne pas de temps de travail, les normes MINADER de la tomate par hectare sont utilisées ; sans dose de traitement, les doses de la tomate sont utilisées. Chaque cas est signalé dans l’itinéraire."
+  },
+  {
+   "en": "A 10% contingency reserve is added to every budget. A wheelbarrow is bought from 0.5 ha and a push cart from 1 ha.",
+   "fr": "Une réserve pour imprévus de 10 % est ajoutée à chaque budget. Une brouette est achetée à partir de 0,5 ha et un pousse pousse à partir de 1 ha."
+  },
+  {
+   "en": "Lines without a sourced price (stakes, trellis, some seeds) stay in the plan with their quantity and a zero cost: get a local quote before committing.",
+   "fr": "Les lignes sans prix sourcé (tuteurs, palissage, certaines semences) restent dans le plan avec leur quantité et un coût nul : demander un devis local avant de s’engager."
+  },
+  {
+   "en": "Exchange rates are fixed at 16 October 2026 values (BCEAO for the CFA franc); they are not live.",
+   "fr": "Les taux de change sont fixés aux valeurs du 16 octobre 2026 (BCEAO pour le franc CFA) ; ils ne sont pas en temps réel."
+  }
+ ],
+ "sources": {
+  "C2": {
+   "title": "Quarterly monitoring newsletter on agricultural inputs N°0 - December 2022 (English version)",
+   "publisher": "MINADER DESA",
+   "year": 2023,
+   "url": "https://www.minader.cm/wp-content/uploads/2023/07/wp-1688563666754.pdf"
+  },
+  "C16": {
+   "title": "Intensifier la culture du mais pour ameliorer la securite alimentaire : le producteur du Nord Cameroun y a-t-il interet ? (Table 3)",
+   "publisher": "Cahiers Agricultures 25(6), 65006",
+   "year": 2016,
+   "url": "https://www.cahiersagricultures.fr/articles/cagri/full_html/2016/06/cagri160029/T3.html"
+  },
+  "C18": {
+   "title": "Utilisation des herbicides a l'Ouest Cameroun : un enjeu economique et environnemental",
+   "publisher": "Camer.be",
+   "year": 2024,
+   "url": "https://www.camer.be/87491/11:1/utilisation-des-herbicides-a-louest-cameroun-un-enjeu-economique-et-environnemental-cameroon.html"
+  },
+  "C25": {
+   "title": "Honda WB20XT motor pump 37 m3/h - product sheet",
+   "publisher": "Manel Service (Honda dealer, Italy)",
+   "year": 2026,
+   "url": "https://www.manelservice.com/en/engine-pumps/1030-honda-wb-20-xt-3573390030072.html"
+  },
+  "C26": {
+   "title": "Honda WB20XT3 motor pump - specifications",
+   "publisher": "Avante (dealer, Ukraine)",
+   "year": 2026,
+   "url": "https://avante.com.ua/en/catalog/motopompa_honda_wb20_xt3_benzinovaja_dlja_vody_sredney_zagrjaznennosti-03066/"
+  },
+  "C27": {
+   "title": "Honda WB20XH water pump - specifications",
+   "publisher": "Honda Motor Southern Africa",
+   "year": 2026,
+   "url": "https://acc-pub-za.honda.co.za/power/wb20xh2-drx"
+  },
+  "C28": {
+   "title": "Koshin SEH-50X petrol pump - specifications",
+   "publisher": "Avante (dealer, Ukraine)",
+   "year": 2026,
+   "url": "https://avante.com.ua/en/catalog/motopompa_koshin_seh-50x_benzinovaja_dlja_chistoy_vody-03701/"
+  },
+  "C32": {
+   "title": "Prix du carburant au Cameroun en 2026 : super, gasoil et petrole",
+   "publisher": "Infospratiques.cm",
+   "year": 2026,
+   "url": "https://infospratiques.cm/?p=70"
+  },
+  "C34": {
+   "title": "Cameroun - hausse des prix du carburant : la reaction du gouvernement face a la hausse illegale des prix de transport",
+   "publisher": "Journal du Cameroun",
+   "year": 2024,
+   "url": "https://fr.journalducameroun.com/cameroun-hausse-des-prix-du-carburant-voici-la-reaction-du-gouvernement-face-a-la-hausse-illegale-des-prix-de-transport/"
+  },
+  "C35": {
+   "title": "Pres de 975 FCFA pour importer un litre, 828 FCFA a la pompe : l'ecart se creuse pour le gasoil au Cameroun",
+   "publisher": "Cameroun24",
+   "year": 2026,
+   "url": "https://cameroun24.net/article/76269-pres-de-975-fcfa-pour-importer-un-litre-828-fcfa-a-la-pompe-lecart-se-creuse-pour-le-gasoil-au-cameroun.html"
+  },
+  "C38": {
+   "title": "Cours de reference des principales devises contre Franc CFA (16 Oct 2026)",
+   "publisher": "BCEAO",
+   "year": 2026,
+   "url": "https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa"
+  },
+  "C43": {
+   "title": "Kenyan shilling - currency",
+   "publisher": "Trading Economics",
+   "year": 2026,
+   "url": "https://tradingeconomics.com/kenya/currency"
+  },
+  "C45": {
+   "title": "Rwandan franc - currency",
+   "publisher": "Trading Economics",
+   "year": 2026,
+   "url": "https://tradingeconomics.com/rwanda/currency"
+  },
+  "C46": {
+   "title": "Dollar to naira exchange rate today, October 14, 2026",
+   "publisher": "TechEconomy.ng",
+   "year": 2026,
+   "url": "https://techeconomy.ng/dollar-to-naira-exchange-rate-today-october-14-2026"
+  },
+  "C51": {
+   "title": "Cobra 26 F1 Tomato - Technisem (marketplace listing)",
+   "publisher": "Jiji Nigeria",
+   "year": 2026,
+   "url": "https://jiji.ng/ibadan/feeds-supplements-seeds/cobra-26-f1-tomato-technisem-8qWsimXCTpZn6U2U5yyCTXXW.html"
+  },
+  "C60": {
+   "title": "Bell pepper seeds (category listing page)",
+   "publisher": "Jiji Nigeria",
+   "year": 2026,
+   "url": "https://jiji.ng/kano/288-pepper-seeds/bell"
+  },
+  "C61": {
+   "title": "Semence hybride de TOMATE F1 COBRA 26 50 gr",
+   "publisher": "TM Business (TMCI), Abidjan",
+   "year": 2026,
+   "url": "https://tmbusiness.ci/produit/semence-de-tomate-f1-cobra-26-50-gr-2/"
+  },
+  "C63": {
+   "title": "Semence de CONCOMBRE MARKETER 50 gr",
+   "publisher": "TM Business (TMCI), Abidjan",
+   "year": 2026,
+   "url": "https://tmbusiness.ci/produit/semence-de-concombre-marketer-50-gr/"
+  },
+  "C64": {
+   "title": "Semence de HARICOT VERT CORA 1 kg",
+   "publisher": "TM Business (TMCI), Abidjan",
+   "year": 2026,
+   "url": "https://tmbusiness.ci/produit/semence-de-haricot-vert-cora-1-kg/"
+  },
+  "C74": {
+   "title": "Couts des prestations en installation de systeme d'irrigation goutte a goutte, annee 2020",
+   "publisher": "PRUMARX Groupe (Benin)",
+   "year": 2020,
+   "url": "https://prumarxgroupe.over-blog.com/2019/12/prix-installation-de-systeme-d-irrigation-goutte-a-goutte-2020.html"
+  },
+  "C76": {
+   "title": "Bottes de pluie - 6 500 Fcfa (Bepanda, Douala)",
+   "publisher": "Afribobo (Cameroon classifieds)",
+   "year": 2026,
+   "url": "https://www.afribobo.com/douala/bottes-de-pluie-179318.html"
+  },
+  "C78": {
+   "title": "Masque pour agriculture (search listing page)",
+   "publisher": "Jumia Cote d'Ivoire",
+   "year": 2026,
+   "url": "https://www.jumia.ci/slp/masque-pour-agriculture"
+  },
+  "C84": {
+   "title": "Fiente de poules pour fertilisation du sol - 50kg - 4 000 Fcfa (Yaounde)",
+   "publisher": "Afribobo (Cameroon classifieds)",
+   "year": 2026,
+   "url": "https://www.afribobo.com/yaounde/fiante-de-poules-pour-fertilisation-du-sol-50kg-169434.html"
+  },
+  "CU1": {
+   "title": "Fiche technique synthetique pour la production du concombre (Cucumis sativus L.)",
+   "publisher": "Universite d'Abomey-Calavi, Faculte des Sciences Agronomiques (Benin); Legba E.C. et al.",
+   "year": 2020,
+   "url": "https://dspace.uac.bj/bitstreams/186134b8-1d53-4672-a12e-d3859d7bb6f3/download"
+  },
+  "CU2": {
+   "title": "Cucumis sativus L. (PROTA record)",
+   "publisher": "PROTA4U, van Luijk M.N. (Grubben and Denton eds.)",
+   "year": 2004,
+   "url": "https://plantuse.plantnet.org/en/Cucumis_sativus_(PROTA)"
+  },
+  "CU3": {
+   "title": "Comparaison de sept varietes de concombre cultivees en pleine terre sous tunnel maraicher en saison seche 2006",
+   "publisher": "CIRAD Mayotte; Gimenez A., Soilihi I., Huat J.",
+   "year": 2007,
+   "url": "https://agritrop.cirad.fr/541646/1/ID541646.pdf"
+  },
+  "CU4": {
+   "title": "Optimisation du rendement en champ du concombre par une visite florale de Apis mellifera a la Ferme de Multiplication du Materiel Vegetal du MINADER a Ngaoundere (Cameroun)",
+   "publisher": "Journal of Animal and Plant Sciences 64(3); Mohamadou Moussa et al.",
+   "year": 2025,
+   "url": "https://www.m.elewa.org/journals/wp-content/uploads/2025/07/7.Mohamadou.pdf"
+  },
+  "CU5": {
+   "title": "Host susceptibility and pest status of fruit flies (Diptera: Tephritidae) attacking cucurbits in two agroecological zones of Cameroon",
+   "publisher": "African Entomology 26(2):317-332; Mokam D.G. et al.",
+   "year": 2018,
+   "url": "https://wiki.pestinfo.org/wiki/African_Entomology_(2018)_26,_317-332"
+  },
+  "CU6": {
+   "title": "Exploring biotic and abiotic factors influencing cucurbit-fruit fly damage and diversity in cucurbit crop production systems",
+   "publisher": "International Journal of Tropical Insect Science 45(6); Eypert L. et al.",
+   "year": 2025,
+   "url": "https://link.springer.com/article/10.1007/s42690-025-01622-4"
+  },
+  "CU7": {
+   "title": "Cucumber production guide",
+   "publisher": "Seed Co (Botswana)",
+   "year": null,
+   "url": "https://seedcogroup.com/bw/vegetables/wp-content/uploads/2021/12/Cucumber.pdf"
+  },
+  "CU8": {
+   "title": "Cucumber Production Guideline 2019",
+   "publisher": "Starke Ayres (South Africa)",
+   "year": 2019,
+   "url": "https://www.starkeayres.com/uploads/files/Cucumber-Production-Guideline-2019.pdf"
+  },
+  "CU9": {
+   "title": "Cucumber farming in Kenya in a nutshell 2022",
+   "publisher": "Greenlife Crop Protection Africa (input supplier)",
+   "year": 2022,
+   "url": "https://www.greenlife.co.ke/?p=11696"
+  },
+  "CU11": {
+   "title": "Consommation : les legumes abondent au marche du Mfoundi",
+   "publisher": "EcoMatin (Cameroon)",
+   "year": 2021,
+   "url": "https://ecomatin.net/consommation-les-legumes-abondent-au-marche-du-mfoundi/"
+  },
+  "CU15": {
+   "title": "Profitability and efficiency of cucumber production among smallholder farmers in Oyo State, Nigeria",
+   "publisher": "Journal of Agricultural Sciences 61; Balogun O.",
+   "year": 2016,
+   "url": "https://publication.babcock.edu.ng/publication/view/4580"
+  },
+  "CU16": {
+   "title": "Economic analysis of cucumber production under different NPK and compost regime",
+   "publisher": "NIHORT HortBase; Adebayo A.G., Togun A.O., Adeoye I.B., Akintoye H.A.",
+   "year": 2020,
+   "url": "https://nihort.gov.ng/hortbase/economic-analysis-of-cucumber-production-under-different-npk-15155-and-compost-regime/"
+  },
+  "CU24": {
+   "title": "Cucumber Production Guide (Region 02)",
+   "publisher": "Department of Agriculture, Cagayan Valley, Philippines",
+   "year": 2017,
+   "url": "https://cagayanvalley.da.gov.ph/wp-content/uploads/2018/02/Cucumber-Production-Guide.pdf"
+  },
+  "CU27": {
+   "title": "La culture du concombre et l'incidence socio-economique dans l'arrondissement de Mvengue (1959-2011)",
+   "publisher": "Universite de Yaounde I (ENS) memoire; Ayie S.",
+   "year": 2016,
+   "url": "https://dicames.online/jspui/bitstream/20.500.12177/4495/1/ENS_20_0303.pdf"
+  },
+  "CU30": {
+   "title": "Diagnostic agraire prealable a la creation d'un centre de formation en agriculture, Nyong-et-Mfoumou, Centre Cameroun",
+   "publisher": "Memoire de fin d'etudes (Reseau FAR); Cuvilliez M.",
+   "year": 2015,
+   "url": "https://www.reseau-far.com/ressources/files/fichierPDF_2015_RESAD_CUVILLIEZ.pdf"
+  },
+  "CU31": {
+   "title": "Abidjan: le prix du chou et de la banane plantain en baisse, la courgette, le navet et le concombre en hausse",
+   "publisher": "Fraternite Matin (prices from Conseil National de la lutte contre la vie chere, CNLVC)",
+   "year": 2024,
+   "url": "https://www.fratmat.info/article/237870/economie/microeconomie/abidjan-le-prix-du-chou-et-de-la-banane-plantain-en-baisse-la-courgette-le-navet-et-le-concombre-en-hausse"
+  },
+  "CU38": {
+   "title": "CONCOMBRE (kg), produits de saison",
+   "publisher": "Sika Finance (Cote d'Ivoire)",
+   "year": 2026,
+   "url": "https://www.sikafinance.com/conso/product/concombre_1034"
+  },
+  "CU46": {
+   "title": "Cucumber Ashley Seeds (classified listing, Vetagro and pulpers, Nairobi)",
+   "publisher": "Jiji Kenya",
+   "year": 2026,
+   "url": "https://jiji.co.ke/nairobi-central/feeds-supplements-seeds/cucumber-ashley-seeds-w6Ggi53Ng7AbgMQ6OZE79iYx.html"
+  },
+  "CU49": {
+   "title": "Cucurbits production guide",
+   "publisher": "Government of British Columbia, AgriService BC",
+   "year": null,
+   "url": "https://www2.gov.bc.ca/gov/content/industry/agriservice-bc/production-guides/vegetables/cucurbits"
+  },
+  "G1": {
+   "title": "Green Bean Sustainable Production Guide (Crop protocols)",
+   "publisher": "COLEAD (formerly COLEACP)",
+   "year": 2023,
+   "url": "https://resources.colead.link/en/system/files/file_fields/2024/05/08/-colead-production-guide-haricots-enultralight.pdf"
+  },
+  "G2": {
+   "title": "French Beans Production (SHEP PLUS training material)",
+   "publisher": "Kenya Ministry of Agriculture, Livestock and Fisheries / AFA-HCD / JICA",
+   "year": 2016,
+   "url": "https://www.jica.go.jp/project/english/kenya/015/materials/c8h0vm0000f7o8cj-att/materials_10.pdf"
+  },
+  "G3": {
+   "title": "A guide to IPM in French beans production, with emphasis on Kenya (Seif, Varela, Michalik, Lohr)",
+   "publisher": "ICIPE",
+   "year": 2001,
+   "url": "https://cgspace.cgiar.org/bitstreams/f50ee4c8-12c2-4bd2-867e-9c13d76150ac/download"
+  },
+  "G4": {
+   "title": "Green beans value chain analysis in Kenya (VCA4D brief)",
+   "publisher": "European Commission DG DEVCO / VCA4D",
+   "year": 2018,
+   "url": "https://capacity4dev.europa.eu/media/84453/download/6350b93c-489c-43aa-922d-b85e4a9c2f11_en"
+  },
+  "G6": {
+   "title": "Financial Analysis of Production of French Beans in Kenya (O.L.E. Mbatia)",
+   "publisher": "ISHS Acta Horticulturae 158, pp. 449-456",
+   "year": 1984,
+   "url": "https://ishs.org/ishs-article/158_53/"
+  },
+  "G7": {
+   "title": "Efficacy of seed-dressing and organic amendments against Fusarium root-rot of French beans in Kenya (A.G. Wagichunge, MSc thesis)",
+   "publisher": "Kenyatta University",
+   "year": 1998,
+   "url": "https://ir-library.ku.ac.ke/bitstreams/d2bab375-8c06-4727-a45a-3fb2b1758cca/download"
+  },
+  "G9": {
+   "title": "Young man farming French beans (Narok County)",
+   "publisher": "Kenya News Agency",
+   "year": null,
+   "url": "https://www.kenyanews.go.ke/young-man-farming-french-beans/"
+  },
+  "G11": {
+   "title": "French beans as labor intensive but rewarding export",
+   "publisher": "Selina Wamucii",
+   "year": 2018,
+   "url": "https://www.selinawamucii.com/french-beans-as-labor-intensive-but-rewarding-export"
+  },
+  "G12": {
+   "title": "Beans, green - Yield (FAOSTAT data)",
+   "publisher": "Helgi Library (FAOSTAT re-publication)",
+   "year": 2020,
+   "url": "https://www.helgilibrary.com/indicators/beans-green-yield/"
+  },
+  "G13": {
+   "title": "Abidjan : Le prix du haricot vert en baisse",
+   "publisher": "Fraternite Matin (Conseil National de Lutte contre la Vie Chere data)",
+   "year": 2024,
+   "url": "https://www.fratmat.info/article/236433/economie/microeconomie/abidjan-le-prix-du-haricot-vert-en-baisse-les-differents-produits-vivriers-sur-le-marche"
+  },
+  "G14": {
+   "title": "Abidjan : Le prix du gombo et du haricot vert en baisse",
+   "publisher": "Fraternite Matin",
+   "year": 2025,
+   "url": "https://www.fratmat.info/article/2632578/economie/microeconomie/abidjan-le-prix-du-gombo-et-du-haricot-vert-en-baisse"
+  },
+  "G17": {
+   "title": "Snap Beans Production Guide",
+   "publisher": "Department of Agriculture Regional Field Office 02 (Cagayan Valley), Philippines",
+   "year": 2017,
+   "url": "https://cagayanvalley.da.gov.ph/wp-content/uploads/2018/02/Snap-Beans-Production-Guide.pdf"
+  },
+  "G18": {
+   "title": "Vegetable Enterprise Budget 2025 (green beans, pp. 30-33)",
+   "publisher": "Land Bank, South Africa",
+   "year": 2025,
+   "url": "https://landbank.co.za/Media-Centre/Publications/2026/Vegetable Enterprise Budget 2025 print.pdf"
+  },
+  "G19": {
+   "title": "Cultures maraicheres dans les montagnes tropicales du Cameroun occidental (C. Kaffo)",
+   "publisher": "Cahiers Agricultures 14(6):517-524",
+   "year": 2005,
+   "url": "https://revues.cirad.fr/index.php/cahiers-agricultures/article/download/30546/30306/30781"
+  },
+  "G21": {
+   "title": "The Cultivation of Sweet Pepper (Capsicum annuum) in Foumbot Agricultural Area, West Region, Cameroon (Dieudonne et al.)",
+   "publisher": "Advanced Journal of Social Science 8(1):54-66, AIJR",
+   "year": 2021,
+   "url": "https://journals.aijr.org/index.php/ajss/article/download/3306/377"
+  },
+  "M1": {
+   "title": "Crop evapotranspiration: guidelines for computing crop water requirements (FAO Irrigation and Drainage Paper 56)",
+   "publisher": "FAO (Allen R.G., Pereira L.S., Raes D., Smith M.)",
+   "year": 1998,
+   "url": "https://www.fao.org/4/x0490e/x0490e00.htm"
+  },
+  "M4": {
+   "title": "Crop information: Bean",
+   "publisher": "FAO Land and Water",
+   "year": null,
+   "url": "https://www.fao.org/land-water/databases-and-software/crop-information/bean"
+  },
+  "M5": {
+   "title": "Crop information: Pepper",
+   "publisher": "FAO Land and Water",
+   "year": null,
+   "url": "https://www.fao.org/land-water/databases-and-software/crop-information/pepper"
+  },
+  "M6": {
+   "title": "Crop information: Watermelon",
+   "publisher": "FAO Land and Water",
+   "year": null,
+   "url": "https://www.fao.org/land-water/databases-and-software/crop-information/watermelon"
+  },
+  "M7": {
+   "title": "Irrigation Water Management: Irrigation Scheduling (Training manual 4), field application efficiencies",
+   "publisher": "FAO (Brouwer C., Prins K., Heibloem M.)",
+   "year": 1989,
+   "url": "https://www.fao.org/4/t7202e/t7202e00.htm"
+  },
+  "P1": {
+   "title": "Suggested Cultural Practices for Sweet Pepper (Berke, Black, Morris, Talekar, Wang), pub. 99-497R",
+   "publisher": "AVRDC - The World Vegetable Center",
+   "year": 2003,
+   "url": "https://avrdc.org/download/publications/crop-guides/peppers/e03420.pdf"
+  },
+  "P2": {
+   "title": "Capsicum Production (SHEP PLUS training material)",
+   "publisher": "Kenya MoALF / AFA-HCD / JICA",
+   "year": 2016,
+   "url": "https://www.jica.go.jp/project/english/kenya/015/materials/c8h0vm0000f7o8cj-att/materials_07.pdf"
+  },
+  "P3": {
+   "title": "Technologie de production du poivron (Capsicum annum)",
+   "publisher": "Institut de Formation en Agriculture et Technologies Innovantes (agreed by MINEFOP), hosted on minader.cm",
+   "year": null,
+   "url": "https://minader.cm/wp-content/uploads/2023/06/wp-1687782325413.pdf"
+  },
+  "P5": {
+   "title": "Importance des visites d'insectes ... Capsicum annuum ... a l'Ouest-Cameroun (Pando et al.)",
+   "publisher": "Journal of Animal & Plant Sciences 54(1):9832-9857",
+   "year": 2022,
+   "url": "https://www.m.elewa.org/journals/wp-content/uploads/2022/10/4.Pando_-2.pdf"
+  },
+  "P6": {
+   "title": "Chillies and sweet peppers (crop protocol / GAP guide)",
+   "publisher": "COLEACP",
+   "year": 2011,
+   "url": "https://resources.colead.link/en/system/files/file_fields/2020/12/03/piment-2011-eng-withdisclaimer.pdf"
+  },
+  "P8": {
+   "title": "Growth, Yield and Consumer Acceptance of Sweet Pepper as Influenced by Open Field and Greenhouse Production Systems (A. Martey, MPhil thesis)",
+   "publisher": "University of Ghana",
+   "year": 2015,
+   "url": "https://ugspace.ug.edu.gh/bitstreams/54c1074e-920b-400c-b828-fb4aa663b6e9/download"
+  },
+  "P9": {
+   "title": "The A-Z of growing capsicum profitably (Prof. Mulwa, Egerton University)",
+   "publisher": "Nation Africa, Seeds of Gold",
+   "year": null,
+   "url": "https://nation.africa/kenya/business/seeds-of-gold/the-a-z-of-growing-capsicum-profitably-1116324"
+  },
+  "P13": {
+   "title": "Itineraire technique du poivron en plein champ",
+   "publisher": "Direction de l'agriculture, Polynesie francaise",
+   "year": 2018,
+   "url": "https://www.service-public.pf/dag/wp-content/uploads/sites/28/2018/12/poivron-ft-culture_SDRdag_v181212.pdf"
+  },
+  "P14": {
+   "title": "Chillies and peppers, green - Yield (FAOSTAT data)",
+   "publisher": "Helgi Library (FAOSTAT re-publication)",
+   "year": 2022,
+   "url": "https://www.helgilibrary.com/indicators/chillies-and-peppers-green-yield/"
+  },
+  "T1": {
+   "title": "Technical and Economic Data Sheet for Tomato Production and Post-Production (PARPAC)",
+   "publisher": "MINADER Cameroon, Sub-department of Agricultural Extension",
+   "year": 2024,
+   "url": "https://www.minader.cm/wp-content/uploads/2025/05/FICHE_TECHNIQUE_PRODUCTION_ET_POST_PRODUCTION_TOMATE_PARPAC_ENG.pdf"
+  },
+  "T2": {
+   "title": "Evaluation experimentale de trois protocoles de traitement phytosanitaire et de l'effet de la fertilisation organo-minerale sur le mildiou et la rentabilite de la culture de tomate a l'Est-Cameroun",
+   "publisher": "Revue Agriculture 11:69-79, Universite Ferhat Abbas Setif 1 (Djeugap Fovo J. et al.)",
+   "year": 2016,
+   "url": "https://revue-agro.univ-setif.dz/documents-agri/numero11-2016/Fovo-Evaluation.pdf"
+  },
+  "T3": {
+   "title": "Typology of Tomato Cropping Systems and Determinants of Preharvest Losses in Western Cameroon",
+   "publisher": "Scientifica 2024, Article 5625648, Wiley (Titti R.W. et al., University of Dschang)",
+   "year": 2024,
+   "url": "https://www.researchgate.net/publication/385469148_Typology_of_Tomato_Cropping_Systems_and_Determinants_of_Preharvest_Losses_in_Western_Cameroon"
+  },
+  "T4": {
+   "title": "Phytosanitary Practices and Evaluation of 17 Pesticides Residues in Tomatoes Fruits Produced in Foumbot District, Western Highland-Cameroon",
+   "publisher": "European Scientific Journal 17(3):30-50 (Sopkoutie N.G.K. et al.)",
+   "year": 2021,
+   "url": "https://eprints.whiterose.ac.uk/id/eprint/174019/"
+  },
+  "T5": {
+   "title": "Dynamics of Losses in Tomato Commodity Chain (Estimates based on experimental design in Cameroon)",
+   "publisher": "ICAS VII, Rome (Tolly L.D.E. and Kamtchouing P.)",
+   "year": 2016,
+   "url": "https://www.istat.it/storage/icas2016/b15-tollylolo.pdf"
+  },
+  "T6": {
+   "title": "Cameroon Food Loss Case Studies (tomato chains Mbouda/Foumbot-Bafoussam-Douala)",
+   "publisher": "FAO Save Food",
+   "year": 2013,
+   "url": "https://www.fao.org/fileadmin/user_upload/save-food/presentation/Cameroon_Food_Loss_CaseStudies.pdf"
+  },
+  "T7": {
+   "title": "Biological constraints in tomato production in the western highlands of Cameroon",
+   "publisher": "Tropicultura 16(2):89-92 (Fontem D.A., Gumedzoe M.Y.D., Nono-Womdim R.)",
+   "year": 1999,
+   "url": "https://agris.fao.org/search/en/records/6472321953aa8c896301f4e4"
+  },
+  "T8": {
+   "title": "Quantitative Effects of Early and Late Blights on Tomato Yields in Cameroon",
+   "publisher": "Tropicultura 21(1):36-41 (Fontem D.A.)",
+   "year": 2003,
+   "url": "https://www.researchgate.net/publication/45266478_Quantitative_Effects_of_Early_and_Late_Blights_on_Tomato_Yields_in_Cameroon"
+  },
+  "T9": {
+   "title": "Assessment of Some Organic and a Mineral Fertilizer on the Yield and Profitability of Tomato in an Oxysol of West Cameroon",
+   "publisher": "Journal of Plant Sciences 14(4):133-142, Science Publishing Group (Keegoui G. et al.)",
+   "year": 2026,
+   "url": "https://www.sciencepublishinggroup.com/article/10.11648/j.jps.20261404.11"
+  },
+  "T10": {
+   "title": "Tillage and varietal impacts on tomato production on an ultisol in central Cameroon",
+   "publisher": "Soil and Tillage Research 128:1-8 (Tueche J.R. et al.)",
+   "year": 2013,
+   "url": "https://biblio1.iita.org/handle/20.500.12478/1232"
+  },
+  "T12": {
+   "title": "Crop Information: Tomato",
+   "publisher": "FAO Land and Water",
+   "year": null,
+   "url": "https://www.fao.org/land-water/databases-and-software/crop-information/tomato"
+  },
+  "T13": {
+   "title": "Heat-Tolerant Tomato Production Under Irrigation (Extension Bulletin 242)",
+   "publisher": "NAERLS / Ahmadu Bello University, Nigeria",
+   "year": 2016,
+   "url": "https://naerls.gov.ng/wp-content/uploads/2022/11/Heat-Tolerant-Tomato-Production-Under-Irrigation.pdf"
+  },
+  "T14": {
+   "title": "Production Guide for Tomatoes",
+   "publisher": "NIHORT, Ibadan, Nigeria",
+   "year": null,
+   "url": "https://nihort.gov.ng/wp-content/uploads/2020/07/PRODUCTION-GUIDE-ON-TOMATO.pdf"
+  },
+  "T15": {
+   "title": "Tomato Production (SHEP PLUS training material)",
+   "publisher": "Kenya MOALF / JICA / AFA-HCD",
+   "year": 2016,
+   "url": "https://www.jica.go.jp/project/english/kenya/015/materials/c8h0vm0000f7o8cj-att/materials_15.pdf"
+  },
+  "T17": {
+   "title": "Bulletin trimestriel de suivi des intrants agricoles: engrais et produits phytosanitaires No 0 (Oct to Dec 2022)",
+   "publisher": "MINADER DESA",
+   "year": 2022,
+   "url": "https://www.minader.cm/wp-content/uploads/2023/07/wp-1688563666713.pdf"
+  },
+  "T19": {
+   "title": "Vegetable growers perception of pesticide use practices, cost, and health effects in the tropical region of Cameroon",
+   "publisher": "Int. J. Agronomy and Plant Production 4(5):873-883 (Abang A.F. et al.)",
+   "year": 2013,
+   "url": "https://biblio1.iita.org/handle/20.500.12478/1235"
+  },
+  "T21": {
+   "title": "Climate Foumbot (Cameroon)",
+   "publisher": "Climate-Data.org",
+   "year": 2021,
+   "url": "https://en.climate-data.org/africa/cameroon/west/foumbot-894723/"
+  },
+  "T22": {
+   "title": "Tomate en fruit: l'abondance de l'offre fait chuter les prix a Yaounde",
+   "publisher": "EcoMatin",
+   "year": 2026,
+   "url": "https://ecomatin.net/tomate-en-fruit-labondance-de-loffre-fait-chuter-les-prix-a-yaounde"
+  },
+  "T23": {
+   "title": "Cameroun: tomates entre 2500 et 1 000 FCFA le cageot, quand l'abondance ruine le paysan",
+   "publisher": "KOACI",
+   "year": 2026,
+   "url": "https://www.koaci.com/article/2026/03/09/cameroun/societe/cameroun-tomates-entre-2500-et-1-000-fcfa-le-cageot-quand-labondance-ruine-le-paysan_194954.html"
+  },
+  "T25": {
+   "title": "Les Camerounais confrontes a la flambee du prix de la tomate",
+   "publisher": "APA News",
+   "year": 2025,
+   "url": "https://fr.apanews.net/?p=261386"
+  },
+  "T27": {
+   "title": "Flambee des prix a Yaounde: la tomate passe de 3 000 a 6 000 fcfa en deux semaines",
+   "publisher": "Journal du Cameroun",
+   "year": 2025,
+   "url": "https://fr.journalducameroun.com/flambee-des-prix-a-yaounde-la-tomate-passe-de-3-000-a-6-000-fcfa-en-deux-semaines/"
+  },
+  "T28": {
+   "title": "Le prix de la tomate baisse a Bafoussam",
+   "publisher": "EcoMatin",
+   "year": 2021,
+   "url": "https://ecomatin.net/le-prix-de-la-tomate-baisse-a-bafoussam"
+  },
+  "T33": {
+   "title": "Heavy rains and exports raise tomato prices on Cameroonian market",
+   "publisher": "Business in Cameroon",
+   "year": 2017,
+   "url": "https://www.businessincameroon.com/agriculture/0109-7361-heavy-rains-and-exports-raise-tomato-prices-on-cameroonian-market"
+  },
+  "T34": {
+   "title": "Cameroun: le Covid-19 met les producteurs de tomates en larmes",
+   "publisher": "Afrik.com",
+   "year": 2020,
+   "url": "https://www.afrik.com/cameroun-le-covid-19-met-les-producteurs-de-tomates-en-larmes"
+  },
+  "T35": {
+   "title": "Tomates en fruit: les prix bas peuvent-ils durer?",
+   "publisher": "EcoMatin",
+   "year": 2020,
+   "url": "https://ecomatin.net/tomates-en-fruit-les-prix-bas-peuvent-ils-durer"
+  },
+  "T36": {
+   "title": "Cameroon: affected by supply difficulties, tomato price rises significantly in the Far North",
+   "publisher": "Business in Cameroon",
+   "year": 2019,
+   "url": "https://www.businessincameroon.com/agriculture/0307-9286-cameroon-affected-by-supply-difficulties-tomato-price-rises-significantly-in-the-far-north"
+  },
+  "Z1": {
+   "title": "Cucurbita pepo L. (PROTA record)",
+   "publisher": "PROTA4U; Messiaen C.-M. and Fagbayide J.A. (Grubben and Denton eds.)",
+   "year": 2004,
+   "url": "https://plantuse.plantnet.org/en/Cucurbita_pepo_(PROTA)"
+  },
+  "Z2": {
+   "title": "Courgette Farming",
+   "publisher": "Greenlife Crop Protection Africa (Kenya input supplier)",
+   "year": null,
+   "url": "https://www.greenlife.co.ke/courgette-farming/"
+  },
+  "Z3": {
+   "title": "The A to Z of farming courgettes",
+   "publisher": "Nation (Seeds of Gold), Kenya",
+   "year": null,
+   "url": "https://nation.africa/kenya/business/seeds-of-gold/the-a-to-z-of-farming-courgettes-1066196"
+  },
+  "Z4": {
+   "title": "All you need to know about growing zucchini",
+   "publisher": "The Standard, FarmKenya (Malaika Chunji)",
+   "year": 2019,
+   "url": "https://www.standardmedia.co.ke/farmkenya/smart-harvest/article/2001336512/all-you-need-to-know-about-growing-zucchini"
+  },
+  "Z5": {
+   "title": "Health benefits of courgette (zucchini)",
+   "publisher": "The Standard, FarmKenya (Jenipher Anyango)",
+   "year": 2022,
+   "url": "https://www.standardmedia.co.ke/farmkenya/article/2001439143/health-benefits-of-courgette-zucchini"
+  },
+  "Z21": {
+   "title": "COURGETTE (kg), produits de saison",
+   "publisher": "Sika Finance (Cote d'Ivoire)",
+   "year": 2026,
+   "url": "https://www.sikafinance.com/conso/product/courgette_1029"
+  },
+  "Z24": {
+   "title": "Green Zuchini/Courgette vegetable seeds (Vetagro and pulpers, Nairobi)",
+   "publisher": "Jiji Kenya",
+   "year": 2026,
+   "url": "https://jiji.co.ke/nairobi-central/feeds-supplements-seeds/green-zuchini-courgette-34HcmsG5SHyNrTDfj31lHX3I.html"
+  }
+ }
+}

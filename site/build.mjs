@@ -27,7 +27,7 @@ const parts = ['"use strict";', `const AF_TARGET = ${JSON.stringify(target)};`, 
 if (target === 'production') parts.push(read('src/analytics.js'));
 // Season Plan engine v2 and its knowledge base (data with source ids), isolated in their own scope
 const kb = JSON.parse(read('data/kb.json'));
-parts.push(`const KB = ${JSON.stringify(kb)};`, `const AFEngine = (function () { const module = undefined;\n${read('src/engine.cjs')}\nreturn AFEngine; })();`);
+parts.push(`const KB = ${JSON.stringify(kb, (k, v) => (k === 'basis' ? undefined : v))};`, `const AFEngine = (function () { const module = undefined;\n${read('src/engine.cjs')}\nreturn AFEngine; })();`);
 parts.push(read('src/viz.js'), read('src/planner.js'), read('src/pages.js'));
 const js = '(function(){\n' + parts.join('\n') + '\n})();';
 const css = read('src/styles.css');
