@@ -174,8 +174,9 @@ function tabSources(r) {
   const used = new Set();
   r.budget.lines.forEach(l => (l.src || []).forEach(s => used.add(s)));
   r.itinerary.forEach(s => (s.src || []).forEach(x => used.add(x)));
-  (crop.src || []).forEach(s => used.add(s)); (KB.climate.src || []).forEach(s => used.add(s));
-  const list = Array.from(used).filter(id => KB.sources[id]).sort().map(id => { const s = KB.sources[id]; return '<li><span class="mono faint">[' + esc(id) + ']</span> ' + (s.url ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.title) + ' ↗</a>' : esc(s.title)) + (s.publisher ? ' <span class="faint">· ' + esc(s.publisher) + (s.year ? ', ' + s.year : '') + '</span>' : '') + '</li>'; }).join('');
+  [crop.src, crop.price.src, crop.harvest_src, KB.climate.src, KB.fx_src, (KB.water.options[PLAN.water] || {}).src, PLAN.water !== 'rainfed' && PLAN.water !== 'manual' ? KB.water.src_fuel : null].forEach(a => (a || []).forEach(s => used.add(s)));
+  const key = id => { const m = /^([A-Z]+)(\d+)$/.exec(id) || [id, id, 0]; return [m[1], +m[2]]; };
+  const list = Array.from(used).filter(id => KB.sources[id]).sort((a, b) => { const x = key(a), y = key(b); return x[0] === y[0] ? x[1] - y[1] : (x[0] < y[0] ? -1 : 1); }).map(id => { const s = KB.sources[id]; return '<li><span class="mono faint">[' + esc(id) + ']</span> ' + (s.url ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.title) + ' ↗</a>' : esc(s.title)) + (s.publisher ? ' <span class="faint">· ' + esc(s.publisher) + (s.year ? ', ' + s.year : '') + '</span>' : '') + '</li>'; }).join('');
   const assume = (KB.assumptions || []).map(a => '<li>' + esc(tl(a)) + '</li>').join('');
   return '<div class="tbl-wrap"><table class="tbl ptbl"><thead><tr><th>' + esc(P.th.block) + '</th><th>' + esc(P.th.conf) + '</th><th>' + esc(P.th.note) + '</th></tr></thead><tbody>' + conf + '</tbody></table></div>' +
     '<h5 class="sub">' + esc(P.assumptionsT) + '</h5><ul class="list-check">' + assume + '</ul><h5 class="sub">' + esc(P.sourcesT) + '</h5><ol class="srcs">' + list + '</ol>';

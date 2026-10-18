@@ -761,7 +761,7 @@ fr: {
       manual_limit: (min, max) => 'L’arrosage manuel reste réaliste jusqu’à environ ' + max + ' : le plan s’arrête là. Pour une parcelle plus grande, choisissez une motopompe ou le goutte à goutte.',
       needs_price: (min, max, be) => 'Aucun prix bord champ n’est publié pour cette culture au Cameroun : AfriFarm n’en invente pas. Saisissez le prix que vous comptez obtenir, en FCFA par kg, pour voir les quatre issues. Au rendement moyen, la saison est à l’équilibre à partir d’environ ' + be + ' FCFA/kg.'
     },
-    upfrontHint: 'Avec un petit capital : si vous pouvez emprunter un pulvérisateur et des outils, cochez « Je possède déjà les outils de base et un pulvérisateur » dans Plus d’options ; commencez par l’arrosage manuel ou une culture pluviale en saison des pluies, puis investissez dans l’équipement avec les bénéfices de la première saison.'),
+    upfrontHint: 'Avec un petit capital : si vous pouvez emprunter un pulvérisateur et des outils, cochez « Je possède déjà les outils de base et un pulvérisateur » dans Plus d’options ; commencez par l’arrosage manuel ou une culture pluviale en saison des pluies, puis investissez dans l’équipement avec les bénéfices de la première saison.',
     kArea: 'Parcelle que le capital couvre', plants: (n) => n + ' plants', kRequired: 'Capital nécessaire', kBudget: 'Budget de la saison', inclReserve: 'Réserve de précaution de 10 % comprise',
     kMargin: 'Marge, issue moyenne', roiAvg: (p) => 'Rentabilité ' + p + ' sur les coûts de la saison', kSeason: 'Durée de la saison',
     compactNote: 'Issue moyenne affichée. Le plan complet détaille le budget ligne par ligne, l’itinéraire technique, la liste d’achats, le bilan hydrique et les risques.',
