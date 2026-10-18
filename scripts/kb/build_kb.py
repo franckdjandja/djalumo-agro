@@ -29,7 +29,7 @@ def L(en, fr):
 
 # ---------------------------------------------------------------- sources
 # Each research file numbers its sources from S1; they get a prefix here and identical URLs are merged.
-PREFIX = {'tomato': 'T', 'cucumber': 'CU', 'zucchini': 'Z', 'greenbean': 'G', 'pepper': 'P', 'costs': 'C'}
+PREFIX = {'tomato': 'T', 'pepper': 'P', 'greenbean': 'G', 'cucumber': 'CU', 'zucchini': 'Z', 'costs': 'C'}
 SOURCES = {}
 ALIAS = {}
 _url_owner = {}
@@ -192,7 +192,7 @@ def build_services():
         'transport_local_kg': {'label': L('Transport and handling to the local market', 'Transport et manutention vers le marché local'), 'price': round(50000 / (800 * 20), 1), 'unit': 'kg', 'src': src('C3', 'T9'),
                                'basis': 'Derived: 50,000 XAF per ha cycle (C3) over 800 crates (C3) of 20 kg (T9).'},
         'transport_city_kg': {'label': L('Transport and charges to Douala or Yaoundé', 'Transport et frais vers Douala ou Yaoundé'), 'price': round((333 + 500) / 2 / 20, 1), 'unit': 'kg', 'src': src('C47', 'T9'),
-                              'basis': 'Derived: 333 to 500 XAF per crate paid by a trader (C47), crate of 20 kg (T9).'},
+                              'basis': 'Derived: 333 to 500 XAF per crate paid by a trader from Ntui (Centre) to Yaoundé (C47), crate of 20 kg (T9, assumption). Not used while city sales are not offered.'},
         'market_fee_rate': {'label': L('Market fees', 'Taxes de marché'), 'price': 0, 'src': [],
                             'basis': 'Not found separately (C47 includes them in transport charges); not added.'},
         'nursery_prep_m2': {'label': L('Nursery soil preparation', 'Préparation du sol de pépinière'), 'price': 500, 'unit': 'm2', 'category': 'nursery', 'src': src('C3')},
@@ -209,7 +209,7 @@ def build_water():
         'maintenance_label': L('Pump maintenance', 'Entretien de la motopompe'),
         'options': {
             'rainfed': {'covers': 0, 'efficiency': 1},
-            'manual': {'covers': 1, 'efficiency': surface_eff, 'labour_days_per_ha': 25, 'labour_src': src('C3'), 'labour_label': L('Watering by hand', 'Arrosage manuel'),
+            'manual': {'covers': 1, 'efficiency': surface_eff, 'm3_per_person_day': 6, 'labour_label': L('Watering by hand (AfriFarm assumption: 6 m³ per person day)', 'Arrosage manuel (hypothèse AfriFarm : 6 m³ par jour de travail)'),
                        'capex': [{'item': 'watering_can', 'qty_per_ha': 8, 'discrete': True}], 'max_area_ha': 0.25, 'src': src('M7', 'C3')},
             'existing': {'covers': 1, 'efficiency': surface_eff, 'fuel': True, 'labour_days_per_ha': 25, 'labour_src': src('C3'), 'labour_label': L('Watering', 'Arrosage'),
                          'maintenance_xaf_per_ha': 15000, 'maintenance_src': src('C3'), 'capex': [], 'src': src('M7', 'C3')},
@@ -342,9 +342,9 @@ def tomato(R):
     ]
     return {
         'name': L('Tomato', 'Tomate'), 'release': 'cm', 'badge': L('Cameroon data', 'Données Cameroun'),
-        'plants_per_ha': 25000, 'ky': 1.05, 'heat_c': 32, 'loss_pct': 6.5, 'harvest_kg_per_person_day': 400, 'agronomist_visits': 1,
+        'plants_per_ha': 25000, 'ky': 1.05, 'heat_c': 32, 'loss_pct': LOCAL_LOSS, 'harvest_kg_per_person_day': 400, 'agronomist_visits': 1,
         'kc': {'ini': 0.6, 'mid': 1.15, 'end': 0.8, 'stages': kc_stages([30, 40, 40, 25])},
-        'cycle': {'nursery_days': 30, 'to_first_harvest_days': 70, 'harvest_days': 60, 'flowering_before_harvest_days': 26},
+        'cycle': {'nursery_days': 30, 'to_first_harvest_days': 70, 'harvest_days': 60, 'flowering_before_harvest_days': 45},
         'yield_t_ha': {'wet': yields(10, 25), 'dry': yields(20, 50)},
         'price': {'reference_xaf_kg': 275, 'index': index, 'src': src('T9', 'T35', 'T22', 'T23', 'T25', 'T27', 'T28', 'T33'),
                   'note': L('Reference: 275 FCFA/kg at the farm gate (5,500 FCFA per 20 kg crate, Dschang, March to June 2024). Prices are lowest from December to March and highest from July to November.',
@@ -359,9 +359,9 @@ def tomato(R):
             'ky': 'FAO-33 yield response factor 1.05 (T12).',
             'heat_c': 'Flowers drop and fruit set is poor above 32 °C (T13).',
             'kc': 'FAO-56 Table 12: Kc ini 0.6, mid 1.15, end 0.7 to 0.9 (0.8 used); stage lengths 30/40/40/25 days, Table 11 (M1).',
-            'cycle': 'Nursery 25 to 40 days (T1, 30 used); first harvest 60 to 80 days after transplanting (T1, 70 used); harvest over 2 to 3 months (T1, 60 days used); flowering derived as first harvest minus first fruit set 38 to 51 days after transplanting (T2).',
-            'yield_t_ha': 'MINADER per 100 m² ranges converted to t/ha: rainy season 10 to 25, dry season 20 to 50 (T1). Poor and good are the bounds, average the midpoint.',
-            'loss_pct': 'Post harvest losses on the Foumbot chain: transport 5.9% plus marketing 0.65% (T5, derived 6.55%). Pre harvest losses are inside the yield ranges.',
+            'cycle': 'Nursery 25 to 40 days (T1, 30 used); first harvest 60 to 80 days after transplanting (T1, 70 used); harvest over 2 to 3 months (T1, 60 days used); about 45 days from first flowers to first ripe fruit is an AfriFarm assumption to check in the pilot.',
+            'yield_t_ha': 'MINADER per 100 m² ranges converted to t/ha: rainy season 10 to 25, dry season 20 to 50 (T1). Poor and good are the bounds, average the midpoint. The FAOSTAT national average (19.4 t/ha in 2024, T11) is not used: the series looks revised and MINADER cites about 11 t/ha.',
+            'loss_pct': 'Local sale: transport to the grouping market 0.5% (T6) plus marketing 0.65% (T5), derived 1.15%. Selling in a city adds 5.0% (T6). Pre harvest losses are inside the yield ranges.',
             'harvest_kg_per_person_day': 'Derived: 40 person days of harvest per ha (T1) for 800 crates (T1) of 20 kg (T9).',
             'price': 'Reference 275 XAF/kg (T9); seasonal levels 7,000 and 12,000 per crate for abundant and difficult periods (T35); months from dated observations (T22 to T34).',
         },
@@ -375,6 +375,10 @@ def tomato(R):
     }
 
 
+# Post harvest loss for a sale on the local market: transport to the grouping market 0.5% (T6) plus marketing
+# 0.65% (T5). A sale in Douala or Yaoundé adds 5.0% of transport loss (T6).
+LOCAL_LOSS = round(0.5 + 0.65, 2)
+
 # Labour norms reused as proxies where a crop source gives none: MINADER tomato budget per ha (T1) and
 # 3 person days per spray application (T2). Every use is named in the step sources and in ASSUMPTIONS.
 PROXY_LAB = {'clear': 20, 'plough': 90, 'transplant': 35, 'stake': 30, 'fert': 6, 'weed': 15, 'prune': 15, 'manure': 35, 'spray': 3}
@@ -386,6 +390,7 @@ REGIONAL_CONF = lambda itin_note, yield_note, price_note: [
     {'block': L('Input prices', 'Prix des intrants'), 'level': 'medium', 'note': L('Cameroon references where they exist (MINADER 2024, West region survey 2022); proxies and gaps are named line by line.', 'Références camerounaises quand elles existent (MINADER 2024, enquête Région de l’Ouest 2022) ; les substituts et manques sont signalés ligne par ligne.')},
     {'block': L('Climate and water', 'Climat et eau'), 'level': 'medium', 'note': L('Modelled Foumbot climatology 1991 to 2021 with FAO-56 methods.', 'Climatologie modélisée de Foumbot 1991 à 2021 et méthodes FAO-56.')},
 ]
+CUCURBIT_LABOUR = {'block': L('Labour', 'Main d’œuvre'), 'level': 'low', 'note': L('Philippine cucumber guide; harvest labour looks low for several weeks of picking.', 'Guide philippin du concombre ; la main d’œuvre de récolte paraît faible pour plusieurs semaines de cueillette.')}
 NO_PRICE = L('No published farm gate price for Cameroon: enter the price you expect to get.', 'Aucun prix bord champ publié pour le Cameroun : saisissez le prix que vous comptez obtenir.')
 
 
@@ -439,7 +444,7 @@ def greenbean():
     ]
     return {
         'name': L('Green bean', 'Haricot vert'), 'release': 'regional', 'badge': L('Regional references', 'Références régionales'),
-        'plants_per_ha': 250000, 'ky': 1.15, 'heat_c': 30, 'loss_pct': 6.5, 'harvest_kg_per_person_day': round(14000 / (1290 / 8)), 'agronomist_visits': 1,
+        'plants_per_ha': round(10000 / (0.30 * 0.15)), 'ky': 1.15, 'heat_c': 30, 'loss_pct': LOCAL_LOSS, 'harvest_kg_per_person_day': round(14000 / (1290 / 8)), 'agronomist_visits': 1,
         'kc': {'ini': 0.5, 'mid': 1.05, 'end': 0.9, 'stages': kc_stages([20, 30, 30, 10])},
         'cycle': {'nursery_days': 0, 'to_first_harvest_days': 52, 'harvest_days': 45, 'flowering_before_harvest_days': 18},
         'yield_t_ha': {'wet': yields(4.0, 10.0, 5.3), 'dry': yields(7.4, 14.8)},
@@ -450,14 +455,14 @@ def greenbean():
         'disease_note': L('Rust, anthracnose and halo blight thrive in cool, wet highland weather and leaf wetness (G1, G3).', 'La rouille, l’anthracnose et la graisse se développent par temps frais et humide d’altitude et feuillage mouillé (G1, G3).'),
         'steps': steps, 'src': src('G1', 'G2', 'G12', 'M1', 'M4'),
         'basis': {
-            'plants_per_ha': '200,000 to 300,000 plants per ha for dwarf beans (G1), midpoint.',
+            'plants_per_ha': 'One seed per hole at 30 × 15 cm (G2), derived 222,222 plants per ha, inside the 200,000 to 300,000 target for dwarf beans (G1).',
             'ky': 'FAO yield response factor for beans 1.15 (M4).',
             'heat_c': 'Flowers drop above 30 °C (G1).',
             'kc': 'FAO-56 green beans: Kc 0.5, 1.05, 0.9; stage lengths 20/30/30/10 days (M1).',
             'cycle': 'First pick typically 45 to 60 days after sowing (G1, G2), 52 used; picking over 1.5 to 2 months (G2, G7), 45 days used; pods ready 15 to 20 days after set (G1).',
             'yield_t_ha': 'Rainy season: poor 4.0 (G4), average 5.3 = Cameroon national average (G12), good 10 (G7). Dry season irrigated: 7.4 to 14.8 (G2), midpoint as average.',
             'harvest_kg_per_person_day': 'Derived: 14 t/ha harvested and packed in 1,290 hours, 8 hour days (G18, South Africa).',
-            'loss_pct': 'No measured loss found; Foumbot tomato chain value used as a proxy (T5).',
+            'loss_pct': 'No measured loss found; the tomato value for a local sale is used as a proxy (T5, T6).',
         },
         'confidence': REGIONAL_CONF(L('Kenyan, COLEAD and Philippine guides; no Cameroon itinerary found.', 'Guides du Kenya, du COLEAD et des Philippines ; pas d’itinéraire camerounais trouvé.'),
                                     L('Cameroon national average plus Kenyan references.', 'Moyenne nationale du Cameroun et références du Kenya.'),
@@ -470,9 +475,9 @@ def pepper():
     sprays = field_days // 7  # weekly sprays, Foumbot practice (P4)
     steps = [
         step('nursery', 'nursery', 'start', (0, 42), 'Nursery', 'Pépinière',
-             'Sow on raised beds or trays, feed seedlings lightly at two true leaves, protect against damping off and harden them before transplanting at 5 to 6 leaves. Foumbot growers keep seedlings about 6 weeks.',
-             'Semer sur planches surélevées ou plateaux, nourrir légèrement les plants à deux vraies feuilles, protéger contre la fonte des semis et endurcir avant le repiquage à 5 ou 6 feuilles. À Foumbot, les plants restent environ 6 semaines en pépinière.',
-             inputs=[('seed_pepper', 300, 1, src('P1', 'P3'))], services=[('nursery_prep_m2', 100), ('nursery_disinfection_m2', 100)], sources=src('P1', 'P2', 'P3', 'P4', 'T1')),
+             'Sow on raised beds or trays, feed seedlings lightly at two true leaves, protect against damping off and harden them before transplanting at 5 to 6 leaves. Foumbot growers keep seedlings about 6 weeks. The plan budgets 100 m² of nursery per ha, the low end of 100 to 300 m² derived from a pepper sheet.',
+             'Semer sur planches surélevées ou plateaux, nourrir légèrement les plants à deux vraies feuilles, protéger contre la fonte des semis et endurcir avant le repiquage à 5 ou 6 feuilles. À Foumbot, les plants restent environ 6 semaines en pépinière. Le plan compte 100 m² de pépinière par ha, le bas de la fourchette de 100 à 300 m² calculée à partir d’une fiche du piment.',
+             inputs=[('seed_pepper', 300, 1, src('P1', 'P3'))], services=[('nursery_prep_m2', 100), ('nursery_disinfection_m2', 100)], sources=src('P1', 'P2', 'P3', 'P4', 'P23', 'T1')),
         step('site', 'prep', 'field', (-60, -50), 'Plot choice and rotation', 'Choix de la parcelle et rotation',
              'No tomato, potato or eggplant on the plot for at least 3 years. Soil pH 6.0 to 7.0.',
              'Pas de tomate, pomme de terre ni aubergine sur la parcelle depuis au moins 3 ans. pH du sol 6,0 à 7,0.',
@@ -527,7 +532,7 @@ def pepper():
     ]
     return {
         'name': L('Sweet pepper', 'Poivron'), 'release': 'regional', 'badge': L('Regional references', 'Références régionales'),
-        'plants_per_ha': 20000, 'ky': 1.1, 'heat_c': 30, 'loss_pct': 6.5, 'harvest_kg_per_person_day': round(10000 / (1900 / 8)), 'agronomist_visits': 1,
+        'plants_per_ha': 20000, 'ky': 1.1, 'heat_c': 30, 'loss_pct': LOCAL_LOSS, 'harvest_kg_per_person_day': round(10000 / (1900 / 8)), 'agronomist_visits': 1,
         'kc': {'ini': 0.6, 'mid': 1.05, 'end': 0.9, 'stages': kc_stages([25, 35, 40, 20])},
         'cycle': {'nursery_days': 42, 'to_first_harvest_days': 75, 'harvest_days': 56, 'flowering_before_harvest_days': 42},
         'yield_t_ha': {'wet': yields(2.1, 12.6, 6.0), 'dry': yields(10.0, 28.0)},
@@ -543,9 +548,9 @@ def pepper():
             'heat_c': 'Flower drop from 28 to 30 °C (P1, P3); 30 used.',
             'kc': 'FAO-56 sweet peppers: Kc 0.6, 1.05, 0.9; stage lengths 25/35/40/20 days (M1).',
             'cycle': 'Nursery about 6 weeks in Foumbot (P4); first harvest 60 to 90 days after transplanting (P2, P3, P13), 75 used; harvest 6 to 10 weeks, 8 used; flowering to harvest 35 to 50 days (P1, P6), 42 used.',
-            'yield_t_ha': 'Rainy season: poor 2.1 = Cameroon national average (P14), average 6 = Cameroon sheet 5 to 7 (P3), good 12.6 (P8, Ghana open field). Dry season irrigated: 10 (P13) to 28 (P1), midpoint as average.',
-            'harvest_kg_per_person_day': 'Derived from a chilli budget: 10 t/ha picked in 1,900 hours, 8 hour days (P25); sweet pepper fruits are larger, so this is conservative.',
-            'loss_pct': 'No measured loss found; Foumbot tomato chain value used as a proxy (T5).',
+            'yield_t_ha': 'Rainy season: poor 2.1 = Cameroon national average (P14; includes hot peppers and is likely an FAO estimate), average 6 = Cameroon sheet 5 to 7 (P3), good 12.6 (P8, Ghana open field). Dry season irrigated: 10 (P13) to 28 (P1), midpoint as average.',
+            'harvest_kg_per_person_day': 'Derived from the chilli pages of a South African vegetable budget: 10 t/ha picked in 1,900 hours, 8 hour days (P25); sweet pepper fruits are larger, so this is conservative.',
+            'loss_pct': 'No measured loss found; the tomato value for a local sale is used as a proxy (T5, T6).',
         },
         'confidence': REGIONAL_CONF(L('Cameroon IFATI sheet and Foumbot survey, completed with AVRDC and Kenyan guides.', 'Fiche IFATI du Cameroun et enquête de Foumbot, complétées par les guides AVRDC et du Kenya.'),
                                     L('Cameroon sheet and national average; irrigated values from outside Cameroon.', 'Fiche camerounaise et moyenne nationale ; valeurs irriguées hors Cameroun.'),
@@ -572,11 +577,11 @@ def cucumber():
         step('basal', 'planting', 'field', (-7, 0), 'Basal manure', 'Fumure de fond',
              'Well decomposed poultry manure or compost, 800 g per planting hole, about 20 t per ha.',
              'Fiente bien décomposée ou compost, 800 g par trou de plantation, soit environ 20 t par ha.',
-             inputs=[('farmyard_manure', 20000, 1, src('CU1'))], labour=8, sources=src('CU1', 'CU2')),
+             inputs=[('farmyard_manure', 20000, 1, src('CU1'))], labour=8, sources=src('CU1', 'CU2', 'CU24')),
         step('sow', 'planting', 'field', (0, 0), 'Sowing', 'Semis',
              'Two seeds per hole about 2 cm deep in twin rows 100 × 50 × 50 cm (about 26,700 plants per ha), then thin to one plant.',
              'Deux graines par poquet à environ 2 cm de profondeur en doubles rangs 100 × 50 × 50 cm (environ 26 700 plants par ha), puis démarier à un plant.',
-             inputs=[('seed_cucumber', 2, 1, src('CU2', 'CU24'))], labour=4, sources=src('CU1', 'CU4', 'CU9')),
+             inputs=[('seed_cucumber', 2, 1, src('CU2', 'CU24'))], labour=4, sources=src('CU1', 'CU4', 'CU9', 'CU24')),
         step('water', 'care', 'field', (0, field_days), 'Watering', 'Arrosage',
              'Regular watering, about 50 mm a week from flowering; no overhead watering at flowering, which drops the flowers.',
              'Arrosage régulier, environ 50 mm par semaine dès la floraison ; pas d’aspersion à la floraison, qui fait tomber les fleurs.',
@@ -603,8 +608,8 @@ def cucumber():
              'Le concombre a besoin des abeilles : dans un essai à Ngaoundéré, les fleurs isolées des insectes n’ont donné aucun fruit. Placer 2 à 3 ruches par ha et éviter les insecticides quand les abeilles butinent.',
              sources=src('CU4', 'CU7')),
         step('protect', 'protection', 'field', (4, field_days), 'Crop protection', 'Protection de la culture',
-             'Fruit flies destroy about 37% of cucurbit fruits at Koutaba, next to Foumbot: trap, bag or treat early and remove stung fruits. The plan follows the only full cucumber spray calendar found (13 insecticide sprays and one preventive mancozeb), at the tomato rates as proxies.',
-             'Les mouches des fruits détruisent environ 37 % des fruits de cucurbitacées à Koutaba, à côté de Foumbot : piéger, ensacher ou traiter tôt et retirer les fruits piqués. Le plan suit le seul calendrier complet trouvé pour le concombre (13 insecticides et un mancozèbe préventif), aux doses de la tomate comme substitut.',
+             'Fruit flies destroy about 37% of cucurbit fruits at Koutaba, next to Foumbot: trap, bag or treat early and remove stung fruits. The plan follows the only full cucumber spray calendar found, from a tunnel trial in Mayotte (13 insecticide sprays and one preventive mancozeb), at the tomato rates as proxies.',
+             'Les mouches des fruits détruisent environ 37 % des fruits de cucurbitacées à Koutaba, à côté de Foumbot : piéger, ensacher ou traiter tôt et retirer les fruits piqués. Le plan suit le seul calendrier complet trouvé pour le concombre, issu d’un essai sous tunnel à Mayotte (13 insecticides et un mancozèbe préventif), aux doses de la tomate comme substitut.',
              inputs=prot, labour=prot_lab, sources=src('CU3', 'CU5', 'CU1', 'T2')),
         step('harvest', 'harvest', 'harvest', (0, 45), 'Harvest', 'Récolte',
              'Harvest at 15 to 25 cm, two or three times a week, before the seeds harden.', 'Récolter à 15 à 25 cm, deux ou trois fois par semaine, avant que les graines ne durcissent.',
@@ -616,7 +621,7 @@ def cucumber():
     ]
     return {
         'name': L('Cucumber', 'Concombre'), 'release': 'regional', 'badge': L('Regional references', 'Références régionales'),
-        'plants_per_ha': 26667, 'ky': 1.1, 'heat_c': 30, 'loss_pct': 6.5, 'harvest_kg_per_person_day': 1000, 'agronomist_visits': 1,
+        'plants_per_ha': 26667, 'ky': 1.1, 'heat_c': 30, 'loss_pct': LOCAL_LOSS, 'harvest_kg_per_person_day': 1000, 'agronomist_visits': 1,
         'kc': {'ini': 0.6, 'mid': 1.0, 'end': 0.75, 'stages': kc_stages([20, 30, 40, 15])},
         'cycle': {'nursery_days': 0, 'to_first_harvest_days': 50, 'harvest_days': 45, 'flowering_before_harvest_days': 12},
         'yield_t_ha': {'wet': yields(5.4, 15.0), 'dry': yields(5.4, 15.0)},
@@ -634,12 +639,12 @@ def cucumber():
             'kc': 'FAO-56 cucumber: Kc 0.6, 1.0, 0.75; stage lengths 20/30/40/15 days (M1).',
             'cycle': 'First harvest 40 to 60 days after sowing (CU2), 50 used; harvest 45 to 98 days, 45 used; first flowers 30 to 45 days after sowing (CU2, CU4).',
             'yield_t_ha': 'Poor 5.4 = Nigerian smallholders (CU15); good 15 = best NIHORT treatments (CU16); average the midpoint. No irrigated open field reference: same values in both seasons.',
-            'harvest_kg_per_person_day': 'Derived: 10 person days of harvest per ha for 10 to 15 t/ha (CU24), lower value.',
-            'loss_pct': 'No measured loss found; Foumbot tomato chain value used as a proxy (T5).',
+            'harvest_kg_per_person_day': 'Derived: 10 person days of harvest per ha for 10 to 15 t/ha (CU24), lower value. Low confidence: the research note judges 10 days low for a harvest of several weeks.',
+            'loss_pct': 'No measured loss found; the tomato value for a local sale is used as a proxy (T5, T6).',
         },
         'confidence': REGIONAL_CONF(L('Benin sheet, PROTA and a CIRAD trial; one Cameroon pollination trial.', 'Fiche du Bénin, PROTA et un essai du CIRAD ; un essai de pollinisation au Cameroun.'),
                                     L('Nigerian surveys and trials; no Cameroon yield measurement.', 'Enquêtes et essais au Nigeria ; pas de mesure de rendement au Cameroun.'),
-                                    L('One old Yaoundé observation and Abidjan series; you enter your own price.', 'Une ancienne observation à Yaoundé et des séries d’Abidjan ; vous saisissez votre prix.')),
+                                    L('One old Yaoundé observation and Abidjan series; you enter your own price.', 'Une ancienne observation à Yaoundé et des séries d’Abidjan ; vous saisissez votre prix.')) + [CUCURBIT_LABOUR],
     }
 
 
@@ -659,9 +664,9 @@ def zucchini():
              'Organic matter 50 to 70 t per ha in the holes or furrows, plus DAP before sowing.', 'Matière organique 50 à 70 t par ha dans les trous ou sillons, plus du DAP avant le semis.',
              inputs=[('farmyard_manure', 50000, 1, src('Z1')), ('dap', 124, 1, src('Z2', 'Z4'))], labour=PROXY_LAB['manure'], sources=src('Z1', 'Z2', 'Z4', 'T2')),
         step('sow', 'planting', 'field', (0, 0), 'Sowing', 'Semis',
-             'Two or three seeds per hill, 1.5 to 2.5 cm deep, at 60 to 100 × 60 cm; thin to one plant. F1 hybrids yield 50 to 100% more than open pollinated seed.',
-             'Deux ou trois graines par poquet, à 1,5 à 2,5 cm de profondeur, à 60 à 100 × 60 cm ; démarier à un plant. Les hybrides F1 rendent 50 à 100 % de plus que les variétés fixées.',
-             inputs=[('seed_zucchini', 2.25, 1, src('Z26'))], labour=4, sources=src('Z1', 'Z2', 'Z4', 'CU1')),
+             'Two or three seeds per hill, 1.5 to 2.5 cm deep, at 60 to 100 × 60 cm; thin to one plant. F1 hybrids yield 50 to 100% more than open pollinated seed. The seed quantity is uncertain: 2.25 kg per ha is a transplant rate from a temperate guide, and direct sowing needs several times more.',
+             'Deux ou trois graines par poquet, à 1,5 à 2,5 cm de profondeur, à 60 à 100 × 60 cm ; démarier à un plant. Les hybrides F1 rendent 50 à 100 % de plus que les variétés fixées. La quantité de semence est incertaine : 2,25 kg par ha est une dose pour plants repiqués tirée d’un guide de climat tempéré, et le semis direct en demande plusieurs fois plus.',
+             inputs=[('seed_zucchini', 2.25, 1, src('Z26'))], labour=4, sources=src('Z1', 'Z2', 'Z4', 'Z26', 'CU24')),
         step('water', 'care', 'field', (0, field_days), 'Watering', 'Arrosage',
              'About 25 mm a week, more at flowering and fruiting; keep the soil moist but never waterlogged.', 'Environ 25 mm par semaine, davantage à la floraison et à la fructification ; sol frais mais jamais engorgé.',
              sources=src('Z1', 'Z2')),
@@ -670,7 +675,7 @@ def zucchini():
              inputs=[('can', 185, 1, src('Z2'))], labour=PROXY_LAB['fert'], sources=src('Z2', 'Z1', 'T1')),
         step('weed', 'care', 'field', (14, 50), 'Weeding', 'Sarclage',
              'Keep the plot clean until the leaves cover the ground; weeds also shelter fruit flies.', 'Garder la parcelle propre jusqu’à la couverture du sol ; les adventices abritent aussi les mouches des fruits.',
-             labour=12, sources=src('Z6', 'CU4')),
+             labour=12, sources=src('Z6', 'CU4', 'CU24')),
         step('pollinate', 'care', 'field', (35, 88), 'Pollination', 'Pollinisation',
              'Bees and wasps pollinate the flowers; hives during flowering often raise the yield.', 'Abeilles et guêpes pollinisent les fleurs ; des ruches pendant la floraison augmentent souvent le rendement.',
              sources=src('Z1')),
@@ -687,12 +692,12 @@ def zucchini():
     ]
     return {
         'name': L('Zucchini', 'Courgette'), 'release': 'regional', 'badge': L('Regional references', 'Références régionales'),
-        'plants_per_ha': 22222, 'ky': 1.1, 'heat_c': 30, 'loss_pct': 6.5, 'harvest_kg_per_person_day': 1000, 'agronomist_visits': 1,
+        'plants_per_ha': 22222, 'ky': 1.1, 'heat_c': 30, 'loss_pct': LOCAL_LOSS, 'harvest_kg_per_person_day': 1000, 'agronomist_visits': 1,
         'kc': {'ini': 0.5, 'mid': 0.95, 'end': 0.75, 'stages': kc_stages([25, 35, 25, 15])},
         'cycle': {'nursery_days': 0, 'to_first_harvest_days': 58, 'harvest_days': 30, 'flowering_before_harvest_days': 13},
         'yield_t_ha': {'wet': yields(4.9, 20.0), 'dry': yields(4.9, 20.0)},
         'price': {'reference_xaf_kg': None, 'index': [1] * 12, 'note': NO_PRICE,
-                  'observed': L('Observed: Abidjan 350 to 500 FCFA/kg (2024 to 2026, level not stated).', 'Observé : Abidjan 350 à 500 FCFA/kg (2024 à 2026, niveau non précisé).'), 'src': src('Z14', 'Z21')},
+                  'observed': L('Observed: Abidjan 350 to 500 FCFA/kg (2024 to 2026, level not stated).', 'Observé : Abidjan 350 à 500 FCFA/kg (2024 à 2026, niveau non précisé).'), 'src': src('Z14', 'Z16', 'Z17', 'Z21')},
         'packaging': {'item': 'crate', 'kg_per_unit': 20, 'uses': 1},
         'harvest_src': src('CU24'),
         'disease_note': L('Heavy rain splits stems and favours mildew; production does best at the start of the dry season (Z1, Z3).', 'Les fortes pluies fendent les tiges et favorisent le mildiou ; la production réussit mieux au début de la saison sèche (Z1, Z3).'),
@@ -703,13 +708,13 @@ def zucchini():
             'heat_c': 'Spider mites invade above 30 °C (Z1); not a physiological limit.',
             'kc': 'FAO-56 squash and zucchini: Kc 0.5, 0.95, 0.75; stage lengths 25/35/25/15 days (M1).',
             'cycle': 'First harvest 55 to 60 days (Z1), 58 used; harvest 30 to 40 days (Z1), 30 used; first flowers 35 to 55 days after sowing (Z1, Z5).',
-            'yield_t_ha': 'Poor 4.9 = Kenyan well managed farms, low value (Z5); good 20 = tropical Africa level (Z1); average the midpoint. No irrigated reference: same values in both seasons.',
-            'harvest_kg_per_person_day': 'Cucumber value used as a proxy (CU24).',
-            'loss_pct': 'No measured loss found; Foumbot tomato chain value used as a proxy (T5).',
+            'yield_t_ha': 'Poor 4.9 = Kenyan well managed farms, low value (Z5); good 20 = the average level PROTA gives for tropical Africa (Z1), used here as the good outcome; average the midpoint. No irrigated reference: same values in both seasons.',
+            'harvest_kg_per_person_day': 'Cucumber value used as a proxy (CU24); low confidence.',
+            'loss_pct': 'No measured loss found; the tomato value for a local sale is used as a proxy (T5, T6).',
         },
         'confidence': REGIONAL_CONF(L('PROTA and Kenyan guides; no Cameroon itinerary found.', 'PROTA et guides du Kenya ; pas d’itinéraire camerounais trouvé.'),
                                     L('PROTA level and Kenyan farm values only.', 'Niveau PROTA et valeurs d’exploitations du Kenya seulement.'),
-                                    L('No Cameroon price; you enter your own.', 'Pas de prix au Cameroun ; vous saisissez le vôtre.')),
+                                    L('No Cameroon price; you enter your own.', 'Pas de prix au Cameroun ; vous saisissez le vôtre.')) + [CUCURBIT_LABOUR],
     }
 
 
@@ -728,7 +733,7 @@ def climate(R):
 def price_spread(R):
     """Typical spread of the price within a market and a month: median of half range over mid range across
     the dated tomato crate observations that give a range for one market and one period."""
-    excl = {'T23', 'T31', 'T32', 'T37'}  # multi month comparisons, crisis prices and export prices
+    excl = {'T23', 'T27', 'T31', 'T32', 'T36', 'T37'}  # changes over weeks or months, crisis prices, export prices
     vals = []
     for o in R['tomato']['prices']['observations']:
         c = o.get('price_xaf_per_crate')
@@ -748,15 +753,16 @@ UNITS = {
 ASSUMPTIONS = [
     L('Two growing seasons a year on the same plot, as in the MINADER budget: equipment lifespans in years are doubled into seasons.', 'Deux saisons de culture par an sur la même parcelle, comme dans le budget du MINADER : la durée de vie du matériel en années est doublée en saisons.'),
     L('A crop is treated as a rainy season crop when rain covers at least half of its water need, otherwise as a dry season crop with the irrigated yield references.', 'Une culture est traitée comme culture de saison des pluies quand la pluie couvre au moins la moitié de ses besoins en eau, sinon comme culture de saison sèche avec les références de rendement irriguées.'),
-    L('Poor and good yields are the bounds of the published range for the season; the average is the midpoint unless a national average exists.', 'Les rendements faible et bon sont les bornes de la fourchette publiée pour la saison ; la moyenne est le point milieu sauf s’il existe une moyenne nationale.'),
+    L('Poor and good yields are the bounds of the published range for the season and the average is its midpoint; where a crop departs from this rule (a national or Cameroon average, a regional reference), its notes say so.', 'Les rendements faible et bon sont les bornes de la fourchette publiée pour la saison et la moyenne en est le point milieu ; quand une culture s’écarte de cette règle (moyenne nationale ou camerounaise, référence régionale), ses notes le précisent.'),
     L('In the failure outcome, 10% of the average yield is sold. Outcome weights (20%, 45%, 25%, 10%) are indicative and shift toward poor outcomes by 3 points per risk level.', 'En cas d’échec, 10 % du rendement moyen est vendu. Les poids des issues (20 %, 45 %, 25 %, 10 %) sont indicatifs et glissent vers les mauvaises issues de 3 points par niveau de risque.'),
     L('Disease pressure is high when a month from flowering to the end of harvest receives 200 mm of rain or more, medium from 100 mm, matching the months of worst late blight reported in the West.', 'La pression des maladies est forte quand un mois entre la floraison et la fin de la récolte reçoit 200 mm de pluie ou plus, moyenne à partir de 100 mm, ce qui correspond aux mois de mildiou les plus graves signalés à l’Ouest.'),
-    L('Watering cans and hoses are treated as surface application (FAO efficiency 60%); drip 90%. Manual watering is capped at 0.25 ha.', 'Arrosoirs et tuyaux sont traités comme une irrigation de surface (efficience FAO 60 %) ; goutte à goutte 90 %. L’arrosage manuel est limité à 0,25 ha.'),
+    L('Watering cans and hoses are treated as surface application (FAO efficiency 60%); drip 90%. Manual watering moves about 6 m³ of water per person day and is capped at 0.25 ha; with a pump and basins, the MINADER norm of 25 person days per ha is used.', 'Arrosoirs et tuyaux sont traités comme une irrigation de surface (efficience FAO 60 %) ; goutte à goutte 90 %. L’arrosage manuel déplace environ 6 m³ d’eau par jour de travail et est limité à 0,25 ha ; avec motopompe et bassins, la norme MINADER de 25 jours de travail par ha est utilisée.'),
     L('Pump fuel uses the manufacturer flow and consumption at full flow, a floor: lift and long hoses raise real use.', 'Le carburant de la pompe suit le débit et la consommation constructeur à plein débit, un minimum : la hauteur d’aspiration et les longs tuyaux augmentent la consommation réelle.'),
-    L('Where a crop source gives no labour figure, the MINADER tomato norms per hectare are used; where it gives no spray rate, the tomato rates are used. Each case is named in the itinerary.', 'Quand une source ne donne pas de temps de travail, les normes MINADER de la tomate par hectare sont utilisées ; sans dose de traitement, les doses de la tomate sont utilisées. Chaque cas est signalé dans l’itinéraire.'),
+    L('Where a crop source gives no labour figure, the MINADER tomato norms per hectare are used, or the Philippine cucumber guide for cucurbits; where it gives no spray rate, the tomato rates are used. Each case cites its source in the itinerary.', 'Quand une source ne donne pas de temps de travail, les normes MINADER de la tomate par hectare sont utilisées, ou le guide philippin du concombre pour les cucurbitacées ; sans dose de traitement, les doses de la tomate sont utilisées. Chaque cas cite sa source dans l’itinéraire.'),
+    L('A harvest crate holds about 20 kg, the weight reported in one Dschang study; crate weights vary between markets. It sizes packaging, transport and harvest labour per kg.', 'Un cageot contient environ 20 kg, le poids relevé dans une étude à Dschang ; le poids varie selon les marchés. Il sert à calculer l’emballage, le transport et la main d’œuvre de récolte par kg.'),
     L('A 10% contingency reserve is added to every budget. A wheelbarrow is bought from 0.5 ha and a push cart from 1 ha.', 'Une réserve pour imprévus de 10 % est ajoutée à chaque budget. Une brouette est achetée à partir de 0,5 ha et un pousse pousse à partir de 1 ha.'),
     L('Lines without a sourced price (stakes, trellis, some seeds) stay in the plan with their quantity and a zero cost: get a local quote before committing.', 'Les lignes sans prix sourcé (tuteurs, palissage, certaines semences) restent dans le plan avec leur quantité et un coût nul : demander un devis local avant de s’engager.'),
-    L('Exchange rates are fixed at 16 October 2026 values (BCEAO for the CFA franc); they are not live.', 'Les taux de change sont fixés aux valeurs du 16 octobre 2026 (BCEAO pour le franc CFA) ; ils ne sont pas en temps réel.'),
+    L('Exchange rates are fixed at mid October 2026 values (BCEAO for the CFA franc, 16 October; naira 13 October); they are not live.', 'Les taux de change sont fixés aux valeurs de mi octobre 2026 (BCEAO pour le franc CFA, 16 octobre ; naira 13 octobre) ; ils ne sont pas en temps réel.'),
 ]
 
 
@@ -770,7 +776,7 @@ def build():
         'limits': {'min_capital_usd': 100, 'reserve_rate': 0.10, 'wet_season_rain_share': 0.5},
         'climate': climate(R),
         'thresholds': {'disease_rain_mm_high': 200, 'disease_rain_mm_medium': 100},
-        'market': {'city_extra_loss_pct': 5},
+        'market': {'city_extra_loss_pct': 5.0, 'src': src('T6')},
         'scenario': {'failure_yield_share': 0.10,
                      'price_factor': {'good': round(1 + spread, 2), 'average': 1, 'poor': round(1 - spread, 2), 'failure': round(1 - spread, 2)},
                      'basis': 'Price factors: median half range of %d dated crate price ranges within one market and one period is %.2f (T22 to T36, derived).' % (n, spread)},
@@ -784,6 +790,21 @@ def build():
         'crops': {'tomato': tomato(R), 'greenbean': greenbean(), 'pepper': pepper(), 'cucumber': cucumber(), 'zucchini': zucchini()},
         'assumptions': ASSUMPTIONS,
     }
+    # Merged sources: rewrite the ids quoted in free text so they match the published list.
+    tok = re.compile(r'\b(?:T|CU|Z|G|P|C|M)\d+\b')
+
+    def realias(x):
+        if isinstance(x, dict):
+            return {k: realias(v) for k, v in x.items()}
+        if isinstance(x, list):
+            return [realias(v) for v in x]
+        if isinstance(x, str):
+            return tok.sub(lambda m: ALIAS.get(m.group(0), m.group(0)), x)
+        return x
+    kb = realias(kb)
+    missing = sorted({m.group(0) for m in tok.finditer(json.dumps(kb, ensure_ascii=False))} - set(SOURCES))
+    if missing:
+        raise SystemExit('Source ids quoted but unknown: ' + ', '.join(missing))
     # Keep only the sources actually cited, so the published list stays readable.
     used = set()
 
