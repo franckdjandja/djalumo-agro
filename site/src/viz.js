@@ -159,7 +159,7 @@ function coverageChart(box) {
     [fr ? 'Prix PAM Cameroun' : 'WFP prices, Cameroon', 2005, 2024, '#B0832A', fr ? 'Prix de marché, surtout au Nord' : 'Market prices, mainly northern regions'],
     ['Sentinel-2', 2015, 2026, '#2B7A8F', fr ? 'Indice de végétation des parcelles' : 'Vegetation index of plots'],
     ['Cam_Agri pilot', 2024.7, 2025.8, '#0B231A', fr ? 'Pilote terrain, 4 phases' : 'Field pilot, four phases'],
-    [fr ? 'Journaux de saison' : 'AfriFarm season logs', 2027.2, 2028, 'plan', fr ? 'Prévu dès mars 2027' : 'Planned from March 2027']
+    [fr ? 'Journaux de saison' : 'Djanova Agro season logs', 2027.2, 2028, 'plan', fr ? 'Prévu dès mars 2027' : 'Planned from March 2027']
   ];
   if (fr) rows[6][0] = 'Pilote Cam_Agri';
   const H = 30 + rows.length * 30 + 26;
@@ -201,7 +201,7 @@ function flywheel(box) {
   const pos = [[cx, cy - R], [cx + R, cy], [cx, cy + R], [cx - R, cy]];
   let s = '<svg viewBox="0 0 400 400" role="img" aria-label="' + esc(T.flyH + ': ' + T.fly.join(', ')) + '"><circle cx="' + cx + '" cy="' + cy + '" r="' + R + '" fill="none" stroke="#C0D7CB" stroke-width="1.2"/>' +
     '<circle cx="' + cx + '" cy="' + cy + '" r="' + R + '" fill="none" stroke="#127A5B" stroke-width="2" stroke-dasharray="60 770" stroke-linecap="round" class="fly-run"/>' +
-    '<text x="' + cx + '" y="' + (cy - 4) + '" text-anchor="middle" font-size="15" fill="#0B231A" font-weight="600">AfriFarm</text><text x="' + cx + '" y="' + (cy + 16) + '" text-anchor="middle" font-size="11" fill="#667E73" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif">' + esc(T.flyH) + '</text>';
+    '<text x="' + cx + '" y="' + (cy - 4) + '" text-anchor="middle" font-size="15" fill="#0B231A" font-weight="600">Djanova Agro</text><text x="' + cx + '" y="' + (cy + 16) + '" text-anchor="middle" font-size="11" fill="#667E73" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif">' + esc(T.flyH) + '</text>';
   T.fly.forEach((t, i) => {
     const [x, y] = pos[i];
     s += '<circle cx="' + x + '" cy="' + y + '" r="7" fill="#FFFFFF" stroke="' + (i === 3 ? '#2B7A8F' : '#127A5B') + '" stroke-width="1.6"/><text x="' + (x + (i === 1 ? -14 : i === 3 ? 14 : 0)) + '" y="' + (y + (i === 0 ? -16 : i === 2 ? 26 : 4)) + '" text-anchor="' + (i === 1 ? 'end' : i === 3 ? 'start' : 'middle') + '" font-size="12.5" fill="#3B564A">' + esc(t) + '</text>';

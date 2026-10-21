@@ -31,4 +31,4 @@ const server = http.createServer(async (req, res) => {
   fs.createReadStream(file).pipe(res);
 });
 const port = Number(process.env.PORT || 3000);
-server.listen(port, () => console.log(`AfriFarm Intelligent on http://localhost:${port}`));
+server.listen(port, () => console.log(`Djanova Agro on http://localhost:${port}`));

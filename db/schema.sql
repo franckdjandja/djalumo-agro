@@ -1,4 +1,4 @@
--- AfriFarm Intelligent · website database schema (PostgreSQL 14+)
+-- Djanova Agro · website database schema (PostgreSQL 14+)
 -- Idempotent: safe to run more than once. Apply with `npm run db:migrate`.
 
 create extension if not exists pgcrypto;

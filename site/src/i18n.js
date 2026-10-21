@@ -1,21 +1,21 @@
-/* AfriFarm Intelligent: bilingual content model. English is the reference version, French the second.
+/* Djanova Agro: bilingual content model. English is the reference version, French the second.
    Every string the interface shows lives here, so a third language (Swahili) is one more object. */
 const I18N = {
 en: {
   meta: {
     lang: 'en', locale: 'en-US',
-    title: 'AfriFarm Intelligent · Agricultural decision intelligence for Africa',
-    desc: 'AfriFarm Intelligent turns any budget into a costed Season Plan: what to grow, where, when, at what cost and at what risk. Climate, soil, market and context data, in English and French.',
+    title: 'Djanova Agro · Agricultural decision intelligence for Africa',
+    desc: 'Djanova Agro turns any budget into a costed Season Plan: what to grow, where, when, at what cost and at what risk. Climate, soil, market and context data, in English and French.',
     pages: { home: 'Agricultural decision intelligence for Africa', planner: 'Season Planner', platform: 'Platform', intelligence: 'Intelligence', solutions: 'Solutions', data: 'Data', impact: 'Impact', about: 'About', contact: 'Contact', demo: 'Request a demo', newsletter: 'Newsletter', privacy: 'Privacy policy', terms: 'Terms of use', admin: 'Team inbox', nf: 'Signal not found' }
   },
   nav: { home: 'Home', planner: 'Planner', platform: 'Platform', intelligence: 'Intelligence', solutions: 'Solutions', data: 'Data', impact: 'Impact', about: 'About', contact: 'Contact', demo: 'Request a demo', newsletter: 'Newsletter', menu: 'Menu', close: 'Close', skip: 'Skip to content', lang: 'Language' },
   badge: { demo: 'Demo · illustrative', real: 'Sourced data', plan: 'Planned', mvp: 'MVP', v2: 'Version 2', v3: 'Version 3', v4: 'Version 4', field: 'Field record' },
-  cta: { explore: 'Explore the platform', demo: 'Request a demo', contact: 'Contact the team', simulate: 'Simulate', more: 'Learn more', back: 'Return to AfriFarm Intelligent', read: 'Read the field evidence', sim: 'Open the Season Simulator' },
+  cta: { explore: 'Explore the platform', demo: 'Request a demo', contact: 'Contact the team', simulate: 'Simulate', more: 'Learn more', back: 'Return to Djanova Agro', read: 'Read the field evidence', sim: 'Open the Season Simulator' },
 
   home: {
     eyebrow: 'Agricultural decision intelligence · Africa',
     h1: 'Decide the season before you plant it.',
-    lead: 'AfriFarm Intelligent turns any budget, from 100 USD to more than 1 million, into a costed Season Plan: what to grow, on what area, from which date, at what cost and at what risk. Built on climate, soil, market and context data, in English and French.',
+    lead: 'Djanova Agro turns any budget, from 100 USD to more than 1 million, into a costed Season Plan: what to grow, on what area, from which date, at what cost and at what risk. Built on climate, soil, market and context data, in English and French.',
     tryLabel: 'Season Simulator · enter a capital',
     tryAria: 'Capital amount',
     chips: ['Pilot zone · Foumbot, Cameroon', 'MVP crop · Tomato', 'Stage · Design and field validation', 'English · French'],
@@ -47,7 +47,7 @@ en: {
 
     hEyebrow: '02 · How it works',
     hH: 'Raw data in. A decision out.',
-    hLead: 'Public archives and field records are scattered, technical and rarely available in French. AfriFarm translates them into one decision for a specific plot, crop, date and budget.',
+    hLead: 'Public archives and field records are scattered, technical and rarely available in French. Djanova Agro translates them into one decision for a specific plot, crop, date and budget.',
     steps: [
       { t: 'Data', d: 'Climate, soil, crop, market and context, from public archives and field records.' },
       { t: 'Intelligence', d: 'An agronomic reference base structures the data by crop, stage and zone.' },
@@ -72,7 +72,7 @@ en: {
     eH: 'Designed from a real pilot, not from a slide.',
     eLead: 'Between September 2024 and October 2025, the founder’s pilot farm ran four production phases in Foumbot. Each loss traces back to a factor that data could have anticipated.',
 
-    cH: 'Bring AfriFarm to your farms, portfolio or programme.',
+    cH: 'Bring Djanova Agro to your farms, portfolio or programme.',
     cLead: 'Pilot participation in Foumbot from March 2027, data partnerships, investment and institutional collaboration.'
   },
 
@@ -112,7 +112,7 @@ en: {
       below_min: (min) => 'The capital is below the minimum of 100 USD (' + min + '). A real plot starts from this amount.',
       upfront_exceeds: () => 'The capital does not cover the equipment of the water option chosen. Choose another water option or raise the capital.',
       manual_limit: (min, max) => 'Manual watering is realistic up to about ' + max + ': the plan stops there. For a larger plot, choose a motor pump or drip irrigation.',
-      needs_price: (min, max, be) => 'No published farm gate price exists for this crop in Cameroon, so AfriFarm does not guess one. Enter the price you expect, in FCFA per kg, to see the four outcomes. At the average yield, the season breaks even from about ' + be + ' FCFA/kg.'
+      needs_price: (min, max, be) => 'No published farm gate price exists for this crop in Cameroon, so Djanova Agro does not guess one. Enter the price you expect, in FCFA per kg, to see the four outcomes. At the average yield, the season breaks even from about ' + be + ' FCFA/kg.'
     },
     upfrontHint: 'With a small capital: if you can borrow a sprayer and basic tools, tick “I already own basic tools and a sprayer” under More options; start with manual watering or rain fed planting in the rainy season, then invest in equipment from the first season profits.',
     kArea: 'Plot the capital carries', plants: (n) => n + ' plants', kRequired: 'Capital required', kBudget: 'Season budget', inclReserve: 'Includes a 10% contingency reserve',
@@ -230,8 +230,8 @@ en: {
     h: 'Stay ahead of agricultural intelligence.',
     d: 'Field notes from Foumbot, model progress, data sources and release news. Occasional, in English or French. Unsubscribe at any time.',
     email: 'Email address', ph: 'you@organisation.com', btn: 'Subscribe',
-    consent: 'I agree to receive AfriFarm Intelligent updates and accept the privacy policy.',
-    okT: 'You’re in.', okD: 'You’ll receive AfriFarm Intelligent updates and insights.',
+    consent: 'I agree to receive Djanova Agro updates and accept the privacy policy.',
+    okT: 'You’re in.', okD: 'You’ll receive Djanova Agro updates and insights.',
     dupT: 'Already subscribed.', dupD: 'This address is already on the list. Nothing else to do.',
     langPref: 'Preferred language'
   },
@@ -239,7 +239,7 @@ en: {
   platform: {
     eyebrow: 'Platform',
     h1: 'One engine. Four products. Every budget.',
-    lead: 'AfriFarm Intelligent is delivered as four products sharing one engine, one account and one data model, so that each user reaches the platform through the channel that suits them.',
+    lead: 'Djanova Agro is delivered as four products sharing one engine, one account and one data model, so that each user reaches the platform through the channel that suits them.',
     waysH: 'Two ways in, the same answer.',
     ways: [
       { k: 'Budget first', q: '“I have this amount. What should I do?”', d: 'The platform ranks the crops and planting windows that fit the capital, the location and the season, and explains why.' },
@@ -266,10 +266,10 @@ en: {
     prodH: 'Four channels, one account.',
     prodCols: ['Product', 'Users', 'Purpose', 'Release'],
     products: [
-      ['AfriFarm Mobile', 'Farmers in the field', 'Season Simulator, season log and alerts; works offline. Android first, iOS next.', 'mvp'],
-      ['AfriFarm Web', 'Investors, cooperatives, agribusinesses', 'Full planning dashboard, portfolio of plots and seasons, reports.', 'mvp'],
-      ['AfriFarm Alerts', 'Every farmer, including basic phones', 'Weather, heat, disease and market alerts by WhatsApp and SMS; simple queries.', 'v2'],
-      ['AfriFarm Pro and API', 'Banks, insurers, buyers, public institutions', 'Aggregated supply forecasts and season risk profiles, with farmer consent; data services.', 'v3']
+      ['Djanova Agro Mobile', 'Farmers in the field', 'Season Simulator, season log and alerts; works offline. Android first, iOS next.', 'mvp'],
+      ['Djanova Agro Web', 'Investors, cooperatives, agribusinesses', 'Full planning dashboard, portfolio of plots and seasons, reports.', 'mvp'],
+      ['Djanova Agro Alerts', 'Every farmer, including basic phones', 'Weather, heat, disease and market alerts by WhatsApp and SMS; simple queries.', 'v2'],
+      ['Djanova Agro Pro and API', 'Banks, insurers, buyers, public institutions', 'Aggregated supply forecasts and season risk profiles, with farmer consent; data services.', 'v3']
     ],
     modEyebrow: 'Modules',
     modH: 'Nine modules, released behind strict gates.',
@@ -316,7 +316,7 @@ en: {
       ['Agronomic reference base', 'Cycle lengths, water needs, temperature thresholds, crop management, standard costs per crop and zone.', 'Established research (FAO and national institutes), validated by agronomists.', 'mvp'],
       ['Statistical and machine learning models', 'Climate risk, pest and disease risk, yield, harvest price, best window.', 'Trained and tested on historical data with measured error.', 'mvp'],
       ['Expert validation', 'Review of cases the models cover poorly, local calibration.', 'Agronomists who know each zone.', 'v2'],
-      ['Proprietary season data', 'Actual costs, yields, prices and incidents recorded by users.', 'Local, recent and unique to AfriFarm.', 'grow']
+      ['Proprietary season data', 'Actual costs, yields, prices and incidents recorded by users.', 'Local, recent and unique to Djanova Agro.', 'grow']
     ],
     grow: 'Grows each season',
     modelsEyebrow: 'Models',
@@ -394,7 +394,7 @@ en: {
     tiersH: 'The depth of the plan grows with the capital.',
     posEyebrow: 'Positioning',
     posH: 'A distinct place in agricultural technology.',
-    posCols: ['', 'Global farm management platforms', 'Single link digital services', 'AfriFarm Intelligent'],
+    posCols: ['', 'Global farm management platforms', 'Single link digital services', 'Djanova Agro'],
     pos: [
       ['Starting point', 'Machinery and sensor data', 'One link: advice, credit or market access', 'The user’s capital'],
       ['Designed for', 'Mechanised, equipped farms', 'One step of the value chain', 'Any budget, from 100 USD'],
@@ -406,7 +406,7 @@ en: {
   data: {
     eyebrow: 'Data',
     h1: 'Public data on day one. Field data that compounds.',
-    lead: 'Climate and soil can be covered from day one with free public data. Market prices and real season results cannot, and their systematic collection is AfriFarm’s lasting competitive advantage.',
+    lead: 'Climate and soil can be covered from day one with free public data. Market prices and real season results cannot, and their systematic collection is Djanova Agro’s lasting competitive advantage.',
     landEyebrow: 'Context',
     landH: 'Land and water are available. Reliable decisions are not.',
     landLead: 'Cameroon, the pilot country, cultivates about one hectare in four of its arable land and irrigates less than one hectare in seven of its irrigable potential.',
@@ -451,7 +451,7 @@ en: {
   impact: {
     eyebrow: 'Impact',
     h1: 'Measured outcomes, not promised ones.',
-    lead: 'AfriFarm will report impact from the March 2027 field pilot onward. Until then, this page shows what will be measured and the field evidence the platform is built on.',
+    lead: 'Djanova Agro will report impact from the March 2027 field pilot onward. Until then, this page shows what will be measured and the field evidence the platform is built on.',
     kpiEyebrow: 'What we will measure',
     kpiH: 'Six indicators, published from the first pilot season.',
     kpiBase: 'Baseline set during the 2027 pilot',
@@ -468,7 +468,7 @@ en: {
     pilotLead: 'The pilot was launched with USD 5,000 of the founder’s own capital, then sustained by season revenues and personal savings. Every phase lost money or broke even.',
     lessonsEyebrow: 'From lesson to requirement',
     lessonsH: 'Each field problem became a product requirement.',
-    prob: 'Field problem', req: 'AfriFarm requirement',
+    prob: 'Field problem', req: 'Djanova Agro requirement',
     lessons: [
       ['Heat at flowering', 'Cucumbers yellowed, pepper lost', 'Climate risk score for each planting window, heat alerts, irrigation need in every Season Plan'],
       ['Costly, insufficient irrigation', 'Manual pumping from a marshy source', 'Water budget and irrigation cost line, with equipment options sized to the budget'],
@@ -486,13 +486,13 @@ en: {
       ['nursery', 'Professionalised nursery', 'Seedlings under insect netting, secondary site, 2025.']
     ],
     goalH: 'The intended impact',
-    goal: 'Every season planned with AfriFarm aims at fewer failed harvests, better use of scarce capital and water, and higher income for the farmer. At scale, the same data helps lenders finance agriculture with less risk and helps public institutions target support, contributing to food security and to dignified rural employment for young Africans.'
+    goal: 'Every season planned with Djanova Agro aims at fewer failed harvests, better use of scarce capital and water, and higher income for the farmer. At scale, the same data helps lenders finance agriculture with less risk and helps public institutions target support, contributing to food security and to dignified rural employment for young Africans.'
   },
 
   about: {
     eyebrow: 'About',
     h1: 'From a father’s field in Foumbot to an intelligence platform.',
-    lead: 'AfriFarm Intelligent is the outcome of more than ten years of work, from a family farming tradition to a documented, photographed and costed field pilot.',
+    lead: 'Djanova Agro is the outcome of more than ten years of work, from a family farming tradition to a documented, photographed and costed field pilot.',
     leadEyebrow: 'Project leader',
     name: 'Franck Junior Djandja Tomwa',
     titles: ['Telecommunications Engineer', 'Data Analyst', 'International Operations Manager'],
@@ -501,7 +501,7 @@ en: {
     story: [
       'The project starts with the founder’s father, a farmer in the Foumbot area who taught him the craft of the land, including the production of excellent seed from his own harvests.',
       'In September 2021, before travelling to Kigali to present his vision of an industrialised African agriculture driven by technology, the founder spent time on his father’s plantation, where tomato, eggplant and cucumber were grown on plots at different stages.',
-      'From that heritage came Cam_Agri For Africa, a commercial farming pilot run between September 2024 and October 2025. It did not fail for lack of land, labour or commitment. It failed because each critical decision was taken without the information that would have changed it. AfriFarm Intelligent exists to supply that information, for any budget, before capital is committed.'
+      'From that heritage came Cam_Agri For Africa, a commercial farming pilot run between September 2024 and October 2025. It did not fail for lack of land, labour or commitment. It failed because each critical decision was taken without the information that would have changed it. Djanova Agro exists to supply that information, for any budget, before capital is committed.'
     ],
     convEyebrow: 'Convictions',
     convH: 'Four convictions behind the work.',
@@ -514,7 +514,7 @@ en: {
       ['Nov 2024 to Jul 2025', 'Secondary marshy site', 'Cucumber, pepper and zucchini, then staked tomato; pests and low prices.'],
       ['Aug to Oct 2025', 'Relaunch of the main site', 'Good crop, but an election crisis closed markets at harvest: total commercial loss.'],
       ['September 2026', 'Advanced data analytics certification', 'Google Advanced Data Analytics Professional Certificate: Python, machine learning.'],
-      ['October 2026', 'AfriFarm Intelligent designed', 'A decision platform for any budget, in English and French.']
+      ['October 2026', 'Djanova Agro designed', 'A decision platform for any budget, in English and French.']
     ],
     roadEyebrow: 'Roadmap',
     roadH: 'Five phases and four gates to the March 2027 pilot.',
@@ -538,12 +538,12 @@ en: {
       ['Version 4', 'Broad crop catalogue', 'Central, West and East Africa, starting with Rwanda and Kenya', 'Sustainable business model in Cameroon']
     ],
     refH: 'The reference farm',
-    ref: 'In parallel, and subject to financing of at least USD 100,000, the Cam_Agri For Africa farm will be relaunched as AfriFarm’s reference site, where every recommendation is tested at commercial scale with automated irrigation, transport and packaging. USD 20,000 would allow only a partial review.'
+    ref: 'In parallel, and subject to financing of at least USD 100,000, the Cam_Agri For Africa farm will be relaunched as Djanova Agro’s reference site, where every recommendation is tested at commercial scale with automated irrigation, transport and packaging. USD 20,000 would allow only a partial review.'
   },
 
   contact: {
     eyebrow: 'Contact',
-    h1: 'Talk to AfriFarm Intelligent.',
+    h1: 'Talk to Djanova Agro.',
     lead: 'Partnerships, pilot participation, investment or data collaboration. Tell us what you are working on, in English or French.',
     nextH: 'What happens next',
     next: ['Your message is stored securely with its timestamp.', 'The project team reads every message.', 'You receive a reply by email, in the language you wrote in.'],
@@ -559,7 +559,7 @@ en: {
     coversH: 'What the walkthrough covers',
     covers: ['The Season Simulator applied to your capital, crop and zone', 'The data foundation and how each figure is sourced', 'The models, their success metrics and the release gates', 'Pilot participation in Foumbot from March 2027'],
     stageH: 'Stage of the product',
-    stage: 'AfriFarm Intelligent is in its design and field validation phase. The walkthrough presents the current prototype and the plan, never a finished product.'
+    stage: 'Djanova Agro is in its design and field validation phase. The walkthrough presents the current prototype and the plan, never a finished product.'
   },
 
   nl: {
@@ -567,7 +567,7 @@ en: {
     h1: 'Stay ahead of agricultural intelligence.',
     lead: 'Field notes from the Foumbot pilot, model progress, data sources and release news, in English or French.',
     getH: 'What you receive',
-    get: ['Field notes from the 2027 Foumbot pilot', 'Model results against their baselines, published openly', 'New data sources, crops and regions as they open', 'Release news for AfriFarm Mobile, Web and Alerts'],
+    get: ['Field notes from the 2027 Foumbot pilot', 'Model results against their baselines, published openly', 'New data sources, crops and regions as they open', 'Release news for Djanova Agro Mobile, Web and Alerts'],
     privH: 'What we keep', priv: 'Your email address, your language and the date of your consent. Nothing else. Every message contains an unsubscribe link.'
   },
 
@@ -581,7 +581,7 @@ en: {
     scales: ['Under 1 ha', '1 to 10 ha', '10 to 100 ha', 'Over 100 ha', 'Not applicable'],
     methods: ['Email', 'Phone', 'WhatsApp'],
     phoneNeeded: 'Phone number for the call or WhatsApp',
-    consent: 'I agree that AfriFarm Intelligent stores this information to answer my request, as described in the privacy policy.',
+    consent: 'I agree that Djanova Agro stores this information to answer my request, as described in the privacy policy.',
     why: 'We ask only for what we need to reply. Your details are never sold or shared.',
     send: 'Send message', sendDemo: 'Request the demo', sending: 'Sending…',
     chars: (n, m) => n + ' / ' + m,
@@ -591,7 +591,7 @@ en: {
       phone: 'Enter a valid phone number, with country code.', consent: 'Please accept to continue.', check: 'Please check this field.',
       summary: n => n === 1 ? 'One field needs attention.' : n + ' fields need attention.'
     },
-    okT: 'Message received.', okD: 'Thank you for reaching out to AfriFarm Intelligent. Our team will review your message and get back to you.',
+    okT: 'Message received.', okD: 'Thank you for reaching out to Djanova Agro. Our team will review your message and get back to you.',
     okDemoT: 'Demo request received.', okDemoD: 'Thank you. The team will contact you by your preferred method to schedule the walkthrough.',
     preT: 'Preview link: nothing was sent.', preD: 'This private preview stores submissions only for accounts the owner has authorised. Your message was not stored. The public deployment of this site will deliver it directly to the team.',
     badT: 'Something went wrong.', badD: 'Something went wrong while sending your message. Please try again. Your text has been kept.',
@@ -614,7 +614,7 @@ en: {
   privacy: {
     h1: 'Privacy policy', updated: 'Last updated 4 October 2026',
     body: [
-      ['Who we are', 'AfriFarm Intelligent is an agricultural decision intelligence initiative led by Franck Junior Djandja Tomwa, based in Kigali, Rwanda, with a pilot zone in Foumbot, Cameroon. The legal structure of the initiative is being established; this policy will name it once registered.'],
+      ['Who we are', 'Djanova Agro is an agricultural decision intelligence initiative led by Franck Junior Djandja Tomwa, based in Kigali, Rwanda, with a pilot zone in Foumbot, Cameroon. The legal structure of the initiative is being established; this policy will name it once registered.'],
       ['What we collect', 'Only what you type into our forms: for a message or a demo request, your name, email, organization, country, optional phone number and message; for the newsletter, your email address, preferred language and the date of your consent. The Season Simulator runs in your browser and sends nothing.'],
       ['Why we collect it', 'To answer your message, organise a demo you requested, or send the newsletter you subscribed to. We never sell personal data and never use it for advertising.'],
       ['Where it is stored', 'On this preview link, submissions are kept in storage attached to this page and readable only by its owner. On the public deployment, they are stored in a managed database with encryption in transit and at rest, and access by role.'],
@@ -627,10 +627,10 @@ en: {
   terms: {
     h1: 'Terms of use', updated: 'Last updated 4 October 2026',
     body: [
-      ['Purpose of this site', 'This site presents AfriFarm Intelligent, an agricultural decision platform in its design and field validation phase.'],
+      ['Purpose of this site', 'This site presents Djanova Agro, an agricultural decision platform in its design and field validation phase.'],
       ['Demonstrations', 'The Season Simulator on this site is a demonstration. It uses illustrative assumptions clearly labelled on screen and is not agronomic, financial or investment advice. No outcome is guaranteed.'],
       ['Data and sources', 'Figures cited from third parties are attributed to their sources. Field photographs belong to the project leader and may not be reused without permission.'],
-      ['Intellectual property', 'The name AfriFarm Intelligent, the content, design and code of this site are protected. You may link to any page.'],
+      ['Intellectual property', 'The name Djanova Agro, the content, design and code of this site are protected. You may link to any page.'],
       ['Liability', 'We take care to keep information accurate and current, but provide this site as is. Decisions made from it remain the responsibility of the user.'],
       ['Contact', 'Questions about these terms can be sent through the contact form.']
     ]
@@ -640,7 +640,7 @@ en: {
     tag: 'Agricultural intelligence for an Africa that decides with data.',
     cols: ['Product', 'Company', 'Engage', 'Legal'],
     nlH: 'Field notes, in your inbox',
-    rights: '© 2026 AfriFarm Intelligent. Project led by Franck Junior Djandja Tomwa.',
+    rights: '© 2026 Djanova Agro. Project led by Franck Junior Djandja Tomwa.',
     place: 'Kigali · Foumbot',
     status: 'Design and field validation phase',
     noTrack: 'No tracking cookies'
@@ -651,18 +651,18 @@ en: {
 fr: {
   meta: {
     lang: 'fr', locale: 'fr-FR',
-    title: 'AfriFarm Intelligent · Intelligence décisionnelle agricole pour l’Afrique',
-    desc: 'AfriFarm Intelligent transforme tout budget en un Plan de saison chiffré : quoi cultiver, où, quand, à quel coût et avec quel risque. Données climatiques, pédologiques, de marché et de contexte, en anglais et en français.',
+    title: 'Djanova Agro · Intelligence décisionnelle agricole pour l’Afrique',
+    desc: 'Djanova Agro transforme tout budget en un Plan de saison chiffré : quoi cultiver, où, quand, à quel coût et avec quel risque. Données climatiques, pédologiques, de marché et de contexte, en anglais et en français.',
     pages: { home: 'Intelligence décisionnelle agricole pour l’Afrique', planner: 'Planificateur de saison', platform: 'Plateforme', intelligence: 'Intelligence', solutions: 'Solutions', data: 'Données', impact: 'Impact', about: 'À propos', contact: 'Contact', demo: 'Demander une démo', newsletter: 'Lettre d’information', privacy: 'Politique de confidentialité', terms: 'Conditions d’utilisation', admin: 'Boîte de réception', nf: 'Signal introuvable' }
   },
   nav: { home: 'Accueil', planner: 'Planificateur', platform: 'Plateforme', intelligence: 'Intelligence', solutions: 'Solutions', data: 'Données', impact: 'Impact', about: 'À propos', contact: 'Contact', demo: 'Demander une démo', newsletter: 'Lettre d’information', menu: 'Menu', close: 'Fermer', skip: 'Aller au contenu', lang: 'Langue' },
   badge: { demo: 'Démo · illustratif', real: 'Données sourcées', plan: 'Prévu', mvp: 'MVP', v2: 'Version 2', v3: 'Version 3', v4: 'Version 4', field: 'Relevé terrain' },
-  cta: { explore: 'Explorer la plateforme', demo: 'Demander une démo', contact: 'Contacter l’équipe', simulate: 'Simuler', more: 'En savoir plus', back: 'Retour à AfriFarm Intelligent', read: 'Voir les preuves terrain', sim: 'Ouvrir le Simulateur de saison' },
+  cta: { explore: 'Explorer la plateforme', demo: 'Demander une démo', contact: 'Contacter l’équipe', simulate: 'Simuler', more: 'En savoir plus', back: 'Retour à Djanova Agro', read: 'Voir les preuves terrain', sim: 'Ouvrir le Simulateur de saison' },
 
   home: {
     eyebrow: 'Intelligence décisionnelle agricole · Afrique',
     h1: 'Décidez la saison avant de la planter.',
-    lead: 'AfriFarm Intelligent transforme tout budget, de 100 USD à plus d’un million, en un Plan de saison chiffré : quoi cultiver, sur quelle surface, à partir de quelle date, à quel coût et avec quel risque. Fondé sur des données climatiques, pédologiques, de marché et de contexte, en anglais et en français.',
+    lead: 'Djanova Agro transforme tout budget, de 100 USD à plus d’un million, en un Plan de saison chiffré : quoi cultiver, sur quelle surface, à partir de quelle date, à quel coût et avec quel risque. Fondé sur des données climatiques, pédologiques, de marché et de contexte, en anglais et en français.',
     tryLabel: 'Simulateur de saison · saisissez un capital',
     tryAria: 'Montant du capital',
     chips: ['Zone pilote · Foumbot, Cameroun', 'Culture MVP · Tomate', 'Étape · Conception et validation terrain', 'Anglais · Français'],
@@ -694,7 +694,7 @@ fr: {
 
     hEyebrow: '02 · Fonctionnement',
     hH: 'Des données brutes en entrée. Une décision en sortie.',
-    hLead: 'Les archives publiques et les relevés de terrain sont dispersés, techniques et rarement disponibles en français. AfriFarm les traduit en une décision pour une parcelle, une culture, une date et un budget précis.',
+    hLead: 'Les archives publiques et les relevés de terrain sont dispersés, techniques et rarement disponibles en français. Djanova Agro les traduit en une décision pour une parcelle, une culture, une date et un budget précis.',
     steps: [
       { t: 'Données', d: 'Climat, sol, culture, marché et contexte, issus d’archives publiques et de relevés de terrain.' },
       { t: 'Intelligence', d: 'Une base de référence agronomique structure les données par culture, stade et zone.' },
@@ -719,7 +719,7 @@ fr: {
     eH: 'Conçu à partir d’un vrai pilote, pas d’une présentation.',
     eLead: 'Entre septembre 2024 et octobre 2025, la ferme pilote du fondateur a mené quatre phases de production à Foumbot. Chaque perte renvoie à un facteur que les données auraient pu anticiper.',
 
-    cH: 'Faites entrer AfriFarm dans vos fermes, votre portefeuille ou votre programme.',
+    cH: 'Faites entrer Djanova Agro dans vos fermes, votre portefeuille ou votre programme.',
     cLead: 'Participation au pilote de Foumbot dès mars 2027, partenariats de données, investissement et collaboration institutionnelle.'
   },
 
@@ -759,7 +759,7 @@ fr: {
       below_min: (min) => 'Le capital est inférieur au minimum de 100 USD (' + min + '). Une vraie parcelle commence à partir de ce montant.',
       upfront_exceeds: () => 'Le capital ne couvre pas l’équipement de l’option d’eau choisie. Choisissez une autre option ou augmentez le capital.',
       manual_limit: (min, max) => 'L’arrosage manuel reste réaliste jusqu’à environ ' + max + ' : le plan s’arrête là. Pour une parcelle plus grande, choisissez une motopompe ou le goutte à goutte.',
-      needs_price: (min, max, be) => 'Aucun prix bord champ n’est publié pour cette culture au Cameroun : AfriFarm n’en invente pas. Saisissez le prix que vous comptez obtenir, en FCFA par kg, pour voir les quatre issues. Au rendement moyen, la saison est à l’équilibre à partir d’environ ' + be + ' FCFA/kg.'
+      needs_price: (min, max, be) => 'Aucun prix bord champ n’est publié pour cette culture au Cameroun : Djanova Agro n’en invente pas. Saisissez le prix que vous comptez obtenir, en FCFA par kg, pour voir les quatre issues. Au rendement moyen, la saison est à l’équilibre à partir d’environ ' + be + ' FCFA/kg.'
     },
     upfrontHint: 'Avec un petit capital : si vous pouvez emprunter un pulvérisateur et des outils, cochez « Je possède déjà les outils de base et un pulvérisateur » dans Plus d’options ; commencez par l’arrosage manuel ou une culture pluviale en saison des pluies, puis investissez dans l’équipement avec les bénéfices de la première saison.',
     kArea: 'Parcelle que le capital couvre', plants: (n) => n + ' plants', kRequired: 'Capital nécessaire', kBudget: 'Budget de la saison', inclReserve: 'Réserve de précaution de 10 % comprise',
@@ -877,8 +877,8 @@ fr: {
     h: 'Gardez une longueur d’avance en intelligence agricole.',
     d: 'Notes de terrain de Foumbot, progrès des modèles, sources de données et nouvelles versions. Ponctuelle, en anglais ou en français. Désinscription à tout moment.',
     email: 'Adresse électronique', ph: 'vous@organisation.com', btn: 'S’abonner',
-    consent: 'J’accepte de recevoir les actualités d’AfriFarm Intelligent et la politique de confidentialité.',
-    okT: 'C’est fait.', okD: 'Vous recevrez les actualités et analyses d’AfriFarm Intelligent.',
+    consent: 'J’accepte de recevoir les actualités de Djanova Agro et la politique de confidentialité.',
+    okT: 'C’est fait.', okD: 'Vous recevrez les actualités et analyses de Djanova Agro.',
     dupT: 'Déjà inscrit.', dupD: 'Cette adresse figure déjà sur la liste. Rien d’autre à faire.',
     langPref: 'Langue préférée'
   },
@@ -886,7 +886,7 @@ fr: {
   platform: {
     eyebrow: 'Plateforme',
     h1: 'Un moteur. Quatre produits. Tous les budgets.',
-    lead: 'AfriFarm Intelligent se présente sous forme de quatre produits qui partagent un moteur, un compte et un modèle de données, afin que chaque utilisateur accède à la plateforme par le canal qui lui convient.',
+    lead: 'Djanova Agro se présente sous forme de quatre produits qui partagent un moteur, un compte et un modèle de données, afin que chaque utilisateur accède à la plateforme par le canal qui lui convient.',
     waysH: 'Deux portes d’entrée, la même réponse.',
     ways: [
       { k: 'Budget d’abord', q: '« J’ai ce montant. Que faire ? »', d: 'La plateforme classe les cultures et les fenêtres de plantation adaptées au capital, au lieu et à la saison, et explique pourquoi.' },
@@ -913,10 +913,10 @@ fr: {
     prodH: 'Quatre canaux, un seul compte.',
     prodCols: ['Produit', 'Utilisateurs', 'Rôle', 'Version'],
     products: [
-      ['AfriFarm Mobile', 'Agriculteurs au champ', 'Simulateur de saison, journal de saison et alertes ; fonctionne hors ligne. Android d’abord, iOS ensuite.', 'mvp'],
-      ['AfriFarm Web', 'Investisseurs, coopératives, entreprises agroalimentaires', 'Tableau de bord complet, portefeuille de parcelles et de saisons, rapports.', 'mvp'],
-      ['AfriFarm Alertes', 'Tous les agriculteurs, y compris sur téléphone simple', 'Alertes météo, chaleur, maladies et marché par WhatsApp et SMS ; requêtes simples.', 'v2'],
-      ['AfriFarm Pro et API', 'Banques, assureurs, acheteurs, institutions publiques', 'Prévisions d’approvisionnement agrégées et profils de risque de saison, avec le consentement des agriculteurs ; services de données.', 'v3']
+      ['Djanova Agro Mobile', 'Agriculteurs au champ', 'Simulateur de saison, journal de saison et alertes ; fonctionne hors ligne. Android d’abord, iOS ensuite.', 'mvp'],
+      ['Djanova Agro Web', 'Investisseurs, coopératives, entreprises agroalimentaires', 'Tableau de bord complet, portefeuille de parcelles et de saisons, rapports.', 'mvp'],
+      ['Djanova Agro Alertes', 'Tous les agriculteurs, y compris sur téléphone simple', 'Alertes météo, chaleur, maladies et marché par WhatsApp et SMS ; requêtes simples.', 'v2'],
+      ['Djanova Agro Pro et API', 'Banques, assureurs, acheteurs, institutions publiques', 'Prévisions d’approvisionnement agrégées et profils de risque de saison, avec le consentement des agriculteurs ; services de données.', 'v3']
     ],
     modEyebrow: 'Modules',
     modH: 'Neuf modules, publiés derrière des jalons stricts.',
@@ -963,7 +963,7 @@ fr: {
       ['Base de référence agronomique', 'Durées de cycle, besoins en eau, seuils de température, conduite des cultures, coûts standard par culture et par zone.', 'Recherche établie (FAO et instituts nationaux), validée par des agronomes.', 'mvp'],
       ['Modèles statistiques et d’apprentissage automatique', 'Risque climatique, risque de ravageurs et de maladies, rendement, prix à la récolte, meilleure fenêtre.', 'Entraînés et testés sur des données historiques, avec une erreur mesurée.', 'mvp'],
       ['Validation par des experts', 'Revue des cas que les modèles couvrent mal, calibrage local.', 'Des agronomes qui connaissent chaque zone.', 'v2'],
-      ['Données de saison propriétaires', 'Coûts, rendements, prix et incidents réels enregistrés par les utilisateurs.', 'Locales, récentes et propres à AfriFarm.', 'grow']
+      ['Données de saison propriétaires', 'Coûts, rendements, prix et incidents réels enregistrés par les utilisateurs.', 'Locales, récentes et propres à Djanova Agro.', 'grow']
     ],
     grow: 'S’enrichit à chaque saison',
     modelsEyebrow: 'Modèles',
@@ -1041,7 +1041,7 @@ fr: {
     tiersH: 'La profondeur du plan grandit avec le capital.',
     posEyebrow: 'Positionnement',
     posH: 'Une place distincte dans la technologie agricole.',
-    posCols: ['', 'Plateformes mondiales de gestion d’exploitation', 'Services numériques sur un seul maillon', 'AfriFarm Intelligent'],
+    posCols: ['', 'Plateformes mondiales de gestion d’exploitation', 'Services numériques sur un seul maillon', 'Djanova Agro'],
     pos: [
       ['Point de départ', 'Données des machines et capteurs', 'Un maillon : conseil, crédit ou accès au marché', 'Le capital de l’utilisateur'],
       ['Conçu pour', 'Exploitations mécanisées et équipées', 'Une étape de la chaîne de valeur', 'Tout budget, dès 100 USD'],
@@ -1053,7 +1053,7 @@ fr: {
   data: {
     eyebrow: 'Données',
     h1: 'Des données publiques dès le premier jour. Des données terrain qui s’accumulent.',
-    lead: 'Le climat et les sols peuvent être couverts dès le premier jour grâce à des données publiques gratuites. Les prix de marché et les résultats réels des saisons ne le peuvent pas, et leur collecte systématique est l’avantage concurrentiel durable d’AfriFarm.',
+    lead: 'Le climat et les sols peuvent être couverts dès le premier jour grâce à des données publiques gratuites. Les prix de marché et les résultats réels des saisons ne le peuvent pas, et leur collecte systématique est l’avantage concurrentiel durable de Djanova Agro.',
     landEyebrow: 'Contexte',
     landH: 'La terre et l’eau sont là. Les décisions fiables, non.',
     landLead: 'Le Cameroun, pays pilote, cultive environ un hectare sur quatre de ses terres arables et irrigue moins d’un hectare sur sept de son potentiel irrigable.',
@@ -1098,7 +1098,7 @@ fr: {
   impact: {
     eyebrow: 'Impact',
     h1: 'Des résultats mesurés, pas promis.',
-    lead: 'AfriFarm publiera son impact à partir du pilote terrain de mars 2027. D’ici là, cette page présente ce qui sera mesuré et les preuves terrain sur lesquelles la plateforme est construite.',
+    lead: 'Djanova Agro publiera son impact à partir du pilote terrain de mars 2027. D’ici là, cette page présente ce qui sera mesuré et les preuves terrain sur lesquelles la plateforme est construite.',
     kpiEyebrow: 'Ce que nous mesurerons',
     kpiH: 'Six indicateurs, publiés dès la première saison pilote.',
     kpiBase: 'Référence établie pendant le pilote 2027',
@@ -1115,7 +1115,7 @@ fr: {
     pilotLead: 'Le pilote a été lancé avec 5 000 USD de fonds propres du fondateur, puis soutenu par les revenus des saisons et son épargne personnelle. Chaque phase a perdu de l’argent ou a tout juste équilibré ses coûts.',
     lessonsEyebrow: 'De la leçon à l’exigence',
     lessonsH: 'Chaque problème de terrain est devenu une exigence produit.',
-    prob: 'Problème de terrain', req: 'Exigence AfriFarm',
+    prob: 'Problème de terrain', req: 'Exigence Djanova Agro',
     lessons: [
       ['Chaleur à la floraison', 'Concombres jaunis, poivron perdu', 'Score de risque climatique par fenêtre, alertes de chaleur, besoin d’irrigation dans chaque Plan de saison'],
       ['Irrigation coûteuse et insuffisante', 'Pompage manuel depuis une source marécageuse', 'Budget d’eau et ligne de coût d’irrigation, avec options d’équipement adaptées au budget'],
@@ -1133,13 +1133,13 @@ fr: {
       ['nursery', 'Pépinière professionnalisée', 'Plants sous filet de protection contre les insectes, site secondaire, 2025.']
     ],
     goalH: 'L’impact visé',
-    goal: 'Chaque saison planifiée avec AfriFarm vise moins de récoltes perdues, un meilleur usage d’un capital et d’une eau rares, et un revenu plus élevé pour l’agriculteur. À grande échelle, les mêmes données aident les prêteurs à financer l’agriculture avec moins de risque et les institutions publiques à cibler leur appui, au service de la sécurité alimentaire et d’un emploi rural digne pour les jeunes Africains.'
+    goal: 'Chaque saison planifiée avec Djanova Agro vise moins de récoltes perdues, un meilleur usage d’un capital et d’une eau rares, et un revenu plus élevé pour l’agriculteur. À grande échelle, les mêmes données aident les prêteurs à financer l’agriculture avec moins de risque et les institutions publiques à cibler leur appui, au service de la sécurité alimentaire et d’un emploi rural digne pour les jeunes Africains.'
   },
 
   about: {
     eyebrow: 'À propos',
     h1: 'Du champ d’un père à Foumbot à une plateforme d’intelligence.',
-    lead: 'AfriFarm Intelligent est le fruit de plus de dix ans de travail, d’une tradition agricole familiale à un pilote de terrain documenté, photographié et chiffré.',
+    lead: 'Djanova Agro est le fruit de plus de dix ans de travail, d’une tradition agricole familiale à un pilote de terrain documenté, photographié et chiffré.',
     leadEyebrow: 'Porteur du projet',
     name: 'Franck Junior Djandja Tomwa',
     titles: ['Ingénieur en télécommunications', 'Analyste de données', 'Chargé des opérations internationales'],
@@ -1148,7 +1148,7 @@ fr: {
     story: [
       'Le projet commence avec le père du fondateur, agriculteur dans la région de Foumbot, qui lui a transmis le métier de la terre, y compris la production d’excellentes semences à partir de ses propres récoltes.',
       'En septembre 2021, avant de se rendre à Kigali pour présenter sa vision d’une agriculture africaine industrialisée et portée par la technologie, le fondateur a séjourné sur la plantation de son père, où tomate, aubergine et concombre poussaient sur des parcelles à différents stades.',
-      'De cet héritage est né Cam_Agri For Africa, un pilote agricole commercial mené de septembre 2024 à octobre 2025. Il n’a pas échoué faute de terre, de main d’œuvre ou d’engagement. Il a échoué parce que chaque décision critique a été prise sans l’information qui l’aurait changée. AfriFarm Intelligent existe pour fournir cette information, pour tout budget, avant que le capital ne soit engagé.'
+      'De cet héritage est né Cam_Agri For Africa, un pilote agricole commercial mené de septembre 2024 à octobre 2025. Il n’a pas échoué faute de terre, de main d’œuvre ou d’engagement. Il a échoué parce que chaque décision critique a été prise sans l’information qui l’aurait changée. Djanova Agro existe pour fournir cette information, pour tout budget, avant que le capital ne soit engagé.'
     ],
     convEyebrow: 'Convictions',
     convH: 'Quatre convictions derrière ce travail.',
@@ -1161,7 +1161,7 @@ fr: {
       ['Nov. 2024 à juil. 2025', 'Site secondaire marécageux', 'Concombre, poivron et courgette, puis tomate tuteurée ; ravageurs et prix bas.'],
       ['Août à oct. 2025', 'Relance du site principal', 'Belle culture, mais une crise électorale a fermé les marchés à la récolte : perte commerciale totale.'],
       ['Septembre 2026', 'Certification en analyse de données avancée', 'Google Advanced Data Analytics Professional Certificate : Python, apprentissage automatique.'],
-      ['Octobre 2026', 'Conception d’AfriFarm Intelligent', 'Une plateforme de décision pour tout budget, en anglais et en français.']
+      ['Octobre 2026', 'Conception de Djanova Agro', 'Une plateforme de décision pour tout budget, en anglais et en français.']
     ],
     roadEyebrow: 'Feuille de route',
     roadH: 'Cinq phases et quatre jalons jusqu’au pilote de mars 2027.',
@@ -1185,12 +1185,12 @@ fr: {
       ['Version 4', 'Large catalogue de cultures', 'Afrique centrale, de l’Ouest et de l’Est, en commençant par le Rwanda et le Kenya', 'Modèle économique viable au Cameroun']
     ],
     refH: 'La ferme de référence',
-    ref: 'En parallèle, et sous réserve d’un financement d’au moins 100 000 USD, la ferme Cam_Agri For Africa sera relancée comme site de référence d’AfriFarm, où chaque recommandation est testée à l’échelle commerciale avec irrigation automatisée, transport et emballage. 20 000 USD ne permettraient qu’une relance partielle.'
+    ref: 'En parallèle, et sous réserve d’un financement d’au moins 100 000 USD, la ferme Cam_Agri For Africa sera relancée comme site de référence de Djanova Agro, où chaque recommandation est testée à l’échelle commerciale avec irrigation automatisée, transport et emballage. 20 000 USD ne permettraient qu’une relance partielle.'
   },
 
   contact: {
     eyebrow: 'Contact',
-    h1: 'Parlez à AfriFarm Intelligent.',
+    h1: 'Parlez à Djanova Agro.',
     lead: 'Partenariats, participation au pilote, investissement ou collaboration sur les données. Présentez votre projet, en anglais ou en français.',
     nextH: 'La suite',
     next: ['Votre message est enregistré de façon sécurisée, avec son horodatage.', 'L’équipe du projet lit chaque message.', 'Vous recevez une réponse par courriel, dans la langue de votre message.'],
@@ -1206,7 +1206,7 @@ fr: {
     coversH: 'Ce que couvre la présentation',
     covers: ['Le Simulateur de saison appliqué à votre capital, votre culture et votre zone', 'Le socle de données et la source de chaque chiffre', 'Les modèles, leurs métriques de succès et les jalons de mise en service', 'La participation au pilote de Foumbot dès mars 2027'],
     stageH: 'Stade du produit',
-    stage: 'AfriFarm Intelligent est en phase de conception et de validation terrain. La présentation montre le prototype actuel et le plan, jamais un produit fini.'
+    stage: 'Djanova Agro est en phase de conception et de validation terrain. La présentation montre le prototype actuel et le plan, jamais un produit fini.'
   },
 
   nl: {
@@ -1214,7 +1214,7 @@ fr: {
     h1: 'Gardez une longueur d’avance en intelligence agricole.',
     lead: 'Notes de terrain du pilote de Foumbot, progrès des modèles, sources de données et nouvelles versions, en anglais ou en français.',
     getH: 'Ce que vous recevez',
-    get: ['Les notes de terrain du pilote 2027 à Foumbot', 'Les résultats des modèles face à leurs références, publiés ouvertement', 'Les nouvelles sources de données, cultures et régions dès leur ouverture', 'Les nouveautés d’AfriFarm Mobile, Web et Alertes'],
+    get: ['Les notes de terrain du pilote 2027 à Foumbot', 'Les résultats des modèles face à leurs références, publiés ouvertement', 'Les nouvelles sources de données, cultures et régions dès leur ouverture', 'Les nouveautés de Djanova Agro Mobile, Web et Alertes'],
     privH: 'Ce que nous conservons', priv: 'Votre adresse électronique, votre langue et la date de votre consentement. Rien d’autre. Chaque envoi contient un lien de désinscription.'
   },
 
@@ -1228,7 +1228,7 @@ fr: {
     scales: ['Moins de 1 ha', '1 à 10 ha', '10 à 100 ha', 'Plus de 100 ha', 'Sans objet'],
     methods: ['Courriel', 'Téléphone', 'WhatsApp'],
     phoneNeeded: 'Numéro pour l’appel ou WhatsApp',
-    consent: 'J’accepte qu’AfriFarm Intelligent conserve ces informations pour répondre à ma demande, comme décrit dans la politique de confidentialité.',
+    consent: 'J’accepte qu’Djanova Agro conserve ces informations pour répondre à ma demande, comme décrit dans la politique de confidentialité.',
     why: 'Nous ne demandons que le nécessaire pour vous répondre. Vos données ne sont jamais vendues ni partagées.',
     send: 'Envoyer le message', sendDemo: 'Demander la démo', sending: 'Envoi…',
     chars: (n, m) => n + ' / ' + m,
@@ -1238,7 +1238,7 @@ fr: {
       phone: 'Saisissez un numéro valide, avec l’indicatif du pays.', consent: 'Veuillez accepter pour continuer.', check: 'Veuillez vérifier ce champ.',
       summary: n => n === 1 ? 'Un champ demande votre attention.' : n + ' champs demandent votre attention.'
     },
-    okT: 'Message reçu.', okD: 'Merci d’avoir contacté AfriFarm Intelligent. Notre équipe va étudier votre message et reviendra vers vous.',
+    okT: 'Message reçu.', okD: 'Merci d’avoir contacté Djanova Agro. Notre équipe va étudier votre message et reviendra vers vous.',
     okDemoT: 'Demande de démo reçue.', okDemoD: 'Merci. L’équipe vous contactera par le moyen choisi pour planifier la présentation.',
     preT: 'Lien d’aperçu : rien n’a été envoyé.', preD: 'Cet aperçu privé n’enregistre les envois que pour les comptes autorisés par le propriétaire. Votre message n’a pas été enregistré. Le déploiement public de ce site le transmettra directement à l’équipe.',
     badT: 'Un problème est survenu.', badD: 'Un problème est survenu lors de l’envoi de votre message. Veuillez réessayer. Votre texte a été conservé.',
@@ -1261,7 +1261,7 @@ fr: {
   privacy: {
     h1: 'Politique de confidentialité', updated: 'Dernière mise à jour : 4 octobre 2026',
     body: [
-      ['Qui nous sommes', 'AfriFarm Intelligent est une initiative d’intelligence décisionnelle agricole portée par Franck Junior Djandja Tomwa, basée à Kigali, au Rwanda, avec une zone pilote à Foumbot, au Cameroun. La structure juridique de l’initiative est en cours de création ; cette politique la nommera une fois enregistrée.'],
+      ['Qui nous sommes', 'Djanova Agro est une initiative d’intelligence décisionnelle agricole portée par Franck Junior Djandja Tomwa, basée à Kigali, au Rwanda, avec une zone pilote à Foumbot, au Cameroun. La structure juridique de l’initiative est en cours de création ; cette politique la nommera une fois enregistrée.'],
       ['Ce que nous collectons', 'Uniquement ce que vous saisissez dans nos formulaires : pour un message ou une demande de démo, vos nom, adresse électronique, organisation, pays, téléphone facultatif et message ; pour la lettre d’information, votre adresse électronique, votre langue et la date de votre consentement. Le Simulateur de saison fonctionne dans votre navigateur et n’envoie rien.'],
       ['Pourquoi', 'Pour répondre à votre message, organiser une démo demandée, ou envoyer la lettre à laquelle vous êtes abonné. Nous ne vendons jamais de données personnelles et ne les utilisons jamais à des fins publicitaires.'],
       ['Où elles sont conservées', 'Sur ce lien d’aperçu, les envois sont conservés dans un stockage rattaché à cette page et lisible par son seul propriétaire. Sur le déploiement public, ils sont conservés dans une base de données gérée, chiffrée en transit et au repos, avec un accès par rôle.'],
@@ -1274,10 +1274,10 @@ fr: {
   terms: {
     h1: 'Conditions d’utilisation', updated: 'Dernière mise à jour : 4 octobre 2026',
     body: [
-      ['Objet du site', 'Ce site présente AfriFarm Intelligent, une plateforme de décision agricole en phase de conception et de validation terrain.'],
+      ['Objet du site', 'Ce site présente Djanova Agro, une plateforme de décision agricole en phase de conception et de validation terrain.'],
       ['Démonstrations', 'Le Simulateur de saison de ce site est une démonstration. Il utilise des hypothèses illustratives clairement signalées à l’écran et ne constitue pas un conseil agronomique, financier ou d’investissement. Aucun résultat n’est garanti.'],
       ['Données et sources', 'Les chiffres de tiers sont attribués à leurs sources. Les photographies de terrain appartiennent au porteur du projet et ne peuvent être réutilisées sans autorisation.'],
-      ['Propriété intellectuelle', 'Le nom AfriFarm Intelligent, le contenu, le design et le code de ce site sont protégés. Vous pouvez créer un lien vers n’importe quelle page.'],
+      ['Propriété intellectuelle', 'Le nom Djanova Agro, le contenu, le design et le code de ce site sont protégés. Vous pouvez créer un lien vers n’importe quelle page.'],
       ['Responsabilité', 'Nous veillons à l’exactitude et à l’actualité des informations, mais ce site est fourni en l’état. Les décisions prises à partir de ce site restent sous la responsabilité de l’utilisateur.'],
       ['Contact', 'Les questions sur ces conditions peuvent être envoyées via le formulaire de contact.']
     ]
@@ -1287,7 +1287,7 @@ fr: {
     tag: 'L’intelligence agricole pour une Afrique qui décide avec les données.',
     cols: ['Produit', 'Entreprise', 'Échanger', 'Légal'],
     nlH: 'Notes de terrain, dans votre boîte',
-    rights: '© 2026 AfriFarm Intelligent. Projet porté par Franck Junior Djandja Tomwa.',
+    rights: '© 2026 Djanova Agro. Projet porté par Franck Junior Djandja Tomwa.',
     place: 'Kigali · Foumbot',
     status: 'Phase de conception et de validation terrain',
     noTrack: 'Aucun cookie de suivi'

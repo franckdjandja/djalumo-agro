@@ -1,4 +1,4 @@
-/* AfriFarm Intelligent · design system v4
+/* Djanova Agro · design system v4
    A pure emerald reading: a light emerald page, deep emerald bands for the header, the openings and the
    footer, white surfaces, one gold accent. Type is the platform's own: SF Pro on Apple devices,
    Segoe UI on Windows, Roboto on Android. No labels above titles, no rules under them. */
@@ -81,9 +81,11 @@ p{margin:0}
 .hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(9,54,40,.86);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(255,255,255,.06);color:var(--on-deep)}
 .hdr-in{display:flex;align-items:center;gap:20px;height:58px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none;color:var(--on-deep)}
-.brand svg{width:28px;height:28px}
-.brand b{font-family:var(--display);font-weight:600;letter-spacing:-.02em;font-size:17px;color:#fff}
-.brand span{font-size:15px;color:var(--mint);font-weight:500;letter-spacing:-.01em}
+.brand{gap:12px;color:#F5EFE1}
+.brand .logo{height:22px;width:auto;display:block}
+.brand-sub{font-size:11.5px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:#9BD0A8;line-height:1;padding-top:2px}
+.ftr .brand .logo{height:28px}
+.ftr .brand-sub{font-size:13px}
 .nav{display:flex;gap:2px;margin-left:auto}
 .nav a{text-decoration:none;color:var(--on-deep-2);font-size:13.5px;padding:7px 9px;border-radius:8px;transition:color .2s,background .2s;white-space:nowrap}
 .nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
@@ -415,7 +417,6 @@ form.fm .full{grid-column:1/-1}
 
 /* footer */
 .ftr{padding-block:72px calc(32px + env(safe-area-inset-bottom,0px));margin-top:0;background:var(--deep);color:var(--on-deep-2);position:relative}
-.ftr .brand b{color:#fff}
 .ftr-grid{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,.7fr)) minmax(0,1.3fr);gap:32px}
 .ftr h5{font-size:13px;font-weight:600;color:#fff;margin:0 0 14px;letter-spacing:-.005em}
 .ftr ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
@@ -423,7 +424,6 @@ form.fm .full{grid-column:1/-1}
 .ftr ul a:hover{color:#fff}
 .ftr .muted{color:var(--on-deep-2)}
 .ftr .chip{border:0;color:var(--on-deep-2);background:rgba(255,255,255,.07)}
-.ftr .brand svg rect{stroke:rgba(255,255,255,.3);stroke-width:1}
 .ftr .inp{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.16);color:#fff}
 .ftr .inp::placeholder{color:var(--on-deep-3)}
 .ftr .chk{color:var(--on-deep-2)}

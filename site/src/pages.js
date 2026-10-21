@@ -228,18 +228,18 @@ async function adminMount(box) {
 /* ---------- Chrome ---------- */
 function headerHTML() {
   const N = L().nav;
-  return '<a class="skip" href="#main" data-skip>' + esc(N.skip) + '</a><header class="hdr"><div class="wrap hdr-in"><a class="brand" href="#home" aria-label="AfriFarm Intelligent">' + LOGO + '<b>AfriFarm</b><span>Intelligent</span></a>' +
+  return '<a class="skip" href="#main" data-skip>' + esc(N.skip) + '</a><header class="hdr"><div class="wrap hdr-in"><a class="brand" href="#home" aria-label="Djanova Agro">' + LOGO + '<span class="brand-sub">Agro</span></a>' +
     '<nav class="nav" aria-label="Primary">' + NAV.map(k => '<a href="#' + k + '" data-nav="' + k + '">' + esc(N[k]) + '</a>').join('') + '</nav>' +
     '<div class="hdr-tools"><div class="lang" role="group" aria-label="' + esc(N.lang) + '"><button type="button" data-lang="en" aria-pressed="' + (LANG === 'en') + '" lang="en">EN</button><button type="button" data-lang="fr" aria-pressed="' + (LANG === 'fr') + '" lang="fr">FR</button></div>' +
     '<a class="btn btn-primary btn-sm hdr-cta" href="#demo" data-cta="header_demo">' + esc(N.demo) + '</a><button type="button" class="menu-btn" aria-expanded="false" aria-controls="sheet" aria-label="' + esc(N.menu) + '" data-menu><span></span></button></div></div></header>' +
-    '<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="' + esc(N.menu) + '" hidden><div class="sheet-top"><a class="brand" href="#home">' + LOGO + '<b>AfriFarm</b><span>Intelligent</span></a><button type="button" class="btn btn-ghost btn-sm" data-close>' + esc(N.close) + '</button></div>' +
+    '<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="' + esc(N.menu) + '" hidden><div class="sheet-top"><a class="brand" href="#home" aria-label="Djanova Agro">' + LOGO + '<span class="brand-sub">Agro</span></a><button type="button" class="btn btn-ghost btn-sm" data-close>' + esc(N.close) + '</button></div>' +
     ['home'].concat(NAV, ['newsletter']).map((k, i) => '<a class="sl" href="#' + k + '"><span>' + esc(N[k]) + '</span><span class="mono">' + String(i + 1).padStart(2, '0') + '</span></a>').join('') +
     '<a class="btn btn-primary" href="#demo">' + esc(N.demo) + ARROW + '</a><div class="lang" role="group" aria-label="' + esc(N.lang) + '" style="align-self:flex-start;margin-top:12px"><button type="button" data-lang="en" aria-pressed="' + (LANG === 'en') + '">EN</button><button type="button" data-lang="fr" aria-pressed="' + (LANG === 'fr') + '">FR</button></div></div>';
 }
 function footerHTML() {
   const F = L().footer, N = L().nav;
   const col = (h, ks) => '<div><h5>' + esc(h) + '</h5><ul>' + ks.map(k => '<li><a href="#' + k + '">' + esc(N[k] || L().meta.pages[k]) + '</a></li>').join('') + '</ul></div>';
-  return '<footer class="ftr"><div class="wrap"><div class="ftr-grid"><div><a class="brand" href="#home" aria-label="AfriFarm Intelligent">' + LOGO + '<b>AfriFarm</b><span>Intelligent</span></a><p class="muted small" style="margin-top:16px;max-width:34ch">' + esc(F.tag) + '</p><div class="status-row" style="margin-top:18px"><span class="chip ok"><i></i>' + esc(F.status) + '</span></div></div>' +
+  return '<footer class="ftr"><div class="wrap"><div class="ftr-grid"><div><a class="brand" href="#home" aria-label="Djanova Agro">' + LOGO + '<span class="brand-sub">Agro</span></a><p class="muted small" style="margin-top:16px;max-width:34ch">' + esc(F.tag) + '</p><div class="status-row" style="margin-top:18px"><span class="chip ok"><i></i>' + esc(F.status) + '</span></div></div>' +
     col(F.cols[0], ['planner', 'field', 'platform', 'intelligence', 'data']) + col(F.cols[1], ['solutions', 'impact', 'about']) + col(F.cols[2], ['contact', 'demo', 'newsletter']) +
     '<div><h5>' + esc(F.nlH) + '</h5><div class="nl-foot">' + formHTML('newsletter', 'nl-foot', { compact: true }) + '</div></div></div>' +
     '<div class="ftr-bot"><span>' + esc(F.rights) + '</span><span>' + esc(F.place) + ' · ' + esc(F.noTrack) + ' · <a href="#privacy">' + esc(L().meta.pages.privacy) + '</a> · <a href="#terms">' + esc(L().meta.pages.terms) + '</a></span></div></div></footer>';
@@ -267,7 +267,7 @@ const Router = {
     if (P.mount) P.mount(root);
     // newsletter bands
     $$('form.nlf', root).forEach(f => bindForm(f, { compact: true }));
-    D.title = key === 'home' ? L().meta.title : L().meta.pages[key] + ' · AfriFarm Intelligent';
+    D.title = key === 'home' ? L().meta.title : L().meta.pages[key] + ' · Djanova Agro';
     linkify(root);
     const canon = $('link[rel="canonical"]'); if (canon && CFG.siteUrl) canon.setAttribute('href', CFG.siteUrl.replace(/\/$/, '') + (key === 'nf' ? '/' : pathOf(key)));
     $$('[data-nav]').forEach(a => { if (a.dataset.nav === key) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });

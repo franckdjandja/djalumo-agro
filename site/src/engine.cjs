@@ -1,4 +1,4 @@
-/* AfriFarm Intelligent · Season Plan engine v2
+/* Djanova Agro · Season Plan engine v2
    Pure functions, no DOM. Runs in the browser (bundled by site/build.mjs) and in Node tests.
    Every reference value lives in the knowledge base (site/data/kb.json) with its source ids.
 

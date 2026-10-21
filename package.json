@@ -1,8 +1,8 @@
 {
-  "name": "afrifarm-web",
+  "name": "djanova-agro-web",
   "version": "1.0.0",
   "private": true,
-  "description": "AfriFarm Intelligent: bilingual website, world trade corridor map, field evidence gallery, Season Planner and form backend (contact, demo, newsletter).",
+  "description": "Djanova Agro: bilingual website, world trade corridor map, field evidence gallery, Season Planner and form backend (contact, demo, newsletter).",
   "type": "module",
   "engines": {
     "node": ">=20"

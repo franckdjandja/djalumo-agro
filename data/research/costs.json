@@ -1,6 +1,6 @@
 {
   "meta": {
-    "project": "AfriFarm Intelligent - cost lines for vegetable ROI engine (pilot zone Foumbot, Noun, West Cameroon)",
+    "project": "Djanova Agro - cost lines for vegetable ROI engine (pilot zone Foumbot, Noun, West Cameroon)",
     "compiled": "2026-10-17",
     "currency": "XAF (CFA franc BEAC). 1 EUR = 655.957 XAF (fixed peg). XOF (CFA franc BCEAO) has the same parity, so Cote d'Ivoire listing prices in FCFA are numerically comparable but are NOT Cameroon prices.",
     "conventions": "price_xaf = [min, max] in XAF for the stated unit. For MINADER bulletin items the range is the range of LOCAL MARKET AVERAGES across West-region towns; absolute min/max observations are in notes. 'derived' in notes means arithmetic by the compiler (per-kg x 50, currency conversion, man-days x wage), not a figure printed by the source. Non-price technical values use 'value' + 'value_unit' with price_xaf null.",

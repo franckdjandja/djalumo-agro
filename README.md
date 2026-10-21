@@ -1,8 +1,8 @@
-# AfriFarm Intelligent · Website and form platform
+# Djanova Agro · Website and form platform
 
 **English** · [Français](README.fr.md)
 
-The digital flagship of AfriFarm Intelligent, an agricultural decision intelligence platform that turns any budget, from 100 USD to more than 1 million, into a costed Season Plan. The site is bilingual (English first, French second), works on slow mobile networks, and runs a real backend for contact, demo and newsletter requests.
+The digital flagship of Djanova Agro, an agricultural decision intelligence platform that turns any budget, from 100 USD to more than 1 million, into a costed Season Plan. The site is bilingual (English first, French second), works on slow mobile networks, and runs a real backend for contact, demo and newsletter requests.
 
 Project leader: Franck Junior Djandja Tomwa · Pilot zone: Foumbot, West Cameroon.
 
@@ -81,7 +81,7 @@ With the Vercel CLI you can use `npm run dev` instead of `scripts/serve.mjs`.
 | `DATABASE_URL` | server | PostgreSQL connection |
 | `ALLOWED_ORIGINS` | server | Origins allowed to post to `/api` |
 | `EMAIL_PROVIDER`, `EMAIL_API_KEY`, `EMAIL_FROM` | server | Email notifications (`resend`, `brevo`, `console`, `none`) |
-| `CONTACT_NOTIFICATION_EMAIL` | server | Recipients of "New AfriFarm website inquiry" and "New Demo Request" |
+| `CONTACT_NOTIFICATION_EMAIL` | server | Recipients of "New Djanova Agro website inquiry" and "New Demo Request" |
 | `NEWSLETTER_NOTIFY`, `NEWSLETTER_SEND_CONFIRMATION` | server | Optional internal alert and subscriber confirmation |
 | `NEWSLETTER_PROVIDER`, `NEWSLETTER_PROVIDER_KEY`, `NEWSLETTER_LIST_ID` | server | Optional sync to Brevo or Mailchimp |
 | `TURNSTILE_SITE_KEY` / `TURNSTILE_SECRET_KEY` | build / server | Cloudflare Turnstile challenge |
@@ -115,10 +115,10 @@ Every visible string lives in `site/src/i18n.js`, in two parallel objects: `en` 
 
 ## Analytics
 
-`window.AfriFarmAnalytics` queues events: `page_view`, `cta_click`, `planner_run`, `planner_tab`, `planner_window`, `map_select`, `map_layer`, `arch_select`, `persona_select`, `form_submitted`, `form_invalid`, `form_error`, `language_change`. Nothing is sent until a provider is configured. To add another platform:
+`window.DjanovaAnalytics` queues events: `page_view`, `cta_click`, `planner_run`, `planner_tab`, `planner_window`, `map_select`, `map_layer`, `arch_select`, `persona_select`, `form_submitted`, `form_invalid`, `form_error`, `language_change`. Nothing is sent until a provider is configured. To add another platform:
 
 ```js
-AfriFarmAnalytics.use({ track: (e) => myProvider.capture(e.name, e.props) });
+DjanovaAnalytics.use({ track: (e) => myProvider.capture(e.name, e.props) });
 ```
 
 If you enable a provider, add its domain to the Content Security Policy in `vercel.json`, and use a consent banner where the law requires it (GA4 in the EU, for example). Plausible is cookie free.
@@ -158,7 +158,7 @@ The planner answers one question for a farmer or an investor: what does this cap
 
 Input prices come from the MINADER 2024 tomato budget, the MINADER survey of West region input markets (Foumbot, Q4 2022), fuel prices in force in October 2026 and, where no Cameroon price exists, labelled listings from neighbouring markets. Exchange rates are the BCEAO reference of 16 October 2026.
 
-**Rules.** Every value carries the ids of its sources, shown on screen next to each budget line and itinerary step. Computed values are labelled derived. Values that rest on no source are AfriFarm assumptions, listed in the Sources tab. A missing price is never guessed: the line keeps its quantity, costs zero and is flagged for a local quote. Confidence is stated per crop and per block of data.
+**Rules.** Every value carries the ids of its sources, shown on screen next to each budget line and itinerary step. Computed values are labelled derived. Values that rest on no source are Djanova Agro assumptions, listed in the Sources tab. A missing price is never guessed: the line keeps its quantity, costs zero and is flagged for a local quote. Confidence is stated per crop and per block of data.
 
 To update the data: edit or extend the research notes, adjust `scripts/kb/build_kb.py`, then run `python3 scripts/kb/build_kb.py` and `npm test`.
 
@@ -166,7 +166,7 @@ To update the data: edit or extend the research notes, adjust `scripts/kb/build_
 
 The interface follows a pure emerald reading: a light emerald page (`#EDF6F1`), deep emerald bands (`#0A3D2E`) for the header, the page openings, the newsletter card and the footer, white surfaces with soft shadows, and one gold accent for the production zone. There are no labels, numbers or rules above titles. Type is the platform's own font: SF Pro on Apple devices, Segoe UI on Windows, Roboto on Android, so the site reads like a native application and loads no web font. All tokens live at the top of `site/src/styles.css`.
 
-The world map (`site/src/world.js`) draws land as a dot grid from Natural Earth 1:110m; dots are zero length strokes, so they keep their size at every zoom, and land outlines fade in when you zoom. Corridors are of two kinds and are labelled as such everywhere: **flows today** (Cameroon and Central Africa, documented market flows) and **export corridors targeted** (AfriFarm's ambition, not current sales). Sea lanes follow indicative waypoints on the usual routes (Gulf of Guinea, Canaries, Gibraltar or the Channel, Cape of Good Hope, Mozambique Channel, Strait of Malacca); distances are great circle lengths between waypoints, and days at sea assume 14 knots before port calls and transshipment. Regenerate with `npm run geo:world`.
+The world map (`site/src/world.js`) draws land as a dot grid from Natural Earth 1:110m; dots are zero length strokes, so they keep their size at every zoom, and land outlines fade in when you zoom. Corridors are of two kinds and are labelled as such everywhere: **flows today** (Cameroon and Central Africa, documented market flows) and **export corridors targeted** (Djanova Agro's ambition, not current sales). Sea lanes follow indicative waypoints on the usual routes (Gulf of Guinea, Canaries, Gibraltar or the Channel, Cape of Good Hope, Mozambique Channel, Strait of Malacca); distances are great circle lengths between waypoints, and days at sea assume 14 knots before port calls and transshipment. Regenerate with `npm run geo:world`.
 
 Sourced figures on the map: port traffic of Cameroon in 2025 and the Douala share (Ministry of Transport via EcoMatin, January 2026), Kribi water depth (WFP Logistics Cluster), banana exports in 2024 (Assobacam via Business in Cameroon), regional vegetable flows to Gabon, Equatorial Guinea, the Central African Republic and Chad (Afrik.com, October 2026) and the Transcameroon corridor (Business in Cameroon, May 2026).
 
@@ -184,4 +184,4 @@ The site never presents simulated data as real. The Season Planner states its so
 * Create the legal entity and name it in the privacy policy.
 * Review the photographs register and captions.
 
-© 2026 AfriFarm Intelligent. All rights reserved.
+© 2026 Djanova Agro. All rights reserved.
