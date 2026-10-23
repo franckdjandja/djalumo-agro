@@ -1,0 +1,58 @@
+{
+ "crop": "Oil palm (Elaeis guineensis), selected tenera seedlings, Cameroon",
+ "research_date": "2026-10-23",
+ "sheet": {
+  "text": "MINADER technical and economic sheet for an oil palm plantation (October 2024, published May 2025): 143 palms per ha in 9 m triangles; production starts about 3 years after planting; fresh fruit bunches 4, 6, 8 then 13 t/ha; oil 25% and kernels 10% of bunch weight; peak production from 7 to 25 years; economic life about 30 years; profitability in year 8; harvest every 7 to 10 days, processing within 48 hours; more than three quarters of the crop from December to May.",
+  "source_ids": [
+   "S1"
+  ]
+ },
+ "fertilizer": {
+  "text": "Twice a year in March and October. Young palms (1 to 3 years) about 1 kg per palm a year; years 4 to 6 about 1.5 kg; from year 7 about 2 kg, mainly potassium chloride and kieserite (S1).",
+  "source_ids": [
+   "S1"
+  ]
+ },
+ "budget": {
+  "text": "Seedlings 160 at 2,000 FCFA; clearing 20 and staking 30 person days at 2,500; holes 200 and planting 300 FCFA per palm; Mucuna cover 12 kg at 1,000; glyphosate 1 L a year at 6,500; circle weeding 100 FCFA per palm twice a year; pruning 100 per palm; weeding 40,000 and fertilizing 25,000 FCFA per ha a year; harvest 20,000 rising to 50,000 FCFA. Potassium chloride 600, kieserite 700, urea 600 FCFA/kg (S1). Rodent guards of galvanized mesh around young palms (S1).",
+  "source_ids": [
+   "S1"
+  ]
+ },
+ "yields": {
+  "text": "Smallholders in Cameroon produce under one tonne of palm oil per ha, a quarter of smallholders in Indonesia and Malaysia (S2).",
+  "source_ids": [
+   "S2"
+  ]
+ },
+ "prices": {
+  "text": "Village plantations: the price of a tonne fell from 105,000 to about 80,000 FCFA (June 2025); Socapalm adds an internal bonus of 65 FCFA/kg for its planters (S3).",
+  "source_ids": [
+   "S3"
+  ]
+ },
+ "sources": [
+  {
+   "id": "S1",
+   "title": "Fiche technico économique de conduite d’une palmeraie (Fiche technico économique 2)",
+   "publisher": "MINADER, Direction des organisations professionnelles agricoles et de l’appui aux exploitations",
+   "year": 2025,
+   "url": "https://www.minader.cm/wp-content/uploads/2025/05/FICHE-DE-CONDUITE-DUNE-PALMERAIE_VF.pdf"
+  },
+  {
+   "id": "S2",
+   "title": "Cameroun : développer les palmiers à huile des agriculteurs",
+   "publisher": "IPS (citing MINADER)",
+   "year": 2013,
+   "url": "https://ipsnews.net/francais/?p=6704"
+  },
+  {
+   "id": "S3",
+   "title": "Dibombari : la Socapalm organise une réunion avec les responsables des plantations villageoises",
+   "publisher": "Le Tamtam du Mboa",
+   "year": 2025,
+   "url": "https://tamtamdumboa.com/dibombari-la-socapalm-organise-une-reunion-avec-les-responsables-des-plantations-villageoises/"
+  }
+ ],
+ "confidence_notes": "HIGH for the itinerary and the budget (official MINADER sheet, 2024). MEDIUM for yields. MEDIUM for prices (one 2025 report)."
+}

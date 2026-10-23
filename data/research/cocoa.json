@@ -1,0 +1,137 @@
+{
+ "crop": "Cocoa (Theobroma cacao), improved hybrids (IRAD, SODECAO), Centre and South Cameroon",
+ "research_date": "2026-10-23",
+ "bearing": {
+  "text": "First yields 18 months after planting improved seedlings, a full crop after two and a half to three years; second generation IRAD varieties average two tonnes per ha against one for the first generation (S1, 2020). SNK hybrids enter production from 30 months (S2, 2026). First production usually at 3 to 4 years, significant at 5 to 7 (S3, 2026).",
+  "source_ids": [
+   "S1",
+   "S2",
+   "S3"
+  ]
+ },
+ "density": {
+  "text": "850 to 1,100 plants per ha depending on topography and agroforestry system; shade 70% up to 15 years (S4, 2025). 1,100 to 1,300 plants per ha (S3). 1,333 at 3 m x 2.5 m (S2). Pilot plots: 972 cocoa with 1,180 plantain as temporary shade per ha (S5).",
+  "source_ids": [
+   "S4",
+   "S3",
+   "S2",
+   "S5"
+  ]
+ },
+ "plants": {
+  "text": "Seedlings 150 to 250 FCFA each (S2). Shade trees 50,000 to 200,000 FCFA per ha (S3).",
+  "source_ids": [
+   "S2",
+   "S3"
+  ]
+ },
+ "fertilizer": {
+  "text": "NPK 12-11-18 + 3 MgO, 300 to 400 g per tree a year from year 4 in 2 to 3 splits; every 3 years 5 t/ha of manure or compost (S2).",
+  "source_ids": [
+   "S2"
+  ]
+ },
+ "protection": {
+  "text": "Black pod (Phytophthora megakarya) reached 34 to 71% of pods on untreated trees against under 2% with Ridomil (S6). Copper or metalaxyl copper every 3 weeks in the risk period, June to October; insecticide against mirids in two passes 21 days apart; 4 to 6 treatments a year (S2). No treatment in the 14 days before harvest (S4).",
+  "source_ids": [
+   "S6",
+   "S2",
+   "S4"
+  ]
+ },
+ "post_harvest": {
+  "text": "Pod opening within 5 days, fermentation 6 days with 3 turnings, sun drying 8 to 15 days to 6 to 8% moisture (S4).",
+  "source_ids": [
+   "S4"
+  ]
+ },
+ "yields": {
+  "text": "Small unaided farms 280 kg/ha, supported farms 500 to 600 kg/ha (S7). Poorly kept 300 to 500 kg, well managed 800 to 1,500 kg per ha (S3). Projection 250, 700 and 1,200 kg/ha in years 3, 4 and 5, then 1,800 (S2).",
+  "source_ids": [
+   "S7",
+   "S3",
+   "S2"
+  ]
+ },
+ "prices": {
+  "text": "ONCC minimum buying price 1,400 FCFA/kg on 21 April 2026, up from 1,050 in January; 900 FCFA/kg in some zones early 2026 (S8). Farm gate 1,650 to 1,700 FCFA/kg on 8 June 2026; never above 2,000 FCFA in the 2025 to 2026 season (S9). 1,600 FCFA/kg at the start of the 2023 campaign, which opens in September with large harvests from late October (S10).",
+  "source_ids": [
+   "S8",
+   "S9",
+   "S10"
+  ]
+ },
+ "sources": [
+  {
+   "id": "S1",
+   "title": "New seed varieties help cocoa farmers thrive in Cameroon (IRAD second generation varieties)",
+   "publisher": "African Farming (African Development Bank)",
+   "year": 2020,
+   "url": "https://africanfarming.net/crops/agriculture/new-seed-varieties-help-cocoa-farmers-thrive-in-cameroon"
+  },
+  {
+   "id": "S2",
+   "title": "Culture du cacao au Cameroun 2026 : guide complet du sol à la fève",
+   "publisher": "JOGOO Agriculture",
+   "year": 2026,
+   "url": "https://jogoo.africa/culture-cacao-cameroun-2026/"
+  },
+  {
+   "id": "S3",
+   "title": "Combien coûte la création d’une plantation de cacao de 1 hectare au Cameroun",
+   "publisher": "Maison de l’entrepreneur agricole",
+   "year": 2026,
+   "url": "https://maisonagricole.com/agriculture/combien-coute-la-creation-dune-plantation-de-cacao-de-1-hectare-au-cameroun/"
+  },
+  {
+   "id": "S4",
+   "title": "Manuel de référence pour la production et la commercialisation du cacao durable au Cameroun",
+   "publisher": "ONCC, Comité Cacao Durable du Cameroun (EFI, Union européenne)",
+   "year": 2025,
+   "url": "https://www.oncc.cm/content/library/documents/resource-reference-manual-1760537363.pdf"
+  },
+  {
+   "id": "S5",
+   "title": "Co-construction, transfert et diffusion d’innovations en cacaoculture au Cameroun (R. Bourgoing, D. Abolo)",
+   "publisher": "CIRAD and IRAD",
+   "year": null,
+   "url": "https://afs4food.cirad.fr/content/download/4489/34104/version/1/file/Bourgoing+Innov+cacao.pdf"
+  },
+  {
+   "id": "S6",
+   "title": "Impact of environmental factors, chemical fungicide and biological control on cacao pod production dynamics and black pod disease in Cameroon (Deberdt et al.)",
+   "publisher": "Biological Control 44(2)",
+   "year": 2008,
+   "url": "https://agritrop.cirad.fr/543290/"
+  },
+  {
+   "id": "S7",
+   "title": "Analyse de la chaîne de valeur du cacao au Cameroun (Lescuyer, Boutinot, Goglio, Bassanaga), VCA4D",
+   "publisher": "Union européenne, DG DEVCO",
+   "year": 2019,
+   "url": "https://capacity4dev.europa.eu/media/125082/download/cfbcda3b-9de2-4342-8063-14a0a8ad238a_en"
+  },
+  {
+   "id": "S8",
+   "title": "Cacao : les prix remontent à 1 400 FCFA/kg au Cameroun après un début d’année difficile",
+   "publisher": "EcoMatin",
+   "year": 2026,
+   "url": "https://ecomatin.net/cacao-les-prix-remontent-a-1-400-fcfa-kg-au-cameroun-apres-un-debut-dannee-difficile"
+  },
+  {
+   "id": "S9",
+   "title": "Cacao camerounais : le kilogramme grimpe de 150 FCFA en juin 2026",
+   "publisher": "Afric Telegraph",
+   "year": 2026,
+   "url": "https://africtelegraph.com/?p=81746"
+  },
+  {
+   "id": "S10",
+   "title": "Cameroun : la récolte du cacao commence, espoir d’abondance dans les villages agricoles",
+   "publisher": "Le360 Afrique",
+   "year": 2023,
+   "url": "https://afrique.le360.ma/economie/cameroun-la-recolte-du-cacao-commence-espoir-dabondance-dans-les-villages-agricoles_SN3J37XCDVAV5F6IDQCBTPBTD4/"
+  }
+ ],
+ "confidence_notes": "MEDIUM for prices (2026 ONCC and market reports) and yields (EU value chain study, 2026 guides). LOW for treatment doses and labour, which are Djalumo Agro assumptions calibrated on the guides."
+}

@@ -102,6 +102,13 @@ test('report: request, confirmation, review and approval send the PDF only after
   assert.match(delivery.subject, /Votre rapport Djalumo Agro : Manioc/);
   assert.equal(delivery.attachments.length, 1);
   assert.equal([...rows.values()][0], 'SENT');
+  const dl = linkOf(delivery, 'download');
+  assert.ok(dl, 'the delivery email carries a download link');
+  const got = await call(handler, { method: 'GET', url: '/api/report?a=download&t=' + encodeURIComponent(dl) });
+  assert.equal(got.headers['content-type'], 'application/pdf');
+  assert.match(got.headers['content-disposition'], /^attachment;/);
+  const notDl = await call(handler, { method: 'GET', url: '/api/report?a=download&t=' + encodeURIComponent(review) });
+  assert.equal(notDl.status, 400, 'a review link is not a download link');
   const twice = await call(handler, { url: '/api/report?a=review', form: { t: review, decision: 'approve' } });
   assert.match(twice.body, /déjà été validée/);
   assert.equal(mails.length, 3, 'single use');
@@ -157,4 +164,18 @@ test('PDF report: every crop renders in both languages without long dashes', asy
   }
   const all = JSON.stringify(T, (k, v) => (typeof v === 'function' ? v.toString() : v));
   assert.ok(!/[–—]/.test(all), 'no long dash in the report wording');
+});
+
+test('config: a Gmail account and its app password are enough to switch reports on', () => {
+  const c = getConfig({ GMAIL_USER: 'franck@example.org', GMAIL_APP_PASSWORD: 'abcd efgh ijkl mnop' });
+  assert.equal(c.emailProvider, 'gmail');
+  assert.equal(c.smtp.host, 'smtp.gmail.com');
+  assert.equal(c.smtp.pass, 'abcdefghijklmnop');
+  assert.equal(c.emailFrom, 'Djalumo Agro <franck@example.org>');
+  assert.equal(c.reportsEnabled, true);
+  assert.ok(c.reportSecret.length >= 32);
+  assert.deepEqual(c.reportAdmin, ['franck@example.org']);
+  assert.deepEqual(c.notifyTo, ['franck@example.org']);
+  assert.equal(getConfig({ GMAIL_USER: 'a@b.org', GMAIL_APP_PASSWORD: 'x', REPORTS_ENABLED: 'false' }).reportsEnabled, false);
+  assert.equal(getConfig({}).reportsEnabled, false);
 });

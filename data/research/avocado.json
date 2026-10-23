@@ -1,171 +1,186 @@
 {
-  "crop": "Avocado (Persea americana), grafted trees, West Cameroon highlands (Bamboutos, Menoua), 10 year horizon",
-  "research_date": "2026-10-23",
-  "bearing": {
-    "text": "Grafted trees bear 3 to 4 years after planting (S1, S2, S3); about 3 years on average against 8 to 10 years for seedlings (S4). Economic crop from year 6 (S5).",
-    "source_ids": [
-      "S1",
-      "S2",
-      "S3",
-      "S4",
-      "S5"
-    ]
+ "crop": "Avocado (Persea americana), grafted trees, West Cameroon highlands (Bamboutos, Menoua), 10 year horizon",
+ "research_date": "2026-10-23",
+ "bearing": {
+  "text": "Grafted trees bear 3 to 4 years after planting (S1, S2, S3); about 3 years on average against 8 to 10 years for seedlings (S4). Economic crop from year 6 (S5).",
+  "source_ids": [
+   "S1",
+   "S2",
+   "S3",
+   "S4",
+   "S5"
+  ]
+ },
+ "planting": {
+  "text": "8 to 10 m between trees (S7); 9 x 9 m, 120 trees/ha (S5); about 150 to 162 trees/ha in the Trinidad model (S6). Holes 60 x 60 x 60 cm dug a month ahead, 20 kg farmyard manure and 120 g double superphosphate each (S5). Mounds 30 cm high, 1 m base; varieties alternated by row (S3). Grafted plants 1,000 to 2,000 FCFA (S8) and 3 USD in a 2022 Cameroon offer (S8).",
+  "source_ids": [
+   "S3",
+   "S5",
+   "S6",
+   "S7",
+   "S8"
+  ]
+ },
+ "fertilizer_by_age_g_per_tree": {
+  "1-3": {
+   "CAN": 125,
+   "DSP": 225,
+   "MOP": 0,
+   "FYM_kg": 15
   },
-  "planting": {
-    "text": "8 to 10 m between trees (S7); 9 x 9 m, 120 trees/ha (S5); about 150 to 162 trees/ha in the Trinidad model (S6). Holes 60 x 60 x 60 cm dug a month ahead, 20 kg farmyard manure and 120 g double superphosphate each (S5). Mounds 30 cm high, 1 m base; varieties alternated by row (S3). Grafted plants 1,000 to 2,000 FCFA (S8) and 3 USD in a 2022 Cameroon offer (S8).",
-    "source_ids": [
-      "S3",
-      "S5",
-      "S6",
-      "S7",
-      "S8"
-    ]
+  "4-5": {
+   "CAN": 225,
+   "DSP": 450,
+   "MOP": 0,
+   "FYM_kg": 15
   },
-  "fertilizer_by_age_g_per_tree": {
-    "1-3": {
-      "CAN": 125,
-      "DSP": 225,
-      "MOP": 0,
-      "FYM_kg": 15
-    },
-    "4-5": {
-      "CAN": 225,
-      "DSP": 450,
-      "MOP": 0,
-      "FYM_kg": 15
-    },
-    "6-7": {
-      "CAN": 450,
-      "DSP": 650,
-      "MOP": 225,
-      "FYM_kg": 30
-    },
-    "8-9": {
-      "CAN": 650,
-      "DSP": 650,
-      "MOP": 450,
-      "FYM_kg": 30
-    },
-    "10-14": {
-      "CAN": 900,
-      "DSP": 1000,
-      "MOP": 635,
-      "FYM_kg": 0
-    },
-    "source_ids": [
-      "S5"
-    ]
+  "6-7": {
+   "CAN": 450,
+   "DSP": 650,
+   "MOP": 225,
+   "FYM_kg": 30
   },
-  "labour_person_days_per_ha_year": {
-    "planting": 13,
-    "mulching_mounding": 15,
-    "fertilizing": [
-      4,
-      6,
-      7,
-      4
-    ],
-    "weeding": 24,
-    "pest_control": 12,
-    "pruning_from_year3": 8,
-    "harvest": "20 in year 3, 40 from year 4, about 338 kg per person day",
-    "source_ids": [
-      "S6"
-    ]
+  "8-9": {
+   "CAN": 650,
+   "DSP": 650,
+   "MOP": 450,
+   "FYM_kg": 30
   },
-  "inputs_per_ha_year": {
-    "text": "Contact insecticide 1 to 2 L, copper fungicide 1 kg, soil fungicide 2 kg (S6).",
-    "source_ids": [
-      "S6"
-    ]
+  "10-14": {
+   "CAN": 900,
+   "DSP": 1000,
+   "MOP": 635,
+   "FYM_kg": 0
   },
-  "yields": {
-    "text": "More than 10 t/ha a year in a well kept orchard (S1, S2). 230 to 320 kg per tree, 7.5 to 11 t/ha; 300 to 400 kg/ha at 3 to 5 years and 800 to 1,000 kg/ha after 5 years in another table of the same sheet (S5). Trinidad model: 6.75 t/ha in year 3, 13.5 t/ha from year 4, fruit 0.45 kg, 15% post harvest loss (S6).",
-    "source_ids": [
-      "S1",
-      "S2",
-      "S5",
-      "S6"
-    ]
-  },
-  "season": {
-    "text": "Two harvests in Cameroon: February to May and July to September (S1, S3).",
-    "source_ids": [
-      "S1",
-      "S3"
-    ]
-  },
-  "prices": {
-    "text": "Traders buy a 100 kg sack at the field for 25,000 to 65,000 FCFA depending on the variety; fruits retail at 100 to 500 FCFA (S2, 2022). A sack of about 100 kg costs 10,000 to 60,000 FCFA depending on the period (S1, 2016).",
-    "source_ids": [
-      "S1",
-      "S2"
-    ]
-  },
-  "markets": {
-    "text": "National production about 120,000 t; Bamboutos and Menoua are the main basins; sold to large cities, Europe and the Central African sub region (S1, S3). Export to the EU requires commercial varieties and certification.",
-    "source_ids": [
-      "S1",
-      "S3"
-    ]
-  },
-  "sources": [
-    {
-      "id": "S1",
-      "title": "Cameroun : avocat, les Bamboutos principal bassin de production (I. M. Bidima)",
-      "publisher": "La Voix du Paysan",
-      "year": 2016,
-      "url": "https://www.lavoixdupaysan.net/cameroun-avocat-bamboutos-principal-bassin-de-production/"
-    },
-    {
-      "id": "S2",
-      "title": "La culture de l'avocatier au Cameroun a le vent en poupe",
-      "publisher": "Agriculture au Cameroun",
-      "year": 2022,
-      "url": "https://agricultureaucameroun.com/investir-au-cameroun/la-culture-de-lavocatier-au-cameroun-a-le-vent-en-poupe/"
-    },
-    {
-      "id": "S3",
-      "title": "L'avocat au Cameroun : une mine d'or verte à exploiter",
-      "publisher": "Fabrik Aliments",
-      "year": 2024,
-      "url": "https://www.fabrikaliments.com/lavocat-au-cameroun-une-mine-dor-verte-a-exploiter/"
-    },
-    {
-      "id": "S4",
-      "title": "Un avocatier greffé produit ses premiers fruits en moyenne au bout de trois ans (entretien avec N. Tegofack)",
-      "publisher": "Agripreneurs d'Afrique",
-      "year": 2023,
-      "url": "https://agripreneursdafrique.com/article/un-avocatier-greffe-produit-ses-premiers-fruits-en-moyenne-au-bout-de-trois-ans-contre-huit-et-dix-ans-pour-un-non-greffe"
-    },
-    {
-      "id": "S5",
-      "title": "Avocado production factsheet (Wasilwa, Ochieng, Otipa, Amata, Oduor, Omolo)",
-      "publisher": "KALRO, Kenya",
-      "year": 2018,
-      "url": "https://agrificsapp.kalro.org/file_uploads/Avocado-production%20factsheets.pdf"
-    },
-    {
-      "id": "S6",
-      "title": "Avocado (Persea americana Mill.) technical package (F. Solomon Jr.)",
-      "publisher": "Ministry of Agriculture, Land and Fisheries, Trinidad and Tobago",
-      "year": 2017,
-      "url": "https://agriculture.gov.tt/wp-content/uploads/2020/01/AVOCADO-Tech-Pack-24-JAN-2017_compressed.pdf"
-    },
-    {
-      "id": "S7",
-      "title": "Techniques de production de plants d'arbres fruitiers dans les pépinières : greffage de l'avocatier (DACEFI)",
-      "publisher": "Nature+, WWF and FUSAGx, Gabon",
-      "year": null,
-      "url": "https://d2ouvy59p0dg6k.cloudfront.net/downloads/txt38_brochure_greffage_avocatier.pdf"
-    },
-    {
-      "id": "S8",
-      "title": "Plants d'avocatiers greffés : offres de pépiniéristes au Cameroun",
-      "publisher": "EspaceAgro",
-      "year": 2022,
-      "url": "https://www.espaceagro.com/greffe-avocatier/exp-greffe-avocatier.html"
-    }
+  "source_ids": [
+   "S5"
+  ]
+ },
+ "labour_person_days_per_ha_year": {
+  "planting": 13,
+  "mulching_mounding": 15,
+  "fertilizing": [
+   4,
+   6,
+   7,
+   4
   ],
-  "confidence_notes": "LOW to MEDIUM: Cameroon sources give bearing age, seasons, yield level and prices; the fertilizer schedule and labour come from Kenya (KALRO) and Trinidad. The yield ramp by age is derived. Plant prices come from producer listings."
+  "weeding": 24,
+  "pest_control": 12,
+  "pruning_from_year3": 8,
+  "harvest": "20 in year 3, 40 from year 4, about 338 kg per person day",
+  "source_ids": [
+   "S6"
+  ]
+ },
+ "inputs_per_ha_year": {
+  "text": "Contact insecticide 1 to 2 L, copper fungicide 1 kg, soil fungicide 2 kg (S6).",
+  "source_ids": [
+   "S6"
+  ]
+ },
+ "yields": {
+  "text": "More than 10 t/ha a year in a well kept orchard (S1, S2). 230 to 320 kg per tree, 7.5 to 11 t/ha; 300 to 400 kg/ha at 3 to 5 years and 800 to 1,000 kg/ha after 5 years in another table of the same sheet (S5). Trinidad model: 6.75 t/ha in year 3, 13.5 t/ha from year 4, fruit 0.45 kg, 15% post harvest loss (S6).",
+  "source_ids": [
+   "S1",
+   "S2",
+   "S5",
+   "S6"
+  ]
+ },
+ "season": {
+  "text": "Two harvests in Cameroon: February to May and July to September (S1, S3).",
+  "source_ids": [
+   "S1",
+   "S3"
+  ]
+ },
+ "prices": {
+  "text": "Traders buy a 100 kg sack at the field for 25,000 to 65,000 FCFA depending on the variety; fruits retail at 100 to 500 FCFA (S2, 2022). A sack of about 100 kg costs 10,000 to 60,000 FCFA depending on the period (S1, 2016).",
+  "source_ids": [
+   "S1",
+   "S2"
+  ]
+ },
+ "markets": {
+  "text": "National production about 120,000 t; Bamboutos and Menoua are the main basins; sold to large cities, Europe and the Central African sub region (S1, S3). Export to the EU requires commercial varieties and certification.",
+  "source_ids": [
+   "S1",
+   "S3"
+  ]
+ },
+ "sources": [
+  {
+   "id": "S1",
+   "title": "Cameroun : avocat, les Bamboutos principal bassin de production (I. M. Bidima)",
+   "publisher": "La Voix du Paysan",
+   "year": 2016,
+   "url": "https://www.lavoixdupaysan.net/cameroun-avocat-bamboutos-principal-bassin-de-production/"
+  },
+  {
+   "id": "S2",
+   "title": "La culture de l'avocatier au Cameroun a le vent en poupe",
+   "publisher": "Agriculture au Cameroun",
+   "year": 2022,
+   "url": "https://agricultureaucameroun.com/investir-au-cameroun/la-culture-de-lavocatier-au-cameroun-a-le-vent-en-poupe/"
+  },
+  {
+   "id": "S3",
+   "title": "L'avocat au Cameroun : une mine d'or verte à exploiter",
+   "publisher": "Fabrik Aliments",
+   "year": 2024,
+   "url": "https://www.fabrikaliments.com/lavocat-au-cameroun-une-mine-dor-verte-a-exploiter/"
+  },
+  {
+   "id": "S4",
+   "title": "Un avocatier greffé produit ses premiers fruits en moyenne au bout de trois ans (entretien avec N. Tegofack)",
+   "publisher": "Agripreneurs d'Afrique",
+   "year": 2023,
+   "url": "https://agripreneursdafrique.com/article/un-avocatier-greffe-produit-ses-premiers-fruits-en-moyenne-au-bout-de-trois-ans-contre-huit-et-dix-ans-pour-un-non-greffe"
+  },
+  {
+   "id": "S5",
+   "title": "Avocado production factsheet (Wasilwa, Ochieng, Otipa, Amata, Oduor, Omolo)",
+   "publisher": "KALRO, Kenya",
+   "year": 2018,
+   "url": "https://agrificsapp.kalro.org/file_uploads/Avocado-production%20factsheets.pdf"
+  },
+  {
+   "id": "S6",
+   "title": "Avocado (Persea americana Mill.) technical package (F. Solomon Jr.)",
+   "publisher": "Ministry of Agriculture, Land and Fisheries, Trinidad and Tobago",
+   "year": 2017,
+   "url": "https://agriculture.gov.tt/wp-content/uploads/2020/01/AVOCADO-Tech-Pack-24-JAN-2017_compressed.pdf"
+  },
+  {
+   "id": "S7",
+   "title": "Techniques de production de plants d'arbres fruitiers dans les pépinières : greffage de l'avocatier (DACEFI)",
+   "publisher": "Nature+, WWF and FUSAGx, Gabon",
+   "year": null,
+   "url": "https://d2ouvy59p0dg6k.cloudfront.net/downloads/txt38_brochure_greffage_avocatier.pdf"
+  },
+  {
+   "id": "S8",
+   "title": "Plants d'avocatiers greffés : offres de pépiniéristes au Cameroun",
+   "publisher": "EspaceAgro",
+   "year": 2022,
+   "url": "https://www.espaceagro.com/greffe-avocatier/exp-greffe-avocatier.html"
+  },
+  {
+   "id": "S9",
+   "title": "Hass avocado: the new green gold of Wundanyi (grafted Hass bears after 2.5 to 3 years)",
+   "publisher": "Kenya News Agency",
+   "year": 2023,
+   "url": "https://www.kenyanews.go.ke/hass-avocado-the-new-green-gold-of-wundanyi/"
+  }
+ ],
+ "confidence_notes": "LOW to MEDIUM: Cameroon sources give bearing age, seasons, yield level and prices; the fertilizer schedule and labour come from Kenya (KALRO) and Trinidad. The yield ramp by age is derived. Plant prices come from producer listings.",
+ "bearing_2026_check": {
+  "text": "Grafted Hass trees reach maturity in 2.5 to 3 years instead of 6 to 7 (S9, 2023). Grafted trees bear after 3 to 4 years, economic crop from year 6 (S5). First fruits after about three years on average (S4).",
+  "source_ids": [
+   "S9",
+   "S5",
+   "S4"
+  ]
+ }
 }

@@ -110,7 +110,7 @@ Le planificateur propose un rapport PDF premium du plan en cours. Rien n’est t
 3. L’administrateur (`REPORT_ADMIN_EMAIL`) reçoit le résumé et le PDF tel qu’il serait envoyé, avec un lien d’examen.
 4. Sur la page d’examen, l’administrateur valide (le PDF est régénéré et envoyé au demandeur) ou refuse (avec un message courtois facultatif).
 
-Variables : `REPORTS_ENABLED`, `REPORT_SIGNING_SECRET` (32 caractères ou plus), `REPORT_ADMIN_EMAIL`, `REPORT_ADMIN_LANG` (`fr` par défaut). Les liens sont signés (HMAC) et expirent (7 jours pour confirmer, 30 jours pour examiner). Avec une base de données, chaque décision est à usage unique et enregistrée dans `report_requests` ; sans base, le circuit fonctionne avec les liens signés.
+Sans nom de domaine, un compte Gmail suffit : renseigner `GMAIL_USER` et `GMAIL_APP_PASSWORD` (mot de passe d’application, après activation de la validation en deux étapes) dans Vercel puis redéployer. Le rapport validé est envoyé en pièce jointe et par un lien de téléchargement valable 60 jours. Variables facultatives : `REPORT_ADMIN_EMAIL`, `REPORT_ADMIN_LANG` (`fr` par défaut), `REPORT_SIGNING_SECRET`, `REPORTS_ENABLED=false` pour couper le service. Les liens sont signés (HMAC) et expirent (7 jours pour confirmer, 30 jours pour examiner). Avec une base de données, chaque décision est à usage unique et enregistrée dans `report_requests` ; sans base, le circuit fonctionne avec les liens signés.
 
 ## Base de données
 

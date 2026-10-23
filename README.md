@@ -88,8 +88,10 @@ With the Vercel CLI you can use `npm run dev` instead of `scripts/serve.mjs`.
 | `RATE_LIMIT_SALT` | server | Salt for hashed client keys (no raw IP is stored) |
 | `FORM_MIN_FILL_MS` | server | Timing trap threshold |
 | `ANALYTICS_PROVIDER`, `ANALYTICS_ID` | build | `plausible` (domain) or `ga4` (measurement id) |
-| `REPORTS_ENABLED` | build, server | Shows the PDF report request in the planner and opens `/api/report` |
-| `REPORT_SIGNING_SECRET` | server | Signs the confirmation and review links (32 characters or more) |
+| `GMAIL_USER`, `GMAIL_APP_PASSWORD` | server | Sending through a Gmail account (no domain needed); enough to switch the reports on |
+| `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` | server | Any SMTP server (`EMAIL_PROVIDER=smtp`) |
+| `REPORTS_ENABLED` | server | `false` switches the PDF reports off (on by default once email works) |
+| `REPORT_SIGNING_SECRET` | server | Optional link signing key; derived from the email secret when absent |
 | `REPORT_ADMIN_EMAIL`, `REPORT_ADMIN_LANG` | server | Who approves the reports, and in which language (`fr` by default) |
 
 Secrets are read on the server only. The browser bundle receives `SITE_URL`, the Turnstile site key and the analytics settings, nothing else.
@@ -111,7 +113,9 @@ The planner offers a premium PDF report of the current plan. Nothing is download
 1. The visitor sends the request (name, email, optional phone, profile, place, report language, consent) with the plan settings to `POST /api/report`. Same protections as the other forms, plus a check of the settings against the knowledge base.
 2. The visitor receives a link to confirm the address. The link opens a page with a button: a link scanner never confirms anything.
 3. The administrator (`REPORT_ADMIN_EMAIL`) receives the summary and the PDF exactly as it would be sent, with a review link.
-4. On the review page the administrator approves (the PDF is generated again and emailed to the requester) or refuses (with an optional polite message).
+4. On the review page the administrator approves (the PDF is generated again and emailed to the requester, as an attachment and as a download link valid 60 days) or refuses (with an optional polite message).
+
+Without a domain, a Gmail account is enough: set `GMAIL_USER` and `GMAIL_APP_PASSWORD` (an app password, after turning on 2-Step Verification) in Vercel and redeploy.
 
 The PDF is built on the server with the same engine and data as the planner (`lib/report/pdf.js`, PDFKit, Manrope under the SIL Open Font License). Links are HMAC signed and expire (7 days to confirm, 30 days to review). With a database, decisions are single use and stored in `report_requests`; without one the workflow still runs from the signed links.
 

@@ -28,7 +28,7 @@
     "api/report.js": {
       "maxDuration": 30,
       "memory": 1024,
-      "includeFiles": "{site/src/engine.cjs,site/src/i18n.js,site/src/i18n-v3.js,site/src/i18n-v4.js,site/data/kb.json,lib/report/fonts/*.ttf}"
+      "includeFiles": "{site/src/engine.cjs,site/src/i18n.js,site/src/i18n-v3.js,site/src/i18n-v4.js,site/src/i18n-v5.js,site/data/kb.json,lib/report/fonts/*.ttf}"
     }
   },
   "headers": [

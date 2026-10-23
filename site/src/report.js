@@ -9,7 +9,7 @@ function reportPlanOf(input) {
   return {
     capital: n(input.capital), currency: input.currency, mode: input.mode, area: n(input.area), crop: input.crop, product: input.product || null,
     water: input.water, start: input.start, land: input.land, market: input.market, familyLabour: n(input.familyLabour), ownTools: !!input.ownTools,
-    priceXafKg: input.priceXafKg > 0 ? +input.priceXafKg : null
+    priceXafKg: input.priceXafKg > 0 ? +input.priceXafKg : null, horizon: input.horizon ? +input.horizon : null
   };
 }
 
@@ -82,7 +82,7 @@ function openReportDialog(input, plan) {
     if (res && res.ok) { done(); return; }
     btn.disabled = false; btn.removeAttribute('aria-busy'); btn.innerHTML = esc(R.send) + ARROW;
     let j = {}; try { j = res ? await res.json() : {}; } catch (x) { /* empty */ }
-    sumEl.textContent = res && res.status === 429 ? F.waitD : res && res.status === 403 ? F.challengeD : res && res.status === 422 ? R.invalid : R.errD;
+    sumEl.textContent = res && res.status === 503 ? R.unavailable : res && res.status === 429 ? F.waitD : res && res.status === 403 ? F.challengeD : res && res.status === 422 ? R.invalid : R.errD;
     if (tsBox && window.turnstile) { try { window.turnstile.reset(tsBox); } catch (x) { /* gone */ } }
     analytics.track('report_error', { status: res ? res.status : 0, code: j.error || '' });
   });

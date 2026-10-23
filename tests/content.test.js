@@ -6,7 +6,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 
 const read = (p) => fs.readFileSync(new URL('../' + p, import.meta.url), 'utf8');
-const I18N = vm.runInNewContext(read('site/src/i18n.js') + '\n' + read('site/src/i18n-v3.js') + '\n' + read('site/src/i18n-v4.js') + ';I18N');
+const I18N = vm.runInNewContext(read('site/src/i18n.js') + '\n' + read('site/src/i18n-v3.js') + '\n' + read('site/src/i18n-v4.js') + '\n' + read('site/src/i18n-v5.js') + ';I18N');
 const PHOTOS = JSON.parse(read('site/data/photos.json'));
 const GEOW = JSON.parse(read('site/geo-world.json'));
 const manifest = JSON.parse(read('data/field/manifest.json')).photos;

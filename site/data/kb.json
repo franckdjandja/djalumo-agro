@@ -1,5 +1,5 @@
 {
- "version": "3.0.0",
+ "version": "3.1.0",
  "built": "2026-10-23",
  "fx": {
   "USD": 1,
@@ -254,6 +254,144 @@
     "C38"
    ],
    "basis": "3 USD a grafted plant in a 2022 offer by a Cameroon nursery, converted at the October 2026 rate (AV8, C38); an older Yaoundé nursery listed 1,000 to 2,000 FCFA (AV8)."
+  },
+  "pineapple_sucker": {
+   "label": {
+    "en": "Pineapple sucker (rejet), 300 to 500 g",
+    "fr": "Rejet d’ananas, 300 à 500 g"
+   },
+   "price": 7,
+   "category": "planting",
+   "unit": "unit",
+   "src": [
+    "AN3"
+   ],
+   "pack": {
+    "size": 1000,
+    "label": {
+     "en": "lot of 1,000 suckers",
+     "fr": "lot de 1 000 rejets"
+    }
+   },
+   "basis": "No Cameroon price found. 7 FCFA a sucker in a Benin budget (AN3). Suckers are often taken from an older field at the cost of the labour only."
+  },
+  "ethephon": {
+   "label": {
+    "en": "Ethephon (Ethrel type) for flower induction",
+    "fr": "Éthéphon (type Ethrel) pour l’induction florale"
+   },
+   "price": null,
+   "category": "growth_regulator",
+   "unit": "l",
+   "src": [
+    "AN1"
+   ],
+   "basis": "No price found: to quote locally. Dose 6 to 10 ml per 10 L of water, 10 L for 200 plants (AN1)."
+  },
+  "cocoa_seedling": {
+   "label": {
+    "en": "Improved cocoa seedling (hybrid)",
+    "fr": "Plant de cacaoyer amélioré (hybride)"
+   },
+   "price": 200,
+   "category": "planting",
+   "unit": "unit",
+   "src": [
+    "CC2"
+   ],
+   "basis": "150 to 250 FCFA a seedling in Cameroon (CC2), midpoint."
+  },
+  "shade_trees": {
+   "label": {
+    "en": "Shade trees and temporary shade (per ha)",
+    "fr": "Arbres d’ombrage et ombrage temporaire (par ha)"
+   },
+   "price": 125000,
+   "category": "planting",
+   "unit": "ha",
+   "src": [
+    "CC3"
+   ],
+   "basis": "50,000 to 200,000 FCFA per ha for shade trees in Cameroon (CC3), midpoint."
+  },
+  "palm_seedling": {
+   "label": {
+    "en": "Selected oil palm seedling (tenera)",
+    "fr": "Plant sélectionné de palmier à huile (tenera)"
+   },
+   "price": 2000,
+   "category": "planting",
+   "unit": "unit",
+   "src": [
+    "OP1"
+   ],
+   "basis": "2,000 FCFA a seedling in the MINADER budget (OP1)."
+  },
+  "kcl": {
+   "label": {
+    "en": "Potassium chloride",
+    "fr": "Chlorure de potassium"
+   },
+   "price": 600,
+   "category": "fertilizer",
+   "unit": "kg",
+   "src": [
+    "OP1"
+   ],
+   "pack": {
+    "size": 50,
+    "label": {
+     "en": "50 kg bag",
+     "fr": "sac de 50 kg"
+    }
+   },
+   "basis": "600 FCFA/kg in the MINADER oil palm budget (OP1)."
+  },
+  "kieserite": {
+   "label": {
+    "en": "Kieserite (magnesium sulphate)",
+    "fr": "Kiesérite (sulfate de magnésium)"
+   },
+   "price": 700,
+   "category": "fertilizer",
+   "unit": "kg",
+   "src": [
+    "OP1"
+   ],
+   "pack": {
+    "size": 50,
+    "label": {
+     "en": "50 kg bag",
+     "fr": "sac de 50 kg"
+    }
+   },
+   "basis": "700 FCFA/kg in the MINADER oil palm budget (OP1)."
+  },
+  "mucuna_seed": {
+   "label": {
+    "en": "Mucuna seed for cover crop",
+    "fr": "Semence de mucuna pour plante de couverture"
+   },
+   "price": 1000,
+   "category": "seed",
+   "unit": "kg",
+   "src": [
+    "OP1"
+   ],
+   "basis": "12 kg at 1,000 FCFA in the MINADER oil palm budget (OP1)."
+  },
+  "rodent_guard": {
+   "label": {
+    "en": "Rodent guard (galvanized mesh) for a young palm",
+    "fr": "Manchon grillagé contre les rongeurs pour jeune palmier"
+   },
+   "price": null,
+   "category": "planting",
+   "unit": "unit",
+   "src": [
+    "OP1"
+   ],
+   "basis": "Recommended by MINADER (OP1); no price given: to quote locally."
   },
   "seed_cucumber": {
    "label": {
@@ -1222,6 +1360,14 @@
   "year": {
    "en": "year",
    "fr": "an"
+  },
+  "fruit": {
+   "en": "fruits",
+   "fr": "fruits"
+  },
+  "tonne": {
+   "en": "tonnes",
+   "fr": "tonnes"
   },
   "m3": {
    "en": "m³",
@@ -4538,6 +4684,7 @@
    "harvest_kg_per_person_day": 1000,
    "agronomist_visits": 1,
    "horizon_months": 15,
+   "first_harvest_months": 12,
    "kc": {
     "ini": 0.3,
     "mid": 0.8,
@@ -5073,7 +5220,22 @@
    "loss_pct": 1.15,
    "harvest_kg_per_person_day": 1000,
    "agronomist_visits": 1,
-   "horizon_months": 36,
+   "horizon_months": 15,
+   "horizon_options": [
+    {
+     "months": 15,
+     "cycles": 1
+    },
+    {
+     "months": 25,
+     "cycles": 2
+    },
+    {
+     "months": 36,
+     "cycles": 3
+    }
+   ],
+   "first_harvest_months": 13,
    "kc": {
     "ini": 0.5,
     "mid": 1.1,
@@ -5503,7 +5665,7 @@
     "plants_per_ha": "3 m × 2 m, 1,666 plants per ha (PL1).",
     "ky": "FAO yield response factor for banana 1.2 to 1.35, 1.2 used (M6).",
     "kc": "FAO-56 banana, first year: Kc 0.5, 1.1, 1.0; stage lengths 120/90/120/60 days (M1).",
-    "cycle": "Flowering about 10 months after planting, cycle 10 to 15 months (PL2); harvest 70 to 90 days after flowering (PL1): first harvest at 380 days. Successive harvests 300 days apart is a Djalumo Agro assumption (no Cameroon figure found); clumps are kept three or four years (PL8), so three cycles over 36 months.",
+    "cycle": "Flowering about 10 months after planting, cycle 10 to 15 months (PL2); harvest 10 to 12 months after planting under irrigation (PL4, 2024); harvest 70 to 90 days after flowering (PL1): first bunches at 380 days (about 13 months), cut over two months. The plan covers one cycle (15 months) by default; the successor suckers give a second and third cycle, 300 days apart (Djalumo Agro assumption, no Cameroon figure found); clumps are kept three or four years (PL8).",
     "yield_t_ha": "Per cycle. Poor 6.8 = mean yield on farms near Njombé (PL3; national about 7, PL9); good 25 = 15 kg bunches (PL4, Corne 1) on 1,666 plants (PL1), derived; average = midpoint. A bunch is counted at 11.6 kg, the farm mean (PL3).",
     "harvest_kg_per_person_day": "No plantain figure found; the cassava harvest norm of the Cameroon budget (CA2) is used as a proxy for a bulky crop.",
     "loss_pct": "No measured loss found; the tomato value for a local sale is used as a proxy (T5, T6). Theft and toppling are inside the poor yield."
@@ -5566,6 +5728,429 @@
     }
    ]
   },
+  "pineapple": {
+   "name": {
+    "en": "Pineapple",
+    "fr": "Ananas"
+   },
+   "release": "regional",
+   "badge": {
+    "en": "Cameroon references",
+    "fr": "Références Cameroun"
+   },
+   "profile": "long",
+   "plants_per_ha": 55000,
+   "loss_pct": 1.15,
+   "harvest_kg_per_person_day": 400,
+   "agronomist_visits": 1,
+   "horizon_months": 16,
+   "first_harvest_months": 13,
+   "kc": {
+    "ini": 0.5,
+    "mid": 0.3,
+    "end": 0.3,
+    "stages": [
+     0.132,
+     0.396,
+     0.791
+    ]
+   },
+   "cycle": {
+    "nursery_days": 0,
+    "to_first_harvest_days": 410,
+    "harvest_days": 45,
+    "flowering_before_harvest_days": 160
+   },
+   "yield_t_ha": {
+    "poor": 15.5,
+    "average": 31.0,
+    "good": 50.0
+   },
+   "harvest_label": {
+    "en": "Harvest",
+    "fr": "Récolte"
+   },
+   "harvest_detail": {
+    "en": "Fruits ripen about five months after induction and are picked over six weeks; the suckers left on the stumps can start a second crop.",
+    "fr": "Les fruits mûrissent environ cinq mois après l’induction et se cueillent sur six semaines ; les rejets laissés sur les souches peuvent lancer une deuxième récolte."
+   },
+   "price": {
+    "reference_xaf_kg": null,
+    "index": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "note": {
+     "en": "No monthly farm gate price series is published for Cameroon: enter the price you expect to get.",
+     "fr": "Aucune série mensuelle de prix bord champ n’est publiée pour le Cameroun : saisissez le prix que vous comptez obtenir."
+    },
+    "observed": {
+     "en": "Observed in Cameroon (2024): 400,000 to 600,000 FCFA a tonne wholesale, 100 to 400 FCFA a fruit at retail.",
+     "fr": "Observé au Cameroun (2024) : 400 000 à 600 000 FCFA la tonne en gros, 100 à 400 FCFA le fruit au détail."
+    },
+    "src": [
+     "AN1"
+    ]
+   },
+   "products": {
+    "fresh": {
+     "label": {
+      "en": "Fruit",
+      "fr": "Fruits"
+     },
+     "ratio": 1,
+     "unit": "fruit",
+     "unit_kg": 1.15,
+     "unit_label": {
+      "en": "fruit",
+      "fr": "fruit"
+     }
+    }
+   },
+   "harvest_src": [
+    "AN2"
+   ],
+   "disease_note": {
+    "en": "Use healthy suckers sorted by weight on well drained soil; fruit weight falls at high density and on successive harvests (AN1, AN2).",
+    "fr": "Utiliser des rejets sains triés par poids sur sol bien drainé ; le poids des fruits baisse à forte densité et aux récoltes successives (AN1, AN2)."
+   },
+   "steps": [
+    {
+     "id": "site",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -60,
+      -45
+     ],
+     "label": {
+      "en": "Plot and suckers",
+      "fr": "Parcelle et rejets"
+     },
+     "detail": {
+      "en": "Well drained soil, ridges in wet areas. Use suckers of 300 to 500 g and plant each block with one weight class so that the plants flower together.",
+      "fr": "Sol bien drainé, billons en zone humide. Utiliser des rejets de 300 à 500 g et planter chaque bloc avec une seule classe de poids pour que les plants fleurissent ensemble."
+     },
+     "src": [
+      "AN1",
+      "AN2"
+     ]
+    },
+    {
+     "id": "clear",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -45,
+      -25
+     ],
+     "label": {
+      "en": "Clearing",
+      "fr": "Défrichage"
+     },
+     "detail": {
+      "en": "Clear the plot and remove the stumps.",
+      "fr": "Défricher la parcelle et enlever les souches."
+     },
+     "src": [
+      "T1"
+     ],
+     "labour": 20
+    },
+    {
+     "id": "beds",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -25,
+      -7
+     ],
+     "label": {
+      "en": "Ridges and twin rows",
+      "fr": "Billons et lignes jumelées"
+     },
+     "detail": {
+      "en": "Prepare ridges for twin rows: 90 cm between twin rows, 40 cm between the two lines, 28 cm between plants, about 55,000 plants per ha.",
+      "fr": "Préparer des billons pour des lignes jumelées : 90 cm entre lignes jumelées, 40 cm entre les deux lignes, 28 cm entre plants, soit environ 55 000 plants par ha."
+     },
+     "src": [
+      "AN2",
+      "T1"
+     ],
+     "labour": 90
+    },
+    {
+     "id": "plant",
+     "phase": "planting",
+     "ref": "field",
+     "day": [
+      0,
+      10
+     ],
+     "label": {
+      "en": "Planting suckers",
+      "fr": "Plantation des rejets"
+     },
+     "detail": {
+      "en": "Plant 55,000 suckers per ha, sorted by weight.",
+      "fr": "Planter 55 000 rejets par ha, triés par poids."
+     },
+     "src": [
+      "AN1",
+      "AN2",
+      "AN3"
+     ],
+     "inputs": [
+      {
+       "item": "pineapple_sucker",
+       "qty": 55000,
+       "src": [
+        "AN3"
+       ]
+      }
+     ],
+     "labour": 55
+    },
+    {
+     "id": "fert1",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      90,
+      100
+     ],
+     "label": {
+      "en": "First fertilizer",
+      "fr": "Premier apport d’engrais"
+     },
+     "detail": {
+      "en": "Three months after planting: 7.36 g of urea and 3.66 g of NPK per plant.",
+      "fr": "Trois mois après la plantation : 7,36 g d’urée et 3,66 g de NPK par plant."
+     },
+     "src": [
+      "AN3",
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "urea",
+       "qty": 405,
+       "src": [
+        "AN3"
+       ]
+      },
+      {
+       "item": "npk_15_15_15",
+       "qty": 201,
+       "src": [
+        "AN3"
+       ]
+      }
+     ],
+     "labour": 6
+    },
+    {
+     "id": "fert2",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      180,
+      190
+     ],
+     "label": {
+      "en": "Second fertilizer",
+      "fr": "Deuxième apport d’engrais"
+     },
+     "detail": {
+      "en": "Three months later: 3.67 g of urea and 7.33 g of NPK per plant.",
+      "fr": "Trois mois plus tard : 3,67 g d’urée et 7,33 g de NPK par plant."
+     },
+     "src": [
+      "AN3",
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "urea",
+       "qty": 202,
+       "src": [
+        "AN3"
+       ]
+      },
+      {
+       "item": "npk_15_15_15",
+       "qty": 403,
+       "src": [
+        "AN3"
+       ]
+      }
+     ],
+     "labour": 6
+    },
+    {
+     "id": "fert3",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      270,
+      280
+     ],
+     "label": {
+      "en": "Third fertilizer",
+      "fr": "Troisième apport d’engrais"
+     },
+     "detail": {
+      "en": "Three months later: 7.33 g of NPK and 10.16 g of potassium sulphate per plant.",
+      "fr": "Trois mois plus tard : 7,33 g de NPK et 10,16 g de sulfate de potassium par plant."
+     },
+     "src": [
+      "AN3",
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "npk_15_15_15",
+       "qty": 403,
+       "src": [
+        "AN3"
+       ]
+      },
+      {
+       "item": "k2so4",
+       "qty": 559,
+       "src": [
+        "AN3"
+       ]
+      }
+     ],
+     "labour": 6
+    },
+    {
+     "id": "weed",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      30,
+      240
+     ],
+     "label": {
+      "en": "Weeding",
+      "fr": "Désherbage"
+     },
+     "detail": {
+      "en": "Weed every month until the canopy closes, six passes.",
+      "fr": "Désherber chaque mois jusqu’à la fermeture du couvert, six passages."
+     },
+     "src": [
+      "AN2",
+      "T1"
+     ],
+     "labour": 90
+    },
+    {
+     "id": "tif",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      245,
+      255
+     ],
+     "label": {
+      "en": "Flower induction",
+      "fr": "Induction florale (TIF)"
+     },
+     "detail": {
+      "en": "About eight months after planting, ethephon at 8 ml per 10 L of water, 10 L for 200 plants, applied at night and repeated three days later. The fruit is ripe about five months after induction.",
+      "fr": "Environ huit mois après la plantation, éthéphon à 8 ml pour 10 L d’eau, 10 L pour 200 plants, appliqué de nuit et renouvelé trois jours plus tard. Le fruit est mûr environ cinq mois après l’induction."
+     },
+     "src": [
+      "AN1",
+      "AN2"
+     ],
+     "inputs": [
+      {
+       "item": "ethephon",
+       "qty": 2.2,
+       "apps": 2,
+       "src": [
+        "AN1",
+        "AN2"
+       ]
+      }
+     ],
+     "labour": 16
+    }
+   ],
+   "src": [
+    "AN1",
+    "AN2",
+    "AN3",
+    "M1"
+   ],
+   "basis": {
+    "plants_per_ha": "55,000 plants per ha, twin rows 90 x 40 x 28 cm (AN2), low end of the 55,000 to 77,000 used in Cameroon (AN1).",
+    "kc": "FAO-56 pineapple without ground cover: Kc 0.5, 0.3, 0.3 (M1). No yield response factor: water shortage raises the risk, not the modelled yield.",
+    "cycle": "Flower induction 6 to 13 months after planting, fruit ripe about 160 days later, harvest 12 to 18 months after planting (AN1, AN2): induction at about 8 months, first fruits at about 13.5 months.",
+    "yield_t_ha": "Average 31 t/ha in Cameroon (AN1); good 50 t/ha (AN2, Togo); poor 15.5 = half the average, a Djalumo Agro assumption. Fruits of 1.15 kg on average (AN3).",
+    "labour": "Planting 55 person days (1,000 suckers a day), induction 16, harvest 400 kg a day: Djalumo Agro assumptions calibrated so that labour stays between the Togo (AN2) and Benin (AN3) budgets; other tasks use the tomato proxies (T1)."
+   },
+   "confidence": [
+    {
+     "block": {
+      "en": "Technical itinerary",
+      "fr": "Itinéraire technique"
+     },
+     "level": "medium",
+     "note": {
+      "en": "Cameroon market study and CTA and ISF Cameroun guide; fertilizer program from Benin.",
+      "fr": "Étude de marché camerounaise et guide CTA et ISF Cameroun ; programme d’engrais du Bénin."
+     }
+    },
+    {
+     "block": {
+      "en": "Yields",
+      "fr": "Rendements"
+     },
+     "level": "medium",
+     "note": {
+      "en": "Cameroon average 31 t/ha; the poor level is an assumption.",
+      "fr": "Moyenne camerounaise de 31 t/ha ; le niveau faible est une hypothèse."
+     }
+    },
+    {
+     "block": {
+      "en": "Prices at harvest",
+      "fr": "Prix à la récolte"
+     },
+     "level": "low",
+     "note": {
+      "en": "One 2024 Cameroon range; you enter your price per fruit.",
+      "fr": "Une fourchette camerounaise de 2024 ; vous saisissez votre prix par fruit."
+     }
+    },
+    {
+     "block": {
+      "en": "Climate and water",
+      "fr": "Climat et eau"
+     },
+     "level": "medium",
+     "note": {
+      "en": "Modelled Foumbot climatology 1991 to 2021 with FAO-56 methods.",
+      "fr": "Climatologie modélisée de Foumbot 1991 à 2021 et méthodes FAO-56."
+     }
+    }
+   ]
+  },
   "avocado": {
    "name": {
     "en": "Avocado",
@@ -5581,7 +6166,19 @@
    "loss_pct": 15,
    "harvest_kg_per_person_day": 338,
    "agronomist_visits": 1,
-   "horizon_months": 120,
+   "horizon_months": 60,
+   "horizon_options": [
+    {
+     "months": 36
+    },
+    {
+     "months": 60
+    },
+    {
+     "months": 120
+    }
+   ],
+   "first_harvest_months": 28,
    "kc": {
     "ini": 0.85,
     "mid": 0.85,
@@ -6087,12 +6684,13 @@
     "AV4",
     "AV5",
     "AV6",
+    "AV9",
     "M1"
    ],
    "basis": {
     "plants_per_ha": "8 m × 8 m, 156 trees per ha, within 8 to 10 m between trees (AV7); 120 trees at 9 m × 9 m (AV5), about 150 in the Trinidad model (AV6).",
     "kc": "FAO-56 avocado without ground cover, mid season Kc 0.85 used through the year (M1). No FAO yield response factor: water shortage raises the risk, not the modelled yield.",
-    "cycle": "Grafted trees bear from about year 3 (AV1, AV4); economic crop from year 6 (AV5). Yield shares by year 0, 0, 15, 35, 50, 75, 90, then 100% are a Djalumo Agro assumption fitted to these points and to the young tree yields of AV5.",
+    "cycle": "Grafted Hass trees reach production in 2.5 to 3 years (AV9, 2023); grafted trees bear from about year 3 (AV1, AV4); economic crop from year 6 (AV5). The first harvest falls about 27 to 30 months after planting depending on the planting month. Yield shares by year 0, 0, 15, 35, 50, 75, 90, then 100% are a Djalumo Agro assumption fitted to these points and to the young tree yields of AV5.",
     "yield_t_ha": "Mature orchard, fresh fruit per year. Poor 7.5 = low end of 7.5 to 11 t/ha (AV5); average 10 = well kept orchards in Cameroon, more than 10 t/ha (AV1, AV2); good 13.5 = Trinidad model from year 4 (AV6).",
     "harvest_kg_per_person_day": "13,500 kg picked in 40 person days in the Trinidad model (AV6), derived.",
     "loss_pct": "15% post harvest loss in the Trinidad model (AV6).",
@@ -6152,6 +6750,987 @@
      "note": {
       "en": "Modelled Foumbot climatology 1991 to 2021 with FAO-56 methods.",
       "fr": "Climatologie modélisée de Foumbot 1991 à 2021 et méthodes FAO-56."
+     }
+    }
+   ]
+  },
+  "cocoa": {
+   "name": {
+    "en": "Cocoa",
+    "fr": "Cacao"
+   },
+   "release": "regional",
+   "badge": {
+    "en": "Cameroon references",
+    "fr": "Références Cameroun"
+   },
+   "profile": "orchard",
+   "plants_per_ha": 1111,
+   "loss_pct": 5,
+   "harvest_kg_per_person_day": 15,
+   "agronomist_visits": 1,
+   "horizon_months": 60,
+   "horizon_options": [
+    {
+     "months": 60
+    },
+    {
+     "months": 120
+    }
+   ],
+   "first_harvest_months": 30,
+   "kc": {
+    "ini": 1.0,
+    "mid": 1.05,
+    "end": 1.05,
+    "stages": [
+     0.25,
+     0.5,
+     0.75
+    ]
+   },
+   "cycle": {
+    "nursery_days": 0,
+    "to_first_harvest_days": 0,
+    "harvest_days": 0,
+    "flowering_before_harvest_days": 0
+   },
+   "production": {
+    "yield_by_year": [
+     0,
+     0,
+     0.15,
+     0.4,
+     0.7,
+     0.9,
+     1,
+     1,
+     1,
+     1
+    ],
+    "harvest_months": [
+     8,
+     9,
+     10,
+     11,
+     0
+    ]
+   },
+   "yield_t_ha": {
+    "poor": 0.3,
+    "average": 0.8,
+    "good": 1.5
+   },
+   "harvest_label": {
+    "en": "Cocoa campaign, year {n}",
+    "fr": "Campagne cacaoyère, année {n}"
+   },
+   "harvest_detail": {
+    "en": "Pick ripe pods, open them within 5 days, ferment 6 days with 3 turnings and sun dry 8 to 15 days down to 6 to 8% moisture. Sold as dry beans by the kg.",
+    "fr": "Cueillir les cabosses mûres, les écabosser sous 5 jours, fermenter 6 jours avec 3 brassages et sécher au soleil 8 à 15 jours jusqu’à 6 à 8 % d’humidité. Vendu en fèves sèches au kg."
+   },
+   "price": {
+    "reference_xaf_kg": null,
+    "index": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "note": {
+     "en": "No monthly farm gate price series is published for Cameroon: enter the price you expect to get.",
+     "fr": "Aucune série mensuelle de prix bord champ n’est publiée pour le Cameroun : saisissez le prix que vous comptez obtenir."
+    },
+    "observed": {
+     "en": "Observed in 2026: ONCC minimum price 1,400 FCFA/kg in April (1,050 in January); 1,650 to 1,700 FCFA/kg at the farm gate in June; never above 2,000 FCFA in the 2025 to 2026 season.",
+     "fr": "Observé en 2026 : prix minimum ONCC 1 400 FCFA/kg en avril (1 050 en janvier) ; 1 650 à 1 700 FCFA/kg bord champ en juin ; jamais au delà de 2 000 FCFA sur la campagne 2025 à 2026."
+    },
+    "src": [
+     "CC8",
+     "CC9"
+    ]
+   },
+   "products": {
+    "fresh": {
+     "label": {
+      "en": "Dry beans",
+      "fr": "Fèves sèches"
+     },
+     "ratio": 1
+    }
+   },
+   "harvest_src": [
+    "CC4"
+   ],
+   "disease_note": {
+    "en": "Black pod (Phytophthora megakarya) is the main loss in wet months; mirids attack young shoots (CC2, CC6).",
+    "fr": "La pourriture brune (Phytophthora megakarya) est la principale perte des mois humides ; les mirides attaquent les jeunes pousses (CC2, CC6)."
+   },
+   "steps": [
+    {
+     "id": "site",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -120,
+      -90
+     ],
+     "label": {
+      "en": "Site and shade plan",
+      "fr": "Site et plan d’ombrage"
+     },
+     "detail": {
+      "en": "Forest soil, deep and well drained. Plan about 70% shade for young cocoa: keep useful trees, add shade trees and plant plantain as temporary shade.",
+      "fr": "Sol forestier profond et bien drainé. Prévoir environ 70 % d’ombrage pour le jeune cacaoyer : garder les arbres utiles, ajouter des arbres d’ombrage et planter du plantain comme ombrage temporaire."
+     },
+     "src": [
+      "CC4",
+      "CC5"
+     ]
+    },
+    {
+     "id": "clear",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -90,
+      -60
+     ],
+     "label": {
+      "en": "Clearing and staking",
+      "fr": "Défrichage et piquetage"
+     },
+     "detail": {
+      "en": "Clear the plot and mark the planting points 3 m apart.",
+      "fr": "Défricher la parcelle et piqueter les points de plantation à 3 m."
+     },
+     "src": [
+      "T1"
+     ],
+     "labour": 30
+    },
+    {
+     "id": "shade",
+     "phase": "planting",
+     "ref": "field",
+     "day": [
+      -60,
+      -30
+     ],
+     "label": {
+      "en": "Shade trees",
+      "fr": "Arbres d’ombrage"
+     },
+     "detail": {
+      "en": "Plant the shade trees and the temporary shade.",
+      "fr": "Planter les arbres d’ombrage et l’ombrage temporaire."
+     },
+     "src": [
+      "CC3",
+      "CC5"
+     ],
+     "inputs": [
+      {
+       "item": "shade_trees",
+       "qty": 1,
+       "src": [
+        "CC3"
+       ]
+      }
+     ],
+     "labour": 15
+    },
+    {
+     "id": "holes",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -30,
+      -7
+     ],
+     "label": {
+      "en": "Holes",
+      "fr": "Trouaison"
+     },
+     "detail": {
+      "en": "Dig 40 × 40 × 40 cm holes at 3 m × 3 m, 1,111 per ha.",
+      "fr": "Creuser des trous de 40 × 40 × 40 cm à 3 m × 3 m, soit 1 111 par ha."
+     },
+     "src": [
+      "CC2"
+     ],
+     "labour": 40
+    },
+    {
+     "id": "plant",
+     "phase": "planting",
+     "ref": "field",
+     "day": [
+      0,
+      14
+     ],
+     "label": {
+      "en": "Planting improved seedlings",
+      "fr": "Plantation des plants améliorés"
+     },
+     "detail": {
+      "en": "Plant improved hybrid seedlings at the start of the rains, with 10% extra to replace losses.",
+      "fr": "Planter des plants hybrides améliorés au début des pluies, avec 10 % de plus pour remplacer les pertes."
+     },
+     "src": [
+      "CC1",
+      "CC2",
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "cocoa_seedling",
+       "qty": 1222,
+       "src": [
+        "CC2"
+       ]
+      }
+     ],
+     "labour": 35
+    }
+   ],
+   "recurring": [
+    {
+     "id": "weed",
+     "phase": "care",
+     "label": {
+      "en": "Weeding",
+      "fr": "Sarclage"
+     },
+     "detail": {
+      "en": "Four weedings a year.",
+      "fr": "Quatre sarclages par an."
+     },
+     "src": [
+      "CC2",
+      "T1"
+     ],
+     "labour": 15,
+     "every_months": 3,
+     "first_month": 1,
+     "span_days": 30
+    },
+    {
+     "id": "prune",
+     "phase": "care",
+     "label": {
+      "en": "Suckering and pruning",
+      "fr": "Égourmandage et taille"
+     },
+     "detail": {
+      "en": "Remove the chupons every month; maintenance and sanitary pruning, never at leaf flush or flowering.",
+      "fr": "Retirer les gourmands chaque mois ; taille d’entretien et sanitaire, jamais pendant le renouvellement des feuilles ni la floraison."
+     },
+     "src": [
+      "CC2",
+      "CC4"
+     ],
+     "labour": 3,
+     "every_months": 1,
+     "first_month": 6,
+     "span_days": 30
+    },
+    {
+     "id": "feed",
+     "phase": "care",
+     "label": {
+      "en": "Mineral fertilizer from year 4",
+      "fr": "Engrais minéral dès la 4e année"
+     },
+     "detail": {
+      "en": "NPK 12-11-18 at 350 g per tree a year in two splits (NPK 12-14-19 in the budget, the nearest formula with a price).",
+      "fr": "NPK 12-11-18 à 350 g par arbre et par an en deux apports (NPK 12-14-19 au budget, la formule la plus proche ayant un prix)."
+     },
+     "src": [
+      "CC2",
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "npk_12_14_19",
+       "qty": 194,
+       "src": [
+        "CC2"
+       ]
+      }
+     ],
+     "labour": 6,
+     "every_months": 6,
+     "first_month": 36,
+     "span_days": 30
+    },
+    {
+     "id": "manure",
+     "phase": "care",
+     "label": {
+      "en": "Organic manure every three years",
+      "fr": "Fumure organique tous les trois ans"
+     },
+     "detail": {
+      "en": "5 t of manure or compost per ha every three years.",
+      "fr": "5 t de fumier ou de compost par ha tous les trois ans."
+     },
+     "src": [
+      "CC2",
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "farmyard_manure",
+       "qty": 5000,
+       "src": [
+        "CC2"
+       ]
+      }
+     ],
+     "labour": 35,
+     "every_months": 36,
+     "first_month": 36,
+     "span_days": 30
+    },
+    {
+     "id": "fungi",
+     "phase": "protection",
+     "label": {
+      "en": "Black pod control",
+      "fr": "Lutte contre la pourriture brune"
+     },
+     "detail": {
+      "en": "Metalaxyl copper (Ridomil type) every three weeks in the risk period, June to October, six treatments a year from the first pods; no treatment in the 14 days before a harvest. Untreated trees lost a third to two thirds of their pods in Cameroon trials.",
+      "fr": "Métalaxyl cuivre (type Ridomil) toutes les trois semaines pendant la période à risque, de juin à octobre, six traitements par an dès les premières cabosses ; aucun traitement dans les 14 jours avant une récolte. Sans traitement, un tiers à deux tiers des cabosses ont été perdues dans les essais camerounais."
+     },
+     "src": [
+      "CC2",
+      "CC4",
+      "CC6",
+      "T2"
+     ],
+     "inputs": [
+      {
+       "item": "metalaxyl_mz",
+       "qty": 0.5,
+       "apps": 6,
+       "src": [
+        "CC2"
+       ]
+      }
+     ],
+     "labour": 18,
+     "every_months": 12,
+     "first_month": 24,
+     "span_days": 120
+    },
+    {
+     "id": "mirids",
+     "phase": "protection",
+     "label": {
+      "en": "Mirid control",
+      "fr": "Lutte contre les mirides"
+     },
+     "detail": {
+      "en": "Two insecticide passes 21 days apart at leaf flush.",
+      "fr": "Deux passages d’insecticide à 21 jours d’intervalle au renouvellement des feuilles."
+     },
+     "src": [
+      "CC2",
+      "CC4",
+      "T2"
+     ],
+     "inputs": [
+      {
+       "item": "insecticide_l",
+       "qty": 1,
+       "apps": 2,
+       "src": [
+        "CC2"
+       ]
+      }
+     ],
+     "labour": 6,
+     "every_months": 12,
+     "first_month": 12,
+     "span_days": 30
+    }
+   ],
+   "src": [
+    "CC1",
+    "CC2",
+    "CC3",
+    "CC4",
+    "CC7",
+    "M1"
+   ],
+   "basis": {
+    "plants_per_ha": "3 m × 3 m, 1,111 trees per ha, within 850 to 1,100 (CC4) and 1,100 to 1,300 (CC3).",
+    "kc": "FAO-56 cocoa: Kc 1.0, 1.05, 1.05 (M1), used through the year.",
+    "cycle": "First yields 18 months after planting improved seedlings, a full crop after 2.5 to 3 years (CC1); SNK hybrids from 30 months (CC2). Yield shares 0, 0, 15, 40, 70, 90, then 100% follow the CC2 projection (250, 700, 1,200, then 1,800 kg/ha). The campaign runs from September (CC10).",
+    "yield_t_ha": "Dry beans. Poor 0.3 = unaided small farms (280 kg, CC7); average 0.8 = low end of well managed farms 0.8 to 1.5 t (CC3), above supported farms 0.5 to 0.6 t (CC7); good 1.5 (CC3); IRAD second generation varieties average 2 t (CC1).",
+    "labour": "Harvest, pod opening, fermentation and drying at 15 kg of dry beans per person day, suckering 3 person days a month, holes 40: Djalumo Agro assumptions; other tasks use the tomato proxies (T1, T2).",
+    "protection": "Six metalaxyl copper treatments of 0.5 kg per ha and two insecticide passes of 1 L per ha: doses are Djalumo Agro assumptions on the frequencies of CC2."
+   },
+   "confidence": [
+    {
+     "block": {
+      "en": "Technical itinerary",
+      "fr": "Itinéraire technique"
+     },
+     "level": "medium",
+     "note": {
+      "en": "ONCC 2025 manual and 2026 Cameroon guides; treatment doses are assumptions.",
+      "fr": "Manuel ONCC 2025 et guides camerounais de 2026 ; les doses de traitement sont des hypothèses."
+     }
+    },
+    {
+     "block": {
+      "en": "Yields",
+      "fr": "Rendements"
+     },
+     "level": "medium",
+     "note": {
+      "en": "EU value chain study and 2026 Cameroon guides; the ramp by age follows a projection.",
+      "fr": "Étude de chaîne de valeur de l’UE et guides camerounais de 2026 ; la montée en production suit une projection."
+     }
+    },
+    {
+     "block": {
+      "en": "Prices at harvest",
+      "fr": "Prix à la récolte"
+     },
+     "level": "medium",
+     "note": {
+      "en": "ONCC and market reports of 2026; you enter your price per kg.",
+      "fr": "Prix ONCC et relevés de marché de 2026 ; vous saisissez votre prix au kg."
+     }
+    },
+    {
+     "block": {
+      "en": "Climate and water",
+      "fr": "Climat et eau"
+     },
+     "level": "medium",
+     "note": {
+      "en": "Modelled Foumbot climatology 1991 to 2021 with FAO-56 methods; cocoa grows mainly in the Centre, South and East.",
+      "fr": "Climatologie modélisée de Foumbot 1991 à 2021 et méthodes FAO-56 ; le cacao se cultive surtout au Centre, au Sud et à l’Est."
+     }
+    }
+   ]
+  },
+  "oil_palm": {
+   "name": {
+    "en": "Oil palm",
+    "fr": "Palmier à huile"
+   },
+   "release": "regional",
+   "badge": {
+    "en": "MINADER references",
+    "fr": "Références MINADER"
+   },
+   "profile": "orchard",
+   "plants_per_ha": 143,
+   "loss_pct": 5,
+   "harvest_kg_per_person_day": 650,
+   "agronomist_visits": 1,
+   "horizon_months": 120,
+   "horizon_options": [
+    {
+     "months": 60
+    },
+    {
+     "months": 120
+    }
+   ],
+   "first_harvest_months": 38,
+   "kc": {
+    "ini": 0.95,
+    "mid": 1.0,
+    "end": 1.0,
+    "stages": [
+     0.25,
+     0.5,
+     0.75
+    ]
+   },
+   "cycle": {
+    "nursery_days": 0,
+    "to_first_harvest_days": 0,
+    "harvest_days": 0,
+    "flowering_before_harvest_days": 0
+   },
+   "production": {
+    "yield_by_year": [
+     0,
+     0,
+     0,
+     0.31,
+     0.46,
+     0.62,
+     1,
+     1,
+     1,
+     1
+    ],
+    "harvest_months": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11
+    ]
+   },
+   "yield_t_ha": {
+    "poor": 4.0,
+    "average": 13.0,
+    "good": 16.0
+   },
+   "harvest_label": {
+    "en": "Bunch harvest, year {n}",
+    "fr": "Récolte des régimes, année {n}"
+   },
+   "harvest_detail": {
+    "en": "Cut ripe bunches every 7 to 10 days and deliver them to the mill within 48 hours; more than three quarters of the crop comes from December to May.",
+    "fr": "Couper les régimes mûrs tous les 7 à 10 jours et les livrer à l’huilerie sous 48 heures ; plus des trois quarts de la récolte arrivent de décembre à mai."
+   },
+   "price": {
+    "reference_xaf_kg": null,
+    "index": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "note": {
+     "en": "No monthly farm gate price series is published for Cameroon: enter the price you expect to get.",
+     "fr": "Aucune série mensuelle de prix bord champ n’est publiée pour le Cameroun : saisissez le prix que vous comptez obtenir."
+    },
+    "observed": {
+     "en": "Observed in June 2025: village plantations paid about 80,000 FCFA a tonne of bunches, down from 105,000 FCFA.",
+     "fr": "Observé en juin 2025 : environ 80 000 FCFA la tonne de régimes payés aux plantations villageoises, contre 105 000 FCFA auparavant."
+    },
+    "src": [
+     "OP3"
+    ]
+   },
+   "products": {
+    "fresh": {
+     "label": {
+      "en": "Fresh fruit bunches",
+      "fr": "Régimes frais"
+     },
+     "ratio": 1,
+     "unit": "tonne",
+     "unit_kg": 1000,
+     "unit_label": {
+      "en": "tonne",
+      "fr": "tonne"
+     }
+    }
+   },
+   "harvest_src": [
+    "OP1"
+   ],
+   "disease_note": {
+    "en": "Rodents damage young palms: protect them with mesh guards. Bunches must reach the mill within 48 hours (OP1).",
+    "fr": "Les rongeurs abîment les jeunes palmiers : les protéger par des manchons grillagés. Les régimes doivent arriver à l’huilerie sous 48 heures (OP1)."
+   },
+   "steps": [
+    {
+     "id": "site",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -120,
+      -90
+     ],
+     "label": {
+      "en": "Site and seedlings",
+      "fr": "Site et plants"
+     },
+     "detail": {
+      "en": "Deep, well drained soil. Order selected tenera seedlings: 160 for 143 palms, the rest to replace losses.",
+      "fr": "Sol profond et bien drainé. Commander des plants sélectionnés tenera : 160 pour 143 palmiers, le reste pour remplacer les pertes."
+     },
+     "src": [
+      "OP1"
+     ]
+    },
+    {
+     "id": "clear",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -90,
+      -60
+     ],
+     "label": {
+      "en": "Clearing",
+      "fr": "Défrichage"
+     },
+     "detail": {
+      "en": "Clear and burn the debris: 20 and 4 person days per ha.",
+      "fr": "Défricher et brûler les débris : 20 et 4 jours de travail par ha."
+     },
+     "src": [
+      "OP1"
+     ],
+     "labour": 24
+    },
+    {
+     "id": "stake",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -60,
+      -45
+     ],
+     "label": {
+      "en": "Staking",
+      "fr": "Piquetage"
+     },
+     "detail": {
+      "en": "Mark 9 m equilateral triangles, 143 points per ha.",
+      "fr": "Piqueter en triangles équilatéraux de 9 m, 143 points par ha."
+     },
+     "src": [
+      "OP1"
+     ],
+     "labour": 30
+    },
+    {
+     "id": "cover",
+     "phase": "planting",
+     "ref": "field",
+     "day": [
+      -45,
+      -30
+     ],
+     "label": {
+      "en": "Cover crop",
+      "fr": "Plante de couverture"
+     },
+     "detail": {
+      "en": "Sow Mucuna as a cover crop, 12 kg per ha.",
+      "fr": "Semer du Mucuna en plante de couverture, 12 kg par ha."
+     },
+     "src": [
+      "OP1"
+     ],
+     "inputs": [
+      {
+       "item": "mucuna_seed",
+       "qty": 12,
+       "src": [
+        "OP1"
+       ]
+      }
+     ],
+     "labour": 5
+    },
+    {
+     "id": "holes",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -30,
+      -7
+     ],
+     "label": {
+      "en": "Holes",
+      "fr": "Trouaison"
+     },
+     "detail": {
+      "en": "Dig 40 × 40 × 40 cm holes, 200 FCFA a hole.",
+      "fr": "Creuser des trous de 40 × 40 × 40 cm, 200 FCFA le trou."
+     },
+     "src": [
+      "OP1"
+     ],
+     "labour": 12.8
+    },
+    {
+     "id": "plant",
+     "phase": "planting",
+     "ref": "field",
+     "day": [
+      0,
+      14
+     ],
+     "label": {
+      "en": "Planting and rodent guards",
+      "fr": "Plantation et manchons"
+     },
+     "detail": {
+      "en": "Carry and plant the seedlings (300 FCFA a palm) and fix a galvanized mesh guard against rodents.",
+      "fr": "Transporter et planter les plants (300 FCFA le palmier) et fixer un manchon grillagé contre les rongeurs."
+     },
+     "src": [
+      "OP1"
+     ],
+     "inputs": [
+      {
+       "item": "palm_seedling",
+       "qty": 160,
+       "src": [
+        "OP1"
+       ]
+      },
+      {
+       "item": "rodent_guard",
+       "qty": 143,
+       "src": [
+        "OP1"
+       ]
+      }
+     ],
+     "labour": 19.2
+    }
+   ],
+   "recurring": [
+    {
+     "id": "feed_young",
+     "phase": "care",
+     "label": {
+      "en": "Fertilizer, young palms",
+      "fr": "Engrais, jeunes palmiers"
+     },
+     "detail": {
+      "en": "Years 1 to 3: about 1 kg per palm a year in March and October, mixed from 1 bag of urea, 3 of potassium chloride and 3 of kieserite.",
+      "fr": "Années 1 à 3 : environ 1 kg par palmier et par an en mars et en octobre, mélange de 1 sac d’urée, 3 de chlorure de potassium et 3 de kiesérite."
+     },
+     "src": [
+      "OP1"
+     ],
+     "inputs": [
+      {
+       "item": "urea",
+       "qty": 10.2,
+       "src": [
+        "OP1"
+       ]
+      },
+      {
+       "item": "kcl",
+       "qty": 30.6,
+       "src": [
+        "OP1"
+       ]
+      },
+      {
+       "item": "kieserite",
+       "qty": 30.6,
+       "src": [
+        "OP1"
+       ]
+      }
+     ],
+     "labour": 5.0,
+     "every_months": 6,
+     "first_month": 2,
+     "span_days": 30,
+     "last_month": 35
+    },
+    {
+     "id": "feed_adult",
+     "phase": "care",
+     "label": {
+      "en": "Fertilizer, producing palms",
+      "fr": "Engrais, palmiers en production"
+     },
+     "detail": {
+      "en": "From year 4: 1.5 kg per palm a year (2 kg from year 7) of potassium chloride and kieserite (2 to 1), in March and October.",
+      "fr": "Dès la 4e année : 1,5 kg par palmier et par an (2 kg dès la 7e année) de chlorure de potassium et de kiesérite (2 pour 1), en mars et en octobre."
+     },
+     "src": [
+      "OP1"
+     ],
+     "inputs": [
+      {
+       "item": "kcl",
+       "qty": 71.5,
+       "src": [
+        "OP1"
+       ]
+      },
+      {
+       "item": "kieserite",
+       "qty": 35.8,
+       "src": [
+        "OP1"
+       ]
+      }
+     ],
+     "labour": 5.0,
+     "every_months": 6,
+     "first_month": 36,
+     "span_days": 30,
+     "qty_by_year": [
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1.333,
+      1.333,
+      1.333,
+      1.333,
+      1.333,
+      1.333,
+      1.333,
+      1.333,
+      1.333
+     ]
+    },
+    {
+     "id": "circles",
+     "phase": "care",
+     "label": {
+      "en": "Circle weeding",
+      "fr": "Sarclage des ronds"
+     },
+     "detail": {
+      "en": "Clean a circle around each palm twice a year, 100 FCFA a palm.",
+      "fr": "Nettoyer un rond autour de chaque palmier deux fois par an, 100 FCFA le palmier."
+     },
+     "src": [
+      "OP1"
+     ],
+     "labour": 6.4,
+     "every_months": 6,
+     "first_month": 1,
+     "span_days": 30
+    },
+    {
+     "id": "weed",
+     "phase": "care",
+     "label": {
+      "en": "Weeding and herbicide",
+      "fr": "Désherbage et herbicide"
+     },
+     "detail": {
+      "en": "Weed the rows and the harvest paths; 1 L of glyphosate a year.",
+      "fr": "Désherber les interlignes et les chemins de récolte ; 1 L de glyphosate par an."
+     },
+     "src": [
+      "OP1"
+     ],
+     "inputs": [
+      {
+       "item": "glyphosate",
+       "qty": 1,
+       "src": [
+        "OP1"
+       ]
+      }
+     ],
+     "labour": 16.0,
+     "every_months": 12,
+     "first_month": 3,
+     "span_days": 30
+    },
+    {
+     "id": "prune",
+     "phase": "care",
+     "label": {
+      "en": "Pruning",
+      "fr": "Élagage"
+     },
+     "detail": {
+      "en": "Prune once a year in the dry season, 100 FCFA a palm.",
+      "fr": "Élaguer une fois par an en saison sèche, 100 FCFA le palmier."
+     },
+     "src": [
+      "OP1"
+     ],
+     "labour": 6.4,
+     "every_months": 12,
+     "first_month": 30,
+     "span_days": 30
+    }
+   ],
+   "src": [
+    "OP1",
+    "OP2",
+    "OP3",
+    "M1"
+   ],
+   "basis": {
+    "plants_per_ha": "143 palms per ha in 9 m equilateral triangles (OP1).",
+    "kc": "FAO-56 oil palm: Kc 0.95, 1.0, 1.0 (M1), used through the year.",
+    "cycle": "Production starts about 3 years after planting; bunches 4, 6, 8, then 13 t/ha (OP1), so yield shares 31, 46, 62 and 100% from year 4. Profitability in year 8 in the MINADER budget (OP1).",
+    "yield_t_ha": "Fresh fruit bunches. Average 13 t/ha (OP1); poor 4 = smallholders under 1 t of oil per ha (OP2) at 25% oil in the bunch (OP1); good 16 = four times that oil yield, as for smallholders in Indonesia and Malaysia (OP2), derived.",
+    "labour": "MINADER amounts at 2,500 FCFA a person day (OP1): holes 200 and planting 300 FCFA a palm, circle weeding 100 FCFA twice a year, pruning 100 FCFA, weeding 40,000 and fertilizing 25,000 FCFA a year; harvest 50,000 FCFA for 13 t, so 650 kg a day."
+   },
+   "confidence": [
+    {
+     "block": {
+      "en": "Technical itinerary",
+      "fr": "Itinéraire technique"
+     },
+     "level": "high",
+     "note": {
+      "en": "Official MINADER technical and economic sheet (2024).",
+      "fr": "Fiche technico économique officielle du MINADER (2024)."
+     }
+    },
+    {
+     "block": {
+      "en": "Yields",
+      "fr": "Rendements"
+     },
+     "level": "medium",
+     "note": {
+      "en": "MINADER yield curve; poor and good levels are derived.",
+      "fr": "Courbe de rendement du MINADER ; les niveaux faible et bon sont calculés."
+     }
+    },
+    {
+     "block": {
+      "en": "Prices at harvest",
+      "fr": "Prix à la récolte"
+     },
+     "level": "medium",
+     "note": {
+      "en": "Price paid to village plantations in 2025; you enter your price per tonne.",
+      "fr": "Prix payé aux plantations villageoises en 2025 ; vous saisissez votre prix à la tonne."
+     }
+    },
+    {
+     "block": {
+      "en": "Climate and water",
+      "fr": "Climat et eau"
+     },
+     "level": "medium",
+     "note": {
+      "en": "Modelled Foumbot climatology 1991 to 2021 with FAO-56 methods; oil palm grows mainly in the Littoral, South West and Centre.",
+      "fr": "Climatologie modélisée de Foumbot 1991 à 2021 et méthodes FAO-56 ; le palmier se cultive surtout au Littoral, au Sud Ouest et au Centre."
      }
     }
    ]
@@ -6221,9 +7800,43 @@
   {
    "en": "Exchange rates are fixed at mid October 2026 values (BCEAO for the CFA franc, 16 October; naira 13 October); they are not live.",
    "fr": "Les taux de change sont fixés aux valeurs de mi octobre 2026 (BCEAO pour le franc CFA, 16 octobre ; naira 13 octobre) ; ils ne sont pas en temps réel."
+  },
+  {
+   "en": "Plan length: a long crop or an orchard is analysed over the length the grower chooses (one to three plantain cycles; three, five or ten years for an orchard). Costs and sales outside that length are not counted.",
+   "fr": "Durée du plan : une culture longue ou un verger est analysé sur la durée choisie (un à trois cycles de plantain ; trois, cinq ou dix ans pour un verger). Les coûts et les ventes hors de cette durée ne sont pas comptés."
+  },
+  {
+   "en": "Pineapple: the poor yield (half the Cameroon average), planting at 1,000 suckers a day, induction labour and harvest at 400 kg a day are Djalumo Agro assumptions; the fertilizer program and sucker price come from Benin.",
+   "fr": "Ananas : le rendement faible (moitié de la moyenne camerounaise), la plantation à 1 000 rejets par jour, le travail d’induction et la récolte à 400 kg par jour sont des hypothèses de Djalumo Agro ; le programme d’engrais et le prix des rejets viennent du Bénin."
+  },
+  {
+   "en": "Cocoa: fungicide and insecticide doses, harvest and post harvest work at 15 kg of dry beans a day and monthly suckering are Djalumo Agro assumptions on the frequencies of Cameroon guides; the plantain grown as temporary shade is neither costed nor sold.",
+   "fr": "Cacao : les doses de fongicide et d’insecticide, la récolte et le post récolte à 15 kg de fèves sèches par jour et l’égourmandage mensuel sont des hypothèses de Djalumo Agro sur les fréquences des guides camerounais ; le plantain cultivé en ombrage temporaire n’est ni chiffré ni vendu."
+  },
+  {
+   "en": "Oil palm: labour comes from the MINADER amounts at 2,500 FCFA a person day; bunches are sold to a mill by the tonne.",
+   "fr": "Palmier à huile : le travail vient des montants du MINADER à 2 500 FCFA la journée ; les régimes sont vendus à une huilerie à la tonne."
   }
  ],
  "sources": {
+  "AN1": {
+   "title": "Étude du marché et fiche technique de production de l’ananas au Cameroun",
+   "publisher": "Fabrik Aliments",
+   "year": 2024,
+   "url": "https://www.fabrikaliments.com/lananas-au-cameroun/"
+  },
+  "AN2": {
+   "title": "Production et transformation de l’ananas (collection Pro-Agro; K. Edoh Adabe, S. Hind, A. Maïga)",
+   "publisher": "CTA and ISF Cameroun",
+   "year": 2016,
+   "url": "https://cgspace.cgiar.org/bitstream/handle/10568/100800/1938_PDF.pdf"
+  },
+  "AN3": {
+   "title": "Fiche synthétique : pratiques agronomiques de production d’ananas pour le fruit frais et le jus (Djido, Fassinou Hotegni et al.)",
+   "publisher": "Wageningen University and Université d’Abomey Calavi (DAPIS project)",
+   "year": 2019,
+   "url": "https://edepot.wur.nl/511399"
+  },
   "AV1": {
    "title": "Cameroun : avocat, les Bamboutos principal bassin de production (I. M. Bidima)",
    "publisher": "La Voix du Paysan",
@@ -6271,6 +7884,12 @@
    "publisher": "EspaceAgro",
    "year": 2022,
    "url": "https://www.espaceagro.com/greffe-avocatier/exp-greffe-avocatier.html"
+  },
+  "AV9": {
+   "title": "Hass avocado: the new green gold of Wundanyi (grafted Hass bears after 2.5 to 3 years)",
+   "publisher": "Kenya News Agency",
+   "year": 2023,
+   "url": "https://www.kenyanews.go.ke/hass-avocado-the-new-green-gold-of-wundanyi/"
   },
   "C2": {
    "title": "Quarterly monitoring newsletter on agricultural inputs N°0 - December 2022 (English version)",
@@ -6469,6 +8088,66 @@
    "publisher": "La Voix du Paysan",
    "year": 2021,
    "url": "https://www.lavoixdupaysan.net/cameroun-y-a-t-il-une-variete-de-manioc-ayant-un-cycle-en-deca-de-12-mois/"
+  },
+  "CC1": {
+   "title": "New seed varieties help cocoa farmers thrive in Cameroon (IRAD second generation varieties)",
+   "publisher": "African Farming (African Development Bank)",
+   "year": 2020,
+   "url": "https://africanfarming.net/crops/agriculture/new-seed-varieties-help-cocoa-farmers-thrive-in-cameroon"
+  },
+  "CC2": {
+   "title": "Culture du cacao au Cameroun 2026 : guide complet du sol à la fève",
+   "publisher": "JOGOO Agriculture",
+   "year": 2026,
+   "url": "https://jogoo.africa/culture-cacao-cameroun-2026/"
+  },
+  "CC3": {
+   "title": "Combien coûte la création d’une plantation de cacao de 1 hectare au Cameroun",
+   "publisher": "Maison de l’entrepreneur agricole",
+   "year": 2026,
+   "url": "https://maisonagricole.com/agriculture/combien-coute-la-creation-dune-plantation-de-cacao-de-1-hectare-au-cameroun/"
+  },
+  "CC4": {
+   "title": "Manuel de référence pour la production et la commercialisation du cacao durable au Cameroun",
+   "publisher": "ONCC, Comité Cacao Durable du Cameroun (EFI, Union européenne)",
+   "year": 2025,
+   "url": "https://www.oncc.cm/content/library/documents/resource-reference-manual-1760537363.pdf"
+  },
+  "CC5": {
+   "title": "Co-construction, transfert et diffusion d’innovations en cacaoculture au Cameroun (R. Bourgoing, D. Abolo)",
+   "publisher": "CIRAD and IRAD",
+   "year": null,
+   "url": "https://afs4food.cirad.fr/content/download/4489/34104/version/1/file/Bourgoing+Innov+cacao.pdf"
+  },
+  "CC6": {
+   "title": "Impact of environmental factors, chemical fungicide and biological control on cacao pod production dynamics and black pod disease in Cameroon (Deberdt et al.)",
+   "publisher": "Biological Control 44(2)",
+   "year": 2008,
+   "url": "https://agritrop.cirad.fr/543290/"
+  },
+  "CC7": {
+   "title": "Analyse de la chaîne de valeur du cacao au Cameroun (Lescuyer, Boutinot, Goglio, Bassanaga), VCA4D",
+   "publisher": "Union européenne, DG DEVCO",
+   "year": 2019,
+   "url": "https://capacity4dev.europa.eu/media/125082/download/cfbcda3b-9de2-4342-8063-14a0a8ad238a_en"
+  },
+  "CC8": {
+   "title": "Cacao : les prix remontent à 1 400 FCFA/kg au Cameroun après un début d’année difficile",
+   "publisher": "EcoMatin",
+   "year": 2026,
+   "url": "https://ecomatin.net/cacao-les-prix-remontent-a-1-400-fcfa-kg-au-cameroun-apres-un-debut-dannee-difficile"
+  },
+  "CC9": {
+   "title": "Cacao camerounais : le kilogramme grimpe de 150 FCFA en juin 2026",
+   "publisher": "Afric Telegraph",
+   "year": 2026,
+   "url": "https://africtelegraph.com/?p=81746"
+  },
+  "CC10": {
+   "title": "Cameroun : la récolte du cacao commence, espoir d’abondance dans les villages agricoles",
+   "publisher": "Le360 Afrique",
+   "year": 2023,
+   "url": "https://afrique.le360.ma/economie/cameroun-la-recolte-du-cacao-commence-espoir-dabondance-dans-les-villages-agricoles_SN3J37XCDVAV5F6IDQCBTPBTD4/"
   },
   "CH1": {
    "title": "Technologie de production du piment (Capsicum frutescens)",
@@ -6751,6 +8430,24 @@
    "publisher": "FAO (Brouwer C., Prins K., Heibloem M.)",
    "year": 1989,
    "url": "https://www.fao.org/4/t7202e/t7202e00.htm"
+  },
+  "OP1": {
+   "title": "Fiche technico économique de conduite d’une palmeraie (Fiche technico économique 2)",
+   "publisher": "MINADER, Direction des organisations professionnelles agricoles et de l’appui aux exploitations",
+   "year": 2025,
+   "url": "https://www.minader.cm/wp-content/uploads/2025/05/FICHE-DE-CONDUITE-DUNE-PALMERAIE_VF.pdf"
+  },
+  "OP2": {
+   "title": "Cameroun : développer les palmiers à huile des agriculteurs",
+   "publisher": "IPS (citing MINADER)",
+   "year": 2013,
+   "url": "https://ipsnews.net/francais/?p=6704"
+  },
+  "OP3": {
+   "title": "Dibombari : la Socapalm organise une réunion avec les responsables des plantations villageoises",
+   "publisher": "Le Tamtam du Mboa",
+   "year": 2025,
+   "url": "https://tamtamdumboa.com/dibombari-la-socapalm-organise-une-reunion-avec-les-responsables-des-plantations-villageoises/"
   },
   "P1": {
    "title": "Suggested Cultural Practices for Sweet Pepper (Berke, Black, Morris, Talekar, Wang), pub. 99-497R",

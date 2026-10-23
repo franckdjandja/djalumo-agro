@@ -1,0 +1,94 @@
+{
+ "crop": "Pineapple (Ananas comosus), Smooth Cayenne and similar, open field, Cameroon",
+ "research_date": "2026-10-23",
+ "cycle": {
+  "text": "Harvest between the 12th and 18th month after planting suckers (S1). Floral induction (TIF) between six months (large suckers) and one year (small suckers) after planting; fruit ripe about 5 months after TIF (S1). Planting to TIF 7 to 13 months, TIF to harvest about 160 days (145 to 174), planting to harvest 12 to 18 months (S2).",
+  "source_ids": [
+   "S1",
+   "S2"
+  ]
+ },
+ "density": {
+  "text": "55,000 to 77,000 plants/ha are common in Cameroon (S1). Twin rows 90 x 40 x 28 cm give 55,000 plants/ha; beginners are advised about 45,000 (S2).",
+  "source_ids": [
+   "S1",
+   "S2"
+  ]
+ },
+ "planting_material": {
+  "text": "Suckers of 200 to 500 g (S1), 300 to 600 g, cayeux and hapas preferred (S2). Sucker price 7 FCFA in a Benin budget (S3).",
+  "source_ids": [
+   "S1",
+   "S2",
+   "S3"
+  ]
+ },
+ "fertilizer": {
+  "text": "Per plant: urea 7.36 g + NPK 3.66 g three months after planting, urea 3.67 g + NPK 7.33 g three months later, NPK 7.33 g + potassium sulphate 10.16 g three months later (S3). Needs per plant 8 to 14 g N, 10 to 20 g K2O, 0 to 5 g P2O5 (S1).",
+  "source_ids": [
+   "S3",
+   "S1"
+  ]
+ },
+ "induction": {
+  "text": "Ethrel 6 to 10 ml per 10 L of water, 10 L of mix for 200 plants (S1); repeat at 3 day intervals (S2). Calcium carbide 44 kg/ha in Benin (S3).",
+  "source_ids": [
+   "S1",
+   "S2",
+   "S3"
+  ]
+ },
+ "yields": {
+  "text": "Average 31 t/ha in Cameroon (S1). 50 t/ha in a Togo example (S2). 75.6 t/ha, 1.15 kg mean fruit, on an intensive Benin budget (S3). Fruit 0.8 to 2 kg (S4).",
+  "source_ids": [
+   "S1",
+   "S2",
+   "S3",
+   "S4"
+  ]
+ },
+ "labour": {
+  "text": "925 person days/ha over 3.5 years including ratoon crops and sucker sales in Togo (S2); labour 1,938,335 FCFA/ha on the Benin fresh fruit budget (S3).",
+  "source_ids": [
+   "S2",
+   "S3"
+  ]
+ },
+ "prices": {
+  "text": "Wholesale 400,000 to 600,000 FCFA per tonne; retail 100 to 400 FCFA per fruit; average production cost 6,000,000 FCFA/ha (S1, 2024).",
+  "source_ids": [
+   "S1"
+  ]
+ },
+ "sources": [
+  {
+   "id": "S1",
+   "title": "Étude du marché et fiche technique de production de l’ananas au Cameroun",
+   "publisher": "Fabrik Aliments",
+   "year": 2024,
+   "url": "https://www.fabrikaliments.com/lananas-au-cameroun/"
+  },
+  {
+   "id": "S2",
+   "title": "Production et transformation de l’ananas (collection Pro-Agro; K. Edoh Adabe, S. Hind, A. Maïga)",
+   "publisher": "CTA and ISF Cameroun",
+   "year": 2016,
+   "url": "https://cgspace.cgiar.org/bitstream/handle/10568/100800/1938_PDF.pdf"
+  },
+  {
+   "id": "S3",
+   "title": "Fiche synthétique : pratiques agronomiques de production d’ananas pour le fruit frais et le jus (Djido, Fassinou Hotegni et al.)",
+   "publisher": "Wageningen University and Université d’Abomey Calavi (DAPIS project)",
+   "year": 2019,
+   "url": "https://edepot.wur.nl/511399"
+  },
+  {
+   "id": "S4",
+   "title": "Le secteur de l’ananas au Cameroun : ce qu’il faut savoir",
+   "publisher": "Fabrik Aliments",
+   "year": 2024,
+   "url": "https://www.fabrikaliments.com/lananas/"
+  }
+ ],
+ "confidence_notes": "MEDIUM for agronomy (Cameroon market study and a CTA/ISF Cameroun guide). LOW for costs: sucker price and fertilizer program come from Benin; labour is calibrated on Togo and Benin budgets. LOW for prices: one 2024 Cameroon range."
+}

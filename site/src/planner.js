@@ -5,19 +5,39 @@ const tl = (x) => (x && typeof x === 'object' && !Array.isArray(x)) ? (x[LANG] |
 const PL_CUR = ['USD', 'XAF', 'EUR', 'RWF', 'KES', 'NGN'];
 const PL_WATER = ['rainfed', 'manual', 'existing', 'pump', 'drip'];
 const nextMonthStart = () => { const d = new Date(); return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + 1, 1)).toISOString().slice(0, 10); };
-const PLAN = { capital: 5000, currency: 'USD', mode: 'budget', area: 0.25, crop: 'tomato', water: 'pump', start: nextMonthStart(), land: 'rent', market: 'local', familyLabour: 0, ownTools: false, tab: 'return', prices: {}, products: {} };
+const PLAN = { capital: 5000, currency: 'USD', mode: 'budget', area: 0.25, crop: 'tomato', water: 'pump', start: nextMonthStart(), land: 'rent', market: 'local', familyLabour: 0, ownTools: false, tab: 'return', prices: {}, products: {}, horizons: {} };
 const isLong = (k) => { const c = KB.crops[k]; return !!(c.profile && c.profile !== 'season'); };
 const cropGroup = (c) => !c.profile || c.profile === 'season' ? 'season' : c.profile === 'orchard' ? 'orchard' : 'long';
 const cropMonths = (c) => !c.profile || c.profile === 'season' ? Math.round(((c.cycle.nursery_days || 0) + c.cycle.to_first_harvest_days + c.cycle.harvest_days) / 30.4) : c.horizon_months;
 const durLabel = (m) => { const D = L().planner.dur; return m >= 24 && m % 12 === 0 ? D.years(m / 12) : D.months(m); };
+const cropFirst = (c) => !c.profile || c.profile === 'season' ? cropMonths(c) : (c.first_harvest_months || cropMonths(c));
+const chipText = (c) => { const P = L().planner; return !c.profile || c.profile === 'season' ? P.chipSeason(cropMonths(c)) : P.chipLong(P.when(cropFirst(c))); };
+const plHorizon = (k) => { const c = KB.crops[k], o = c.horizon_options || []; return o.some(x => x.months === PLAN.horizons[k]) ? PLAN.horizons[k] : c.horizon_months; };
+/* One currency for every amount: the engine works in FCFA, the interface converts. */
+const curRate = () => PLAN.currency === 'XAF' ? 1 : KB.fx[PLAN.currency] / KB.fx.XAF;
+const curCode = () => PLAN.currency === 'XAF' ? 'FCFA' : PLAN.currency;
+const fmtUnit = (xaf) => {
+  const c = PLAN.currency, v = xaf * curRate(), a = Math.abs(v);
+  if (c === 'XAF') return nf(v, a < 10 ? 1 : 0) + ' FCFA';
+  const o = a >= 100 || ['RWF', 'KES', 'NGN'].includes(c) && a >= 10 ? { maximumFractionDigits: 0 } : a >= 0.01 ? { minimumFractionDigits: 2, maximumFractionDigits: 2 } : { maximumSignificantDigits: 2 };
+  try { return new Intl.NumberFormat(L().meta.locale, Object.assign({ style: 'currency', currency: c }, o)).format(v); } catch (e) { return nf(v, 2) + ' ' + c; }
+};
+/** Rewrites the FCFA amounts quoted in source notes into the chosen currency ("160 à 200 FCFA/kg" becomes "0,27 $US à 0,34 $US/kg"). */
+const convText = (s) => {
+  if (!s || PLAN.currency === 'XAF') return s;
+  const num = (x) => { let y = x.replace(/[\s\u00a0\u202f]/g, ''); y = /,\d{3}(\D|$)/.test(y) || /,\d{3},/.test(y) ? y.replace(/,/g, '') : y.replace(',', '.'); return parseFloat(y); };
+  return s.replace(/(\d[\d\s\u00a0\u202f.,]*\d|\d)(\s+(?:à|to)\s+)(\d[\d\s\u00a0\u202f.,]*\d|\d)\s*FCFA/g, (m, a, sep, b) => fmtUnit(num(a)) + sep + fmtUnit(num(b)))
+          .replace(/(\d[\d\s\u00a0\u202f.,]*\d|\d)\s*FCFA/g, (m, a) => fmtUnit(num(a)));
+};
 const plProducts = (k) => KB.crops[k].products || null;
 const plProduct = (k) => { const ps = plProducts(k); if (!ps) return null; return ps[PLAN.products[k]] ? PLAN.products[k] : Object.keys(ps)[0]; };
 const prodInfo = (k) => { const ps = plProducts(k), key = plProduct(k), p = ps ? ps[key] : null; return { key, label: p ? p.label : null, unit: p && p.unit_label ? tl(p.unit_label) : 'kg', unitKg: (p && p.unit_kg) || 1, ratio: p ? p.ratio || 1 : 1, price: p && p.price ? p.price : null }; };
 const priceKey = (k) => { const key = plProduct(k); return key && key !== Object.keys(plProducts(k))[0] ? k + ':' + key : k; };
 const plPrice = () => PLAN.prices[priceKey(PLAN.crop)] || null;
-const priceHint = (k) => { const c = KB.crops[k], pi = prodInfo(k), obs = pi.price && pi.price.observed ? pi.price.observed : c.price.observed; return tl(c.price.note) + (obs ? ' ' + tl(obs) : '') + (c.price.reference_xaf_kg ? ' ' + L().planner.priceOptional : ''); };
-const priceLabel = (k) => { const pi = prodInfo(k); return pi.unit === 'kg' && !isLong(k) ? L().planner.price : L().planner.priceUnit(pi.unit); };
-const groupSpan = (keys) => { const D = L().planner.dur, ms = keys.map(k => cropMonths(KB.crops[k])), a = Math.min(...ms), b = Math.max(...ms); if (a === b) return durLabel(a); return b < 24 ? D.monthsRange(a, b) : D.range(durLabel(a), durLabel(b)); };
+const priceHint = (k) => { const c = KB.crops[k], pi = prodInfo(k), obs = pi.price && pi.price.observed ? pi.price.observed : c.price.observed; return convText(tl(c.price.note) + (obs ? ' ' + tl(obs) : '') + (c.price.reference_xaf_kg ? ' ' + L().planner.priceOptional : '')); };
+const priceLabel = (k) => L().planner.priceIn(curCode(), prodInfo(k).unit);
+const priceShown = (xaf) => { if (!xaf) return ''; const v = xaf * curRate(); return nf(v, v < 100 && PLAN.currency !== 'XAF' ? 2 : 0); };
+const groupSub = (g, keys) => { const P = L().planner, ms = keys.map(k => cropFirst(KB.crops[k])), a = Math.min(...ms), b = Math.max(...ms); if (g === 'season') return P.groupSub.season(a, b); const B = P.when(b), A = a === b ? B : a < 24 && b < 24 ? String(a) : P.when(a); return P.groupSub[g](A, B); };
 const riskLvl = (score) => score <= 1 ? 0 : score <= 3 ? 1 : 2;
 
 const fmtXaf = (v) => money(Math.round(v), 'XAF');
@@ -27,7 +47,9 @@ const fmtBoth = (xaf) => PLAN.currency === 'XAF' ? fmtXaf(xaf) : fmtCur(xaf) + '
 const plArea = (ha) => { if (!(ha > 0)) return '0 m²'; if (ha < 0.1) return nf(ha * 10000, 0) + ' m²'; return nf(ha, ha < 10 ? 2 : 1) + ' ha'; };
 const fmtDateS = (d) => new Intl.DateTimeFormat(L().meta.locale, { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(d);
 const fmtQty = (q, unit) => { const u = tl((KB.units || {})[unit]) || unit; if (unit === 'unit' || unit === 'stake') return nf(Math.round(q), 0) + ' ' + u; return (q >= 100 ? nf(q, 0) : q >= 10 ? nf(q, 1) : nf(q, 2)) + ' ' + u; };
-const pct = (v) => (v >= 0 ? '+' : '') + nf(v * 100, 0) + '%';
+/** Plural of a sale unit: last word in English (100 kg sacks), first word in French (sacs de 100 kg). */
+const plU = (u, n) => { if (u === 'kg' || n < 2) return u; const pl = (w) => (/(s|x|z)$/i.test(w) ? w : LANG === 'en' && /(ch|sh)$/i.test(w) ? w + 'es' : w + 's'); const p = u.split(' '); if (LANG === 'fr') p[0] = pl(p[0]); else p[p.length - 1] = pl(p[p.length - 1]); return p.join(' '); };
+const pct = (v) => (v >= 0 ? '+' : '') + nf(v * 100, 0) + (LANG === 'fr' ? '\u00a0%' : '%');
 const LV = () => L().planner.levels;
 
 function plannerFormHTML(compact) {
@@ -39,20 +61,23 @@ function plannerFormInner(compact) {
   const cur = PL_CUR.map(c => '<option' + (S.currency === c ? ' selected' : '') + '>' + c + '</option>').join('');
   const groups = {};
   Object.keys(KB.crops).forEach(k => { const g = cropGroup(KB.crops[k]); (groups[g] = groups[g] || []).push(k); });
-  const crops = '<div class="cgroups">' + ['season', 'long', 'orchard'].filter(g => groups[g]).map(g => '<div class="cg"><div class="cg-h"><b>' + esc(P.groups[g][0]) + '</b><span>' + esc(groupSpan(groups[g]) || P.groups[g][1]) + '</span></div><div class="crops" role="group" aria-label="' + esc(P.groups[g][0]) + '">' +
-    groups[g].map(k => '<button type="button" data-pcrop="' + k + '" aria-pressed="' + (S.crop === k) + '">' + esc(tl(KB.crops[k].name)) + '<span class="cd">' + esc(durLabel(cropMonths(KB.crops[k]))) + '</span></button>').join('') + '</div></div>').join('') + '</div>';
+  const crops = '<div class="cgroups">' + ['season', 'long', 'orchard'].filter(g => groups[g]).map(g => '<div class="cg"><div class="cg-h"><b>' + esc(P.groups[g][0]) + '</b><span>' + esc(groupSub(g, groups[g])) + '</span></div><div class="crops" role="group" aria-label="' + esc(P.groups[g][0]) + '">' +
+    groups[g].map(k => '<button type="button" data-pcrop="' + k + '" aria-pressed="' + (S.crop === k) + '">' + esc(tl(KB.crops[k].name)) + '<span class="cd">' + esc(chipText(KB.crops[k])) + '</span></button>').join('') + '</div></div>').join('') + '</div>';
   const ps = plProducts(S.crop), pi = prodInfo(S.crop);
   const prods = ps && Object.keys(ps).length > 1 ? '<div class="f"><span class="lbl" id="pl-prod-l">' + esc(P.product) + '</span><div class="seg seg' + Math.min(4, Object.keys(ps).length) + '" role="group" aria-labelledby="pl-prod-l">' +
     Object.keys(ps).map(k => '<button type="button" data-pprod="' + k + '" aria-pressed="' + (pi.key === k) + '">' + esc(tl(ps[k].label)) + '</button>').join('') + '</div>' + (pi.ratio < 1 ? '<span class="hint">' + esc(P.productRatio(nf(pi.ratio, 2))) + '</span>' : '') + '</div>' : '';
   const ref = KB.crops[S.crop].price.reference_xaf_kg;
+  const hopts = KB.crops[S.crop].horizon_options || [], hcur = plHorizon(S.crop), ratoon = KB.crops[S.crop].profile === 'ratoon';
+  const hsel = hopts.length > 1 ? '<div class="f"><span class="lbl" id="pl-hor-l">' + esc(P.horizonL) + '</span><div class="seg seg' + Math.min(4, hopts.length) + '" role="group" aria-labelledby="pl-hor-l">' +
+    hopts.map((o, i) => '<button type="button" data-phor="' + o.months + '" aria-pressed="' + (o.months === hcur) + '">' + esc(ratoon ? P.horizonCycles(i + 1, o.months) : P.horizonYears(o.months / 12)) + '</button>').join('') + '</div><span class="hint">' + esc(P.horizonHint[ratoon ? 'ratoon' : 'orchard']) + '</span></div>' : '';
   const water = PL_WATER.map(w => '<label class="wopt"><input type="radio" name="pwater" value="' + w + '"' + (S.water === w ? ' checked' : '') + '><span><b>' + esc(P.water[w][0]) + '</b><small>' + esc(P.water[w][1]) + '</small></span></label>').join('');
-  return '<div class="blk-t"><h4>' + esc(P.inputsT) + '</h4><span class="badge plan">' + esc(P.badge) + '</span></div>' +
+  return '<div class="blk-t"><h4>' + esc(P.inputsT) + '</h4></div>' +
     '<div class="row2"><div class="f"><label for="pl-cap">' + esc(P.capital) + '</label><input class="inp tnum" id="pl-cap" inputmode="decimal" autocomplete="off" value="' + esc(nf(S.capital)) + '"><span class="hint">' + esc(P.capitalHint) + '</span></div>' +
     '<div class="f"><label for="pl-cur">' + esc(P.currency) + '</label><select class="inp" id="pl-cur">' + cur + '</select></div></div>' +
     '<div class="f"><span class="lbl" id="pl-mode-l">' + esc(P.approach) + '</span><div class="seg" role="group" aria-labelledby="pl-mode-l"><button type="button" data-pmode="budget" aria-pressed="' + (S.mode === 'budget') + '">' + esc(P.budgetFirst) + '</button><button type="button" data-pmode="crop" aria-pressed="' + (S.mode === 'crop') + '">' + esc(P.areaFirst) + '</button></div></div>' +
     '<div class="f" data-parea' + (S.mode === 'crop' ? '' : ' hidden') + '><label for="pl-area">' + esc(P.area) + '</label><input class="inp tnum" id="pl-area" type="number" min="0.001" step="0.01" inputmode="decimal" value="' + S.area + '"></div>' +
-    '<div class="f"><span class="lbl" id="pl-crop-l">' + esc(P.crop) + '</span>' + crops + '</div>' + prods +
-    '<div class="f"><label for="pl-price">' + esc(priceLabel(S.crop)) + '</label><input class="inp tnum" id="pl-price" inputmode="decimal" autocomplete="off" placeholder="' + esc(ref ? nf(ref) : P.pricePh) + '" value="' + esc(plPrice() ? nf(plPrice()) : '') + '"><span class="hint" data-phint>' + esc(priceHint(S.crop)) + '</span></div>' +
+    '<div class="f"><span class="lbl" id="pl-crop-l">' + esc(P.crop) + '</span>' + crops + '</div>' + prods + hsel +
+    '<div class="f"><label for="pl-price">' + esc(priceLabel(S.crop)) + '</label><input class="inp tnum" id="pl-price" inputmode="decimal" autocomplete="off" placeholder="' + esc(ref ? priceShown(ref) : P.pricePh) + '" value="' + esc(priceShown(plPrice())) + '"><span class="hint" data-phint>' + esc(priceHint(S.crop)) + '</span></div>' +
     '<fieldset class="f" style="border:0;padding:0;margin:0"><legend class="lbl" style="font-size:13px;color:var(--fg-2);font-weight:500;margin-bottom:7px">' + esc(P.waterT) + '</legend><div class="wopts">' + water + '</div></fieldset>' +
     '<div class="f"><label for="pl-start">' + esc(isLong(S.crop) ? P.choosePlant : P.start) + '</label><input class="inp" id="pl-start" type="date" value="' + S.start + '"><span class="hint">' + esc(isLong(S.crop) ? P.choosePlantHint : P.startHint) + '</span></div>' +
     (compact ? '' :
@@ -63,48 +88,84 @@ function plannerFormInner(compact) {
 }
 
 function plannerOutHTML(r, compact) {
-  const P = L().planner, crop = KB.crops[PLAN.crop], long = r.profile && r.profile !== 'season';
-  const pi = prodInfo(PLAN.crop), unit = pi.unit;
-  const priced = !!r.priceSource;
-  const be = long ? r.breakEven.pricePerUnit : r.breakEven.priceXafKg;
-  const msg = (k) => P.states[k] ? P.states[k](fmtCur(r.minXaf), plArea(r.water.maxAreaHa || 0), be ? nf(be, 0) : '·') : '';
+  const P = L().planner, long = r.profile && r.profile !== 'season';
+  const msg = (k) => P.states[k] ? P.states[k](fmtCur(r.minXaf), plArea(r.water.maxAreaHa || 0), '') : '';
   let state = r.state !== 'ok' && r.state !== 'needs_price' ? '<p class="notice" style="border-left-color:var(--warn)">' + esc(msg(r.state)) + '</p>' : '';
-  if (r.state === 'manual_limit' && PLAN.mode === 'budget' && r.capitalXaf > r.budget.total) state += '<p class="small muted">' + esc(P.unusedCapital(fmtCur(r.capitalXaf - r.budget.total).replace(/<[^>]+>/g, ''))) + '</p>';
-  if (!priced) state += '<p class="notice info">' + esc(long || unit !== 'kg' ? P.needsPriceU(be ? nf(be, 0) : '·', unit) : msg('needs_price')) + '</p>';
+  if (r.state === 'manual_limit' && PLAN.mode === 'budget' && r.capitalXaf > r.budget.total) state += '<p class="small muted">' + esc(P.unusedCapital(txtCur(r.capitalXaf - r.budget.total))) + '</p>';
   if (r.state === 'below_min' || r.state === 'upfront_exceeds') {
     if (r.state === 'below_min') return state;
     const up = r.budget.lines.filter(l => l.upfront);
     return state + '<div class="tbl-wrap" style="margin-top:12px"><table class="tbl ptbl"><thead><tr><th>' + esc(P.th.item) + '</th><th>' + esc(P.th.cost) + '</th></tr></thead><tbody>' + up.map(l => '<tr><td>' + esc(tl(l.label)) + '</td><td class="tnum">' + fmtCur(l.total) + '</td></tr>').join('') + '</tbody></table></div><p class="small muted" style="margin-top:10px">' + esc(P.upfrontHint) + '</p>';
   }
-  const sc = r.scenarios, area = r.areaHa;
-  const dur = durLabel(r.horizonMonths);
-  const pb = r.cashflow.paybackIndex;
-  const kpis = long ? '<div class="kpis kpis4">' +
-    '<div><div class="k">' + esc(P.kArea) + '</div><div class="v">' + plArea(area) + '</div><div class="s">' + esc(P.trees(nf(r.plants))) + '</div></div>' +
-    '<div><div class="k">' + esc(PLAN.mode === 'crop' ? P.kRequired : P.kNeed) + '</div><div class="v vsm">' + fmtCur(PLAN.mode === 'crop' ? r.requiredXaf : r.budget.total) + '</div><div class="s">' + esc(P.kNeedSub) + '</div></div>' +
-    (priced ? '<div><div class="k">' + esc(P.kMarginH(dur)) + '</div><div class="v vsm" style="color:' + (sc.average.margin >= 0 ? 'var(--green)' : 'var(--crit)') + '">' + fmtCur(sc.average.margin) + '</div><div class="s">' + P.perYear(fmtCur(sc.average.marginPerYear)) + '</div></div>'
-      : '<div><div class="k">' + esc(P.kBreakEvenU(unit)) + '</div><div class="v vsm">' + (be ? nf(be, 0) + '<small> FCFA</small>' : '·') + '</div><div class="s">' + esc(P.atAvgYield) + '</div></div>') +
-    '<div><div class="k">' + esc(P.kHorizon) + '</div><div class="v vsm">' + esc(dur) + '</div><div class="s">' + esc(priced ? (pb !== null ? P.payback(pb + 1) : P.noPayback) : fmtDateS(r.calendar.start) + ' → ' + fmtDateS(r.calendar.horizonEnd)) + '</div></div></div>'
-    : '<div class="kpis kpis4">' +
-    '<div><div class="k">' + esc(P.kArea) + '</div><div class="v">' + plArea(area) + '</div><div class="s">' + esc(P.plants(nf(r.plants))) + '</div></div>' +
-    '<div><div class="k">' + esc(PLAN.mode === 'crop' ? P.kRequired : P.kBudget) + '</div><div class="v vsm">' + fmtCur(PLAN.mode === 'crop' ? r.requiredXaf : r.budget.total) + '</div><div class="s">' + esc(P.inclReserve) + '</div></div>' +
-    (priced ? '<div><div class="k">' + esc(P.kMargin) + '</div><div class="v vsm" style="color:' + (sc.average.margin >= 0 ? 'var(--green)' : 'var(--crit)') + '">' + fmtCur(sc.average.margin) + '</div><div class="s">' + esc(P.roiAvg(pct(sc.average.roi))) + '</div></div>'
-      : '<div><div class="k">' + esc(P.kBreakEven) + '</div><div class="v vsm">' + (be ? nf(be, 0) + '<small> FCFA/kg</small>' : '·') + '</div><div class="s">' + esc(P.atAvgYield) + '</div></div>') +
-    '<div><div class="k">' + esc(P.kSeason) + '</div><div class="v vsm">' + Math.round(r.calendar.totalDays / 7) + '<small>' + esc(L().sim.weeks) + '</small></div><div class="s">' + esc(fmtDateS(r.calendar.start) + ' → ' + fmtDateS(r.calendar.lastHarvest)) + '</div></div></div>';
   if (compact) {
-    return state + kpis + (priced ? scenarioCards(r, true) : '') + unpricedNote(r) + '<p class="small muted" style="margin-top:12px">' + esc(P.compactNote) + '</p><div><a class="btn btn-primary" href="#planner" data-cta="home_planner">' + esc(P.openFull) + ARROW + '</a></div>';
+    return state + verdictHTML(r, true) + kpiHTML(r) + unpricedNote(r) + '<p class="small muted" style="margin-top:12px">' + esc(P.compactNote) + '</p><div><a class="btn btn-primary" href="#planner" data-cta="home_planner">' + esc(P.openFull) + ARROW + '</a></div>';
   }
   const tabs = ['return', 'budget', 'cashflow', 'itinerary', 'shopping', 'water', 'compare', 'sources'];
   if (!tabs.includes(PLAN.tab)) PLAN.tab = 'return';
   const tabBar = '<div class="tabs" role="tablist" aria-label="' + esc(P.title) + '">' + tabs.map(t => '<button type="button" role="tab" id="pt-' + t + '" aria-selected="' + (PLAN.tab === t) + '" aria-controls="pt-panel" tabindex="' + (PLAN.tab === t ? 0 : -1) + '" data-ptab="' + t + '">' + esc(P.tabs[t]) + '</button>').join('') + '</div>';
   const panel = { return: tabReturn, budget: tabBudget, cashflow: tabCashflow, itinerary: tabItinerary, shopping: tabShopping, water: tabWater, compare: tabCompare, sources: tabSources }[PLAN.tab](r);
-  return state + kpis + reportCta() + tabBar + '<div id="pt-panel" role="tabpanel" aria-labelledby="pt-' + PLAN.tab + '" class="ptab">' + panel + '</div>';
+  return state + verdictHTML(r) + kpiHTML(r) + reportCta() + tabBar + '<div id="pt-panel" role="tabpanel" aria-labelledby="pt-' + PLAN.tab + '" class="ptab">' + panel + '</div>';
+}
+
+const monthYearS = (d) => { const s = new Intl.DateTimeFormat(L().meta.locale, { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(d); return s; };
+const breakEvenOf = (r) => (r.profile && r.profile !== 'season') ? r.breakEven.pricePerUnit : r.breakEven.priceXafKg;
+
+/** Plain language reading of the plan: status, the key money sentence, the facts and a timeline. */
+function verdictHTML(r, compact) {
+  const P = L().planner, long = r.profile && r.profile !== 'season', pi = prodInfo(PLAN.crop), unit = pi.unit, sc = r.scenarios.average, priced = !!r.priceSource;
+  const be = breakEvenOf(r), crop = KB.crops[PLAN.crop];
+  const status = !priced ? 'price' : sc.margin < 0 ? 'loss' : sc.roi < 0.15 ? 'thin' : 'good';
+  const dur = long ? durLabel(r.horizonMonths) : (LANG === 'fr' ? 'la saison' : 'the season');
+  const priceU = fmtUnit(sc.price * pi.unitKg);
+  const main = !priced ? P.vNoPrice(be ? fmtUnit(be) : '·', unit)
+    : sc.margin >= 0 ? P.vMargin(priceU, unit, txtCur(sc.margin), dur, pct(sc.roi))
+    : P.vLoss(priceU, unit, txtCur(-sc.margin), dur, be ? fmtUnit(be) : '·');
+  const facts = [PLAN.mode === 'crop' ? P.vSizeArea(plArea(r.areaHa), txtCur(r.requiredXaf)) : P.vSize(txtCur(r.capitalXaf), plArea(r.areaHa), long ? nf(r.plants) : null)];
+  facts.push(long ? P.vHarvestLong(monthYearS(r.calendar.firstHarvest), P.when(r.firstHarvestMonths)) : P.vHarvestSeason(fmtDateS(r.calendar.firstHarvest), fmtDateS(r.calendar.lastHarvest)));
+  const cf = r.cashflow, opts = r.horizonOptions || [];
+  if (long && priced) facts.push(cf.paybackIndex !== null ? P.vPayback(cf.paybackIndex + 1, monthYearS(new Date(Date.UTC(cf.months[cf.paybackIndex].y, cf.months[cf.paybackIndex].m, 1)))) : P.vNoPayback(opts.some(m => m > r.horizonMonths)));
+  const name = tl(crop.name) + (crop.products && Object.keys(crop.products).length > 1 && pi.label ? ' · ' + tl(pi.label) : '');
+  return '<section class="verdict v-' + status + '" aria-live="polite"><div class="v-h"><span class="v-chip">' + esc(P.status[status]) + '</span><span class="v-crop">' + esc(name) + '</span></div>' +
+    '<p class="v-main">' + esc(main) + '</p><ul class="v-facts">' + facts.map(f => '<li>' + esc(f) + '</li>').join('') + '</ul>' + (compact ? '' : timelineHTML(r)) + '</section>';
+}
+
+/** Start, planting, harvest windows, money back and end of the plan on one line. */
+function timelineHTML(r) {
+  const P = L().planner, T = P.tline, cal = r.calendar, long = r.profile && r.profile !== 'season';
+  const t0 = cal.start.getTime(), t1 = (long ? cal.horizonEnd : new Date(cal.lastHarvest.getTime() + 864e5)).getTime(), span = Math.max(1, t1 - t0);
+  const pos = (d) => Math.max(0, Math.min(100, (d.getTime() - t0) / span * 100));
+  const ev = (r.production && r.production.length ? r.production : [{ from: cal.firstHarvest, to: cal.lastHarvest }]);
+  const bands = ev.map(e => '<span class="tl-h" style="left:' + pos(e.from).toFixed(2) + '%;width:' + Math.max(0.8, pos(e.to) - pos(e.from)).toFixed(2) + '%"></span>').join('');
+  const cf = r.cashflow, pb = long && r.priceSource && cf.paybackIndex !== null ? new Date(Date.UTC(cf.months[cf.paybackIndex].y, cf.months[cf.paybackIndex].m, 15)) : null;
+  const marks = [[cal.field || cal.start, 'plant'], [cal.firstHarvest, 'first']].concat(pb ? [[pb, 'payback']] : []);
+  const dots = marks.map(([d, k]) => '<span class="tl-m tl-' + k + '" style="left:' + pos(d).toFixed(2) + '%" title="' + esc(T[k] + ' · ' + monthYearS(d)) + '"></span>').join('');
+  const legend = [[cal.field || cal.start, 'plant'], [cal.firstHarvest, 'first']].concat(pb ? [[pb, 'payback']] : []).concat([[new Date(t1 - 864e5), long ? 'end' : 'last']]);
+  return '<div class="tline" role="img" aria-label="' + esc(legend.map(([d, k]) => T[k] + ' ' + monthYearS(d)).join(', ')) + '"><div class="tl-bar">' + bands + dots + '</div><ul class="tl-leg">' +
+    legend.map(([d, k]) => '<li class="tl-' + k + '"><i></i><span>' + esc(T[k]) + '</span><b>' + esc(monthYearS(d)) + '</b></li>').join('') + '</ul></div>';
+}
+
+/** Four key figures with a short explanation each. */
+function kpiHTML(r) {
+  const P = L().planner, K = P.k, S = P.kSub, long = r.profile && r.profile !== 'season', pi = prodInfo(PLAN.crop), unit = pi.unit, sc = r.scenarios.average, priced = !!r.priceSource;
+  const be = breakEvenOf(r), cf = r.cashflow;
+  const fit = (v) => v.replace(/<[^>]+>/g, '').length > 12 ? ' vxs' : '';
+  const card = (k, v, s, cls) => '<div' + (cls ? ' class="' + cls + '"' : '') + '><div class="k">' + esc(k) + '</div><div class="v vsm' + fit(v) + '">' + v + '</div><div class="s">' + esc(s) + '</div></div>';
+  const cap = PLAN.mode === 'crop' ? r.requiredXaf : r.budget.total;
+  const cards = [card(K.area, plArea(r.areaHa), P.trees ? P.trees(nf(r.plants)) : nf(r.plants)),
+    card(long || PLAN.mode === 'crop' ? K.capital : K.budget, fmtCur(cap), long ? S.capital : S.budget)];
+  if (priced) cards.push('<div><div class="k">' + esc(K.margin) + '</div><div class="v vsm' + fit(txtCur(sc.margin)) + '" style="color:' + (sc.margin >= 0 ? 'var(--green)' : 'var(--crit)') + '">' + fmtCur(sc.margin) + '</div><div class="s">' + esc(long ? S.marginLong(txtCur(sc.marginPerYear)) : S.marginSeason(pct(sc.roi))) + '</div></div>');
+  else cards.push(card(K.breakEven, be ? esc(fmtUnit(be)) : '·', S.breakEven(unit)));
+  if (long && priced) cards.push(card(K.payback, cf.paybackIndex !== null ? esc(monthYearS(new Date(Date.UTC(cf.months[cf.paybackIndex].y, cf.months[cf.paybackIndex].m, 1)))) : '·', cf.paybackIndex !== null ? S.payback(cf.paybackIndex + 1) : S.never));
+  else if (long) cards.push(card(K.first, esc(P.when(r.firstHarvestMonths)), S.first(monthYearS(r.calendar.firstHarvest))));
+  else if (priced) cards.push(card(K.breakEven, be ? esc(fmtUnit(be)) : '·', S.breakEven(unit)));
+  else cards.push(card(P.kSeason, Math.round(r.calendar.totalDays / 7) + '<small>' + esc(L().sim.weeks) + '</small>', fmtDateS(r.calendar.start) + ' → ' + fmtDateS(r.calendar.lastHarvest)));
+  return '<div class="kpis kpis4">' + cards.join('') + '</div>';
 }
 
 function reportCta() {
   const R = L().planner.report;
-  if (!R || !(window.AF_CONFIG && window.AF_CONFIG.reports)) return '';
-  return '<div class="rep-cta"><div><b>' + esc(R.cta) + '</b><p class="small muted">' + esc(R.ctaSub) + '</p></div><button type="button" class="btn btn-primary btn-sm" data-preport>' + esc(R.cta) + ARROW + '</button></div>';
+  if (!R || !API_MODE) return '';
+  return '<div class="rep-cta"><div class="rep-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M6 2.8h8.2L19 7.6V20a1.2 1.2 0 0 1-1.2 1.2H6A1.2 1.2 0 0 1 4.8 20V4A1.2 1.2 0 0 1 6 2.8Z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M14 3v5h5M8 13h8M8 16.5h8M8 9.5h3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div><div><b>' + esc(R.cta) + '</b><p class="small muted">' + esc(R.ctaSub) + '</p></div><button type="button" class="btn btn-primary btn-sm" data-preport>' + esc(R.cta) + ARROW + '</button></div>';
 }
 
 function scenarioCards(r, compact) {
@@ -114,8 +175,8 @@ function scenarioCards(r, compact) {
   return '<div class="scen' + (compact ? ' compact' : '') + '">' + ['good', 'average', 'poor', 'failure'].map(k => {
     const s = sc[k];
     const body = long
-      ? '<dl><dt>' + esc(r.profile === 'orchard' ? P.yieldYear : P.yieldCycle) + '</dt><dd>' + nf(s.yieldTHa, 1) + ' t/ha</dd><dt>' + esc(P.priceU(pi.unit)) + '</dt><dd>' + nf(s.price * pi.unitKg, 0) + ' FCFA</dd><dt>' + esc(P.soldU) + '</dt><dd>' + (pi.unit === 'kg' ? fmtQty(s.soldKg, 'kg') : nf(s.soldKg / pi.unitKg, 0) + ' ' + esc(pi.unit)) + '</dd><dt>' + esc(P.revenueL) + '</dt><dd>' + fmtCur(s.revenue) + '</dd><dt>' + esc(P.costsPlan) + '</dt><dd>' + fmtCur(s.costs) + '</dd><dt>' + esc(P.marginYear) + '</dt><dd>' + fmtCur(s.marginPerYear) + '</dd></dl>'
-      : '<dl><dt>' + esc(P.yieldL) + '</dt><dd>' + nf(s.yieldTHa, 1) + ' t/ha</dd><dt>' + esc(P.priceL) + '</dt><dd>' + nf(s.price, 0) + ' FCFA/kg</dd><dt>' + esc(P.soldL) + '</dt><dd>' + fmtQty(s.soldKg, 'kg') + '</dd><dt>' + esc(P.revenueL) + '</dt><dd>' + fmtCur(s.revenue) + '</dd><dt>' + esc(P.costsL) + '</dt><dd>' + fmtCur(s.costs) + '</dd></dl>';
+      ? '<dl><dt>' + esc(r.profile === 'orchard' ? P.yieldYear : P.yieldCycle) + '</dt><dd>' + nf(s.yieldTHa, 1) + ' t/ha</dd><dt>' + esc(P.priceU(pi.unit)) + '</dt><dd>' + esc(fmtUnit(s.price * pi.unitKg)) + '</dd><dt>' + esc(P.soldU) + '</dt><dd>' + (pi.unit === 'kg' ? fmtQty(s.soldKg, 'kg') : nf(s.soldKg / pi.unitKg, 0) + ' ' + esc(plU(pi.unit, Math.round(s.soldKg / pi.unitKg)))) + '</dd><dt>' + esc(P.revenueL) + '</dt><dd>' + fmtCur(s.revenue) + '</dd><dt>' + esc(P.costsPlan) + '</dt><dd>' + fmtCur(s.costs) + '</dd><dt>' + esc(P.marginYear) + '</dt><dd>' + fmtCur(s.marginPerYear) + '</dd></dl>'
+      : '<dl><dt>' + esc(P.yieldL) + '</dt><dd>' + nf(s.yieldTHa, 1) + ' t/ha</dd><dt>' + esc(P.priceL) + '</dt><dd>' + esc(fmtUnit(s.price)) + '/kg</dd><dt>' + esc(P.soldL) + '</dt><dd>' + fmtQty(s.soldKg, 'kg') + '</dd><dt>' + esc(P.revenueL) + '</dt><dd>' + fmtCur(s.revenue) + '</dd><dt>' + esc(P.costsL) + '</dt><dd>' + fmtCur(s.costs) + '</dd></dl>';
     return '<div class="sc ' + cls[k] + '"><div class="sc-h"><span>' + esc(P.scen[k][0]) + '</span>' + (compact ? '' : '<span class="mono faint">' + esc(P.weight(nf(r.weights[k] * 100, 0))) + '</span>') + '</div>' +
       '<div class="sc-m">' + fmtCur(s.margin) + '</div><div class="sc-r">' + esc(P.roi) + ' ' + pct(s.roi) + '</div>' +
       (compact ? '' : body + '<p class="small faint">' + esc(P.scen[k][1]) + '</p>') + '</div>';
@@ -130,9 +191,9 @@ function unpricedNote(r) {
 
 function tabReturn(r) {
   const P = L().planner, sc = r.scenarios, long = r.profile && r.profile !== 'season', pi = prodInfo(PLAN.crop);
-  const be = r.breakEven, bePrice = long ? be.pricePerUnit : be.priceXafKg, beUnit = long || pi.unit !== 'kg' ? ' FCFA / ' + pi.unit : ' FCFA/kg';
+  const be = r.breakEven, bePrice = long ? be.pricePerUnit : be.priceXafKg, beUnit = ' ' + P.perUnit(pi.unit);
   if (!r.priceSource) {
-    return '<div class="card"><div class="blk-t"><h4>' + esc(P.breakEvenT) + '</h4></div><dl class="kv2"><dt>' + esc(P.bePrice) + '</dt><dd>' + (bePrice ? nf(bePrice, 0) + esc(beUnit) : '·') + '</dd><dt>' + esc(long && r.profile === 'orchard' ? P.yieldYear : P.yieldL) + '</dt><dd>' + nf(sc.average.yieldTHa, 1) + ' t/ha</dd></dl><p class="small faint" style="margin-top:10px">' + esc(P.enterPrice) + '</p></div>';
+    return '<div class="card"><div class="blk-t"><h4>' + esc(P.breakEvenT) + '</h4></div><dl class="kv2"><dt>' + esc(P.bePrice) + '</dt><dd>' + (bePrice ? esc(fmtUnit(bePrice) + beUnit) : '·') + '</dd><dt>' + esc(long && r.profile === 'orchard' ? P.yieldYear : P.yieldL) + '</dt><dd>' + nf(sc.average.yieldTHa, 1) + ' t/ha</dd></dl><p class="small faint" style="margin-top:10px">' + esc(P.enterPrice) + '</p></div>';
   }
   const max = Math.max(...Object.values(sc).map(s => Math.abs(s.margin)), 1);
   const W = 640, H = 210, X0 = 150, mid = X0 + (W - X0 - 20) / 2, half = (W - X0 - 20) / 2;
@@ -144,7 +205,7 @@ function tabReturn(r) {
   svg += '<text x="' + mid + '" y="' + (H - 4) + '" font-size="10.5" text-anchor="middle" fill="#667E73" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif">0</text></svg>';
   return scenarioCards(r) +
     '<div class="stack" style="--s:12px;margin-top:12px"><div class="card"><div class="blk-t"><h4>' + esc(P.chartMargins) + '</h4><span>' + esc(long ? P.overPlan : P.perSeason) + '</span></div><div class="chart-box nomin" data-ptips>' + svg + '</div></div>' +
-    '<div class="card"><div class="blk-t"><h4>' + esc(P.breakEvenT) + '</h4></div><dl class="kv2"><dt>' + esc(P.beYield) + '</dt><dd>' + (be.yieldTHa ? nf(be.yieldTHa, 1) + ' t/ha' : '·') + '</dd><dt>' + esc(P.bePrice) + '</dt><dd>' + (bePrice ? nf(bePrice, 0) + esc(beUnit) : '·') + '</dd><dt>' + esc(P.expected) + '</dt><dd>' + fmtCur(r.expectedMargin) + '</dd></dl><p class="small faint" style="margin-top:10px">' + esc(P.expectedNote) + '</p></div></div>' +
+    '<div class="card"><div class="blk-t"><h4>' + esc(P.breakEvenT) + '</h4></div><dl class="kv2"><dt>' + esc(P.beYield) + '</dt><dd>' + (be.yieldTHa ? nf(be.yieldTHa, 1) + ' t/ha' : '·') + '</dd><dt>' + esc(P.bePrice) + '</dt><dd>' + (bePrice ? esc(fmtUnit(bePrice) + beUnit) : '·') + '</dd><dt>' + esc(P.expected) + '</dt><dd>' + fmtCur(r.expectedMargin) + '</dd></dl><p class="small faint" style="margin-top:10px">' + esc(P.expectedNote) + '</p></div></div>' +
     '<p class="notice" style="margin-top:14px">' + P.scenNote + '</p>';
 }
 
@@ -162,7 +223,7 @@ function tabBudget(r) {
     '<div class="split-legend">' + totals.map(([k, v], i) => '<div><span><i style="background:' + colors[i % colors.length] + '"></i>' + esc(cat(k)) + '</span><b>' + fmtCur(v) + ' <em>' + nf(v / tot * 100, 0) + '%</em></b></div>').join('') + '</div>';
   const life = (l) => l.upfront ? (l.purchases > 1 ? ' <span class="faint small">· ' + esc(P.buys(l.purchases)) + '</span>' : l.lifeSeasons > 1 && !long ? ' <span class="faint small">· ' + esc(P.lifeSeasons(l.lifeSeasons)) + '</span>' : '') : '';
   const rows = keys.map(k => '<tr class="grp"><td colspan="4">' + esc(cat(k)) + '</td><td class="tnum">' + fmtCur(groups[k].reduce((a, l) => a + l.total, 0)) + '</td></tr>' +
-    groups[k].map(l => '<tr><td>' + esc(tl(l.label)) + life(l) + '</td><td class="tnum">' + fmtQty(l.qty, l.unit) + '</td><td class="tnum">' + (l.unpriced ? '<span class="badge demo">' + esc(P.toQuote) + '</span>' : nf(l.price, l.price < 10 ? 1 : 0)) + '</td><td class="small faint">' + srcLinks(l.src) + '</td><td class="tnum">' + (l.unpriced ? '·' : fmtCur(l.total)) + '</td></tr>').join('')).join('') +
+    groups[k].map(l => '<tr><td>' + esc(tl(l.label)) + life(l) + '</td><td class="tnum">' + fmtQty(l.qty, l.unit) + '</td><td class="tnum">' + (l.unpriced ? '<span class="badge demo">' + esc(P.toQuote) + '</span>' : esc(fmtUnit(l.price))) + '</td><td class="small faint">' + srcLinks(l.src) + '</td><td class="tnum">' + (l.unpriced ? '·' : fmtCur(l.total)) + '</td></tr>').join('')).join('') +
     (long
       ? '<tr class="tot"><td colspan="4">' + esc(P.horizonCosts) + '</td><td class="tnum">' + fmtCur(B.horizonCosts) + '</td></tr><tr class="grp"><td colspan="4">' + esc(P.totalNeed) + '</td><td class="tnum">' + fmtCur(B.total) + '</td></tr>'
       : '<tr class="grp"><td colspan="4">' + esc(P.cats.reserve) + '</td><td class="tnum">' + fmtCur(B.reserve) + '</td></tr><tr class="tot"><td colspan="4">' + esc(P.totalBudget) + '</td><td class="tnum">' + fmtCur(B.total) + '</td></tr>');
@@ -214,6 +275,7 @@ function tabCompare(r) {
   const P = L().planner;
   const prices = {}, products = {};
   Object.keys(KB.crops).forEach(k => { const v = PLAN.prices[priceKey(k)]; if (v) prices[k] = v; const pr = plProduct(k); if (pr) products[k] = pr; });
+  // each crop keeps its default plan length in the comparison
   let rows;
   try { rows = AFEngine.compare(KB, Object.assign({}, PLAN, { prices, products })); } catch (e) { return '<p class="notice">' + esc(P.engineError) + '</p>'; }
   rows.sort((a, b) => ((b.marginPerMonth !== null) - (a.marginPerMonth !== null)) || ((b.marginPerMonth || 0) - (a.marginPerMonth || 0)) || (a.risk - b.risk));
@@ -221,8 +283,8 @@ function tabCompare(r) {
   const body = rows.map(x => {
     const unit = x.unit ? tl(x.unit) : 'kg', cur = x.crop === PLAN.crop;
     const name = cur ? '<b>' + esc(tl(x.name)) + '</b> <span class="badge plan">' + esc(P.current) + '</span>' : '<button type="button" class="lnk" data-pgo="' + x.crop + '" title="' + esc(P.simulate) + '">' + esc(tl(x.name)) + '</button>';
-    return '<tr' + (cur ? ' class="cur"' : '') + '><td class="c-n">' + name + '<span class="cmp-s">' + esc(durLabel(x.months)) + '</span></td><td class="tnum" data-l="' + esc(P.th.area) + '">' + plArea(x.areaHa) + '<span class="cmp-s">' + (x.needPerHa ? txtCur(x.needPerHa) + ' / ha' : '·') + '</span></td>' +
-      '<td class="tnum" data-l="' + esc(P.th.breakEven) + '">' + (x.breakEvenPerUnit ? nf(x.breakEvenPerUnit, 0) + '<span class="cmp-s">' + esc(P.perUnit(unit)) + '</span>' : '·') + '</td><td data-l="' + esc(P.th.risk) + '"><span class="rkb lv' + riskLvl(x.risk) + '">' + esc(lv[riskLvl(x.risk)]) + '</span><span class="cmp-s">' + esc(monthName(x.bestMonth)) + '</span></td>' +
+    return '<tr' + (cur ? ' class="cur"' : '') + '><td class="c-n">' + name + '<span class="cmp-s">' + esc(chipText(KB.crops[x.crop])) + '</span></td><td class="tnum" data-l="' + esc(P.th.area) + '">' + plArea(x.areaHa) + '<span class="cmp-s">' + (x.needPerHa ? txtCur(x.needPerHa) + ' / ha' : '·') + '</span></td>' +
+      '<td class="tnum" data-l="' + esc(P.th.breakEven) + '">' + (x.breakEvenPerUnit ? esc(fmtUnit(x.breakEvenPerUnit)) + '<span class="cmp-s">' + esc(P.perUnit(unit)) + '</span>' : '·') + '</td><td data-l="' + esc(P.th.risk) + '"><span class="rkb lv' + riskLvl(x.risk) + '">' + esc(lv[riskLvl(x.risk)]) + '</span><span class="cmp-s">' + esc(monthName(x.bestMonth)) + '</span></td>' +
       '<td class="tnum" data-l="' + esc(P.th.marginMonth) + '">' + (x.marginPerMonth !== null ? '<b style="color:' + (x.marginPerMonth >= 0 ? 'var(--green)' : 'var(--crit)') + '">' + fmtCur(x.marginPerMonth) + '</b>' : '<span class="faint">·</span>') + '</td></tr>';
   }).join('');
   return '<div class="card"><div class="blk-t"><h4>' + esc(P.compareT) + '</h4><span>' + esc(P.compareSub) + '</span></div></div>' +
@@ -286,12 +348,12 @@ function tabSources(r) {
   const key = id => { const m = /^([A-Z]+)(\d+)$/.exec(id) || [id, id, 0]; return [m[1], +m[2]]; };
   const list = Array.from(used).filter(id => KB.sources[id]).sort((a, b) => { const x = key(a), y = key(b); return x[0] === y[0] ? x[1] - y[1] : (x[0] < y[0] ? -1 : 1); }).map(id => { const s = KB.sources[id]; return '<li><span class="mono faint">[' + esc(id) + ']</span> ' + (s.url ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.title) + ' ↗</a>' : esc(s.title)) + (s.publisher ? ' <span class="faint">· ' + esc(s.publisher) + (s.year ? ', ' + s.year : '') + '</span>' : '') + '</li>'; }).join('');
   const assume = (KB.assumptions || []).map(a => '<li>' + esc(tl(a)) + '</li>').join('');
-  return '<div class="tbl-wrap"><table class="tbl ptbl"><thead><tr><th>' + esc(P.th.block) + '</th><th>' + esc(P.th.conf) + '</th><th>' + esc(P.th.note) + '</th></tr></thead><tbody>' + conf + '</tbody></table></div>' +
+  return '<p class="small muted" style="margin-bottom:10px">' + esc(P.dataAsOf(fmtDateS(new Date(KB.built + 'T00:00:00Z')))) + '</p><div class="tbl-wrap"><table class="tbl ptbl"><thead><tr><th>' + esc(P.th.block) + '</th><th>' + esc(P.th.conf) + '</th><th>' + esc(P.th.note) + '</th></tr></thead><tbody>' + conf + '</tbody></table></div>' +
     '<h5 class="sub">' + esc(P.assumptionsT) + '</h5><ul class="list-check">' + assume + '</ul><h5 class="sub">' + esc(P.sourcesT) + '</h5><ol class="srcs">' + list + '</ol>';
 }
 
 function plannerInput() {
-  return Object.assign({}, PLAN, { capital: PLAN.capital, priceXafKg: plPrice(), product: plProduct(PLAN.crop) });
+  return Object.assign({}, PLAN, { capital: PLAN.capital, priceXafKg: plPrice(), product: plProduct(PLAN.crop), horizon: plHorizon(PLAN.crop) });
 }
 
 function plannerRender(root, compact) {
@@ -316,19 +378,24 @@ function plannerMount(root, compact) {
     const id = e.target.id;
     if (id === 'pl-cap') PLAN.capital = parseAmt(e.target.value);
     else if (id === 'pl-area') PLAN.area = Math.max(0, parseFloat(e.target.value) || 0);
-    else if (id === 'pl-cur') PLAN.currency = e.target.value;
+    else if (id === 'pl-cur') {
+      // The same money in the new currency: the capital is converted, not reinterpreted.
+      const from = curRate(); PLAN.currency = e.target.value; const v = PLAN.capital / from * curRate();
+      PLAN.capital = v >= 1000 ? Math.round(v / 10) * 10 : Math.round(v); reform('#pl-cur');
+    }
     else if (id === 'pl-start') { if (e.target.value) PLAN.start = e.target.value; }
     else if (id === 'pl-land') PLAN.land = e.target.value;
     else if (id === 'pl-market') PLAN.market = e.target.value;
     else if (id === 'pl-fam') PLAN.familyLabour = parseFloat(e.target.value) || 0;
     else if (id === 'pl-tools') PLAN.ownTools = e.target.checked;
-    else if (id === 'pl-price') { const v = parseAmt(e.target.value); PLAN.prices[priceKey(PLAN.crop)] = v > 0 ? v : null; }
+    else if (id === 'pl-price') { const v = parseAmt(e.target.value); PLAN.prices[priceKey(PLAN.crop)] = v > 0 ? v / curRate() : null; }
     else if (e.target.name === 'pwater') PLAN.water = e.target.value;
     changed();
   });
-  form.addEventListener('change', e => { if (e.target.id === 'pl-cap') e.target.value = nf(PLAN.capital); if (e.target.id === 'pl-price') e.target.value = plPrice() ? nf(plPrice()) : ''; });
+  form.addEventListener('change', e => { if (e.target.id === 'pl-cap') e.target.value = nf(PLAN.capital); if (e.target.id === 'pl-price') e.target.value = priceShown(plPrice()); });
   form.addEventListener('click', e => {
-    const m = e.target.closest('[data-pmode]'), c = e.target.closest('[data-pcrop]'), pr = e.target.closest('[data-pprod]');
+    const m = e.target.closest('[data-pmode]'), c = e.target.closest('[data-pcrop]'), pr = e.target.closest('[data-pprod]'), hz = e.target.closest('[data-phor]');
+    if (hz) { PLAN.horizons[PLAN.crop] = +hz.dataset.phor; reform('[data-phor="' + hz.dataset.phor + '"]'); changed(); return; }
     if (m) { PLAN.mode = m.dataset.pmode; $$('[data-pmode]', form).forEach(b => b.setAttribute('aria-pressed', String(b === m))); const a = $('[data-parea]', form); if (a) a.hidden = PLAN.mode !== 'crop'; changed(); }
     if (c) pickCrop(c.dataset.pcrop, true);
     if (pr) { PLAN.products[PLAN.crop] = pr.dataset.pprod; reform('[data-pprod="' + pr.dataset.pprod + '"]'); changed(); }

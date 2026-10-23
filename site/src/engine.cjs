@@ -214,11 +214,21 @@ function scenarioWeights(kb, r) {
 function plan(kb, input) {
   const crop = kb.crops[input.crop];
   if (!crop) throw new Error('Unknown crop');
-  if (crop.profile && crop.profile !== 'season') return planLong(kb, input, crop);
+  if (crop.profile && crop.profile !== 'season') {
+    // The grower may choose the plan length among the crop's options (plantain cycles, orchard years).
+    const opt = (crop.horizon_options || []).find(o => o.months === +input.horizon);
+    const c = opt && opt.months !== crop.horizon_months ? Object.assign({}, crop, { horizon_months: opt.months }) : crop;
+    const r = planLong(kb, input, c);
+    r.horizonOptions = (crop.horizon_options || []).map(o => o.months);
+    r.firstHarvestMonths = r.production && r.production.length ? Math.round((r.production[0].from - r.calendar.field) / (30.44 * 864e5)) : null;
+    return r;
+  }
   const r = planSeason(kb, input, crop);
   r.profile = 'season';
   r.horizonMonths = r.cashflow.months.length;
   r.marginPerMonth = r.scenarios.average.margin / Math.max(1, r.horizonMonths);
+  r.horizonOptions = [];
+  r.firstHarvestMonths = Math.round((r.calendar.firstHarvest - r.calendar.start) / (30.44 * 864e5));
   return r;
 }
 
@@ -736,7 +746,7 @@ function compare(kb, input) {
     const r = plan(kb, Object.assign({}, input, { crop: k, priceXafKg: (input.prices || {})[k] || 0, product: (input.products || {})[k] }));
     return { crop: k, name: c.name, profile: r.profile, months: r.horizonMonths, areaHa: r.areaHa, state: r.state, budget: r.budget.total, needPerHa: r.areaHa > 0 ? r.budget.total / r.areaHa : null,
       breakEvenPerUnit: r.breakEven.pricePerUnit !== undefined ? r.breakEven.pricePerUnit : r.breakEven.priceXafKg, unit: r.product ? r.product.unitLabel : { en: 'kg', fr: 'kg' },
-      risk: r.risk.score, bestMonth: r.bestMonth, priceSource: r.priceSource, margin: r.priceSource ? r.scenarios.average.margin : null, marginPerMonth: r.priceSource ? r.marginPerMonth : null, paybackIndex: r.cashflow.paybackIndex };
+      risk: r.risk.score, bestMonth: r.bestMonth, priceSource: r.priceSource, margin: r.priceSource ? r.scenarios.average.margin : null, marginPerMonth: r.priceSource ? r.marginPerMonth : null, paybackIndex: r.cashflow.paybackIndex, firstHarvestMonths: r.firstHarvestMonths };
   });
 }
 

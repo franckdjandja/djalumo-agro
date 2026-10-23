@@ -29,7 +29,7 @@ def L(en, fr):
 
 # ---------------------------------------------------------------- sources
 # Each research file numbers its sources from S1; they get a prefix here and identical URLs are merged.
-PREFIX = {'tomato': 'T', 'pepper': 'P', 'greenbean': 'G', 'cucumber': 'CU', 'zucchini': 'Z', 'chili': 'CH', 'cassava': 'CA', 'plantain': 'PL', 'avocado': 'AV', 'costs': 'C'}
+PREFIX = {'tomato': 'T', 'pepper': 'P', 'greenbean': 'G', 'cucumber': 'CU', 'zucchini': 'Z', 'chili': 'CH', 'cassava': 'CA', 'plantain': 'PL', 'avocado': 'AV', 'pineapple': 'AN', 'cocoa': 'CC', 'oil_palm': 'OP', 'costs': 'C'}
 SOURCES = {}
 ALIAS = {}
 _url_owner = {}
@@ -125,6 +125,21 @@ def build_items():
          basis='Ready to plant PIF plants offered at 200 FCFA in Cameroon (2022); other offers 150 to 250 FCFA, suckers about 100 FCFA (PL7).')
     item('avocado_grafted', 'Grafted avocado plant', 'Plant d’avocatier greffé', round(3 * FX['XAF']), 'planting', 'unit', src('AV8', 'C38'),
          basis='3 USD a grafted plant in a 2022 offer by a Cameroon nursery, converted at the October 2026 rate (AV8, C38); an older Yaoundé nursery listed 1,000 to 2,000 FCFA (AV8).')
+    item('pineapple_sucker', 'Pineapple sucker (rejet), 300 to 500 g', 'Rejet d’ananas, 300 à 500 g', 7, 'planting', 'unit', src('AN3'), (1000, 'lot of 1,000 suckers', 'lot de 1 000 rejets'),
+         basis='No Cameroon price found. 7 FCFA a sucker in a Benin budget (AN3). Suckers are often taken from an older field at the cost of the labour only.')
+    item('ethephon', 'Ethephon (Ethrel type) for flower induction', 'Éthéphon (type Ethrel) pour l’induction florale', None, 'growth_regulator', 'l', src('AN1'),
+         basis='No price found: to quote locally. Dose 6 to 10 ml per 10 L of water, 10 L for 200 plants (AN1).')
+    item('cocoa_seedling', 'Improved cocoa seedling (hybrid)', 'Plant de cacaoyer amélioré (hybride)', 200, 'planting', 'unit', src('CC2'),
+         basis='150 to 250 FCFA a seedling in Cameroon (CC2), midpoint.')
+    item('shade_trees', 'Shade trees and temporary shade (per ha)', 'Arbres d’ombrage et ombrage temporaire (par ha)', 125000, 'planting', 'ha', src('CC3'),
+         basis='50,000 to 200,000 FCFA per ha for shade trees in Cameroon (CC3), midpoint.')
+    item('palm_seedling', 'Selected oil palm seedling (tenera)', 'Plant sélectionné de palmier à huile (tenera)', 2000, 'planting', 'unit', src('OP1'),
+         basis='2,000 FCFA a seedling in the MINADER budget (OP1).')
+    item('kcl', 'Potassium chloride', 'Chlorure de potassium', 600, 'fertilizer', 'kg', src('OP1'), (50, '50 kg bag', 'sac de 50 kg'), basis='600 FCFA/kg in the MINADER oil palm budget (OP1).')
+    item('kieserite', 'Kieserite (magnesium sulphate)', 'Kiesérite (sulfate de magnésium)', 700, 'fertilizer', 'kg', src('OP1'), (50, '50 kg bag', 'sac de 50 kg'), basis='700 FCFA/kg in the MINADER oil palm budget (OP1).')
+    item('mucuna_seed', 'Mucuna seed for cover crop', 'Semence de mucuna pour plante de couverture', 1000, 'seed', 'kg', src('OP1'), basis='12 kg at 1,000 FCFA in the MINADER oil palm budget (OP1).')
+    item('rodent_guard', 'Rodent guard (galvanized mesh) for a young palm', 'Manchon grillagé contre les rongeurs pour jeune palmier', None, 'planting', 'unit', src('OP1'),
+         basis='Recommended by MINADER (OP1); no price given: to quote locally.')
     kes = FX['XAF'] / FX['KES']  # XAF per Kenyan shilling, derived from the two USD rates
     item('seed_cucumber', 'Cucumber seed, open pollinated (Abidjan listing price)', 'Semence de concombre, variété fixée (prix d’annonce à Abidjan)', round(15500 / 50 * 1000), 'seed', 'kg', src('C63'), (0.05, '50 g pack', 'sachet de 50 g'),
          basis='No Cameroon price found. Marketer, 15,500 FCFA per 50 g, Abidjan listing 2026 (C63). A bulk Nairobi listing is cheaper (KES 1,000 per 100 g, CU46).')
@@ -714,7 +729,7 @@ def cassava():
     rough = lambda en, fr: L(en, fr)
     return {
         'name': L('Cassava', 'Manioc'), 'release': 'regional', 'badge': L('Cameroon references', 'Références Cameroun'), 'profile': 'long',
-        'plants_per_ha': plants, 'loss_pct': LOCAL_LOSS, 'harvest_kg_per_person_day': 1000, 'agronomist_visits': 1, 'horizon_months': 15,
+        'plants_per_ha': plants, 'loss_pct': LOCAL_LOSS, 'harvest_kg_per_person_day': 1000, 'agronomist_visits': 1, 'horizon_months': 15, 'first_harvest_months': 12,
         'kc': {'ini': 0.3, 'mid': 0.8, 'end': 0.3, 'stages': kc_stages([20, 40, 90, 60])},
         'cycle': {'nursery_days': 0, 'to_first_harvest_days': 365, 'harvest_days': 60, 'flowering_before_harvest_days': 0},
         'yield_t_ha': yields(8.0, 25.0, 16.0),
@@ -815,7 +830,8 @@ def plantain():
     ]
     return {
         'name': L('Plantain', 'Banane plantain'), 'release': 'regional', 'badge': L('Cameroon references', 'Références Cameroun'), 'profile': 'ratoon',
-        'plants_per_ha': plants, 'ky': 1.2, 'loss_pct': LOCAL_LOSS, 'harvest_kg_per_person_day': 1000, 'agronomist_visits': 1, 'horizon_months': 36,
+        'plants_per_ha': plants, 'ky': 1.2, 'loss_pct': LOCAL_LOSS, 'harvest_kg_per_person_day': 1000, 'agronomist_visits': 1, 'horizon_months': 15,
+        'horizon_options': [{'months': 15, 'cycles': 1}, {'months': 25, 'cycles': 2}, {'months': 36, 'cycles': 3}], 'first_harvest_months': 13,
         'kc': {'ini': 0.5, 'mid': 1.1, 'end': 1.0, 'stages': kc_stages([120, 90, 120, 60])},
         'cycle': {'nursery_days': 0, 'to_first_harvest_days': 380, 'harvest_days': 60, 'flowering_before_harvest_days': 80},
         'production': {'cycles': 3, 'interval_days': 300, 'factors': [1, 1, 1]},
@@ -832,7 +848,7 @@ def plantain():
             'plants_per_ha': '3 m × 2 m, 1,666 plants per ha (PL1).',
             'ky': 'FAO yield response factor for banana 1.2 to 1.35, 1.2 used (M6).',
             'kc': 'FAO-56 banana, first year: Kc 0.5, 1.1, 1.0; stage lengths 120/90/120/60 days (M1).',
-            'cycle': 'Flowering about 10 months after planting, cycle 10 to 15 months (PL2); harvest 70 to 90 days after flowering (PL1): first harvest at 380 days. Successive harvests 300 days apart is a Djalumo Agro assumption (no Cameroon figure found); clumps are kept three or four years (PL8), so three cycles over 36 months.',
+            'cycle': 'Flowering about 10 months after planting, cycle 10 to 15 months (PL2); harvest 10 to 12 months after planting under irrigation (PL4, 2024); harvest 70 to 90 days after flowering (PL1): first bunches at 380 days (about 13 months), cut over two months. The plan covers one cycle (15 months) by default; the successor suckers give a second and third cycle, 300 days apart (Djalumo Agro assumption, no Cameroon figure found); clumps are kept three or four years (PL8).',
             'yield_t_ha': 'Per cycle. Poor 6.8 = mean yield on farms near Njombé (PL3; national about 7, PL9); good 25 = 15 kg bunches (PL4, Corne 1) on 1,666 plants (PL1), derived; average = midpoint. A bunch is counted at 11.6 kg, the farm mean (PL3).',
             'harvest_kg_per_person_day': 'No plantain figure found; the cassava harvest norm of the Cameroon budget (CA2) is used as a proxy for a bulky crop.',
             'loss_pct': 'No measured loss found; the tomato value for a local sale is used as a proxy (T5, T6). Theft and toppling are inside the poor yield.',
@@ -898,7 +914,8 @@ def avocado():
     ]
     return {
         'name': L('Avocado', 'Avocat'), 'release': 'regional', 'badge': L('Regional references', 'Références régionales'), 'profile': 'orchard',
-        'plants_per_ha': trees, 'loss_pct': 15, 'harvest_kg_per_person_day': round(13500 / 40), 'agronomist_visits': 1, 'horizon_months': 120,
+        'plants_per_ha': trees, 'loss_pct': 15, 'harvest_kg_per_person_day': round(13500 / 40), 'agronomist_visits': 1, 'horizon_months': 60,
+        'horizon_options': [{'months': 36}, {'months': 60}, {'months': 120}], 'first_harvest_months': 28,
         'kc': {'ini': 0.85, 'mid': 0.85, 'end': 0.85, 'stages': [0.25, 0.5, 0.75]},
         'cycle': {'nursery_days': 0, 'to_first_harvest_days': 0, 'harvest_days': 0, 'flowering_before_harvest_days': 0},
         'production': {'yield_by_year': [0, 0, 0.15, 0.35, 0.5, 0.75, 0.9, 1, 1, 1], 'harvest_months': [1, 2, 3, 4, 6, 7, 8]},
@@ -910,11 +927,11 @@ def avocado():
         'products': {'fresh': {'label': L('Fruit, by the sack', 'Fruits, au sac'), 'ratio': 1, 'unit': 'sack', 'unit_kg': 100, 'unit_label': L('100 kg sack', 'sac de 100 kg')}},
         'harvest_src': src('AV6'),
         'disease_note': L('Anthracnose and leaf spot thrive in wet weather; root rot (phytophthora) on poorly drained soils (AV6).', 'L’anthracnose et la cercosporiose prospèrent par temps humide ; la pourriture des racines (phytophthora) sur sols mal drainés (AV6).'),
-        'steps': steps, 'recurring': recurring, 'src': src('AV1', 'AV2', 'AV4', 'AV5', 'AV6', 'M1'),
+        'steps': steps, 'recurring': recurring, 'src': src('AV1', 'AV2', 'AV4', 'AV5', 'AV6', 'AV9', 'M1'),
         'basis': {
             'plants_per_ha': '8 m × 8 m, 156 trees per ha, within 8 to 10 m between trees (AV7); 120 trees at 9 m × 9 m (AV5), about 150 in the Trinidad model (AV6).',
             'kc': 'FAO-56 avocado without ground cover, mid season Kc 0.85 used through the year (M1). No FAO yield response factor: water shortage raises the risk, not the modelled yield.',
-            'cycle': 'Grafted trees bear from about year 3 (AV1, AV4); economic crop from year 6 (AV5). Yield shares by year 0, 0, 15, 35, 50, 75, 90, then 100% are a Djalumo Agro assumption fitted to these points and to the young tree yields of AV5.',
+            'cycle': 'Grafted Hass trees reach production in 2.5 to 3 years (AV9, 2023); grafted trees bear from about year 3 (AV1, AV4); economic crop from year 6 (AV5). The first harvest falls about 27 to 30 months after planting depending on the planting month. Yield shares by year 0, 0, 15, 35, 50, 75, 90, then 100% are a Djalumo Agro assumption fitted to these points and to the young tree yields of AV5.',
             'yield_t_ha': 'Mature orchard, fresh fruit per year. Poor 7.5 = low end of 7.5 to 11 t/ha (AV5); average 10 = well kept orchards in Cameroon, more than 10 t/ha (AV1, AV2); good 13.5 = Trinidad model from year 4 (AV6).',
             'harvest_kg_per_person_day': '13,500 kg picked in 40 person days in the Trinidad model (AV6), derived.',
             'loss_pct': '15% post harvest loss in the Trinidad model (AV6).',
@@ -926,6 +943,192 @@ def avocado():
             {'block': L('Prices at harvest', 'Prix à la récolte'), 'level': 'low', 'note': L('Sack prices from Cameroon press, wide range; you enter your price per sack.', 'Prix au sac relevés par la presse camerounaise, fourchette large ; vous saisissez votre prix par sac.')},
             {'block': L('Export', 'Export'), 'level': 'low', 'note': L('Europe needs commercial varieties, certification and cold chain; this plan prices the local market.', 'L’Europe exige des variétés commerciales, une certification et une chaîne du froid ; ce plan chiffre le marché local.')},
             {'block': L('Climate and water', 'Climat et eau'), 'level': 'medium', 'note': L('Modelled Foumbot climatology 1991 to 2021 with FAO-56 methods.', 'Climatologie modélisée de Foumbot 1991 à 2021 et méthodes FAO-56.')},
+        ],
+    }
+
+
+def pineapple():
+    plants = 55000  # twin rows 90 x 40 x 28 cm (AN2), low end of 55,000 to 77,000 in Cameroon (AN1)
+    g = lambda grams: round(grams * plants / 1000)
+    steps = [
+        step('site', 'prep', 'field', (-60, -45), 'Plot and suckers', 'Parcelle et rejets',
+             'Well drained soil, ridges in wet areas. Use suckers of 300 to 500 g and plant each block with one weight class so that the plants flower together.',
+             'Sol bien drainé, billons en zone humide. Utiliser des rejets de 300 à 500 g et planter chaque bloc avec une seule classe de poids pour que les plants fleurissent ensemble.',
+             sources=src('AN1', 'AN2')),
+        step('clear', 'prep', 'field', (-45, -25), 'Clearing', 'Défrichage', 'Clear the plot and remove the stumps.', 'Défricher la parcelle et enlever les souches.',
+             labour=PROXY_LAB['clear'], sources=src('T1')),
+        step('beds', 'prep', 'field', (-25, -7), 'Ridges and twin rows', 'Billons et lignes jumelées',
+             'Prepare ridges for twin rows: 90 cm between twin rows, 40 cm between the two lines, 28 cm between plants, about 55,000 plants per ha.',
+             'Préparer des billons pour des lignes jumelées : 90 cm entre lignes jumelées, 40 cm entre les deux lignes, 28 cm entre plants, soit environ 55 000 plants par ha.',
+             labour=PROXY_LAB['plough'], sources=src('AN2', 'T1')),
+        step('plant', 'planting', 'field', (0, 10), 'Planting suckers', 'Plantation des rejets',
+             'Plant 55,000 suckers per ha, sorted by weight.', 'Planter 55 000 rejets par ha, triés par poids.',
+             inputs=[('pineapple_sucker', plants, 1, src('AN3'))], labour=55, sources=src('AN1', 'AN2', 'AN3')),
+        step('fert1', 'care', 'field', (90, 100), 'First fertilizer', 'Premier apport d’engrais',
+             'Three months after planting: 7.36 g of urea and 3.66 g of NPK per plant.', 'Trois mois après la plantation : 7,36 g d’urée et 3,66 g de NPK par plant.',
+             inputs=[('urea', g(7.36), 1, src('AN3')), ('npk_15_15_15', g(3.66), 1, src('AN3'))], labour=PROXY_LAB['fert'], sources=src('AN3', 'T1')),
+        step('fert2', 'care', 'field', (180, 190), 'Second fertilizer', 'Deuxième apport d’engrais',
+             'Three months later: 3.67 g of urea and 7.33 g of NPK per plant.', 'Trois mois plus tard : 3,67 g d’urée et 7,33 g de NPK par plant.',
+             inputs=[('urea', g(3.67), 1, src('AN3')), ('npk_15_15_15', g(7.33), 1, src('AN3'))], labour=PROXY_LAB['fert'], sources=src('AN3', 'T1')),
+        step('fert3', 'care', 'field', (270, 280), 'Third fertilizer', 'Troisième apport d’engrais',
+             'Three months later: 7.33 g of NPK and 10.16 g of potassium sulphate per plant.', 'Trois mois plus tard : 7,33 g de NPK et 10,16 g de sulfate de potassium par plant.',
+             inputs=[('npk_15_15_15', g(7.33), 1, src('AN3')), ('k2so4', g(10.16), 1, src('AN3'))], labour=PROXY_LAB['fert'], sources=src('AN3', 'T1')),
+        step('weed', 'care', 'field', (30, 240), 'Weeding', 'Désherbage', 'Weed every month until the canopy closes, six passes.', 'Désherber chaque mois jusqu’à la fermeture du couvert, six passages.',
+             labour=PROXY_LAB['weed'] * 6, sources=src('AN2', 'T1')),
+        step('tif', 'care', 'field', (245, 255), 'Flower induction', 'Induction florale (TIF)',
+             'About eight months after planting, ethephon at 8 ml per 10 L of water, 10 L for 200 plants, applied at night and repeated three days later. The fruit is ripe about five months after induction.',
+             'Environ huit mois après la plantation, éthéphon à 8 ml pour 10 L d’eau, 10 L pour 200 plants, appliqué de nuit et renouvelé trois jours plus tard. Le fruit est mûr environ cinq mois après l’induction.',
+             inputs=[('ethephon', round(plants / 200 * 0.008, 2), 2, src('AN1', 'AN2'))], labour=16, sources=src('AN1', 'AN2')),
+    ]
+    return {
+        'name': L('Pineapple', 'Ananas'), 'release': 'regional', 'badge': L('Cameroon references', 'Références Cameroun'), 'profile': 'long',
+        'plants_per_ha': plants, 'loss_pct': LOCAL_LOSS, 'harvest_kg_per_person_day': 400, 'agronomist_visits': 1, 'horizon_months': 16, 'first_harvest_months': 13,
+        'kc': {'ini': 0.5, 'mid': 0.3, 'end': 0.3, 'stages': kc_stages([60, 120, 180, 95])},
+        'cycle': {'nursery_days': 0, 'to_first_harvest_days': 410, 'harvest_days': 45, 'flowering_before_harvest_days': 160},
+        'yield_t_ha': yields(15.5, 50.0, 31.0),
+        'harvest_label': L('Harvest', 'Récolte'),
+        'harvest_detail': L('Fruits ripen about five months after induction and are picked over six weeks; the suckers left on the stumps can start a second crop.', 'Les fruits mûrissent environ cinq mois après l’induction et se cueillent sur six semaines ; les rejets laissés sur les souches peuvent lancer une deuxième récolte.'),
+        'price': {'reference_xaf_kg': None, 'index': [1] * 12, 'note': NO_PRICE,
+                  'observed': L('Observed in Cameroon (2024): 400,000 to 600,000 FCFA a tonne wholesale, 100 to 400 FCFA a fruit at retail.', 'Observé au Cameroun (2024) : 400 000 à 600 000 FCFA la tonne en gros, 100 à 400 FCFA le fruit au détail.'), 'src': src('AN1')},
+        'products': {'fresh': {'label': L('Fruit', 'Fruits'), 'ratio': 1, 'unit': 'fruit', 'unit_kg': 1.15, 'unit_label': L('fruit', 'fruit')}},
+        'harvest_src': src('AN2'),
+        'disease_note': L('Use healthy suckers sorted by weight on well drained soil; fruit weight falls at high density and on successive harvests (AN1, AN2).', 'Utiliser des rejets sains triés par poids sur sol bien drainé ; le poids des fruits baisse à forte densité et aux récoltes successives (AN1, AN2).'),
+        'steps': steps, 'src': src('AN1', 'AN2', 'AN3', 'M1'),
+        'basis': {
+            'plants_per_ha': '55,000 plants per ha, twin rows 90 x 40 x 28 cm (AN2), low end of the 55,000 to 77,000 used in Cameroon (AN1).',
+            'kc': 'FAO-56 pineapple without ground cover: Kc 0.5, 0.3, 0.3 (M1). No yield response factor: water shortage raises the risk, not the modelled yield.',
+            'cycle': 'Flower induction 6 to 13 months after planting, fruit ripe about 160 days later, harvest 12 to 18 months after planting (AN1, AN2): induction at about 8 months, first fruits at about 13.5 months.',
+            'yield_t_ha': 'Average 31 t/ha in Cameroon (AN1); good 50 t/ha (AN2, Togo); poor 15.5 = half the average, a Djalumo Agro assumption. Fruits of 1.15 kg on average (AN3).',
+            'labour': 'Planting 55 person days (1,000 suckers a day), induction 16, harvest 400 kg a day: Djalumo Agro assumptions calibrated so that labour stays between the Togo (AN2) and Benin (AN3) budgets; other tasks use the tomato proxies (T1).',
+        },
+        'confidence': [
+            {'block': L('Technical itinerary', 'Itinéraire technique'), 'level': 'medium', 'note': L('Cameroon market study and CTA and ISF Cameroun guide; fertilizer program from Benin.', 'Étude de marché camerounaise et guide CTA et ISF Cameroun ; programme d’engrais du Bénin.')},
+            {'block': L('Yields', 'Rendements'), 'level': 'medium', 'note': L('Cameroon average 31 t/ha; the poor level is an assumption.', 'Moyenne camerounaise de 31 t/ha ; le niveau faible est une hypothèse.')},
+            {'block': L('Prices at harvest', 'Prix à la récolte'), 'level': 'low', 'note': L('One 2024 Cameroon range; you enter your price per fruit.', 'Une fourchette camerounaise de 2024 ; vous saisissez votre prix par fruit.')},
+            {'block': L('Climate and water', 'Climat et eau'), 'level': 'medium', 'note': L('Modelled Foumbot climatology 1991 to 2021 with FAO-56 methods.', 'Climatologie modélisée de Foumbot 1991 à 2021 et méthodes FAO-56.')},
+        ],
+    }
+
+
+def cocoa():
+    trees = 1111  # 3 m x 3 m, within 850 to 1,300 plants per ha (CC4, CC3)
+    steps = [
+        step('site', 'prep', 'field', (-120, -90), 'Site and shade plan', 'Site et plan d’ombrage',
+             'Forest soil, deep and well drained. Plan about 70% shade for young cocoa: keep useful trees, add shade trees and plant plantain as temporary shade.',
+             'Sol forestier profond et bien drainé. Prévoir environ 70 % d’ombrage pour le jeune cacaoyer : garder les arbres utiles, ajouter des arbres d’ombrage et planter du plantain comme ombrage temporaire.',
+             sources=src('CC4', 'CC5')),
+        step('clear', 'prep', 'field', (-90, -60), 'Clearing and staking', 'Défrichage et piquetage', 'Clear the plot and mark the planting points 3 m apart.', 'Défricher la parcelle et piqueter les points de plantation à 3 m.',
+             labour=PROXY_LAB['clear'] + 10, sources=src('T1')),
+        step('shade', 'planting', 'field', (-60, -30), 'Shade trees', 'Arbres d’ombrage', 'Plant the shade trees and the temporary shade.', 'Planter les arbres d’ombrage et l’ombrage temporaire.',
+             inputs=[('shade_trees', 1, 1, src('CC3'))], labour=15, sources=src('CC3', 'CC5')),
+        step('holes', 'prep', 'field', (-30, -7), 'Holes', 'Trouaison', 'Dig 40 × 40 × 40 cm holes at 3 m × 3 m, 1,111 per ha.', 'Creuser des trous de 40 × 40 × 40 cm à 3 m × 3 m, soit 1 111 par ha.',
+             labour=40, sources=src('CC2')),
+        step('plant', 'planting', 'field', (0, 14), 'Planting improved seedlings', 'Plantation des plants améliorés',
+             'Plant improved hybrid seedlings at the start of the rains, with 10% extra to replace losses.', 'Planter des plants hybrides améliorés au début des pluies, avec 10 % de plus pour remplacer les pertes.',
+             inputs=[('cocoa_seedling', round(trees * 1.1), 1, src('CC2'))], labour=PROXY_LAB['transplant'], sources=src('CC1', 'CC2', 'T1')),
+    ]
+    yrs = lambda *v: list(v)
+    recurring = [
+        rec('weed', 'care', 'Weeding', 'Sarclage', 'Four weedings a year.', 'Quatre sarclages par an.', 3, 1, labour=PROXY_LAB['weed'], sources=src('CC2', 'T1')),
+        rec('prune', 'care', 'Suckering and pruning', 'Égourmandage et taille', 'Remove the chupons every month; maintenance and sanitary pruning, never at leaf flush or flowering.', 'Retirer les gourmands chaque mois ; taille d’entretien et sanitaire, jamais pendant le renouvellement des feuilles ni la floraison.',
+            1, 6, labour=3, sources=src('CC2', 'CC4')),
+        rec('feed', 'care', 'Mineral fertilizer from year 4', 'Engrais minéral dès la 4e année', 'NPK 12-11-18 at 350 g per tree a year in two splits (NPK 12-14-19 in the budget, the nearest formula with a price).', 'NPK 12-11-18 à 350 g par arbre et par an en deux apports (NPK 12-14-19 au budget, la formule la plus proche ayant un prix).',
+            6, 36, inputs=[('npk_12_14_19', round(trees * 0.175), 1, src('CC2'))], labour=PROXY_LAB['fert'], sources=src('CC2', 'T1')),
+        rec('manure', 'care', 'Organic manure every three years', 'Fumure organique tous les trois ans', '5 t of manure or compost per ha every three years.', '5 t de fumier ou de compost par ha tous les trois ans.',
+            36, 36, inputs=[('farmyard_manure', 5000, 1, src('CC2'))], labour=PROXY_LAB['manure'], sources=src('CC2', 'T1')),
+        rec('fungi', 'protection', 'Black pod control', 'Lutte contre la pourriture brune',
+            'Metalaxyl copper (Ridomil type) every three weeks in the risk period, June to October, six treatments a year from the first pods; no treatment in the 14 days before a harvest. Untreated trees lost a third to two thirds of their pods in Cameroon trials.',
+            'Métalaxyl cuivre (type Ridomil) toutes les trois semaines pendant la période à risque, de juin à octobre, six traitements par an dès les premières cabosses ; aucun traitement dans les 14 jours avant une récolte. Sans traitement, un tiers à deux tiers des cabosses ont été perdues dans les essais camerounais.',
+            12, 24, inputs=[('metalaxyl_mz', 0.5, 6, src('CC2'))], labour=PROXY_LAB['spray'] * 6, sources=src('CC2', 'CC4', 'CC6', 'T2'), span=120),
+        rec('mirids', 'protection', 'Mirid control', 'Lutte contre les mirides', 'Two insecticide passes 21 days apart at leaf flush.', 'Deux passages d’insecticide à 21 jours d’intervalle au renouvellement des feuilles.',
+            12, 12, inputs=[('insecticide_l', 1, 2, src('CC2'))], labour=PROXY_LAB['spray'] * 2, sources=src('CC2', 'CC4', 'T2')),
+    ]
+    return {
+        'name': L('Cocoa', 'Cacao'), 'release': 'regional', 'badge': L('Cameroon references', 'Références Cameroun'), 'profile': 'orchard',
+        'plants_per_ha': trees, 'loss_pct': 5, 'harvest_kg_per_person_day': 15, 'agronomist_visits': 1, 'horizon_months': 60,
+        'horizon_options': [{'months': 60}, {'months': 120}], 'first_harvest_months': 30,
+        'kc': {'ini': 1.0, 'mid': 1.05, 'end': 1.05, 'stages': [0.25, 0.5, 0.75]},
+        'cycle': {'nursery_days': 0, 'to_first_harvest_days': 0, 'harvest_days': 0, 'flowering_before_harvest_days': 0},
+        'production': {'yield_by_year': [0, 0, 0.15, 0.4, 0.7, 0.9, 1, 1, 1, 1], 'harvest_months': [8, 9, 10, 11, 0]},
+        'yield_t_ha': yields(0.3, 1.5, 0.8),
+        'harvest_label': L('Cocoa campaign, year {n}', 'Campagne cacaoyère, année {n}'),
+        'harvest_detail': L('Pick ripe pods, open them within 5 days, ferment 6 days with 3 turnings and sun dry 8 to 15 days down to 6 to 8% moisture. Sold as dry beans by the kg.', 'Cueillir les cabosses mûres, les écabosser sous 5 jours, fermenter 6 jours avec 3 brassages et sécher au soleil 8 à 15 jours jusqu’à 6 à 8 % d’humidité. Vendu en fèves sèches au kg.'),
+        'price': {'reference_xaf_kg': None, 'index': [1] * 12, 'note': NO_PRICE,
+                  'observed': L('Observed in 2026: ONCC minimum price 1,400 FCFA/kg in April (1,050 in January); 1,650 to 1,700 FCFA/kg at the farm gate in June; never above 2,000 FCFA in the 2025 to 2026 season.', 'Observé en 2026 : prix minimum ONCC 1 400 FCFA/kg en avril (1 050 en janvier) ; 1 650 à 1 700 FCFA/kg bord champ en juin ; jamais au delà de 2 000 FCFA sur la campagne 2025 à 2026.'), 'src': src('CC8', 'CC9')},
+        'products': {'fresh': {'label': L('Dry beans', 'Fèves sèches'), 'ratio': 1}},
+        'harvest_src': src('CC4'),
+        'disease_note': L('Black pod (Phytophthora megakarya) is the main loss in wet months; mirids attack young shoots (CC2, CC6).', 'La pourriture brune (Phytophthora megakarya) est la principale perte des mois humides ; les mirides attaquent les jeunes pousses (CC2, CC6).'),
+        'steps': steps, 'recurring': recurring, 'src': src('CC1', 'CC2', 'CC3', 'CC4', 'CC7', 'M1'),
+        'basis': {
+            'plants_per_ha': '3 m × 3 m, 1,111 trees per ha, within 850 to 1,100 (CC4) and 1,100 to 1,300 (CC3).',
+            'kc': 'FAO-56 cocoa: Kc 1.0, 1.05, 1.05 (M1), used through the year.',
+            'cycle': 'First yields 18 months after planting improved seedlings, a full crop after 2.5 to 3 years (CC1); SNK hybrids from 30 months (CC2). Yield shares 0, 0, 15, 40, 70, 90, then 100% follow the CC2 projection (250, 700, 1,200, then 1,800 kg/ha). The campaign runs from September (CC10).',
+            'yield_t_ha': 'Dry beans. Poor 0.3 = unaided small farms (280 kg, CC7); average 0.8 = low end of well managed farms 0.8 to 1.5 t (CC3), above supported farms 0.5 to 0.6 t (CC7); good 1.5 (CC3); IRAD second generation varieties average 2 t (CC1).',
+            'labour': 'Harvest, pod opening, fermentation and drying at 15 kg of dry beans per person day, suckering 3 person days a month, holes 40: Djalumo Agro assumptions; other tasks use the tomato proxies (T1, T2).',
+            'protection': 'Six metalaxyl copper treatments of 0.5 kg per ha and two insecticide passes of 1 L per ha: doses are Djalumo Agro assumptions on the frequencies of CC2.',
+        },
+        'confidence': [
+            {'block': L('Technical itinerary', 'Itinéraire technique'), 'level': 'medium', 'note': L('ONCC 2025 manual and 2026 Cameroon guides; treatment doses are assumptions.', 'Manuel ONCC 2025 et guides camerounais de 2026 ; les doses de traitement sont des hypothèses.')},
+            {'block': L('Yields', 'Rendements'), 'level': 'medium', 'note': L('EU value chain study and 2026 Cameroon guides; the ramp by age follows a projection.', 'Étude de chaîne de valeur de l’UE et guides camerounais de 2026 ; la montée en production suit une projection.')},
+            {'block': L('Prices at harvest', 'Prix à la récolte'), 'level': 'medium', 'note': L('ONCC and market reports of 2026; you enter your price per kg.', 'Prix ONCC et relevés de marché de 2026 ; vous saisissez votre prix au kg.')},
+            {'block': L('Climate and water', 'Climat et eau'), 'level': 'medium', 'note': L('Modelled Foumbot climatology 1991 to 2021 with FAO-56 methods; cocoa grows mainly in the Centre, South and East.', 'Climatologie modélisée de Foumbot 1991 à 2021 et méthodes FAO-56 ; le cacao se cultive surtout au Centre, au Sud et à l’Est.')},
+        ],
+    }
+
+
+def oil_palm():
+    palms = 143  # 9 m triangles (OP1)
+    lab = lambda fcfa: round(fcfa / 2500, 1)  # MINADER budget amounts at 2,500 FCFA a person day (OP1)
+    steps = [
+        step('site', 'prep', 'field', (-120, -90), 'Site and seedlings', 'Site et plants', 'Deep, well drained soil. Order selected tenera seedlings: 160 for 143 palms, the rest to replace losses.', 'Sol profond et bien drainé. Commander des plants sélectionnés tenera : 160 pour 143 palmiers, le reste pour remplacer les pertes.',
+             sources=src('OP1')),
+        step('clear', 'prep', 'field', (-90, -60), 'Clearing', 'Défrichage', 'Clear and burn the debris: 20 and 4 person days per ha.', 'Défricher et brûler les débris : 20 et 4 jours de travail par ha.', labour=24, sources=src('OP1')),
+        step('stake', 'prep', 'field', (-60, -45), 'Staking', 'Piquetage', 'Mark 9 m equilateral triangles, 143 points per ha.', 'Piqueter en triangles équilatéraux de 9 m, 143 points par ha.', labour=30, sources=src('OP1')),
+        step('cover', 'planting', 'field', (-45, -30), 'Cover crop', 'Plante de couverture', 'Sow Mucuna as a cover crop, 12 kg per ha.', 'Semer du Mucuna en plante de couverture, 12 kg par ha.',
+             inputs=[('mucuna_seed', 12, 1, src('OP1'))], labour=5, sources=src('OP1')),
+        step('holes', 'prep', 'field', (-30, -7), 'Holes', 'Trouaison', 'Dig 40 × 40 × 40 cm holes, 200 FCFA a hole.', 'Creuser des trous de 40 × 40 × 40 cm, 200 FCFA le trou.', labour=lab(160 * 200), sources=src('OP1')),
+        step('plant', 'planting', 'field', (0, 14), 'Planting and rodent guards', 'Plantation et manchons', 'Carry and plant the seedlings (300 FCFA a palm) and fix a galvanized mesh guard against rodents.', 'Transporter et planter les plants (300 FCFA le palmier) et fixer un manchon grillagé contre les rongeurs.',
+             inputs=[('palm_seedling', 160, 1, src('OP1')), ('rodent_guard', palms, 1, src('OP1'))], labour=lab(160 * 300), sources=src('OP1')),
+    ]
+    adult = [0, 0, 0, 1, 1, 1, 1.333, 1.333, 1.333, 1.333, 1.333, 1.333, 1.333, 1.333, 1.333]
+    recurring = [
+        rec('feed_young', 'care', 'Fertilizer, young palms', 'Engrais, jeunes palmiers', 'Years 1 to 3: about 1 kg per palm a year in March and October, mixed from 1 bag of urea, 3 of potassium chloride and 3 of kieserite.', 'Années 1 à 3 : environ 1 kg par palmier et par an en mars et en octobre, mélange de 1 sac d’urée, 3 de chlorure de potassium et 3 de kiesérite.',
+            6, 2, 35, inputs=[('urea', round(palms * 0.5 / 7, 1), 1, src('OP1')), ('kcl', round(palms * 0.5 * 3 / 7, 1), 1, src('OP1')), ('kieserite', round(palms * 0.5 * 3 / 7, 1), 1, src('OP1'))], labour=lab(25000 / 2), sources=src('OP1')),
+        rec('feed_adult', 'care', 'Fertilizer, producing palms', 'Engrais, palmiers en production', 'From year 4: 1.5 kg per palm a year (2 kg from year 7) of potassium chloride and kieserite (2 to 1), in March and October.', 'Dès la 4e année : 1,5 kg par palmier et par an (2 kg dès la 7e année) de chlorure de potassium et de kiesérite (2 pour 1), en mars et en octobre.',
+            6, 36, inputs=[('kcl', round(palms * 0.75 * 2 / 3, 1), 1, src('OP1')), ('kieserite', round(palms * 0.75 / 3, 1), 1, src('OP1'))], labour=lab(25000 / 2), sources=src('OP1'), qty_by_year=adult),
+        rec('circles', 'care', 'Circle weeding', 'Sarclage des ronds', 'Clean a circle around each palm twice a year, 100 FCFA a palm.', 'Nettoyer un rond autour de chaque palmier deux fois par an, 100 FCFA le palmier.', 6, 1, labour=lab(160 * 100), sources=src('OP1')),
+        rec('weed', 'care', 'Weeding and herbicide', 'Désherbage et herbicide', 'Weed the rows and the harvest paths; 1 L of glyphosate a year.', 'Désherber les interlignes et les chemins de récolte ; 1 L de glyphosate par an.', 12, 3,
+            inputs=[('glyphosate', 1, 1, src('OP1'))], labour=lab(40000), sources=src('OP1')),
+        rec('prune', 'care', 'Pruning', 'Élagage', 'Prune once a year in the dry season, 100 FCFA a palm.', 'Élaguer une fois par an en saison sèche, 100 FCFA le palmier.', 12, 30, labour=lab(160 * 100), sources=src('OP1')),
+    ]
+    return {
+        'name': L('Oil palm', 'Palmier à huile'), 'release': 'regional', 'badge': L('MINADER references', 'Références MINADER'), 'profile': 'orchard',
+        'plants_per_ha': palms, 'loss_pct': 5, 'harvest_kg_per_person_day': round(13000 / lab(50000)), 'agronomist_visits': 1, 'horizon_months': 120,
+        'horizon_options': [{'months': 60}, {'months': 120}], 'first_harvest_months': 38,
+        'kc': {'ini': 0.95, 'mid': 1.0, 'end': 1.0, 'stages': [0.25, 0.5, 0.75]},
+        'cycle': {'nursery_days': 0, 'to_first_harvest_days': 0, 'harvest_days': 0, 'flowering_before_harvest_days': 0},
+        'production': {'yield_by_year': [0, 0, 0, 0.31, 0.46, 0.62, 1, 1, 1, 1], 'harvest_months': list(range(12))},
+        'yield_t_ha': yields(4.0, 16.0, 13.0),
+        'harvest_label': L('Bunch harvest, year {n}', 'Récolte des régimes, année {n}'),
+        'harvest_detail': L('Cut ripe bunches every 7 to 10 days and deliver them to the mill within 48 hours; more than three quarters of the crop comes from December to May.', 'Couper les régimes mûrs tous les 7 à 10 jours et les livrer à l’huilerie sous 48 heures ; plus des trois quarts de la récolte arrivent de décembre à mai.'),
+        'price': {'reference_xaf_kg': None, 'index': [1] * 12, 'note': NO_PRICE,
+                  'observed': L('Observed in June 2025: village plantations paid about 80,000 FCFA a tonne of bunches, down from 105,000 FCFA.', 'Observé en juin 2025 : environ 80 000 FCFA la tonne de régimes payés aux plantations villageoises, contre 105 000 FCFA auparavant.'), 'src': src('OP3')},
+        'products': {'fresh': {'label': L('Fresh fruit bunches', 'Régimes frais'), 'ratio': 1, 'unit': 'tonne', 'unit_kg': 1000, 'unit_label': L('tonne', 'tonne')}},
+        'harvest_src': src('OP1'),
+        'disease_note': L('Rodents damage young palms: protect them with mesh guards. Bunches must reach the mill within 48 hours (OP1).', 'Les rongeurs abîment les jeunes palmiers : les protéger par des manchons grillagés. Les régimes doivent arriver à l’huilerie sous 48 heures (OP1).'),
+        'steps': steps, 'recurring': recurring, 'src': src('OP1', 'OP2', 'OP3', 'M1'),
+        'basis': {
+            'plants_per_ha': '143 palms per ha in 9 m equilateral triangles (OP1).',
+            'kc': 'FAO-56 oil palm: Kc 0.95, 1.0, 1.0 (M1), used through the year.',
+            'cycle': 'Production starts about 3 years after planting; bunches 4, 6, 8, then 13 t/ha (OP1), so yield shares 31, 46, 62 and 100% from year 4. Profitability in year 8 in the MINADER budget (OP1).',
+            'yield_t_ha': 'Fresh fruit bunches. Average 13 t/ha (OP1); poor 4 = smallholders under 1 t of oil per ha (OP2) at 25% oil in the bunch (OP1); good 16 = four times that oil yield, as for smallholders in Indonesia and Malaysia (OP2), derived.',
+            'labour': 'MINADER amounts at 2,500 FCFA a person day (OP1): holes 200 and planting 300 FCFA a palm, circle weeding 100 FCFA twice a year, pruning 100 FCFA, weeding 40,000 and fertilizing 25,000 FCFA a year; harvest 50,000 FCFA for 13 t, so 650 kg a day.',
+        },
+        'confidence': [
+            {'block': L('Technical itinerary', 'Itinéraire technique'), 'level': 'high', 'note': L('Official MINADER technical and economic sheet (2024).', 'Fiche technico économique officielle du MINADER (2024).')},
+            {'block': L('Yields', 'Rendements'), 'level': 'medium', 'note': L('MINADER yield curve; poor and good levels are derived.', 'Courbe de rendement du MINADER ; les niveaux faible et bon sont calculés.')},
+            {'block': L('Prices at harvest', 'Prix à la récolte'), 'level': 'medium', 'note': L('Price paid to village plantations in 2025; you enter your price per tonne.', 'Prix payé aux plantations villageoises en 2025 ; vous saisissez votre prix à la tonne.')},
+            {'block': L('Climate and water', 'Climat et eau'), 'level': 'medium', 'note': L('Modelled Foumbot climatology 1991 to 2021 with FAO-56 methods; oil palm grows mainly in the Littoral, South West and Centre.', 'Climatologie modélisée de Foumbot 1991 à 2021 et méthodes FAO-56 ; le palmier se cultive surtout au Littoral, au Sud Ouest et au Centre.')},
         ],
     }
 
@@ -1119,7 +1322,7 @@ def price_spread(R):
 UNITS = {
     'kg': L('kg', 'kg'), 'g': L('g', 'g'), 'l': L('L', 'L'), 'unit': L('units', 'unités'), 'person day': L('person days', 'jours de travail'),
     'ha': L('ha', 'ha'), 'm2': L('m²', 'm²'), 'stake': L('stakes', 'tuteurs'), 'roll': L('rolls', 'rouleaux'), 'pack': L('packs', 'conditionnements'),
-    'set': L('sets', 'lots'), 'season': L('season', 'saison'), 'ha season': L('ha × season', 'ha × saison'), 'ha year': L('ha × year', 'ha × an'), 'year': L('year', 'an'), 'm3': L('m³', 'm³'),
+    'set': L('sets', 'lots'), 'season': L('season', 'saison'), 'ha season': L('ha × season', 'ha × saison'), 'ha year': L('ha × year', 'ha × an'), 'year': L('year', 'an'), 'fruit': L('fruits', 'fruits'), 'tonne': L('tonnes', 'tonnes'), 'm3': L('m³', 'm³'),
 }
 
 ASSUMPTIONS = [
@@ -1139,6 +1342,10 @@ ASSUMPTIONS = [
     L('Land rent for long crops counts two seasons a year. Processing costs per tonne of product follow the ratio of each product; the cassava stick uses the gari labour and firewood per tonne of roots.', 'La location de terre des cultures longues compte deux saisons par an. Les coûts de transformation par tonne de produit suivent le taux de chaque produit ; le bâton de manioc reprend le travail et le bois du gari par tonne de racines.'),
     L('Plantain: successive harvests on the same mat 300 days apart, three cycles. Avocado: yield shares by tree age 0, 0, 15, 35, 50, 75, 90 then 100%. Both are Djalumo Agro assumptions fitted to the sources named in each crop.', 'Plantain : récoltes successives sur la même souche à 300 jours d’intervalle, trois cycles. Avocat : part du rendement selon l’âge 0, 0, 15, 35, 50, 75, 90 puis 100 %. Ce sont deux hypothèses de Djalumo Agro calées sur les sources citées pour chaque culture.'),
     L('Exchange rates are fixed at mid October 2026 values (BCEAO for the CFA franc, 16 October; naira 13 October); they are not live.', 'Les taux de change sont fixés aux valeurs de mi octobre 2026 (BCEAO pour le franc CFA, 16 octobre ; naira 13 octobre) ; ils ne sont pas en temps réel.'),
+    L('Plan length: a long crop or an orchard is analysed over the length the grower chooses (one to three plantain cycles; three, five or ten years for an orchard). Costs and sales outside that length are not counted.', 'Durée du plan : une culture longue ou un verger est analysé sur la durée choisie (un à trois cycles de plantain ; trois, cinq ou dix ans pour un verger). Les coûts et les ventes hors de cette durée ne sont pas comptés.'),
+    L('Pineapple: the poor yield (half the Cameroon average), planting at 1,000 suckers a day, induction labour and harvest at 400 kg a day are Djalumo Agro assumptions; the fertilizer program and sucker price come from Benin.', 'Ananas : le rendement faible (moitié de la moyenne camerounaise), la plantation à 1 000 rejets par jour, le travail d’induction et la récolte à 400 kg par jour sont des hypothèses de Djalumo Agro ; le programme d’engrais et le prix des rejets viennent du Bénin.'),
+    L('Cocoa: fungicide and insecticide doses, harvest and post harvest work at 15 kg of dry beans a day and monthly suckering are Djalumo Agro assumptions on the frequencies of Cameroon guides; the plantain grown as temporary shade is neither costed nor sold.', 'Cacao : les doses de fongicide et d’insecticide, la récolte et le post récolte à 15 kg de fèves sèches par jour et l’égourmandage mensuel sont des hypothèses de Djalumo Agro sur les fréquences des guides camerounais ; le plantain cultivé en ombrage temporaire n’est ni chiffré ni vendu.'),
+    L('Oil palm: labour comes from the MINADER amounts at 2,500 FCFA a person day; bunches are sold to a mill by the tonne.', 'Palmier à huile : le travail vient des montants du MINADER à 2 500 FCFA la journée ; les régimes sont vendus à une huilerie à la tonne.'),
 ]
 
 
@@ -1147,7 +1354,7 @@ def build():
     SOURCES.update(METHOD_SOURCES)
     spread, n = price_spread(R)
     kb = {
-        'version': '3.0.0', 'built': '2026-10-23',
+        'version': '3.1.0', 'built': '2026-10-23',
         'fx': FX, 'fx_src': src('C38', 'C43', 'C45', 'C46'),
         'limits': {'min_capital_usd': 100, 'reserve_rate': 0.10, 'wet_season_rain_share': 0.5, 'seasons_per_year': SEASONS_PER_YEAR},
         'climate': climate(R),
@@ -1163,11 +1370,11 @@ def build():
         'tools_kit': TOOLS_KIT,
         'phases': PHASES,
         'units': UNITS,
-        'crops': {'tomato': tomato(R), 'greenbean': greenbean(), 'pepper': pepper(), 'chili': chili(), 'cucumber': cucumber(), 'zucchini': zucchini(), 'cassava': cassava(), 'plantain': plantain(), 'avocado': avocado()},
+        'crops': {'tomato': tomato(R), 'greenbean': greenbean(), 'pepper': pepper(), 'chili': chili(), 'cucumber': cucumber(), 'zucchini': zucchini(), 'cassava': cassava(), 'plantain': plantain(), 'pineapple': pineapple(), 'avocado': avocado(), 'cocoa': cocoa(), 'oil_palm': oil_palm()},
         'assumptions': ASSUMPTIONS,
     }
     # Merged sources: rewrite the ids quoted in free text so they match the published list.
-    tok = re.compile(r'\b(?:T|CU|CH|CA|Z|G|PL|P|C|M|AV)\d+\b')
+    tok = re.compile(r'\b(?:AN|AV|CC|CU|CH|CA|OP|PL|T|Z|G|P|C|M)\d+\b')
 
     def realias(x):
         if isinstance(x, dict):
@@ -1196,7 +1403,7 @@ def build():
                 walk(v)
     walk(kb)
     # Ids quoted in free text, e.g. "(T7, T8)"
-    for m in re.finditer(r'\b(?:T|CU|CH|CA|Z|G|PL|P|C|M|AV)\d+\b', json.dumps(kb, ensure_ascii=False)):
+    for m in re.finditer(r'\b(?:AN|AV|CC|CU|CH|CA|OP|PL|T|Z|G|P|C|M)\d+\b', json.dumps(kb, ensure_ascii=False)):
         if m.group(0) in SOURCES:
             used.add(m.group(0))
     kb['sources'] = {k: SOURCES[k] for k in sorted(used, key=lambda s: (re.sub(r'\d', '', s), int(re.sub(r'\D', '', s))))}
