@@ -81,7 +81,7 @@ en: {
     title: 'Season Planner',
     h1: 'Your capital, turned into a costed season.',
     lead: 'Enter your capital, your crop, your water situation and your start date. The planner sizes the plot, follows the standard technical itinerary step by step, splits the budget line by line and estimates the return in four outcomes, from a good harvest to a failure.',
-    badge: 'Reference data · v2',
+    badge: 'Reference data · v3',
     inputsT: 'Your season',
     capital: 'Capital available', capitalHint: 'Minimum 100 USD, in any currency',
     currency: 'Currency',
@@ -612,14 +612,14 @@ en: {
   },
 
   privacy: {
-    h1: 'Privacy policy', updated: 'Last updated 4 October 2026',
+    h1: 'Privacy policy', updated: 'Last updated 23 October 2026',
     body: [
       ['Who we are', 'Djalumo Agro is an agricultural decision intelligence initiative led by Franck Junior Djandja Tomwa, based in Kigali, Rwanda, with a pilot zone in Foumbot, Cameroon. The legal structure of the initiative is being established; this policy will name it once registered.'],
-      ['What we collect', 'Only what you type into our forms: for a message or a demo request, your name, email, organization, country, optional phone number and message; for the newsletter, your email address, preferred language and the date of your consent. The Season Simulator runs in your browser and sends nothing.'],
+      ['What we collect', 'Only what you type into our forms: for a message or a demo request, your name, email, organization, country, optional phone number and message; for the newsletter, your email address, preferred language and the date of your consent. The simulator runs in your browser and sends nothing, unless you ask for a PDF report: your name, email, optional phone number, profile, place, report language and the settings of your simulation are then sent so that the report can be prepared, reviewed by our team and emailed to you.'],
       ['Why we collect it', 'To answer your message, organise a demo you requested, or send the newsletter you subscribed to. We never sell personal data and never use it for advertising.'],
       ['Where it is stored', 'On this preview link, submissions are kept in storage attached to this page and readable only by its owner. On the public deployment, they are stored in a managed database with encryption in transit and at rest, and access by role.'],
       ['Cookies and analytics', 'This site sets no tracking cookies and sends no analytics. Your language choice may be remembered in your own browser. If analytics are added later, they will be privacy respecting and announced here before activation.'],
-      ['How long we keep it', 'Messages and demo requests are kept for up to 24 months after the last exchange. Newsletter data is kept until you unsubscribe, after which only the unsubscription date is retained to honour your choice.'],
+      ['How long we keep it', 'Messages, demo requests and report requests are kept for up to 24 months after the last exchange. Newsletter data is kept until you unsubscribe, after which only the unsubscription date is retained to honour your choice.'],
       ['Your rights', 'You can ask to access, correct, export or delete your data at any time through the contact form. We will answer within 30 days.'],
       ['Applicable law', 'We apply Rwanda’s law relating to the protection of personal data and privacy, Cameroon’s personal data legislation, and the rules of each new country of operation.']
     ]
@@ -728,7 +728,7 @@ fr: {
     title: 'Planificateur de saison',
     h1: 'Votre capital, transformé en saison chiffrée.',
     lead: 'Saisissez votre capital, votre culture, votre situation en eau et votre date de démarrage. Le planificateur dimensionne la parcelle, suit l’itinéraire technique standard étape par étape, répartit le budget ligne par ligne et estime le retour sur investissement selon quatre issues, de la bonne récolte à l’échec.',
-    badge: 'Données de référence · v2',
+    badge: 'Données de référence · v3',
     inputsT: 'Votre saison',
     capital: 'Capital disponible', capitalHint: 'Minimum 100 USD, dans toute devise',
     currency: 'Devise',
@@ -1259,14 +1259,14 @@ fr: {
   },
 
   privacy: {
-    h1: 'Politique de confidentialité', updated: 'Dernière mise à jour : 4 octobre 2026',
+    h1: 'Politique de confidentialité', updated: 'Dernière mise à jour : 23 octobre 2026',
     body: [
       ['Qui nous sommes', 'Djalumo Agro est une initiative d’intelligence décisionnelle agricole portée par Franck Junior Djandja Tomwa, basée à Kigali, au Rwanda, avec une zone pilote à Foumbot, au Cameroun. La structure juridique de l’initiative est en cours de création ; cette politique la nommera une fois enregistrée.'],
-      ['Ce que nous collectons', 'Uniquement ce que vous saisissez dans nos formulaires : pour un message ou une demande de démo, vos nom, adresse électronique, organisation, pays, téléphone facultatif et message ; pour la lettre d’information, votre adresse électronique, votre langue et la date de votre consentement. Le Simulateur de saison fonctionne dans votre navigateur et n’envoie rien.'],
+      ['Ce que nous collectons', 'Uniquement ce que vous saisissez dans nos formulaires : pour un message ou une demande de démo, vos nom, adresse électronique, organisation, pays, téléphone facultatif et message ; pour la lettre d’information, votre adresse électronique, votre langue et la date de votre consentement. Le simulateur fonctionne dans votre navigateur et n’envoie rien, sauf si vous demandez un rapport PDF : vos nom, adresse électronique, téléphone facultatif, profil, lieu, langue du rapport et les réglages de votre simulation sont alors transmis pour que le rapport soit préparé, vérifié par notre équipe et envoyé par courrier électronique.'],
       ['Pourquoi', 'Pour répondre à votre message, organiser une démo demandée, ou envoyer la lettre à laquelle vous êtes abonné. Nous ne vendons jamais de données personnelles et ne les utilisons jamais à des fins publicitaires.'],
       ['Où elles sont conservées', 'Sur ce lien d’aperçu, les envois sont conservés dans un stockage rattaché à cette page et lisible par son seul propriétaire. Sur le déploiement public, ils sont conservés dans une base de données gérée, chiffrée en transit et au repos, avec un accès par rôle.'],
       ['Cookies et mesure d’audience', 'Ce site ne dépose aucun cookie de suivi et n’envoie aucune mesure d’audience. Votre choix de langue peut être mémorisé dans votre propre navigateur. Si une mesure d’audience est ajoutée, elle respectera la vie privée et sera annoncée ici avant activation.'],
-      ['Durée de conservation', 'Les messages et demandes de démo sont conservés jusqu’à 24 mois après le dernier échange. Les données de la lettre sont conservées jusqu’à votre désinscription, après laquelle seule la date de désinscription est gardée pour respecter votre choix.'],
+      ['Durée de conservation', 'Les messages, demandes de démo et demandes de rapport sont conservés jusqu’à 24 mois après le dernier échange. Les données de la lettre sont conservées jusqu’à votre désinscription, après laquelle seule la date de désinscription est gardée pour respecter votre choix.'],
       ['Vos droits', 'Vous pouvez demander l’accès, la rectification, l’export ou la suppression de vos données à tout moment via le formulaire de contact. Nous répondons sous 30 jours.'],
       ['Droit applicable', 'Nous appliquons la loi rwandaise relative à la protection des données à caractère personnel et de la vie privée, la législation camerounaise sur les données personnelles, et les règles de chaque nouveau pays d’opération.']
     ]

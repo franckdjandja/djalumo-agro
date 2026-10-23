@@ -1,0 +1,128 @@
+{
+  "crop": "Plantain (Musa AAB), French and false horn types, planted from PIF plants (stem fragment plants), successive cycles on the same mat",
+  "research_date": "2026-10-23",
+  "planting": {
+    "text": "1,666 plants/ha at 3 m x 2 m recommended (1,666 to 2,500 in pure stands); holes 60 x 60 x 60 cm; 10 to 15 kg of compost or manure per hole at planting; latest planting in August (S1). PIF plants sell for 150 to 250 FCFA in Cameroon, suckers about 100 (S7).",
+    "source_ids": [
+      "S1",
+      "S7"
+    ]
+  },
+  "fertility": {
+    "text": "Organic 10 to 15 t/ha per year; a complete fertilizer rich in N and K at about 1 kg per plant per year in 2 to 3 applications; potassium chloride 400 g per plant in 2 to 3 applications; NPK 20-10-10 at 100 g per plant 1 to 3 months after planting (S1).",
+    "source_ids": [
+      "S1"
+    ]
+  },
+  "care": {
+    "text": "Weed regularly for the first 6 months; glyphosate 4.5 L/ha against annual weeds (S1). Keep one vigorous sucker after flowering; prop from flowering; remove the male bud 7 to 10 days after the last hand (S1). Desucker every two months (S2). Banana weevil treated 2 to 4 times a year in the rainy season (S1).",
+    "source_ids": [
+      "S1",
+      "S2"
+    ]
+  },
+  "cycle": {
+    "text": "Flowering about 10 months after planting, cycle 10 to 15 months (S2). Harvest 90 days after flowering for ripe fruit, 70 days at physiological maturity (S1). Flowering 6 to 7 months and harvest 10 to 12 months after planting under irrigation in Côte d'Ivoire (S4). Plantain clumps are usually kept three or four years (S8).",
+    "source_ids": [
+      "S1",
+      "S2",
+      "S4",
+      "S8"
+    ]
+  },
+  "yields": {
+    "text": "On farms near Njombé: mean bunch 11.6 kg, mean yield 6.8 t/ha per year (1.1 to 18.8), 34% of the potential bunches harvested (S3). Bunches of 15 to 25 kg by variety, 37 to 70 t/ha at 2,500 plants under irrigation (S4). National average about 7 t/ha (S9). Batard variety trial: 29 kg bunch (S10).",
+    "source_ids": [
+      "S3",
+      "S4",
+      "S9",
+      "S10"
+    ]
+  },
+  "water": {
+    "text": "About 200 mm a month (S1).",
+    "source_ids": [
+      "S1"
+    ]
+  },
+  "prices": {
+    "text": "Yaoundé, June 2025: usually 3,000 to 4,000 FCFA a bunch, 13,500 on average during a shortage (S5). Medium bunch about 4,000 FCFA in 2016, up from 2,500 (S6).",
+    "source_ids": [
+      "S5",
+      "S6"
+    ]
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "title": "Technologie de la culture du bananier plantain et production de rejets par la technique PIF",
+      "publisher": "Institut de Formation en Agriculture et Technologies Innovantes (IFATI), Cameroon",
+      "year": null,
+      "url": "https://agrivisionsahel.org/images/pub/BANANIER%20PLANTAIN.pdf"
+    },
+    {
+      "id": "S2",
+      "title": "Fiche technique : culture du bananier plantain de manière intensive",
+      "publisher": "Agriculture au Cameroun",
+      "year": 2018,
+      "url": "https://agricultureaucameroun.com/fiches-techniques/fiche-technique-culture-du-bananier-plantain-de-maniere-intensive/"
+    },
+    {
+      "id": "S3",
+      "title": "Plantain productivity: insights from Cameroonian cropping systems (Dépigny, Delrieu Wils, Tixier, Ndoumbé Keng, Cilas, Lescot, Jagoret)",
+      "publisher": "Agricultural Systems 168",
+      "year": 2019,
+      "url": "https://agents.cirad.fr/pjjimg/philippe.tixier@cirad.fr/Depigny_et_al_2019_Agric_Syst.pdf"
+    },
+    {
+      "id": "S4",
+      "title": "Comment réussir la production de la banane plantain en contre saison",
+      "publisher": "CNRA, Côte d'Ivoire",
+      "year": 2024,
+      "url": "https://cnra.ci/wp-content/uploads/2024/11/reussir-production-banane-plantain-contre-saison.pdf"
+    },
+    {
+      "id": "S5",
+      "title": "Yaoundé : le prix du plantain s'envole sur le marché",
+      "publisher": "Journal du Cameroun",
+      "year": 2025,
+      "url": "https://fr.journalducameroun.com/camerouneco/yaounde-le-prix-du-plantain-senvole-sur-le-marche/"
+    },
+    {
+      "id": "S6",
+      "title": "Cameroun : 4000 Fcfa pour un régime de plantain moyen",
+      "publisher": "La Voix du Paysan",
+      "year": 2016,
+      "url": "https://www.lavoixdupaysan.net/cameroun-4000-fcfa-regime-de-plantain-moyen/"
+    },
+    {
+      "id": "S7",
+      "title": "Plants de bananier plantain (PIF, rejets) : annonces de producteurs au Cameroun",
+      "publisher": "EspaceAgro",
+      "year": 2022,
+      "url": "https://www.espaceagro.com/plant-bananier-plantain/exp-plant-bananier-plantain.html"
+    },
+    {
+      "id": "S8",
+      "title": "Le bananier plantain au Cameroun (H. Tezenas du Montcel)",
+      "publisher": "Fruits, vol. 34, n°5",
+      "year": 1979,
+      "url": "https://revues.cirad.fr/index.php/fruits/article/download/34450/33694/36959"
+    },
+    {
+      "id": "S9",
+      "title": "La production de la banane plantain requiert 20 millions de plants par an, selon le CARBAP",
+      "publisher": "Investir au Cameroun",
+      "year": 2013,
+      "url": "https://www.investiraucameroun.com/agriculture/0412-4856-cameroun-la-production-de-la-banane-plantain-requiert-20-millions-de-plants-par-an-selon-le-carbap"
+    },
+    {
+      "id": "S10",
+      "title": "Fiche variétale : évaluation agronomique, variété Batard",
+      "publisher": "MINADER, coopération BAD Cameroun",
+      "year": 2025,
+      "url": "https://www.minader.cm/wp-content/uploads/2025/08/FICHE-TECHNIQUE-RECTO-ET-VERSO-PRODUCTION-BANANE-PLANTAIN.pdf"
+    }
+  ],
+  "confidence_notes": "MEDIUM for the itinerary (IFATI sheet, Cameroon). MEDIUM for yields on farms (CIRAD study near Njombé). LOW for the interval between successive harvests (no Cameroon figure found) and for labour (proxies)."
+}

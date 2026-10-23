@@ -204,3 +204,142 @@ test('the real knowledge base, when present, produces a valid plan for every cro
     }
   }
 });
+
+/* ---------- v3: cash flow, long cycles, successive cycles, orchards, comparison ---------- */
+function longFixture() {
+  const kb = fixture();
+  kb.limits.seasons_per_year = 2;
+  kb.items.cutting = { label: { en: 'cuttings' }, price: 10, category: 'planting', unit: 'unit', src: [] };
+  kb.items.plantlet = { label: { en: 'plantlet' }, price: 500, category: 'planting', unit: 'unit', src: [] };
+  kb.items.firewood = { label: { en: 'firewood' }, price: 20, category: 'processing', unit: 'kg', src: [] };
+  const common = { loss_pct: 5, harvest_kg_per_person_day: 400, agronomist_visits: 1, kc: { ini: 0.5, mid: 0.9, end: 0.6, stages: [0.2, 0.4, 0.8] }, packaging: { item: 'crate', kg_per_unit: 25, uses: 10 } };
+  kb.crops.cassava = Object.assign({}, common, {
+    name: { en: 'Cassava' }, profile: 'long', plants_per_ha: 10000, horizon_months: 15,
+    cycle: { nursery_days: 0, to_first_harvest_days: 365, harvest_days: 60, flowering_before_harvest_days: 0 },
+    yield_t_ha: { poor: 8, average: 15, good: 25 },
+    price: { reference_xaf_kg: null, index: Array(12).fill(1) },
+    products: {
+      fresh: { label: { en: 'Fresh roots' }, ratio: 1 },
+      gari: { label: { en: 'Gari' }, ratio: 0.25, costs: [{ labour_days_per_t: 40 }, { item: 'firewood', qty_per_t: 500 }] }
+    },
+    harvest_label: { en: 'Harvest {n}' },
+    steps: [
+      { id: 'plough', phase: 'prep', ref: 'field', day: [-14, -7], label: { en: 'Plough' }, services: [{ key: 'ploughing', qty: 1 }], labour: 10 },
+      { id: 'plant', phase: 'planting', ref: 'field', day: [0, 3], label: { en: 'Plant' }, inputs: [{ item: 'cutting', qty: 10000 }], labour: 15 }
+    ],
+    recurring: [{ id: 'weed', phase: 'care', label: { en: 'Weed' }, every_months: 2, first_month: 1, last_month: 7, labour: 8 }]
+  });
+  kb.crops.plantain = Object.assign({}, common, {
+    name: { en: 'Plantain' }, profile: 'ratoon', plants_per_ha: 1600, horizon_months: 36, heat_c: 35,
+    cycle: { nursery_days: 0, to_first_harvest_days: 390, harvest_days: 60, flowering_before_harvest_days: 90 },
+    production: { cycles: 3, interval_days: 240, factors: [1, 1, 0.9] },
+    yield_t_ha: { poor: 10, average: 18, good: 25 },
+    price: { reference_xaf_kg: null, index: Array(12).fill(1) },
+    products: { fresh: { label: { en: 'Bunch' }, ratio: 1, unit: 'bunch', unit_kg: 12, unit_label: { en: 'bunch' } } },
+    steps: [{ id: 'plant', phase: 'planting', ref: 'field', day: [0, 3], label: { en: 'Plant' }, inputs: [{ item: 'plantlet', qty: 1600 }, { item: 'npk', qty: 200 }], labour: 20 }],
+    recurring: [{ id: 'feed', phase: 'care', label: { en: 'Feed' }, every_months: 3, first_month: 2, inputs: [{ item: 'npk', qty: 100 }], labour: 4 }]
+  });
+  kb.crops.avocado = Object.assign({}, common, {
+    name: { en: 'Avocado' }, profile: 'orchard', plants_per_ha: 156, horizon_months: 120,
+    kc: { ini: 0.6, mid: 0.6, end: 0.6, stages: [0.3, 0.6, 0.9] },
+    cycle: { nursery_days: 0, to_first_harvest_days: 0, harvest_days: 0, flowering_before_harvest_days: 0 },
+    production: { yield_by_year: [0, 0, 0.1, 0.25, 0.45, 0.65, 0.8, 0.9, 1, 1], harvest_months: [6, 7, 8] },
+    yield_t_ha: { poor: 6, average: 10, good: 15 },
+    price: { reference_xaf_kg: null, index: Array(12).fill(1) },
+    steps: [{ id: 'plant', phase: 'planting', ref: 'field', day: [0, 3], label: { en: 'Plant' }, inputs: [{ item: 'plantlet', qty: 156 }, { item: 'npk', qty: 50 }], labour: 10 }],
+    recurring: [{ id: 'feed', phase: 'care', label: { en: 'Feed' }, every_months: 6, first_month: 6, inputs: [{ item: 'npk', qty: 40 }], qty_by_year: [1, 1.5, 2, 2.5, 3], labour: 3 }]
+  });
+  return kb;
+}
+const lbase = { currency: 'USD', capital: 3000, mode: 'budget', start: '2027-03-01', water: 'rainfed', land: 'rent', market: 'local', priceXafKg: 150 };
+
+test('v3: a season plan carries a cash flow whose totals match its average outcome', () => {
+  const kb = fixture();
+  const r = E.plan(kb, base), cf = r.cashflow, a = r.scenarios.average;
+  assert.equal(r.profile, 'season');
+  const costs = cf.months.reduce((s, m) => s + m.costs, 0), rev = cf.months.reduce((s, m) => s + m.revenue, 0);
+  assert.ok(Math.abs(costs - a.cashCosts) < 1, 'costs ' + costs + ' vs ' + a.cashCosts);
+  assert.ok(Math.abs(rev - a.revenue) < 1, 'revenue ' + rev + ' vs ' + a.revenue);
+  assert.ok(cf.peakNeed <= r.budget.total + 1, 'peak ' + cf.peakNeed + ' vs budget ' + r.budget.total);
+  assert.equal(cf.months.length, r.horizonMonths);
+});
+
+test('v3: a long crop is sized on its peak financing need, which fits the capital', () => {
+  const kb = longFixture();
+  const r = E.plan(kb, { ...lbase, crop: 'cassava' });
+  assert.equal(r.profile, 'long');
+  assert.equal(r.state, 'ok');
+  assert.ok(r.areaHa > 0);
+  assert.ok(r.budget.total <= r.capitalXaf * 1.0001, r.budget.total + ' vs ' + r.capitalXaf);
+  assert.ok(Math.abs(r.cashflow.peakNeed - r.budget.peakNeed) < 1);
+  assert.equal(r.production.length, 1);
+  const costs = r.cashflow.months.reduce((s, m) => s + m.costs, 0);
+  assert.ok(Math.abs(costs - r.scenarios.average.costs) < 1, 'ledger costs ' + costs + ' vs ' + r.scenarios.average.costs);
+});
+
+test('v3: processing turns fresh roots into less product with its own costs', () => {
+  const kb = longFixture();
+  const fresh = E.plan(kb, { ...lbase, crop: 'cassava', mode: 'crop', area: 1, product: 'fresh' });
+  const gari = E.plan(kb, { ...lbase, crop: 'cassava', mode: 'crop', area: 1, product: 'gari', priceXafKg: 600 });
+  assert.ok(Math.abs(gari.scenarios.average.soldKg - fresh.scenarios.average.soldKg * 0.25) < 1e-6);
+  assert.ok(gari.budget.lines.some(l => l.cat === 'processing' && l.total > 0));
+  assert.equal(gari.product.key, 'gari');
+});
+
+test('v3: successive cycles produce several harvests and a price per bunch', () => {
+  const kb = longFixture();
+  const r = E.plan(kb, { ...lbase, crop: 'plantain', priceXafKg: 3000 });
+  assert.equal(r.production.length, 3);
+  assert.equal(r.product.unitKg, 12);
+  assert.ok(Math.abs(r.scenarios.average.price - 3000 / 12) < 1e-6, 'price per kg ' + r.scenarios.average.price);
+  assert.ok(r.cashflow.peakNeed < r.budget.horizonCosts, 'later cycles are funded by earlier sales');
+  assert.ok(r.breakEven.pricePerUnit > 0);
+});
+
+test('v3: an orchard earns nothing before its first bearing year and pays back later', () => {
+  const kb = longFixture();
+  const r = E.plan(kb, { ...lbase, crop: 'avocado', mode: 'crop', area: 1, priceXafKg: 400 });
+  assert.equal(r.profile, 'orchard');
+  assert.equal(r.production[0].n, 3);
+  const firstRev = r.cashflow.months.findIndex(m => m.revenue > 0);
+  assert.ok(firstRev >= 24, 'first revenue month ' + firstRev);
+  assert.ok(r.cashflow.paybackIndex === null || r.cashflow.paybackIndex > firstRev);
+  const s = r.scenarios;
+  assert.ok(s.good.margin > s.average.margin && s.average.margin > s.poor.margin && s.poor.margin > s.failure.margin);
+  assert.ok(Math.abs(r.scenarios.average.marginPerYear * 10 - r.scenarios.average.margin) < 1);
+});
+
+test('v3: without a price a long crop is sized on its costs up to the first harvest and asks for a price', () => {
+  const kb = longFixture();
+  const r = E.plan(kb, { ...lbase, crop: 'avocado', priceXafKg: 0, capital: 5000 });
+  assert.equal(r.state, 'needs_price');
+  assert.ok(r.areaHa > 0 && r.budget.total <= r.capitalXaf * 1.0001);
+  assert.ok(r.breakEven.pricePerUnit > 0);
+});
+
+test('v3: area first returns a capital that funds the same long crop area in budget mode', () => {
+  const kb = longFixture();
+  for (const crop of ['cassava', 'plantain', 'avocado']) {
+    const a = E.plan(kb, { ...lbase, crop, mode: 'crop', area: 1 });
+    const b = E.plan(kb, { ...lbase, crop, currency: 'XAF', capital: a.requiredXaf });
+    assert.ok(Math.abs(b.areaHa - 1) < 0.02, crop + ' area ' + b.areaHa);
+  }
+});
+
+test('v3: windows cover twelve start months and recurring care is listed with its occurrences', () => {
+  const kb = longFixture();
+  const r = E.plan(kb, { ...lbase, crop: 'plantain' });
+  assert.equal(r.windows.length, 12);
+  const feed = r.itinerary.find(s => s.id === 'feed');
+  assert.ok(feed.occurrences > 5 && feed.dates.length === feed.occurrences);
+  assert.ok(r.itinerary.filter(s => s.harvest).length === 3);
+  assert.ok(r.shopping.length > 0 && r.shoppingScope === 'first_year');
+});
+
+test('v3: the comparison runs every crop with the same inputs', () => {
+  const kb = longFixture();
+  const rows = E.compare(kb, { ...lbase, capital: 5000, prices: { tomato: 300 } });
+  assert.equal(rows.length, Object.keys(kb.crops).length);
+  for (const r of rows) { assert.ok(Number.isFinite(r.months) && r.months > 0, r.crop); assert.ok(r.breakEvenPerUnit === null || r.breakEvenPerUnit > 0, r.crop); }
+  assert.ok(rows.find(r => r.crop === 'tomato').margin !== null);
+});

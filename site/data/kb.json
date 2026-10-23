@@ -1,5 +1,5 @@
 {
- "version": "2.1.0",
+ "version": "3.0.0",
  "built": "2026-10-23",
  "fx": {
   "USD": 1,
@@ -18,7 +18,8 @@
  "limits": {
   "min_capital_usd": 100,
   "reserve_rate": 0.1,
-  "wet_season_rain_share": 0.5
+  "wet_season_rain_share": 0.5,
+  "seasons_per_year": 2
  },
  "climate": {
   "site": {
@@ -205,6 +206,54 @@
     }
    },
    "basis": "No Cameroon price found. Technisem Big Sun, 30,500 FCFA per 50 g box at Tropicasem, Senegal, 2026 (CH8); 30,000 FCFA at another Senegal seller (CH7). The CFA franc of West and Central Africa share one parity. Cheaper open varieties (Bombardier, 26,500 FCFA per 50 g) and dearer F1 hybrids (Avenir F1, 91,200 FCFA) exist (CH8)."
+  },
+  "cassava_cutting": {
+   "label": {
+    "en": "Cassava cuttings, improved variety",
+    "fr": "Boutures de manioc, variété améliorée"
+   },
+   "price": 25,
+   "category": "planting",
+   "unit": "unit",
+   "src": [
+    "CA8",
+    "CA2"
+   ],
+   "pack": {
+    "size": 1000,
+    "label": {
+     "en": "lot of 1,000 cuttings",
+     "fr": "lot de 1 000 boutures"
+    }
+   },
+   "basis": "25 FCFA a cutting at a multiplication site, 50 FCFA from retailers (CA8). Cross check: selected cuttings for 1 ha cost 260,000 FCFA in the CTA and ISF Cameroon budget (CA2)."
+  },
+  "plantain_pif": {
+   "label": {
+    "en": "Plantain PIF plant, ready to plant",
+    "fr": "Plant PIF de bananier plantain, prêt à planter"
+   },
+   "price": 200,
+   "category": "planting",
+   "unit": "unit",
+   "src": [
+    "PL7"
+   ],
+   "basis": "Ready to plant PIF plants offered at 200 FCFA in Cameroon (2022); other offers 150 to 250 FCFA, suckers about 100 FCFA (PL7)."
+  },
+  "avocado_grafted": {
+   "label": {
+    "en": "Grafted avocado plant",
+    "fr": "Plant d’avocatier greffé"
+   },
+   "price": 1749,
+   "category": "planting",
+   "unit": "unit",
+   "src": [
+    "AV8",
+    "C38"
+   ],
+   "basis": "3 USD a grafted plant in a 2022 offer by a Cameroon nursery, converted at the October 2026 rate (AV8, C38); an older Yaoundé nursery listed 1,000 to 2,000 FCFA (AV8)."
   },
   "seed_cucumber": {
    "label": {
@@ -842,6 +891,10 @@
     "en": "Land rent for the season",
     "fr": "Location du terrain pour la saison"
    },
+   "label_long": {
+    "en": "Land rent over the plan",
+    "fr": "Location du terrain sur la durée du plan"
+   },
    "price": 50000,
    "unit": "ha",
    "category": "land",
@@ -1161,6 +1214,14 @@
   "ha season": {
    "en": "ha × season",
    "fr": "ha × saison"
+  },
+  "ha year": {
+   "en": "ha × year",
+   "fr": "ha × an"
+  },
+  "year": {
+   "en": "year",
+   "fr": "an"
   },
   "m3": {
    "en": "m³",
@@ -1851,8 +1912,8 @@
      1
     ],
     "note": {
-     "en": "No published farm gate price for Cameroon: enter the price you expect to get.",
-     "fr": "Aucun prix bord champ publié pour le Cameroun : saisissez le prix que vous comptez obtenir."
+     "en": "No monthly farm gate price series is published for Cameroon: enter the price you expect to get.",
+     "fr": "Aucune série mensuelle de prix bord champ n’est publiée pour le Cameroun : saisissez le prix que vous comptez obtenir."
     },
     "observed": {
      "en": "Observed elsewhere: Abidjan retail 800 to 1,200 FCFA/kg (2024 to 2025).",
@@ -2311,8 +2372,8 @@
      1
     ],
     "note": {
-     "en": "No published farm gate price for Cameroon: enter the price you expect to get.",
-     "fr": "Aucun prix bord champ publié pour le Cameroun : saisissez le prix que vous comptez obtenir."
+     "en": "No monthly farm gate price series is published for Cameroon: enter the price you expect to get.",
+     "fr": "Aucune série mensuelle de prix bord champ n’est publiée pour le Cameroun : saisissez le prix que vous comptez obtenir."
     },
     "observed": {
      "en": "Observed: Bafou (West) 130 to 313 FCFA/kg, publication 2005.",
@@ -2902,8 +2963,8 @@
      1
     ],
     "note": {
-     "en": "No published farm gate price for Cameroon: enter the price you expect to get.",
-     "fr": "Aucun prix bord champ publié pour le Cameroun : saisissez le prix que vous comptez obtenir."
+     "en": "No monthly farm gate price series is published for Cameroon: enter the price you expect to get.",
+     "fr": "Aucune série mensuelle de prix bord champ n’est publiée pour le Cameroun : saisissez le prix que vous comptez obtenir."
     },
     "observed": {
      "en": "Observed in Yaoundé, wholesale by the bag: 900 to 1,200 FCFA/kg in June 2025 (rainy season, low prices), 400 FCFA/kg in August 2022, from 120 FCFA/kg in a glut to 1,000 FCFA/kg in a shortage in 2018. Farm gate prices are lower.",
@@ -3480,8 +3541,8 @@
      1
     ],
     "note": {
-     "en": "No published farm gate price for Cameroon: enter the price you expect to get.",
-     "fr": "Aucun prix bord champ publié pour le Cameroun : saisissez le prix que vous comptez obtenir."
+     "en": "No monthly farm gate price series is published for Cameroon: enter the price you expect to get.",
+     "fr": "Aucune série mensuelle de prix bord champ n’est publiée pour le Cameroun : saisissez le prix que vous comptez obtenir."
     },
     "observed": {
      "en": "Observed: Yaoundé retail about 119 to 192 FCFA/kg (2021, derived per fruit); Abidjan 350 to 600 FCFA/kg (2024 to 2026, level not stated).",
@@ -4046,8 +4107,8 @@
      1
     ],
     "note": {
-     "en": "No published farm gate price for Cameroon: enter the price you expect to get.",
-     "fr": "Aucun prix bord champ publié pour le Cameroun : saisissez le prix que vous comptez obtenir."
+     "en": "No monthly farm gate price series is published for Cameroon: enter the price you expect to get.",
+     "fr": "Aucune série mensuelle de prix bord champ n’est publiée pour le Cameroun : saisissez le prix que vous comptez obtenir."
     },
     "observed": {
      "en": "Observed: Abidjan 350 to 500 FCFA/kg (2024 to 2026, level not stated).",
@@ -4460,6 +4521,1640 @@
      }
     }
    ]
+  },
+  "cassava": {
+   "name": {
+    "en": "Cassava",
+    "fr": "Manioc"
+   },
+   "release": "regional",
+   "badge": {
+    "en": "Cameroon references",
+    "fr": "Références Cameroun"
+   },
+   "profile": "long",
+   "plants_per_ha": 10000,
+   "loss_pct": 1.15,
+   "harvest_kg_per_person_day": 1000,
+   "agronomist_visits": 1,
+   "horizon_months": 15,
+   "kc": {
+    "ini": 0.3,
+    "mid": 0.8,
+    "end": 0.3,
+    "stages": [
+     0.095,
+     0.286,
+     0.714
+    ]
+   },
+   "cycle": {
+    "nursery_days": 0,
+    "to_first_harvest_days": 365,
+    "harvest_days": 60,
+    "flowering_before_harvest_days": 0
+   },
+   "yield_t_ha": {
+    "poor": 8.0,
+    "average": 16.0,
+    "good": 25.0
+   },
+   "harvest_label": {
+    "en": "Harvest",
+    "fr": "Récolte"
+   },
+   "harvest_detail": {
+    "en": "Lift the roots from about 12 months, staggered over two months; roots spoil within two days, so sell or process them at once.",
+    "fr": "Arracher les racines à partir d’environ 12 mois, en étalant sur deux mois ; les racines s’abîment en deux jours, il faut les vendre ou les transformer aussitôt."
+   },
+   "price": {
+    "reference_xaf_kg": null,
+    "index": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "note": {
+     "en": "No monthly farm gate price series is published for Cameroon: enter the price you expect to get.",
+     "fr": "Aucune série mensuelle de prix bord champ n’est publiée pour le Cameroun : saisissez le prix que vous comptez obtenir."
+    },
+    "observed": {
+     "en": "Observed: fresh roots 65 to 100 FCFA/kg at the farm gate and 70 to 105 FCFA/kg on markets in the East (survey published 2019).",
+     "fr": "Observé : racines fraîches 65 à 100 FCFA/kg bord champ et 70 à 105 FCFA/kg sur les marchés de l’Est (enquête publiée en 2019)."
+    },
+    "src": [
+     "CA4"
+    ]
+   },
+   "products": {
+    "fresh": {
+     "label": {
+      "en": "Fresh roots",
+      "fr": "Racines fraîches"
+     },
+     "ratio": 1
+    },
+    "cossettes": {
+     "label": {
+      "en": "Cossettes (dried chips)",
+      "fr": "Cossettes"
+     },
+     "ratio": 0.25,
+     "costs": [
+      {
+       "xaf_per_t": 20000,
+       "key": "process_cossettes",
+       "label": {
+        "en": "Peeling, washing and drying, paid per tonne",
+        "fr": "Épluchage, lavage et séchage, payés à la tonne"
+       },
+       "src": [
+        "CA4"
+       ]
+      },
+      {
+       "xaf_per_t": 4000,
+       "key": "process_water",
+       "label": {
+        "en": "Water for soaking",
+        "fr": "Eau de rouissage"
+       },
+       "src": [
+        "CA4"
+       ]
+      }
+     ],
+     "price": {
+      "observed": {
+       "en": "Observed: processors sell at 160 to 200 FCFA/kg in the East (2019); 219 to 257 FCFA/kg in northern markets, late 2022.",
+       "fr": "Observé : les transformateurs vendent 160 à 200 FCFA/kg à l’Est (2019) ; 219 à 257 FCFA/kg sur les marchés du Nord fin 2022."
+      },
+      "src": [
+       "CA4",
+       "CA9"
+      ]
+     },
+     "basis": "250 kg of cossettes per t of roots (CA2; 300 to 370 kg in CA5). Costs per t of roots in the East: labour 5,000, water 1,000 FCFA (CA4), divided by the ratio.",
+     "src": [
+      "CA2",
+      "CA4",
+      "CA5"
+     ]
+    },
+    "gari": {
+     "label": {
+      "en": "Gari",
+      "fr": "Gari"
+     },
+     "ratio": 0.25,
+     "costs": [
+      {
+       "labour_days_per_t": 32.0,
+       "label": {
+        "en": "Gari making: peeling, grating, pressing, roasting",
+        "fr": "Fabrication du gari : épluchage, râpage, pressage, cuisson"
+       },
+       "src": [
+        "CA2"
+       ]
+      },
+      {
+       "xaf_per_t": 20000,
+       "key": "process_fuel",
+       "label": {
+        "en": "Water and firewood",
+        "fr": "Eau et bois de chauffe"
+       },
+       "src": [
+        "CA2"
+       ]
+      }
+     ],
+     "price": {
+      "observed": {
+       "en": "Observed: 300 FCFA/kg in a Cameroon processing budget (2015).",
+       "fr": "Observé : 300 FCFA/kg dans un budget de transformation au Cameroun (2015)."
+      },
+      "src": [
+       "CA2"
+      ]
+     },
+     "basis": "200 to 300 kg of gari per t of roots (CA2), 250 used; 200 to 220 kg in CA5. Per t of roots: 20 person days per 2.5 t and 5,000 FCFA of water and firewood (CA2).",
+     "src": [
+      "CA2",
+      "CA5"
+     ]
+    },
+    "baton": {
+     "label": {
+      "en": "Bâton (bobolo, miondo)",
+      "fr": "Bâton de manioc (bobolo, miondo)"
+     },
+     "ratio": 0.48,
+     "unit": "piece",
+     "unit_kg": 0.6,
+     "unit_label": {
+      "en": "piece",
+      "fr": "pièce"
+     },
+     "costs": [
+      {
+       "labour_days_per_t": 16.7,
+       "label": {
+        "en": "Retting, pounding, wrapping and steaming",
+        "fr": "Rouissage, pilage, emballage et cuisson"
+       },
+       "src": [
+        "CA2"
+       ]
+      },
+      {
+       "xaf_per_t": 10417,
+       "key": "process_fuel",
+       "label": {
+        "en": "Water and firewood",
+        "fr": "Eau et bois de chauffe"
+       },
+       "src": [
+        "CA2"
+       ]
+      }
+     ],
+     "price": {
+      "observed": {
+       "en": "Observed in Douala, Saker market, 2022: bobolo 200 FCFA a piece, miondo 600 FCFA a stick.",
+       "fr": "Observé à Douala, marché Saker, 2022 : bobolo 200 FCFA la pièce, miondo 600 FCFA le bâton."
+      },
+      "src": [
+       "CA7"
+      ]
+     },
+     "basis": "About 48 kg of chikwangue per 100 kg of roots and pieces of about 600 g (CA6, Congo). Labour, water and firewood per t of roots taken from the gari budget (CA2) as a proxy; wrapping leaves are not budgeted.",
+     "src": [
+      "CA6",
+      "CA2"
+     ]
+    }
+   },
+   "harvest_src": [
+    "CA2"
+   ],
+   "disease_note": {
+    "en": "Mosaic and mealybug are kept down by healthy cuttings of resistant varieties; the variegated grasshopper is treated above 12 larvae per m² (CA3).",
+    "fr": "La mosaïque et la cochenille sont limitées par des boutures saines de variétés résistantes ; le criquet puant est traité au delà de 12 larves par m² (CA3)."
+   },
+   "steps": [
+    {
+     "id": "site",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -60,
+      -45
+     ],
+     "label": {
+      "en": "Plot choice",
+      "fr": "Choix de la parcelle"
+     },
+     "detail": {
+      "en": "Deep, well drained soil, 1,000 to 1,500 mm of rain. On soils poor in humus plan 10 to 20 t of manure per ha. Plant at the start of the main rainy season.",
+      "fr": "Sol profond et bien drainé, 1 000 à 1 500 mm de pluie. Sur sol pauvre en humus, prévoir 10 à 20 t de fumier par ha. Planter au début de la grande saison des pluies."
+     },
+     "src": [
+      "CA1",
+      "CA3"
+     ]
+    },
+    {
+     "id": "prep",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -30,
+      -7
+     ],
+     "label": {
+      "en": "Clearing and soil preparation",
+      "fr": "Défrichage et préparation du sol"
+     },
+     "detail": {
+      "en": "Clear, burn down regrowth if needed and prepare the soil (ridges or mounds). The Cameroon budget counts 50 person days per ha.",
+      "fr": "Défricher, traiter les repousses si nécessaire et préparer le sol (billons ou buttes). Le budget camerounais compte 50 jours de travail par ha."
+     },
+     "src": [
+      "CA2",
+      "CA4"
+     ],
+     "inputs": [
+      {
+       "item": "glyphosate",
+       "qty": 0.8,
+       "src": [
+        "CA4"
+       ]
+      }
+     ],
+     "labour": 50
+    },
+    {
+     "id": "manure",
+     "phase": "planting",
+     "ref": "field",
+     "day": [
+      -21,
+      -7
+     ],
+     "label": {
+      "en": "Organic manure",
+      "fr": "Fumure organique"
+     },
+     "detail": {
+      "en": "Spread 10 t of well decomposed manure per ha on poor soils, the low end of 10 to 20 t.",
+      "fr": "Épandre 10 t de fumier bien décomposé par ha sur sol pauvre, le bas de la fourchette de 10 à 20 t."
+     },
+     "src": [
+      "CA1",
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "farmyard_manure",
+       "qty": 10000,
+       "src": [
+        "CA1"
+       ]
+      }
+     ],
+     "labour": 35
+    },
+    {
+     "id": "cuttings",
+     "phase": "planting",
+     "ref": "field",
+     "day": [
+      -3,
+      0
+     ],
+     "label": {
+      "en": "Cuttings",
+      "fr": "Boutures"
+     },
+     "detail": {
+      "en": "Cut 20 to 30 cm cuttings with 5 to 7 eyes from healthy 12 to 18 month stems of an improved variety; treat in hot water at 50 °C for 15 minutes or in a fungicide insecticide dip.",
+      "fr": "Couper des boutures de 20 à 30 cm portant 5 à 7 yeux sur des tiges saines de 12 à 18 mois d’une variété améliorée ; traiter à l’eau chaude à 50 °C pendant 15 minutes ou dans un bain fongicide insecticide."
+     },
+     "src": [
+      "CA2",
+      "CA3",
+      "CA8"
+     ],
+     "inputs": [
+      {
+       "item": "cassava_cutting",
+       "qty": 10000,
+       "src": [
+        "CA8",
+        "CA3"
+       ]
+      }
+     ],
+     "labour": 5
+    },
+    {
+     "id": "plant",
+     "phase": "planting",
+     "ref": "field",
+     "day": [
+      0,
+      5
+     ],
+     "label": {
+      "en": "Planting",
+      "fr": "Plantation"
+     },
+     "detail": {
+      "en": "Plant at 1 m × 1 m, about 10,000 plants per ha, and fill the gaps 3 to 5 weeks later.",
+      "fr": "Planter à 1 m × 1 m, soit environ 10 000 plants par ha, et remplacer les manquants 3 à 5 semaines plus tard."
+     },
+     "src": [
+      "CA2",
+      "CA3"
+     ],
+     "labour": 15
+    },
+    {
+     "id": "fert",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      45,
+      60
+     ],
+     "label": {
+      "en": "Mineral fertilizer",
+      "fr": "Engrais minéral"
+     },
+     "detail": {
+      "en": "Urea 100 kg and potassium sulphate 200 kg per ha. The sheet adds 100 kg of triple superphosphate, not budgeted for want of a Cameroon price.",
+      "fr": "Urée 100 kg et sulfate de potassium 200 kg par ha. La fiche ajoute 100 kg de superphosphate triple, non budgété faute de prix camerounais."
+     },
+     "src": [
+      "CA3",
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "urea",
+       "qty": 100,
+       "src": [
+        "CA3"
+       ]
+      },
+      {
+       "item": "k2so4",
+       "qty": 200,
+       "src": [
+        "CA3"
+       ]
+      }
+     ],
+     "labour": 6
+    },
+    {
+     "id": "weed",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      21,
+      98
+     ],
+     "label": {
+      "en": "Three weedings",
+      "fr": "Trois sarclages"
+     },
+     "detail": {
+      "en": "Weed at 3 to 4, 7 to 9 and 12 to 14 weeks after planting; the crop then shades the weeds out.",
+      "fr": "Sarcler à 3 à 4, 7 à 9 et 12 à 14 semaines après la plantation ; la culture étouffe ensuite les mauvaises herbes."
+     },
+     "src": [
+      "CA3",
+      "CA2"
+     ],
+     "labour": 20
+    },
+    {
+     "id": "protect",
+     "phase": "protection",
+     "ref": "field",
+     "day": [
+      30,
+      150
+     ],
+     "label": {
+      "en": "Crop watch",
+      "fr": "Surveillance"
+     },
+     "detail": {
+      "en": "Treat the variegated grasshopper only above 12 larvae per m². Healthy cuttings are the main defence against mosaic. The plan budgets one insecticide treatment.",
+      "fr": "Traiter contre le criquet puant seulement au delà de 12 larves par m². Des boutures saines sont la principale défense contre la mosaïque. Le plan compte un traitement insecticide."
+     },
+     "src": [
+      "CA3",
+      "CA4",
+      "T2"
+     ],
+     "inputs": [
+      {
+       "item": "insecticide_l",
+       "qty": 1,
+       "src": [
+        "CA4"
+       ]
+      }
+     ],
+     "labour": 3
+    }
+   ],
+   "src": [
+    "CA1",
+    "CA2",
+    "CA3",
+    "CA4",
+    "M1"
+   ],
+   "basis": {
+    "plants_per_ha": "1 m × 1 m, 10,000 plants per ha (CA2, CA3).",
+    "kc": "FAO-56 cassava, year 1: Kc 0.3, 0.8, 0.3; stage lengths 20/40/90/60 days (M1). No FAO yield response factor: water shortage raises the risk but does not cut the yield in the model.",
+    "cycle": "Harvest from 12 months (CA2, CA10), staggered over 60 days; horizon 15 months.",
+    "yield_t_ha": "Poor 8 = low end of typical yields 8 to 15 t/ha (CA2); average 16 = national yield (CA1); good 25 = low end of improved varieties 25 to 70 t/ha (CA2). An East Cameroon survey found 6.5 t/ha (CA4).",
+    "labour": "Soil preparation 50, cuttings 5, planting 15, upkeep 20 person days per ha from the CTA and ISF Cameroon budget (CA2); harvest 30 person days for 30 t, so 1,000 kg a day (CA2).",
+    "loss_pct": "No measured loss found; the tomato value for a local sale is used as a proxy (T5, T6)."
+   },
+   "confidence": [
+    {
+     "block": {
+      "en": "Technical itinerary",
+      "fr": "Itinéraire technique"
+     },
+     "level": "medium",
+     "note": {
+      "en": "MINADER sheet and a Cameroon production budget, completed with a West African fertilizer sheet.",
+      "fr": "Fiche du MINADER et budget de production camerounais, complétés par une fiche ouest africaine pour la fumure."
+     }
+    },
+    {
+     "block": {
+      "en": "Yields",
+      "fr": "Rendements"
+     },
+     "level": "medium",
+     "note": {
+      "en": "National yield and Cameroon references; improved varieties can do far better.",
+      "fr": "Rendement national et références camerounaises ; les variétés améliorées peuvent faire beaucoup mieux."
+     }
+    },
+    {
+     "block": {
+      "en": "Prices at harvest",
+      "fr": "Prix à la récolte"
+     },
+     "level": "low",
+     "note": {
+      "en": "East Cameroon survey and northern market bulletin; you enter your own price.",
+      "fr": "Enquête à l’Est et bulletin des marchés du Nord ; vous saisissez votre prix."
+     }
+    },
+    {
+     "block": {
+      "en": "Processing",
+      "fr": "Transformation"
+     },
+     "level": "low",
+     "note": {
+      "en": "Conversion ratios from Cameroon and FAO references; the bâton ratio comes from a Congo study.",
+      "fr": "Taux de conversion issus de références camerounaises et de la FAO ; celui du bâton vient d’une étude au Congo."
+     }
+    },
+    {
+     "block": {
+      "en": "Climate and water",
+      "fr": "Climat et eau"
+     },
+     "level": "medium",
+     "note": {
+      "en": "Modelled Foumbot climatology 1991 to 2021 with FAO-56 methods.",
+      "fr": "Climatologie modélisée de Foumbot 1991 à 2021 et méthodes FAO-56."
+     }
+    }
+   ]
+  },
+  "plantain": {
+   "name": {
+    "en": "Plantain",
+    "fr": "Banane plantain"
+   },
+   "release": "regional",
+   "badge": {
+    "en": "Cameroon references",
+    "fr": "Références Cameroun"
+   },
+   "profile": "ratoon",
+   "plants_per_ha": 1666,
+   "ky": 1.2,
+   "loss_pct": 1.15,
+   "harvest_kg_per_person_day": 1000,
+   "agronomist_visits": 1,
+   "horizon_months": 36,
+   "kc": {
+    "ini": 0.5,
+    "mid": 1.1,
+    "end": 1.0,
+    "stages": [
+     0.308,
+     0.538,
+     0.846
+    ]
+   },
+   "cycle": {
+    "nursery_days": 0,
+    "to_first_harvest_days": 380,
+    "harvest_days": 60,
+    "flowering_before_harvest_days": 80
+   },
+   "production": {
+    "cycles": 3,
+    "interval_days": 300,
+    "factors": [
+     1,
+     1,
+     1
+    ]
+   },
+   "yield_t_ha": {
+    "poor": 6.8,
+    "average": 15.9,
+    "good": 25.0
+   },
+   "harvest_label": {
+    "en": "Harvest, cycle {n}",
+    "fr": "Récolte, cycle {n}"
+   },
+   "harvest_detail": {
+    "en": "Cut the bunch 70 days after flowering at physiological maturity, or 90 days for ripe fruit, and cut the stem at three quarters of its height.",
+    "fr": "Couper le régime 70 jours après la floraison à maturité physiologique, ou 90 jours pour un fruit mûr, et couper le pseudo tronc aux trois quarts de sa hauteur."
+   },
+   "price": {
+    "reference_xaf_kg": null,
+    "index": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "note": {
+     "en": "No monthly farm gate price series is published for Cameroon: enter the price you expect to get.",
+     "fr": "Aucune série mensuelle de prix bord champ n’est publiée pour le Cameroun : saisissez le prix que vous comptez obtenir."
+    },
+    "observed": {
+     "en": "Observed in Yaoundé: usually 3,000 to 4,000 FCFA a bunch, 13,500 FCFA on average in the June 2025 shortage; a medium bunch was about 4,000 FCFA in 2016.",
+     "fr": "Observé à Yaoundé : habituellement 3 000 à 4 000 FCFA le régime, 13 500 FCFA en moyenne pendant la pénurie de juin 2025 ; un régime moyen valait environ 4 000 FCFA en 2016."
+    },
+    "src": [
+     "PL5",
+     "PL6"
+    ]
+   },
+   "products": {
+    "fresh": {
+     "label": {
+      "en": "Bunches",
+      "fr": "Régimes"
+     },
+     "ratio": 1,
+     "unit": "bunch",
+     "unit_kg": 11.6,
+     "unit_label": {
+      "en": "bunch",
+      "fr": "régime"
+     }
+    }
+   },
+   "harvest_src": [
+    "CA2"
+   ],
+   "disease_note": {
+    "en": "Banana weevil and nematodes topple plants; leaf spot needs leaf removal; bunchy top plants are uprooted (PL1). On farms near Njombé only a third of the potential bunches were harvested (PL3).",
+    "fr": "Le charançon et les nématodes font verser les plants ; la cercosporiose impose l’effeuillage ; les plants atteints de bunchy top sont arrachés (PL1). Près de Njombé, seul un tiers des régimes potentiels a été récolté (PL3)."
+   },
+   "steps": [
+    {
+     "id": "site",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -60,
+      -45
+     ],
+     "label": {
+      "en": "Plot choice",
+      "fr": "Choix de la parcelle"
+     },
+     "detail": {
+      "en": "Deep, well drained soil and about 200 mm of water a month. Plant before the end of August at the latest.",
+      "fr": "Sol profond et bien drainé, environ 200 mm d’eau par mois. Planter au plus tard fin août."
+     },
+     "src": [
+      "PL1"
+     ]
+    },
+    {
+     "id": "clear",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -40,
+      -21
+     ],
+     "label": {
+      "en": "Clearing and weed control",
+      "fr": "Défrichage et désherbage"
+     },
+     "detail": {
+      "en": "Clear, then glyphosate at 4.5 L per ha against annual weeds (6 L for perennial weeds).",
+      "fr": "Défricher, puis glyphosate à 4,5 L par ha contre les mauvaises herbes annuelles (6 L contre les vivaces)."
+     },
+     "src": [
+      "PL1",
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "glyphosate",
+       "qty": 4.5,
+       "src": [
+        "PL1"
+       ]
+      }
+     ],
+     "labour": 20
+    },
+    {
+     "id": "holes",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -21,
+      -7
+     ],
+     "label": {
+      "en": "Holes and manure",
+      "fr": "Trouaison et fumure"
+     },
+     "detail": {
+      "en": "Dig 60 × 60 × 60 cm holes at 3 m × 2 m, fill with about 40 cm of topsoil and 10 kg of compost or manure per hole.",
+      "fr": "Creuser des trous de 60 × 60 × 60 cm à 3 m × 2 m, les remplir d’environ 40 cm de terre noire et de 10 kg de compost ou de fumier par trou."
+     },
+     "src": [
+      "PL1",
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "farmyard_manure",
+       "qty": 16660,
+       "src": [
+        "PL1"
+       ]
+      }
+     ],
+     "labour": 125
+    },
+    {
+     "id": "plant",
+     "phase": "planting",
+     "ref": "field",
+     "day": [
+      0,
+      5
+     ],
+     "label": {
+      "en": "Planting PIF plants",
+      "fr": "Plantation des plants PIF"
+     },
+     "detail": {
+      "en": "Plant healthy PIF plants, 1,666 per ha. PIF plants are free of weevils and nematodes when they leave the nursery.",
+      "fr": "Planter des plants PIF sains, 1 666 par ha. Les plants PIF sortent de pépinière indemnes de charançons et de nématodes."
+     },
+     "src": [
+      "PL1",
+      "PL7",
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "plantain_pif",
+       "qty": 1666,
+       "src": [
+        "PL7"
+       ]
+      }
+     ],
+     "labour": 35
+    },
+    {
+     "id": "start_feed",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      30,
+      90
+     ],
+     "label": {
+      "en": "Starter fertilizer",
+      "fr": "Engrais de démarrage"
+     },
+     "detail": {
+      "en": "NPK 20-10-10 at 100 g per plant one to three months after planting.",
+      "fr": "NPK 20-10-10 à 100 g par plant un à trois mois après la plantation."
+     },
+     "src": [
+      "PL1",
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "npk_20_10_10",
+       "qty": 167,
+       "src": [
+        "PL1"
+       ]
+      }
+     ],
+     "labour": 6
+    }
+   ],
+   "recurring": [
+    {
+     "id": "feed",
+     "phase": "care",
+     "label": {
+      "en": "Fertilizer rich in N and K",
+      "fr": "Engrais riche en N et K"
+     },
+     "detail": {
+      "en": "About 1 kg of complete fertilizer per plant a year in three applications, every four months. Potassium chloride, also listed by the sheet, is covered by this formula.",
+      "fr": "Environ 1 kg d’engrais complet par plant et par an en trois apports, tous les quatre mois. Le chlorure de potassium, aussi cité par la fiche, est couvert par cette formule."
+     },
+     "src": [
+      "PL1",
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "npk_15_12_24",
+       "qty": 555,
+       "src": [
+        "PL1"
+       ]
+      }
+     ],
+     "labour": 6,
+     "every_months": 4,
+     "first_month": 3,
+     "span_days": 30
+    },
+    {
+     "id": "manure",
+     "phase": "care",
+     "label": {
+      "en": "Yearly organic manure",
+      "fr": "Fumure organique annuelle"
+     },
+     "detail": {
+      "en": "10 t of compost or poultry manure per ha a year, the low end of 10 to 15 t.",
+      "fr": "10 t de compost ou de fiente par ha et par an, le bas de la fourchette de 10 à 15 t."
+     },
+     "src": [
+      "PL1",
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "farmyard_manure",
+       "qty": 10000,
+       "src": [
+        "PL1"
+       ]
+      }
+     ],
+     "labour": 35,
+     "every_months": 12,
+     "first_month": 12,
+     "span_days": 30
+    },
+    {
+     "id": "weed_young",
+     "phase": "care",
+     "label": {
+      "en": "Weeding, first months",
+      "fr": "Sarclage, premiers mois"
+     },
+     "detail": {
+      "en": "Weed regularly during the first six months.",
+      "fr": "Sarcler régulièrement pendant les six premiers mois."
+     },
+     "src": [
+      "PL1",
+      "T1"
+     ],
+     "labour": 15,
+     "every_months": 2,
+     "first_month": 1,
+     "span_days": 30,
+     "last_month": 11
+    },
+    {
+     "id": "weed",
+     "phase": "care",
+     "label": {
+      "en": "Weeding",
+      "fr": "Sarclage"
+     },
+     "detail": {
+      "en": "Keep the plantation clean once the canopy has closed.",
+      "fr": "Garder la bananeraie propre une fois la couverture fermée."
+     },
+     "src": [
+      "PL1",
+      "T1"
+     ],
+     "labour": 15,
+     "every_months": 3,
+     "first_month": 12,
+     "span_days": 30
+    },
+    {
+     "id": "desucker",
+     "phase": "care",
+     "label": {
+      "en": "Desuckering and leaf sanitation",
+      "fr": "Œilletonnage et effeuillage"
+     },
+     "detail": {
+      "en": "Every two months keep one vigorous successor sucker and remove diseased leaves; cut the male bud 7 to 10 days after the last hand.",
+      "fr": "Tous les deux mois, garder un rejet successeur vigoureux et retirer les feuilles malades ; couper le bourgeon mâle 7 à 10 jours après la dernière main."
+     },
+     "src": [
+      "PL1",
+      "PL2",
+      "T1"
+     ],
+     "labour": 15,
+     "every_months": 2,
+     "first_month": 4,
+     "span_days": 30
+    },
+    {
+     "id": "prop",
+     "phase": "care",
+     "label": {
+      "en": "Propping at flowering",
+      "fr": "Tuteurage à la floraison"
+     },
+     "detail": {
+      "en": "Prop each plant from flowering so the bunch does not topple; toppling and theft are major losses on Cameroon farms.",
+      "fr": "Tuteurer chaque plant dès la floraison pour que le régime ne verse pas ; la verse et le vol sont de grosses pertes dans les exploitations camerounaises."
+     },
+     "src": [
+      "PL1",
+      "PL3",
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "stake",
+       "qty": 1666,
+       "src": [
+        "PL1"
+       ]
+      }
+     ],
+     "labour": 30,
+     "every_months": 10,
+     "first_month": 9,
+     "span_days": 30
+    },
+    {
+     "id": "weevil",
+     "phase": "protection",
+     "label": {
+      "en": "Weevil control",
+      "fr": "Lutte contre le charançon"
+     },
+     "detail": {
+      "en": "Two to four treatments a year in the rainy season. The sheet names chlorpyrifos and carbofuran: chlorpyrifos is banned in Cameroon and carbofuran is highly hazardous; neem powder is an alternative. The plan budgets three treatments of a registered insecticide.",
+      "fr": "Deux à quatre traitements par an en saison des pluies. La fiche cite le chlorpyrifos et le carbofuran : le chlorpyrifos est interdit au Cameroun et le carbofuran est très dangereux ; la poudre de neem est une alternative. Le plan compte trois traitements d’un insecticide homologué."
+     },
+     "src": [
+      "PL1",
+      "T2"
+     ],
+     "inputs": [
+      {
+       "item": "insecticide_l",
+       "qty": 1,
+       "src": [
+        "T2"
+       ]
+      }
+     ],
+     "labour": 3,
+     "every_months": 4,
+     "first_month": 2,
+     "span_days": 30
+    }
+   ],
+   "src": [
+    "PL1",
+    "PL2",
+    "PL3",
+    "PL4",
+    "M1",
+    "M6"
+   ],
+   "basis": {
+    "plants_per_ha": "3 m × 2 m, 1,666 plants per ha (PL1).",
+    "ky": "FAO yield response factor for banana 1.2 to 1.35, 1.2 used (M6).",
+    "kc": "FAO-56 banana, first year: Kc 0.5, 1.1, 1.0; stage lengths 120/90/120/60 days (M1).",
+    "cycle": "Flowering about 10 months after planting, cycle 10 to 15 months (PL2); harvest 70 to 90 days after flowering (PL1): first harvest at 380 days. Successive harvests 300 days apart is a Djalumo Agro assumption (no Cameroon figure found); clumps are kept three or four years (PL8), so three cycles over 36 months.",
+    "yield_t_ha": "Per cycle. Poor 6.8 = mean yield on farms near Njombé (PL3; national about 7, PL9); good 25 = 15 kg bunches (PL4, Corne 1) on 1,666 plants (PL1), derived; average = midpoint. A bunch is counted at 11.6 kg, the farm mean (PL3).",
+    "harvest_kg_per_person_day": "No plantain figure found; the cassava harvest norm of the Cameroon budget (CA2) is used as a proxy for a bulky crop.",
+    "loss_pct": "No measured loss found; the tomato value for a local sale is used as a proxy (T5, T6). Theft and toppling are inside the poor yield."
+   },
+   "confidence": [
+    {
+     "block": {
+      "en": "Technical itinerary",
+      "fr": "Itinéraire technique"
+     },
+     "level": "medium",
+     "note": {
+      "en": "IFATI plantain sheet from Cameroon; labour norms are proxies.",
+      "fr": "Fiche plantain de l’IFATI au Cameroun ; les temps de travail sont des substituts."
+     }
+    },
+    {
+     "block": {
+      "en": "Yields",
+      "fr": "Rendements"
+     },
+     "level": "medium",
+     "note": {
+      "en": "Measured on Cameroon farms (CIRAD); the good level is derived.",
+      "fr": "Mesurés dans des exploitations camerounaises (CIRAD) ; le niveau bon est calculé."
+     }
+    },
+    {
+     "block": {
+      "en": "Cycles",
+      "fr": "Cycles"
+     },
+     "level": "low",
+     "note": {
+      "en": "The interval between successive harvests is an assumption.",
+      "fr": "L’intervalle entre récoltes successives est une hypothèse."
+     }
+    },
+    {
+     "block": {
+      "en": "Prices at harvest",
+      "fr": "Prix à la récolte"
+     },
+     "level": "low",
+     "note": {
+      "en": "Yaoundé market reports, very volatile; you enter your price per bunch.",
+      "fr": "Relevés des marchés de Yaoundé, très volatils ; vous saisissez votre prix par régime."
+     }
+    },
+    {
+     "block": {
+      "en": "Climate and water",
+      "fr": "Climat et eau"
+     },
+     "level": "medium",
+     "note": {
+      "en": "Modelled Foumbot climatology 1991 to 2021 with FAO-56 and FAO-33 methods.",
+      "fr": "Climatologie modélisée de Foumbot 1991 à 2021 et méthodes FAO-56 et FAO-33."
+     }
+    }
+   ]
+  },
+  "avocado": {
+   "name": {
+    "en": "Avocado",
+    "fr": "Avocat"
+   },
+   "release": "regional",
+   "badge": {
+    "en": "Regional references",
+    "fr": "Références régionales"
+   },
+   "profile": "orchard",
+   "plants_per_ha": 156,
+   "loss_pct": 15,
+   "harvest_kg_per_person_day": 338,
+   "agronomist_visits": 1,
+   "horizon_months": 120,
+   "kc": {
+    "ini": 0.85,
+    "mid": 0.85,
+    "end": 0.85,
+    "stages": [
+     0.25,
+     0.5,
+     0.75
+    ]
+   },
+   "cycle": {
+    "nursery_days": 0,
+    "to_first_harvest_days": 0,
+    "harvest_days": 0,
+    "flowering_before_harvest_days": 0
+   },
+   "production": {
+    "yield_by_year": [
+     0,
+     0,
+     0.15,
+     0.35,
+     0.5,
+     0.75,
+     0.9,
+     1,
+     1,
+     1
+    ],
+    "harvest_months": [
+     1,
+     2,
+     3,
+     4,
+     6,
+     7,
+     8
+    ]
+   },
+   "yield_t_ha": {
+    "poor": 7.5,
+    "average": 10.0,
+    "good": 13.5
+   },
+   "harvest_label": {
+    "en": "Harvest, year {n}",
+    "fr": "Récolte, année {n}"
+   },
+   "harvest_detail": {
+    "en": "Two harvests a year in Cameroon, February to May and July to September; fruit is sold by the 100 kg sack.",
+    "fr": "Deux récoltes par an au Cameroun, de février à mai et de juillet à septembre ; les fruits se vendent au sac de 100 kg."
+   },
+   "price": {
+    "reference_xaf_kg": null,
+    "index": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "note": {
+     "en": "No monthly farm gate price series is published for Cameroon: enter the price you expect to get.",
+     "fr": "Aucune série mensuelle de prix bord champ n’est publiée pour le Cameroun : saisissez le prix que vous comptez obtenir."
+    },
+    "observed": {
+     "en": "Observed: traders buy a 100 kg sack at the field for 25,000 to 65,000 FCFA depending on the variety (2022); 10,000 to 60,000 FCFA depending on the period (2016); fruits retail at 100 to 500 FCFA.",
+     "fr": "Observé : les commerçants achètent le sac de 100 kg au champ 25 000 à 65 000 FCFA selon la variété (2022) ; 10 000 à 60 000 FCFA selon la période (2016) ; les fruits se vendent au détail 100 à 500 FCFA."
+    },
+    "src": [
+     "AV2",
+     "AV1"
+    ]
+   },
+   "products": {
+    "fresh": {
+     "label": {
+      "en": "Fruit, by the sack",
+      "fr": "Fruits, au sac"
+     },
+     "ratio": 1,
+     "unit": "sack",
+     "unit_kg": 100,
+     "unit_label": {
+      "en": "100 kg sack",
+      "fr": "sac de 100 kg"
+     }
+    }
+   },
+   "harvest_src": [
+    "AV6"
+   ],
+   "disease_note": {
+    "en": "Anthracnose and leaf spot thrive in wet weather; root rot (phytophthora) on poorly drained soils (AV6).",
+    "fr": "L’anthracnose et la cercosporiose prospèrent par temps humide ; la pourriture des racines (phytophthora) sur sols mal drainés (AV6)."
+   },
+   "steps": [
+    {
+     "id": "site",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -90,
+      -60
+     ],
+     "label": {
+      "en": "Site and varieties",
+      "fr": "Site et variétés"
+     },
+     "detail": {
+      "en": "Soil at least 1 to 1.5 m deep, pH above 4.5 to 5, 1,200 to 1,600 mm of rain and about two dry months to trigger flowering. Choose grafted plants of known varieties (Pollock, Booth 7, Peterson, Hickson) and alternate varieties by row for pollination.",
+      "fr": "Sol d’au moins 1 à 1,5 m de profondeur, pH au dessus de 4,5 à 5, 1 200 à 1 600 mm de pluie et environ deux mois secs pour déclencher la floraison. Choisir des plants greffés de variétés connues (Pollock, Booth 7, Peterson, Hickson) et alterner les variétés par ligne pour la pollinisation."
+     },
+     "src": [
+      "AV3",
+      "AV1"
+     ]
+    },
+    {
+     "id": "clear",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -60,
+      -35
+     ],
+     "label": {
+      "en": "Clearing",
+      "fr": "Défrichage"
+     },
+     "detail": {
+      "en": "Clear the plot and mark the planting points 8 m apart.",
+      "fr": "Défricher la parcelle et piqueter les points de plantation à 8 m."
+     },
+     "src": [
+      "AV7",
+      "T1"
+     ],
+     "labour": 20
+    },
+    {
+     "id": "holes",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -30,
+      -7
+     ],
+     "label": {
+      "en": "Holes and mounds",
+      "fr": "Trous et buttes"
+     },
+     "detail": {
+      "en": "Dig 60 × 60 × 60 cm holes a month ahead and fill them with topsoil, 20 kg of farmyard manure and 120 g of double superphosphate (DAP in the budget as the nearest phosphate); raise mounds 30 cm high with a 1 m base.",
+      "fr": "Creuser les trous de 60 × 60 × 60 cm un mois à l’avance et les remplir de terre, de 20 kg de fumier et de 120 g de superphosphate double (DAP au budget comme phosphate le plus proche) ; former des buttes de 30 cm de haut sur 1 m de base."
+     },
+     "src": [
+      "AV5",
+      "AV3",
+      "AV6"
+     ],
+     "inputs": [
+      {
+       "item": "farmyard_manure",
+       "qty": 3120,
+       "src": [
+        "AV5"
+       ]
+      },
+      {
+       "item": "dap",
+       "qty": 18.7,
+       "src": [
+        "AV5"
+       ]
+      }
+     ],
+     "labour": 15
+    },
+    {
+     "id": "plant",
+     "phase": "planting",
+     "ref": "field",
+     "day": [
+      0,
+      7
+     ],
+     "label": {
+      "en": "Planting grafted trees",
+      "fr": "Plantation des plants greffés"
+     },
+     "detail": {
+      "en": "Plant 156 grafted trees per ha at the start of the rains; remove the flowers of the first years so the tree builds its frame.",
+      "fr": "Planter 156 plants greffés par ha au début des pluies ; retirer les fleurs des premières années pour que l’arbre forme sa charpente."
+     },
+     "src": [
+      "AV6",
+      "AV8"
+     ],
+     "inputs": [
+      {
+       "item": "avocado_grafted",
+       "qty": 156,
+       "src": [
+        "AV8"
+       ]
+      }
+     ],
+     "labour": 13
+    }
+   ],
+   "recurring": [
+    {
+     "id": "feed_n",
+     "phase": "care",
+     "label": {
+      "en": "Nitrogen by tree age",
+      "fr": "Azote selon l’âge des arbres"
+     },
+     "detail": {
+      "en": "Calcium ammonium nitrate: 125 g per tree in years 1 to 3, 225 g in years 4 and 5, 450 g in years 6 and 7, 650 g in years 8 and 9, 900 g from year 10.",
+      "fr": "Ammonitrate calcique : 125 g par arbre les années 1 à 3, 225 g les années 4 et 5, 450 g les années 6 et 7, 650 g les années 8 et 9, 900 g dès l’année 10."
+     },
+     "src": [
+      "AV5"
+     ],
+     "inputs": [
+      {
+       "item": "can",
+       "qty": 19.5,
+       "src": [
+        "AV5"
+       ]
+      }
+     ],
+     "every_months": 12,
+     "first_month": 2,
+     "span_days": 30,
+     "qty_by_year": [
+      1,
+      1,
+      1,
+      1.8,
+      1.8,
+      3.6,
+      3.6,
+      5.2,
+      5.2,
+      7.2
+     ]
+    },
+    {
+     "id": "feed_p",
+     "phase": "care",
+     "label": {
+      "en": "Phosphate by tree age",
+      "fr": "Phosphate selon l’âge des arbres"
+     },
+     "detail": {
+      "en": "Double superphosphate: 225 g per tree in years 1 to 3, 450 g in years 4 and 5, 650 g in years 6 to 9, 1 kg from year 10. DAP is used in the budget as the nearest phosphate.",
+      "fr": "Superphosphate double : 225 g par arbre les années 1 à 3, 450 g les années 4 et 5, 650 g les années 6 à 9, 1 kg dès l’année 10. Le DAP est utilisé au budget comme phosphate le plus proche."
+     },
+     "src": [
+      "AV5"
+     ],
+     "inputs": [
+      {
+       "item": "dap",
+       "qty": 35.1,
+       "src": [
+        "AV5"
+       ]
+      }
+     ],
+     "every_months": 12,
+     "first_month": 2,
+     "span_days": 30,
+     "qty_by_year": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      2.89,
+      2.89,
+      2.89,
+      2.89,
+      4.44
+     ]
+    },
+    {
+     "id": "feed_k",
+     "phase": "care",
+     "label": {
+      "en": "Potash from year 6",
+      "fr": "Potasse dès l’année 6"
+     },
+     "detail": {
+      "en": "Muriate of potash: 225 g per tree in years 6 and 7, 450 g in years 8 and 9, 635 g from year 10. Potassium sulphate is used in the budget, the potash form with a Cameroon price.",
+      "fr": "Chlorure de potassium : 225 g par arbre les années 6 et 7, 450 g les années 8 et 9, 635 g dès l’année 10. Le sulfate de potassium est utilisé au budget, la forme de potasse ayant un prix camerounais."
+     },
+     "src": [
+      "AV5"
+     ],
+     "inputs": [
+      {
+       "item": "k2so4",
+       "qty": 35.1,
+       "src": [
+        "AV5"
+       ]
+      }
+     ],
+     "every_months": 12,
+     "first_month": 62,
+     "span_days": 30,
+     "qty_by_year": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2,
+      2.82
+     ]
+    },
+    {
+     "id": "feed_om",
+     "phase": "care",
+     "label": {
+      "en": "Farmyard manure",
+      "fr": "Fumier"
+     },
+     "detail": {
+      "en": "15 kg per tree a year in years 1 to 5, 30 kg in years 6 to 9.",
+      "fr": "15 kg par arbre et par an les années 1 à 5, 30 kg les années 6 à 9."
+     },
+     "src": [
+      "AV5"
+     ],
+     "inputs": [
+      {
+       "item": "farmyard_manure",
+       "qty": 2340,
+       "src": [
+        "AV5"
+       ]
+      }
+     ],
+     "every_months": 12,
+     "first_month": 2,
+     "span_days": 30,
+     "qty_by_year": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      2,
+      0
+     ]
+    },
+    {
+     "id": "feed_work",
+     "phase": "care",
+     "label": {
+      "en": "Fertilizing work",
+      "fr": "Travail de fertilisation"
+     },
+     "detail": {
+      "en": "Spread the fertilizers around the drip line of each tree.",
+      "fr": "Épandre les engrais autour de la projection de la couronne de chaque arbre."
+     },
+     "src": [
+      "AV6"
+     ],
+     "labour": 1,
+     "every_months": 12,
+     "first_month": 2,
+     "span_days": 30,
+     "qty_by_year": [
+      4,
+      6,
+      7,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+     ]
+    },
+    {
+     "id": "mulch",
+     "phase": "care",
+     "label": {
+      "en": "Mulching and mounding",
+      "fr": "Paillage et buttage"
+     },
+     "detail": {
+      "en": "Mulch the base of the trees and keep the mounds up.",
+      "fr": "Pailler le pied des arbres et entretenir les buttes."
+     },
+     "src": [
+      "AV6"
+     ],
+     "labour": 15,
+     "every_months": 12,
+     "first_month": 3,
+     "span_days": 30
+    },
+    {
+     "id": "weed",
+     "phase": "care",
+     "label": {
+      "en": "Weeding",
+      "fr": "Désherbage"
+     },
+     "detail": {
+      "en": "Keep the tree rows clean all year.",
+      "fr": "Garder les lignes d’arbres propres toute l’année."
+     },
+     "src": [
+      "AV6"
+     ],
+     "labour": 24,
+     "every_months": 12,
+     "first_month": 1,
+     "span_days": 30
+    },
+    {
+     "id": "protect",
+     "phase": "protection",
+     "label": {
+      "en": "Pest and disease control",
+      "fr": "Protection phytosanitaire"
+     },
+     "detail": {
+      "en": "Copper fungicide against anthracnose and leaf spot from fruit set to harvest, a contact insecticide when needed. Mancozeb is used in the budget for the copper fungicide.",
+      "fr": "Fongicide cuprique contre l’anthracnose et la cercosporiose de la nouaison à la récolte, insecticide de contact au besoin. Le mancozèbe est utilisé au budget pour le fongicide cuprique."
+     },
+     "src": [
+      "AV6"
+     ],
+     "inputs": [
+      {
+       "item": "insecticide_l",
+       "qty": 1.5,
+       "src": [
+        "AV6"
+       ]
+      },
+      {
+       "item": "mancozeb",
+       "qty": 1,
+       "src": [
+        "AV6"
+       ]
+      }
+     ],
+     "labour": 12,
+     "every_months": 12,
+     "first_month": 6,
+     "span_days": 30
+    },
+    {
+     "id": "prune",
+     "phase": "care",
+     "label": {
+      "en": "Pruning",
+      "fr": "Taille"
+     },
+     "detail": {
+      "en": "Shape the trees and remove dead wood from the third year.",
+      "fr": "Former les arbres et retirer le bois mort dès la troisième année."
+     },
+     "src": [
+      "AV6"
+     ],
+     "labour": 8,
+     "every_months": 12,
+     "first_month": 24,
+     "span_days": 30
+    }
+   ],
+   "src": [
+    "AV1",
+    "AV2",
+    "AV4",
+    "AV5",
+    "AV6",
+    "M1"
+   ],
+   "basis": {
+    "plants_per_ha": "8 m × 8 m, 156 trees per ha, within 8 to 10 m between trees (AV7); 120 trees at 9 m × 9 m (AV5), about 150 in the Trinidad model (AV6).",
+    "kc": "FAO-56 avocado without ground cover, mid season Kc 0.85 used through the year (M1). No FAO yield response factor: water shortage raises the risk, not the modelled yield.",
+    "cycle": "Grafted trees bear from about year 3 (AV1, AV4); economic crop from year 6 (AV5). Yield shares by year 0, 0, 15, 35, 50, 75, 90, then 100% are a Djalumo Agro assumption fitted to these points and to the young tree yields of AV5.",
+    "yield_t_ha": "Mature orchard, fresh fruit per year. Poor 7.5 = low end of 7.5 to 11 t/ha (AV5); average 10 = well kept orchards in Cameroon, more than 10 t/ha (AV1, AV2); good 13.5 = Trinidad model from year 4 (AV6).",
+    "harvest_kg_per_person_day": "13,500 kg picked in 40 person days in the Trinidad model (AV6), derived.",
+    "loss_pct": "15% post harvest loss in the Trinidad model (AV6).",
+    "labour": "Planting 13, mounding 15, weeding 24, pest control 12, pruning 8 from year 3 and fertilizing 4 to 7 person days per ha a year (AV6)."
+   },
+   "confidence": [
+    {
+     "block": {
+      "en": "Technical itinerary",
+      "fr": "Itinéraire technique"
+     },
+     "level": "medium",
+     "note": {
+      "en": "Kenya (KALRO) fertilizer schedule and Trinidad labour model, with Cameroon site and variety advice.",
+      "fr": "Calendrier de fumure du Kenya (KALRO) et modèle de travail de Trinidad, avec les conseils camerounais sur le site et les variétés."
+     }
+    },
+    {
+     "block": {
+      "en": "Yields",
+      "fr": "Rendements"
+     },
+     "level": "low",
+     "note": {
+      "en": "Cameroon level for mature orchards; the ramp by age is an assumption.",
+      "fr": "Niveau camerounais pour les vergers adultes ; la montée en production par âge est une hypothèse."
+     }
+    },
+    {
+     "block": {
+      "en": "Prices at harvest",
+      "fr": "Prix à la récolte"
+     },
+     "level": "low",
+     "note": {
+      "en": "Sack prices from Cameroon press, wide range; you enter your price per sack.",
+      "fr": "Prix au sac relevés par la presse camerounaise, fourchette large ; vous saisissez votre prix par sac."
+     }
+    },
+    {
+     "block": {
+      "en": "Export",
+      "fr": "Export"
+     },
+     "level": "low",
+     "note": {
+      "en": "Europe needs commercial varieties, certification and cold chain; this plan prices the local market.",
+      "fr": "L’Europe exige des variétés commerciales, une certification et une chaîne du froid ; ce plan chiffre le marché local."
+     }
+    },
+    {
+     "block": {
+      "en": "Climate and water",
+      "fr": "Climat et eau"
+     },
+     "level": "medium",
+     "note": {
+      "en": "Modelled Foumbot climatology 1991 to 2021 with FAO-56 methods.",
+      "fr": "Climatologie modélisée de Foumbot 1991 à 2021 et méthodes FAO-56."
+     }
+    }
+   ]
   }
  },
  "assumptions": [
@@ -4508,11 +6203,75 @@
    "fr": "Les lignes sans prix sourcé (tuteurs, palissage, certaines semences) restent dans le plan avec leur quantité et un coût nul : demander un devis local avant de s’engager."
   },
   {
+   "en": "Long crops (cassava, plantain, avocado) are planned month by month over their horizon. The capital needed is the deepest cumulative deficit of the average outcome plus the 10% reserve; without a price, the costs up to the end of the first harvest.",
+   "fr": "Les cultures longues (manioc, plantain, avocat) sont planifiées mois par mois sur leur horizon. Le capital nécessaire est le déficit cumulé le plus profond de l’issue moyenne plus la réserve de 10 % ; sans prix, les coûts jusqu’à la fin de la première récolte."
+  },
+  {
+   "en": "For long crops the failure outcome sells 10% of the average yield at the first harvest and poor yields afterwards. Equipment is bought again at the end of its life within the horizon; no resale value is counted.",
+   "fr": "Pour les cultures longues, l’issue d’échec vend 10 % du rendement moyen à la première récolte puis des rendements faibles. Le matériel est racheté en fin de vie pendant l’horizon ; aucune valeur de revente n’est comptée."
+  },
+  {
+   "en": "Land rent for long crops counts two seasons a year. Processing costs per tonne of product follow the ratio of each product; the cassava stick uses the gari labour and firewood per tonne of roots.",
+   "fr": "La location de terre des cultures longues compte deux saisons par an. Les coûts de transformation par tonne de produit suivent le taux de chaque produit ; le bâton de manioc reprend le travail et le bois du gari par tonne de racines."
+  },
+  {
+   "en": "Plantain: successive harvests on the same mat 300 days apart, three cycles. Avocado: yield shares by tree age 0, 0, 15, 35, 50, 75, 90 then 100%. Both are Djalumo Agro assumptions fitted to the sources named in each crop.",
+   "fr": "Plantain : récoltes successives sur la même souche à 300 jours d’intervalle, trois cycles. Avocat : part du rendement selon l’âge 0, 0, 15, 35, 50, 75, 90 puis 100 %. Ce sont deux hypothèses de Djalumo Agro calées sur les sources citées pour chaque culture."
+  },
+  {
    "en": "Exchange rates are fixed at mid October 2026 values (BCEAO for the CFA franc, 16 October; naira 13 October); they are not live.",
    "fr": "Les taux de change sont fixés aux valeurs de mi octobre 2026 (BCEAO pour le franc CFA, 16 octobre ; naira 13 octobre) ; ils ne sont pas en temps réel."
   }
  ],
  "sources": {
+  "AV1": {
+   "title": "Cameroun : avocat, les Bamboutos principal bassin de production (I. M. Bidima)",
+   "publisher": "La Voix du Paysan",
+   "year": 2016,
+   "url": "https://www.lavoixdupaysan.net/cameroun-avocat-bamboutos-principal-bassin-de-production/"
+  },
+  "AV2": {
+   "title": "La culture de l'avocatier au Cameroun a le vent en poupe",
+   "publisher": "Agriculture au Cameroun",
+   "year": 2022,
+   "url": "https://agricultureaucameroun.com/investir-au-cameroun/la-culture-de-lavocatier-au-cameroun-a-le-vent-en-poupe/"
+  },
+  "AV3": {
+   "title": "L'avocat au Cameroun : une mine d'or verte à exploiter",
+   "publisher": "Fabrik Aliments",
+   "year": 2024,
+   "url": "https://www.fabrikaliments.com/lavocat-au-cameroun-une-mine-dor-verte-a-exploiter/"
+  },
+  "AV4": {
+   "title": "Un avocatier greffé produit ses premiers fruits en moyenne au bout de trois ans (entretien avec N. Tegofack)",
+   "publisher": "Agripreneurs d'Afrique",
+   "year": 2023,
+   "url": "https://agripreneursdafrique.com/article/un-avocatier-greffe-produit-ses-premiers-fruits-en-moyenne-au-bout-de-trois-ans-contre-huit-et-dix-ans-pour-un-non-greffe"
+  },
+  "AV5": {
+   "title": "Avocado production factsheet (Wasilwa, Ochieng, Otipa, Amata, Oduor, Omolo)",
+   "publisher": "KALRO, Kenya",
+   "year": 2018,
+   "url": "https://agrificsapp.kalro.org/file_uploads/Avocado-production%20factsheets.pdf"
+  },
+  "AV6": {
+   "title": "Avocado (Persea americana Mill.) technical package (F. Solomon Jr.)",
+   "publisher": "Ministry of Agriculture, Land and Fisheries, Trinidad and Tobago",
+   "year": 2017,
+   "url": "https://agriculture.gov.tt/wp-content/uploads/2020/01/AVOCADO-Tech-Pack-24-JAN-2017_compressed.pdf"
+  },
+  "AV7": {
+   "title": "Techniques de production de plants d'arbres fruitiers dans les pépinières : greffage de l'avocatier (DACEFI)",
+   "publisher": "Nature+, WWF and FUSAGx, Gabon",
+   "year": null,
+   "url": "https://d2ouvy59p0dg6k.cloudfront.net/downloads/txt38_brochure_greffage_avocatier.pdf"
+  },
+  "AV8": {
+   "title": "Plants d'avocatiers greffés : offres de pépiniéristes au Cameroun",
+   "publisher": "EspaceAgro",
+   "year": 2022,
+   "url": "https://www.espaceagro.com/greffe-avocatier/exp-greffe-avocatier.html"
+  },
   "C2": {
    "title": "Quarterly monitoring newsletter on agricultural inputs N°0 - December 2022 (English version)",
    "publisher": "MINADER DESA",
@@ -4650,6 +6409,66 @@
    "publisher": "Afribobo (Cameroon classifieds)",
    "year": 2026,
    "url": "https://www.afribobo.com/yaounde/fiante-de-poules-pour-fertilisation-du-sol-50kg-169434.html"
+  },
+  "CA1": {
+   "title": "Fiche de conseil en transition agroécologique pour la culture du manioc au Cameroun",
+   "publisher": "MINADER",
+   "year": 2023,
+   "url": "https://www.minader.cm/wp-content/uploads/2023/09/05_Fiche_CTA_MANIOC_VF-1.pdf"
+  },
+  "CA2": {
+   "title": "Production et transformation du manioc (collection PRO-AGRO)",
+   "publisher": "CTA and ISF Cameroun (Kouakou, Nanga Nanga, Plagne-Ismail, Pali, Ognakossan)",
+   "year": 2015,
+   "url": "https://laboress-afrique.org/boostsess/public/uploads/pdfdocuments/files/cta_manioc.pdf"
+  },
+  "CA3": {
+   "title": "Fiche technico-économique de la production agroécologique du manioc",
+   "publisher": "Louvain Coopération (DGD programme 2017 to 2021)",
+   "year": 2019,
+   "url": "https://louvaincooperation.org/sites/default/files/2020-09/190.FICHE%20TECHNICO-ECONOMIQUE%20DE%20LA%20PRODUCTION%20AGROECOLOGIQUE%20DU%20MANIOC.pdf"
+  },
+  "CA4": {
+   "title": "Analyse financière de la chaîne de valeur du manioc dans la région de l'Est Cameroun (J. H. Mappe)",
+   "publisher": "Université de Dschang, FASA",
+   "year": 2019,
+   "url": "https://www.memoireonline.com/07/21/11961/m_Analyse-financiere-de-la-chaine-de-valeur-du-manioc-dans-la-region-de-lest-Cameroun6.html"
+  },
+  "CA5": {
+   "title": "Amélioration des procédés traditionnels de transformation de certains oléagineux et du manioc: production de gari",
+   "publisher": "FAO",
+   "year": null,
+   "url": "https://www.fao.org/4/t8320f/T8320F06.htm"
+  },
+  "CA6": {
+   "title": "Ligne mécanisée de production de chikwangue au Congo (Legros, Malonga, Avouampo, Mabounda)",
+   "publisher": "ORSTOM, Transformation alimentaire du manioc",
+   "year": 1995,
+   "url": "https://www.researchgate.net/publication/32972770_Ligne_mecanisee_de_production_de_chikwangue_au_Congo_Mechanized_chikwangue_production_line_in_the_Congo"
+  },
+  "CA7": {
+   "title": "Miondo, bobolo et mintoumba : l'art de transformer le manioc",
+   "publisher": "Afrik.com",
+   "year": 2022,
+   "url": "https://www.afrik.com/miondo-bobolo-et-mintoumba-l-art-de-transformer-le-manioc"
+  },
+  "CA8": {
+   "title": "Produire le manioc et ses dérivés",
+   "publisher": "Agence Ecofin",
+   "year": 2020,
+   "url": "https://www.agenceecofin.com/lancer-son-entreprise/2402-74157-produire-le-manioc-et-ses-derives"
+  },
+  "CA9": {
+   "title": "Bulletin SIM MINADER PAM N°003, octobre à décembre 2022",
+   "publisher": "MINADER and WFP",
+   "year": 2022,
+   "url": "https://www.minader.cm/wp-content/uploads/2023/08/Bulletin-SIM-MINADER-PAM-N%C2%B0003-T4-2022-VF.pdf"
+  },
+  "CA10": {
+   "title": "Y a-t-il une variété de manioc ayant un cycle en deçà de 12 mois ?",
+   "publisher": "La Voix du Paysan",
+   "year": 2021,
+   "url": "https://www.lavoixdupaysan.net/cameroun-y-a-t-il-une-variete-de-manioc-ayant-un-cycle-en-deca-de-12-mois/"
   },
   "CH1": {
    "title": "Technologie de production du piment (Capsicum frutescens)",
@@ -5016,6 +6835,60 @@
    "publisher": "Land Bank, South Africa",
    "year": 2025,
    "url": "https://landbank.co.za/Media-Centre/Publications/2026/Vegetable Enterprise Budget 2025 print.pdf"
+  },
+  "PL1": {
+   "title": "Technologie de la culture du bananier plantain et production de rejets par la technique PIF",
+   "publisher": "Institut de Formation en Agriculture et Technologies Innovantes (IFATI), Cameroon",
+   "year": null,
+   "url": "https://agrivisionsahel.org/images/pub/BANANIER%20PLANTAIN.pdf"
+  },
+  "PL2": {
+   "title": "Fiche technique : culture du bananier plantain de manière intensive",
+   "publisher": "Agriculture au Cameroun",
+   "year": 2018,
+   "url": "https://agricultureaucameroun.com/fiches-techniques/fiche-technique-culture-du-bananier-plantain-de-maniere-intensive/"
+  },
+  "PL3": {
+   "title": "Plantain productivity: insights from Cameroonian cropping systems (Dépigny, Delrieu Wils, Tixier, Ndoumbé Keng, Cilas, Lescot, Jagoret)",
+   "publisher": "Agricultural Systems 168",
+   "year": 2019,
+   "url": "https://agents.cirad.fr/pjjimg/philippe.tixier@cirad.fr/Depigny_et_al_2019_Agric_Syst.pdf"
+  },
+  "PL4": {
+   "title": "Comment réussir la production de la banane plantain en contre saison",
+   "publisher": "CNRA, Côte d'Ivoire",
+   "year": 2024,
+   "url": "https://cnra.ci/wp-content/uploads/2024/11/reussir-production-banane-plantain-contre-saison.pdf"
+  },
+  "PL5": {
+   "title": "Yaoundé : le prix du plantain s'envole sur le marché",
+   "publisher": "Journal du Cameroun",
+   "year": 2025,
+   "url": "https://fr.journalducameroun.com/camerouneco/yaounde-le-prix-du-plantain-senvole-sur-le-marche/"
+  },
+  "PL6": {
+   "title": "Cameroun : 4000 Fcfa pour un régime de plantain moyen",
+   "publisher": "La Voix du Paysan",
+   "year": 2016,
+   "url": "https://www.lavoixdupaysan.net/cameroun-4000-fcfa-regime-de-plantain-moyen/"
+  },
+  "PL7": {
+   "title": "Plants de bananier plantain (PIF, rejets) : annonces de producteurs au Cameroun",
+   "publisher": "EspaceAgro",
+   "year": 2022,
+   "url": "https://www.espaceagro.com/plant-bananier-plantain/exp-plant-bananier-plantain.html"
+  },
+  "PL8": {
+   "title": "Le bananier plantain au Cameroun (H. Tezenas du Montcel)",
+   "publisher": "Fruits, vol. 34, n°5",
+   "year": 1979,
+   "url": "https://revues.cirad.fr/index.php/fruits/article/download/34450/33694/36959"
+  },
+  "PL9": {
+   "title": "La production de la banane plantain requiert 20 millions de plants par an, selon le CARBAP",
+   "publisher": "Investir au Cameroun",
+   "year": 2013,
+   "url": "https://www.investiraucameroun.com/agriculture/0412-4856-cameroun-la-production-de-la-banane-plantain-requiert-20-millions-de-plants-par-an-selon-le-carbap"
   },
   "T1": {
    "title": "Technical and Economic Data Sheet for Tomato Production and Post-Production (PARPAC)",

@@ -1,0 +1,183 @@
+{
+  "crop": "Cassava / manioc (Manihot esculenta), improved IRAD and IITA varieties, one cycle of about 12 months; sold fresh or processed into cossettes (dried chips), gari and baton (bobolo, miondo)",
+  "research_date": "2026-10-23",
+  "cycle": {
+    "text": "Varieties mature from 9 months; good yields at 12 to 24 months (S10). Sweet varieties 8 to 10 months, bitter from 12 months; late varieties 12 to 18 months (S2). Harvest 9 to 18 months after planting (S8).",
+    "source_ids": [
+      "S2",
+      "S8",
+      "S10"
+    ]
+  },
+  "planting": {
+    "density": "1 m x 1 m, about 10,000 plants/ha (S2, S3); 6,000 to 10,000 in pure stands (S2).",
+    "cuttings": "20 to 30 cm with 5 to 7 eyes, from 12 to 18 month old stems; hot water at 50 C for 15 min or a fungicide insecticide dip (S2, S3). Improved cuttings cost 25 to 50 FCFA each (S8); selected cuttings for 1 ha cost 260,000 FCFA in the CTA and ISF Cameroon budget (S2).",
+    "timing": "Start of the main rainy season; fill gaps 3 to 5 weeks after planting (S3).",
+    "source_ids": [
+      "S2",
+      "S3",
+      "S8"
+    ]
+  },
+  "fertility": {
+    "organic": "10 to 20 t/ha of well decomposed manure on soils poor in humus, at land preparation (S1).",
+    "mineral": "Urea 100 kg, triple superphosphate 100 kg and potassium sulphate 200 kg per ha (S3).",
+    "source_ids": [
+      "S1",
+      "S3"
+    ]
+  },
+  "weeding": {
+    "text": "Three weedings, at 3 to 4, 7 to 9 and 12 to 14 weeks after planting (S3).",
+    "source_ids": [
+      "S3"
+    ]
+  },
+  "pests": {
+    "text": "Treat the variegated grasshopper (Zonocerus variegatus) only above 12 larvae per m2 (S3); use healthy cuttings against mosaic.",
+    "source_ids": [
+      "S3"
+    ]
+  },
+  "labour": {
+    "per_ha": "Soil preparation 50, cutting preparation 5, planting 15, upkeep 20, harvest 30 and carrying 40 person days per ha, 1,500 FCFA a day (S2). 75 to 125 person days from planting to harvest (S2).",
+    "source_ids": [
+      "S2"
+    ]
+  },
+  "yields_t_ha": {
+    "national": {
+      "value": 16,
+      "source_ids": [
+        "S1"
+      ]
+    },
+    "typical": [
+      8,
+      15
+    ],
+    "improved": [
+      25,
+      70
+    ],
+    "source_ids": [
+      "S1",
+      "S2"
+    ],
+    "east_cameroon_survey": {
+      "value": 6.5,
+      "source_ids": [
+        "S4"
+      ]
+    }
+  },
+  "processing": {
+    "gari": {
+      "yield": "200 to 300 kg per t of roots (S2); 20 to 22 kg per 100 kg (S5); 825 kg from 2.5 t in the S2 cost table.",
+      "costs": "Per 2.5 t of roots: water and firewood 12,500 FCFA; 20 person days (peeling 5, washing 1, grating 6, pressing 2, sieving and roasting 4, grading 2) (S2).",
+      "price": "300 FCFA/kg in the S2 budget (2015).",
+      "source_ids": [
+        "S2",
+        "S5"
+      ]
+    },
+    "cossettes": {
+      "yield": "250 kg per t of roots (S2); 30 to 37 kg per 100 kg (S5).",
+      "costs": "Per t of roots in the East: peeling and washing 3,000 FCFA, drying 2,000, water 1,000 (S4).",
+      "price": "Processors sell at 160,000 to 200,000 FCFA per t in the East (S4); 219 to 257 FCFA/kg in northern markets in late 2022 (S9).",
+      "source_ids": [
+        "S2",
+        "S4",
+        "S5",
+        "S9"
+      ]
+    },
+    "baton": {
+      "yield": "About 48 kg of chikwangue per 100 kg of roots, comparable to the traditional process; pieces of about 600 g sold 100 FCFA (Congo, S6).",
+      "price": "Douala, Saker market: bobolo 200 FCFA a piece, miondo 600 FCFA a stick (S7, 2022).",
+      "source_ids": [
+        "S6",
+        "S7"
+      ]
+    }
+  },
+  "prices": {
+    "fresh": "Farm gate 65,000 to 100,000 FCFA per t, markets 70,000 to 105,000 FCFA per t (East, S4).",
+    "source_ids": [
+      "S4"
+    ]
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "title": "Fiche de conseil en transition agroécologique pour la culture du manioc au Cameroun",
+      "publisher": "MINADER",
+      "year": 2023,
+      "url": "https://www.minader.cm/wp-content/uploads/2023/09/05_Fiche_CTA_MANIOC_VF-1.pdf"
+    },
+    {
+      "id": "S2",
+      "title": "Production et transformation du manioc (collection PRO-AGRO)",
+      "publisher": "CTA and ISF Cameroun (Kouakou, Nanga Nanga, Plagne-Ismail, Pali, Ognakossan)",
+      "year": 2015,
+      "url": "https://laboress-afrique.org/boostsess/public/uploads/pdfdocuments/files/cta_manioc.pdf"
+    },
+    {
+      "id": "S3",
+      "title": "Fiche technico-économique de la production agroécologique du manioc",
+      "publisher": "Louvain Coopération (DGD programme 2017 to 2021)",
+      "year": 2019,
+      "url": "https://louvaincooperation.org/sites/default/files/2020-09/190.FICHE%20TECHNICO-ECONOMIQUE%20DE%20LA%20PRODUCTION%20AGROECOLOGIQUE%20DU%20MANIOC.pdf"
+    },
+    {
+      "id": "S4",
+      "title": "Analyse financière de la chaîne de valeur du manioc dans la région de l'Est Cameroun (J. H. Mappe)",
+      "publisher": "Université de Dschang, FASA",
+      "year": 2019,
+      "url": "https://www.memoireonline.com/07/21/11961/m_Analyse-financiere-de-la-chaine-de-valeur-du-manioc-dans-la-region-de-lest-Cameroun6.html"
+    },
+    {
+      "id": "S5",
+      "title": "Amélioration des procédés traditionnels de transformation de certains oléagineux et du manioc: production de gari",
+      "publisher": "FAO",
+      "year": null,
+      "url": "https://www.fao.org/4/t8320f/T8320F06.htm"
+    },
+    {
+      "id": "S6",
+      "title": "Ligne mécanisée de production de chikwangue au Congo (Legros, Malonga, Avouampo, Mabounda)",
+      "publisher": "ORSTOM, Transformation alimentaire du manioc",
+      "year": 1995,
+      "url": "https://www.researchgate.net/publication/32972770_Ligne_mecanisee_de_production_de_chikwangue_au_Congo_Mechanized_chikwangue_production_line_in_the_Congo"
+    },
+    {
+      "id": "S7",
+      "title": "Miondo, bobolo et mintoumba : l'art de transformer le manioc",
+      "publisher": "Afrik.com",
+      "year": 2022,
+      "url": "https://www.afrik.com/miondo-bobolo-et-mintoumba-l-art-de-transformer-le-manioc"
+    },
+    {
+      "id": "S8",
+      "title": "Produire le manioc et ses dérivés",
+      "publisher": "Agence Ecofin",
+      "year": 2020,
+      "url": "https://www.agenceecofin.com/lancer-son-entreprise/2402-74157-produire-le-manioc-et-ses-derives"
+    },
+    {
+      "id": "S9",
+      "title": "Bulletin SIM MINADER PAM N°003, octobre à décembre 2022",
+      "publisher": "MINADER and WFP",
+      "year": 2022,
+      "url": "https://www.minader.cm/wp-content/uploads/2023/08/Bulletin-SIM-MINADER-PAM-N%C2%B0003-T4-2022-VF.pdf"
+    },
+    {
+      "id": "S10",
+      "title": "Y a-t-il une variété de manioc ayant un cycle en deçà de 12 mois ?",
+      "publisher": "La Voix du Paysan",
+      "year": 2021,
+      "url": "https://www.lavoixdupaysan.net/cameroun-y-a-t-il-une-variete-de-manioc-ayant-un-cycle-en-deca-de-12-mois/"
+    }
+  ],
+  "confidence_notes": "MEDIUM for the itinerary and labour (Cameroon budget S2, MINADER S1). LOW for prices (an East Cameroon survey, northern market bulletin, older processing budget). Baton yield comes from a Congo study of chikwangue."
+}

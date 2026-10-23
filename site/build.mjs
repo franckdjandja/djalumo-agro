@@ -17,10 +17,11 @@ const SITE_URL = (process.env.SITE_URL || (process.env.VERCEL_PROJECT_PRODUCTION
 const config = {
   siteUrl: SITE_URL,
   turnstileSiteKey: process.env.TURNSTILE_SITE_KEY || '',
+  reports: process.env.REPORTS_ENABLED === 'true',
   analytics: process.env.ANALYTICS_PROVIDER ? { provider: process.env.ANALYTICS_PROVIDER, id: process.env.ANALYTICS_ID || '' } : null
 };
 
-const i18nSrc = read('src/i18n.js') + '\n' + read('src/i18n-v3.js');
+const i18nSrc = read('src/i18n.js') + '\n' + read('src/i18n-v3.js') + '\n' + read('src/i18n-v4.js');
 const I18N = vm.runInNewContext(i18nSrc + ';I18N');
 const geo = JSON.parse(read('geo.json'));
 const geoWorld = JSON.parse(read('geo-world.json'));
@@ -30,7 +31,7 @@ if (target === 'production') parts.push(read('src/analytics.js'));
 // Season Plan engine v2 and its knowledge base (data with source ids), isolated in their own scope
 const kb = JSON.parse(read('data/kb.json'));
 parts.push(`const KB = ${JSON.stringify(kb, (k, v) => (k === 'basis' ? undefined : v))};`, `const AFEngine = (function () { const module = undefined;\n${read('src/engine.cjs')}\nreturn AFEngine; })();`);
-parts.push(read('src/viz.js'), read('src/planner.js'), read('src/world.js'), read('src/field.js'), read('src/pages.js'));
+parts.push(read('src/viz.js'), read('src/planner.js'), read('src/report.js'), read('src/world.js'), read('src/field.js'), read('src/pages.js'));
 const js = '(function(){\n' + parts.join('\n') + '\n})();';
 const css = read('src/styles.css');
 const template = read('template.html');

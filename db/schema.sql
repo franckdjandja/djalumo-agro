@@ -116,3 +116,30 @@ create table if not exists submission_events (
   created_at    timestamptz not null default now()
 );
 create index if not exists submission_events_lookup_idx on submission_events (submission, submission_id, created_at desc);
+
+-- PDF report requests -----------------------------------------------------
+-- A request is confirmed by the requester (email link), then approved or refused by the administrator.
+create table if not exists report_requests (
+  id            uuid primary key default gen_random_uuid(),
+  ref           text not null unique,
+  name          text not null check (char_length(name) between 2 and 100),
+  email         text not null check (char_length(email) <= 254),
+  phone         text check (char_length(phone) <= 30),
+  profile       text not null,
+  place         text check (char_length(place) <= 120),
+  report_lang   char(2) not null check (report_lang in ('en', 'fr')),
+  ui_lang       char(2) not null default 'en' check (ui_lang in ('en', 'fr')),
+  crop          text not null,
+  plan_input    jsonb not null,
+  plan_summary  jsonb not null default '{}'::jsonb,
+  status        text not null default 'PENDING_EMAIL' check (status in ('PENDING_EMAIL', 'PENDING_REVIEW', 'SENT', 'REFUSED')),
+  consent_at    timestamptz not null,
+  confirmed_at  timestamptz,
+  decided_at    timestamptz,
+  created_at    timestamptz not null default now(),
+  updated_at    timestamptz not null default now()
+);
+create index if not exists report_requests_status_created_idx on report_requests (status, created_at desc);
+create index if not exists report_requests_email_idx on report_requests (lower(email));
+drop trigger if exists report_requests_updated_at on report_requests;
+create trigger report_requests_updated_at before update on report_requests for each row execute function set_updated_at();

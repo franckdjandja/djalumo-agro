@@ -101,6 +101,17 @@ Les secrets ne sont lus que sur le serveur. Le navigateur ne reçoit que `SITE_U
 * Un courriel en échec ne fait jamais perdre un envoi : l’enregistrement est stocké d’abord.
 * Les erreurs n’exposent jamais d’informations internes : `{"status":"error","error":"server_error"}`.
 
+## Rapports PDF
+
+Le planificateur propose un rapport PDF premium du plan en cours. Rien n’est téléchargeable depuis le navigateur :
+
+1. Le visiteur envoie sa demande (nom, adresse électronique, téléphone facultatif, profil, lieu, langue du rapport, consentement) avec les réglages du plan à `POST /api/report`. Mêmes protections que les autres formulaires, plus un contrôle des réglages avec la base de connaissances.
+2. Le visiteur reçoit un lien pour confirmer son adresse. Le lien ouvre une page avec un bouton : un robot qui analyse les liens ne confirme jamais rien.
+3. L’administrateur (`REPORT_ADMIN_EMAIL`) reçoit le résumé et le PDF tel qu’il serait envoyé, avec un lien d’examen.
+4. Sur la page d’examen, l’administrateur valide (le PDF est régénéré et envoyé au demandeur) ou refuse (avec un message courtois facultatif).
+
+Variables : `REPORTS_ENABLED`, `REPORT_SIGNING_SECRET` (32 caractères ou plus), `REPORT_ADMIN_EMAIL`, `REPORT_ADMIN_LANG` (`fr` par défaut). Les liens sont signés (HMAC) et expirent (7 jours pour confirmer, 30 jours pour examiner). Avec une base de données, chaque décision est à usage unique et enregistrée dans `report_requests` ; sans base, le circuit fonctionne avec les liens signés.
+
 ## Base de données
 
 Tables : `contact_inquiries`, `demo_requests`, `newsletter_subscribers`, `rate_limits`, `admin_users`, `submission_events`. Statuts : `NEW`, `CONTACTED`, `IN_PROGRESS`, `COMPLETED`, `ARCHIVED`. Les listes déroulantes sont stockées sous forme de codes indépendants de la langue (par exemple `subject = PILOT`, `interest = FOUMBOT_PILOT`), prêts pour un CRM ou un tableau d’administration.

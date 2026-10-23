@@ -16,7 +16,7 @@ const IMG = { 'bulk-sacks': [645, 860], 'clearing': [645, 860], 'cucumber-field'
 const img = (name, alt, eager) => '<img src="img/' + name + '.webp" alt="' + esc(alt) + '" width="' + IMG[name][0] + '" height="' + IMG[name][1] + '" ' + (eager ? 'fetchpriority="high"' : 'loading="lazy"') + ' decoding="async">';
 const nf = (v, d = 0) => new Intl.NumberFormat(L().meta.locale, { maximumFractionDigits: d, minimumFractionDigits: d }).format(v);
 const money = (v, cur) => {
-  try { return new Intl.NumberFormat(L().meta.locale, { style: 'currency', currency: cur, maximumFractionDigits: Math.abs(v) >= 100 || cur === 'XAF' || cur === 'RWF' || cur === 'NGN' || cur === 'KES' ? 0 : 2 }).format(v); }
+  try { return new Intl.NumberFormat(L().meta.locale, { style: 'currency', currency: cur, maximumFractionDigits: Math.abs(v) >= 100 || v === 0 || cur === 'XAF' || cur === 'RWF' || cur === 'NGN' || cur === 'KES' ? 0 : 2 }).format(v); }
   catch (e) { return nf(v) + ' ' + cur; }
 };
 const monthName = (m, style = 'long') => {

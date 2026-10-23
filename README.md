@@ -88,6 +88,9 @@ With the Vercel CLI you can use `npm run dev` instead of `scripts/serve.mjs`.
 | `RATE_LIMIT_SALT` | server | Salt for hashed client keys (no raw IP is stored) |
 | `FORM_MIN_FILL_MS` | server | Timing trap threshold |
 | `ANALYTICS_PROVIDER`, `ANALYTICS_ID` | build | `plausible` (domain) or `ga4` (measurement id) |
+| `REPORTS_ENABLED` | build, server | Shows the PDF report request in the planner and opens `/api/report` |
+| `REPORT_SIGNING_SECRET` | server | Signs the confirmation and review links (32 characters or more) |
+| `REPORT_ADMIN_EMAIL`, `REPORT_ADMIN_LANG` | server | Who approves the reports, and in which language (`fr` by default) |
 
 Secrets are read on the server only. The browser bundle receives `SITE_URL`, the Turnstile site key and the analytics settings, nothing else.
 
@@ -101,9 +104,20 @@ Secrets are read on the server only. The browser bundle receives `SITE_URL`, the
 * A failed email never loses a submission: the record is stored first.
 * Errors never expose internals: `{"status":"error","error":"server_error"}`.
 
+## PDF reports
+
+The planner offers a premium PDF report of the current plan. Nothing is downloadable from the browser:
+
+1. The visitor sends the request (name, email, optional phone, profile, place, report language, consent) with the plan settings to `POST /api/report`. Same protections as the other forms, plus a check of the settings against the knowledge base.
+2. The visitor receives a link to confirm the address. The link opens a page with a button: a link scanner never confirms anything.
+3. The administrator (`REPORT_ADMIN_EMAIL`) receives the summary and the PDF exactly as it would be sent, with a review link.
+4. On the review page the administrator approves (the PDF is generated again and emailed to the requester) or refuses (with an optional polite message).
+
+The PDF is built on the server with the same engine and data as the planner (`lib/report/pdf.js`, PDFKit, Manrope under the SIL Open Font License). Links are HMAC signed and expire (7 days to confirm, 30 days to review). With a database, decisions are single use and stored in `report_requests`; without one the workflow still runs from the signed links.
+
 ## Database
 
-Tables: `contact_inquiries`, `demo_requests`, `newsletter_subscribers`, `rate_limits`, `admin_users`, `submission_events`. Statuses: `NEW`, `CONTACTED`, `IN_PROGRESS`, `COMPLETED`, `ARCHIVED`. Select fields are stored as language independent codes (for example `subject = PILOT`, `interest = FOUMBOT_PILOT`), so the data is ready for a CRM or an admin dashboard.
+Tables: `contact_inquiries`, `demo_requests`, `newsletter_subscribers`, `report_requests`, `rate_limits`, `admin_users`, `submission_events`. Statuses: `NEW`, `CONTACTED`, `IN_PROGRESS`, `COMPLETED`, `ARCHIVED`. Select fields are stored as language independent codes (for example `subject = PILOT`, `interest = FOUMBOT_PILOT`), so the data is ready for a CRM or an admin dashboard.
 
 ### Admin readiness
 
