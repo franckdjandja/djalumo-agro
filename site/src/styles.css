@@ -122,7 +122,7 @@ p{margin:0}
 .sheet .btn{margin-top:16px}
 .sheet .btn-primary{background:#fff;color:var(--deep)}
 @media (max-width:1440px){.hdr-cta{display:none}}
-@media (max-width:1160px){.nav{display:none}.menu-btn{display:inline-flex}.hdr-tools{margin-left:auto}}
+@media (max-width:1240px){.nav{display:none}.menu-btn{display:inline-flex}.hdr-tools{margin-left:auto}}
 
 /* ---------- Sections ---------- */
 main{display:block}

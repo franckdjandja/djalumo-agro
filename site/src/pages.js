@@ -229,7 +229,7 @@ async function adminMount(box) {
 function headerHTML() {
   const N = L().nav;
   return '<a class="skip" href="#main" data-skip>' + esc(N.skip) + '</a><header class="hdr"><div class="wrap hdr-in"><a class="brand" href="#home" aria-label="Djalumo Agro">' + LOGO + '<span class="brand-sub">Agro</span></a>' +
-    '<nav class="nav" aria-label="Primary">' + NAV.map(k => '<a href="#' + k + '" data-nav="' + k + '">' + esc(N[k]) + '</a>').join('') + '</nav>' +
+    '<nav class="nav" aria-label="Primary">' + ['home'].concat(NAV).map(k => '<a href="#' + k + '" data-nav="' + k + '">' + esc(N[k]) + '</a>').join('') + '</nav>' +
     '<div class="hdr-tools"><div class="lang" role="group" aria-label="' + esc(N.lang) + '"><button type="button" data-lang="en" aria-pressed="' + (LANG === 'en') + '" lang="en">EN</button><button type="button" data-lang="fr" aria-pressed="' + (LANG === 'fr') + '" lang="fr">FR</button></div>' +
     '<a class="btn btn-primary btn-sm hdr-cta" href="#demo" data-cta="header_demo">' + esc(N.demo) + '</a><button type="button" class="menu-btn" aria-expanded="false" aria-controls="sheet" aria-label="' + esc(N.menu) + '" data-menu><span></span></button></div></div></header>' +
     '<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="' + esc(N.menu) + '" hidden><div class="sheet-top"><a class="brand" href="#home" aria-label="Djalumo Agro">' + LOGO + '<span class="brand-sub">Agro</span></a><button type="button" class="btn btn-ghost btn-sm" data-close>' + esc(N.close) + '</button></div>' +
