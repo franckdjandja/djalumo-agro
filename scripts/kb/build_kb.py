@@ -29,7 +29,7 @@ def L(en, fr):
 
 # ---------------------------------------------------------------- sources
 # Each research file numbers its sources from S1; they get a prefix here and identical URLs are merged.
-PREFIX = {'tomato': 'T', 'pepper': 'P', 'greenbean': 'G', 'cucumber': 'CU', 'zucchini': 'Z', 'costs': 'C'}
+PREFIX = {'tomato': 'T', 'pepper': 'P', 'greenbean': 'G', 'cucumber': 'CU', 'zucchini': 'Z', 'chili': 'CH', 'costs': 'C'}
 SOURCES = {}
 ALIAS = {}
 _url_owner = {}
@@ -116,6 +116,8 @@ def build_items():
          basis='No Cameroon price found. Cora, 22,500 FCFA per kg, Abidjan listing 2026 (C64).')
     item('seed_pepper', 'Sweet pepper seed, open pollinated (Nigeria listing price)', 'Semence de poivron, variété fixée (prix d’annonce au Nigeria)', round(3281 / 100, 1), 'seed', 'g', src('C60', 'C46', 'C38'), (100, '100 g pack', 'sachet de 100 g'),
          basis='No Cameroon price found. California Wonder, NGN 7,500 per 100 g (C60), converted at the October 2026 rates (C46, C38). F1 hybrids cost far more (about 23 FCFA per seed).')
+    item('seed_chili', 'Chili pepper seed, Big Sun (Senegal listing price)', 'Semence de piment Big Sun (prix d’annonce au Sénégal)', round(30500 / 50), 'seed', 'g', src('CH8', 'CH7'), (50, '50 g box', 'boîte de 50 g'),
+         basis='No Cameroon price found. Technisem Big Sun, 30,500 FCFA per 50 g box at Tropicasem, Senegal, 2026 (CH8); 30,000 FCFA at another Senegal seller (CH7). The CFA franc of West and Central Africa share one parity. Cheaper open varieties (Bombardier, 26,500 FCFA per 50 g) and dearer F1 hybrids (Avenir F1, 91,200 FCFA) exist (CH8).')
     kes = FX['XAF'] / FX['KES']  # XAF per Kenyan shilling, derived from the two USD rates
     item('seed_cucumber', 'Cucumber seed, open pollinated (Abidjan listing price)', 'Semence de concombre, variété fixée (prix d’annonce à Abidjan)', round(15500 / 50 * 1000), 'seed', 'kg', src('C63'), (0.05, '50 g pack', 'sachet de 50 g'),
          basis='No Cameroon price found. Marketer, 15,500 FCFA per 50 g, Abidjan listing 2026 (C63). A bulk Nairobi listing is cheaper (KES 1,000 per 100 g, CU46).')
@@ -125,7 +127,7 @@ def build_items():
     # Fertilizers and amendments
     item('npk_20_10_10', 'NPK 20-10-10', 'NPK 20-10-10', npk_kg, 'fertilizer', 'kg', src('C3'), (50, '50 kg bag', 'sac de 50 kg'),
          basis='26,000 XAF per 50 kg bag (C3, 2024). West region retail Q4 2022: 33,650 to 34,950 per bag (C1).')
-    for key, f in [('npk_15_15_15', '15-15-15'), ('npk_11_22_16', '11-22-16'), ('npk_15_12_24', '15-12-24')]:
+    for key, f in [('npk_15_15_15', '15-15-15'), ('npk_11_22_16', '11-22-16'), ('npk_15_12_24', '15-12-24'), ('npk_12_14_19', '12-14-19 + 5 MgO'), ('npk_10_10_20', '10-10-20')]:
         item(key, 'NPK ' + f + ' (price of NPK 20-10-10 used)', 'NPK ' + f + ' (prix du NPK 20-10-10 utilisé)', npk_kg, 'fertilizer', 'kg', src('C3'), (50, '50 kg bag', 'sac de 50 kg'),
              basis='No Cameroon price for this formula (C1 gap); the MINADER NPK 20-10-10 price is used as a proxy.')
     item('dap', 'DAP 18-46-0 (price of NPK 20-10-10 used)', 'DAP 18-46-0 (prix du NPK 20-10-10 utilisé)', npk_kg, 'fertilizer', 'kg', src('C3'), (50, '50 kg bag', 'sac de 50 kg'),
@@ -558,6 +560,100 @@ def pepper():
     }
 
 
+def chili():
+    plants = 15625  # 80 cm x 80 cm (CH1, CH2), analyst arithmetic
+    to_harvest, harvest_days = 90, 90
+    field_days = to_harvest + harvest_days
+    sprays = field_days // 7  # weekly in the rainy season (CH1)
+    g = lambda grams: round(grams * plants / 1000)  # grams per plant to kg per ha
+    steps = [
+        step('nursery', 'nursery', 'start', (0, 42), 'Nursery', 'Pépinière',
+             'Raised beds 1 m wide, rows 20 cm apart, seed 2 cm deep, shaded and watered daily. Poultry manure at 5 kg per m² two weeks before sowing, then NPK 20-10-10 at 50 g per metre of row two weeks after emergence. About 200 m² of nursery per ha; seedlings go out at 4 to 5 leaves after about 6 weeks. The plan budgets 500 g of Big Sun seed per ha, the seed company rate; the Cameroon sheets give about 1.5 kg.',
+             'Planches surélevées de 1 m de large, lignes à 20 cm, graines à 2 cm de profondeur, à l’ombre et arrosées chaque jour. Fiente de volaille à 5 kg par m² deux semaines avant le semis, puis NPK 20-10-10 à 50 g par mètre de ligne deux semaines après la levée. Environ 200 m² de pépinière par ha ; les plants partent au champ à 4 ou 5 feuilles après environ 6 semaines. Le plan compte 500 g de semence Big Sun par ha, la dose du semencier ; les fiches camerounaises donnent environ 1,5 kg.',
+             inputs=[('seed_chili', 500, 1, src('CH7')), ('poultry_manure', 1000, 1, src('CH1')), ('npk_20_10_10', 50, 1, src('CH1'))],
+             services=[('nursery_prep_m2', 200), ('nursery_disinfection_m2', 200)], sources=src('CH1', 'CH2', 'CH7', 'CH10', 'T1')),
+        step('site', 'prep', 'field', (-60, -50), 'Plot choice and rotation', 'Choix de la parcelle et rotation',
+             'No tomato, pepper, potato or eggplant on the plot for at least 3 years. Well drained soil; chili grows up to 2,000 m with 600 to 1,250 mm of well spread rain.',
+             'Pas de tomate, poivron, pomme de terre ni aubergine sur la parcelle depuis au moins 3 ans. Sol bien drainé ; le piment pousse jusqu’à 2 000 m avec 600 à 1 250 mm de pluie bien répartie.',
+             sources=src('P2', 'P6', 'CH1')),
+        step('clear', 'prep', 'field', (-35, -14), 'Clearing and weed control', 'Défrichage et désherbage',
+             'Clear the plot, then a glyphosate burndown at least 15 days before transplanting if needed.',
+             'Défricher la parcelle, puis un passage de glyphosate au moins 15 jours avant le repiquage si nécessaire.',
+             inputs=[('glyphosate', 2.5, 1, src('P13'))], labour=PROXY_LAB['clear'], sources=src('P13', 'T1')),
+        step('plough', 'prep', 'field', (-30, -7), 'Ploughing and planting holes', 'Labour et trouaison',
+             'Plough, then dig holes 20 cm deep a week before transplanting, 80 cm apart in rows 80 cm apart.',
+             'Labourer, puis creuser des trous de 20 cm de profondeur une semaine avant le repiquage, à 80 cm les uns des autres sur des lignes espacées de 80 cm.',
+             labour=PROXY_LAB['plough'], sources=src('CH1', 'CH2', 'T1')),
+        step('basal', 'planting', 'field', (-7, 0), 'Basal manure', 'Fumure de fond',
+             '1 kg of poultry manure per hole a week before transplanting. The sheet also puts a carbofuran nematicide in the hole; carbofuran is a highly hazardous pesticide and is not budgeted.',
+             '1 kg de fiente de volaille par trou une semaine avant le repiquage. La fiche ajoute un nématicide au carbofuran dans le trou ; le carbofuran est un pesticide très dangereux et n’est pas budgété.',
+             inputs=[('poultry_manure', plants, 1, src('CH1', 'CH2'))], labour=PROXY_LAB['manure'], sources=src('CH1', 'CH2', 'T1')),
+        step('transplant', 'planting', 'field', (0, 2), 'Transplanting', 'Repiquage',
+             'Transplant at 80 cm × 80 cm, about 15,600 plants per ha, early in the morning or in the evening. The sheets print 13,750 plants per ha, which does not match their own spacing.',
+             'Repiquer à 80 cm × 80 cm, soit environ 15 600 plants par ha, tôt le matin ou le soir. Les fiches indiquent 13 750 plants par ha, ce qui ne correspond pas à leur propre écartement.',
+             labour=PROXY_LAB['transplant'], sources=src('CH1', 'CH2', 'CH7', 'T1')),
+        step('fert1', 'care', 'field', (7, 14), 'First fertilizer', 'Premier engrais',
+             'Two weeks after the basal manure: NPK 12-14-19 + 5 MgO at 15 g per plant (3 bottle caps), 10 cm from the stem.',
+             'Deux semaines après la fumure de fond : NPK 12-14-19 + 5 MgO à 15 g par plant (3 capsules), à 10 cm du pied.',
+             inputs=[('npk_12_14_19', g(15), 1, src('CH1'))], labour=PROXY_LAB['fert'], sources=src('CH1', 'T1')),
+        step('fert2', 'care', 'field', (40, 50), 'Fertilizer at flowering', 'Engrais à la floraison',
+             'At first flowering: NPK 12-14-19 + 5 MgO again, 15 g per plant.',
+             'À la première floraison : de nouveau NPK 12-14-19 + 5 MgO, 15 g par plant.',
+             inputs=[('npk_12_14_19', g(15), 1, src('CH1'))], labour=PROXY_LAB['fert'], sources=src('CH1', 'T1')),
+        step('fert3', 'care', 'field', (60, field_days), 'Feeding at fruit set and during harvest', 'Fumure à la nouaison et pendant la récolte',
+             'At first fruit set, then after the harvests: NPK 10-10-20 at one teaspoon per plant. The plan counts a teaspoon as 5 g and four applications: fruit set and one a month over three months of harvest.',
+             'À la première nouaison, puis après les récoltes : NPK 10-10-20 à une cuillère à café par plant. Le plan compte 5 g par cuillère et quatre apports : la nouaison puis un par mois sur trois mois de récolte.',
+             inputs=[('npk_10_10_20', g(5), 4, src('CH1'))], labour=PROXY_LAB['fert'] * 4, sources=src('CH1', 'T1')),
+        step('water', 'care', 'field', (0, field_days), 'Watering', 'Arrosage',
+             'Water regularly in the dry season, above all while fruits form: in the evening, at the foot of the plant, without wetting the leaves.',
+             'Arroser régulièrement en saison sèche, surtout pendant la formation des fruits : le soir, au pied, sans mouiller les feuilles.',
+             sources=src('CH1', 'CH2')),
+        step('weed', 'care', 'field', (14, 75), 'Weeding', 'Sarclage',
+             'Keep the rows clean until the canopy closes.', 'Garder les lignes propres jusqu’à la fermeture de la culture.',
+             labour=PROXY_LAB['weed'], sources=src('CH9', 'T1')),
+        step('protect', 'protection', 'field', (0, field_days), 'Crop protection', 'Protection de la culture',
+             'Downy mildew and alternaria leaf spot thrive in heavy rain. Spray maneb and cypermethrin weekly in the rainy season and every two weeks in the dry season, alternating a copper fungicide with maneb, and treat after each harvest. The plan budgets weekly sprays at the tomato rates as proxies.',
+             'Le mildiou et l’alternariose prospèrent sous les fortes pluies. Traiter au manèbe et à la cyperméthrine chaque semaine en saison des pluies et toutes les deux semaines en saison sèche, en alternant un fongicide cuprique avec le manèbe, et traiter après chaque récolte. Le plan compte des traitements hebdomadaires aux doses de la tomate comme substitut.',
+             inputs=[('mancozeb', 2.5, sprays, src('T2')), ('insecticide_l', 1, sprays, src('T2'))], labour=PROXY_LAB['spray'] * sprays, sources=src('CH1', 'T2')),
+        step('harvest', 'harvest', 'harvest', (0, harvest_days), 'Harvest', 'Récolte',
+             'Pick mature fruit with its stalk once a week, in dry weather. Wear gloves: Big Sun and other chinense types are very hot.',
+             'Cueillir les fruits mûrs avec leur pédoncule une fois par semaine, par temps sec. Porter des gants : le Big Sun et les autres types chinense sont très piquants.',
+             sources=src('CH1', 'CH7', 'CH9')),
+        step('sell', 'harvest', 'harvest', (0, harvest_days), 'Grading and sale', 'Tri et vente',
+             'Sell fresh by bag of 50 or 100 kg to wholesalers, or dry the surplus: boil 30 to 40 minutes, then dry in the sun. Sauces and powder fetch 4 to 5 times the value of a raw kilogram.',
+             'Vendre frais en sacs de 50 ou 100 kg aux grossistes, ou sécher le surplus : bouillir 30 à 40 minutes puis sécher au soleil. Sauces et poudre valent 4 à 5 fois un kilogramme brut.',
+             labour=2, sources=src('CH1', 'CH3', 'CH4', 'CH5')),
+    ]
+    return {
+        'name': L('Chili pepper', 'Piment'), 'release': 'regional', 'badge': L('Regional references', 'Références régionales'),
+        'plants_per_ha': plants, 'ky': 1.1, 'heat_c': 35, 'loss_pct': LOCAL_LOSS, 'harvest_kg_per_person_day': round(10000 / (1900 / 8)), 'agronomist_visits': 1,
+        'kc': {'ini': 0.6, 'mid': 1.05, 'end': 0.9, 'stages': kc_stages([25, 35, 40, 20])},
+        'cycle': {'nursery_days': 42, 'to_first_harvest_days': to_harvest, 'harvest_days': harvest_days, 'flowering_before_harvest_days': 45},
+        'yield_t_ha': {'wet': yields(2.1, 15.0), 'dry': yields(10.0, 20.0)},
+        'price': {'reference_xaf_kg': None, 'index': [1] * 12, 'note': NO_PRICE,
+                  'observed': L('Observed in Yaoundé, wholesale by the bag: 900 to 1,200 FCFA/kg in June 2025 (rainy season, low prices), 400 FCFA/kg in August 2022, from 120 FCFA/kg in a glut to 1,000 FCFA/kg in a shortage in 2018. Farm gate prices are lower.',
+                                'Observé à Yaoundé, en gros au sac : 900 à 1 200 FCFA/kg en juin 2025 (saison des pluies, prix bas), 400 FCFA/kg en août 2022, de 120 FCFA/kg en période d’abondance à 1 000 FCFA/kg en pénurie en 2018. Les prix bord champ sont plus bas.'),
+                  'src': src('CH4', 'CH5', 'CH6')},
+        'packaging': {'item': 'crate', 'kg_per_unit': 20, 'uses': 1},
+        'harvest_src': src('P25'),
+        'disease_note': L('Downy mildew and alternaria leaf spot are favoured by heavy rain; anthracnose and phytophthora also hit peppers in the wet season (CH1, P6).', 'Le mildiou et l’alternariose sont favorisés par les fortes pluies ; l’anthracnose et le phytophthora frappent aussi les piments en saison des pluies (CH1, P6).'),
+        'steps': steps, 'src': src('CH1', 'CH2', 'CH3', 'CH7', 'P14', 'M1', 'M5'),
+        'basis': {
+            'plants_per_ha': '80 cm × 80 cm (CH1, CH2) gives 15,625 plants per ha (derived); the sheets print 13,750. Technisem advises 15,000 to 17,000 (CH7).',
+            'ky': 'FAO yield response factor for pepper 1.1 (M5).',
+            'heat_c': 'Fruit set is best between 25 and 35 °C for Big Sun (CH7); optimum growth 20 to 30 °C (CH1). 35 used.',
+            'kc': 'FAO-56 gives one set for peppers: Kc 0.6, 1.05, 0.9; stage lengths 25/35/40/20 days (M1).',
+            'cycle': 'Nursery 35 to 50 days (CH1, CH2), 42 used; first harvest 3 to 4 months after transplanting (CH1, CH2) and 90 days for Big Sun (CH7), 90 used; harvest up to 4 months (CH1), 90 days used; flowering to harvest about 1.5 months (CH1), 45 used.',
+            'yield_t_ha': 'Rainy season: poor 2.1 = Cameroon national average for chillies and peppers (P14), good 15 = top of 10 to 15 t/ha under good conditions (CH3), within 10 to 20 t/ha (CH2); average = midpoint. Dry season irrigated: 10 to 20 t/ha (CH2), the best yields come in the counter season (CH1).',
+            'harvest_kg_per_person_day': 'Chilli pages of a South African vegetable budget: 10 t/ha picked in 1,900 hours, 8 hour days (P25). St Vincent gives about 62 kg per day (CH9).',
+            'loss_pct': 'No measured loss found; the tomato value for a local sale is used as a proxy (T5, T6).',
+        },
+        'confidence': REGIONAL_CONF(L('Cameroon sheet hosted by MINADER and a Cameroon technical sheet, completed with the seed company data and a Caribbean guide.', 'Fiche camerounaise publiée par le MINADER et fiche technique camerounaise, complétées par les données du semencier et un guide caribéen.'),
+                                    L('Cameroon sheets give 10 to 20 t/ha against a national average near 2 t/ha.', 'Les fiches camerounaises donnent 10 à 20 t/ha contre une moyenne nationale proche de 2 t/ha.'),
+                                    L('Only wholesale prices in Yaoundé, very volatile; you enter your own price.', 'Seulement des prix de gros à Yaoundé, très volatils ; vous saisissez votre prix.')),
+    }
+
+
 def cucurbit_protection(field_days):
     # Only full spray calendar found for cucumber: 13 insecticide sprays and 1 preventive mancozeb spray (CU3).
     return [('insecticide_l', 1, 13, src('T2')), ('mancozeb', 2.5, 1, src('T2'))], PROXY_LAB['spray'] * 14
@@ -771,7 +867,7 @@ def build():
     SOURCES.update(METHOD_SOURCES)
     spread, n = price_spread(R)
     kb = {
-        'version': '2.0.0', 'built': '2026-10-18',
+        'version': '2.1.0', 'built': '2026-10-23',
         'fx': FX, 'fx_src': src('C38', 'C43', 'C45', 'C46'),
         'limits': {'min_capital_usd': 100, 'reserve_rate': 0.10, 'wet_season_rain_share': 0.5},
         'climate': climate(R),
@@ -787,11 +883,11 @@ def build():
         'tools_kit': TOOLS_KIT,
         'phases': PHASES,
         'units': UNITS,
-        'crops': {'tomato': tomato(R), 'greenbean': greenbean(), 'pepper': pepper(), 'cucumber': cucumber(), 'zucchini': zucchini()},
+        'crops': {'tomato': tomato(R), 'greenbean': greenbean(), 'pepper': pepper(), 'chili': chili(), 'cucumber': cucumber(), 'zucchini': zucchini()},
         'assumptions': ASSUMPTIONS,
     }
     # Merged sources: rewrite the ids quoted in free text so they match the published list.
-    tok = re.compile(r'\b(?:T|CU|Z|G|P|C|M)\d+\b')
+    tok = re.compile(r'\b(?:T|CU|CH|Z|G|P|C|M)\d+\b')
 
     def realias(x):
         if isinstance(x, dict):
@@ -820,7 +916,7 @@ def build():
                 walk(v)
     walk(kb)
     # Ids quoted in free text, e.g. "(T7, T8)"
-    for m in re.finditer(r'\b(?:T|CU|Z|G|P|C|M)\d+\b', json.dumps(kb, ensure_ascii=False)):
+    for m in re.finditer(r'\b(?:T|CU|CH|Z|G|P|C|M)\d+\b', json.dumps(kb, ensure_ascii=False)):
         if m.group(0) in SOURCES:
             used.add(m.group(0))
     kb['sources'] = {k: SOURCES[k] for k in sorted(used, key=lambda s: (re.sub(r'\d', '', s), int(re.sub(r'\D', '', s))))}

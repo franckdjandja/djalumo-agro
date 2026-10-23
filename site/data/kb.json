@@ -1,6 +1,6 @@
 {
- "version": "2.0.0",
- "built": "2026-10-18",
+ "version": "2.1.0",
+ "built": "2026-10-23",
  "fx": {
   "USD": 1,
   "XAF": 582.92,
@@ -185,6 +185,27 @@
    },
    "basis": "No Cameroon price found. California Wonder, NGN 7,500 per 100 g (C60), converted at the October 2026 rates (C46, C38). F1 hybrids cost far more (about 23 FCFA per seed)."
   },
+  "seed_chili": {
+   "label": {
+    "en": "Chili pepper seed, Big Sun (Senegal listing price)",
+    "fr": "Semence de piment Big Sun (prix d’annonce au Sénégal)"
+   },
+   "price": 610,
+   "category": "seed",
+   "unit": "g",
+   "src": [
+    "CH8",
+    "CH7"
+   ],
+   "pack": {
+    "size": 50,
+    "label": {
+     "en": "50 g box",
+     "fr": "boîte de 50 g"
+    }
+   },
+   "basis": "No Cameroon price found. Technisem Big Sun, 30,500 FCFA per 50 g box at Tropicasem, Senegal, 2026 (CH8); 30,000 FCFA at another Senegal seller (CH7). The CFA franc of West and Central Africa share one parity. Cheaper open varieties (Bombardier, 26,500 FCFA per 50 g) and dearer F1 hybrids (Avenir F1, 91,200 FCFA) exist (CH8)."
+  },
   "seed_cucumber": {
    "label": {
     "en": "Cucumber seed, open pollinated (Abidjan listing price)",
@@ -303,6 +324,46 @@
    "label": {
     "en": "NPK 15-12-24 (price of NPK 20-10-10 used)",
     "fr": "NPK 15-12-24 (prix du NPK 20-10-10 utilisé)"
+   },
+   "price": 520.0,
+   "category": "fertilizer",
+   "unit": "kg",
+   "src": [
+    "T1"
+   ],
+   "pack": {
+    "size": 50,
+    "label": {
+     "en": "50 kg bag",
+     "fr": "sac de 50 kg"
+    }
+   },
+   "basis": "No Cameroon price for this formula (T17 gap); the MINADER NPK 20-10-10 price is used as a proxy."
+  },
+  "npk_12_14_19": {
+   "label": {
+    "en": "NPK 12-14-19 + 5 MgO (price of NPK 20-10-10 used)",
+    "fr": "NPK 12-14-19 + 5 MgO (prix du NPK 20-10-10 utilisé)"
+   },
+   "price": 520.0,
+   "category": "fertilizer",
+   "unit": "kg",
+   "src": [
+    "T1"
+   ],
+   "pack": {
+    "size": 50,
+    "label": {
+     "en": "50 kg bag",
+     "fr": "sac de 50 kg"
+    }
+   },
+   "basis": "No Cameroon price for this formula (T17 gap); the MINADER NPK 20-10-10 price is used as a proxy."
+  },
+  "npk_10_10_20": {
+   "label": {
+    "en": "NPK 10-10-20 (price of NPK 20-10-10 used)",
+    "fr": "NPK 10-10-20 (prix du NPK 20-10-10 utilisé)"
    },
    "price": 520.0,
    "category": "fertilizer",
@@ -2780,6 +2841,584 @@
     }
    ]
   },
+  "chili": {
+   "name": {
+    "en": "Chili pepper",
+    "fr": "Piment"
+   },
+   "release": "regional",
+   "badge": {
+    "en": "Regional references",
+    "fr": "Références régionales"
+   },
+   "plants_per_ha": 15625,
+   "ky": 1.1,
+   "heat_c": 35,
+   "loss_pct": 1.15,
+   "harvest_kg_per_person_day": 42,
+   "agronomist_visits": 1,
+   "kc": {
+    "ini": 0.6,
+    "mid": 1.05,
+    "end": 0.9,
+    "stages": [
+     0.208,
+     0.5,
+     0.833
+    ]
+   },
+   "cycle": {
+    "nursery_days": 42,
+    "to_first_harvest_days": 90,
+    "harvest_days": 90,
+    "flowering_before_harvest_days": 45
+   },
+   "yield_t_ha": {
+    "wet": {
+     "poor": 2.1,
+     "average": 8.55,
+     "good": 15.0
+    },
+    "dry": {
+     "poor": 10.0,
+     "average": 15.0,
+     "good": 20.0
+    }
+   },
+   "price": {
+    "reference_xaf_kg": null,
+    "index": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "note": {
+     "en": "No published farm gate price for Cameroon: enter the price you expect to get.",
+     "fr": "Aucun prix bord champ publié pour le Cameroun : saisissez le prix que vous comptez obtenir."
+    },
+    "observed": {
+     "en": "Observed in Yaoundé, wholesale by the bag: 900 to 1,200 FCFA/kg in June 2025 (rainy season, low prices), 400 FCFA/kg in August 2022, from 120 FCFA/kg in a glut to 1,000 FCFA/kg in a shortage in 2018. Farm gate prices are lower.",
+     "fr": "Observé à Yaoundé, en gros au sac : 900 à 1 200 FCFA/kg en juin 2025 (saison des pluies, prix bas), 400 FCFA/kg en août 2022, de 120 FCFA/kg en période d’abondance à 1 000 FCFA/kg en pénurie en 2018. Les prix bord champ sont plus bas."
+    },
+    "src": [
+     "CH4",
+     "CH5",
+     "CH6"
+    ]
+   },
+   "packaging": {
+    "item": "crate",
+    "kg_per_unit": 20,
+    "uses": 1
+   },
+   "harvest_src": [
+    "P25"
+   ],
+   "disease_note": {
+    "en": "Downy mildew and alternaria leaf spot are favoured by heavy rain; anthracnose and phytophthora also hit peppers in the wet season (CH1, P6).",
+    "fr": "Le mildiou et l’alternariose sont favorisés par les fortes pluies ; l’anthracnose et le phytophthora frappent aussi les piments en saison des pluies (CH1, P6)."
+   },
+   "steps": [
+    {
+     "id": "nursery",
+     "phase": "nursery",
+     "ref": "start",
+     "day": [
+      0,
+      42
+     ],
+     "label": {
+      "en": "Nursery",
+      "fr": "Pépinière"
+     },
+     "detail": {
+      "en": "Raised beds 1 m wide, rows 20 cm apart, seed 2 cm deep, shaded and watered daily. Poultry manure at 5 kg per m² two weeks before sowing, then NPK 20-10-10 at 50 g per metre of row two weeks after emergence. About 200 m² of nursery per ha; seedlings go out at 4 to 5 leaves after about 6 weeks. The plan budgets 500 g of Big Sun seed per ha, the seed company rate; the Cameroon sheets give about 1.5 kg.",
+      "fr": "Planches surélevées de 1 m de large, lignes à 20 cm, graines à 2 cm de profondeur, à l’ombre et arrosées chaque jour. Fiente de volaille à 5 kg par m² deux semaines avant le semis, puis NPK 20-10-10 à 50 g par mètre de ligne deux semaines après la levée. Environ 200 m² de pépinière par ha ; les plants partent au champ à 4 ou 5 feuilles après environ 6 semaines. Le plan compte 500 g de semence Big Sun par ha, la dose du semencier ; les fiches camerounaises donnent environ 1,5 kg."
+     },
+     "src": [
+      "CH1",
+      "CH2",
+      "CH7",
+      "CH10",
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "seed_chili",
+       "qty": 500,
+       "src": [
+        "CH7"
+       ]
+      },
+      {
+       "item": "poultry_manure",
+       "qty": 1000,
+       "src": [
+        "CH1"
+       ]
+      },
+      {
+       "item": "npk_20_10_10",
+       "qty": 50,
+       "src": [
+        "CH1"
+       ]
+      }
+     ],
+     "services": [
+      {
+       "key": "nursery_prep_m2",
+       "qty": 200
+      },
+      {
+       "key": "nursery_disinfection_m2",
+       "qty": 200
+      }
+     ]
+    },
+    {
+     "id": "site",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -60,
+      -50
+     ],
+     "label": {
+      "en": "Plot choice and rotation",
+      "fr": "Choix de la parcelle et rotation"
+     },
+     "detail": {
+      "en": "No tomato, pepper, potato or eggplant on the plot for at least 3 years. Well drained soil; chili grows up to 2,000 m with 600 to 1,250 mm of well spread rain.",
+      "fr": "Pas de tomate, poivron, pomme de terre ni aubergine sur la parcelle depuis au moins 3 ans. Sol bien drainé ; le piment pousse jusqu’à 2 000 m avec 600 à 1 250 mm de pluie bien répartie."
+     },
+     "src": [
+      "P2",
+      "P6",
+      "CH1"
+     ]
+    },
+    {
+     "id": "clear",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -35,
+      -14
+     ],
+     "label": {
+      "en": "Clearing and weed control",
+      "fr": "Défrichage et désherbage"
+     },
+     "detail": {
+      "en": "Clear the plot, then a glyphosate burndown at least 15 days before transplanting if needed.",
+      "fr": "Défricher la parcelle, puis un passage de glyphosate au moins 15 jours avant le repiquage si nécessaire."
+     },
+     "src": [
+      "P13",
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "glyphosate",
+       "qty": 2.5,
+       "src": [
+        "P13"
+       ]
+      }
+     ],
+     "labour": 20
+    },
+    {
+     "id": "plough",
+     "phase": "prep",
+     "ref": "field",
+     "day": [
+      -30,
+      -7
+     ],
+     "label": {
+      "en": "Ploughing and planting holes",
+      "fr": "Labour et trouaison"
+     },
+     "detail": {
+      "en": "Plough, then dig holes 20 cm deep a week before transplanting, 80 cm apart in rows 80 cm apart.",
+      "fr": "Labourer, puis creuser des trous de 20 cm de profondeur une semaine avant le repiquage, à 80 cm les uns des autres sur des lignes espacées de 80 cm."
+     },
+     "src": [
+      "CH1",
+      "CH2",
+      "T1"
+     ],
+     "labour": 90
+    },
+    {
+     "id": "basal",
+     "phase": "planting",
+     "ref": "field",
+     "day": [
+      -7,
+      0
+     ],
+     "label": {
+      "en": "Basal manure",
+      "fr": "Fumure de fond"
+     },
+     "detail": {
+      "en": "1 kg of poultry manure per hole a week before transplanting. The sheet also puts a carbofuran nematicide in the hole; carbofuran is a highly hazardous pesticide and is not budgeted.",
+      "fr": "1 kg de fiente de volaille par trou une semaine avant le repiquage. La fiche ajoute un nématicide au carbofuran dans le trou ; le carbofuran est un pesticide très dangereux et n’est pas budgété."
+     },
+     "src": [
+      "CH1",
+      "CH2",
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "poultry_manure",
+       "qty": 15625,
+       "src": [
+        "CH1",
+        "CH2"
+       ]
+      }
+     ],
+     "labour": 35
+    },
+    {
+     "id": "transplant",
+     "phase": "planting",
+     "ref": "field",
+     "day": [
+      0,
+      2
+     ],
+     "label": {
+      "en": "Transplanting",
+      "fr": "Repiquage"
+     },
+     "detail": {
+      "en": "Transplant at 80 cm × 80 cm, about 15,600 plants per ha, early in the morning or in the evening. The sheets print 13,750 plants per ha, which does not match their own spacing.",
+      "fr": "Repiquer à 80 cm × 80 cm, soit environ 15 600 plants par ha, tôt le matin ou le soir. Les fiches indiquent 13 750 plants par ha, ce qui ne correspond pas à leur propre écartement."
+     },
+     "src": [
+      "CH1",
+      "CH2",
+      "CH7",
+      "T1"
+     ],
+     "labour": 35
+    },
+    {
+     "id": "fert1",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      7,
+      14
+     ],
+     "label": {
+      "en": "First fertilizer",
+      "fr": "Premier engrais"
+     },
+     "detail": {
+      "en": "Two weeks after the basal manure: NPK 12-14-19 + 5 MgO at 15 g per plant (3 bottle caps), 10 cm from the stem.",
+      "fr": "Deux semaines après la fumure de fond : NPK 12-14-19 + 5 MgO à 15 g par plant (3 capsules), à 10 cm du pied."
+     },
+     "src": [
+      "CH1",
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "npk_12_14_19",
+       "qty": 234,
+       "src": [
+        "CH1"
+       ]
+      }
+     ],
+     "labour": 6
+    },
+    {
+     "id": "fert2",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      40,
+      50
+     ],
+     "label": {
+      "en": "Fertilizer at flowering",
+      "fr": "Engrais à la floraison"
+     },
+     "detail": {
+      "en": "At first flowering: NPK 12-14-19 + 5 MgO again, 15 g per plant.",
+      "fr": "À la première floraison : de nouveau NPK 12-14-19 + 5 MgO, 15 g par plant."
+     },
+     "src": [
+      "CH1",
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "npk_12_14_19",
+       "qty": 234,
+       "src": [
+        "CH1"
+       ]
+      }
+     ],
+     "labour": 6
+    },
+    {
+     "id": "fert3",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      60,
+      180
+     ],
+     "label": {
+      "en": "Feeding at fruit set and during harvest",
+      "fr": "Fumure à la nouaison et pendant la récolte"
+     },
+     "detail": {
+      "en": "At first fruit set, then after the harvests: NPK 10-10-20 at one teaspoon per plant. The plan counts a teaspoon as 5 g and four applications: fruit set and one a month over three months of harvest.",
+      "fr": "À la première nouaison, puis après les récoltes : NPK 10-10-20 à une cuillère à café par plant. Le plan compte 5 g par cuillère et quatre apports : la nouaison puis un par mois sur trois mois de récolte."
+     },
+     "src": [
+      "CH1",
+      "T1"
+     ],
+     "inputs": [
+      {
+       "item": "npk_10_10_20",
+       "qty": 78,
+       "apps": 4,
+       "src": [
+        "CH1"
+       ]
+      }
+     ],
+     "labour": 24
+    },
+    {
+     "id": "water",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      0,
+      180
+     ],
+     "label": {
+      "en": "Watering",
+      "fr": "Arrosage"
+     },
+     "detail": {
+      "en": "Water regularly in the dry season, above all while fruits form: in the evening, at the foot of the plant, without wetting the leaves.",
+      "fr": "Arroser régulièrement en saison sèche, surtout pendant la formation des fruits : le soir, au pied, sans mouiller les feuilles."
+     },
+     "src": [
+      "CH1",
+      "CH2"
+     ]
+    },
+    {
+     "id": "weed",
+     "phase": "care",
+     "ref": "field",
+     "day": [
+      14,
+      75
+     ],
+     "label": {
+      "en": "Weeding",
+      "fr": "Sarclage"
+     },
+     "detail": {
+      "en": "Keep the rows clean until the canopy closes.",
+      "fr": "Garder les lignes propres jusqu’à la fermeture de la culture."
+     },
+     "src": [
+      "CH9",
+      "T1"
+     ],
+     "labour": 15
+    },
+    {
+     "id": "protect",
+     "phase": "protection",
+     "ref": "field",
+     "day": [
+      0,
+      180
+     ],
+     "label": {
+      "en": "Crop protection",
+      "fr": "Protection de la culture"
+     },
+     "detail": {
+      "en": "Downy mildew and alternaria leaf spot thrive in heavy rain. Spray maneb and cypermethrin weekly in the rainy season and every two weeks in the dry season, alternating a copper fungicide with maneb, and treat after each harvest. The plan budgets weekly sprays at the tomato rates as proxies.",
+      "fr": "Le mildiou et l’alternariose prospèrent sous les fortes pluies. Traiter au manèbe et à la cyperméthrine chaque semaine en saison des pluies et toutes les deux semaines en saison sèche, en alternant un fongicide cuprique avec le manèbe, et traiter après chaque récolte. Le plan compte des traitements hebdomadaires aux doses de la tomate comme substitut."
+     },
+     "src": [
+      "CH1",
+      "T2"
+     ],
+     "inputs": [
+      {
+       "item": "mancozeb",
+       "qty": 2.5,
+       "apps": 25,
+       "src": [
+        "T2"
+       ]
+      },
+      {
+       "item": "insecticide_l",
+       "qty": 1,
+       "apps": 25,
+       "src": [
+        "T2"
+       ]
+      }
+     ],
+     "labour": 75
+    },
+    {
+     "id": "harvest",
+     "phase": "harvest",
+     "ref": "harvest",
+     "day": [
+      0,
+      90
+     ],
+     "label": {
+      "en": "Harvest",
+      "fr": "Récolte"
+     },
+     "detail": {
+      "en": "Pick mature fruit with its stalk once a week, in dry weather. Wear gloves: Big Sun and other chinense types are very hot.",
+      "fr": "Cueillir les fruits mûrs avec leur pédoncule une fois par semaine, par temps sec. Porter des gants : le Big Sun et les autres types chinense sont très piquants."
+     },
+     "src": [
+      "CH1",
+      "CH7",
+      "CH9"
+     ]
+    },
+    {
+     "id": "sell",
+     "phase": "harvest",
+     "ref": "harvest",
+     "day": [
+      0,
+      90
+     ],
+     "label": {
+      "en": "Grading and sale",
+      "fr": "Tri et vente"
+     },
+     "detail": {
+      "en": "Sell fresh by bag of 50 or 100 kg to wholesalers, or dry the surplus: boil 30 to 40 minutes, then dry in the sun. Sauces and powder fetch 4 to 5 times the value of a raw kilogram.",
+      "fr": "Vendre frais en sacs de 50 ou 100 kg aux grossistes, ou sécher le surplus : bouillir 30 à 40 minutes puis sécher au soleil. Sauces et poudre valent 4 à 5 fois un kilogramme brut."
+     },
+     "src": [
+      "CH1",
+      "CH3",
+      "CH4",
+      "CH5"
+     ],
+     "labour": 2
+    }
+   ],
+   "src": [
+    "CH1",
+    "CH2",
+    "CH3",
+    "CH7",
+    "P14",
+    "M1",
+    "M5"
+   ],
+   "basis": {
+    "plants_per_ha": "80 cm × 80 cm (CH1, CH2) gives 15,625 plants per ha (derived); the sheets print 13,750. Technisem advises 15,000 to 17,000 (CH7).",
+    "ky": "FAO yield response factor for pepper 1.1 (M5).",
+    "heat_c": "Fruit set is best between 25 and 35 °C for Big Sun (CH7); optimum growth 20 to 30 °C (CH1). 35 used.",
+    "kc": "FAO-56 gives one set for peppers: Kc 0.6, 1.05, 0.9; stage lengths 25/35/40/20 days (M1).",
+    "cycle": "Nursery 35 to 50 days (CH1, CH2), 42 used; first harvest 3 to 4 months after transplanting (CH1, CH2) and 90 days for Big Sun (CH7), 90 used; harvest up to 4 months (CH1), 90 days used; flowering to harvest about 1.5 months (CH1), 45 used.",
+    "yield_t_ha": "Rainy season: poor 2.1 = Cameroon national average for chillies and peppers (P14), good 15 = top of 10 to 15 t/ha under good conditions (CH3), within 10 to 20 t/ha (CH2); average = midpoint. Dry season irrigated: 10 to 20 t/ha (CH2), the best yields come in the counter season (CH1).",
+    "harvest_kg_per_person_day": "Chilli pages of a South African vegetable budget: 10 t/ha picked in 1,900 hours, 8 hour days (P25). St Vincent gives about 62 kg per day (CH9).",
+    "loss_pct": "No measured loss found; the tomato value for a local sale is used as a proxy (T5, T6)."
+   },
+   "confidence": [
+    {
+     "block": {
+      "en": "Technical itinerary",
+      "fr": "Itinéraire technique"
+     },
+     "level": "medium",
+     "note": {
+      "en": "Cameroon sheet hosted by MINADER and a Cameroon technical sheet, completed with the seed company data and a Caribbean guide.",
+      "fr": "Fiche camerounaise publiée par le MINADER et fiche technique camerounaise, complétées par les données du semencier et un guide caribéen."
+     }
+    },
+    {
+     "block": {
+      "en": "Yields",
+      "fr": "Rendements"
+     },
+     "level": "low",
+     "note": {
+      "en": "Cameroon sheets give 10 to 20 t/ha against a national average near 2 t/ha.",
+      "fr": "Les fiches camerounaises donnent 10 à 20 t/ha contre une moyenne nationale proche de 2 t/ha."
+     }
+    },
+    {
+     "block": {
+      "en": "Prices at harvest",
+      "fr": "Prix à la récolte"
+     },
+     "level": "low",
+     "note": {
+      "en": "Only wholesale prices in Yaoundé, very volatile; you enter your own price.",
+      "fr": "Seulement des prix de gros à Yaoundé, très volatils ; vous saisissez votre prix."
+     }
+    },
+    {
+     "block": {
+      "en": "Input prices",
+      "fr": "Prix des intrants"
+     },
+     "level": "medium",
+     "note": {
+      "en": "Cameroon references where they exist (MINADER 2024, West region survey 2022); proxies and gaps are named line by line.",
+      "fr": "Références camerounaises quand elles existent (MINADER 2024, enquête Région de l’Ouest 2022) ; les substituts et manques sont signalés ligne par ligne."
+     }
+    },
+    {
+     "block": {
+      "en": "Climate and water",
+      "fr": "Climat et eau"
+     },
+     "level": "medium",
+     "note": {
+      "en": "Modelled Foumbot climatology 1991 to 2021 with FAO-56 methods.",
+      "fr": "Climatologie modélisée de Foumbot 1991 à 2021 et méthodes FAO-56."
+     }
+    }
+   ]
+  },
   "cucumber": {
    "name": {
     "en": "Cucumber",
@@ -4011,6 +4650,66 @@
    "publisher": "Afribobo (Cameroon classifieds)",
    "year": 2026,
    "url": "https://www.afribobo.com/yaounde/fiante-de-poules-pour-fertilisation-du-sol-50kg-169434.html"
+  },
+  "CH1": {
+   "title": "Technologie de production du piment (Capsicum frutescens)",
+   "publisher": "Institut de Formation en Agriculture et Technologies Innovantes (IFATI), published on the MINADER website",
+   "year": 2022,
+   "url": "https://www.minader.cm/wp-content/uploads/2022/03/PIMENT.pdf"
+  },
+  "CH2": {
+   "title": "Fiche technique : comment cultiver du piment bio",
+   "publisher": "Agriculture au Cameroun",
+   "year": 2018,
+   "url": "https://agricultureaucameroun.com/fiches-techniques/fiche-technique-comment-cultiver-du-piment-bio/"
+  },
+  "CH3": {
+   "title": "Le piment au Cameroun",
+   "publisher": "Market Data Com",
+   "year": 2025,
+   "url": "https://marketdatacom.com/le-piment-au-cameroun/"
+  },
+  "CH4": {
+   "title": "Piment : c'est la saison des prix bas (B. C. Biyiha, 23 June 2025)",
+   "publisher": "Cameroon Business Today",
+   "year": 2025,
+   "url": "https://cameroonbusinesstoday.cm/articles/3869/fr/piment-cest-la-saison-des-prix-bas"
+  },
+  "CH5": {
+   "title": "Piment : le prix est à la hausse (B. C. Biyiha, 23 August 2022)",
+   "publisher": "Cameroon Business Today",
+   "year": 2022,
+   "url": "https://cameroonbusinesstoday.cm/articles/3237/fr/piment-le-prix-est-a-la-hausse"
+  },
+  "CH6": {
+   "title": "Le sac de 50 kg de piment coûte 6 000 F en cette période (B. C. Biyiha, 25 May 2018)",
+   "publisher": "Cameroon Business Today",
+   "year": 2018,
+   "url": "https://cameroonbusinesstoday.cm/articles/1161/fr/-le-sac-de-50-kg-de-piment-coute-6-000-f-en-cette-periode-"
+  },
+  "CH7": {
+   "title": "Semence Piment Big Sun 50 g (Technisem): product sheet",
+   "publisher": "Begreen Company, Senegal",
+   "year": 2026,
+   "url": "https://begreen-company.com/produit/semence-piment-big-sun-50g/"
+  },
+  "CH8": {
+   "title": "Boutique Tropicasem: piments (seed price list)",
+   "publisher": "Tropicasem, Senegal",
+   "year": 2026,
+   "url": "https://boutique.tropicasem.sn/etiquette-produit/piments/"
+  },
+  "CH9": {
+   "title": "Hot Pepper: A Crop Production Technical Guide",
+   "publisher": "Ministry of Agriculture and Fisheries, St Vincent and the Grenadines",
+   "year": 2003,
+   "url": "https://agriculture.gov.vc/agriculture/images/stories/PDF_Documents/Hot-Pepper-Production-Guide.pdf"
+  },
+  "CH10": {
+   "title": "Les semences de piments au Cameroun",
+   "publisher": "Fabrik Aliments",
+   "year": 2025,
+   "url": "https://www.fabrikaliments.com/piments/"
   },
   "CU1": {
    "title": "Fiche technique synthetique pour la production du concombre (Cucumis sativus L.)",

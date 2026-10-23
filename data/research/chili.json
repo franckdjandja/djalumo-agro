@@ -1,0 +1,88 @@
+{
+  "crop": "Chili pepper / hot pepper / piment (Capsicum frutescens and Capsicum chinense: Safi, Big Sun, Antillais, Salmon, Jaune du Burkina, Langue d'oiseau), open field, Cameroon",
+  "research_date": "2026-10-23",
+  "pilot_zone_context": "Foumbot (Noun, West Cameroon) and the main Cameroon supply basins named in market reports (East and West regions); sold fresh by 50 or 100 kg bag in Yaounde markets (Mendong, Mfoundi, Mokolo).",
+  "cycle": {
+    "nursery_days": {"range": [30, 50], "detail": [
+      {"value": [35, 45], "note": "About 35 days in nursery; transplant about 1.5 months after sowing", "source_ids": ["S1"]},
+      {"value": [40, 50], "note": "6 to 7 weeks, seedlings 15 to 20 cm with 4 to 5 leaves", "source_ids": ["S2"]},
+      {"value": [30, 45], "note": "5 to 7 weeks", "source_ids": ["S10"]},
+      {"value": [28, 35], "note": "4 to 5 weeks, 4 to 5 true leaves (Caribbean guide)", "source_ids": ["S9"]}
+    ]},
+    "transplant_to_first_harvest_days": {"range": [70, 120], "detail": [
+      {"value": [90, 120], "note": "3 to 4 months after transplanting; about 1.5 months after flowering", "source_ids": ["S1"]},
+      {"value": [90, 120], "note": "3 to 4 months after transplanting; about 10 weeks after flowering", "source_ids": ["S2"]},
+      {"value": [90, 90], "note": "Big Sun (C. chinense): first harvest 90 days after transplanting", "source_ids": ["S7"]},
+      {"value": [70, 90], "note": "Hot pepper, St Vincent", "source_ids": ["S9"]}
+    ]},
+    "variety_cycles_days": {"Safi": 90, "Jaune du Burkina": 120, "Salmon": 80, "Antillais": 90, "source_ids": ["S1"]},
+    "harvest_duration_days": {"range": [90, 180], "detail": [
+      {"value": [90, 120], "note": "Harvest window up to 4 months (S1); 3 to 4 months (S2)", "source_ids": ["S1", "S2"]},
+      {"value": [180, 180], "note": "Up to 6 months under irrigation, weekly picking", "source_ids": ["S9"]}
+    ]},
+    "harvest_frequency": {"text": "Weekly (S9). Pick mature fruit with the stalk, in dry weather (S1).", "source_ids": ["S1", "S9"]},
+    "seasons": {"text": "Sowing in February (main season) and August (counter season); best yields in the counter season, July to August (S1).", "source_ids": ["S1"]}
+  },
+  "planting": {
+    "spacing": {"text": "80 cm x 80 cm (S1, S2). Both sheets state 13,750 plants/ha, which does not match the spacing: 80 x 80 cm gives 15,625 plants/ha (analyst arithmetic). Technisem advises 15,000 to 17,000 plants/ha for Big Sun (S7).", "plants_per_ha_derived": 15625, "source_ids": ["S1", "S2", "S7"]},
+    "seed_rate": {"text": "About 1.5 kg/ha in the Cameroon sheets (S1, S2, S10). Technisem: 400 to 600 g/ha for Big Sun, 230 to 280 seeds per gram (S7). 100 g holds about 20,000 seeds (S9).", "source_ids": ["S1", "S2", "S7", "S9", "S10"]},
+    "nursery": {"text": "Beds 20 cm high and 1 m wide, rows 20 cm apart, seed 2 cm deep (S1). About 200 m2 of nursery per ha (S1, S2, S10). Poultry manure 5 kg/m2 two weeks before sowing, then NPK 20-10-10 at 50 g per linear metre two weeks after emergence (S1). Shade, daily watering (S2).", "source_ids": ["S1", "S2", "S10"]},
+    "basal": {"text": "Holes 20 cm deep dug a week before transplanting; 1 kg poultry manure per hole (S1). 1 kg manure plus two teaspoons of potassium sulphate per hole (S2).", "source_ids": ["S1", "S2"]}
+  },
+  "fertilizer": {
+    "schedule": [
+      {"when": "Two weeks after the basal manure", "product": "NPK 12-14-19 + 5 MgO", "dose": "15 g per plant (3 bottle caps)", "source_ids": ["S1"]},
+      {"when": "First flowering", "product": "NPK 12-14-19 + 5 MgO", "dose": "15 g per plant", "source_ids": ["S1"]},
+      {"when": "First fruit set, then after each harvest", "product": "NPK 10-10-20", "dose": "One teaspoon per plant", "source_ids": ["S1"]}
+    ],
+    "caribbean_reference": {"N_kg_ha": 180, "P_kg_ha": 22, "K_kg_ha": 200, "target_t_ha": 5, "source_ids": ["S9"]}
+  },
+  "pests_diseases": {
+    "text": "Downy mildew and alternaria leaf spot, favoured by heavy rain (S1). Nursery and field sprays of maneb and cypermethrin from two weeks after sowing: weekly in the rainy season, every two weeks in the dry season, and after each harvest; copper fungicide alternated with maneb (S1). The sheet adds a carbofuran nematicide (Furadan type) in the basal dressing; carbofuran is a highly hazardous pesticide.",
+    "source_ids": ["S1"]
+  },
+  "climate": {"temperature_optimum_c": [20, 30], "fruit_set_best_c": [25, 35], "growth_stops_below_c": 15, "rain_mm": [600, 1250], "altitude_max_m": 2000, "source_ids": ["S1", "S7"]},
+  "yields_t_ha": {
+    "national_average": {"value": 2.13, "year": 2020, "note": "FAOSTAT 'Chillies and peppers, green', Cameroon; mixes hot and sweet peppers (see pepper.json P14).", "source_ids": ["P14"]},
+    "cameroon_sheets": [
+      {"value": [12, 12], "note": "Hybrid varieties, 12,000 kg/ha per year as stated; Langue d'oiseau under 3.5 t/ha", "source_ids": ["S1"]},
+      {"value": [10, 20], "note": "10 to 20 t/ha depending on variety, more for some improved varieties", "source_ids": ["S2"]},
+      {"value": [10, 15], "note": "10 to 15 t/ha under good conditions; national production over 120,000 t a year", "source_ids": ["S3"]}
+    ],
+    "irrigated_export_reference": {"value": [33.6, 40.3], "note": "St Vincent, 2 ft x 3 ft and 2 ft x 4 ft, 36,000 and 30,000 lb/acre converted; far above African references", "source_ids": ["S9"]}
+  },
+  "labour": {
+    "harvest": "South African vegetable budget, chilli pages: 10 t/ha picked in 1,900 hours (see pepper.json P25), about 42 kg per 8 hour day. St Vincent: 264 person days to pick 16.3 t on one acre, about 62 kg per day (S9).",
+    "source_ids": ["P25", "S9"]
+  },
+  "prices": {
+    "unit_notes": "Fresh chili is sold wholesale by 50 kg or 100 kg bag and at retail by heap (tas). Per kg values are analyst divisions.",
+    "observations": [
+      {"market": "Mendong market, Yaounde, wholesale", "period": "June 2025, rainy season, low prices", "price_xaf_per_bag": [45000, 60000], "bag_kg": 50, "price_xaf_per_kg": [900, 1200], "retail": "heaps of 100 and 500 FCFA", "source_ids": ["S4"]},
+      {"market": "Mendong market, Yaounde, wholesale", "period": "August 2022, start of the season", "price_xaf_per_bag": [40000, 40000], "bag_kg": 100, "price_xaf_per_kg": [400, 400], "note": "Same period 2021: 20,000 to 25,000 FCFA per 100 kg (200 to 250 FCFA/kg)", "source_ids": ["S5"]},
+      {"market": "Yaounde wholesale (Mfoundi, Mokolo, 8th district)", "period": "May 2018", "price_xaf_per_bag": [6000, 50000], "bag_kg": 50, "price_xaf_per_kg": [120, 1000], "note": "6,000 FCFA per bag in a glut, 50,000 FCFA in a shortage; supply from the East and West regions", "source_ids": ["S6"]}
+    ],
+    "farm_gate": null,
+    "notes": "No published farm gate price. Urban wholesale prices swing by a factor of about 8 between glut and shortage."
+  },
+  "seed_prices": [
+    {"item": "Big Sun (Technisem), 50 g box", "price_xof": 30500, "where": "Tropicasem online shop, Senegal, 2026", "per_g": 610, "source_ids": ["S8"]},
+    {"item": "Big Sun (Technisem), 50 g box", "price_xof": 30000, "where": "Begreen Company, Senegal, 2026", "source_ids": ["S7"]},
+    {"item": "Bombardier, Massaya, Balla, 50 g box", "price_xof": 26500, "where": "Tropicasem online shop, Senegal, 2026", "source_ids": ["S8"]},
+    {"item": "Avenir F1, 50 g box", "price_xof": 91200, "where": "Tropicasem online shop, Senegal, 2026", "source_ids": ["S8"]}
+  ],
+  "value_added": {"text": "Over 70% of production is sold raw on local markets; sauces and powders can fetch 4 to 5 times the value of a raw kilogram (S3). Drying after 30 to 40 minutes of boiling is described in S1.", "source_ids": ["S1", "S3"]},
+  "sources": [
+    {"id": "S1", "title": "Technologie de production du piment (Capsicum frutescens)", "publisher": "Institut de Formation en Agriculture et Technologies Innovantes (IFATI), published on the MINADER website", "year": 2022, "url": "https://www.minader.cm/wp-content/uploads/2022/03/PIMENT.pdf", "notes": "Year is the upload date on the MINADER site; the sheet itself is undated."},
+    {"id": "S2", "title": "Fiche technique : comment cultiver du piment bio", "publisher": "Agriculture au Cameroun", "year": 2018, "url": "https://agricultureaucameroun.com/fiches-techniques/fiche-technique-comment-cultiver-du-piment-bio/"},
+    {"id": "S3", "title": "Le piment au Cameroun", "publisher": "Market Data Com", "year": 2025, "url": "https://marketdatacom.com/le-piment-au-cameroun/"},
+    {"id": "S4", "title": "Piment : c'est la saison des prix bas (B. C. Biyiha, 23 June 2025)", "publisher": "Cameroon Business Today", "year": 2025, "url": "https://cameroonbusinesstoday.cm/articles/3869/fr/piment-cest-la-saison-des-prix-bas"},
+    {"id": "S5", "title": "Piment : le prix est à la hausse (B. C. Biyiha, 23 August 2022)", "publisher": "Cameroon Business Today", "year": 2022, "url": "https://cameroonbusinesstoday.cm/articles/3237/fr/piment-le-prix-est-a-la-hausse"},
+    {"id": "S6", "title": "Le sac de 50 kg de piment coûte 6 000 F en cette période (B. C. Biyiha, 25 May 2018)", "publisher": "Cameroon Business Today", "year": 2018, "url": "https://cameroonbusinesstoday.cm/articles/1161/fr/-le-sac-de-50-kg-de-piment-coute-6-000-f-en-cette-periode-"},
+    {"id": "S7", "title": "Semence Piment Big Sun 50 g (Technisem): product sheet", "publisher": "Begreen Company, Senegal", "year": 2026, "url": "https://begreen-company.com/produit/semence-piment-big-sun-50g/"},
+    {"id": "S8", "title": "Boutique Tropicasem: piments (seed price list)", "publisher": "Tropicasem, Senegal", "year": 2026, "url": "https://boutique.tropicasem.sn/etiquette-produit/piments/"},
+    {"id": "S9", "title": "Hot Pepper: A Crop Production Technical Guide", "publisher": "Ministry of Agriculture and Fisheries, St Vincent and the Grenadines", "year": 2003, "url": "https://agriculture.gov.vc/agriculture/images/stories/PDF_Documents/Hot-Pepper-Production-Guide.pdf"},
+    {"id": "S10", "title": "Les semences de piments au Cameroun", "publisher": "Fabrik Aliments", "year": 2025, "url": "https://www.fabrikaliments.com/piments/"}
+  ],
+  "confidence_notes": "MEDIUM for agronomy: a Cameroon sheet hosted by MINADER (S1) and a Cameroon technical sheet (S2) agree on spacing, nursery and cycle. LOW for yields: Cameroon sheets give 10 to 20 t/ha against a national average near 2 t/ha. LOW for prices: only urban wholesale prices in Yaounde, very volatile; no farm gate price. Seed prices are Senegal listings (same CFA parity)."
+}
