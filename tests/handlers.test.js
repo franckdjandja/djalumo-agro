@@ -10,7 +10,7 @@ function fakeDeps(env = {}) {
   const mails = [];
   const rate = createMemoryRateStore();
   const deps = {
-    config: () => getConfig({ DATABASE_URL: 'postgres://test', CONTACT_NOTIFICATION_EMAIL: 'team@djanova.test', EMAIL_PROVIDER: 'console', ...env }),
+    config: () => getConfig({ DATABASE_URL: 'postgres://test', CONTACT_NOTIFICATION_EMAIL: 'team@djalumo.test', EMAIL_PROVIDER: 'console', ...env }),
     repo: () => ({
       async insertInquiry(d) { store.inquiries.push(d); return { id: 'x' }; },
       async insertDemoRequest(d) { store.demos.push(d); return { id: 'y' }; },
@@ -70,14 +70,14 @@ test('rate limit: sixth contact from one client within ten minutes gets 429', as
 });
 
 test('method, media type, size and origin are enforced', async () => {
-  const { deps } = fakeDeps({ ALLOWED_ORIGINS: 'https://djanova.test' });
+  const { deps } = fakeDeps({ ALLOWED_ORIGINS: 'https://djalumo.test' });
   const h = createFormHandler('contact', deps);
   assert.equal((await call(h, { method: 'GET' })).status, 405);
   assert.equal((await call(h, { body: contact, headers: { 'content-type': 'text/plain' } })).status, 415);
   assert.equal((await call(h, { raw: JSON.stringify({ ...contact, message: 'x'.repeat(20000) }) })).status, 413);
   assert.equal((await call(h, { raw: '{bad json' })).status, 400);
   assert.equal((await call(h, { body: contact, headers: { origin: 'https://evil.test' } })).status, 403);
-  assert.equal((await call(h, { body: contact, headers: { origin: 'https://djanova.test' } })).status, 200);
+  assert.equal((await call(h, { body: contact, headers: { origin: 'https://djalumo.test' } })).status, 200);
 });
 
 test('turnstile: a failed challenge is refused when the secret is configured', async () => {

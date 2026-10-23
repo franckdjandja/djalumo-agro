@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Djanova Agro · knowledge base builder.
+"""Djalumo Agro · knowledge base builder.
 
 Builds site/data/kb.json, the reference data read by the Season Planner engine (site/src/engine.cjs).
 
@@ -7,7 +7,7 @@ Rules applied to every value:
   * Each figure carries the ids of the sources it rests on (data/research/*.json hold the full research notes).
   * A value computed from sourced figures (unit conversion, per 100 m2 to per ha, midpoint of a range) is
     labelled "derived" in its basis note.
-  * A value that rests on no source is an Djanova Agro assumption: it is listed in ASSUMPTIONS and shown in the
+  * A value that rests on no source is a Djalumo Agro assumption: it is listed in ASSUMPTIONS and shown in the
     interface. No price or yield is invented: a missing price stays null, the line keeps its quantity and the
     planner asks for a local quote.
 
@@ -209,7 +209,7 @@ def build_water():
         'maintenance_label': L('Pump maintenance', 'Entretien de la motopompe'),
         'options': {
             'rainfed': {'covers': 0, 'efficiency': 1},
-            'manual': {'covers': 1, 'efficiency': surface_eff, 'm3_per_person_day': 6, 'labour_label': L('Watering by hand (Djanova Agro assumption: 6 m³ per person day)', 'Arrosage manuel (hypothèse Djanova Agro : 6 m³ par jour de travail)'),
+            'manual': {'covers': 1, 'efficiency': surface_eff, 'm3_per_person_day': 6, 'labour_label': L('Watering by hand (Djalumo Agro assumption: 6 m³ per person day)', 'Arrosage manuel (hypothèse Djalumo Agro : 6 m³ par jour de travail)'),
                        'capex': [{'item': 'watering_can', 'qty_per_ha': 8, 'discrete': True}], 'max_area_ha': 0.25, 'src': src('M7', 'C3')},
             'existing': {'covers': 1, 'efficiency': surface_eff, 'fuel': True, 'labour_days_per_ha': 25, 'labour_src': src('C3'), 'labour_label': L('Watering', 'Arrosage'),
                          'maintenance_xaf_per_ha': 15000, 'maintenance_src': src('C3'), 'capex': [], 'src': src('M7', 'C3')},
@@ -359,7 +359,7 @@ def tomato(R):
             'ky': 'FAO-33 yield response factor 1.05 (T12).',
             'heat_c': 'Flowers drop and fruit set is poor above 32 °C (T13).',
             'kc': 'FAO-56 Table 12: Kc ini 0.6, mid 1.15, end 0.7 to 0.9 (0.8 used); stage lengths 30/40/40/25 days, Table 11 (M1).',
-            'cycle': 'Nursery 25 to 40 days (T1, 30 used); first harvest 60 to 80 days after transplanting (T1, 70 used); harvest over 2 to 3 months (T1, 60 days used); about 45 days from first flowers to first ripe fruit is an Djanova Agro assumption to check in the pilot.',
+            'cycle': 'Nursery 25 to 40 days (T1, 30 used); first harvest 60 to 80 days after transplanting (T1, 70 used); harvest over 2 to 3 months (T1, 60 days used); about 45 days from first flowers to first ripe fruit is a Djalumo Agro assumption to check in the pilot.',
             'yield_t_ha': 'MINADER per 100 m² ranges converted to t/ha: rainy season 10 to 25, dry season 20 to 50 (T1). Poor and good are the bounds, average the midpoint. The FAOSTAT national average (19.4 t/ha in 2024, T11) is not used: the series looks revised and MINADER cites about 11 t/ha.',
             'loss_pct': 'Local sale: transport to the grouping market 0.5% (T6) plus marketing 0.65% (T5), derived 1.15%. Selling in a city adds 5.0% (T6). Pre harvest losses are inside the yield ranges.',
             'harvest_kg_per_person_day': 'Derived: 40 person days of harvest per ha (T1) for 800 crates (T1) of 20 kg (T9).',

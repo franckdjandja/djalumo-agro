@@ -22,7 +22,7 @@
     world: {
       eyebrow: 'Agricultural decision intelligence · Africa to the world',
       h1: 'From African fields to world markets.',
-      lead: 'Djanova Agro industrialises African agriculture with data. It plans every season from any budget, starting at 100 USD, and connects the harvest to the markets that pay for it: in Cameroon, across Central Africa and, through the ports of Douala and Kribi, to the world.',
+      lead: 'Djalumo Agro industrialises African agriculture with data. It plans every season from any budget, starting at 100 USD, and connects the harvest to the markets that pay for it: in Cameroon, across Central Africa and, through the ports of Douala and Kribi, to the world.',
       chips: ['Pilot zone · Foumbot, Cameroon', 'Ports · Douala and Kribi', 'English · French'],
       mapTitle: 'Trade corridors from the Foumbot production zone',
       mapAria: 'World map. Flows leave the Foumbot production zone in West Cameroon, reach the ports of Douala and Kribi by road and continue by sea to West and East Africa, Europe, the Middle East, China, the United States and South America. Road corridors lead to Gabon, Equatorial Guinea, Chad and the Central African Republic.',
@@ -48,11 +48,11 @@
         newyork: ['New York', 'United States'], santos: ['Santos', 'Brazil'], penja: ['Penja', 'Banana export basin']
       },
       det: {
-        all: ['One production zone, three horizons', 'Foumbot, in the West region of Cameroon, is one of the market garden basins that feed Douala and Yaoundé. From there, produce already moves by road to the neighbouring countries. Through the ports of Douala and Kribi, the same harvests can reach every major market. Djanova Agro plans the season with the destination in mind.'],
+        all: ['One production zone, three horizons', 'Foumbot, in the West region of Cameroon, is one of the market garden basins that feed Douala and Yaoundé. From there, produce already moves by road to the neighbouring countries. Through the ports of Douala and Kribi, the same harvests can reach every major market. Djalumo Agro plans the season with the destination in mind.'],
         cm: ['Cameroon: from the field to the ports', 'Foumbot, Bamboutos, Santa and Dschang are among the basins that supply Douala and Yaoundé with vegetables. By road, produce reaches the port of Douala, and the Kribi deep sea port further south.'],
         cemac: ['Central Africa: the regional market, by road', 'Tomatoes, fruit, onions and plantains already travel from Cameroon to Gabon and Equatorial Guinea; Foumbot tomatoes reach the Central African Republic; Chad is Cameroon’s main customer in the zone. The Transcameroon corridor links Douala and Kribi to N’Djamena and Bangui.'],
         africa: ['West and East Africa: the continental market', 'Lagos and Abidjan by short sea routes along the Gulf of Guinea; Mombasa by sea, then the road to Nairobi and Kigali. Target corridors for packaged and processed products within the African Continental Free Trade Area.'],
-        europe: ['Europe: a lane already open', 'Cameroon already ships fresh produce to the European Union: 210,686 tonnes of bananas in 2024. Djanova Agro targets the same lane for high value vegetables, such as green beans and peppers, once volumes, quality and certification allow.'],
+        europe: ['Europe: a lane already open', 'Cameroon already ships fresh produce to the European Union: 210,686 tonnes of bananas in 2024. Djalumo Agro targets the same lane for high value vegetables, such as green beans and peppers, once volumes, quality and certification allow.'],
         gulf: ['Middle East: Jebel Ali', 'A food importing region, reached from the Gulf of Guinea around the Cape of Good Hope. Target corridor for packaged and processed products.'],
         china: ['China: Shanghai', 'The longest corridor, around the Cape of Good Hope and through the Strait of Malacca. Target for dried and processed products rather than fresh vegetables.'],
         usa: ['United States: New York and New Jersey', 'A direct Atlantic crossing. Target corridor for processed products and specialty spices, under United States import rules.'],
@@ -60,7 +60,7 @@
       },
       dist: 'Sea distance from Douala', days: (d) => '≈ ' + d + ' days at sea', road: 'By road',
       noteSea: 'Sea lanes follow indicative waypoints on the usual routes. Distances are great circle lengths between them; days at sea assume 14 knots, before port calls and transshipment.',
-      honest: 'Today the pilot sells in Cameroon. Regional flows are documented market flows; export corridors are Djanova Agro’s target, not current sales.',
+      honest: 'Today the pilot sells in Cameroon. Regional flows are documented market flows; export corridors are Djalumo Agro’s target, not current sales.',
       srcL: 'Sources',
       srcs: {
         cm: [['EcoMatin, port traffic 2025', SRC.ports2025], ['WFP Logistics Cluster, Cameroon port assessment', SRC.kribi]],
@@ -83,7 +83,7 @@
       h1: 'The pilot, photographed from the first clearing to the last harvest.',
       lead: 'Seventy-three photographs taken by the founder and his team in the Foumbot area: the father’s plantation in 2021, then the four phases of the Cam_Agri For Africa pilot, from September 2024 to October 2025. Each plate says what the images show, when they were taken and what the season taught.',
       counts: [['73', 'photographs'], ['8', 'plates'], ['4', 'production phases'], ['2', 'sites in Foumbot']],
-      plate: 'Plate', resultL: 'Phase result', readL: 'Reading of the plate', probL: 'Field problem', reqL: 'Djanova Agro requirement', nowL: 'In the Season Planner today',
+      plate: 'Plate', resultL: 'Phase result', readL: 'Reading of the plate', probL: 'Field problem', reqL: 'Djalumo Agro requirement', nowL: 'In the Season Planner today',
       archiveH: (n) => 'From the field archive · ' + n + ' more photographs',
       noDate: 'Date not recorded in the file', dated: 'Taken',
       open: 'Enlarge the photograph', close: 'Close', prev: 'Previous photograph', next: 'Next photograph', of: 'of', viewer: 'Photograph viewer',
@@ -92,7 +92,7 @@
       ctaLead: 'Heat, water, packaging, pests and closed markets: the Season Planner prices each of them before the first seed is bought.',
       homeEyebrow: '01 · Field evidence',
       homeH: 'Proof from the field, not from a slide.',
-      homeLead: 'Before the first line of code, a real farm: two sites in Foumbot, four production phases, every cost recorded and seventy-three photographs. These plates are the founding dataset of Djanova Agro.',
+      homeLead: 'Before the first line of code, a real farm: two sites in Foumbot, four production phases, every cost recorded and seventy-three photographs. These plates are the founding dataset of Djalumo Agro.',
       photosN: (n) => n + ' photos',
       timeline: [
         ['2021', 'Heritage', 'The father’s plantation', 'Where the craft and the seed come from', ''],
@@ -215,7 +215,7 @@
     world: {
       eyebrow: 'Intelligence décisionnelle agricole · de l’Afrique au monde',
       h1: 'Des champs africains aux marchés du monde.',
-      lead: 'Djanova Agro industrialise l’agriculture africaine par la donnée. Il planifie chaque saison à partir de tout budget, dès 100 USD, et relie la récolte aux marchés qui la paient : au Cameroun, en Afrique centrale et, par les ports de Douala et de Kribi, dans le monde entier.',
+      lead: 'Djalumo Agro industrialise l’agriculture africaine par la donnée. Il planifie chaque saison à partir de tout budget, dès 100 USD, et relie la récolte aux marchés qui la paient : au Cameroun, en Afrique centrale et, par les ports de Douala et de Kribi, dans le monde entier.',
       chips: ['Zone pilote · Foumbot, Cameroun', 'Ports · Douala et Kribi', 'Anglais · français'],
       mapTitle: 'Corridors commerciaux depuis la zone de production de Foumbot',
       mapAria: 'Carte du monde. Les flux partent de la zone de production de Foumbot, dans l’Ouest du Cameroun, rejoignent par la route les ports de Douala et de Kribi, puis continuent par la mer vers l’Afrique de l’Ouest et de l’Est, l’Europe, le Moyen-Orient, la Chine, les États-Unis et l’Amérique du Sud. Des corridors routiers mènent au Gabon, à la Guinée équatoriale, au Tchad et à la Centrafrique.',
@@ -241,11 +241,11 @@
         newyork: ['New York', 'États-Unis'], santos: ['Santos', 'Brésil'], penja: ['Penja', 'Bassin d’exportation de la banane']
       },
       det: {
-        all: ['Une zone de production, trois horizons', 'Foumbot, dans la région de l’Ouest du Cameroun, fait partie des bassins maraîchers qui nourrissent Douala et Yaoundé. De là, les produits partent déjà par la route vers les pays voisins. Par les ports de Douala et de Kribi, les mêmes récoltes peuvent atteindre tous les grands marchés. Djanova Agro planifie la saison en pensant à la destination.'],
+        all: ['Une zone de production, trois horizons', 'Foumbot, dans la région de l’Ouest du Cameroun, fait partie des bassins maraîchers qui nourrissent Douala et Yaoundé. De là, les produits partent déjà par la route vers les pays voisins. Par les ports de Douala et de Kribi, les mêmes récoltes peuvent atteindre tous les grands marchés. Djalumo Agro planifie la saison en pensant à la destination.'],
         cm: ['Cameroun : du champ aux ports', 'Foumbot, les Bamboutos, Santa et Dschang font partie des bassins qui approvisionnent Douala et Yaoundé en légumes. Par la route, les produits rejoignent le port de Douala et, plus au sud, le port en eau profonde de Kribi.'],
         cemac: ['Afrique centrale : le marché régional, par la route', 'Tomates, fruits, oignons et plantains partent déjà du Cameroun vers le Gabon et la Guinée équatoriale ; les tomates de Foumbot atteignent la Centrafrique ; le Tchad est le premier client du Cameroun dans la zone. Le corridor Transcameroun relie Douala et Kribi à N’Djamena et à Bangui.'],
         africa: ['Afrique de l’Ouest et de l’Est : le marché continental', 'Lagos et Abidjan par de courtes routes maritimes le long du golfe de Guinée ; Mombasa par la mer, puis la route vers Nairobi et Kigali. Corridors visés pour des produits emballés et transformés, dans le cadre de la Zone de libre-échange continentale africaine.'],
-        europe: ['Europe : une voie déjà ouverte', 'Le Cameroun expédie déjà des produits frais vers l’Union européenne : 210 686 tonnes de bananes en 2024. Djanova Agro vise la même voie pour des légumes à forte valeur, comme le haricot vert et le piment, quand les volumes, la qualité et la certification le permettront.'],
+        europe: ['Europe : une voie déjà ouverte', 'Le Cameroun expédie déjà des produits frais vers l’Union européenne : 210 686 tonnes de bananes en 2024. Djalumo Agro vise la même voie pour des légumes à forte valeur, comme le haricot vert et le piment, quand les volumes, la qualité et la certification le permettront.'],
         gulf: ['Moyen-Orient : Jebel Ali', 'Une région importatrice de denrées, atteinte depuis le golfe de Guinée par le cap de Bonne-Espérance. Corridor visé pour des produits emballés et transformés.'],
         china: ['Chine : Shanghai', 'Le corridor le plus long, par le cap de Bonne-Espérance et le détroit de Malacca. Visé pour des produits séchés et transformés plutôt que des légumes frais.'],
         usa: ['États-Unis : New York et New Jersey', 'Une traversée directe de l’Atlantique. Corridor visé pour des produits transformés et des épices de spécialité, selon les règles d’importation américaines.'],
@@ -253,7 +253,7 @@
       },
       dist: 'Distance maritime depuis Douala', days: (d) => '≈ ' + d + ' jours de mer', road: 'Par la route',
       noteSea: 'Les routes maritimes suivent des points de passage indicatifs sur les routes habituelles. Les distances sont des longueurs orthodromiques entre ces points ; les jours de mer supposent 14 nœuds, hors escales et transbordements.',
-      honest: 'Aujourd’hui, le pilote vend au Cameroun. Les flux régionaux sont des flux de marché documentés ; les corridors d’export sont l’objectif de Djanova Agro, pas des ventes actuelles.',
+      honest: 'Aujourd’hui, le pilote vend au Cameroun. Les flux régionaux sont des flux de marché documentés ; les corridors d’export sont l’objectif de Djalumo Agro, pas des ventes actuelles.',
       srcL: 'Sources',
       srcs: {
         cm: [['EcoMatin, trafic portuaire 2025', SRC.ports2025], ['WFP Logistics Cluster, évaluation des ports du Cameroun', SRC.kribi]],
@@ -276,7 +276,7 @@
       h1: 'Le pilote, photographié du premier défrichage à la dernière récolte.',
       lead: 'Soixante-treize photographies prises par le fondateur et son équipe dans la zone de Foumbot : la plantation du père en 2021, puis les quatre phases du pilote Cam_Agri For Africa, de septembre 2024 à octobre 2025. Chaque planche dit ce que montrent les images, quand elles ont été prises et ce que la saison a appris.',
       counts: [['73', 'photographies'], ['8', 'planches'], ['4', 'phases de production'], ['2', 'sites à Foumbot']],
-      plate: 'Planche', resultL: 'Résultat de la phase', readL: 'Lecture de la planche', probL: 'Problème terrain', reqL: 'Exigence Djanova Agro', nowL: 'Aujourd’hui dans le Planificateur de saison',
+      plate: 'Planche', resultL: 'Résultat de la phase', readL: 'Lecture de la planche', probL: 'Problème terrain', reqL: 'Exigence Djalumo Agro', nowL: 'Aujourd’hui dans le Planificateur de saison',
       archiveH: (n) => 'Archives terrain · ' + n + ' photographies de plus',
       noDate: 'Date non enregistrée dans le fichier', dated: 'Prise le',
       open: 'Agrandir la photographie', close: 'Fermer', prev: 'Photographie précédente', next: 'Photographie suivante', of: 'sur', viewer: 'Visionneuse de photographies',
@@ -285,7 +285,7 @@
       ctaLead: 'Chaleur, eau, emballage, ravageurs et marchés fermés : le Planificateur de saison chiffre chacun d’eux avant l’achat de la première semence.',
       homeEyebrow: '01 · Preuves terrain',
       homeH: 'Des preuves de terrain, pas une présentation.',
-      homeLead: 'Avant la première ligne de code, une vraie ferme : deux sites à Foumbot, quatre phases de production, chaque coût enregistré et soixante-treize photographies. Ces planches sont le jeu de données fondateur de Djanova Agro.',
+      homeLead: 'Avant la première ligne de code, une vraie ferme : deux sites à Foumbot, quatre phases de production, chaque coût enregistré et soixante-treize photographies. Ces planches sont le jeu de données fondateur de Djalumo Agro.',
       photosN: (n) => n + ' photos',
       timeline: [
         ['2021', 'Héritage', 'La plantation du père', 'D’où viennent le métier et la semence', ''],

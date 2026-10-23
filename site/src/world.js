@@ -1,6 +1,6 @@
 /* ---------- World corridor map: from the Foumbot production zone to African and world markets ----------
    Land is a dot grid (Natural Earth 1:110m); dots are zero length strokes, so they keep their size at any zoom.
-   Routes: [key, group, status, destination]. 'today' = documented flows, 'target' = Djanova Agro export target. */
+   Routes: [key, group, status, destination]. 'today' = documented flows, 'target' = Djalumo Agro export target. */
 const WM_R = [
   ['dla', 'cm', 'today', 'douala'], ['yde', 'cm', 'today', 'yaounde'], ['kri', 'cm', 'today', 'kribi'],
   ['gab', 'cemac', 'today', 'libreville'], ['gnq', 'cemac', 'today', 'bata'], ['tcd', 'cemac', 'today', 'ndjamena'], ['caf', 'cemac', 'today', 'bangui'],

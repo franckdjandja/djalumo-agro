@@ -1,8 +1,8 @@
-# Djanova Agro · Site web et plateforme de formulaires
+# Djalumo Agro · Site web et plateforme de formulaires
 
 [English](README.md) · **Français**
 
-La vitrine numérique de Djanova Agro, plateforme d’intelligence décisionnelle agricole qui transforme tout budget, de 100 USD à plus d’un million, en un Plan de saison chiffré. Le site est bilingue (anglais d’abord, français ensuite), fonctionne sur les réseaux mobiles lents et dispose d’un vrai backend pour les demandes de contact, de démo et la lettre d’information.
+La vitrine numérique de Djalumo Agro, plateforme d’intelligence décisionnelle agricole qui transforme tout budget, de 100 USD à plus d’un million, en un Plan de saison chiffré. Le site est bilingue (anglais d’abord, français ensuite), fonctionne sur les réseaux mobiles lents et dispose d’un vrai backend pour les demandes de contact, de démo et la lettre d’information.
 
 Porteur du projet : Franck Junior Djandja Tomwa · Zone pilote : Foumbot, Ouest Cameroun.
 
@@ -81,7 +81,7 @@ Avec l’outil Vercel, `npm run dev` remplace `scripts/serve.mjs`.
 | `DATABASE_URL` | serveur | Connexion PostgreSQL |
 | `ALLOWED_ORIGINS` | serveur | Origines autorisées à envoyer vers `/api` |
 | `EMAIL_PROVIDER`, `EMAIL_API_KEY`, `EMAIL_FROM` | serveur | Notifications (`resend`, `brevo`, `console`, `none`) |
-| `CONTACT_NOTIFICATION_EMAIL` | serveur | Destinataires de « New Djanova Agro website inquiry » et « New Demo Request » |
+| `CONTACT_NOTIFICATION_EMAIL` | serveur | Destinataires de « New Djalumo Agro website inquiry » et « New Demo Request » |
 | `NEWSLETTER_NOTIFY`, `NEWSLETTER_SEND_CONFIRMATION` | serveur | Alerte interne et confirmation à l’abonné, en option |
 | `NEWSLETTER_PROVIDER`, `NEWSLETTER_PROVIDER_KEY`, `NEWSLETTER_LIST_ID` | serveur | Synchronisation optionnelle avec Brevo ou Mailchimp |
 | `TURNSTILE_SITE_KEY` / `TURNSTILE_SECRET_KEY` | construction / serveur | Vérification Cloudflare Turnstile |
@@ -115,10 +115,10 @@ Chaque texte visible se trouve dans `site/src/i18n.js`, en deux objets parallèl
 
 ## Mesure d’audience
 
-`window.DjanovaAnalytics` met en file les événements : `page_view`, `cta_click`, `planner_run`, `planner_tab`, `planner_window`, `map_select`, `map_layer`, `arch_select`, `persona_select`, `form_submitted`, `form_invalid`, `form_error`, `language_change`. Rien n’est envoyé tant qu’aucun fournisseur n’est configuré. Pour en brancher un autre :
+`window.DjalumoAnalytics` met en file les événements : `page_view`, `cta_click`, `planner_run`, `planner_tab`, `planner_window`, `map_select`, `map_layer`, `arch_select`, `persona_select`, `form_submitted`, `form_invalid`, `form_error`, `language_change`. Rien n’est envoyé tant qu’aucun fournisseur n’est configuré. Pour en brancher un autre :
 
 ```js
-DjanovaAnalytics.use({ track: (e) => monFournisseur.capture(e.name, e.props) });
+DjalumoAnalytics.use({ track: (e) => monFournisseur.capture(e.name, e.props) });
 ```
 
 En activant un fournisseur, ajouter son domaine à la politique de sécurité du contenu dans `vercel.json` et utiliser un bandeau de consentement là où la loi l’exige (GA4 dans l’Union européenne, par exemple). Plausible n’utilise pas de cookies.
@@ -158,7 +158,7 @@ Le planificateur répond à une question pour un producteur ou un investisseur :
 
 Les prix des intrants viennent du budget tomate du MINADER 2024, de l’enquête du MINADER sur les marchés d’intrants de la Région de l’Ouest (Foumbot, 4e trimestre 2022), des prix du carburant en vigueur en octobre 2026 et, faute de prix camerounais, d’annonces signalées des marchés voisins. Les taux de change sont ceux de la BCEAO au 16 octobre 2026.
 
-**Règles.** Chaque valeur porte les identifiants de ses sources, affichés à l’écran à côté de chaque ligne de budget et de chaque étape. Les valeurs calculées sont signalées comme dérivées. Les valeurs sans source sont des hypothèses de Djanova Agro, listées dans l’onglet Sources. Un prix manquant n’est jamais deviné : la ligne garde sa quantité, coûte zéro et est signalée pour un devis local. La confiance est indiquée par culture et par bloc de données.
+**Règles.** Chaque valeur porte les identifiants de ses sources, affichés à l’écran à côté de chaque ligne de budget et de chaque étape. Les valeurs calculées sont signalées comme dérivées. Les valeurs sans source sont des hypothèses de Djalumo Agro, listées dans l’onglet Sources. Un prix manquant n’est jamais deviné : la ligne garde sa quantité, coûte zéro et est signalée pour un devis local. La confiance est indiquée par culture et par bloc de données.
 
 Pour mettre les données à jour : modifier ou compléter les notes de recherche, ajuster `scripts/kb/build_kb.py`, puis lancer `python3 scripts/kb/build_kb.py` et `npm test`.
 
@@ -166,7 +166,7 @@ Pour mettre les données à jour : modifier ou compléter les notes de recherche
 
 L’interface adopte une lecture émeraude épurée : une page vert émeraude clair (`#EDF6F1`), des bandeaux émeraude profond (`#0A3D2E`) pour l’en-tête, les ouvertures de page, la carte de la lettre d’information et le pied de page, des surfaces blanches aux ombres douces, et un seul accent doré pour la zone de production. Aucune étiquette, aucun numéro ni aucun trait au-dessus des titres. La police est celle de chaque plateforme : SF Pro sur les appareils Apple, Segoe UI sous Windows, Roboto sous Android ; le site se lit comme une application native et ne charge aucune police web. Tous les jetons sont en tête de `site/src/styles.css`.
 
-La carte mondiale (`site/src/world.js`) dessine les terres en points à partir de Natural Earth 1:110m ; les points sont des traits de longueur nulle, ils gardent donc leur taille à tout niveau de zoom, et les contours apparaissent quand on zoome. Les corridors sont de deux natures, signalées partout : **flux actuels** (Cameroun et Afrique centrale, flux de marché documentés) et **corridors d’export visés** (l’objectif de Djanova Agro, pas des ventes actuelles). Les routes maritimes suivent des points de passage indicatifs sur les routes habituelles (golfe de Guinée, Canaries, Gibraltar ou la Manche, cap de Bonne-Espérance, canal du Mozambique, détroit de Malacca) ; les distances sont des longueurs orthodromiques entre ces points et les jours de mer supposent 14 nœuds, hors escales et transbordements. Régénérer avec `npm run geo:world`.
+La carte mondiale (`site/src/world.js`) dessine les terres en points à partir de Natural Earth 1:110m ; les points sont des traits de longueur nulle, ils gardent donc leur taille à tout niveau de zoom, et les contours apparaissent quand on zoome. Les corridors sont de deux natures, signalées partout : **flux actuels** (Cameroun et Afrique centrale, flux de marché documentés) et **corridors d’export visés** (l’objectif de Djalumo Agro, pas des ventes actuelles). Les routes maritimes suivent des points de passage indicatifs sur les routes habituelles (golfe de Guinée, Canaries, Gibraltar ou la Manche, cap de Bonne-Espérance, canal du Mozambique, détroit de Malacca) ; les distances sont des longueurs orthodromiques entre ces points et les jours de mer supposent 14 nœuds, hors escales et transbordements. Régénérer avec `npm run geo:world`.
 
 Chiffres sourcés de la carte : trafic des ports du Cameroun en 2025 et part de Douala (ministère des Transports via EcoMatin, janvier 2026), tirant d’eau de Kribi (WFP Logistics Cluster), exportations de bananes en 2024 (Assobacam via Business in Cameroon), flux régionaux de légumes vers le Gabon, la Guinée équatoriale, la Centrafrique et le Tchad (Afrik.com, octobre 2026) et corridor Transcameroun (Business in Cameroon, mai 2026).
 
@@ -184,4 +184,4 @@ Le site ne présente jamais de données simulées comme réelles. Le Planificate
 * Créer la structure juridique et la nommer dans la politique de confidentialité.
 * Valider le registre et les légendes des photographies.
 
-© 2026 Djanova Agro. Tous droits réservés.
+© 2026 Djalumo Agro. Tous droits réservés.

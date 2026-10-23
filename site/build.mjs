@@ -13,7 +13,7 @@ const target = args.target === 'artifact' ? 'artifact' : 'production';
 const read = (p) => fs.readFileSync(path.join(root, p), 'utf8');
 
 // SITE_URL wins; on Vercel the production address is detected automatically.
-const SITE_URL = (process.env.SITE_URL || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? 'https://' + process.env.VERCEL_PROJECT_PRODUCTION_URL : 'https://djanova.example')).replace(/\/$/, '');
+const SITE_URL = (process.env.SITE_URL || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? 'https://' + process.env.VERCEL_PROJECT_PRODUCTION_URL : 'https://djalumo.example')).replace(/\/$/, '');
 const config = {
   siteUrl: SITE_URL,
   turnstileSiteKey: process.env.TURNSTILE_SITE_KEY || '',
@@ -40,9 +40,9 @@ const EN = I18N.en;
 const leadOf = (k) => ({
   home: EN.meta.desc, planner: EN.planner.lead, field: EN.field.lead, platform: EN.platform.lead, intelligence: EN.intel.lead, solutions: EN.solutions.lead, data: EN.data.lead,
   impact: EN.impact.lead, about: EN.about.lead, contact: EN.contact.lead, demo: EN.demo.lead, newsletter: EN.nl.lead,
-  privacy: 'How Djanova Agro collects, uses and protects personal data.', terms: 'Terms of use of the Djanova Agro website.'
+  privacy: 'How Djalumo Agro collects, uses and protects personal data.', terms: 'Terms of use of the Djalumo Agro website.'
 }[k]);
-const titleOf = (k) => (k === 'home' ? EN.meta.title : `${EN.meta.pages[k]} · Djanova Agro`);
+const titleOf = (k) => (k === 'home' ? EN.meta.title : `${EN.meta.pages[k]} · Djalumo Agro`);
 const attr = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 const urlOf = (k) => (k === 'home' ? SITE_URL + '/' : `${SITE_URL}/${k}`);
 
@@ -52,7 +52,7 @@ function page(k, assets) {
     ? [`<link rel="canonical" href="${urlOf(k)}">`, `<meta property="og:url" content="${urlOf(k)}">`,
        `<link rel="stylesheet" href="/assets/${assets.css}">`, `<script defer src="/assets/${assets.js}"></script>`].join('\n')
     : '';
-  html = html.replace(/<title>[^<]*<\/title>/, `<title>${target === 'artifact' ? 'Djanova Agro' : attr(titleOf(k))}</title>`)
+  html = html.replace(/<title>[^<]*<\/title>/, `<title>${target === 'artifact' ? 'Djalumo Agro' : attr(titleOf(k))}</title>`)
     .replace(/(<meta name="description" content=")[^"]*(">)/, `$1${attr(leadOf(k))}$2`)
     .replace(/(<meta property="og:title" content=")[^"]*(">)/, `$1${attr(titleOf(k))}$2`)
     .replace(/(<meta property="og:description" content=")[^"]*(">)/, `$1${attr(leadOf(k))}$2`);
@@ -85,7 +85,7 @@ if (target === 'artifact') {
   fs.writeFileSync(path.join(out, 'assets', assets.js), js);
   fs.writeFileSync(path.join(out, 'assets', assets.css), css);
   for (const k of ROUTES) fs.writeFileSync(path.join(out, k === 'home' ? 'index.html' : `${k}.html`), page(k, assets));
-  fs.writeFileSync(path.join(out, '404.html'), page('home', assets).replace(/<title>[^<]*<\/title>/, '<title>Signal not found · Djanova Agro</title>').replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex">'));
+  fs.writeFileSync(path.join(out, '404.html'), page('home', assets).replace(/<title>[^<]*<\/title>/, '<title>Signal not found · Djalumo Agro</title>').replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex">'));
   copyImages(path.join(out, 'img'));
   const today = new Date().toISOString().slice(0, 10);
   fs.writeFileSync(path.join(out, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${ROUTES.map((k) => `  <url><loc>${urlOf(k)}</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>${k === 'home' ? '1.0' : ['privacy', 'terms'].includes(k) ? '0.3' : '0.8'}</priority></url>`).join('\n')}\n</urlset>\n`);
