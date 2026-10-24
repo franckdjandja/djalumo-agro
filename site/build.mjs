@@ -12,8 +12,9 @@ const args = Object.fromEntries(process.argv.slice(2).map((a) => a.replace(/^--/
 const target = args.target === 'artifact' ? 'artifact' : 'production';
 const read = (p) => fs.readFileSync(path.join(root, p), 'utf8');
 
-// SITE_URL wins; on Vercel the production address is detected automatically.
-const SITE_URL = (process.env.SITE_URL || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? 'https://' + process.env.VERCEL_PROJECT_PRODUCTION_URL : 'https://djalumo.example')).replace(/\/$/, '');
+// On Vercel, the production address of the project is used, so a stale SITE_URL can never break links or previews.
+// Elsewhere, SITE_URL is used.
+const SITE_URL = ((process.env.VERCEL_PROJECT_PRODUCTION_URL ? 'https://' + process.env.VERCEL_PROJECT_PRODUCTION_URL : '') || process.env.SITE_URL || 'https://djalumo.example').replace(/\/$/, '');
 const config = {
   siteUrl: SITE_URL,
   turnstileSiteKey: process.env.TURNSTILE_SITE_KEY || '',
