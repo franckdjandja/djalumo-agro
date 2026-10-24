@@ -1,0 +1,18 @@
+{
+  "appId": "com.djalumo.agro",
+  "appName": "Djalumo Agro",
+  "webDir": "android-www",
+  "android": {
+    "backgroundColor": "#0A3D2E",
+    "allowMixedContent": false,
+    "captureInput": true,
+    "webContentsDebuggingEnabled": false
+  },
+  "plugins": {
+    "SystemBars": {
+      "insetsHandling": "css",
+      "initialViewportFitValueHint": "cover",
+      "style": "DARK"
+    }
+  }
+}

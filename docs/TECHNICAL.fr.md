@@ -48,7 +48,9 @@ site/img/field/      73 photographies de terrain en deux tailles (WebP), produit
 site/data/photos.json  dimensions, planche, lettre et date de chaque photographie (générées)
 data/field/          manifest.json : fichier d’origine, planche et lettre de chaque photographie
 site/img/            autres photographies optimisées (WebP)
-site/build.mjs       construction : production (public/) ou aperçu en un seul fichier (dist-artifact/)
+site/build.mjs       construction : production (public/), aperçu en un seul fichier (dist-artifact/) ou version Android (android-www/)
+android/             projet Android natif (Capacitor 8) ; android/play/ contient l'icône et le visuel Google Play
+capacitor.config.json  identifiant, nom et barres système de l'application
 scripts/             migrate.mjs, serve.mjs, geo.mjs, geo-world.mjs, photos/
 tests/               tests unitaires, tests des points d’accès, tests d’intégration PostgreSQL
 ```
@@ -144,6 +146,22 @@ TEST_DATABASE_URL=postgres://... npm test                  # ajoute les tests d�
 ## Version d’aperçu en un seul fichier
 
 `npm run build:artifact` produit une version du site en un seul fichier, utilisée pour les aperçus privés. Dans cette version, les formulaires sont enregistrés dans le stockage propre de l’aperçu au lieu de `/api`.
+
+## Application Android
+
+L'application est construite avec Capacitor 8 à partir des mêmes sources que le site. `node site/build.mjs --target=android` écrit dans `android-www/` une version hors connexion : une seule page avec des routes par ancre, et tous les scripts, styles, cartes et photographies inclus, afin que le Planificateur de saison fonctionne sans réseau. `npx cap sync android` la copie dans le projet natif `android/`.
+
+| Élément | Valeur |
+| --- | --- |
+| Identifiant de l'application | `com.djalumo.agro` (définitif une fois publié sur Google Play) |
+| Version minimale d'Android | Android 7.0 (API 24), API cible 36 |
+| Formulaires et rapports | Envoyés à `APP_SITE_URL` (par défaut `https://djalumo-agro.vercel.app`) ; l'API accepte l'origine de l'application `https://localhost` et lui répond avec les en têtes d'accès croisé |
+| Liens externes | Ouverts dans le navigateur du téléphone |
+| Bouton retour | Ferme la visionneuse, la fenêtre ou le menu ouvert, puis revient aux pages précédentes, puis quitte l'application |
+
+Le SDK Android n'est pas nécessaire sur un ordinateur personnel : le flux `.github/workflows/android.yml` lance les tests, construit la version hors connexion et l'APK sur GitHub, puis publie la version de test comme préversion nommée d'après la branche (`android-main`, `android-android`). Lorsque les secrets `ANDROID_KEYSTORE_BASE64`, `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS` et `ANDROID_KEY_PASSWORD` sont définis dans le dépôt, le même flux produit aussi le paquet signé (AAB) pour Google Play. La variable `APP_SITE_URL` du dépôt dirige l'application vers le nom de domaine propre dès qu'il existe.
+
+Les icônes, les écrans de démarrage et les visuels Google Play sont générés depuis `brand/` avec `node scripts/android/icons.mjs` (après `npm install --no-save sharp`). Si Cloudflare Turnstile est activé, ajoutez `localhost` aux noms d'hôte du widget pour que l'application passe la vérification de sécurité ; sinon l'application propose d'envoyer le formulaire depuis le site.
 
 ## Planificateur de saison : méthode et données
 

@@ -78,11 +78,12 @@ function openReportDialog(input, plan) {
     const payload = { name: s.name, email: s.email.toLowerCase(), phone: s.phone || null, profile: s.profile, place: s.place || null, reportLang: s.reportLang, consent: true, plan: reportPlanOf(input), uiLanguage: LANG, website: '', elapsedMs: Date.now() - mountedAt };
     const tk = form.querySelector('[name="cf-turnstile-response"]'); if (tk && tk.value) payload.turnstileToken = tk.value;
     let res = null;
-    try { res = await fetch('/api/report', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload), credentials: 'same-origin' }); } catch (x) { res = null; }
+    try { res = await fetch(API_BASE + '/api/report', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload), credentials: APP ? 'omit' : 'same-origin' }); } catch (x) { res = null; }
     if (res && res.ok) { done(); return; }
     btn.disabled = false; btn.removeAttribute('aria-busy'); btn.innerHTML = esc(R.send) + ARROW;
     let j = {}; try { j = res ? await res.json() : {}; } catch (x) { /* empty */ }
     sumEl.textContent = res && res.status === 503 ? R.unavailable : res && res.status === 429 ? F.waitD : res && res.status === 403 ? F.challengeD : res && res.status === 422 ? R.invalid : R.errD;
+    if (!res || res.status === 403 || res.status >= 500) webFallback(sumEl, 'planner');
     if (tsBox && window.turnstile) { try { window.turnstile.reset(tsBox); } catch (x) { /* gone */ } }
     analytics.track('report_error', { status: res ? res.status : 0, code: j.error || '' });
   });

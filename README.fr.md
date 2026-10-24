@@ -71,7 +71,9 @@ Le planificateur ne présente jamais des données simulées comme réelles. Il a
 
 ## Pensé pour les conditions du terrain
 
-Beaucoup de producteurs se connectent avec un smartphone simple et un réseau lent. Le site ne charge donc aucun framework ni aucune police web, et s'adapte aux petits écrans comme aux connexions faibles. Une version installable et une application Android sont les prochaines étapes.
+Beaucoup de producteurs se connectent avec un smartphone simple et un réseau lent. Le site ne charge donc aucun framework ni aucune police web, et s'adapte aux petits écrans comme aux connexions faibles.
+
+**Application Android.** La même plateforme existe sous forme d'application Android qui fonctionne sans connexion : le Planificateur de saison, la carte des corridors et les preuves de terrain sont enregistrés sur le téléphone, et seuls les formulaires et les demandes de rapport passent par le réseau. Une version de test est produite automatiquement à chaque modification et publiée dans les [versions](https://github.com/franckdjandja/djalumo-agro/releases) de ce dépôt.
 
 <p align="center"><img src="docs/screenshots/mobile.jpg" alt="Djalumo Agro sur un smartphone" width="260"></p>
 

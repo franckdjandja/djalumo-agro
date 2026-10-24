@@ -106,3 +106,21 @@ test('storage failure returns a generic error without internals', async () => {
   const r = await call(createFormHandler('contact', deps), { body: contact, ip: '3.3.3.3' });
   assert.equal(r.status, 500); assert.deepEqual(r.json, { status: 'error', error: 'server_error' });
 });
+
+test('android application: its origin is accepted and receives cross origin headers, other origins do not', async () => {
+  const { deps, store } = fakeDeps({ ALLOWED_ORIGINS: 'https://djalumo.test' });
+  const h = createFormHandler('contact', deps);
+  const pre = await call(h, { method: 'OPTIONS', headers: { origin: 'https://localhost' } });
+  assert.equal(pre.status, 204);
+  assert.equal(pre.headers['access-control-allow-origin'], 'https://localhost');
+  assert.match(pre.headers['access-control-allow-headers'], /Content-Type/);
+  const r = await call(h, { body: contact, headers: { origin: 'https://localhost' } });
+  assert.equal(r.status, 200);
+  assert.equal(r.headers['access-control-allow-origin'], 'https://localhost');
+  assert.equal(store.inquiries.length, 1);
+  const site = await call(h, { body: contact, headers: { origin: 'https://djalumo.test' }, ip: '10.0.0.9' });
+  assert.equal(site.status, 200);
+  assert.equal(site.headers['access-control-allow-origin'], undefined);
+  const evil = await call(h, { method: 'OPTIONS', headers: { origin: 'https://evil.test' } });
+  assert.equal(evil.headers['access-control-allow-origin'], undefined);
+});

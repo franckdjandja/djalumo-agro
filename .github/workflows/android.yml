@@ -1,0 +1,94 @@
+name: Android application
+
+on:
+  push:
+    branches: [main, android]
+    paths:
+      - 'site/**'
+      - 'android/**'
+      - 'capacitor.config.json'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/android.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: android-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      APP_SITE_URL: ${{ vars.APP_SITE_URL || 'https://djalumo-agro.vercel.app' }}
+      TURNSTILE_SITE_KEY: ${{ vars.TURNSTILE_SITE_KEY }}
+      APP_VERSION_CODE: ${{ github.run_number }}
+      HAS_KEY: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci --no-audit --no-fund
+
+      - name: Tests
+        run: npm test
+
+      - name: Build the offline bundle
+        run: |
+          echo "APP_VERSION=$(node -p "require('./package.json').version")" >> "$GITHUB_ENV"
+          node site/build.mjs --target=android
+          npx cap sync android
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Test build (APK)
+        working-directory: android
+        run: |
+          chmod +x gradlew
+          ./gradlew --no-daemon assembleDebug
+          cp app/build/outputs/apk/debug/app-debug.apk "$RUNNER_TEMP/Djalumo-Agro.apk"
+
+      - name: Signed build for Google Play (AAB)
+        if: ${{ env.HAS_KEY == 'true' }}
+        working-directory: android
+        env:
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 -d > "$RUNNER_TEMP/upload.jks"
+          export ANDROID_KEYSTORE_FILE="$RUNNER_TEMP/upload.jks"
+          ./gradlew --no-daemon bundleRelease
+          cp app/build/outputs/bundle/release/app-release.aab "$RUNNER_TEMP/Djalumo-Agro.aab"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: djalumo-agro-android-${{ env.APP_VERSION }}-${{ github.run_number }}
+          path: |
+            ${{ runner.temp }}/Djalumo-Agro.apk
+            ${{ runner.temp }}/Djalumo-Agro.aab
+          if-no-files-found: ignore
+
+      - name: Publish the test build
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: android-${{ github.ref_name }}
+        run: |
+          gh release delete "$TAG" --yes --cleanup-tag 2>/dev/null || true
+          gh release create "$TAG" "$RUNNER_TEMP/Djalumo-Agro.apk" --prerelease --target "$GITHUB_SHA" \
+            --title "Djalumo Agro Android, test build ${APP_VERSION} (${APP_VERSION_CODE})" \
+            --notes "Test build of the Android application from branch ${GITHUB_REF_NAME}. Download Djalumo-Agro.apk on an Android phone and allow the installation. Version de test de l'application Android : téléchargez Djalumo-Agro.apk sur un téléphone Android et autorisez l'installation."

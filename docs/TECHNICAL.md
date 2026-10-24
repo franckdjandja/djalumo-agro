@@ -48,7 +48,9 @@ site/img/field/      73 field photographs in two sizes (WebP), built by scripts/
 site/data/photos.json  photo dimensions, plate, panel and date (generated)
 data/field/          manifest.json: original file, plate and panel of every field photograph
 site/img/            other optimised photographs (WebP)
-site/build.mjs       build: production (public/) or single file preview (dist-artifact/)
+site/build.mjs       build: production (public/), single file preview (dist-artifact/) or Android bundle (android-www/)
+android/             native Android project (Capacitor 8); android/play/ holds the Google Play icon and feature graphic
+capacitor.config.json  application identifier, name and system bars
 scripts/             migrate.mjs, serve.mjs, geo.mjs, geo-world.mjs, photos/
 tests/               unit tests, handler tests, PostgreSQL integration tests
 ```
@@ -151,6 +153,22 @@ TEST_DATABASE_URL=postgres://... npm test                  # adds PostgreSQL int
 ## Single file preview build
 
 `npm run build:artifact` produces a single file version of the site used for private previews. In that build, forms are stored in the preview's own storage instead of `/api`.
+
+## Android application
+
+The application is built with Capacitor 8 from the same sources as the website. `node site/build.mjs --target=android` writes an offline bundle to `android-www/`: one page with hash routes, every script, style, map and photograph included, so the Season Planner works without a network. `npx cap sync android` copies it into the native project in `android/`.
+
+| Item | Value |
+| --- | --- |
+| Application identifier | `com.djalumo.agro` (permanent once published on Google Play) |
+| Minimum Android version | Android 7.0 (API 24), target API 36 |
+| Forms and reports | Sent to `APP_SITE_URL` (default `https://djalumo-agro.vercel.app`); the API accepts the application origin `https://localhost` and answers it with cross origin headers |
+| External links | Open in the browser of the phone |
+| Back button | Closes the open viewer, dialog or menu, then goes back through the pages, then leaves the application |
+
+The Android SDK is not needed on a personal computer: the workflow `.github/workflows/android.yml` runs the tests, builds the bundle and the APK on GitHub, and publishes the test build as a pre release named after the branch (`android-main`, `android-android`). When the repository secrets `ANDROID_KEYSTORE_BASE64`, `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS` and `ANDROID_KEY_PASSWORD` are set, the same workflow also produces the signed bundle (AAB) for Google Play. The repository variable `APP_SITE_URL` points the application to the own domain once it exists.
+
+Icons, splash screens and the Google Play graphics are generated from `brand/` with `node scripts/android/icons.mjs` (after `npm install --no-save sharp`). If Cloudflare Turnstile is switched on, add `localhost` to the hostnames of the widget so the application can pass the security check; otherwise the application offers to send the form from the website.
 
 ## Season Planner: method and data
 

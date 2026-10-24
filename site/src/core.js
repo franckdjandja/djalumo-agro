@@ -44,10 +44,17 @@ const analytics = (() => {
 window.DjalumoAnalytics = analytics;
 
 /* ---------- Platform capabilities (artifact runtime) ---------- */
-/* Build target: 'artifact' (single file preview, host storage) or 'production' (own domain, /api endpoints). */
+/* Build target: 'artifact' (single file preview, host storage), 'production' (own domain, /api endpoints)
+   or 'android' (application bundled offline, forms sent to the /api endpoints of the public site). */
 const TARGET = typeof AF_TARGET !== 'undefined' ? AF_TARGET : 'artifact';
-const API_MODE = TARGET === 'production';
+const APP = TARGET === 'android';
+const PATH_MODE = TARGET === 'production';
+const API_MODE = PATH_MODE || APP;
 const CFG = window.AF_CONFIG || {};
+const API_BASE = APP ? String(CFG.siteUrl || '').replace(/\/$/, '') : '';
+const SITE_LINK = (page) => String(CFG.siteUrl || '').replace(/\/$/, '') + '/' + (page && page !== 'home' ? page : '');
+/* In the application, an address outside the bundle opens in the browser of the phone. */
+const openExternal = (url) => { window.location.href = url; };
 const CAP = { db: null, user: null, uid: null, canWrite: null, owner: false, ready: false, refused: false };
 const capReady = (async () => {
   const c = window.AF_HOST; /* storage API provided by a preview host, if any */
@@ -252,7 +259,7 @@ async function persistApi(type, v, form, mountedAt) {
   payload.uiLanguage = LANG; payload.website = v.website || ''; payload.elapsedMs = Date.now() - mountedAt;
   const tk = form.querySelector('[name="cf-turnstile-response"]'); if (tk && tk.value) payload.turnstileToken = tk.value;
   let res;
-  try { res = await fetch('/api/' + type, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(payload), credentials: 'same-origin' }); }
+  try { res = await fetch(API_BASE + '/api/' + type, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(payload), credentials: APP ? 'omit' : 'same-origin' }); }
   catch (e) { throw { code: 'unavailable' }; }
   let j = {}; try { j = await res.json(); } catch (e) { /* empty body */ }
   if (res.ok) return j.status === 'duplicate' ? 'dup' : 'ok';
@@ -286,6 +293,13 @@ function resultHTML(kind, title, text, actions) {
     ? '<svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><path class="check-path" d="M6 13.5l4.5 4.5L20 8.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
     : '<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6.5v7M12 17v.6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>';
   return '<div class="result ' + (kind === 'ok' ? '' : kind) + '" role="status" tabindex="-1"><div class="ic">' + icon + '</div><h3>' + esc(title) + '</h3><p>' + esc(text) + '</p><div style="display:flex;gap:10px;flex-wrap:wrap">' + actions + '</div></div>';
+}
+
+/* Application only: when a form cannot be sent from the phone, offer the same form on the website. */
+function webFallback(el, page) {
+  if (!APP || !el || !CFG.siteUrl) return;
+  const a = D.createElement('a'); a.href = SITE_LINK(page); a.className = 'web-fallback'; a.textContent = ' ' + L().app.onWeb + ' ↗';
+  el.appendChild(a);
 }
 
 function bindForm(form, opts) {
@@ -334,7 +348,7 @@ function bindForm(form, opts) {
     catch (err) {
       const code = err && err.code;
       if (code === 'rate_limited') { restore(); sum.textContent = F.waitD; return; }
-      if (code === 'challenge') { restore(); sum.textContent = F.challengeD; resetTs(); return; }
+      if (code === 'challenge') { restore(); sum.textContent = F.challengeD; webFallback(sum, type === 'newsletter' ? 'newsletter' : type); resetTs(); return; }
       if (code === 'invalid') { restore(); const fl = err.fields || {}; const names = Object.keys(fl); names.forEach(n => showErr(form, n, F.err.check)); sum.textContent = F.err.summary(Math.max(1, names.length)); return; }
       if (code === 'unavailable' || code === 'server') {
         await new Promise(r => setTimeout(r, 500 + Math.random() * 700));
@@ -351,6 +365,7 @@ function bindForm(form, opts) {
   function fail(code) {
     const sum = form.querySelector('[data-summary]');
     sum.textContent = code === 'quota_exceeded' ? F.quotaD : F.badD;
+    webFallback(sum, type);
     analytics.track('form_error', { form: type, code: code || 'unknown' });
   }
   function done(kind) {

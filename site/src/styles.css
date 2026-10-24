@@ -885,3 +885,9 @@ h1[tabindex]:focus{outline:none}
 .rep-cta > div:nth-child(2){flex:1;min-width:0}
 @media (max-width:620px){.v-main{font-size:16px}.verdict{padding:16px}}
 .kpis .v.vxs{font-size:clamp(15px,1.2vw,18px);letter-spacing:-.01em;white-space:nowrap}
+
+/* Android application */
+.ftr-app{margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);display:grid;gap:6px;color:var(--on-deep-2)}
+.ftr-app a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.web-fallback{display:inline-block;margin-left:4px;font-weight:600;color:inherit;text-decoration:underline;text-underline-offset:3px}
+html.app{-webkit-tap-highlight-color:transparent}

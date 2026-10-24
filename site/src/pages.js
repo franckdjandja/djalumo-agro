@@ -242,21 +242,21 @@ function footerHTML() {
   return '<footer class="ftr"><div class="wrap"><div class="ftr-grid"><div><a class="brand" href="#home" aria-label="Djalumo Agro">' + LOGO + '<span class="brand-sub">Agro</span></a><p class="muted small" style="margin-top:16px;max-width:34ch">' + esc(F.tag) + '</p><div class="status-row" style="margin-top:18px"><span class="chip ok"><i></i>' + esc(F.status) + '</span></div></div>' +
     col(F.cols[0], ['planner', 'field', 'platform', 'intelligence', 'data']) + col(F.cols[1], ['solutions', 'impact', 'about']) + col(F.cols[2], ['contact', 'demo', 'newsletter']) +
     '<div><h5>' + esc(F.nlH) + '</h5><div class="nl-foot">' + formHTML('newsletter', 'nl-foot', { compact: true }) + '</div></div></div>' +
-    '<div class="ftr-bot"><span>' + esc(F.rights) + '</span><span>' + esc(F.place) + ' · ' + esc(F.noTrack) + ' · <a href="#privacy">' + esc(L().meta.pages.privacy) + '</a> · <a href="#terms">' + esc(L().meta.pages.terms) + '</a></span></div></div></footer>';
+    '<div class="ftr-bot"><span>' + esc(F.rights) + '</span><span>' + esc(F.place) + ' · ' + esc(F.noTrack) + ' · <a href="#privacy">' + esc(L().meta.pages.privacy) + '</a> · <a href="#terms">' + esc(L().meta.pages.terms) + '</a></span></div>' + (APP ? '<div class="ftr-app small"><p>' + esc(L().app.offline) + '</p><p>' + esc(L().app.version(CFG.appVersion || '1.0.0')) + (CFG.siteUrl ? ' · <a href="' + esc(SITE_LINK('home')) + '">' + esc(L().app.site) + ' ↗</a>' : '') + '</p></div>' : '') + '</div></footer>';
 }
 
 /* Routing: hash tokens in the artifact preview, clean paths (/platform) in production for SEO. */
 const routeOf = (href) => { if (!href) return null; const t = href.replace(/^#/, '').replace(/^\/+|\/+$/g, '').replace(/\.html$/, '').replace(/^index$/, ''); const k = t === '' ? 'home' : t; return (PAGES[k] && k !== 'nf') ? k : null; };
 const pathOf = (k) => k === 'home' ? '/' : '/' + k;
-function linkify(root) { if (!API_MODE) return; $$('a[href^="#"]', root).forEach(a => { const k = routeOf(a.getAttribute('href')); if (k) a.setAttribute('href', pathOf(k)); }); }
+function linkify(root) { if (!PATH_MODE) return; $$('a[href^="#"]', root).forEach(a => { const k = routeOf(a.getAttribute('href')); if (k) a.setAttribute('href', pathOf(k)); }); }
 const Router = {
   current: null, cleanups: [],
   go(page, anchor) {
-    if (API_MODE) { Router.pendingAnchor = anchor; if (location.pathname !== pathOf(page)) history.pushState(null, '', pathOf(page)); Router.render(false); return; }
+    if (PATH_MODE) { Router.pendingAnchor = anchor; if (location.pathname !== pathOf(page)) history.pushState(null, '', pathOf(page)); Router.render(false); return; }
     if (location.hash !== '#' + page) { Router.pendingAnchor = anchor; location.hash = page; } else if (anchor) { const t = D.getElementById(anchor); if (t) t.scrollIntoView({ behavior: RM.matches ? 'auto' : 'smooth' }); } },
   render(initial, keepScroll) {
-    const raw = API_MODE ? (location.pathname.replace(/^\/+|\/+$/g, '').replace(/\.html$/, '').replace(/^index$/, '') || 'home') : (location.hash || '#home').slice(1).split(/[?&]/)[0];
-    if (!API_MODE && raw === 'main') { const m = D.getElementById('main'); if (m) m.focus(); history.replaceState(null, '', '#' + (Router.current || 'home')); return; }
+    const raw = PATH_MODE ? (location.pathname.replace(/^\/+|\/+$/g, '').replace(/\.html$/, '').replace(/^index$/, '') || 'home') : (location.hash || '#home').slice(1).split(/[?&]/)[0];
+    if (!PATH_MODE && raw === 'main') { const m = D.getElementById('main'); if (m) m.focus(); history.replaceState(null, '', '#' + (Router.current || 'home')); return; }
     const key = raw === '' ? 'home' : (PAGES[raw] && raw !== 'nf' ? raw : 'nf');
     Router.cleanups.forEach(f => { try { f && f(); } catch (e) { /* cleanup */ } }); Router.cleanups = []; lazy.length = 0;
     Router.current = key;
@@ -322,15 +322,33 @@ function closeSheet() {
   const s = $('#sheet'); if (!s || s.hidden) return; s.hidden = true; const b = $('[data-menu]'); if (b) b.setAttribute('aria-expanded', 'false'); D.body.style.overflow = '';
   if (lastFocus && lastFocus.focus) lastFocus.focus();
 }
+/* Android back button: closes what is open, then goes back through the pages, then leaves the application. */
+function bindBackButton() {
+  const C = window.Capacitor, A = C && C.Plugins && C.Plugins.App;
+  if (!A || typeof A.addListener !== 'function') return;
+  A.addListener('backButton', () => {
+    const dlg = D.querySelector('dialog[open]'); if (dlg) { try { dlg.close(); } catch (e) { /* closed */ } dlg.remove(); return; }
+    const lb = D.querySelector('.lb [data-lb-x]'); if (lb) { lb.click(); return; }
+    const sh = $('#sheet'); if (sh && !sh.hidden) { closeSheet(); return; }
+    if ((location.hash || '#home') !== '#home' && history.length > 1) { history.back(); return; }
+    if ((location.hash || '#home') !== '#home') { location.hash = 'home'; return; }
+    A.exitApp();
+  });
+}
 function boot() {
   D.documentElement.classList.add('js');
+  if (APP) { D.documentElement.classList.add('app'); bindBackButton(); }
   renderChrome();
   D.addEventListener('click', e => {
     const lb = e.target.closest('[data-lang]'); if (lb) { setLang(lb.dataset.lang); return; }
     if (e.target.closest('[data-menu]')) { openSheet(); return; }
     if (e.target.closest('[data-close]')) { closeSheet(); return; }
     const sk = e.target.closest('[data-skip]'); if (sk) { e.preventDefault(); const m = D.getElementById('main'); m.focus(); return; }
-    if (API_MODE) {
+    if (APP) {
+      const xa = e.target.closest('a[href^="http"]');
+      if (xa) { e.preventDefault(); openExternal(xa.href); return; }
+    }
+    if (PATH_MODE) {
       const ia = e.target.closest('a[href]');
       if (ia && !ia.target && !e.metaKey && !e.ctrlKey && !e.shiftKey && e.button === 0) {
         const k = routeOf(ia.getAttribute('href'));
@@ -349,7 +367,7 @@ function boot() {
     if (e.key === 'Escape' && s && !s.hidden) closeSheet();
     if (e.key === 'Tab' && s && !s.hidden) { const f = $$('a,button', s); const first = f[0], last = f[f.length - 1]; if (e.shiftKey && D.activeElement === first) { e.preventDefault(); last.focus(); } else if (!e.shiftKey && D.activeElement === last) { e.preventDefault(); first.focus(); } }
   });
-  if (API_MODE) window.addEventListener('popstate', () => Router.render(false));
+  if (PATH_MODE) window.addEventListener('popstate', () => Router.render(false));
   else window.addEventListener('hashchange', () => Router.render(false));
   Router.render(true);
 }

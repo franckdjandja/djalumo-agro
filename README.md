@@ -71,7 +71,9 @@ The planner never presents simulated data as real. It shows its sources, identif
 
 ## Designed for field conditions
 
-Many growers go online with a basic smartphone and a slow connection. The site therefore loads no framework and no web font, and adapts to small screens and weak networks. An installable version and an Android application are the next steps.
+Many growers go online with a basic smartphone and a slow connection. The site therefore loads no framework and no web font, and adapts to small screens and weak networks.
+
+**Android application.** The same platform is packaged as an Android application that works without a connection: the Season Planner, the trade corridor map and the field evidence are stored on the phone, and only the forms and the report requests use the network. A test build is produced automatically for every change and published in the [releases](https://github.com/franckdjandja/djalumo-agro/releases) of this repository.
 
 <p align="center"><img src="docs/screenshots/mobile.jpg" alt="Djalumo Agro on a smartphone" width="260"></p>
 
