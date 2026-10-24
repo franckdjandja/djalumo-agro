@@ -38,8 +38,9 @@ if (target === 'production') parts.push(read('src/analytics.js'));
 const kb = JSON.parse(read('data/kb.json'));
 parts.push(`const KB = ${JSON.stringify(kb, (k, v) => (k === 'basis' ? undefined : v))};`, `const AFEngine = (function () { const module = undefined;\n${read('src/engine.cjs')}\nreturn AFEngine; })();`);
 parts.push(read('src/viz.js'), read('src/planner.js'), read('src/report.js'), read('src/world.js'), read('src/field.js'), read('src/pages.js'));
+if (target === 'android') parts.push(read('src/app.js'));
 const js = '(function(){\n' + parts.join('\n') + '\n})();';
-const css = read('src/styles.css');
+const css = read('src/styles.css') + (target === 'android' ? '\n' + read('src/app.css') : '');
 const template = read('template.html');
 
 const ROUTES = ['home', 'planner', 'field', 'platform', 'intelligence', 'solutions', 'data', 'impact', 'about', 'contact', 'demo', 'newsletter', 'privacy', 'terms'];
@@ -84,11 +85,14 @@ if (target === 'android') {
   fs.rmSync(out, { recursive: true, force: true });
   fs.mkdirSync(out, { recursive: true });
   const origin = new URL(APP_SITE_URL).origin;
-  const csp = `default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' ${origin} https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'`;
+  const csp = `default-src 'self'; font-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' ${origin} https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'`;
   const html = page('home').replace('<meta charset="utf-8">', `<meta charset="utf-8">\n<meta http-equiv="Content-Security-Policy" content="${csp}">`)
     .replace('<meta name="color-scheme" content="light">', '<meta name="color-scheme" content="light">\n<meta name="format-detection" content="telephone=no">');
   fs.writeFileSync(path.join(out, 'index.html'), html);
   copyImages(path.join(out, 'img'));
+  // Manrope, the brand typeface, travels with the application (licence OFL, see lib/report/fonts/OFL.txt).
+  fs.mkdirSync(path.join(out, 'fonts'), { recursive: true });
+  for (const w of ['Regular', 'Medium', 'SemiBold', 'Bold', 'ExtraBold']) fs.copyFileSync(path.join(repo, 'lib/report/fonts', `Manrope-${w}.ttf`), path.join(out, 'fonts', `Manrope-${w}.ttf`));
   console.log(`android build: ${(fs.statSync(path.join(out, 'index.html')).size / 1024).toFixed(0)} KB, forms sent to ${APP_SITE_URL}`);
 } else if (target === 'artifact') {
   const out = path.join(repo, 'dist-artifact');

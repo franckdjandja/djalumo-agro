@@ -242,7 +242,7 @@ function footerHTML() {
   return '<footer class="ftr"><div class="wrap"><div class="ftr-grid"><div><a class="brand" href="#home" aria-label="Djalumo Agro">' + LOGO + '<span class="brand-sub">Agro</span></a><p class="muted small" style="margin-top:16px;max-width:34ch">' + esc(F.tag) + '</p><div class="status-row" style="margin-top:18px"><span class="chip ok"><i></i>' + esc(F.status) + '</span></div></div>' +
     col(F.cols[0], ['planner', 'field', 'platform', 'intelligence', 'data']) + col(F.cols[1], ['solutions', 'impact', 'about']) + col(F.cols[2], ['contact', 'demo', 'newsletter']) +
     '<div><h5>' + esc(F.nlH) + '</h5><div class="nl-foot">' + formHTML('newsletter', 'nl-foot', { compact: true }) + '</div></div></div>' +
-    '<div class="ftr-bot"><span>' + esc(F.rights) + '</span><span>' + esc(F.place) + ' · ' + esc(F.noTrack) + ' · <a href="#privacy">' + esc(L().meta.pages.privacy) + '</a> · <a href="#terms">' + esc(L().meta.pages.terms) + '</a></span></div>' + (APP ? '<div class="ftr-app small"><p>' + esc(L().app.offline) + '</p><p>' + esc(L().app.version(CFG.appVersion || '1.0.0')) + (CFG.siteUrl ? ' · <a href="' + esc(SITE_LINK('home')) + '">' + esc(L().app.site) + ' ↗</a>' : '') + '</p></div>' : '') + '</div></footer>';
+    '<div class="ftr-bot"><span>' + esc(F.rights) + '</span><span>' + esc(F.place) + ' · ' + esc(F.noTrack) + ' · <a href="#privacy">' + esc(L().meta.pages.privacy) + '</a> · <a href="#terms">' + esc(L().meta.pages.terms) + '</a></span></div></div></footer>';
 }
 
 /* Routing: hash tokens in the artifact preview, clean paths (/platform) in production for SEO. */
@@ -371,4 +371,4 @@ function boot() {
   else window.addEventListener('hashchange', () => Router.render(false));
   Router.render(true);
 }
-boot();
+if (!APP) boot();

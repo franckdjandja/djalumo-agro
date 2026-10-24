@@ -20,4 +20,10 @@ test('the android bundle builds offline: one page, hash routes, forms sent to th
   assert.match(html, /connect-src 'self' https:\/\/djalumo\.test/);
   assert.doesNotMatch(html, /src="\/assets\//);
   assert.ok(fs.existsSync(new URL('../android-www/img/founder-tomato.webp', import.meta.url)));
+  assert.match(html, /function appBoot\(\)/);
+  assert.match(html, /\.a-tabs\{/);
+  assert.ok(fs.existsSync(new URL('../android-www/fonts/Manrope-ExtraBold.ttf', import.meta.url)));
+  const site = execFileSync(process.execPath, ['site/build.mjs', '--target=artifact'], { cwd: root, encoding: 'utf8' });
+  assert.match(site, /artifact build/);
+  assert.doesNotMatch(fs.readFileSync(new URL('../dist-artifact/index.html', import.meta.url), 'utf8'), /function appBoot\(\)/);
 });
