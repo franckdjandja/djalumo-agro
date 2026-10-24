@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "description": "Djalumo Agro: bilingual website, world trade corridor map, field evidence gallery, Season Planner and form backend (contact, demo, newsletter).",
+  "license": "SEE LICENSE IN LICENSE",
+  "author": "Franck Junior Djandja Tomwa",
   "type": "module",
   "engines": {
     "node": ">=20"

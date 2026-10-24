@@ -1,205 +1,103 @@
-# Djalumo Agro · Website and form platform
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="brand/DJALUMO-AGRO_couleur-fond-sombre.svg">
+    <img src="brand/DJALUMO-AGRO_couleur.svg" alt="Djalumo Agro" width="340">
+  </picture>
+</p>
 
-**English** · [Français](README.fr.md)
+<h3 align="center">Agricultural decision intelligence for Africa</h3>
 
-The digital flagship of Djalumo Agro, an agricultural decision intelligence platform that turns any budget, from 100 USD to more than 1 million, into a costed Season Plan. The site is bilingual (English first, French second), works on slow mobile networks, and runs a real backend for contact, demo and newsletter requests.
+<p align="center">
+  <a href="https://djalumo-agro.vercel.app"><b>Live site</b></a> ·
+  <a href="https://djalumo-agro.vercel.app/planner">Season Planner</a> ·
+  <a href="https://djalumo-agro.vercel.app/field">Field evidence</a> ·
+  <a href="docs/TECHNICAL.md">Technical documentation</a> ·
+  <a href="README.fr.md">Français</a>
+</p>
 
-Project leader: Franck Junior Djandja Tomwa · Pilot zone: Foumbot, West Cameroon.
+<p align="center"><img src="docs/screenshots/hero.jpg" alt="Djalumo Agro home page: from African fields to world markets" width="100%"></p>
 
-## What is inside
+Djalumo Agro turns any farming budget, from 100 USD to more than 1 million, into a costed and dated season plan, then connects the harvest to the markets that pay for it: in Cameroon, across Central Africa and, through the ports of Douala and Kribi, to the world.
 
-| Area | What it does |
+The project grows out of a real pilot. From September 2024 to October 2025, I ran a vegetable production pilot in Foumbot, in the West region of Cameroon. Every hard lesson of that season, from water as a hidden cost to climate stress and harvests sold without packaging, became a feature of the platform.
+
+| 12 | 162 | 73 | 17 | 2 |
+| :---: | :---: | :---: | :---: | :---: |
+| crops in the Season Planner | referenced sources in the knowledge base | field photographs from the pilot | trade corridors on the world map | languages, English and French |
+
+## The problem
+
+A grower or an investor in Cameroon has to answer three questions before planting: what to grow, how much land the money really covers, and when to start. These answers usually come from habit and word of mouth. Water, heat at flowering, disease pressure and the price at harvest are discovered during the season, when they are already costs.
+
+## What the platform does
+
+**Season Planner.** Enter a capital in any currency, choose a crop, a water situation and a start date. The planner returns the plot size the money covers, a dated technical itinerary, a line by line budget, a shopping list, the water balance, the risks of the chosen window, the cash flow and four outcomes from a good harvest to a failure, each with its return and break even price. It covers short cycle crops (tomato, green bean, sweet pepper, chili pepper, cucumber, zucchini), long cycle crops (cassava, plantain, pineapple) and orchards (avocado, cocoa, oil palm).
+
+<p align="center"><img src="docs/screenshots/season-planner.jpg" alt="Season Planner: verdict, key figures and outcomes for a tomato season" width="100%"></p>
+
+**World trade corridors.** An interactive map follows the produce from the Foumbot production zone to the ports of Douala and Kribi, then to Central, West and East Africa, Europe, the Middle East, China, the United States and South America. Flows that exist today and export corridors that are targeted are shown and labelled separately.
+
+<p align="center"><img src="docs/screenshots/world-map.jpg" alt="Interactive world map of trade corridors from Foumbot" width="100%"></p>
+
+**Field evidence.** Seventy-three photographs, grouped in eight plates from the founder's family plantation in 2021 to the relaunch of the main pilot site in 2025, each with its caption, its date and what the season taught.
+
+<p align="center"><img src="docs/screenshots/field-evidence.jpg" alt="Field evidence: plate of the pilot with captions" width="100%"></p>
+
+**Premium PDF report.** A visitor can request a 12 to 15 page report of their plan. It is generated on the server from the same engine and sent only after review and approval by the Djalumo Agro team.
+
+## Method: the PACE framework
+
+The project follows the PACE framework of the Google Advanced Data Analytics Professional Certificate.
+
+| Stage | What was done |
 | --- | --- |
-| Website | 14 pages (Home, Season Planner, Field evidence, Platform, Intelligence, Solutions, Data, Impact, About, Contact, Request a demo, Newsletter, Privacy, Terms) plus a 404 page, clean URLs, English and French |
-| World corridor map | Home page centrepiece: a world dot map with animated flows from the Foumbot production zone to the ports of Douala and Kribi, then to Central, West and East Africa, Europe, the Middle East, China, the United States and South America. Corridor filter, hover details, zoom and pan, sea distances, a Cameroon "field to port" inset and four sourced port and export figures |
-| Field evidence | 73 pilot photographs in 8 plates (the report plates, captions and readings), each plate linked to its phase, its field problem and the matching Season Planner feature; field archive, dates from file metadata, full screen viewer with keyboard and swipe |
-| Season Planner v2 | Capital (from 100 USD, six currencies), crop, water situation and start date in; plot size, dated technical itinerary, line by line budget, shopping list, water balance, risks, start month comparison and four outcomes (good, average, poor, failure) out. Every figure links to its source |
-| Africa data map | Data page: Africa map with layers (public data coverage, pilot zone, planned expansion), hover, select, zoom, pan, pinch |
-| Charts | Sourced land and irrigation figures for Cameroon, temporal coverage of public datasets, roadmap with gates, architecture explorer |
-| Forms | Contact, demo request, newsletter: client and server validation, honeypot, timing trap, rate limiting, optional Cloudflare Turnstile, consent |
-| Backend | `POST /api/contact`, `POST /api/demo`, `POST /api/newsletter`, `GET /api/unsubscribe`, `GET /api/health` |
-| Database | PostgreSQL schema with statuses, timestamps, indexes, audit table and admin accounts table, ready for a future `/admin` |
-| Email | Notification layer for Resend or Brevo, switchable by environment variable |
-| Analytics | Provider neutral event layer; Plausible or GA4 adapters activate only when configured |
+| **Plan** | Framed the decisions a grower or investor must take before a season, from the pilot's field problems: market, soil, climate, water and price. Defined the users: smallholders from 100 USD, cooperatives, agribusiness investors and buyers. |
+| **Analyze** | Collected and documented 162 sources: Cameroon Ministry of Agriculture (MINADER) data sheets and budgets, FAO methods, research institute guides, regional input price surveys and dated market price observations from 2017 to 2026. Built a monthly climate profile of Foumbot and a seasonal price index. |
+| **Construct** | Built a transparent decision engine: crop water need with the FAO-56 method (Hargreaves reference evapotranspiration, crop coefficients, dependable rainfall), yield response to water deficit with FAO-33, a cost model per hectare, plot sizing by bisection under a 10% reserve, four probability weighted outcomes, break even analysis, cash flow and payback for long cycle crops, and a risk reading for all twelve start months. |
+| **Execute** | Shipped a bilingual website of 14 pages with the planner, the map, the field evidence, secure forms, a PostgreSQL backend and approved PDF reports, covered by automated tests. Every figure on screen links to its source; values without a source are labelled as assumptions. |
 
-## Stack
+## Skills demonstrated
 
-Static site generated from plain JavaScript modules (no framework runtime, about 270 KB compressed, map data and the planner knowledge base included), Node 20 serverless functions, Zod validation, the `postgres` driver with parameterised queries. Hosting target: Vercel (any Node host works with `scripts/serve.mjs`).
-
-The product platform itself (models, API, mobile app) follows the architecture in the product report: Python, FastAPI, PostgreSQL with PostGIS, Flutter and Next.js. This repository is the company website.
-
-## Repository structure
-
-```
-api/                 serverless endpoints (one file per route)
-lib/                 config, validation, security, database, email, newsletter sync, handlers
-db/schema.sql        PostgreSQL schema (idempotent)
-site/src/            website sources: i18n.js and i18n-v3.js (all content, EN and FR), core.js, viz.js, world.js (corridor map),
-                     field.js (field evidence and viewer), pages.js, analytics.js, styles.css
-site/src/engine.cjs  Season Planner engine (pure functions, runs in the browser and in Node tests)
-site/src/planner.js  Season Planner interface
-site/data/kb.json    knowledge base read by the engine (generated, do not edit by hand)
-data/research/       research notes per crop and for Cameroon costs, with every source
-scripts/kb/          build_kb.py: turns the research notes into site/data/kb.json
-site/template.html   HTML shell, metadata, structured data
-site/geo.json        Africa geometry generated by scripts/geo.mjs
-site/geo-world.json  world dot map, corridors and Cameroon inset generated by scripts/geo-world.mjs
-site/img/field/      73 field photographs in two sizes (WebP), built by scripts/photos/build_photos.py
-site/data/photos.json  photo dimensions, plate, panel and date (generated)
-data/field/          manifest.json: original file, plate and panel of every field photograph
-site/img/            other optimised photographs (WebP)
-site/build.mjs       build: production (public/) or single file preview (dist-artifact/)
-scripts/             migrate.mjs, serve.mjs, geo.mjs, geo-world.mjs, photos/
-tests/               unit tests, handler tests, PostgreSQL integration tests
-```
-
-## Run it locally
-
-```bash
-npm install
-cp .env.example .env            # fill in at least DATABASE_URL
-npm run db:migrate              # creates the tables
-npm run build                   # writes public/
-node --env-file=.env scripts/serve.mjs   # http://localhost:3000
-```
-
-With the Vercel CLI you can use `npm run dev` instead of `scripts/serve.mjs`.
-
-## Deploy
-
-1. Import the repository in Vercel. Build command and output folder are set in `vercel.json`. The site goes live at `your-project.vercel.app`; this address is detected automatically, no `SITE_URL` needed.
-2. In the Vercel project, open Storage and create a Neon PostgreSQL database connected to the project. It provides `DATABASE_URL`.
-3. Redeploy: every build applies `db/schema.sql` automatically (idempotent), so the tables are created without any manual step.
-4. Add the optional variables from `.env.example` (email, Turnstile, `RATE_LIMIT_SALT`). With your own domain, also set `SITE_URL` and `ALLOWED_ORIGINS`.
-5. Check `https://your-domain/api/health`: it must answer `"database":"ok"`.
-
-## Environment variables
-
-| Variable | Used by | Purpose |
-| --- | --- | --- |
-| `SITE_URL` | build, server | Canonical URLs, sitemap, unsubscribe links |
-| `DATABASE_URL` | server | PostgreSQL connection |
-| `ALLOWED_ORIGINS` | server | Origins allowed to post to `/api` |
-| `EMAIL_PROVIDER`, `EMAIL_API_KEY`, `EMAIL_FROM` | server | Email notifications (`resend`, `brevo`, `console`, `none`) |
-| `CONTACT_NOTIFICATION_EMAIL` | server | Recipients of "New Djalumo Agro website inquiry" and "New Demo Request" |
-| `NEWSLETTER_NOTIFY`, `NEWSLETTER_SEND_CONFIRMATION` | server | Optional internal alert and subscriber confirmation |
-| `NEWSLETTER_PROVIDER`, `NEWSLETTER_PROVIDER_KEY`, `NEWSLETTER_LIST_ID` | server | Optional sync to Brevo or Mailchimp |
-| `TURNSTILE_SITE_KEY` / `TURNSTILE_SECRET_KEY` | build / server | Cloudflare Turnstile challenge |
-| `RATE_LIMIT_SALT` | server | Salt for hashed client keys (no raw IP is stored) |
-| `FORM_MIN_FILL_MS` | server | Timing trap threshold |
-| `ANALYTICS_PROVIDER`, `ANALYTICS_ID` | build | `plausible` (domain) or `ga4` (measurement id) |
-| `GMAIL_USER`, `GMAIL_APP_PASSWORD` | server | Sending through a Gmail account (no domain needed); enough to switch the reports on |
-| `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` | server | Any SMTP server (`EMAIL_PROVIDER=smtp`) |
-| `REPORTS_ENABLED` | server | `false` switches the PDF reports off (on by default once email works) |
-| `REPORT_SIGNING_SECRET` | server | Optional link signing key; derived from the email secret when absent |
-| `REPORT_ADMIN_EMAIL`, `REPORT_ADMIN_LANG` | server | Who approves the reports, and in which language (`fr` by default) |
-
-Secrets are read on the server only. The browser bundle receives `SITE_URL`, the Turnstile site key and the analytics settings, nothing else.
-
-## Request lifecycle
-
-`method → origin → content type → body size (16 KB) → rate limit → schema validation → honeypot and timing trap → Turnstile → database → email notification → response`
-
-* Validation errors return `422` with the names of the invalid fields; the form highlights them.
-* Bots that fill the honeypot or submit too fast receive a normal `200` and nothing is stored.
-* Rate limits: 5 contact or demo requests and 8 newsletter requests per client per 10 minutes, shared across instances through PostgreSQL.
-* A failed email never loses a submission: the record is stored first.
-* Errors never expose internals: `{"status":"error","error":"server_error"}`.
-
-## PDF reports
-
-The planner offers a premium PDF report of the current plan. Nothing is downloadable from the browser:
-
-1. The visitor sends the request (name, email, optional phone, profile, place, report language, consent) with the plan settings to `POST /api/report`. Same protections as the other forms, plus a check of the settings against the knowledge base.
-2. The visitor receives a link to confirm the address. The link opens a page with a button: a link scanner never confirms anything.
-3. The administrator (`REPORT_ADMIN_EMAIL`) receives the summary and the PDF exactly as it would be sent, with a review link.
-4. On the review page the administrator approves (the PDF is generated again and emailed to the requester, as an attachment and as a download link valid 60 days) or refuses (with an optional polite message).
-
-Without a domain, a Gmail account is enough: set `GMAIL_USER` and `GMAIL_APP_PASSWORD` (an app password, after turning on 2-Step Verification) in Vercel and redeploy.
-
-The PDF is built on the server with the same engine and data as the planner (`lib/report/pdf.js`, PDFKit, Manrope under the SIL Open Font License). Links are HMAC signed and expire (7 days to confirm, 30 days to review). With a database, decisions are single use and stored in `report_requests`; without one the workflow still runs from the signed links.
-
-## Database
-
-Tables: `contact_inquiries`, `demo_requests`, `newsletter_subscribers`, `report_requests`, `rate_limits`, `admin_users`, `submission_events`. Statuses: `NEW`, `CONTACTED`, `IN_PROGRESS`, `COMPLETED`, `ARCHIVED`. Select fields are stored as language independent codes (for example `subject = PILOT`, `interest = FOUMBOT_PILOT`), so the data is ready for a CRM or an admin dashboard.
-
-### Admin readiness
-
-A future `/admin` area needs: authentication through an identity provider (Auth.js, Clerk or Supabase Auth) mapped to `admin_users`, list and filter queries on the indexed `status` and `created_at` columns, CSV export, and status changes written to `submission_events`. No public endpoint reads submissions today.
-
-## Content and languages
-
-Every visible string lives in `site/src/i18n.js`, in two parallel objects: `en` (reference) and `fr`. To add Swahili, copy the `en` object as `sw`, translate it, and add a button in the language switch. Content models (solutions, modules, data sources, KPIs, roadmap, milestones) are arrays in the same file and can later be served by a headless CMS.
-
-## Analytics
-
-`window.DjalumoAnalytics` queues events: `page_view`, `cta_click`, `planner_run`, `planner_tab`, `planner_window`, `map_select`, `map_layer`, `arch_select`, `persona_select`, `form_submitted`, `form_invalid`, `form_error`, `language_change`. Nothing is sent until a provider is configured. To add another platform:
-
-```js
-DjalumoAnalytics.use({ track: (e) => myProvider.capture(e.name, e.props) });
-```
-
-If you enable a provider, add its domain to the Content Security Policy in `vercel.json`, and use a consent banner where the law requires it (GA4 in the EU, for example). Plausible is cookie free.
-
-## Tests
-
-```bash
-npm test                                                   # validation and endpoint tests
-TEST_DATABASE_URL=postgres://... npm test                  # adds PostgreSQL integration tests
-```
-
-## Single file preview build
-
-`npm run build:artifact` produces a single file version of the site used for private previews. In that build, forms are stored in the preview's own storage instead of `/api`.
-
-## Season Planner: method and data
-
-The planner answers one question for a farmer or an investor: what does this capital become in one season of this crop, here, from this date?
-
-**Method, in order** (`site/src/engine.cjs`):
-
-1. Calendar: nursery, transplanting or direct sowing, flowering, first and last harvest.
-2. Water balance (FAO-56): reference evapotranspiration by Hargreaves from the Foumbot monthly climate, crop coefficients over four stages, dependable rainfall (FAO/AGLW formula), irrigation need.
-3. Yield response to water (FAO-33): the yield falls with the share of the crop need that the chosen water option cannot cover.
-4. Season: a crop whose need is mostly met by rain uses the rainy season yield references; otherwise the dry season irrigated ones.
-5. Costs per hectare from the standard itinerary: inputs × unit prices, labour × wage, services, water costs. Equipment that lasts several seasons is bought up front and spread over its life in the margin.
-6. Sizing: the largest plot whose costs and equipment fit the capital after a 10% reserve (exact bisection), or the capital needed for a given area.
-7. Four outcomes, from a good harvest to a failure, with return on costs, break even yield and price, and a risk weighted margin.
-8. Risks for the window: water, heat at flowering, disease pressure from rainfall, price level at harvest; the same calculation for all twelve start months.
-
-**Data** (`data/research/`, built into `site/data/kb.json` by `scripts/kb/build_kb.py`):
-
-| Crop | Itinerary | Yields | Price at harvest |
-| --- | --- | --- | --- |
-| Tomato | MINADER 2024 data sheet and budget for Cameroon, trials in Dschang and East Cameroon | MINADER ranges by season | 275 FCFA/kg farm gate (Dschang 2024), seasonal index from dated market observations 2017 to 2026 |
-| Green bean, sweet pepper, cucumber, zucchini | Cameroon sheet and Foumbot survey for pepper; COLEAD, PROTA, AVRDC, Kenyan and Beninese guides | Cameroon national averages where they exist, regional references otherwise | No published Cameroon farm gate price: the grower enters the expected price and sees the break even price first |
-
-Input prices come from the MINADER 2024 tomato budget, the MINADER survey of West region input markets (Foumbot, Q4 2022), fuel prices in force in October 2026 and, where no Cameroon price exists, labelled listings from neighbouring markets. Exchange rates are the BCEAO reference of 16 October 2026.
-
-**Rules.** Every value carries the ids of its sources, shown on screen next to each budget line and itinerary step. Computed values are labelled derived. Values that rest on no source are Djalumo Agro assumptions, listed in the Sources tab. A missing price is never guessed: the line keeps its quantity, costs zero and is flagged for a local quote. Confidence is stated per crop and per block of data.
-
-To update the data: edit or extend the research notes, adjust `scripts/kb/build_kb.py`, then run `python3 scripts/kb/build_kb.py` and `npm test`.
-
-## Design system (v4) and world map
-
-The interface follows a pure emerald reading: a light emerald page (`#EDF6F1`), deep emerald bands (`#0A3D2E`) for the header, the page openings, the newsletter card and the footer, white surfaces with soft shadows, and one gold accent for the production zone. There are no labels, numbers or rules above titles. Type is the platform's own font: SF Pro on Apple devices, Segoe UI on Windows, Roboto on Android, so the site reads like a native application and loads no web font. All tokens live at the top of `site/src/styles.css`.
-
-The world map (`site/src/world.js`) draws land as a dot grid from Natural Earth 1:110m; dots are zero length strokes, so they keep their size at every zoom, and land outlines fade in when you zoom. Corridors are of two kinds and are labelled as such everywhere: **flows today** (Cameroon and Central Africa, documented market flows) and **export corridors targeted** (Djalumo Agro's ambition, not current sales). Sea lanes follow indicative waypoints on the usual routes (Gulf of Guinea, Canaries, Gibraltar or the Channel, Cape of Good Hope, Mozambique Channel, Strait of Malacca); distances are great circle lengths between waypoints, and days at sea assume 14 knots before port calls and transshipment. Regenerate with `npm run geo:world`.
-
-Sourced figures on the map: port traffic of Cameroon in 2025 and the Douala share (Ministry of Transport via EcoMatin, January 2026), Kribi water depth (WFP Logistics Cluster), banana exports in 2024 (Assobacam via Business in Cameroon), regional vegetable flows to Gabon, Equatorial Guinea, the Central African Republic and Chad (Afrik.com, October 2026) and the Transcameroon corridor (Business in Cameroon, May 2026).
-
-## Field evidence (v3)
-
-`data/field/manifest.json` maps each of the 73 photographs to its original file, its plate and its panel letter. The eight plates and their captions come from the Product Concept and Design Report; archive photographs carry their own caption. Phases are assigned from the founder's descriptions; dates come from the file metadata when it was recorded and are shown as such. To rebuild the images from the originals: `npm run photos -- <folder with the originals>`.
+* Data collection, documentation and cleaning from public, institutional and field sources
+* Analytical modelling: water balance, yield response, scenario analysis, break even and cash flow
+* Data visualization: interactive maps and charts built with D3 geographic projections
+* Python for the data pipelines (knowledge base build, photo processing)
+* JavaScript and Node.js, SQL and PostgreSQL, automated testing
+* Product thinking and bilingual communication for farmers, partners and investors
 
 ## Data honesty
 
-The site never presents simulated data as real. The Season Planner states its sources, its derived values and its assumptions on screen, and keeps the price empty when no reliable reference exists. Exchange rates are fixed, not live. Cited statistics link to their sources.
+The planner never presents simulated data as real. It shows its sources, labels derived values and assumptions, and leaves a price empty when no reliable reference exists, asking the grower for a local quote instead of guessing. Today the engine is rule based and source driven. Predictive models will come once the 2027 pilot has produced field data of our own.
 
-## Before going live
+## Built for mobile
 
-* Confirm the contact details to publish (email, phone), if any.
-* Create the legal entity and name it in the privacy policy.
-* Review the photographs register and captions.
+<img src="docs/screenshots/mobile.jpg" alt="Djalumo Agro on a phone" width="200" align="right">
 
-© 2026 Djalumo Agro. All rights reserved.
+Many growers reach the internet on an entry level phone and a slow network. The site has no framework runtime, loads no web font and adapts to small screens and slow networks. An installable version and an Android application are the next steps.
+
+<br clear="right">
+
+## Roadmap
+
+| When | Milestone |
+| --- | --- |
+| Late 2026 | Own domain, installable web app, Android application and closed test on Google Play |
+| Early 2027 | Field data collection tools, baseline survey of growers in Foumbot, weekly market prices |
+| March 2027 | Relaunch of the Foumbot pilot, with data collected season by season |
+| Next | Python analysis notebooks, first predictive models for yields and prices, more crops and regions |
+
+## Technology
+
+Static site generated from plain JavaScript modules, Node.js serverless functions on Vercel, Zod validation, PostgreSQL (Neon), D3 geographic projections and TopoJSON, PDFKit, Python for data preparation. Architecture, data sources, environment variables and deployment are described in the [technical documentation](docs/TECHNICAL.md).
+
+## Author
+
+**Franck Junior Djandja Tomwa**, founder and project lead of Djalumo Agro.\
+Telecommunications Engineer · Data Analyst · International Operations.\
+Google Advanced Data Analytics Professional Certificate (2026) and Google Data Analytics Professional Certificate (2025).
+
+GitHub: [@franckdjandja](https://github.com/franckdjandja)
+
+## Licence
+
+Copyright © 2026 Franck Junior Djandja Tomwa. All rights reserved. This repository is public so that the work can be seen and assessed; it is not open source. See [LICENSE](LICENSE).
