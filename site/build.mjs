@@ -51,6 +51,8 @@ function page(k, assets) {
   let html = template;
   const head = target === 'production'
     ? [`<link rel="canonical" href="${urlOf(k)}">`, `<meta property="og:url" content="${urlOf(k)}">`,
+       `<meta property="og:image" content="${SITE_URL}/img/share.jpg">`, '<meta property="og:image:width" content="1200">', '<meta property="og:image:height" content="627">',
+       '<meta property="og:image:alt" content="Djalumo Agro, agricultural decision intelligence for Africa">', `<meta name="twitter:image" content="${SITE_URL}/img/share.jpg">`,
        `<link rel="stylesheet" href="/assets/${assets.css}">`, `<script defer src="/assets/${assets.js}"></script>`].join('\n')
     : '';
   html = html.replace(/<title>[^<]*<\/title>/, `<title>${target === 'artifact' ? 'Djalumo Agro' : attr(titleOf(k))}</title>`)
