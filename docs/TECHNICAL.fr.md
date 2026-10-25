@@ -39,7 +39,7 @@ site/src/            sources du site : i18n.js et i18n-v3.js (tout le contenu, E
 site/src/engine.cjs  moteur du Planificateur (fonctions pures, exécutées dans le navigateur et dans les tests Node)
 site/src/planner.js  interface du Planificateur
 site/data/kb.json    base de connaissances lue par le moteur (générée, ne pas modifier à la main)
-data/research/       notes de recherche par culture et sur les coûts au Cameroun, avec toutes les sources
+data/research/       notes de recherche par culture, sur les coûts au Cameroun, la production sous abri et les machines, avec toutes les sources
 scripts/kb/          build_kb.py : transforme les notes de recherche en site/data/kb.json
 site/template.html   gabarit HTML, métadonnées, données structurées
 site/geo.json        géométrie de l’Afrique générée par scripts/geo.mjs
@@ -179,6 +179,10 @@ Le planificateur répond à une question pour un producteur ou un investisseur :
 6. Dimensionnement : la plus grande parcelle dont les coûts et l’équipement tiennent dans le capital après une réserve de 10 % (bissection exacte), ou le capital nécessaire pour une surface donnée.
 7. Quatre issues, d’une bonne récolte à l’échec, avec rentabilité sur les coûts, rendement et prix d’équilibre, et marge pondérée par les risques.
 8. Risques de la période : eau, chaleur à la floraison, pression des maladies selon la pluie, niveau de prix à la récolte ; le même calcul pour les douze mois de démarrage.
+
+**Systèmes de production.** La tomate, le poivron et le concombre peuvent être planifiés sous serre (toit en plastique, murs en filet anti insectes), et la tomate sous maison filet. La parcelle compte un nombre entier de modules de 240 m². L’armature (10 ans) et la couverture (4 ans) sont achetées au départ et imputées pour les saisons que le plan utilise. Les journées sont plus chaudes à l’intérieur (4 °C sous filet, mesuré en Tanzanie ; 5 °C sous serre ventilée, une hypothèse). Aucune pluie n’atteint une culture sous serre, arrosée au goutte à goutte, et la pression des maladies liées à la pluie baisse d’un niveau. Les rendements viennent d’essais sous abri ; la tomate sous serre suit une récolte de huit mois, sur laquelle son entretien et sa protection sont prolongés (`data/research/protected.json`).
+
+**Préparation du terrain.** Elle se fait à la main ou avec des machines louées (défrichage, labour, billons ou planches). Une étape mécanisée garde un dixième de son travail manuel et paie chaque opération à l’hectare, au prix de référence d’un budget camerounais ou au devis du producteur. Les machines sont suggérées quand l’étape la plus chargée qu’elles peuvent reprendre demanderait plus de 15 ouvriers le même jour (`data/research/machinery.json`).
 
 **Données** (`data/research/`, intégrées à `site/data/kb.json` par `scripts/kb/build_kb.py`) :
 

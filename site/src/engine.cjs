@@ -19,6 +19,11 @@
    8. Cash flow month by month: every cost and every sale placed at its date, the cumulative position,
       the peak financing need and the month the plan pays back.
 
+   Production systems: the open field, a net house or a greenhouse (plastic roof, insect net walls). Under a cover
+   the plan is sized in whole modules, the structure is charged for the share of its life the plan uses, the
+   temperature rises by the measured or assumed difference, rain reaches the crop only through a net, and the
+   yields come from trials under cover. Land preparation is done by hand or with hired machines.
+
    Crops come in four profiles. 'season' crops (one field cycle of 3 to 6 months) follow steps 1 to 8
    above. 'long' crops (one cycle of 9 to 18 months, cassava), 'ratoon' crops (successive cycles on
    the same stools, plantain) and 'orchard' crops (trees over several years, avocado) use planLong():
@@ -63,9 +68,10 @@ function kcAt(kc, f) {
 
 function daysInMonth(y, m) { return new Date(Date.UTC(y, m + 1, 0)).getUTCDate(); }
 
-/** Month by month water balance over the field period. */
-function waterBalance(kb, crop, fieldStart, fieldDays) {
-  const C = kb.climate, rows = [];
+/** Month by month water balance over the field period. rainFactor is the share of the rain that reaches the crop
+    (1 in the open field and under a net, 0 under a plastic roof). */
+function waterBalance(kb, crop, fieldStart, fieldDays, rainFactor) {
+  const C = kb.climate, rows = [], rf = rainFactor === undefined ? 1 : rainFactor;
   let cur = null;
   for (let i = 0; i < fieldDays; i++) {
     const d = new Date(fieldStart.getTime() + i * DAY);
@@ -73,7 +79,7 @@ function waterBalance(kb, crop, fieldStart, fieldDays) {
     const cm = C.months[m];
     const eto = etoHargreaves(cm.tmax, cm.tmin, extraterrestrialRadiation(C.lat, dayOfYear(d)));
     const etc = kcAt(crop.kc, (i + 0.5) / fieldDays) * eto;
-    const peff = effectiveRain(cm.rain) / daysInMonth(y, m);
+    const peff = effectiveRain(cm.rain) / daysInMonth(y, m) * rf;
     if (!cur || cur.month !== m || cur.year !== y) { cur = { year: y, month: m, days: 0, eto: 0, etc: 0, peff: 0 }; rows.push(cur); }
     cur.days += 1; cur.eto += eto; cur.etc += etc; cur.peff += peff;
   }
@@ -116,7 +122,10 @@ function hectareLines(kb, crop, opts) {
       const it = kb.items[inp.item];
       add(it.category, inp.item, it.label, inp.qty * (inp.apps || 1), it.unit, it.price, 'cash', step.id, [].concat(inp.src || [], it.src || []));
     }
-    if (step.labour) add('labour', 'labour_' + step.id, step.label, step.labour, 'person day', S.labour_day.price, 'labour', step.id, step.src || []);
+    // With hired machines, a mechanised step keeps only its share of hand finishing and pays each operation per hectare.
+    const mech = machineStep(opts.fw, step.id);
+    if (step.labour) add('labour', 'labour_' + step.id, step.label, step.labour * (mech ? mech.handShare : 1), 'person day', S.labour_day.price, 'labour', step.id, step.src || []);
+    if (mech) mech.ops.forEach(op => add('machinery', 'machine_' + op, kb.machinery.ops[op].label, 1, 'ha', opts.fw.price[op], 'cash', step.id, kb.machinery.ops[op].src || []));
     for (const sv of step.services || []) {
       const s = S[sv.key];
       add(s.category, sv.key, s.label, sv.qty, s.unit, s.price, 'cash', step.id, s.src || []);
@@ -129,6 +138,83 @@ function hectareLines(kb, crop, opts) {
   const share = clampN(opts.familyLabour || 0, 0, 0.9);
   lines.forEach(l => { if (l.kind === 'labour') { l.cashFactor = 1 - share; } });
   return lines;
+}
+
+/* ---------- Field work: by hand or with hired machines ---------- */
+/** Field work settings for a crop: the method, the operations each preparation step needs and their price per hectare.
+    A grower's quote for all the machine work of a hectare is spread over the operations in proportion to the reference prices. */
+function fieldWorkOpts(kb, cropKey, input, forceHand) {
+  const M = kb.machinery, steps = (M && M.steps[cropKey]) || {};
+  const used = Array.from(new Set([].concat(...Object.values(steps).map(s => s.ops))));
+  const refTotal = used.reduce((a, k) => a + (M.ops[k].price || 0), 0);
+  const quote = +input.machineQuoteXafHa > 0 ? +input.machineQuoteXafHa : null;
+  const price = {};
+  used.forEach(k => { price[k] = quote && refTotal ? quote * M.ops[k].price / refTotal : M.ops[k].price; });
+  const method = !forceHand && input.fieldWork === 'hire' && used.length ? 'hire' : 'hand';
+  return { method, steps, used, price, quote, refTotal, handShare: M ? M.hand_share : 0.1, available: used.length > 0 && !forceHand };
+}
+/** The machine operations of one step when machines are hired, with the share of its hand work that remains. */
+function machineStep(fw, stepId) {
+  if (!fw || fw.method !== 'hire' || !fw.steps[stepId]) return null;
+  const m = fw.steps[stepId];
+  return { ops: m.ops, handShare: m.hand_share !== undefined ? m.hand_share : fw.handShare };
+}
+/** Workers needed on the same day in the busiest land preparation step, by hand and with the chosen method. */
+function fieldWorkSummary(kb, crop, fw, area) {
+  // Machines are suggested only when the busiest step they can take over needs more workers than the threshold.
+  let hand = 0, cur = 0, handPerHa = 0, mechPeak = 0;
+  for (const s of crop.steps) {
+    if (s.phase !== 'prep' || !s.labour) continue;
+    const days = Math.max(1, s.day[1] - s.day[0]), w = s.labour / days;
+    const m = machineStep(fw, s.id);
+    if (fw.steps[s.id]) { handPerHa += s.labour * kb.services.labour_day.price; mechPeak = Math.max(mechPeak, w); }
+    hand = Math.max(hand, w * area);
+    cur = Math.max(cur, w * area * (m ? m.handShare : 1));
+  }
+  const max = kb.machinery ? kb.machinery.workers_per_day_max : 15;
+  return {
+    method: fw.method, available: fw.available, suggested: fw.available && mechPeak * area > max ? 'hire' : 'hand',
+    workersPerDay: cur, workersHand: hand, threshold: max, fromHa: mechPeak > 0 && fw.available ? max / mechPeak : null,
+    hirePerHa: fw.used.reduce((a, k) => a + fw.price[k], 0), refPerHa: fw.refTotal, handPerHa, quote: fw.quote, ops: fw.used
+  };
+}
+
+/* ---------- Production under cover ---------- */
+const OPEN_ENV = { tDelta: 0, rain: 1, diseaseShift: 0, continuous: false };
+/** Production systems offered for a crop: the open field, then the covers with sourced yields for it. */
+function systemsFor(kb, cropKey) {
+  const c = (kb.protected && kb.protected.crops[cropKey]) || {};
+  return ['open'].concat(['net', 'greenhouse'].filter(k => c[k]));
+}
+/** The crop as grown under a cover with its own calendar: the care, protection and watering that run into the harvest
+    are extended to the longer field period, the harvest steps to the longer harvest. */
+function coverCrop(crop, cc) {
+  if (!cc || !cc.cycle) return crop;
+  const o = crop.cycle, n = Object.assign({}, o, cc.cycle);
+  const oldField = o.to_first_harvest_days + o.harvest_days, newField = n.to_first_harvest_days + n.harvest_days;
+  const kField = newField / oldField, kHarvest = n.harvest_days / o.harvest_days;
+  const scale = (s, day, k) => Object.assign({}, s, {
+    day: day.map(v => Math.round(v)), labour: s.labour ? s.labour * k : s.labour,
+    inputs: (s.inputs || []).map(i => i.apps > 1 ? Object.assign({}, i, { apps: Math.max(1, Math.round(i.apps * k)) }) : Object.assign({}, i, { qty: i.qty * k })),
+    services: (s.services || []).map(x => Object.assign({}, x, { qty: x.qty * k }))
+  });
+  const steps = crop.steps.map(s => {
+    if (s.ref === 'harvest') return scale(s, [s.day[0] * kHarvest, s.day[1] * kHarvest], kHarvest);
+    if (s.ref === 'field' && (s.phase === 'care' || s.phase === 'protection') && s.day[1] > o.to_first_harvest_days) return scale(s, [s.day[0], s.day[1] + newField - oldField], kField);
+    return s;
+  });
+  return Object.assign({}, crop, { cycle: n, steps });
+}
+/** Structure lines for an area under cover: the frame and the cover, each with its own life. */
+function structureLines(SY, sys, areaHa) {
+  const m2 = Math.round(areaHa * 1e4);
+  if (!SY || !(m2 > 0)) return [];
+  const tier = SY.price_tiers.filter(t => m2 >= t.from_m2).pop() || SY.price_tiers[0];
+  const p = tier.xaf_m2, k = SY.cover_share;
+  return [
+    { cat: 'structure', key: sys + '_frame', label: SY.frame_label, qty: m2, unit: 'm2', price: p * (1 - k), unpriced: false, total: m2 * p * (1 - k), lifeSeasons: SY.frame_life_seasons, src: SY.src || [] },
+    { cat: 'structure', key: sys + '_cover', label: SY.cover_label, qty: m2, unit: 'm2', price: p * k, unpriced: false, total: m2 * p * k, lifeSeasons: SY.cover_life_seasons, src: SY.src || [] }
+  ];
 }
 
 /** Water option: up front items, running costs per hectare, share of the deficit covered, efficiency. */
@@ -184,19 +270,29 @@ function perKgCosts(kb, crop, opts) {
 }
 
 /* ---------- Risks ---------- */
-function risks(kb, crop, cal, wb, waterOpt, waterCoverage) {
-  const C = kb.climate.months;
-  const flowerMonths = monthsBetween(cal.flowering, cal.firstHarvest);
+/** env describes the conditions under a cover: temperature rise, share of the rain on the crop, change of disease level, and
+    whether the crop keeps flowering through its harvest (indeterminate greenhouse tomato). */
+function risks(kb, crop, cal, wb, waterOpt, waterCoverage, env) {
+  const C = kb.climate.months, E = env || OPEN_ENV, dT = E.tDelta || 0;
+  const flowerEnd = E.continuous ? addDays(cal.lastHarvest, -crop.cycle.flowering_before_harvest_days) : cal.firstHarvest;
+  const flowerMonths = monthsBetween(cal.flowering, flowerEnd > cal.firstHarvest ? flowerEnd : cal.firstHarvest);
   const reproMonths = monthsBetween(cal.flowering, cal.lastHarvest);
   const harvestMonths = monthsBetween(cal.firstHarvest, cal.lastHarvest);
-  const tmaxFlower = Math.max(...flowerMonths.map(m => C[m].tmax));
-  const heat = tmaxFlower >= crop.heat_c ? 2 : tmaxFlower >= crop.heat_c - 2 ? 1 : 0;
+  const tmaxFlower = Math.max(...flowerMonths.map(m => C[m].tmax)) + dT;
+  let heat = tmaxFlower >= crop.heat_c ? 2 : tmaxFlower >= crop.heat_c - 2 ? 1 : 0;
+  let hotShare = null;
+  if (E.continuous) {
+    // Flowering through a long harvest: the risk follows the share of the flowering months that reach the heat limit.
+    hotShare = flowerMonths.filter(m => C[m].tmax + dT >= crop.heat_c).length / flowerMonths.length;
+    const warm = flowerMonths.some(m => C[m].tmax + dT >= crop.heat_c - 2);
+    heat = hotShare > 1 / 3 ? 2 : hotShare > 0 || warm ? 1 : 0;
+  }
   const wetRain = Math.max(...reproMonths.map(m => C[m].rain));
-  const disease = wetRain >= kb.thresholds.disease_rain_mm_high ? 2 : wetRain >= kb.thresholds.disease_rain_mm_medium ? 1 : 0;
+  const disease = clampN((wetRain >= kb.thresholds.disease_rain_mm_high ? 2 : wetRain >= kb.thresholds.disease_rain_mm_medium ? 1 : 0) + (E.diseaseShift || 0), 0, 2);
   const water = waterCoverage >= 0.9 ? 0 : waterCoverage >= 0.7 ? 1 : 2;
   const idx = harvestMonths.reduce((a, m) => a + crop.price.index[m], 0) / harvestMonths.length;
   const market = idx <= 0.85 ? 2 : idx <= 0.97 ? 1 : 0;
-  return { heat, disease, water, market, tmaxFlower, wetRain, priceIndex: idx, flowerMonths, harvestMonths, score: heat + disease + water + market };
+  return { heat, disease, water, market, tmaxFlower, wetRain, priceIndex: idx, flowerMonths, harvestMonths, hotShare, inside: dT > 0, score: heat + disease + water + market };
 }
 
 /* ---------- Scenarios ---------- */
@@ -225,6 +321,7 @@ function plan(kb, input) {
   }
   const r = planSeason(kb, input, crop);
   r.profile = 'season';
+  r.systems = systemsFor(kb, input.crop);
   r.horizonMonths = r.cashflow.months.length;
   r.marginPerMonth = r.scenarios.average.margin / Math.max(1, r.horizonMonths);
   r.horizonOptions = [];
@@ -232,18 +329,27 @@ function plan(kb, input) {
   return r;
 }
 
-function planSeason(kb, input, crop) {
+function planSeason(kb, input, crop0) {
   const fx = kb.fx[input.currency] || 1;
   const capitalXaf = input.mode === 'crop' ? null : (+input.capital || 0) * (input.currency === 'XAF' ? 1 : kb.fx.XAF / fx);
   const minXaf = kb.limits.min_capital_usd * kb.fx.XAF;
-  const opts = { land: input.land || 'rent', familyLabour: input.familyLabour || 0, market: input.market || 'local', ownTools: !!input.ownTools };
+
+  // Production system: the open field, or a cover the crop has sourced yields for. Under a greenhouse the crop is watered by drip.
+  const sys = systemsFor(kb, input.crop).includes(input.system) ? input.system : 'open';
+  const SY = sys !== 'open' ? kb.protected.systems[sys] : null;
+  const CC = SY ? kb.protected.crops[input.crop][sys] : null;
+  const crop = CC ? coverCrop(crop0, CC) : crop0;
+  const env = SY ? { tDelta: SY.temp_delta_c, rain: SY.rain_factor, diseaseShift: SY.disease_shift, continuous: !!CC.continuous_flowering } : OPEN_ENV;
+  const waterKey = SY && SY.water ? SY.water : (input.water || 'rainfed');
+  const fw = fieldWorkOpts(kb, input.crop, input, !!SY);
+  const opts = { land: input.land || 'rent', familyLabour: input.familyLabour || 0, market: input.market || 'local', ownTools: !!input.ownTools, fw };
 
   const cal = calendar(crop, input.start);
-  const wb = waterBalance(kb, crop, cal.field, cal.fieldDays);
-  const water = waterPlan(kb, wb, input.water || 'rainfed');
+  const wb = waterBalance(kb, crop, cal.field, cal.fieldDays, env.rain);
+  const water = waterPlan(kb, wb, waterKey);
   const coverage = clampN((wb.rainMet + wb.deficit * water.covers) / wb.etcTotal, 0, 1);
   const wf = yieldFactor(crop.ky, coverage);
-  const risk = risks(kb, crop, cal, wb, input.water, coverage);
+  const risk = risks(kb, crop, cal, wb, waterKey, coverage, env);
 
   // Per hectare cash costs (fixed with area) and per kg costs (scale with the harvest)
   const ha = hectareLines(kb, crop, opts).concat(water.perHa.map(l => Object.assign({ kind: l.kind || 'cash' }, l)));
@@ -260,38 +366,53 @@ function planSeason(kb, input, crop) {
   const city = opts.market === 'city';
   const loss = (crop.loss_pct + (city ? (kb.market.city_extra_loss_pct || 0) : 0)) / 100;
   const cityFactor = city ? (crop.price.city_factor || 1) : 1;
-  const yields = crop.yield_t_ha[season];
+  const yields = CC ? CC.yield_t_ha : crop.yield_t_ha[season];
   const avgSoldKgHa = yields.average * 1000 * wf * (1 - loss);
   const budgetPerHa = perHaCash + avgSoldKgHa * perKgCash; // cash to finance one hectare until sale
   const reserveRate = kb.limits.reserve_rate;
 
-  // Sizing
+  // Sizing. Under a cover the area is a whole number of modules and the structure is bought up front.
+  const upAll = (a) => upfrontLines(kb, water, a, opts).concat(structureLines(SY, sys, a));
+  const sumT = (ls) => ls.reduce((s, l) => s + l.total, 0);
+  const modHa = SY ? kb.protected.module_m2 / 1e4 : 0;
+  const net = capitalXaf !== null ? capitalXaf / (1 + reserveRate) : 0;
+  const cost = (a) => a * budgetPerHa + sumT(upAll(a));
   let area, required = null, state = 'ok', upfront;
   if (input.mode === 'crop') {
     area = Math.max(0, +input.area || 0);
-    upfront = upfrontLines(kb, water, area, opts);
-    const up = upfront.reduce((a, l) => a + l.total, 0);
-    required = (up + area * budgetPerHa) * (1 + reserveRate);
+    if (SY && area > 0) area = Math.max(1, Math.ceil(area / modHa - 1e-9)) * modHa;
+    upfront = upAll(area);
+    required = (sumT(upfront) + area * budgetPerHa) * (1 + reserveRate);
+  } else if (SY) {
+    if (capitalXaf < minXaf) state = 'below_min';
+    // Largest whole number of modules that fits the capital net of the reserve (the cost rises with each module).
+    let lo = 0, hi = Math.max(1, Math.floor(net / (modHa * budgetPerHa)));
+    if (cost(hi * modHa) <= net) lo = hi;
+    else while (hi - lo > 1) { const m = Math.floor((lo + hi) / 2); if (cost(m * modHa) <= net) lo = m; else hi = m; }
+    area = lo * modHa;
+    upfront = upAll(area);
+    if (area <= 0 && state === 'ok') state = 'below_module';
   } else {
     if (capitalXaf < minXaf) state = 'below_min';
     // Largest area whose field costs plus up front items fit the capital net of the reserve. Up front costs
     // grow with the area in steps (one pump per hectare, a wheelbarrow from 0.5 ha), so the cost is monotone
     // in the area and a bisection finds the limit exactly.
-    const net = capitalXaf / (1 + reserveRate);
-    const cost = (a) => a * budgetPerHa + upfrontLines(kb, water, a, opts).reduce((s, l) => s + l.total, 0);
     let lo = 0, hi = Math.max(0, net / budgetPerHa);
     if (water.maxAreaHa && hi > water.maxAreaHa) hi = water.maxAreaHa;
     if (cost(hi) <= net) lo = hi;
     else for (let k = 0; k < 50; k++) { const m = (lo + hi) / 2; if (cost(m) <= net) lo = m; else hi = m; }
     area = lo < 1e-4 ? 0 : lo;
-    upfront = upfrontLines(kb, water, Math.max(area, 0), opts);
+    upfront = upAll(Math.max(area, 0));
     if (area <= 0 && state === 'ok') state = 'upfront_exceeds';
     if (water.maxAreaHa && area >= water.maxAreaHa - 1e-9 && state === 'ok') state = 'manual_limit';
   }
   if (input.mode === 'crop' && water.maxAreaHa && area > water.maxAreaHa) state = state === 'ok' ? 'manual_limit' : state;
 
-  const upTotal = upfront.reduce((a, l) => a + l.total, 0);
-  const upPerSeason = upfront.reduce((a, l) => a + l.total / (l.lifeSeasons || 1), 0);
+  // Equipment and structures are charged for the share of their life the plan uses (a greenhouse tomato crop of
+  // almost a year uses two seasons of a frame that lasts twenty).
+  const seasonsUsed = Math.max(1, Math.round(cal.totalDays / (365.25 / (kb.limits.seasons_per_year || 2))));
+  const upTotal = sumT(upfront);
+  const upPerSeason = upfront.reduce((a, l) => a + l.total * Math.min(seasonsUsed, l.lifeSeasons || 1) / (l.lifeSeasons || 1), 0);
   const fieldCash = area * perHaCash;
 
   // Budget lines for the area (cash), grouped by category
@@ -335,12 +456,12 @@ function planSeason(kb, input, crop) {
   const y0 = new Date(input.start + 'T00:00:00Z').getUTCFullYear();
   for (let m = 0; m < 12; m++) {
     const st = new Date(Date.UTC(y0, m, 1)).toISOString().slice(0, 10);
-    const c2 = calendar(crop, st), w2 = waterBalance(kb, crop, c2.field, c2.fieldDays);
+    const c2 = calendar(crop, st), w2 = waterBalance(kb, crop, c2.field, c2.fieldDays, env.rain);
     const cov2 = clampN((w2.rainMet + w2.deficit * water.covers) / w2.etcTotal, 0, 1);
-    const r2 = risks(kb, crop, c2, w2, input.water, cov2);
+    const r2 = risks(kb, crop, c2, w2, waterKey, cov2, env);
     const hm = r2.harvestMonths, pIdx = hm.reduce((a, k) => a + crop.price.index[k], 0) / hm.length;
     const p2 = userPrice || (refPrice ? pIdx * refPrice * cityFactor : 0);
-    const margin = (crop.yield_t_ha[seasonOf(w2)].average * yieldFactor(crop.ky, cov2) * 1000 * (1 - loss) * (p2 * (1 - kb.services.market_fee_rate.price) - perKgCash)) - perHaCash;
+    const margin = ((CC ? CC.yield_t_ha : crop.yield_t_ha[seasonOf(w2)]).average * yieldFactor(crop.ky, cov2) * 1000 * (1 - loss) * (p2 * (1 - kb.services.market_fee_rate.price) - perKgCash)) - perHaCash;
     windows.push({ month: m, risk: r2, coverage: cov2, season: seasonOf(w2), marginPerHa: margin });
   }
   const best = windows.slice().sort((a, b) => (a.risk.score - b.risk.score) || (b.marginPerHa - a.marginPerHa))[0].month;
@@ -351,6 +472,19 @@ function planSeason(kb, input, crop) {
     const from = new Date(base.getTime() + s.day[0] * DAY), to = new Date(base.getTime() + s.day[1] * DAY);
     return { id: s.id, phase: s.phase, label: s.label, detail: s.detail, from, to, labourDays: (s.labour || 0) * area, inputs: (s.inputs || []).map(i => ({ item: i.item, label: kb.items[i.item].label, qty: i.qty * (i.apps || 1) * area, unit: kb.items[i.item].unit, apps: i.apps || 1, cost: i.qty * (i.apps || 1) * area * (kb.items[i.item].price || 0), unpriced: kb.items[i.item].price == null })), src: s.src || [] };
   });
+
+  // Under a cover, the builder raises the structure once the land is cleared, before the beds are formed inside.
+  const m2 = Math.round(area * 1e4);
+  let cover = null;
+  if (SY) {
+    const weeks = (SY.build_weeks.find(w => m2 <= w[0]) || SY.build_weeks[SY.build_weeks.length - 1])[1];
+    const clr = crop.steps.find(x => x.id === 'clear'), b0 = clr ? clr.day[1] : -30;
+    if (area > 0) itinerary.push({ id: 'build', phase: 'prep', label: SY.build_label, detail: SY.build_detail, from: addDays(cal.field, b0), to: addDays(cal.field, b0 + weeks * 7), labourDays: 0, inputs: [], src: SY.src || [] });
+    const st = structureLines(SY, sys, Math.max(area, modHa));
+    cover = { system: sys, modules: Math.round(m2 / kb.protected.module_m2), m2, moduleM2: kb.protected.module_m2, pricePerM2: st.reduce((a, l) => a + l.price, 0), tDelta: SY.temp_delta_c, rainFactor: SY.rain_factor, diseaseShift: SY.disease_shift,
+      buildWeeks: weeks, frameLifeSeasons: SY.frame_life_seasons, coverLifeSeasons: SY.cover_life_seasons, seasonsUsed, water: waterKey, structureXaf: sumT(structureLines(SY, sys, area)),
+      minModuleXaf: cost(modHa) * (1 + reserveRate), note: CC.note, src: [].concat(SY.src || [], CC.src || []) };
+  }
 
   itinerary.sort((a, b) => (a.from - b.from) || (a.to - b.to));
 
@@ -366,6 +500,7 @@ function planSeason(kb, input, crop) {
     scenarios: scen, weights: w, expectedMargin: expected,
     breakEven: { yieldTHa: beYieldTHa, priceXafKg: beYieldPerUnit },
     risk, windows, bestMonth: best, itinerary, shopping: Object.values(shop),
+    system: sys, cover, seasonsUsed, fieldWork: fieldWorkSummary(kb, crop, fw, area),
     cashflow: seasonCashflow(kb, crop, cal, wb, ha, kgLines, upfront, area, scen, familyShare, cashOf)
   };
 }
@@ -503,7 +638,9 @@ function longCore(kb, crop, input, opts, start) {
   const push = (cat, key, label, qty, unit, price, kind, step, src, from, to, extra) => lines.push(Object.assign({ cat, key, label, qty, unit, price, unpriced: price == null, total: qty * (price || 0) * (kind === 'labour' ? 1 - share : 1), kind: kind || 'cash', step, src: src || [], from, to }, extra || {}));
   const stepLines = (s, from, to, mult, extra) => {
     for (const inp of s.inputs || []) { const it = kb.items[inp.item]; push(it.category, inp.item, it.label, inp.qty * (inp.apps || 1) * mult, it.unit, it.price, 'cash', s.id, [].concat(inp.src || [], it.src || []), from, to, extra); }
-    if (s.labour) push('labour', 'labour_' + s.id, s.label, s.labour * mult, 'person day', S.labour_day.price, 'labour', s.id, s.src || [], from, to, extra);
+    const mech = extra && extra.recurring ? null : machineStep(opts.fw, s.id);
+    if (s.labour) push('labour', 'labour_' + s.id, s.label, s.labour * mult * (mech ? mech.handShare : 1), 'person day', S.labour_day.price, 'labour', s.id, s.src || [], from, to, extra);
+    if (mech) mech.ops.forEach(op => push('machinery', 'machine_' + op, kb.machinery.ops[op].label, mult, 'ha', opts.fw.price[op], 'cash', s.id, kb.machinery.ops[op].src || [], from, to, extra));
     for (const sv of s.services || []) { const x = S[sv.key]; push(x.category, sv.key, x.label, sv.qty * mult, x.unit, x.price, 'cash', s.id, x.src || [], from, to, extra); }
   };
   for (const s of crop.steps) {
@@ -543,7 +680,8 @@ function planLong(kb, input, crop) {
   const fx = kb.fx[input.currency] || 1;
   const capitalXaf = input.mode === 'crop' ? null : (+input.capital || 0) * (input.currency === 'XAF' ? 1 : kb.fx.XAF / fx);
   const minXaf = kb.limits.min_capital_usd * kb.fx.XAF;
-  const opts = { land: input.land || 'rent', familyLabour: input.familyLabour || 0, market: input.market || 'local', ownTools: !!input.ownTools };
+  const fw = fieldWorkOpts(kb, input.crop, input, false);
+  const opts = { land: input.land || 'rent', familyLabour: input.familyLabour || 0, market: input.market || 'local', ownTools: !!input.ownTools, fw };
   const spy = kb.limits.seasons_per_year || 2;
   const prod = productOf(crop, input.product);
   const S = kb.services, fee = S.market_fee_rate.price, share = clampN(opts.familyLabour, 0, 0.9);
@@ -713,7 +851,7 @@ function planLong(kb, input, crop) {
     budget: { lines, operating, upfront: upTotal, upfrontPerSeason: upTotal / Math.max(1, years * spy), reserve, total: peak + reserve, peakNeed: peak, horizonCosts: operating + upTotal, perHaCash: core.lines.reduce((a, l) => a + l.total, 0), perKgCash: perProduct + perProc },
     scenarios: scen, weights: w, expectedMargin: expected, marginPerMonth: sa.margin / Math.max(1, months),
     breakEven, risk, windows, bestMonth: best, itinerary, shopping: Object.values(shop), shoppingScope: 'first_year', cashflow,
-    production: events
+    production: events, system: 'open', systems: ['open'], cover: null, fieldWork: fieldWorkSummary(kb, crop, fw, area)
   };
 }
 
@@ -743,12 +881,22 @@ function longRisk(kb, crop, core, prod, waterOpt) {
 function compare(kb, input) {
   return Object.keys(kb.crops).map(k => {
     const c = kb.crops[k];
-    const r = plan(kb, Object.assign({}, input, { crop: k, priceXafKg: (input.prices || {})[k] || 0, product: (input.products || {})[k] }));
+    const r = plan(kb, Object.assign({}, input, { crop: k, system: 'open', priceXafKg: (input.prices || {})[k] || 0, product: (input.products || {})[k] }));
     return { crop: k, name: c.name, profile: r.profile, months: r.horizonMonths, areaHa: r.areaHa, state: r.state, budget: r.budget.total, needPerHa: r.areaHa > 0 ? r.budget.total / r.areaHa : null,
       breakEvenPerUnit: r.breakEven.pricePerUnit !== undefined ? r.breakEven.pricePerUnit : r.breakEven.priceXafKg, unit: r.product ? r.product.unitLabel : { en: 'kg', fr: 'kg' },
       risk: r.risk.score, bestMonth: r.bestMonth, priceSource: r.priceSource, margin: r.priceSource ? r.scenarios.average.margin : null, marginPerMonth: r.priceSource ? r.marginPerMonth : null, paybackIndex: r.cashflow.paybackIndex, firstHarvestMonths: r.firstHarvestMonths };
   });
 }
 
-const AFEngine = { plan, compare, calendar, waterBalance, yieldFactor, etoHargreaves, extraterrestrialRadiation, effectiveRain, kcAt, scenarioWeights, round };
+/** Runs the same plan in each production system the crop is offered in: same capital (or area), start date and price. */
+function compareSystems(kb, input) {
+  return systemsFor(kb, input.crop).map(sys => {
+    const r = plan(kb, Object.assign({}, input, { system: sys })), sa = r.scenarios.average;
+    return { system: sys, areaHa: r.areaHa, m2: r.cover ? r.cover.m2 : null, modules: r.cover ? r.cover.modules : null, state: r.state, budget: r.budget.total, required: r.requiredXaf, upfront: r.budget.upfront,
+      months: r.horizonMonths, yieldTHa: sa.yieldTHa, soldKg: sa.soldKg, priceSource: r.priceSource, margin: r.priceSource ? sa.margin : null, roi: r.priceSource ? sa.roi : null,
+      marginPerMonth: r.priceSource ? r.marginPerMonth : null, breakEven: r.breakEven.priceXafKg, risk: r.risk.score, heat: r.risk.heat, disease: r.risk.disease, bestMonth: r.bestMonth, minModuleXaf: r.cover ? r.cover.minModuleXaf : null };
+  });
+}
+
+const AFEngine = { plan, compare, compareSystems, systemsFor, calendar, waterBalance, yieldFactor, etoHargreaves, extraterrestrialRadiation, effectiveRain, kcAt, scenarioWeights, round };
 if (typeof module !== 'undefined' && module.exports) module.exports = AFEngine;

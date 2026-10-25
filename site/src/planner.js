@@ -5,7 +5,12 @@ const tl = (x) => (x && typeof x === 'object' && !Array.isArray(x)) ? (x[LANG] |
 const PL_CUR = ['USD', 'XAF', 'EUR', 'RWF', 'KES', 'NGN'];
 const PL_WATER = ['rainfed', 'manual', 'existing', 'pump', 'drip'];
 const nextMonthStart = () => { const d = new Date(); return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + 1, 1)).toISOString().slice(0, 10); };
-const PLAN = { capital: 5000, currency: 'USD', mode: 'budget', area: 0.25, crop: 'tomato', water: 'pump', start: nextMonthStart(), land: 'rent', market: 'local', familyLabour: 0, ownTools: false, tab: 'return', prices: {}, products: {}, horizons: {} };
+const PLAN = { capital: 5000, currency: 'USD', mode: 'budget', area: 0.25, crop: 'tomato', water: 'pump', start: nextMonthStart(), land: 'rent', market: 'local', familyLabour: 0, ownTools: false, tab: 'return', prices: {}, products: {}, horizons: {}, system: 'open', coverM2: 240, fieldWork: 'hand', machineQuote: null };
+/** Production system in force for the crop: the one chosen when the crop is offered in it, otherwise the open field. */
+const plSystem = (k) => { const s = AFEngine.systemsFor(KB, k || PLAN.crop); return s.includes(PLAN.system) ? PLAN.system : 'open'; };
+const plModule = () => (KB.protected && KB.protected.module_m2) || 240;
+/** Reference price per hectare of the machine work a crop can take (FCFA). */
+const machineRef = (k) => { const M = KB.machinery, st = (M && M.steps[k]) || {}; return Array.from(new Set([].concat(...Object.values(st).map(x => x.ops)))).reduce((a, o) => a + M.ops[o].price, 0); };
 const isLong = (k) => { const c = KB.crops[k]; return !!(c.profile && c.profile !== 'season'); };
 const cropGroup = (c) => !c.profile || c.profile === 'season' ? 'season' : c.profile === 'orchard' ? 'orchard' : 'long';
 const cropMonths = (c) => !c.profile || c.profile === 'season' ? Math.round(((c.cycle.nursery_days || 0) + c.cycle.to_first_harvest_days + c.cycle.harvest_days) / 30.4) : c.horizon_months;
@@ -71,19 +76,35 @@ function plannerFormInner(compact) {
   const hsel = hopts.length > 1 ? '<div class="f"><span class="lbl" id="pl-hor-l">' + esc(P.horizonL) + '</span><div class="seg seg' + Math.min(4, hopts.length) + '" role="group" aria-labelledby="pl-hor-l">' +
     hopts.map((o, i) => '<button type="button" data-phor="' + o.months + '" aria-pressed="' + (o.months === hcur) + '">' + esc(ratoon ? P.horizonCycles(i + 1, o.months) : P.horizonYears(o.months / 12)) + '</button>').join('') + '</div><span class="hint">' + esc(P.horizonHint[ratoon ? 'ratoon' : 'orchard']) + '</span></div>' : '';
   const water = PL_WATER.map(w => '<label class="wopt"><input type="radio" name="pwater" value="' + w + '"' + (S.water === w ? ' checked' : '') + '><span><b>' + esc(P.water[w][0]) + '</b><small>' + esc(P.water[w][1]) + '</small></span></label>').join('');
+  // Production system: offered for the crops with sourced yields under a cover.
+  const syss = AFEngine.systemsFor(KB, S.crop), sys = plSystem(S.crop), covered = sys !== 'open', SY = covered ? KB.protected.systems[sys] : null;
+  const sysSel = syss.length > 1 ? '<div class="f"><span class="lbl" id="pl-sys-l">' + esc(P.system) + '</span><div class="seg seg' + syss.length + '" role="group" aria-labelledby="pl-sys-l">' +
+    syss.map(k => '<button type="button" data-psys="' + k + '" aria-pressed="' + (sys === k) + '">' + esc(P.systems[k]) + '</button>').join('') + '</div><span class="hint">' + esc(covered ? tl(SY.desc) : P.systemOpenHint) + '</span></div>' : '';
+  const waterBlock = SY && SY.water
+    ? '<div class="f"><span class="lbl">' + esc(P.waterT) + '</span><p class="notice info">' + esc(P.coverWater) + '</p></div>'
+    : '<fieldset class="f" style="border:0;padding:0;margin:0"><legend class="lbl" style="font-size:13px;color:var(--fg-2);font-weight:500;margin-bottom:7px">' + esc(P.waterT) + '</legend><div class="wopts">' + water + '</div></fieldset>';
+  // Land preparation by hand or with hired machines, with the grower's own quote when he has one.
+  const mRef = machineRef(S.crop), hire = S.fieldWork === 'hire';
+  const fieldWork = covered || !mRef
+    ? '<div class="f"><span class="lbl">' + esc(P.fieldWork) + '</span><span class="hint">' + esc(P.coverHand) + '</span></div>'
+    : '<div class="f"><label for="pl-fw">' + esc(P.fieldWork) + '</label><select class="inp" id="pl-fw">' + ['hand', 'hire'].map(v => '<option value="' + v + '"' + (S.fieldWork === v ? ' selected' : '') + '>' + esc(P.fieldWorkOpts[v]) + '</option>').join('') + '</select><span class="hint">' + esc(P.fieldWorkHint(fmtUnit(mRef))) + '</span></div>' +
+      (hire ? '<div class="f"><label for="pl-mq">' + esc(P.quote(curCode())) + '</label><input class="inp tnum" id="pl-mq" inputmode="decimal" autocomplete="off" placeholder="' + esc(priceShown(mRef)) + '" value="' + esc(S.machineQuote ? priceShown(S.machineQuote) : '') + '"><span class="hint">' + esc(P.quoteHint) + '</span></div>' : '');
   return '<div class="blk-t"><h4>' + esc(P.inputsT) + '</h4></div>' +
     '<div class="row2"><div class="f"><label for="pl-cap">' + esc(P.capital) + '</label><input class="inp tnum" id="pl-cap" inputmode="decimal" autocomplete="off" value="' + esc(nf(S.capital)) + '"><span class="hint">' + esc(P.capitalHint) + '</span></div>' +
     '<div class="f"><label for="pl-cur">' + esc(P.currency) + '</label><select class="inp" id="pl-cur">' + cur + '</select></div></div>' +
     '<div class="f"><span class="lbl" id="pl-mode-l">' + esc(P.approach) + '</span><div class="seg" role="group" aria-labelledby="pl-mode-l"><button type="button" data-pmode="budget" aria-pressed="' + (S.mode === 'budget') + '">' + esc(P.budgetFirst) + '</button><button type="button" data-pmode="crop" aria-pressed="' + (S.mode === 'crop') + '">' + esc(P.areaFirst) + '</button></div></div>' +
-    '<div class="f" data-parea' + (S.mode === 'crop' ? '' : ' hidden') + '><label for="pl-area">' + esc(P.area) + '</label><input class="inp tnum" id="pl-area" type="number" min="0.001" step="0.01" inputmode="decimal" value="' + S.area + '"></div>' +
-    '<div class="f"><span class="lbl" id="pl-crop-l">' + esc(P.crop) + '</span>' + crops + '</div>' + prods + hsel +
+    '<div class="f" data-parea' + (S.mode === 'crop' ? '' : ' hidden') + '>' + (covered
+      ? '<label for="pl-m2">' + esc(P.areaCover) + '</label><input class="inp tnum" id="pl-m2" type="number" min="' + plModule() + '" step="' + plModule() + '" inputmode="numeric" value="' + S.coverM2 + '"><span class="hint">' + esc(P.areaCoverHint(plModule())) + '</span>'
+      : '<label for="pl-area">' + esc(P.area) + '</label><input class="inp tnum" id="pl-area" type="number" min="0.001" step="0.01" inputmode="decimal" value="' + S.area + '">') + '</div>' +
+    '<div class="f"><span class="lbl" id="pl-crop-l">' + esc(P.crop) + '</span>' + crops + '</div>' + prods + hsel + sysSel +
     '<div class="f"><label for="pl-price">' + esc(priceLabel(S.crop)) + '</label><input class="inp tnum" id="pl-price" inputmode="decimal" autocomplete="off" placeholder="' + esc(ref ? priceShown(ref) : P.pricePh) + '" value="' + esc(priceShown(plPrice())) + '"><span class="hint" data-phint>' + esc(priceHint(S.crop)) + '</span></div>' +
-    '<fieldset class="f" style="border:0;padding:0;margin:0"><legend class="lbl" style="font-size:13px;color:var(--fg-2);font-weight:500;margin-bottom:7px">' + esc(P.waterT) + '</legend><div class="wopts">' + water + '</div></fieldset>' +
+    waterBlock +
     '<div class="f"><label for="pl-start">' + esc(isLong(S.crop) ? P.choosePlant : P.start) + '</label><input class="inp" id="pl-start" type="date" value="' + S.start + '"><span class="hint">' + esc(isLong(S.crop) ? P.choosePlantHint : P.startHint) + '</span></div>' +
     (compact ? '' :
     '<details class="adv"' + (S.advOpen ? ' open' : '') + '><summary>' + esc(P.advanced) + '</summary><div class="stack" style="--s:14px;margin-top:14px">' +
     '<div class="f"><label for="pl-land">' + esc(P.land) + '</label><select class="inp" id="pl-land"><option value="rent"' + (S.land === 'rent' ? ' selected' : '') + '>' + esc(P.landRent) + '</option><option value="own"' + (S.land === 'own' ? ' selected' : '') + '>' + esc(P.landOwn) + '</option></select></div>' +
     '<div class="f"><label for="pl-fam">' + esc(P.family) + '</label><select class="inp" id="pl-fam">' + [0, 0.25, 0.5, 0.75].map(v => '<option value="' + v + '"' + (S.familyLabour === v ? ' selected' : '') + '>' + (v * 100) + '%</option>').join('') + '</select><span class="hint">' + esc(P.familyHint) + '</span></div>' +
+    fieldWork +
     '<label class="chk"><input type="checkbox" id="pl-tools"' + (S.ownTools ? ' checked' : '') + '> ' + esc(P.ownTools) + '</label></div></details>');
 }
 
@@ -92,6 +113,7 @@ function plannerOutHTML(r, compact) {
   const msg = (k) => P.states[k] ? P.states[k](fmtCur(r.minXaf), plArea(r.water.maxAreaHa || 0), '') : '';
   let state = r.state !== 'ok' && r.state !== 'needs_price' ? '<p class="notice" style="border-left-color:var(--warn)">' + esc(msg(r.state)) + '</p>' : '';
   if (r.state === 'manual_limit' && PLAN.mode === 'budget' && r.capitalXaf > r.budget.total) state += '<p class="small muted">' + esc(P.unusedCapital(txtCur(r.capitalXaf - r.budget.total))) + '</p>';
+  if (r.state === 'below_module') return '<p class="notice" style="border-left-color:var(--warn)">' + esc(P.states.below_module(txtCur(r.cover.minModuleXaf), P.systems[r.system], r.cover.moduleM2)) + '</p>';
   if (r.state === 'below_min' || r.state === 'upfront_exceeds') {
     if (r.state === 'below_min') return state;
     const up = r.budget.lines.filter(l => l.upfront);
@@ -104,7 +126,25 @@ function plannerOutHTML(r, compact) {
   if (!tabs.includes(PLAN.tab)) PLAN.tab = 'return';
   const tabBar = '<div class="tabs" role="tablist" aria-label="' + esc(P.title) + '">' + tabs.map(t => '<button type="button" role="tab" id="pt-' + t + '" aria-selected="' + (PLAN.tab === t) + '" aria-controls="pt-panel" tabindex="' + (PLAN.tab === t ? 0 : -1) + '" data-ptab="' + t + '">' + esc(P.tabs[t]) + '</button>').join('') + '</div>';
   const panel = { return: tabReturn, budget: tabBudget, cashflow: tabCashflow, itinerary: tabItinerary, shopping: tabShopping, water: tabWater, compare: tabCompare, sources: tabSources }[PLAN.tab](r);
-  return state + verdictHTML(r) + kpiHTML(r) + reportCta() + tabBar + '<div id="pt-panel" role="tabpanel" aria-labelledby="pt-' + PLAN.tab + '" class="ptab">' + panel + '</div>';
+  return state + verdictHTML(r) + kpiHTML(r) + coverNote(r) + fieldWorkNote(r) + reportCta() + tabBar + '<div id="pt-panel" role="tabpanel" aria-labelledby="pt-' + PLAN.tab + '" class="ptab">' + panel + '</div>';
+}
+
+/** What a structure under cover means for this plan: its size, its cost, the share charged and the climate inside. */
+function coverNote(r) {
+  const P = L().planner, c = r.cover;
+  if (!c || !(r.areaHa > 0)) return '';
+  const st = r.budget.lines.filter(l => l.cat === 'structure');
+  const charged = st.reduce((a, l) => a + l.total * Math.min(r.seasonsUsed || 1, l.lifeSeasons || 1) / (l.lifeSeasons || 1), 0);
+  return '<p class="notice info cover-note">' + esc(P.coverFact(P.systems[c.system], c.modules, c.moduleM2, nf(c.m2), c.buildWeeks) + ' ' + P.coverCharge(txtCur(c.structureXaf), txtCur(charged)) + ' ' + P.coverClimate(c.tDelta) + ' ' + P.coverLow) + '</p>';
+}
+
+/** Land preparation: suggests hired machines when the work by hand needs too many people on the same day. */
+function fieldWorkNote(r) {
+  const P = L().planner, f = r.fieldWork;
+  if (!f || !f.available || !(r.areaHa > 0)) return '';
+  if (f.method === 'hand' && f.suggested === 'hire') return '<div class="notice fw-note"><p>' + esc(P.fwSuggest(plArea(r.areaHa), nf(Math.ceil(f.workersHand)), plArea(f.fromHa))) + '</p><button type="button" class="btn btn-sm" data-pfw="hire">' + esc(P.fwSwitch) + '</button></div>';
+  if (f.method === 'hire') return '<p class="notice info">' + esc(P.fwHired(Math.max(1, Math.ceil(f.workersPerDay)), txtCur(f.hirePerHa)) + (f.workersPerDay > f.threshold ? ' ' + P.fwStillHand : '')) + '</p>';
+  return '';
 }
 
 const monthYearS = (d) => { const s = new Intl.DateTimeFormat(L().meta.locale, { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(d); return s; };
@@ -212,8 +252,8 @@ function tabReturn(r) {
 function tabBudget(r) {
   const P = L().planner, B = r.budget, long = r.profile && r.profile !== 'season';
   const groups = {};
-  B.lines.forEach(l => { const g = l.upfront ? 'equipment' : l.cat; (groups[g] = groups[g] || []).push(l); });
-  const order = ['land', 'land_preparation', 'planting', 'seed', 'nursery', 'fertilizer', 'amendment', 'foliar', 'fungicide', 'insecticide', 'herbicide', 'stakes', 'trellis', 'irrigation', 'labour', 'advice', 'harvest', 'processing', 'equipment'];
+  B.lines.forEach(l => { const g = l.upfront ? (l.cat === 'structure' ? 'structure' : 'equipment') : l.cat; (groups[g] = groups[g] || []).push(l); });
+  const order = ['land', 'land_preparation', 'machinery', 'planting', 'seed', 'nursery', 'fertilizer', 'amendment', 'foliar', 'fungicide', 'insecticide', 'herbicide', 'stakes', 'trellis', 'irrigation', 'labour', 'advice', 'harvest', 'processing', 'structure', 'equipment'];
   const keys = Object.keys(groups).sort((a, b) => (order.indexOf(a) + 99 * (order.indexOf(a) < 0)) - (order.indexOf(b) + 99 * (order.indexOf(b) < 0)));
   const totals = keys.map(k => [k, groups[k].reduce((a, l) => a + l.total, 0)]).concat(long ? [] : [['reserve', B.reserve]]);
   const colors = ['#0A3D2E', '#127A5B', '#2B7A8F', '#B0832A', '#1A9E73', '#3F95AC', '#D2A84A', '#0D5C44', '#9ACFDC', '#6E9A8A', '#9BD0B3', '#3E6B5A', '#C7893A', '#B9D3C7', '#5E7C6B', '#2C6F7F', '#E3CB8C', '#7A9488', '#A35D3A'];
@@ -227,7 +267,7 @@ function tabBudget(r) {
     (long
       ? '<tr class="tot"><td colspan="4">' + esc(P.horizonCosts) + '</td><td class="tnum">' + fmtCur(B.horizonCosts) + '</td></tr><tr class="grp"><td colspan="4">' + esc(P.totalNeed) + '</td><td class="tnum">' + fmtCur(B.total) + '</td></tr>'
       : '<tr class="grp"><td colspan="4">' + esc(P.cats.reserve) + '</td><td class="tnum">' + fmtCur(B.reserve) + '</td></tr><tr class="tot"><td colspan="4">' + esc(P.totalBudget) + '</td><td class="tnum">' + fmtCur(B.total) + '</td></tr>');
-  return '<div class="card" style="padding:18px">' + bar + '</div>' + unpricedNote(r) + '<div class="tbl-wrap" style="margin-top:12px"><table class="tbl ptbl"><thead><tr><th>' + esc(P.th.line) + '</th><th>' + esc(P.th.qty) + '</th><th>' + esc(P.th.unitPrice) + '</th><th>' + esc(P.th.src) + '</th><th>' + esc(P.th.total) + '</th></tr></thead><tbody>' + rows + '</tbody></table></div><p class="small faint" style="margin-top:10px">' + esc(long ? P.budgetNoteLong : P.budgetNote) + '</p>';
+  return '<div class="card" style="padding:18px">' + bar + '</div>' + unpricedNote(r) + '<div class="tbl-wrap" style="margin-top:12px"><table class="tbl ptbl"><thead><tr><th>' + esc(P.th.line) + '</th><th>' + esc(P.th.qty) + '</th><th>' + esc(P.th.unitPrice) + '</th><th>' + esc(P.th.src) + '</th><th>' + esc(P.th.total) + '</th></tr></thead><tbody>' + rows + '</tbody></table></div><p class="small faint" style="margin-top:10px">' + esc((long ? P.budgetNoteLong : P.budgetNote) + (r.cover && r.areaHa > 0 ? ' ' + P.budgetCoverNote(r.seasonsUsed || 1) : '')) + '</p>';
 }
 
 /** Cash position month by month: costs below zero, sales above, and the cumulative line. */
@@ -287,9 +327,31 @@ function tabCompare(r) {
       '<td class="tnum" data-l="' + esc(P.th.breakEven) + '">' + (x.breakEvenPerUnit ? esc(fmtUnit(x.breakEvenPerUnit)) + '<span class="cmp-s">' + esc(P.perUnit(unit)) + '</span>' : '·') + '</td><td data-l="' + esc(P.th.risk) + '"><span class="rkb lv' + riskLvl(x.risk) + '">' + esc(lv[riskLvl(x.risk)]) + '</span><span class="cmp-s">' + esc(monthName(x.bestMonth)) + '</span></td>' +
       '<td class="tnum" data-l="' + esc(P.th.marginMonth) + '">' + (x.marginPerMonth !== null ? '<b style="color:' + (x.marginPerMonth >= 0 ? 'var(--green)' : 'var(--crit)') + '">' + fmtCur(x.marginPerMonth) + '</b>' : '<span class="faint">·</span>') + '</td></tr>';
   }).join('');
-  return '<div class="card"><div class="blk-t"><h4>' + esc(P.compareT) + '</h4><span>' + esc(P.compareSub) + '</span></div></div>' +
+  return systemsCard(r) + '<div class="card"><div class="blk-t"><h4>' + esc(P.compareT) + '</h4><span>' + esc(P.compareSub) + '</span></div></div>' +
     '<div class="tbl-wrap"><table class="tbl ptbl cmp"><thead><tr><th>' + esc(P.th.crop) + '<span class="cmp-s">' + esc(P.th.cycle) + '</span></th><th>' + esc(P.th.area) + '<span class="cmp-s">' + esc(P.th.needHa) + '</span></th><th>' + esc(P.th.breakEven) + '</th><th>' + esc(P.th.risk) + '<span class="cmp-s">' + esc(P.th.best) + '</span></th><th>' + esc(P.th.marginMonth) + '</th></tr></thead><tbody>' + body + '</tbody></table></div>' +
     '<p class="small faint" style="margin-top:10px">' + esc(P.compareNote) + '</p>';
+}
+
+/** The same plan in each production system offered for the crop. */
+function systemsCard(r) {
+  const P = L().planner;
+  if (!r.systems || r.systems.length < 2) return '';
+  let rows;
+  try { rows = AFEngine.compareSystems(KB, plannerInput()); } catch (e) { return ''; }
+  const pick = typeof AF_TARGET === 'undefined' || AF_TARGET !== 'android', lv = P.riskLevel;
+  const body = rows.map(x => {
+    const cur = x.system === r.system, off = !(x.areaHa > 0);
+    const name = cur ? '<b>' + esc(P.systems[x.system]) + '</b> <span class="badge plan">' + esc(P.current) + '</span>' : pick ? '<button type="button" class="lnk" data-psys="' + x.system + '" title="' + esc(P.sysPick) + '">' + esc(P.systems[x.system]) + '</button>' : esc(P.systems[x.system]);
+    const cap = PLAN.mode === 'crop' ? x.required : x.budget;
+    return '<tr' + (cur ? ' class="cur"' : '') + '><td class="c-n">' + name + '</td><td class="tnum" data-l="' + esc(P.th.area) + '">' + (off ? '·<span class="cmp-s">' + esc(x.minModuleXaf ? P.sysFrom(txtCur(x.minModuleXaf)) : '') + '</span>' : plArea(x.areaHa) + '<span class="cmp-s">' + fmtCur(cap) + '</span>') + '</td>' +
+      '<td class="tnum" data-l="' + esc(P.th.yieldAvg) + '">' + (off ? '·' : nf(x.yieldTHa, 1) + ' t/ha' + (x.system !== 'open' ? '<span class="cmp-s">' + nf(x.yieldTHa / 10, 1) + ' kg/m²</span>' : '')) + '</td>' +
+      '<td class="tnum" data-l="' + esc(P.th.breakEven) + '">' + (!off && x.breakEven ? esc(fmtUnit(x.breakEven)) + '<span class="cmp-s">' + esc(P.perUnit('kg')) + '</span>' : '·') + '</td>' +
+      '<td data-l="' + esc(P.th.risk) + '"><span class="rkb lv' + riskLvl(x.risk) + '">' + esc(lv[riskLvl(x.risk)]) + '</span><span class="cmp-s">' + esc(monthName(x.bestMonth)) + '</span></td>' +
+      '<td class="tnum" data-l="' + esc(P.th.margin) + '">' + (!off && x.margin !== null ? '<b style="color:' + (x.margin >= 0 ? 'var(--green)' : 'var(--crit)') + '">' + fmtCur(x.margin) + '</b><span class="cmp-s">' + esc(pct(x.roi)) + '</span>' : '<span class="faint">·</span>') + '</td></tr>';
+  }).join('');
+  return '<div class="card"><div class="blk-t"><h4>' + esc(P.systemsT) + '</h4><span>' + esc(P.systemsSub(PLAN.mode)) + '</span></div></div>' +
+    '<div class="tbl-wrap"><table class="tbl ptbl cmp"><thead><tr><th>' + esc(P.th.system) + '</th><th>' + esc(P.th.area) + '<span class="cmp-s">' + esc(PLAN.mode === 'crop' ? P.th.capitalNeed : P.k.budget) + '</span></th><th>' + esc(P.th.yieldAvg) + '</th><th>' + esc(P.th.breakEven) + '</th><th>' + esc(P.th.risk) + '<span class="cmp-s">' + esc(P.th.best) + '</span></th><th>' + esc(P.th.margin) + '</th></tr></thead><tbody>' + body + '</tbody></table></div>' +
+    '<p class="small faint" style="margin:10px 0 18px">' + esc(P.systemsNote) + '</p>';
 }
 
 function tabItinerary(r) {
@@ -304,7 +366,7 @@ function tabItinerary(r) {
 function tabShopping(r) {
   const P = L().planner;
   const rows = r.shopping.sort((a, b) => a.category.localeCompare(b.category)).map(s => '<tr><td>' + esc(tl(s.label)) + '</td><td class="small faint">' + esc(P.cats[s.category] || s.category) + '</td><td class="tnum">' + fmtQty(s.qty, s.unit) + '</td><td class="tnum">' + (s.packs ? s.packs + ' × ' + esc(tl(s.packLabel)) : '·') + '</td><td class="tnum">' + (s.unpriced ? '<span class="badge demo">' + esc(P.toQuote) + '</span>' : fmtCur(s.packCost || s.cost)) + '</td></tr>').join('');
-  const up = r.budget.lines.filter(l => l.upfront).map(l => '<tr><td>' + esc(tl(l.label)) + '</td><td class="small faint">' + esc(P.cats.equipment) + '</td><td class="tnum">' + fmtQty(l.qty, l.unit) + '</td><td class="tnum">·</td><td class="tnum">' + (l.unpriced ? '<span class="badge demo">' + esc(P.toQuote) + '</span>' : fmtCur(l.unitTotal || l.total)) + '</td></tr>').join('');
+  const up = r.budget.lines.filter(l => l.upfront).map(l => '<tr><td>' + esc(tl(l.label)) + '</td><td class="small faint">' + esc(l.cat === 'structure' ? P.systems[r.system] || P.cats.structure : P.cats.equipment) + '</td><td class="tnum">' + fmtQty(l.qty, l.unit) + '</td><td class="tnum">·</td><td class="tnum">' + (l.unpriced ? '<span class="badge demo">' + esc(P.toQuote) + '</span>' : fmtCur(l.unitTotal || l.total)) + '</td></tr>').join('');
   return '<div class="tbl-wrap"><table class="tbl ptbl"><thead><tr><th>' + esc(P.th.item) + '</th><th>' + esc(P.th.cat) + '</th><th>' + esc(P.th.need) + '</th><th>' + esc(P.th.packs) + '</th><th>' + esc(P.th.cost) + '</th></tr></thead><tbody>' + rows + up + '</tbody></table></div><p class="small faint" style="margin-top:10px">' + esc(r.shoppingScope === 'first_year' ? P.shopFirstYear : P.shopNote) + '</p>';
 }
 
@@ -323,13 +385,13 @@ function tabWater(r) {
   const months = (arr) => arr.map(m => monthName(m, 'short')).join(', ');
   const heatOk = crop.heat_c && rk.flowerMonths && rk.flowerMonths.length && rk.tmaxFlower !== null;
   const risks = '<div class="rks">' +
-    item('water', rk.water, long ? P.waterLong(nf((r.water.establishment || 0) * 100, 0), nf(r.water.coverage * 100, 0), r.input.water) : P.riskText.water(nf(r.water.coverage * 100, 0), nf(wb.deficit, 0), r.input.water)) +
-    item('heat', rk.heat, heatOk ? P.riskText.heat(months(rk.flowerMonths), nf(rk.tmaxFlower, 0), crop.heat_c) : P.heatNA) +
-    item('disease', rk.disease, P.riskText.disease(nf(rk.wetRain, 0), tl(crop.disease_note))) +
+    item('water', rk.water, long ? P.waterLong(nf((r.water.establishment || 0) * 100, 0), nf(r.water.coverage * 100, 0), r.water.option) : P.riskText.water(nf(r.water.coverage * 100, 0), nf(wb.deficit, 0), r.water.option)) +
+    item('heat', rk.heat, heatOk ? P.riskText.heat(months(rk.flowerMonths), nf(rk.tmaxFlower, 0), crop.heat_c) + (r.cover ? P.riskText.heatInside(r.cover.tDelta) : '') + (rk.hotShare !== null && rk.hotShare !== undefined ? P.riskText.heatLong(nf(rk.hotShare * 100, 0)) : '') : P.heatNA) +
+    item('disease', rk.disease, P.riskText.disease(nf(rk.wetRain, 0), tl(crop.disease_note)) + (r.cover && r.cover.diseaseShift < 0 ? P.riskText.diseaseRoof : '')) +
     item('market', rk.market, P.riskText.market(months(rk.harvestMonths), nf(rk.priceIndex * 100, 0))) +
     '<div class="rk"><div class="rk-h"><span>' + esc(P.riskNames.context) + '</span><b>' + esc(P.check) + '</b></div><p>' + esc(P.riskText.context) + '</p></div></div>';
   const win = '<div class="wins" role="group" aria-label="' + esc(P.windowsT) + '">' + r.windows.map(w => '<button type="button" data-pwin="' + w.month + '" class="win lv' + Math.min(2, Math.floor(w.risk.score / 2)) + (w.month === r.bestMonth ? ' best' : '') + (new Date(PLAN.start + 'T00:00:00Z').getUTCMonth() === w.month ? ' cur' : '') + '" title="' + esc(monthName(w.month) + ' · ' + P.riskScore + ' ' + w.risk.score + '/8') + '"><span>' + esc(monthName(w.month, 'short')) + '</span><small>' + w.risk.score + '</small></button>').join('') + '</div><p class="small muted" style="margin-top:8px">' + esc(P.bestLine(monthName(r.bestMonth))) + '</p>';
-  const wl = r.water.grossM3 > 0 ? '<p class="small muted">' + esc(P.waterVolume(nf(r.water.grossM3, 0), nf(r.water.balance.deficit, 0))) + '</p>' : '';
+  const wl = (r.water.grossM3 > 0 ? '<p class="small muted">' + esc(P.waterVolume(nf(r.water.grossM3, 0), nf(r.water.balance.deficit, 0))) + '</p>' : '') + (r.cover && r.cover.rainFactor === 0 ? '<p class="small muted">' + esc(P.waterRoof) + '</p>' : '');
   return '<div class="card"><div class="blk-t"><h4>' + esc(P.waterChart) + '</h4><span>' + esc(long ? P.waterSubLong : P.waterSub) + '</span></div><div class="chart-box nomin" data-ptips>' + svg + '</div><div class="risk-legend"><span><i style="background:#127A5B"></i>' + esc(P.cropNeed) + '</span><span><i style="background:#2B7A8F"></i>' + esc(P.rainEff) + '</span></div>' + wl + '</div>' +
     '<h5 class="sub">' + esc(P.risksT) + '</h5>' + risks + '<h5 class="sub">' + esc(P.windowsT) + '</h5>' + win;
 }
@@ -340,11 +402,13 @@ function srcLinks(ids) {
 }
 function tabSources(r) {
   const P = L().planner, crop = KB.crops[PLAN.crop];
-  const conf = (crop.confidence || KB.confidence || []).map(c => '<tr><td>' + esc(tl(c.block)) + '</td><td><span class="badge ' + (c.level === 'medium' ? 'plan' : c.level === 'high' ? 'real' : 'demo') + '">' + esc(P.conf[c.level]) + '</span></td><td class="small">' + esc(tl(c.note)) + '</td></tr>').join('');
+  const extra = [].concat(r.cover ? [KB.protected.confidence] : [], r.fieldWork && r.fieldWork.method === 'hire' ? [KB.machinery.confidence] : []);
+  const conf = (crop.confidence || KB.confidence || []).concat(extra).map(c => '<tr><td>' + esc(tl(c.block)) + '</td><td><span class="badge ' + (c.level === 'medium' ? 'plan' : c.level === 'high' ? 'real' : 'demo') + '">' + esc(P.conf[c.level]) + '</span></td><td class="small">' + esc(tl(c.note)) + '</td></tr>').join('');
   const used = new Set();
   r.budget.lines.forEach(l => (l.src || []).forEach(s => used.add(s)));
   r.itinerary.forEach(s => (s.src || []).forEach(x => used.add(x)));
-  [crop.src, crop.price.src, crop.harvest_src, KB.climate.src, KB.fx_src, (KB.water.options[PLAN.water] || {}).src, PLAN.water !== 'rainfed' && PLAN.water !== 'manual' ? KB.water.src_fuel : null].forEach(a => (a || []).forEach(s => used.add(s)));
+  const wo = r.water.option || PLAN.water;
+  [crop.src, crop.price.src, crop.harvest_src, KB.climate.src, KB.fx_src, (KB.water.options[wo] || {}).src, wo !== 'rainfed' && wo !== 'manual' ? KB.water.src_fuel : null, r.cover ? r.cover.src : null, r.fieldWork && r.fieldWork.method === 'hire' ? KB.machinery.src : null].forEach(a => (a || []).forEach(s => used.add(s)));
   const key = id => { const m = /^([A-Z]+)(\d+)$/.exec(id) || [id, id, 0]; return [m[1], +m[2]]; };
   const list = Array.from(used).filter(id => KB.sources[id]).sort((a, b) => { const x = key(a), y = key(b); return x[0] === y[0] ? x[1] - y[1] : (x[0] < y[0] ? -1 : 1); }).map(id => { const s = KB.sources[id]; return '<li><span class="mono faint">[' + esc(id) + ']</span> ' + (s.url ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.title) + ' ↗</a>' : esc(s.title)) + (s.publisher ? ' <span class="faint">· ' + esc(s.publisher) + (s.year ? ', ' + s.year : '') + '</span>' : '') + '</li>'; }).join('');
   const assume = (KB.assumptions || []).map(a => '<li>' + esc(tl(a)) + '</li>').join('');
@@ -353,7 +417,9 @@ function tabSources(r) {
 }
 
 function plannerInput() {
-  return Object.assign({}, PLAN, { capital: PLAN.capital, priceXafKg: plPrice(), product: plProduct(PLAN.crop), horizon: plHorizon(PLAN.crop) });
+  const sys = plSystem(PLAN.crop);
+  return Object.assign({}, PLAN, { capital: PLAN.capital, priceXafKg: plPrice(), product: plProduct(PLAN.crop), horizon: plHorizon(PLAN.crop), system: sys,
+    area: sys !== 'open' ? (PLAN.coverM2 || plModule()) / 1e4 : PLAN.area, machineQuoteXafHa: PLAN.fieldWork === 'hire' && PLAN.machineQuote ? PLAN.machineQuote : 0 });
 }
 
 function plannerRender(root, compact) {
@@ -371,13 +437,16 @@ function plannerMount(root, compact) {
   const form = $('[data-planner]', root); if (!form) return () => {};
   let t = 0;
   const parseAmt = v => { const s = String(v).replace(/[^\d.,]/g, '').replace(/[.,](?=\d{3}(\D|$))/g, '').replace(',', '.'); return Math.max(0, Math.min(1e12, parseFloat(s) || 0)); };
-  const changed = () => { plannerRender(root, compact); clearTimeout(t); t = setTimeout(() => analytics.track('planner_run', { crop: PLAN.crop, water: PLAN.water, mode: PLAN.mode, cur: PLAN.currency }), 900); };
+  const changed = () => { plannerRender(root, compact); clearTimeout(t); t = setTimeout(() => analytics.track('planner_run', { crop: PLAN.crop, water: PLAN.water, mode: PLAN.mode, cur: PLAN.currency, system: plSystem(PLAN.crop), field: PLAN.fieldWork }), 900); };
   const reform = (focusSel) => { form.innerHTML = plannerFormInner(compact); const f = focusSel && $(focusSel, form); if (f) f.focus(); };
   const pickCrop = (k, focus) => { PLAN.crop = k; reform(focus ? '[data-pcrop="' + k + '"]' : null); changed(); };
   form.addEventListener('input', e => {
     const id = e.target.id;
     if (id === 'pl-cap') PLAN.capital = parseAmt(e.target.value);
     else if (id === 'pl-area') PLAN.area = Math.max(0, parseFloat(e.target.value) || 0);
+    else if (id === 'pl-m2') PLAN.coverM2 = Math.max(0, parseFloat(e.target.value) || 0);
+    else if (id === 'pl-fw') { PLAN.fieldWork = e.target.value; reform('#pl-fw'); }
+    else if (id === 'pl-mq') { const v = parseAmt(e.target.value); PLAN.machineQuote = v > 0 ? v / curRate() : null; }
     else if (id === 'pl-cur') {
       // The same money in the new currency: the capital is converted, not reinterpreted.
       const from = curRate(); PLAN.currency = e.target.value; const v = PLAN.capital / from * curRate();
@@ -392,9 +461,10 @@ function plannerMount(root, compact) {
     else if (e.target.name === 'pwater') PLAN.water = e.target.value;
     changed();
   });
-  form.addEventListener('change', e => { if (e.target.id === 'pl-cap') e.target.value = nf(PLAN.capital); if (e.target.id === 'pl-price') e.target.value = priceShown(plPrice()); });
+  form.addEventListener('change', e => { if (e.target.id === 'pl-cap') e.target.value = nf(PLAN.capital); if (e.target.id === 'pl-price') e.target.value = priceShown(plPrice()); if (e.target.id === 'pl-mq') e.target.value = PLAN.machineQuote ? priceShown(PLAN.machineQuote) : ''; });
   form.addEventListener('click', e => {
-    const m = e.target.closest('[data-pmode]'), c = e.target.closest('[data-pcrop]'), pr = e.target.closest('[data-pprod]'), hz = e.target.closest('[data-phor]');
+    const m = e.target.closest('[data-pmode]'), c = e.target.closest('[data-pcrop]'), pr = e.target.closest('[data-pprod]'), hz = e.target.closest('[data-phor]'), sy = e.target.closest('[data-psys]');
+    if (sy) { PLAN.system = sy.dataset.psys; reform('[data-psys="' + PLAN.system + '"]'); changed(); return; }
     if (hz) { PLAN.horizons[PLAN.crop] = +hz.dataset.phor; reform('[data-phor="' + hz.dataset.phor + '"]'); changed(); return; }
     if (m) { PLAN.mode = m.dataset.pmode; $$('[data-pmode]', form).forEach(b => b.setAttribute('aria-pressed', String(b === m))); const a = $('[data-parea]', form); if (a) a.hidden = PLAN.mode !== 'crop'; changed(); }
     if (c) pickCrop(c.dataset.pcrop, true);
@@ -405,6 +475,10 @@ function plannerMount(root, compact) {
   out.addEventListener('click', e => {
     const tb = e.target.closest('[data-ptab]');
     if (tb) { PLAN.tab = tb.dataset.ptab; plannerRender(root, compact); const nb = $('[data-ptab="' + PLAN.tab + '"]', out); if (nb) nb.focus(); analytics.track('planner_tab', { tab: PLAN.tab }); return; }
+    const ps = e.target.closest('[data-psys]');
+    if (ps) { PLAN.system = ps.dataset.psys; PLAN.tab = 'return'; reform(); changed(); const f = $('[data-psys="' + PLAN.system + '"]', form); if (f) f.scrollIntoView({ behavior: RM.matches ? 'auto' : 'smooth', block: 'center' }); analytics.track('planner_system_pick', { system: PLAN.system }); return; }
+    const fwb = e.target.closest('[data-pfw]');
+    if (fwb) { PLAN.fieldWork = fwb.dataset.pfw; PLAN.advOpen = true; reform(); changed(); analytics.track('planner_fieldwork', { method: PLAN.fieldWork }); return; }
     const go = e.target.closest('[data-pgo]');
     if (go) { PLAN.tab = 'return'; pickCrop(go.dataset.pgo, false); const f = $('[data-pcrop="' + PLAN.crop + '"]', form); if (f) f.scrollIntoView({ behavior: RM.matches ? 'auto' : 'smooth', block: 'center' }); analytics.track('planner_compare_pick', { crop: PLAN.crop }); return; }
     const rp = e.target.closest('[data-preport]');

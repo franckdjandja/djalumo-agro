@@ -23,7 +23,7 @@ Djalumo Agro turns a farming budget, from 100 USD to more than one million, into
 
 The project grows out of a real season. From September 2024 to October 2025, its founder ran a vegetable production pilot in Foumbot, in the West region of Cameroon. Each difficulty met in the field, from the hidden cost of water to climate stress and harvests sold without packaging, became a feature of the platform.
 
-Today the platform covers 12 crops, relies on 162 referenced sources, documents the pilot with 73 field photographs and maps 17 trade corridors, in English and in French.
+Today the platform covers 12 crops, relies on 180 referenced sources, documents the pilot with 73 field photographs and maps 17 trade corridors, in English and in French.
 
 ## The problem
 
@@ -31,7 +31,7 @@ Before planting, a grower or an investor in Cameroon has to answer three questio
 
 ## What the platform does
 
-**Season Planner.** The user enters a capital in any currency and chooses a crop, a water situation and a start date. The planner returns the plot size that the money covers, a dated technical itinerary, a detailed budget, a shopping list, the water balance, the risks of the chosen period, the cash flow and four possible outcomes, from a good harvest to a failure, each with its return and the price needed to break even. It covers crops with a short cycle (tomato, green bean, sweet pepper, chili pepper, cucumber and zucchini), crops with a long cycle (cassava, plantain and pineapple) and orchards (avocado, cocoa and oil palm).
+**Season Planner.** The user enters a capital in any currency and chooses a crop, a water situation and a start date. The planner returns the plot size that the money covers, a dated technical itinerary, a detailed budget, a shopping list, the water balance, the risks of the chosen period, the cash flow and four possible outcomes, from a good harvest to a failure, each with its return and the price needed to break even. It covers crops with a short cycle (tomato, green bean, sweet pepper, chili pepper, cucumber and zucchini), crops with a long cycle (cassava, plantain and pineapple) and orchards (avocado, cocoa and oil palm). Tomato, sweet pepper and cucumber can also be planned under a greenhouse, and tomato under a net house: the plot is sized in modules of 240 m², with the cost of the structure and the climate under the cover. Land preparation is done by hand or with hired machines, and the planner suggests machines when the area would need too many workers on the same day.
 
 <p align="center"><img src="docs/screenshots/season-planner.jpg" alt="Season Planner results for a tomato season" width="100%"></p>
 
@@ -52,7 +52,7 @@ The project follows the PACE framework (Plan, Analyze, Construct, Execute) taugh
 | Stage | Work carried out |
 | --- | --- |
 | **Plan** | Defined the decisions a grower or an investor must take before a season, starting from the problems met in the pilot: market, soil, climate, water and price. Identified the users: smallholders starting from 100 USD, cooperatives, agribusiness investors and buyers. |
-| **Analyze** | Collected and documented 162 sources: data sheets and budgets of the Cameroon Ministry of Agriculture (MINADER), FAO methods, guides from research institutes, regional surveys of input prices and dated market price observations from 2017 to 2026. Built a monthly climate profile of Foumbot and a seasonal price index. |
+| **Analyze** | Collected and documented 180 sources: data sheets and budgets of the Cameroon Ministry of Agriculture (MINADER), FAO methods, guides from research institutes, regional surveys of input prices and dated market price observations from 2017 to 2026. Built a monthly climate profile of Foumbot and a seasonal price index. |
 | **Construct** | Built a transparent decision engine: crop water needs following FAO Irrigation and Drainage Paper 56 (Hargreaves reference evapotranspiration, crop coefficients and dependable rainfall), yield response to water deficit following FAO Paper 33, a cost model per hectare, plot sizing that keeps a 10% reserve, four outcomes weighted by their probability, the price and yield needed to break even, cash flow and payback for crops with a long cycle, and a risk reading for each of the twelve possible start months. |
 | **Execute** | Delivered a bilingual website of 14 pages with the planner, the map, the field evidence, secure forms, a PostgreSQL backend and PDF reports subject to approval, all covered by automated tests. Every figure on screen links to its source, and any value without a source is labelled as an assumption. |
 

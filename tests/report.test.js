@@ -166,6 +166,23 @@ test('PDF report: every crop renders in both languages without long dashes', asy
   assert.ok(!/[–—]/.test(all), 'no long dash in the report wording');
 });
 
+test('PDF report: a greenhouse plan and a plan with hired machines render in both languages', async () => {
+  const cases = [[{ crop: 'tomato', system: 'greenhouse', capital: 12000000 }, 'fr'], [{ crop: 'pepper', system: 'greenhouse', capital: 12000000 }, 'en'], [{ crop: 'tomato', system: 'net', capital: 12000000 }, 'en'], [{ crop: 'tomato', fieldWork: 'hire', capital: 30000000 }, 'fr']];
+  for (const [extra, lang] of cases) {
+    const { buffer, pages } = await buildReportPdf({ input: { ...plan, product: null, priceXafKg: null, water: 'pump', ...extra }, request: { name: 'Test', profile: 'other', place: null }, lang, ref: 'DJ2610 TEST', issued: new Date(NOW) });
+    assert.equal(buffer.subarray(0, 5).toString(), '%PDF-', JSON.stringify(extra));
+    assert.ok(pages >= 8 && pages <= 22, JSON.stringify(extra) + ' pages ' + pages);
+  }
+});
+
+test('report request: the production system and the field work are accepted, unknown values refused', async () => {
+  const { handler } = setup();
+  const ok = await call(handler, { body: { ...request, plan: { ...plan, capital: 12000000, crop: 'tomato', product: null, system: 'greenhouse', fieldWork: 'hand', machineQuoteXafHa: null } } });
+  assert.equal(ok.status, 200, ok.body);
+  const bad = await call(handler, { body: { ...request, plan: { ...plan, crop: 'tomato', product: null, system: 'hydroponic' } } });
+  assert.equal(bad.status, 422);
+});
+
 test('config: a Gmail account and its app password are enough to switch reports on', () => {
   const c = getConfig({ GMAIL_USER: 'franck@example.org', GMAIL_APP_PASSWORD: 'abcd efgh ijkl mnop' });
   assert.equal(c.emailProvider, 'gmail');

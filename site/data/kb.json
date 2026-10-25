@@ -1,6 +1,6 @@
 {
- "version": "3.1.0",
- "built": "2026-10-23",
+ "version": "3.2.0",
+ "built": "2026-10-25",
  "fx": {
   "USD": 1,
   "XAF": 582.92,
@@ -7736,6 +7736,434 @@
    ]
   }
  },
+ "protected": {
+  "module_m2": 240,
+  "module_src": [
+   "PR1",
+   "PR2"
+  ],
+  "module_basis": "An 8 x 30 m tunnel, the standard module priced by Kenyan builders (PR2), close to the 250 m2 entry model sold in Cote d'Ivoire (PR1).",
+  "systems": {
+   "net": {
+    "label": {
+     "en": "Net house",
+     "fr": "Maison filet"
+    },
+    "desc": {
+     "en": "Steel frame covered with insect net, no plastic: about 4°C warmer than outside and rain still reaches the crop.",
+     "fr": "Armature en acier couverte de filet anti insectes, sans plastique : environ 4 °C de plus qu’à l’extérieur et la pluie atteint toujours la culture."
+    },
+    "frame_label": {
+     "en": "Net house frame, installed",
+     "fr": "Armature de la maison filet, posée"
+    },
+    "cover_label": {
+     "en": "Insect net cover",
+     "fr": "Couverture en filet anti insectes"
+    },
+    "build_label": {
+     "en": "Build the net house",
+     "fr": "Construire la maison filet"
+    },
+    "build_detail": {
+     "en": "The builder sets the frame, stretches the insect net over the roof and the walls and fits a double door; the beds are then formed inside.",
+     "fr": "Le constructeur monte l’armature, tend le filet anti insectes sur le toit et les murs et pose une double porte ; les planches sont ensuite formées à l’intérieur."
+    },
+    "price_tiers": [
+     {
+      "from_m2": 0,
+      "xaf_m2": 12600.0
+     },
+     {
+      "from_m2": 1000,
+      "xaf_m2": 10920.0
+     }
+    ],
+    "cover_share": 0.16,
+    "frame_life_seasons": 20,
+    "cover_life_seasons": 8,
+    "temp_delta_c": 4,
+    "rain_factor": 1,
+    "disease_shift": 0,
+    "water": null,
+    "build_weeks": [
+     [
+      250,
+      2
+     ],
+     [
+      500,
+      3
+     ],
+     [
+      1000000,
+      5
+     ]
+    ],
+    "src": [
+     "PR1",
+     "PR3",
+     "PR5"
+    ],
+    "basis": "No price found for insect net alone; the share of the greenhouse film is used until a Cameroonian quote is collected. No lifespan found for insect net under tropical sun; the four years of greenhouse film are used until a supplier warranty is found. Daytime temperature 4 C higher under insect nets than outside, Tanzania (PR5). Rain passes through the net, so rain driven disease pressure is unchanged; nets mainly stop insects (PR5). A tubular shade net house costs 710 rupees per m2 against 844 for a tubular polyhouse in the Indian cost norms (PR3); the ratio 0.84 is applied to the Ivorian greenhouse prices (PR1)."
+   },
+   "greenhouse": {
+    "label": {
+     "en": "Greenhouse",
+     "fr": "Serre"
+    },
+    "desc": {
+     "en": "Plastic roof with insect net walls and vents: the crop is kept dry and watered by drip, and the air is warmer inside.",
+     "fr": "Toit en plastique avec murs et aérations en filet anti insectes : la culture reste au sec, elle est arrosée au goutte à goutte et l’air est plus chaud à l’intérieur."
+    },
+    "frame_label": {
+     "en": "Greenhouse frame, installed",
+     "fr": "Armature de la serre, posée"
+    },
+    "cover_label": {
+     "en": "Greenhouse film, UV treated",
+     "fr": "Film de serre traité contre les UV"
+    },
+    "build_label": {
+     "en": "Build the greenhouse",
+     "fr": "Construire la serre"
+    },
+    "build_detail": {
+     "en": "The builder sets the steel arches, the UV treated film, the insect net walls and vents and a double door; the drip lines and the beds are then laid inside.",
+     "fr": "Le constructeur monte les arceaux en acier, le film traité contre les UV, les murs et aérations en filet anti insectes et une double porte ; les lignes de goutte à goutte et les planches sont ensuite installées à l’intérieur."
+    },
+    "price_tiers": [
+     {
+      "from_m2": 0,
+      "xaf_m2": 15000
+     },
+     {
+      "from_m2": 1000,
+      "xaf_m2": 13000
+     }
+    ],
+    "cover_share": 0.16,
+    "frame_life_seasons": 20,
+    "cover_life_seasons": 8,
+    "temp_delta_c": 5,
+    "rain_factor": 0,
+    "disease_shift": -1,
+    "water": "drip",
+    "build_weeks": [
+     [
+      250,
+      2
+     ],
+     [
+      500,
+      3
+     ],
+     [
+      1000000,
+      5
+     ]
+    ],
+    "src": [
+     "PR1",
+     "PR2",
+     "PR3",
+     "PR4",
+     "PR5",
+     "PR10"
+    ],
+    "basis": "Derived from official Indian cost norms (PR3): a naturally ventilated tubular polyhouse costs 844 rupees per m2 and a tubular shade net house 710, so the plastic cover accounts for about 16% of the price (134 / 844). Greenhouse grade UV stabilised film is warranted for four years or more (PR4). Daytime temperature was 4 C higher under insect nets and 15 C higher under plastic film than outside in Tanzania (PR5). With insect net walls and open vents, a ventilated greenhouse is assumed 5 C warmer than outside, to be measured during the 2027 pilot. The plastic roof keeps rain off the leaves, which lowers rain driven disease pressure by one level. Diseases remain under cover: late blight, early blight and bacterial wilt each made about a quarter of the problems reported by Kenyan growers (PR10). 250 m2 from 3,800,000 FCFA (15,200 per m2) and 500 m2 from 7,500,000 FCFA (15,000 per m2), galvanised structure, anti UV film and insect net (PR1). 1,000 m2 multi tunnel from 13,000,000 FCFA, film of 200 microns and insect net (PR1). Kenyan builders quote 255,000 to 515,000 KES for an 8 x 30 m tunnel with frame, 200 micron film, insect net, vents, drip lines and a 1,000 L tank, about 4,800 to 9,600 FCFA per m2 at the rates of the planner (PR2). The Ivorian prices, in the same currency zone as Cameroon, are kept as the reference."
+   }
+  },
+  "crops": {
+   "tomato": {
+    "greenhouse": {
+     "yield_t_ha": {
+      "poor": 50,
+      "average": 100,
+      "good": 150
+     },
+     "src": [
+      "PR6",
+      "T15",
+      "PR9"
+     ],
+     "note": {
+      "en": "Kenyan greenhouse survey (mean 10.5 kg per m²) and the Anna F1 guide: about 75 days to the first harvest, then 8 months of picking.",
+      "fr": "Enquête kenyane sous serre (moyenne 10,5 kg par m²) et guide de la variété Anna F1 : environ 75 jours jusqu’à la première récolte, puis 8 mois de cueillette."
+     },
+     "basis": "Survey of 96 greenhouse growers in Nakuru, Kenya: mean 10.53 kg per m2, from 0.33 to 29.13 (PR6). Average set at 10 kg per m2, poor and good at half and one and a half times the average, a cautious range to be checked against the first greenhouse seasons of the 2027 pilot. Anna F1 gives about 18 kg per plant over 8 months (T15). Anna F1 matures 75 days after transplanting and produces over 8 months (T15); KALRO lists Anna F1 for greenhouses with a harvest of up to 8 months (PR9). The plant is indeterminate: it keeps flowering while it is harvested, so the heat check covers every month from the first flowers to 45 days before the last harvest.",
+     "cycle": {
+      "nursery_days": 30,
+      "to_first_harvest_days": 75,
+      "harvest_days": 240,
+      "flowering_before_harvest_days": 45
+     },
+     "continuous_flowering": true
+    },
+    "net": {
+     "yield_t_ha": {
+      "poor": 16.8,
+      "average": 33.5,
+      "good": 50.1
+     },
+     "src": [
+      "PR5"
+     ],
+     "note": {
+      "en": "Two year trial in Tanzania under fine insect net, with field varieties and the open field calendar.",
+      "fr": "Essai de deux ans en Tanzanie sous filet fin anti insectes, avec des variétés de plein champ et le calendrier du plein champ."
+     },
+     "basis": "Marketable yields of 16.8 and 50.1 t/ha under fine mesh insect net, against 2.7 and 10.8 t/ha in the open, over two years in Tanzania (PR5). Poor and good are the two values, average their midpoint. Same calendar as the open field: the trial grew determinate field varieties."
+    }
+   },
+   "pepper": {
+    "greenhouse": {
+     "yield_t_ha": {
+      "poor": 8.2,
+      "average": 14.6,
+      "good": 21.3
+     },
+     "src": [
+      "PR8"
+     ],
+     "note": {
+      "en": "Nine varieties in a greenhouse in Ghana over one dry season, open field calendar.",
+      "fr": "Neuf variétés sous serre au Ghana pendant une saison sèche, calendrier du plein champ."
+     },
+     "basis": "Nine sweet pepper varieties in a greenhouse in Ghana, dry season 2014 to 2015: 8.20 to 21.34 t/ha, mean 14.62 t/ha, against 5.02 to 12.57 t/ha in the open field of the same trial (PR8). Same calendar as the open field: the trial ran over one dry season."
+    }
+   },
+   "cucumber": {
+    "greenhouse": {
+     "yield_t_ha": {
+      "poor": 54.4,
+      "average": 65.4,
+      "good": 76.4
+     },
+     "src": [
+      "CU3"
+     ],
+     "note": {
+      "en": "Tunnel trial in Mayotte with drip irrigation; its calendar is close to the open field one.",
+      "fr": "Essai sous tunnel à Mayotte avec goutte à goutte ; son calendrier est proche de celui du plein champ."
+     },
+     "basis": "Tunnel in soil with drip irrigation in Mayotte, dry season: 54.4 to 76.4 t/ha of marketable fruit 78 days after planting, from the cucumber research file of the planner (CU3). Average at the midpoint. Transplanted 16 days after sowing, first harvest 29 to 32 days after transplanting and marketable yield counted 78 days after planting (CU3): about 46 days from sowing to the first harvest and 48 days of harvest, against 50 and 45 in the open field calendar of the planner, which is therefore kept."
+    }
+   }
+  },
+  "confidence": {
+   "block": {
+    "en": "Production under cover",
+    "fr": "Production sous abri"
+   },
+   "level": "low",
+   "note": {
+    "en": "Structure prices from Côte d’Ivoire and Kenya, yields from Kenya, Tanzania, Ghana and Mayotte; no Cameroon reference yet. Get a builder’s quote before committing.",
+    "fr": "Prix des structures en Côte d’Ivoire et au Kenya, rendements au Kenya, en Tanzanie, au Ghana et à Mayotte ; pas encore de référence camerounaise. Demander un devis à un constructeur avant de s’engager."
+   }
+  }
+ },
+ "machinery": {
+  "ops": {
+   "clear": {
+    "label": {
+     "en": "Clearing by machine, hired",
+     "fr": "Défrichage mécanique, en location"
+    },
+    "price": 75000,
+    "range": [
+     50000,
+     100000
+    ],
+    "unit": "ha",
+    "src": [
+     "C67"
+    ],
+    "basis": "Clearing 50,000 to 100,000 FCFA per ha in a tomato budget for Cameroon dated June 2026 (C67); midpoint used. The source does not say whether the work is done by machine or by hand."
+   },
+   "plough": {
+    "label": {
+     "en": "Ploughing by tractor, hired",
+     "fr": "Labour au tracteur, en location"
+    },
+    "price": 115000,
+    "range": [
+     80000,
+     150000
+    ],
+    "unit": "ha",
+    "src": [
+     "C67"
+    ],
+    "basis": "Ploughing 80,000 to 150,000 FCFA per ha (C67); midpoint used."
+   },
+   "ridge": {
+    "label": {
+     "en": "Ridges or beds by tractor, hired",
+     "fr": "Billons ou planches au tracteur, en location"
+    },
+    "price": 150000,
+    "range": [
+     100000,
+     200000
+    ],
+    "unit": "ha",
+    "src": [
+     "C67"
+    ],
+    "basis": "Ridging 100,000 to 200,000 FCFA per ha (C67); midpoint used."
+   }
+  },
+  "steps": {
+   "tomato": {
+    "clear": {
+     "ops": [
+      "clear"
+     ]
+    },
+    "plough": {
+     "ops": [
+      "plough",
+      "ridge"
+     ]
+    }
+   },
+   "greenbean": {
+    "clear": {
+     "ops": [
+      "clear"
+     ]
+    },
+    "plough": {
+     "ops": [
+      "plough",
+      "ridge"
+     ]
+    }
+   },
+   "pepper": {
+    "clear": {
+     "ops": [
+      "clear"
+     ]
+    },
+    "plough": {
+     "ops": [
+      "plough",
+      "ridge"
+     ]
+    }
+   },
+   "chili": {
+    "clear": {
+     "ops": [
+      "clear"
+     ]
+    },
+    "plough": {
+     "ops": [
+      "plough"
+     ],
+     "hand_share": 0.5
+    }
+   },
+   "cucumber": {
+    "clear": {
+     "ops": [
+      "clear"
+     ]
+    },
+    "plough": {
+     "ops": [
+      "plough",
+      "ridge"
+     ]
+    }
+   },
+   "zucchini": {
+    "clear": {
+     "ops": [
+      "clear"
+     ]
+    },
+    "plough": {
+     "ops": [
+      "plough",
+      "ridge"
+     ]
+    }
+   },
+   "cassava": {
+    "prep": {
+     "ops": [
+      "clear",
+      "ridge"
+     ]
+    }
+   },
+   "plantain": {
+    "clear": {
+     "ops": [
+      "clear"
+     ]
+    }
+   },
+   "pineapple": {
+    "clear": {
+     "ops": [
+      "clear"
+     ]
+    },
+    "beds": {
+     "ops": [
+      "plough",
+      "ridge"
+     ]
+    }
+   },
+   "avocado": {
+    "clear": {
+     "ops": [
+      "clear"
+     ]
+    }
+   },
+   "cocoa": {
+    "clear": {
+     "ops": [
+      "clear"
+     ]
+    }
+   },
+   "oil_palm": {
+    "clear": {
+     "ops": [
+      "clear"
+     ]
+    }
+   }
+  },
+  "hand_share": 0.1,
+  "workers_per_day_max": 15,
+  "src": [
+   "C67",
+   "MA2",
+   "MA6",
+   "MA7"
+  ],
+  "basis": "A provider near Yaoundé charged 250,000 FCFA per ha for ploughing, harrowing and sowing on new sites and 230,000 on sites already served in September 2024, final price on quote (MA2). Ploughing plus ridging at the midpoints above comes to 265,000 FCFA per ha. A West African rental guide gives 25,000 to 50,000 FCFA per ha for tractor ploughing (MA3) and Kenyan private tractor owners charged 3,500 to 4,500 KES per acre in 2024, about 39,000 to 50,000 FCFA per ha (MA4, MA5): these lower prices are not used for Cameroon. CENEEMA, under the Ministry of Agriculture, presented 239 tractors of 90 HP and 118 heavy machines in March 2025, works through 12 regional branches and about 20 mechanisation pools, and sets each job after a site visit without a published tariff (MA7, MA8). The State announced a subsidy of 400 million FCFA for farm mechanisation in April 2026 (MA9). Share of the hand work of a mechanised step that remains: levelling bed tops, corners and edges the tractor cannot reach. Djalumo Agro assumption to document in the 2027 pilot. Above 15 workers needed on the same day for land preparation, the planner suggests hired machines: hiring and supervising more people for a short window is rarely realistic for a starting grower. Djalumo Agro assumption to check in the 2027 pilot.",
+  "confidence": {
+   "block": {
+    "en": "Machine hire",
+    "fr": "Location de machines"
+   },
+   "level": "low",
+   "note": {
+    "en": "Midpoints of the ranges of one Cameroonian tomato budget (June 2026), checked against a Yaoundé provider; no tariff is published by CENEEMA. Enter your own quote.",
+    "fr": "Points milieux des fourchettes d’un budget de la tomate au Cameroun (juin 2026), recoupés avec un prestataire de Yaoundé ; le CENEEMA ne publie pas de tarif. Saisissez votre propre devis."
+   }
+  }
+ },
  "assumptions": [
   {
    "en": "Two growing seasons a year on the same plot, as in the MINADER budget: equipment lifespans in years are doubled into seasons.",
@@ -7816,6 +8244,22 @@
   {
    "en": "Oil palm: labour comes from the MINADER amounts at 2,500 FCFA a person day; bunches are sold to a mill by the tonne.",
    "fr": "Palmier à huile : le travail vient des montants du MINADER à 2 500 FCFA la journée ; les régimes sont vendus à une huilerie à la tonne."
+  },
+  {
+   "en": "Greenhouse and net house prices come from a builder in Côte d’Ivoire, in the same currency zone, until Cameroonian quotes are collected: 15,000 FCFA per m² below 1,000 m² and 13,000 from 1,000 m². A net house costs 84% of a greenhouse, the ratio of the Indian official cost norms. The frame is assumed to last 10 years and the cover 4; each plan is charged the share of their life it uses.",
+   "fr": "Les prix des serres et des maisons filet viennent d’un constructeur de Côte d’Ivoire, dans la même zone monétaire, en attendant des devis camerounais : 15 000 FCFA par m² en dessous de 1 000 m² et 13 000 à partir de 1 000 m². Une maison filet coûte 84 % d’une serre, le rapport des normes de coûts officielles indiennes. L’armature est supposée durer 10 ans et la couverture 4 ; chaque plan supporte la part de leur durée de vie qu’il utilise."
+  },
+  {
+   "en": "Under a ventilated greenhouse the day is assumed 5°C warmer than outside, and 4°C under a net house as measured in Tanzania. No rain reaches the crop under a greenhouse, which is watered by drip, and rain driven disease pressure is lowered by one level. Structures are sized in whole modules of 240 m².",
+   "fr": "Sous une serre ventilée, la journée est supposée plus chaude de 5 °C qu’à l’extérieur, et de 4 °C sous une maison filet comme mesuré en Tanzanie. Aucune pluie n’atteint la culture sous serre, qui est arrosée au goutte à goutte, et la pression des maladies liées à la pluie baisse d’un niveau. Les structures sont dimensionnées en modules entiers de 240 m²."
+  },
+  {
+   "en": "Yields under cover replace the season references. Greenhouse tomato is planned at 5, 10 and 15 kg per m² over eight months of harvest, a cautious range around the Kenyan survey mean of 10.5 kg; its care, protection and watering are extended to the longer harvest. As it flowers throughout the harvest, its heat risk is high when more than a third of the flowering months reach its heat limit inside the greenhouse, and medium when at least one month comes within 2°C of it.",
+   "fr": "Les rendements sous abri remplacent les références de saison. La tomate sous serre est planifiée à 5, 10 et 15 kg par m² sur huit mois de récolte, une fourchette prudente autour de la moyenne de 10,5 kg de l’enquête kenyane ; son entretien, sa protection et son arrosage sont prolongés sur cette récolte plus longue. Comme elle fleurit pendant toute la récolte, son risque de chaleur est fort quand plus d’un tiers des mois de floraison atteignent sa limite de chaleur dans la serre, et moyen quand au moins un mois s’en approche à moins de 2 °C."
+  },
+  {
+   "en": "Hired machine prices are the midpoints of the ranges of one Cameroonian tomato budget of June 2026 and carry low confidence: enter a local quote when you have one. A tenth of the hand work of a mechanised step remains (half for chili, whose planting holes are dug by hand). Machines are suggested when land preparation needs more than 15 workers on the same day.",
+   "fr": "Les prix de location de machines sont les points milieux des fourchettes d’un budget camerounais de la tomate de juin 2026 et restent peu fiables : saisissez un devis local dès que vous en avez un. Un dixième du travail manuel d’une étape mécanisée demeure (la moitié pour le piment, dont les trous de plantation sont creusés à la main). Les machines sont suggérées quand la préparation du terrain demande plus de 15 ouvriers le même jour."
   }
  ],
  "sources": {
@@ -8004,6 +8448,12 @@
    "publisher": "TM Business (TMCI), Abidjan",
    "year": 2026,
    "url": "https://tmbusiness.ci/produit/semence-de-haricot-vert-cora-1-kg/"
+  },
+  "C67": {
+   "title": "Culture de la tomate au Cameroun : cout, budget et rentabilite d'1 hectare en 2026",
+   "publisher": "Maison Agricole (blog, author Cedric Ngondi)",
+   "year": 2026,
+   "url": "https://maisonagricole.com/agriculture/culture-de-la-tomate-au-cameroun-cout-budget-et-rentabilite-d1-hectare-en-2026/"
   },
   "C74": {
    "title": "Couts des prestations en installation de systeme d'irrigation goutte a goutte, annee 2020",
@@ -8431,6 +8881,54 @@
    "year": 1989,
    "url": "https://www.fao.org/4/t7202e/t7202e00.htm"
   },
+  "MA2": {
+   "title": "Location de tracteur, service complet par hectare",
+   "publisher": "Jeloutoo Cameroun",
+   "year": 2024,
+   "url": "https://cm.jeloutoo.com/blog/listing/location-de-tracteur-service-complet-par-hectare/"
+  },
+  "MA3": {
+   "title": "Machines agricoles : coût et location en Afrique de l’Ouest",
+   "publisher": "Abidjan Solution",
+   "year": null,
+   "url": "https://www.abidjansolution.biz/machines-agricoles-cout-et-location-en-afrique-de-l-ouest"
+  },
+  "MA4": {
+   "title": "How private tractor owners cash in on the rains",
+   "publisher": "The Standard, Kenya",
+   "year": 2024,
+   "url": "https://thestandard.ke/business/amp/smart-harvest/article/2001507622/how-private-tractor-owners-cash-in-on-the-rains"
+  },
+  "MA5": {
+   "title": "Kitui farmers to pay Sh2,500 per acre for county tractors",
+   "publisher": "The Star, Kenya",
+   "year": 2024,
+   "url": "https://www.the-star.co.ke/news/africa/2024-08-09-kitui-farmers-to-pay-sh2500-per-acre-for-county-tractors"
+  },
+  "MA6": {
+   "title": "Mécanisation agricole au Cameroun, 5e Assemblée générale de la CARD",
+   "publisher": "Coalition for African Rice Development (CARD)",
+   "year": 2013,
+   "url": "https://riceforafrica.net/joomla/downloads/Meetings/gm5/3-2.GM5_Ag_Mech_Cameroon_FR.pdf"
+  },
+  "MA7": {
+   "title": "Le CENEEMA lance la première campagne de mécanisation agricole",
+   "publisher": "Journal du Cameroun",
+   "year": 2025,
+   "url": "https://fr.journalducameroun.com/cameroun-le-ceneema-lance-la-premiere-campagne-de-mecanisation-agricole/"
+  },
+  "MA8": {
+   "title": "CENEEMA opens a new mechanization branch in Maroua to lower service costs",
+   "publisher": "Business in Cameroon",
+   "year": 2025,
+   "url": "https://www.businessincameroon.com/agriculture/1706-14760-ceneema-opens-new-mechanization-branch-in-maroua-to-lower-service-costs"
+  },
+  "MA9": {
+   "title": "Cameroon steps up farm mechanization with a CFA400 million subsidy",
+   "publisher": "Business in Cameroon",
+   "year": 2026,
+   "url": "https://www.businessincameroon.com/agriculture/0904-16000-cameroon-steps-up-farm-mechanization-with-cfa400-million-subsidy"
+  },
   "OP1": {
    "title": "Fiche technico économique de conduite d’une palmeraie (Fiche technico économique 2)",
    "publisher": "MINADER, Direction des organisations professionnelles agricoles et de l’appui aux exploitations",
@@ -8586,6 +9084,60 @@
    "publisher": "Investir au Cameroun",
    "year": 2013,
    "url": "https://www.investiraucameroun.com/agriculture/0412-4856-cameroun-la-production-de-la-banane-plantain-requiert-20-millions-de-plants-par-an-selon-le-carbap"
+  },
+  "PR1": {
+   "title": "Construction de serres agricoles, nos services (tunnels de 250, 500 et 1 000 m2)",
+   "publisher": "Agro Serre Innovation, Cote d'Ivoire",
+   "year": 2026,
+   "url": "https://www.agroserreinnovationci.com/services"
+  },
+  "PR2": {
+   "title": "Greenhouse construction service in Nairobi and Kenya: services, costs and top providers",
+   "publisher": "Best Care Services directory, Kenya",
+   "year": 2026,
+   "url": "https://bestcareservices.co.ke/directory/greenhouse-construction-service.html"
+  },
+  "PR3": {
+   "title": "Cost norms for horticulture (naturally ventilated polyhouse, shade net house)",
+   "publisher": "National Horticulture Board, Government of India",
+   "year": null,
+   "url": "https://nhb.gov.in/hindi/pdf/Cost Norms.pdf"
+  },
+  "PR4": {
+   "title": "Plastic greenhouse film update",
+   "publisher": "University of Massachusetts Amherst, Greenhouse Crops and Floriculture",
+   "year": null,
+   "url": "https://www.umass.edu/agriculture-food-environment/greenhouse-floriculture/fact-sheets/plastic-greenhouse-film-update"
+  },
+  "PR5": {
+   "title": "Small mesh nets protect tomato plants from insect pests and increase yields in eastern Africa (Nordey, Deletre, Mlowe, Martin), Journal of Horticultural Science and Biotechnology 95(2)",
+   "publisher": "GOV.UK Research for Development outputs",
+   "year": 2020,
+   "url": "https://www.gov.uk/research-for-development-outputs/small-mesh-nets-protect-tomato-plants-from-insect-pests-and-increase-yields-in-eastern-africa"
+  },
+  "PR6": {
+   "title": "Comparison of the profitability of small scale greenhouse and open field tomato production systems in Nakuru North District, Kenya (Wachira, Mshenga, Saidi)",
+   "publisher": "Asian Journal of Agricultural Sciences 6(2)",
+   "year": 2014,
+   "url": "https://www.napopen.com/article/ajas.6.5303"
+  },
+  "PR8": {
+   "title": "Growth, yield and consumer acceptance of sweet pepper as influenced by open field and greenhouse production systems (Nkansah, Norman, Martey), Journal of Horticulture 4(4)",
+   "publisher": "Longdom",
+   "year": 2017,
+   "url": "https://www.longdom.org/open-access/growth-yield-and-consumer-acceptance-of-sweet-pepper-capsicum-annuum-l-as-influenced-by-open-field-and-greenhouse-produc-16888.html"
+  },
+  "PR9": {
+   "title": "Tomato varieties suitable for greenhouse (pamphlet 73)",
+   "publisher": "KALRO, National Agricultural Value Chain Development Project",
+   "year": 2024,
+   "url": "https://www.kalro.org/navcdp/docs/tomato/Tomato%20varieties%20suitable%20for%20Greenhouse%20Tomato%20pamphlet.pdf"
+  },
+  "PR10": {
+   "title": "A survey of constraints to greenhouse and open field tomato production among smallholder farmers in Nakuru County, Kenya (Mwende, Kagiki, Wangari)",
+   "publisher": "Agriculture, Forestry and Fisheries 15(2)",
+   "year": 2026,
+   "url": "https://www.sciencepg.com/article/10.11648/j.aff.20261502.14"
   },
   "T1": {
    "title": "Technical and Economic Data Sheet for Tomato Production and Post-Production (PARPAC)",

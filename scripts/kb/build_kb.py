@@ -29,7 +29,7 @@ def L(en, fr):
 
 # ---------------------------------------------------------------- sources
 # Each research file numbers its sources from S1; they get a prefix here and identical URLs are merged.
-PREFIX = {'tomato': 'T', 'pepper': 'P', 'greenbean': 'G', 'cucumber': 'CU', 'zucchini': 'Z', 'chili': 'CH', 'cassava': 'CA', 'plantain': 'PL', 'avocado': 'AV', 'pineapple': 'AN', 'cocoa': 'CC', 'oil_palm': 'OP', 'costs': 'C'}
+PREFIX = {'tomato': 'T', 'pepper': 'P', 'greenbean': 'G', 'cucumber': 'CU', 'zucchini': 'Z', 'chili': 'CH', 'cassava': 'CA', 'plantain': 'PL', 'avocado': 'AV', 'pineapple': 'AN', 'cocoa': 'CC', 'oil_palm': 'OP', 'costs': 'C', 'protected': 'PR', 'machinery': 'MA'}
 SOURCES = {}
 ALIAS = {}
 _url_owner = {}
@@ -1293,6 +1293,94 @@ def zucchini():
     }
 
 
+# ---------------------------------------------------------------- production under cover and field machinery
+def _local(pre):
+    """Turns the S ids of one research file into published ids; ids of other files (CU3) are kept."""
+    def ids(lst):
+        return src(*[(pre + i[1:]) if re.match(r'^S\d+$', i) else i for i in lst])
+
+    def txt(s):
+        return re.sub(r'\bS(\d+)\b', lambda m: pre + m.group(1), s or '')
+    return ids, txt
+
+
+def protected(R):
+    """Greenhouse and net house: price per m2 by size, frame and cover lives, climate under the cover and the yields
+    of the crops grown under it. Values without a source are flagged and listed in ASSUMPTIONS."""
+    P = R['protected']
+    ids, txt = _local('PR')
+    G = P['structures']['greenhouse']
+    N = P['structures']['net']
+    tiers = [{'from_m2': t['from_m2'], 'xaf_m2': t['value']} for t in G['price_xaf_m2']]
+    ratio = N['price_ratio_to_greenhouse']['value']
+
+    def system(S, label, desc, frame, cover, tiers, water, extra_basis, build):
+        return {
+            'label': label, 'desc': desc, 'frame_label': frame, 'cover_label': cover, 'build_label': build[0], 'build_detail': build[1],
+            'price_tiers': tiers, 'cover_share': S['cover_share']['value'],
+            'frame_life_seasons': life(S['frame_life_years']['value']), 'cover_life_seasons': life(S['cover_life_years']['value']),
+            'temp_delta_c': S['temp_delta_c']['value'], 'rain_factor': S['rain_on_crop'], 'disease_shift': S['disease_shift']['value'],
+            'water': water, 'build_weeks': S['build_weeks']['value'], 'src': ids(S['source_ids']),
+            'basis': ' '.join(txt(x) for x in [S['cover_share']['notes'], S['cover_life_years']['notes'], S['temp_delta_c']['notes'], S['disease_shift']['notes'], extra_basis]),
+        }
+
+    systems = {
+        'net': system(N, L('Net house', 'Maison filet'),
+                      L('Steel frame covered with insect net, no plastic: about 4°C warmer than outside and rain still reaches the crop.', 'Armature en acier couverte de filet anti insectes, sans plastique : environ 4 °C de plus qu’à l’extérieur et la pluie atteint toujours la culture.'),
+                      L('Net house frame, installed', 'Armature de la maison filet, posée'), L('Insect net cover', 'Couverture en filet anti insectes'),
+                      [{'from_m2': t['from_m2'], 'xaf_m2': round(t['xaf_m2'] * ratio, -1)} for t in tiers], None, txt(N['price_ratio_to_greenhouse']['notes']),
+                      (L('Build the net house', 'Construire la maison filet'), L('The builder sets the frame, stretches the insect net over the roof and the walls and fits a double door; the beds are then formed inside.', 'Le constructeur monte l’armature, tend le filet anti insectes sur le toit et les murs et pose une double porte ; les planches sont ensuite formées à l’intérieur.'))),
+        'greenhouse': system(G, L('Greenhouse', 'Serre'),
+                             L('Plastic roof with insect net walls and vents: the crop is kept dry and watered by drip, and the air is warmer inside.', 'Toit en plastique avec murs et aérations en filet anti insectes : la culture reste au sec, elle est arrosée au goutte à goutte et l’air est plus chaud à l’intérieur.'),
+                             L('Greenhouse frame, installed', 'Armature de la serre, posée'), L('Greenhouse film, UV treated', 'Film de serre traité contre les UV'),
+                             tiers, 'drip', txt(G['price_xaf_m2'][0]['notes'] + ' ' + G['price_xaf_m2'][1]['notes'] + ' ' + G['price_check']),
+                             (L('Build the greenhouse', 'Construire la serre'), L('The builder sets the steel arches, the UV treated film, the insect net walls and vents and a double door; the drip lines and the beds are then laid inside.', 'Le constructeur monte les arceaux en acier, le film traité contre les UV, les murs et aérations en filet anti insectes et une double porte ; les lignes de goutte à goutte et les planches sont ensuite installées à l’intérieur.'))),
+    }
+    notes = {
+        ('tomato', 'greenhouse'): L('Kenyan greenhouse survey (mean 10.5 kg per m²) and the Anna F1 guide: about 75 days to the first harvest, then 8 months of picking.', 'Enquête kenyane sous serre (moyenne 10,5 kg par m²) et guide de la variété Anna F1 : environ 75 jours jusqu’à la première récolte, puis 8 mois de cueillette.'),
+        ('tomato', 'net'): L('Two year trial in Tanzania under fine insect net, with field varieties and the open field calendar.', 'Essai de deux ans en Tanzanie sous filet fin anti insectes, avec des variétés de plein champ et le calendrier du plein champ.'),
+        ('pepper', 'greenhouse'): L('Nine varieties in a greenhouse in Ghana over one dry season, open field calendar.', 'Neuf variétés sous serre au Ghana pendant une saison sèche, calendrier du plein champ.'),
+        ('cucumber', 'greenhouse'): L('Tunnel trial in Mayotte with drip irrigation; its calendar is close to the open field one.', 'Essai sous tunnel à Mayotte avec goutte à goutte ; son calendrier est proche de celui du plein champ.'),
+    }
+    crops = {}
+    for crop, by in P['crops'].items():
+        for sysk, d in by.items():
+            y = d['yield_kg_m2']
+            e = {'yield_t_ha': {k: round(y[k] * 10, 2) for k in ('poor', 'average', 'good')}, 'src': ids(d['source_ids']), 'note': notes[(crop, sysk)],
+                 'basis': txt(d['yield_notes'] + ' ' + d.get('cycle_notes', ''))}
+            if d.get('cycle'):
+                e['cycle'] = d['cycle']
+            if d.get('continuous_flowering'):
+                e['continuous_flowering'] = True
+            crops.setdefault(crop, {})[sysk] = e
+    return {
+        'module_m2': P['module']['m2'], 'module_src': ids(P['module']['source_ids']), 'module_basis': txt(P['module']['notes']),
+        'systems': systems, 'crops': crops,
+        'confidence': {'block': L('Production under cover', 'Production sous abri'), 'level': 'low',
+                       'note': L('Structure prices from Côte d’Ivoire and Kenya, yields from Kenya, Tanzania, Ghana and Mayotte; no Cameroon reference yet. Get a builder’s quote before committing.',
+                                 'Prix des structures en Côte d’Ivoire et au Kenya, rendements au Kenya, en Tanzanie, au Ghana et à Mayotte ; pas encore de référence camerounaise. Demander un devis à un constructeur avant de s’engager.')},
+    }
+
+
+def machinery(R):
+    """Hired machines for land preparation: price per hectare of each operation, the operations each preparation step
+    needs, the hand work left and the rule that suggests machines."""
+    M = R['machinery']
+    ids, txt = _local('MA')
+    ops = {k: {'label': L(o['label_en'], o['label_fr']), 'price': o['price_xaf_ha'], 'range': o['range_xaf_ha'], 'unit': 'ha', 'src': ids(o['source_ids']), 'basis': txt(o['notes'])}
+           for k, o in M['operations'].items()}
+    steps = {crop: {sid: dict({'ops': v['ops']}, **({'hand_share': v['hand_share']} if 'hand_share' in v else {})) for sid, v in by.items()} for crop, by in M['steps'].items()}
+    return {
+        'ops': ops, 'steps': steps,
+        'hand_share': M['hand_share']['value'], 'workers_per_day_max': M['workers_per_day_max']['value'],
+        'src': ids(['S1', 'S2', 'S6', 'S7']),
+        'basis': txt(M['price_check'] + ' ' + M['public_provider'] + ' ' + M['hand_share']['notes'] + ' ' + M['workers_per_day_max']['notes']),
+        'confidence': {'block': L('Machine hire', 'Location de machines'), 'level': 'low',
+                       'note': L('Midpoints of the ranges of one Cameroonian tomato budget (June 2026), checked against a Yaoundé provider; no tariff is published by CENEEMA. Enter your own quote.',
+                                 'Points milieux des fourchettes d’un budget de la tomate au Cameroun (juin 2026), recoupés avec un prestataire de Yaoundé ; le CENEEMA ne publie pas de tarif. Saisissez votre propre devis.')},
+    }
+
+
 # ---------------------------------------------------------------- climate, scenarios, assumptions
 def climate(R):
     c = R['tomato']['climate']['foumbot_climate']
@@ -1346,6 +1434,10 @@ ASSUMPTIONS = [
     L('Pineapple: the poor yield (half the Cameroon average), planting at 1,000 suckers a day, induction labour and harvest at 400 kg a day are Djalumo Agro assumptions; the fertilizer program and sucker price come from Benin.', 'Ananas : le rendement faible (moitié de la moyenne camerounaise), la plantation à 1 000 rejets par jour, le travail d’induction et la récolte à 400 kg par jour sont des hypothèses de Djalumo Agro ; le programme d’engrais et le prix des rejets viennent du Bénin.'),
     L('Cocoa: fungicide and insecticide doses, harvest and post harvest work at 15 kg of dry beans a day and monthly suckering are Djalumo Agro assumptions on the frequencies of Cameroon guides; the plantain grown as temporary shade is neither costed nor sold.', 'Cacao : les doses de fongicide et d’insecticide, la récolte et le post récolte à 15 kg de fèves sèches par jour et l’égourmandage mensuel sont des hypothèses de Djalumo Agro sur les fréquences des guides camerounais ; le plantain cultivé en ombrage temporaire n’est ni chiffré ni vendu.'),
     L('Oil palm: labour comes from the MINADER amounts at 2,500 FCFA a person day; bunches are sold to a mill by the tonne.', 'Palmier à huile : le travail vient des montants du MINADER à 2 500 FCFA la journée ; les régimes sont vendus à une huilerie à la tonne.'),
+    L('Greenhouse and net house prices come from a builder in Côte d’Ivoire, in the same currency zone, until Cameroonian quotes are collected: 15,000 FCFA per m² below 1,000 m² and 13,000 from 1,000 m². A net house costs 84% of a greenhouse, the ratio of the Indian official cost norms. The frame is assumed to last 10 years and the cover 4; each plan is charged the share of their life it uses.', 'Les prix des serres et des maisons filet viennent d’un constructeur de Côte d’Ivoire, dans la même zone monétaire, en attendant des devis camerounais : 15 000 FCFA par m² en dessous de 1 000 m² et 13 000 à partir de 1 000 m². Une maison filet coûte 84 % d’une serre, le rapport des normes de coûts officielles indiennes. L’armature est supposée durer 10 ans et la couverture 4 ; chaque plan supporte la part de leur durée de vie qu’il utilise.'),
+    L('Under a ventilated greenhouse the day is assumed 5°C warmer than outside, and 4°C under a net house as measured in Tanzania. No rain reaches the crop under a greenhouse, which is watered by drip, and rain driven disease pressure is lowered by one level. Structures are sized in whole modules of 240 m².', 'Sous une serre ventilée, la journée est supposée plus chaude de 5 °C qu’à l’extérieur, et de 4 °C sous une maison filet comme mesuré en Tanzanie. Aucune pluie n’atteint la culture sous serre, qui est arrosée au goutte à goutte, et la pression des maladies liées à la pluie baisse d’un niveau. Les structures sont dimensionnées en modules entiers de 240 m².'),
+    L('Yields under cover replace the season references. Greenhouse tomato is planned at 5, 10 and 15 kg per m² over eight months of harvest, a cautious range around the Kenyan survey mean of 10.5 kg; its care, protection and watering are extended to the longer harvest. As it flowers throughout the harvest, its heat risk is high when more than a third of the flowering months reach its heat limit inside the greenhouse, and medium when at least one month comes within 2°C of it.', 'Les rendements sous abri remplacent les références de saison. La tomate sous serre est planifiée à 5, 10 et 15 kg par m² sur huit mois de récolte, une fourchette prudente autour de la moyenne de 10,5 kg de l’enquête kenyane ; son entretien, sa protection et son arrosage sont prolongés sur cette récolte plus longue. Comme elle fleurit pendant toute la récolte, son risque de chaleur est fort quand plus d’un tiers des mois de floraison atteignent sa limite de chaleur dans la serre, et moyen quand au moins un mois s’en approche à moins de 2 °C.'),
+    L('Hired machine prices are the midpoints of the ranges of one Cameroonian tomato budget of June 2026 and carry low confidence: enter a local quote when you have one. A tenth of the hand work of a mechanised step remains (half for chili, whose planting holes are dug by hand). Machines are suggested when land preparation needs more than 15 workers on the same day.', 'Les prix de location de machines sont les points milieux des fourchettes d’un budget camerounais de la tomate de juin 2026 et restent peu fiables : saisissez un devis local dès que vous en avez un. Un dixième du travail manuel d’une étape mécanisée demeure (la moitié pour le piment, dont les trous de plantation sont creusés à la main). Les machines sont suggérées quand la préparation du terrain demande plus de 15 ouvriers le même jour.'),
 ]
 
 
@@ -1354,7 +1446,7 @@ def build():
     SOURCES.update(METHOD_SOURCES)
     spread, n = price_spread(R)
     kb = {
-        'version': '3.1.0', 'built': '2026-10-23',
+        'version': '3.2.0', 'built': '2026-10-25',
         'fx': FX, 'fx_src': src('C38', 'C43', 'C45', 'C46'),
         'limits': {'min_capital_usd': 100, 'reserve_rate': 0.10, 'wet_season_rain_share': 0.5, 'seasons_per_year': SEASONS_PER_YEAR},
         'climate': climate(R),
@@ -1371,10 +1463,12 @@ def build():
         'phases': PHASES,
         'units': UNITS,
         'crops': {'tomato': tomato(R), 'greenbean': greenbean(), 'pepper': pepper(), 'chili': chili(), 'cucumber': cucumber(), 'zucchini': zucchini(), 'cassava': cassava(), 'plantain': plantain(), 'pineapple': pineapple(), 'avocado': avocado(), 'cocoa': cocoa(), 'oil_palm': oil_palm()},
+        'protected': protected(R),
+        'machinery': machinery(R),
         'assumptions': ASSUMPTIONS,
     }
     # Merged sources: rewrite the ids quoted in free text so they match the published list.
-    tok = re.compile(r'\b(?:AN|AV|CC|CU|CH|CA|OP|PL|T|Z|G|P|C|M)\d+\b')
+    tok = re.compile(r'\b(?:AN|AV|CC|CU|CH|CA|OP|PL|PR|MA|T|Z|G|P|C|M)\d+\b')
 
     def realias(x):
         if isinstance(x, dict):
@@ -1403,7 +1497,7 @@ def build():
                 walk(v)
     walk(kb)
     # Ids quoted in free text, e.g. "(T7, T8)"
-    for m in re.finditer(r'\b(?:AN|AV|CC|CU|CH|CA|OP|PL|T|Z|G|P|C|M)\d+\b', json.dumps(kb, ensure_ascii=False)):
+    for m in re.finditer(r'\b(?:AN|AV|CC|CU|CH|CA|OP|PL|PR|MA|T|Z|G|P|C|M)\d+\b', json.dumps(kb, ensure_ascii=False)):
         if m.group(0) in SOURCES:
             used.add(m.group(0))
     kb['sources'] = {k: SOURCES[k] for k in sorted(used, key=lambda s: (re.sub(r'\d', '', s), int(re.sub(r'\D', '', s))))}

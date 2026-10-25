@@ -221,7 +221,7 @@ const SCREENS = {
       PLAN.last = r;
       const tabs = ['return', 'budget', 'cashflow', 'itinerary', 'shopping', 'water', 'compare', 'sources'];
       if (!tabs.includes(PLAN.tab)) PLAN.tab = 'return';
-      if (r.state === 'below_min' || r.state === 'upfront_exceeds') return topBar(A.resultH, { action: editBtn() }) + '<div class="a-pad a-result">' + plannerOutHTML(r, false) + '</div>';
+      if (r.state === 'below_min' || r.state === 'upfront_exceeds' || r.state === 'below_module') return topBar(A.resultH, { action: editBtn() }) + '<div class="a-pad a-result">' + plannerOutHTML(r, false) + '</div>';
       const bar = '<div class="a-seg-scroll" role="tablist" aria-label="' + esc(P.title) + '">' + tabs.map(t => '<button type="button" role="tab" aria-selected="' + (PLAN.tab === t) + '" data-ptab="' + t + '">' + esc(P.tabs[t]) + '</button>').join('') + '</div>';
       const panel = { return: tabReturn, budget: tabBudget, cashflow: tabCashflow, itinerary: tabItinerary, shopping: tabShopping, water: tabWater, compare: tabCompare, sources: tabSources }[PLAN.tab](r);
       return topBar(A.resultH, { action: editBtn() }) + '<div class="a-pad a-result">' + verdictHTML(r) + kpiHTML(r) + unpricedNote(r) + bar + '<div class="ptab a-ptab" role="tabpanel">' + panel + '</div></div>';
