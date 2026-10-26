@@ -70,3 +70,13 @@ test('English and French have the same structure for the new content', () => {
 test('no em or en dash in the new copy', () => {
   for (const f of ['site/src/i18n-v3.js', 'site/src/i18n-v7.js', 'site/src/world.js', 'site/src/field.js']) assert.doesNotMatch(read(f), /[–—]/, f);
 });
+
+test('visitor copy reads as written by people: no file or metadata talk, no development jargon in the field and planner text', () => {
+  const copy = ['site/src/i18n.js', 'site/src/i18n-v3.js', 'site/src/i18n-v7.js', 'site/src/field.js'].map(read).join('\n');
+  for (const bad of [/not recorded in the file/i, /non enregistrée dans le fichier/i, /file metadata/i, /métadonnées des fichiers/i, /arrives with the MVP/i, /arrive avec le MVP/i, /noDate/]) assert.doesNotMatch(copy, bad, String(bad));
+  for (const lang of ['en', 'fr']) {
+    const a = I18N[lang].field.archiveH;
+    assert.doesNotMatch(a(1), /\b1 /, lang + ' one photograph is written out');
+    assert.match(a(2), /\b2 /, lang);
+  }
+});

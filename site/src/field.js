@@ -1,6 +1,7 @@
 /* ---------- Field evidence: 73 pilot photographs in 8 plates, with a viewer ---------- */
 const FP = (id) => PHOTOS[id];
 const fieldIds = (n) => Object.keys(PHOTOS).filter(id => PHOTOS[id].plate === n).sort((a, b) => (PHOTOS[a].panel ? 0 : 1) - (PHOTOS[b].panel ? 0 : 1) || a.localeCompare(b));
+const FACE_TOP = ['x01', 'x43', 'x44'];
 const fdate = (iso) => new Intl.DateTimeFormat(L().meta.locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(iso + 'T00:00:00Z'));
 function fieldCaption(id) {
   const F = L().field, p = FP(id), pl = F.plates[p.plate - 1];
@@ -51,7 +52,9 @@ function fieldPageHTML() {
     }).join('') + '</div>';
     const arch = more.length ? '<div class="archive"><h3>' + esc(F.archiveH(more.length)) + '</h3><div class="agrid">' + more.map(id => {
       const c = fieldCaption(id);
-      return '<figure class="afig"><button type="button" data-lb="' + id + '" aria-label="' + esc(F.open + ': ' + c.text) + '">' + fimg(id, c.text) + '</button><figcaption>' + esc(c.text) + '<span>' + esc(c.dateKnown ? c.when : F.noDate) + '</span></figcaption></figure>';
+      // Portraits of people keep the face in the square thumbnail.
+      const tall = FACE_TOP.includes(id);
+      return '<figure class="afig"><button type="button" data-lb="' + id + '" aria-label="' + esc(F.open + ': ' + c.text) + '">' + (tall ? fimg(id, c.text).replace('<img ', '<img class="tall" ') : fimg(id, c.text)) + '</button><figcaption>' + esc(c.text) + (c.dateKnown ? '<span>' + esc(c.when) + '</span>' : '') + '</figcaption></figure>';
     }).join('') + '</div></div>' : '';
     return '<section class="plate" id="plate-' + n + '" data-plate-sec="' + n + '"><div class="wrap"><div class="plate-head"><div>' + meta + '<h2>' + esc(pl.title) + '</h2><p class="cap"><b>' + esc(pl.cap) + '</b> ' + esc(pl.site) + '.</p></div>' + learn + '</div>' + figs + arch + '</div></section>';
   }).join('');

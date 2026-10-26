@@ -148,7 +148,7 @@ en: {
       heat: (months, t, thr) => 'Flowering falls in ' + months + ', with average maxima near ' + t + '°C. Fruit set suffers above about ' + thr + '°C.',
       disease: (mm, note) => 'Up to ' + mm + ' mm of rain per month from flowering to the end of harvest. ' + note,
       market: (months, idx) => 'Harvest in ' + months + ': the usual price is about ' + idx + '% of the yearly average.',
-      context: 'Check elections, holidays and road conditions for your harvest weeks. The context calendar arrives with the MVP.'
+      context: 'Check elections, holidays and road conditions for your harvest weeks before you commit.'
     },
     check: 'Check',
     windowsT: 'Start month comparison', riskScore: 'risk score', bestLine: (m) => 'Lowest risk start month with your water option: ' + m + '. Select a month to compare.',
@@ -795,7 +795,7 @@ fr: {
       heat: (months, t, thr) => 'La floraison tombe en ' + months + ', avec des maximales moyennes proches de ' + t + ' °C. La nouaison souffre au delà d’environ ' + thr + ' °C.',
       disease: (mm, note) => 'Jusqu’à ' + mm + ' mm de pluie par mois de la floraison à la fin de la récolte. ' + note,
       market: (months, idx) => 'Récolte en ' + months + ' : le prix habituel est d’environ ' + idx + ' % de la moyenne annuelle.',
-      context: 'Vérifiez élections, fêtes et état des routes pour vos semaines de récolte. Le calendrier de contexte arrive avec le MVP.'
+      context: 'Vérifiez les élections, les fêtes et l’état des routes pour vos semaines de récolte avant de vous engager.'
     },
     check: 'À vérifier',
     windowsT: 'Comparaison des mois de démarrage', riskScore: 'score de risque', bestLine: (m) => 'Mois de démarrage le moins risqué avec votre option d’eau : ' + m + '. Sélectionnez un mois pour comparer.',
