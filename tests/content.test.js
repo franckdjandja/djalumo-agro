@@ -80,3 +80,31 @@ test('visitor copy reads as written by people: no file or metadata talk, no deve
     assert.match(a(2), /\b2 /, lang);
   }
 });
+
+test('the read-through corrections hold: one product name, current claims, the founder story and official country names', () => {
+  const copy = ['site/src/i18n.js', 'site/src/i18n-v3.js', 'site/src/i18n-v4.js', 'site/src/i18n-v5.js', 'site/src/i18n-v7.js', 'lib/report/strings.js'].map(read).join('\n');
+  for (const bad of [/Season Simulator/, /Simulateur de saison/, /FastAPI service/, /service FastAPI/, /Live in demo/, /En direct dans la démo/, /three scenarios/, /trois scénarios/, /\(T7, T8\)/, /au delà/, /au dessus/, /comparez le /, /mi octobre/, /pousse pousse/i]) assert.doesNotMatch(copy, bad, String(bad));
+  for (const lang of ['en', 'fr']) {
+    assert.doesNotMatch(JSON.stringify(I18N[lang].privacy), /preview link|lien d’aperçu|simulat/i, lang + ' privacy policy');
+    const A = I18N[lang].about;
+    assert.equal(A.miles.length, 8, lang + ' eight milestones');
+    assert.equal(A.story.length, 5, lang + ' five story paragraphs');
+    assert.equal(A.photoCap.length, 2, lang + ' the father photograph has its own caption');
+    assert.match(A.lead, lang === 'en' ? /twenty years/ : /vingt ans/);
+    assert.ok(A.expLead && A.expLead.length > 40, lang + ' expansion note');
+  }
+  const geo = JSON.parse(read('site/geo.json'));
+  assert.ok(!geo.countries.some((c) => c.name === 'Somaliland'), 'the Africa map follows the UN list of states');
+  assert.ok(geo.countries.some((c) => c.id === '706'), 'Somalia is drawn');
+});
+
+test('planner phrases: month spans, French elision and the minimum capital', () => {
+  const S = I18N.fr.planner.span;
+  assert.equal(S.range('avril', 'juin'), 'd’avril à juin');
+  assert.equal(S.range('février', 'octobre'), 'de février à octobre');
+  assert.equal(I18N.en.planner.span.range('February', 'April'), 'from February to April');
+  assert.match(I18N.en.planner.states.below_min('$100', true), /^The minimum capital is 100 USD:/);
+  assert.match(I18N.fr.planner.states.below_min('61 000 FCFA', false), /61 000 FCFA, soit l’équivalent de 100 USD/);
+  assert.match(I18N.fr.planner.unpricedNote('Tuteurs', 1), /cette ligne/);
+  assert.match(I18N.en.planner.unpricedNote('A, B', 2), /these lines/);
+});

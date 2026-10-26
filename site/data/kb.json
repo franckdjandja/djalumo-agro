@@ -969,7 +969,7 @@
   "push_cart": {
    "label": {
     "en": "Push cart",
-    "fr": "Pousse pousse"
+    "fr": "Pousse-pousse"
    },
    "price": 85000,
    "category": "tools",
@@ -1374,6 +1374,40 @@
    "fr": "m³"
   }
  },
+ "units_one": {
+  "unit": {
+   "en": "unit",
+   "fr": "unité"
+  },
+  "person day": {
+   "en": "person day",
+   "fr": "jour de travail"
+  },
+  "stake": {
+   "en": "stake",
+   "fr": "tuteur"
+  },
+  "roll": {
+   "en": "roll",
+   "fr": "rouleau"
+  },
+  "pack": {
+   "en": "pack",
+   "fr": "conditionnement"
+  },
+  "set": {
+   "en": "set",
+   "fr": "lot"
+  },
+  "fruit": {
+   "en": "fruit",
+   "fr": "fruit"
+  },
+  "tonne": {
+   "en": "tonne",
+   "fr": "tonne"
+  }
+ },
  "crops": {
   "tomato": {
    "name": {
@@ -1460,8 +1494,8 @@
     "T9"
    ],
    "disease_note": {
-    "en": "Late blight (Phytophthora infestans) is the main rainy season threat in the West highlands; unsprayed crops can lose all marketable fruit (T7, T8). Spray preventively and rotate active ingredients.",
-    "fr": "Le mildiou (Phytophthora infestans) est la principale menace de la saison des pluies sur les hauts plateaux de l’Ouest ; une culture non traitée peut perdre toute sa récolte commercialisable (T7, T8). Traiter en préventif et alterner les matières actives."
+    "en": "Late blight (Phytophthora infestans) is the main rainy season threat in the West highlands; unsprayed crops can lose all marketable fruit. Spray preventively and rotate active ingredients.",
+    "fr": "Le mildiou (Phytophthora infestans) est la principale menace de la saison des pluies sur les hauts plateaux de l’Ouest ; une culture non traitée peut perdre toute sa récolte commercialisable. Traiter en préventif et alterner les matières actives."
    },
    "steps": [
     {
@@ -1980,8 +2014,8 @@
      },
      "level": "medium",
      "note": {
-      "en": "MINADER budget 2024 and West region survey 2022; stakes and protection kit not priced.",
-      "fr": "Budget MINADER 2024 et enquête Région de l’Ouest 2022 ; tuteurs et kit de protection non chiffrés."
+      "en": "MINADER budget 2024 and West region survey 2022; only the stakes are not priced.",
+      "fr": "Budget MINADER 2024 et enquête Région de l’Ouest 2022 ; seuls les tuteurs ne sont pas chiffrés."
      }
     },
     {
@@ -4511,7 +4545,7 @@
      },
      "detail": {
       "en": "Powdery mildew is the main leaf disease; fruit flies, aphids and whiteflies follow, and mites above 30 °C. No courgette spray count was found: the plan uses the cucumber calendar as a cucurbit proxy.",
-      "fr": "L’oïdium est la principale maladie des feuilles ; viennent ensuite les mouches des fruits, les pucerons et les aleurodes, et les acariens au dessus de 30 °C. Aucun nombre de traitements n’a été trouvé pour la courgette : le plan reprend le calendrier du concombre comme substitut."
+      "fr": "L’oïdium est la principale maladie des feuilles ; viennent ensuite les mouches des fruits, les pucerons et les aleurodes, et les acariens au-dessus de 30 °C. Aucun nombre de traitements n’a été trouvé pour la courgette : le plan reprend le calendrier du concombre comme substitut."
      },
      "src": [
       "Z1",
@@ -4897,7 +4931,7 @@
    ],
    "disease_note": {
     "en": "Mosaic and mealybug are kept down by healthy cuttings of resistant varieties; the variegated grasshopper is treated above 12 larvae per m² (CA3).",
-    "fr": "La mosaïque et la cochenille sont limitées par des boutures saines de variétés résistantes ; le criquet puant est traité au delà de 12 larves par m² (CA3)."
+    "fr": "La mosaïque et la cochenille sont limitées par des boutures saines de variétés résistantes ; le criquet puant est traité au-delà de 12 larves par m² (CA3)."
    },
    "steps": [
     {
@@ -5112,7 +5146,7 @@
      },
      "detail": {
       "en": "Treat the variegated grasshopper only above 12 larvae per m². Healthy cuttings are the main defence against mosaic. The plan budgets one insecticide treatment.",
-      "fr": "Traiter contre le criquet puant seulement au delà de 12 larves par m². Des boutures saines sont la principale défense contre la mosaïque. Le plan compte un traitement insecticide."
+      "fr": "Traiter contre le criquet puant seulement au-delà de 12 larves par m². Des boutures saines sont la principale défense contre la mosaïque. Le plan compte un traitement insecticide."
      },
      "src": [
       "CA3",
@@ -6297,7 +6331,7 @@
      },
      "detail": {
       "en": "Soil at least 1 to 1.5 m deep, pH above 4.5 to 5, 1,200 to 1,600 mm of rain and about two dry months to trigger flowering. Choose grafted plants of known varieties (Pollock, Booth 7, Peterson, Hickson) and alternate varieties by row for pollination.",
-      "fr": "Sol d’au moins 1 à 1,5 m de profondeur, pH au dessus de 4,5 à 5, 1 200 à 1 600 mm de pluie et environ deux mois secs pour déclencher la floraison. Choisir des plants greffés de variétés connues (Pollock, Booth 7, Peterson, Hickson) et alterner les variétés par ligne pour la pollinisation."
+      "fr": "Sol d’au moins 1 à 1,5 m de profondeur, pH au-dessus de 4,5 à 5, 1 200 à 1 600 mm de pluie et environ deux mois secs pour déclencher la floraison. Choisir des plants greffés de variétés connues (Pollock, Booth 7, Peterson, Hickson) et alterner les variétés par ligne pour la pollinisation."
      },
      "src": [
       "AV3",
@@ -6851,7 +6885,7 @@
     },
     "observed": {
      "en": "Observed in 2026: ONCC minimum price 1,400 FCFA/kg in April (1,050 in January); 1,650 to 1,700 FCFA/kg at the farm gate in June; never above 2,000 FCFA in the 2025 to 2026 season.",
-     "fr": "Observé en 2026 : prix minimum ONCC 1 400 FCFA/kg en avril (1 050 en janvier) ; 1 650 à 1 700 FCFA/kg bord champ en juin ; jamais au delà de 2 000 FCFA sur la campagne 2025 à 2026."
+     "fr": "Observé en 2026 : prix minimum ONCC 1 400 FCFA/kg en avril (1 050 en janvier) ; 1 650 à 1 700 FCFA/kg bord champ en juin ; jamais au-delà de 2 000 FCFA sur la campagne 2025 à 2026."
     },
     "src": [
      "CC8",
@@ -7730,7 +7764,7 @@
      "level": "medium",
      "note": {
       "en": "Modelled Foumbot climatology 1991 to 2021 with FAO-56 methods; oil palm grows mainly in the Littoral, South West and Centre.",
-      "fr": "Climatologie modélisée de Foumbot 1991 à 2021 et méthodes FAO-56 ; le palmier se cultive surtout au Littoral, au Sud Ouest et au Centre."
+      "fr": "Climatologie modélisée de Foumbot 1991 à 2021 et méthodes FAO-56 ; le palmier se cultive surtout au Littoral, au Sud-Ouest et au Centre."
      }
     }
    ]
@@ -8327,7 +8361,7 @@
   },
   {
    "en": "A 10% contingency reserve is added to every budget. A wheelbarrow is bought from 0.5 ha and a push cart from 1 ha.",
-   "fr": "Une réserve pour imprévus de 10 % est ajoutée à chaque budget. Une brouette est achetée à partir de 0,5 ha et un pousse pousse à partir de 1 ha."
+   "fr": "Une réserve pour imprévus de 10 % est ajoutée à chaque budget. Une brouette est achetée à partir de 0,5 ha et un pousse-pousse à partir de 1 ha."
   },
   {
    "en": "Lines without a sourced price (stakes, trellis, some seeds) stay in the plan with their quantity and a zero cost: get a local quote before committing.",
@@ -8351,7 +8385,7 @@
   },
   {
    "en": "Exchange rates are fixed at mid October 2026 values (BCEAO for the CFA franc, 16 October; naira 13 October); they are not live.",
-   "fr": "Les taux de change sont fixés aux valeurs de mi octobre 2026 (BCEAO pour le franc CFA, 16 octobre ; naira 13 octobre) ; ils ne sont pas en temps réel."
+   "fr": "Les taux de change sont fixés aux valeurs de mi-octobre 2026 (BCEAO pour le franc CFA, 16 octobre ; naira 13 octobre) ; ils ne sont pas en temps réel."
   },
   {
    "en": "Plan length: a long crop or an orchard is analysed over the length the grower chooses (one to three plantain cycles; three, five or ten years for an orchard). Costs and sales outside that length are not counted.",
@@ -8363,7 +8397,7 @@
   },
   {
    "en": "Cocoa: fungicide and insecticide doses, harvest and post harvest work at 15 kg of dry beans a day and monthly suckering are Djalumo Agro assumptions on the frequencies of Cameroon guides; the plantain grown as temporary shade is neither costed nor sold.",
-   "fr": "Cacao : les doses de fongicide et d’insecticide, la récolte et le post récolte à 15 kg de fèves sèches par jour et l’égourmandage mensuel sont des hypothèses de Djalumo Agro sur les fréquences des guides camerounais ; le plantain cultivé en ombrage temporaire n’est ni chiffré ni vendu."
+   "fr": "Cacao : les doses de fongicide et d’insecticide, la récolte et le post-récolte à 15 kg de fèves sèches par jour et l’égourmandage mensuel sont des hypothèses de Djalumo Agro sur les fréquences des guides camerounais ; le plantain cultivé en ombrage temporaire n’est ni chiffré ni vendu."
   },
   {
    "en": "Oil palm: labour comes from the MINADER amounts at 2,500 FCFA a person day; bunches are sold to a mill by the tonne.",
@@ -8412,7 +8446,7 @@
    "url": "https://www.lavoixdupaysan.net/cameroun-avocat-bamboutos-principal-bassin-de-production/"
   },
   "AV2": {
-   "title": "La culture de l'avocatier au Cameroun a le vent en poupe",
+   "title": "La culture de l’avocatier au Cameroun a le vent en poupe",
    "publisher": "Agriculture au Cameroun",
    "year": 2022,
    "url": "https://agricultureaucameroun.com/investir-au-cameroun/la-culture-de-lavocatier-au-cameroun-a-le-vent-en-poupe/"
@@ -8466,13 +8500,13 @@
    "url": "https://www.minader.cm/wp-content/uploads/2023/07/wp-1688563666754.pdf"
   },
   "C16": {
-   "title": "Intensifier la culture du mais pour ameliorer la securite alimentaire : le producteur du Nord Cameroun y a-t-il interet ? (Table 3)",
+   "title": "Intensifier la culture du maïs pour améliorer la sécurité alimentaire : le producteur du Nord Cameroun y a-t-il intérêt ? (Table 3)",
    "publisher": "Cahiers Agricultures 25(6), 65006",
    "year": 2016,
    "url": "https://www.cahiersagricultures.fr/articles/cagri/full_html/2016/06/cagri160029/T3.html"
   },
   "C18": {
-   "title": "Utilisation des herbicides a l'Ouest Cameroun : un enjeu economique et environnemental",
+   "title": "Utilisation des herbicides à l’Ouest Cameroun : un enjeu économique et environnemental",
    "publisher": "Camer.be",
    "year": 2024,
    "url": "https://www.camer.be/87491/11:1/utilisation-des-herbicides-a-louest-cameroun-un-enjeu-economique-et-environnemental-cameroon.html"
@@ -8502,25 +8536,25 @@
    "url": "https://avante.com.ua/en/catalog/motopompa_koshin_seh-50x_benzinovaja_dlja_chistoy_vody-03701/"
   },
   "C32": {
-   "title": "Prix du carburant au Cameroun en 2026 : super, gasoil et petrole",
+   "title": "Prix du carburant au Cameroun en 2026 : super, gasoil et pétrole",
    "publisher": "Infospratiques.cm",
    "year": 2026,
    "url": "https://infospratiques.cm/?p=70"
   },
   "C34": {
-   "title": "Cameroun - hausse des prix du carburant : la reaction du gouvernement face a la hausse illegale des prix de transport",
+   "title": "Cameroun, hausse des prix du carburant : la réaction du gouvernement face à la hausse illégale des prix de transport",
    "publisher": "Journal du Cameroun",
    "year": 2024,
    "url": "https://fr.journalducameroun.com/cameroun-hausse-des-prix-du-carburant-voici-la-reaction-du-gouvernement-face-a-la-hausse-illegale-des-prix-de-transport/"
   },
   "C35": {
-   "title": "Pres de 975 FCFA pour importer un litre, 828 FCFA a la pompe : l'ecart se creuse pour le gasoil au Cameroun",
+   "title": "Près de 975 FCFA pour importer un litre, 828 FCFA à la pompe : l’écart se creuse pour le gasoil au Cameroun",
    "publisher": "Cameroun24",
    "year": 2026,
    "url": "https://cameroun24.net/article/76269-pres-de-975-fcfa-pour-importer-un-litre-828-fcfa-a-la-pompe-lecart-se-creuse-pour-le-gasoil-au-cameroun.html"
   },
   "C38": {
-   "title": "Cours de reference des principales devises contre Franc CFA (16 Oct 2026)",
+   "title": "Cours de référence des principales devises contre franc CFA (16 octobre 2026)",
    "publisher": "BCEAO",
    "year": 2026,
    "url": "https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa"
@@ -8574,31 +8608,31 @@
    "url": "https://tmbusiness.ci/produit/semence-de-haricot-vert-cora-1-kg/"
   },
   "C67": {
-   "title": "Culture de la tomate au Cameroun : cout, budget et rentabilite d'1 hectare en 2026",
-   "publisher": "Maison Agricole (blog, author Cedric Ngondi)",
+   "title": "Culture de la tomate au Cameroun : coût, budget et rentabilité d’1 hectare en 2026",
+   "publisher": "Maison Agricole (blog, author Cédric Ngondi)",
    "year": 2026,
    "url": "https://maisonagricole.com/agriculture/culture-de-la-tomate-au-cameroun-cout-budget-et-rentabilite-d1-hectare-en-2026/"
   },
   "C74": {
-   "title": "Couts des prestations en installation de systeme d'irrigation goutte a goutte, annee 2020",
+   "title": "Coûts des prestations en installation de système d’irrigation goutte à goutte, année 2020",
    "publisher": "PRUMARX Groupe (Benin)",
    "year": 2020,
    "url": "https://prumarxgroupe.over-blog.com/2019/12/prix-installation-de-systeme-d-irrigation-goutte-a-goutte-2020.html"
   },
   "C76": {
-   "title": "Bottes de pluie - 6 500 Fcfa (Bepanda, Douala)",
+   "title": "Bottes de pluie, 6 500 FCFA (Bépanda, Douala)",
    "publisher": "Afribobo (Cameroon classifieds)",
    "year": 2026,
    "url": "https://www.afribobo.com/douala/bottes-de-pluie-179318.html"
   },
   "C78": {
    "title": "Masque pour agriculture (search listing page)",
-   "publisher": "Jumia Cote d'Ivoire",
+   "publisher": "Jumia Côte d’Ivoire",
    "year": 2026,
    "url": "https://www.jumia.ci/slp/masque-pour-agriculture"
   },
   "C84": {
-   "title": "Fiente de poules pour fertilisation du sol - 50kg - 4 000 Fcfa (Yaounde)",
+   "title": "Fiente de poules pour fertilisation du sol, 50 kg, 4 000 FCFA (Yaoundé)",
    "publisher": "Afribobo (Cameroon classifieds)",
    "year": 2026,
    "url": "https://www.afribobo.com/yaounde/fiante-de-poules-pour-fertilisation-du-sol-50kg-169434.html"
@@ -8640,7 +8674,7 @@
    "url": "https://www.researchgate.net/publication/32972770_Ligne_mecanisee_de_production_de_chikwangue_au_Congo_Mechanized_chikwangue_production_line_in_the_Congo"
   },
   "CA7": {
-   "title": "Miondo, bobolo et mintoumba : l'art de transformer le manioc",
+   "title": "Miondo, bobolo et mintoumba : l’art de transformer le manioc",
    "publisher": "Afrik.com",
    "year": 2022,
    "url": "https://www.afrik.com/miondo-bobolo-et-mintoumba-l-art-de-transformer-le-manioc"
@@ -8742,7 +8776,7 @@
    "url": "https://marketdatacom.com/le-piment-au-cameroun/"
   },
   "CH4": {
-   "title": "Piment : c'est la saison des prix bas (B. C. Biyiha, 23 June 2025)",
+   "title": "Piment : c’est la saison des prix bas (B. C. Biyiha, 23 juin 2025)",
    "publisher": "Cameroon Business Today",
    "year": 2025,
    "url": "https://cameroonbusinesstoday.cm/articles/3869/fr/piment-cest-la-saison-des-prix-bas"
@@ -8784,8 +8818,8 @@
    "url": "https://www.fabrikaliments.com/piments/"
   },
   "CU1": {
-   "title": "Fiche technique synthetique pour la production du concombre (Cucumis sativus L.)",
-   "publisher": "Universite d'Abomey-Calavi, Faculte des Sciences Agronomiques (Benin); Legba E.C. et al.",
+   "title": "Fiche technique synthétique pour la production du concombre (Cucumis sativus L.)",
+   "publisher": "Université d’Abomey-Calavi, Faculté des Sciences Agronomiques (Benin); Legba E.C. et al.",
    "year": 2020,
    "url": "https://dspace.uac.bj/bitstreams/186134b8-1d53-4672-a12e-d3859d7bb6f3/download"
   },
@@ -8796,13 +8830,13 @@
    "url": "https://plantuse.plantnet.org/en/Cucumis_sativus_(PROTA)"
   },
   "CU3": {
-   "title": "Comparaison de sept varietes de concombre cultivees en pleine terre sous tunnel maraicher en saison seche 2006",
+   "title": "Comparaison de sept variétés de concombre cultivées en pleine terre sous tunnel maraîcher en saison sèche 2006",
    "publisher": "CIRAD Mayotte; Gimenez A., Soilihi I., Huat J.",
    "year": 2007,
    "url": "https://agritrop.cirad.fr/541646/1/ID541646.pdf"
   },
   "CU4": {
-   "title": "Optimisation du rendement en champ du concombre par une visite florale de Apis mellifera a la Ferme de Multiplication du Materiel Vegetal du MINADER a Ngaoundere (Cameroun)",
+   "title": "Optimisation du rendement en champ du concombre par une visite florale de Apis mellifera à la Ferme de Multiplication du Matériel Végétal du MINADER à Ngaoundéré (Cameroun)",
    "publisher": "Journal of Animal and Plant Sciences 64(3); Mohamadou Moussa et al.",
    "year": 2025,
    "url": "https://www.m.elewa.org/journals/wp-content/uploads/2025/07/7.Mohamadou.pdf"
@@ -8856,38 +8890,38 @@
    "url": "https://cagayanvalley.da.gov.ph/wp-content/uploads/2018/02/Cucumber-Production-Guide.pdf"
   },
   "CU27": {
-   "title": "La culture du concombre et l'incidence socio-economique dans l'arrondissement de Mvengue (1959-2011)",
-   "publisher": "Universite de Yaounde I (ENS) memoire; Ayie S.",
+   "title": "La culture du concombre et l’incidence socio-économique dans l’arrondissement de Mvengue (1959 à 2011)",
+   "publisher": "Université de Yaoundé I (ENS), mémoire; Ayie S.",
    "year": 2016,
    "url": "https://dicames.online/jspui/bitstream/20.500.12177/4495/1/ENS_20_0303.pdf"
   },
   "CU30": {
-   "title": "Diagnostic agraire prealable a la creation d'un centre de formation en agriculture, Nyong-et-Mfoumou, Centre Cameroun",
+   "title": "Diagnostic agraire préalable à la création d’un centre de formation en agriculture, Nyong-et-Mfoumou, Centre Cameroun",
    "publisher": "Memoire de fin d'etudes (Reseau FAR); Cuvilliez M.",
    "year": 2015,
    "url": "https://www.reseau-far.com/ressources/files/fichierPDF_2015_RESAD_CUVILLIEZ.pdf"
   },
   "CU31": {
-   "title": "Abidjan: le prix du chou et de la banane plantain en baisse, la courgette, le navet et le concombre en hausse",
+   "title": "Abidjan : le prix du chou et de la banane plantain en baisse, la courgette, le navet et le concombre en hausse",
    "publisher": "Fraternite Matin (prices from Conseil National de la lutte contre la vie chere, CNLVC)",
    "year": 2024,
    "url": "https://www.fratmat.info/article/237870/economie/microeconomie/abidjan-le-prix-du-chou-et-de-la-banane-plantain-en-baisse-la-courgette-le-navet-et-le-concombre-en-hausse"
   },
   "CU33": {
-   "title": "Abidjan: les prix des differents produits vivriers sur le marche (26 octobre 2024)",
+   "title": "Abidjan : les prix des différents produits vivriers sur le marché (26 octobre 2024)",
    "publisher": "Fraternite Matin (CNLVC)",
    "year": 2024,
    "url": "https://www.fratmat.info/article/1960055/economie/microeconomie/abidjan-les-prix-des-differents-produits-vivriers-sur-le-marche"
   },
   "CU34": {
-   "title": "Abidjan: les prix des differents produits vivriers sur le marche (20 decembre 2024)",
+   "title": "Abidjan : les prix des différents produits vivriers sur le marché (20 décembre 2024)",
    "publisher": "Fraternite Matin (CNLVC)",
    "year": 2024,
    "url": "https://www.fratmat.info/article/2467359/economie/microeconomie/abidjan-les-prix-des-differents-produits-vivriers-sur-le-marche"
   },
   "CU38": {
    "title": "CONCOMBRE (kg), produits de saison",
-   "publisher": "Sika Finance (Cote d'Ivoire)",
+   "publisher": "Sika Finance (Côte d’Ivoire)",
    "year": 2026,
    "url": "https://www.sikafinance.com/conso/product/concombre_1034"
   },
@@ -8958,13 +8992,13 @@
    "url": "https://www.helgilibrary.com/indicators/beans-green-yield/"
   },
   "G13": {
-   "title": "Abidjan : Le prix du haricot vert en baisse",
+   "title": "Abidjan : le prix du haricot vert en baisse",
    "publisher": "Fraternite Matin (Conseil National de Lutte contre la Vie Chere data)",
    "year": 2024,
    "url": "https://www.fratmat.info/article/236433/economie/microeconomie/abidjan-le-prix-du-haricot-vert-en-baisse-les-differents-produits-vivriers-sur-le-marche"
   },
   "G14": {
-   "title": "Abidjan : Le prix du gombo et du haricot vert en baisse",
+   "title": "Abidjan : le prix du gombo et du haricot vert en baisse",
    "publisher": "Fraternite Matin",
    "year": 2025,
    "url": "https://www.fratmat.info/article/2632578/economie/microeconomie/abidjan-le-prix-du-gombo-et-du-haricot-vert-en-baisse"
@@ -9096,7 +9130,7 @@
    "url": "https://journals.aijr.org/index.php/ajss/article/download/3306/377"
   },
   "P5": {
-   "title": "Importance des visites d'insectes ... Capsicum annuum ... a l'Ouest-Cameroun (Pando et al.)",
+   "title": "Importance des visites d’insectes ... Capsicum annuum ... à l’Ouest-Cameroun (Pando et al.)",
    "publisher": "Journal of Animal & Plant Sciences 54(1):9832-9857",
    "year": 2022,
    "url": "https://www.m.elewa.org/journals/wp-content/uploads/2022/10/4.Pando_-2.pdf"
@@ -9120,7 +9154,7 @@
    "url": "https://nation.africa/kenya/business/seeds-of-gold/the-a-z-of-growing-capsicum-profitably-1116324"
   },
   "P13": {
-   "title": "Itineraire technique du poivron en plein champ",
+   "title": "Itinéraire technique du poivron en plein champ",
    "publisher": "Direction de l'agriculture, Polynesie francaise",
    "year": 2018,
    "url": "https://www.service-public.pf/dag/wp-content/uploads/sites/28/2018/12/poivron-ft-culture_SDRdag_v181212.pdf"
@@ -9132,19 +9166,19 @@
    "url": "https://www.helgilibrary.com/indicators/chillies-and-peppers-green-yield/"
   },
   "P15": {
-   "title": "Consommation : les legumes abondent au marche du Mfoundi",
+   "title": "Consommation : les légumes abondent au marché du Mfoundi",
    "publisher": "EcoMatin",
    "year": 2021,
    "url": "https://ecomatin.net/consommation-les-legumes-abondent-au-marche-du-mfoundi/"
   },
   "P16": {
-   "title": "Cultures maraicheres dans les montagnes tropicales du Cameroun occidental (C. Kaffo)",
+   "title": "Cultures maraîchères dans les montagnes tropicales du Cameroun occidental (C. Kaffo)",
    "publisher": "Cahiers Agricultures 14(6):517-524",
    "year": 2005,
    "url": "https://revues.cirad.fr/index.php/cahiers-agricultures/article/download/30546/30306/30781"
   },
   "P23": {
-   "title": "Fiche technique 5 : itineraire technique du piment",
+   "title": "Fiche technique 5 : itinéraire technique du piment",
    "publisher": "IFDC Benin (ACMA2)",
    "year": null,
    "url": "https://ifdc.org/wp-content/uploads/2019/07/FICHE-TECHNIQUE-5-ITINERAIRE-TECHNIQUE-DU-PIMENT-PEPPER-TECHNICAL-ITINERARY.pdf"
@@ -9198,7 +9232,7 @@
    "url": "https://www.espaceagro.com/plant-bananier-plantain/exp-plant-bananier-plantain.html"
   },
   "PL8": {
-   "title": "Le bananier plantain au Cameroun (H. Tezenas du Montcel)",
+   "title": "Le bananier plantain au Cameroun (H. Tézenas du Montcel)",
    "publisher": "Fruits, vol. 34, n°5",
    "year": 1979,
    "url": "https://revues.cirad.fr/index.php/fruits/article/download/34450/33694/36959"
@@ -9210,8 +9244,8 @@
    "url": "https://www.investiraucameroun.com/agriculture/0412-4856-cameroun-la-production-de-la-banane-plantain-requiert-20-millions-de-plants-par-an-selon-le-carbap"
   },
   "PR1": {
-   "title": "Construction de serres agricoles, nos services (tunnels de 250, 500 et 1 000 m2)",
-   "publisher": "Agro Serre Innovation, Cote d'Ivoire",
+   "title": "Construction de serres agricoles, nos services (tunnels de 250, 500 et 1 000 m²)",
+   "publisher": "Agro Serre Innovation, Côte d’Ivoire",
    "year": 2026,
    "url": "https://www.agroserreinnovationci.com/services"
   },
@@ -9312,8 +9346,8 @@
    "url": "https://www.minader.cm/wp-content/uploads/2025/05/FICHE_TECHNIQUE_PRODUCTION_ET_POST_PRODUCTION_TOMATE_PARPAC_ENG.pdf"
   },
   "T2": {
-   "title": "Evaluation experimentale de trois protocoles de traitement phytosanitaire et de l'effet de la fertilisation organo-minerale sur le mildiou et la rentabilite de la culture de tomate a l'Est-Cameroun",
-   "publisher": "Revue Agriculture 11:69-79, Universite Ferhat Abbas Setif 1 (Djeugap Fovo J. et al.)",
+   "title": "Évaluation expérimentale de trois protocoles de traitement phytosanitaire et de l’effet de la fertilisation organo-minérale sur le mildiou et la rentabilité de la culture de tomate à l’Est-Cameroun",
+   "publisher": "Revue Agriculture 11:69-79, Université Ferhat Abbas Sétif 1 (Djeugap Fovo J. et al.)",
    "year": 2016,
    "url": "https://revue-agro.univ-setif.dz/documents-agri/numero11-2016/Fovo-Evaluation.pdf"
   },
@@ -9340,12 +9374,6 @@
    "publisher": "FAO Save Food",
    "year": 2013,
    "url": "https://www.fao.org/fileadmin/user_upload/save-food/presentation/Cameroon_Food_Loss_CaseStudies.pdf"
-  },
-  "T7": {
-   "title": "Biological constraints in tomato production in the western highlands of Cameroon",
-   "publisher": "Tropicultura 16(2):89-92 (Fontem D.A., Gumedzoe M.Y.D., Nono-Womdim R.)",
-   "year": 1999,
-   "url": "https://agris.fao.org/search/en/records/6472321953aa8c896301f4e4"
   },
   "T8": {
    "title": "Quantitative Effects of Early and Late Blights on Tomato Yields in Cameroon",
@@ -9414,25 +9442,25 @@
    "url": "https://en.climate-data.org/africa/cameroon/west/foumbot-894723/"
   },
   "T22": {
-   "title": "Tomate en fruit: l'abondance de l'offre fait chuter les prix a Yaounde",
+   "title": "Tomate en fruit : l’abondance de l’offre fait chuter les prix à Yaoundé",
    "publisher": "EcoMatin",
    "year": 2026,
    "url": "https://ecomatin.net/tomate-en-fruit-labondance-de-loffre-fait-chuter-les-prix-a-yaounde"
   },
   "T23": {
-   "title": "Cameroun: tomates entre 2500 et 1 000 FCFA le cageot, quand l'abondance ruine le paysan",
+   "title": "Cameroun : tomates entre 2 500 et 1 000 FCFA le cageot, quand l’abondance ruine le paysan",
    "publisher": "KOACI",
    "year": 2026,
    "url": "https://www.koaci.com/article/2026/03/09/cameroun/societe/cameroun-tomates-entre-2500-et-1-000-fcfa-le-cageot-quand-labondance-ruine-le-paysan_194954.html"
   },
   "T25": {
-   "title": "Les Camerounais confrontes a la flambee du prix de la tomate",
+   "title": "Les Camerounais confrontés à la flambée du prix de la tomate",
    "publisher": "APA News",
    "year": 2025,
    "url": "https://fr.apanews.net/?p=261386"
   },
   "T27": {
-   "title": "Flambee des prix a Yaounde: la tomate passe de 3 000 a 6 000 fcfa en deux semaines",
+   "title": "Flambée des prix à Yaoundé : la tomate passe de 3 000 à 6 000 FCFA en deux semaines",
    "publisher": "Journal du Cameroun",
    "year": 2025,
    "url": "https://fr.journalducameroun.com/flambee-des-prix-a-yaounde-la-tomate-passe-de-3-000-a-6-000-fcfa-en-deux-semaines/"
@@ -9450,13 +9478,13 @@
    "url": "https://www.businessincameroon.com/agriculture/0109-7361-heavy-rains-and-exports-raise-tomato-prices-on-cameroonian-market"
   },
   "T34": {
-   "title": "Cameroun: le Covid-19 met les producteurs de tomates en larmes",
+   "title": "Cameroun : le Covid-19 met les producteurs de tomates en larmes",
    "publisher": "Afrik.com",
    "year": 2020,
    "url": "https://www.afrik.com/cameroun-le-covid-19-met-les-producteurs-de-tomates-en-larmes"
   },
   "T35": {
-   "title": "Tomates en fruit: les prix bas peuvent-ils durer?",
+   "title": "Tomates en fruit : les prix bas peuvent-ils durer ?",
    "publisher": "EcoMatin",
    "year": 2020,
    "url": "https://ecomatin.net/tomates-en-fruit-les-prix-bas-peuvent-ils-durer"
@@ -9499,7 +9527,7 @@
   },
   "Z21": {
    "title": "COURGETTE (kg), produits de saison",
-   "publisher": "Sika Finance (Cote d'Ivoire)",
+   "publisher": "Sika Finance (Côte d’Ivoire)",
    "year": 2026,
    "url": "https://www.sikafinance.com/conso/product/courgette_1029"
   },

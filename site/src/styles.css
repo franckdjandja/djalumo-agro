@@ -539,8 +539,8 @@ h1[tabindex]:focus{outline:none}
 .sc{border-radius:16px;padding:16px 16px 14px;background:#fff;position:relative;overflow:hidden;border:1px solid var(--line)}
 .sc::before{content:"";position:absolute;left:16px;right:16px;top:0;height:3px;border-radius:0 0 3px 3px}
 .sc.ok::before{background:var(--green-3)}.sc.mid::before{background:var(--blue-2)}.sc.warn::before{background:var(--warn)}.sc.bad::before{background:var(--crit)}
-.sc-h{display:flex;justify-content:space-between;gap:8px;font-size:14px;color:var(--fg);font-weight:600}
-.sc-h .mono{font-size:12.5px;font-weight:400;color:var(--fg-3)}
+.sc-h{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 8px;font-size:14px;color:var(--fg);font-weight:600}
+.sc-h .mono{font-size:12.5px;font-weight:400;color:var(--fg-3);white-space:nowrap}
 .sc-m{font-family:var(--display);font-size:clamp(20px,1.8vw,25px);font-weight:700;letter-spacing:-.03em;margin-top:8px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;color:var(--deep)}
 .sc-r{font-size:13px;color:var(--fg-3);margin-top:2px}
 .sc dl{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;margin:12px 0 8px;font-size:13px}

@@ -26,7 +26,7 @@ Porteur du projet : Franck Junior Djandja Tomwa · Zone pilote : Foumbot, Ouest 
 
 Site statique généré à partir de modules JavaScript simples (aucun framework au chargement, environ 270 Ko compressés, données cartographiques et base de connaissances du Planificateur comprises), fonctions serverless Node 20, validation Zod, pilote `postgres` avec requêtes paramétrées. Hébergement cible : Vercel (tout hébergeur Node fonctionne avec `scripts/serve.mjs`).
 
-La plateforme produit proprement dite (modèles, API, application mobile) suit l’architecture du rapport produit : Python, FastAPI, PostgreSQL avec PostGIS, Flutter et Next.js. Ce dépôt est le site de l’entreprise.
+Le Planificateur de saison fonctionne aujourd’hui sur ce site. Le reste de la plateforme produit (modèles, API, application mobile) suivra l’architecture du rapport produit : Python, FastAPI, PostgreSQL avec PostGIS, Flutter et Next.js. Ce dépôt est le site de l’entreprise.
 
 ## Structure du dépôt
 

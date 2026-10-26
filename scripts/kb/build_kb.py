@@ -195,7 +195,7 @@ def build_items():
     # Tools and protective equipment
     item('sprayer', 'Knapsack sprayer 16 L', 'Pulvérisateur à dos 16 L', 45000, 'tools', 'unit', src('C3'), life_seasons=life(3))
     item('wheelbarrow', 'Wheelbarrow', 'Brouette', 30000, 'tools', 'unit', src('C3'), life_seasons=life(2))
-    item('push_cart', 'Push cart', 'Pousse pousse', 85000, 'tools', 'unit', src('C3'), life_seasons=life(5))
+    item('push_cart', 'Push cart', 'Pousse-pousse', 85000, 'tools', 'unit', src('C3'), life_seasons=life(5))
     item('small_tools', 'Small tools set (hoes, machetes, rake, spade, bucket, tape)', 'Petit outillage (houes, machettes, râteau, pelle, seau, mètre)', 75500, 'tools', 'ha', src('T1', 'C3'), life_seasons=life(2),
          basis='75,500 XAF of small tools per ha in the MINADER budget (T1); scaled to the area.')
     item('ppe_kit', 'Spraying protection: boots, mask and goggles', 'Protection pour traitements : bottes, masque et lunettes', 6500 + 8500, 'ppe', 'unit', src('C76', 'C78', 'T4'), life_seasons=life(2),
@@ -300,8 +300,8 @@ def tomato(R):
     mid = (low + high) / 2
     lo, hi = round(low / mid, 3), round(high / mid, 3)
     index = [lo, lo, lo, 1.0, 1.0, 1.0, hi, hi, hi, hi, hi, lo]
-    rate_note = L('Late blight (Phytophthora infestans) is the main rainy season threat in the West highlands; unsprayed crops can lose all marketable fruit (T7, T8). Spray preventively and rotate active ingredients.',
-                  'Le mildiou (Phytophthora infestans) est la principale menace de la saison des pluies sur les hauts plateaux de l’Ouest ; une culture non traitée peut perdre toute sa récolte commercialisable (T7, T8). Traiter en préventif et alterner les matières actives.')
+    rate_note = L('Late blight (Phytophthora infestans) is the main rainy season threat in the West highlands; unsprayed crops can lose all marketable fruit. Spray preventively and rotate active ingredients.',
+                  'Le mildiou (Phytophthora infestans) est la principale menace de la saison des pluies sur les hauts plateaux de l’Ouest ; une culture non traitée peut perdre toute sa récolte commercialisable. Traiter en préventif et alterner les matières actives.')
     steps = [
         step('site', 'prep', 'field', (-50, -45), 'Plot choice, rotation and soil test', 'Choix de la parcelle, rotation et analyse de sol',
              'Avoid plots that carried tomato, pepper, eggplant or potato in the last 3 years; keep 5 years where bacterial wilt was seen. Well drained loam, pH 5 to 7. A soil test sets the final fertilizer rates.',
@@ -393,7 +393,7 @@ def tomato(R):
             {'block': L('Technical itinerary and 1 ha budget', 'Itinéraire technique et budget de 1 ha'), 'level': 'high', 'note': L('MINADER 2024 data sheet for Cameroon, cross checked with trials in Dschang and East Cameroon.', 'Fiche MINADER 2024 pour le Cameroun, recoupée avec des essais à Dschang et à l’Est.')},
             {'block': L('Yields', 'Rendements'), 'level': 'medium', 'note': L('MINADER ranges by season; few on farm measurements in Foumbot.', 'Fourchettes MINADER par saison ; peu de mesures en exploitation à Foumbot.')},
             {'block': L('Prices at harvest', 'Prix à la récolte'), 'level': 'medium', 'note': L('Dated market observations 2017 to 2026; no monthly series for Foumbot; crate weights vary.', 'Observations datées 2017 à 2026 ; pas de série mensuelle pour Foumbot ; le poids du cageot varie.')},
-            {'block': L('Input prices', 'Prix des intrants'), 'level': 'medium', 'note': L('MINADER budget 2024 and West region survey 2022; stakes and protection kit not priced.', 'Budget MINADER 2024 et enquête Région de l’Ouest 2022 ; tuteurs et kit de protection non chiffrés.')},
+            {'block': L('Input prices', 'Prix des intrants'), 'level': 'medium', 'note': L('MINADER budget 2024 and West region survey 2022; only the stakes are not priced.', 'Budget MINADER 2024 et enquête Région de l’Ouest 2022 ; seuls les tuteurs ne sont pas chiffrés.')},
             {'block': L('Climate and water', 'Climat et eau'), 'level': 'medium', 'note': L('Modelled Foumbot climatology 1991 to 2021 with FAO-56 methods; not station data.', 'Climatologie modélisée de Foumbot 1991 à 2021 et méthodes FAO-56 ; pas de données de station.')},
         ],
     }
@@ -723,7 +723,7 @@ def cassava():
              labour=20, sources=src('CA3', 'CA2')),
         step('protect', 'protection', 'field', (30, 150), 'Crop watch', 'Surveillance',
              'Treat the variegated grasshopper only above 12 larvae per m². Healthy cuttings are the main defence against mosaic. The plan budgets one insecticide treatment.',
-             'Traiter contre le criquet puant seulement au delà de 12 larves par m². Des boutures saines sont la principale défense contre la mosaïque. Le plan compte un traitement insecticide.',
+             'Traiter contre le criquet puant seulement au-delà de 12 larves par m². Des boutures saines sont la principale défense contre la mosaïque. Le plan compte un traitement insecticide.',
              inputs=[('insecticide_l', 1, 1, src('CA4'))], labour=PROXY_LAB['spray'], sources=src('CA3', 'CA4', 'T2')),
     ]
     rough = lambda en, fr: L(en, fr)
@@ -756,7 +756,7 @@ def cassava():
                       'basis': 'About 48 kg of chikwangue per 100 kg of roots and pieces of about 600 g (CA6, Congo). Labour, water and firewood per t of roots taken from the gari budget (CA2) as a proxy; wrapping leaves are not budgeted.', 'src': src('CA6', 'CA2')},
         },
         'harvest_src': src('CA2'),
-        'disease_note': L('Mosaic and mealybug are kept down by healthy cuttings of resistant varieties; the variegated grasshopper is treated above 12 larvae per m² (CA3).', 'La mosaïque et la cochenille sont limitées par des boutures saines de variétés résistantes ; le criquet puant est traité au delà de 12 larves par m² (CA3).'),
+        'disease_note': L('Mosaic and mealybug are kept down by healthy cuttings of resistant varieties; the variegated grasshopper is treated above 12 larvae per m² (CA3).', 'La mosaïque et la cochenille sont limitées par des boutures saines de variétés résistantes ; le criquet puant est traité au-delà de 12 larves par m² (CA3).'),
         'steps': steps, 'src': src('CA1', 'CA2', 'CA3', 'CA4', 'M1'),
         'basis': {
             'plants_per_ha': '1 m × 1 m, 10,000 plants per ha (CA2, CA3).',
@@ -869,7 +869,7 @@ def avocado():
     steps = [
         step('site', 'prep', 'field', (-90, -60), 'Site and varieties', 'Site et variétés',
              'Soil at least 1 to 1.5 m deep, pH above 4.5 to 5, 1,200 to 1,600 mm of rain and about two dry months to trigger flowering. Choose grafted plants of known varieties (Pollock, Booth 7, Peterson, Hickson) and alternate varieties by row for pollination.',
-             'Sol d’au moins 1 à 1,5 m de profondeur, pH au dessus de 4,5 à 5, 1 200 à 1 600 mm de pluie et environ deux mois secs pour déclencher la floraison. Choisir des plants greffés de variétés connues (Pollock, Booth 7, Peterson, Hickson) et alterner les variétés par ligne pour la pollinisation.',
+             'Sol d’au moins 1 à 1,5 m de profondeur, pH au-dessus de 4,5 à 5, 1 200 à 1 600 mm de pluie et environ deux mois secs pour déclencher la floraison. Choisir des plants greffés de variétés connues (Pollock, Booth 7, Peterson, Hickson) et alterner les variétés par ligne pour la pollinisation.',
              sources=src('AV3', 'AV1')),
         step('clear', 'prep', 'field', (-60, -35), 'Clearing', 'Défrichage', 'Clear the plot and mark the planting points 8 m apart.', 'Défricher la parcelle et piqueter les points de plantation à 8 m.',
              labour=PROXY_LAB['clear'], sources=src('AV7', 'T1')),
@@ -1054,7 +1054,7 @@ def cocoa():
         'harvest_label': L('Cocoa campaign, year {n}', 'Campagne cacaoyère, année {n}'),
         'harvest_detail': L('Pick ripe pods, open them within 5 days, ferment 6 days with 3 turnings and sun dry 8 to 15 days down to 6 to 8% moisture. Sold as dry beans by the kg.', 'Cueillir les cabosses mûres, les écabosser sous 5 jours, fermenter 6 jours avec 3 brassages et sécher au soleil 8 à 15 jours jusqu’à 6 à 8 % d’humidité. Vendu en fèves sèches au kg.'),
         'price': {'reference_xaf_kg': None, 'index': [1] * 12, 'note': NO_PRICE,
-                  'observed': L('Observed in 2026: ONCC minimum price 1,400 FCFA/kg in April (1,050 in January); 1,650 to 1,700 FCFA/kg at the farm gate in June; never above 2,000 FCFA in the 2025 to 2026 season.', 'Observé en 2026 : prix minimum ONCC 1 400 FCFA/kg en avril (1 050 en janvier) ; 1 650 à 1 700 FCFA/kg bord champ en juin ; jamais au delà de 2 000 FCFA sur la campagne 2025 à 2026.'), 'src': src('CC8', 'CC9')},
+                  'observed': L('Observed in 2026: ONCC minimum price 1,400 FCFA/kg in April (1,050 in January); 1,650 to 1,700 FCFA/kg at the farm gate in June; never above 2,000 FCFA in the 2025 to 2026 season.', 'Observé en 2026 : prix minimum ONCC 1 400 FCFA/kg en avril (1 050 en janvier) ; 1 650 à 1 700 FCFA/kg bord champ en juin ; jamais au-delà de 2 000 FCFA sur la campagne 2025 à 2026.'), 'src': src('CC8', 'CC9')},
         'products': {'fresh': {'label': L('Dry beans', 'Fèves sèches'), 'ratio': 1}},
         'harvest_src': src('CC4'),
         'disease_note': L('Black pod (Phytophthora megakarya) is the main loss in wet months; mirids attack young shoots (CC2, CC6).', 'La pourriture brune (Phytophthora megakarya) est la principale perte des mois humides ; les mirides attaquent les jeunes pousses (CC2, CC6).'),
@@ -1128,7 +1128,7 @@ def oil_palm():
             {'block': L('Technical itinerary', 'Itinéraire technique'), 'level': 'high', 'note': L('Official MINADER technical and economic sheet (2024).', 'Fiche technico économique officielle du MINADER (2024).')},
             {'block': L('Yields', 'Rendements'), 'level': 'medium', 'note': L('MINADER yield curve; poor and good levels are derived.', 'Courbe de rendement du MINADER ; les niveaux faible et bon sont calculés.')},
             {'block': L('Prices at harvest', 'Prix à la récolte'), 'level': 'medium', 'note': L('Price paid to village plantations in 2025; you enter your price per tonne.', 'Prix payé aux plantations villageoises en 2025 ; vous saisissez votre prix à la tonne.')},
-            {'block': L('Climate and water', 'Climat et eau'), 'level': 'medium', 'note': L('Modelled Foumbot climatology 1991 to 2021 with FAO-56 methods; oil palm grows mainly in the Littoral, South West and Centre.', 'Climatologie modélisée de Foumbot 1991 à 2021 et méthodes FAO-56 ; le palmier se cultive surtout au Littoral, au Sud Ouest et au Centre.')},
+            {'block': L('Climate and water', 'Climat et eau'), 'level': 'medium', 'note': L('Modelled Foumbot climatology 1991 to 2021 with FAO-56 methods; oil palm grows mainly in the Littoral, South West and Centre.', 'Climatologie modélisée de Foumbot 1991 à 2021 et méthodes FAO-56 ; le palmier se cultive surtout au Littoral, au Sud-Ouest et au Centre.')},
         ],
     }
 
@@ -1256,7 +1256,7 @@ def zucchini():
              sources=src('Z1')),
         step('protect', 'protection', 'field', (0, field_days), 'Crop protection', 'Protection de la culture',
              'Powdery mildew is the main leaf disease; fruit flies, aphids and whiteflies follow, and mites above 30 °C. No courgette spray count was found: the plan uses the cucumber calendar as a cucurbit proxy.',
-             'L’oïdium est la principale maladie des feuilles ; viennent ensuite les mouches des fruits, les pucerons et les aleurodes, et les acariens au dessus de 30 °C. Aucun nombre de traitements n’a été trouvé pour la courgette : le plan reprend le calendrier du concombre comme substitut.',
+             'L’oïdium est la principale maladie des feuilles ; viennent ensuite les mouches des fruits, les pucerons et les aleurodes, et les acariens au-dessus de 30 °C. Aucun nombre de traitements n’a été trouvé pour la courgette : le plan reprend le calendrier du concombre comme substitut.',
              inputs=prot, labour=prot_lab, sources=src('Z1', 'Z2', 'CU3', 'T2')),
         step('harvest', 'harvest', 'harvest', (0, 30), 'Harvest', 'Récolte',
              'Cut the fruits at 10 to 25 cm, daily or three times a week: they grow very fast.', 'Couper les fruits à 10 à 25 cm, chaque jour ou trois fois par semaine : ils grossissent très vite.',
@@ -1425,6 +1425,11 @@ UNITS = {
     'ha': L('ha', 'ha'), 'm2': L('m²', 'm²'), 'stake': L('stakes', 'tuteurs'), 'roll': L('rolls', 'rouleaux'), 'pack': L('packs', 'conditionnements'),
     'set': L('sets', 'lots'), 'season': L('season', 'saison'), 'ha season': L('ha × season', 'ha × saison'), 'ha year': L('ha × year', 'ha × an'), 'year': L('year', 'an'), 'fruit': L('fruits', 'fruits'), 'tonne': L('tonnes', 'tonnes'), 'm3': L('m³', 'm³'),
 }
+# Singular forms, used for one unit in English and for any quantity below two in French.
+UNITS_ONE = {
+    'unit': L('unit', 'unité'), 'person day': L('person day', 'jour de travail'), 'stake': L('stake', 'tuteur'), 'roll': L('roll', 'rouleau'),
+    'pack': L('pack', 'conditionnement'), 'set': L('set', 'lot'), 'fruit': L('fruit', 'fruit'), 'tonne': L('tonne', 'tonne'),
+}
 
 ASSUMPTIONS = [
     L('Two growing seasons a year on the same plot, as in the MINADER budget: equipment lifespans in years are doubled into seasons.', 'Deux saisons de culture par an sur la même parcelle, comme dans le budget du MINADER : la durée de vie du matériel en années est doublée en saisons.'),
@@ -1436,16 +1441,16 @@ ASSUMPTIONS = [
     L('Pump fuel uses the manufacturer flow and consumption at full flow, a floor: lift and long hoses raise real use.', 'Le carburant de la pompe suit le débit et la consommation constructeur à plein débit, un minimum : la hauteur d’aspiration et les longs tuyaux augmentent la consommation réelle.'),
     L('Where a crop source gives no labour figure, the MINADER tomato norms per hectare are used, or the Philippine cucumber guide for cucurbits; where it gives no spray rate, the tomato rates are used. Each case cites its source in the itinerary.', 'Quand une source ne donne pas de temps de travail, les normes MINADER de la tomate par hectare sont utilisées, ou le guide philippin du concombre pour les cucurbitacées ; sans dose de traitement, les doses de la tomate sont utilisées. Chaque cas cite sa source dans l’itinéraire.'),
     L('A harvest crate holds about 20 kg, the weight reported in one Dschang study; crate weights vary between markets. It sizes packaging, transport and harvest labour per kg.', 'Un cageot contient environ 20 kg, le poids relevé dans une étude à Dschang ; le poids varie selon les marchés. Il sert à calculer l’emballage, le transport et la main d’œuvre de récolte par kg.'),
-    L('A 10% contingency reserve is added to every budget. A wheelbarrow is bought from 0.5 ha and a push cart from 1 ha.', 'Une réserve pour imprévus de 10 % est ajoutée à chaque budget. Une brouette est achetée à partir de 0,5 ha et un pousse pousse à partir de 1 ha.'),
+    L('A 10% contingency reserve is added to every budget. A wheelbarrow is bought from 0.5 ha and a push cart from 1 ha.', 'Une réserve pour imprévus de 10 % est ajoutée à chaque budget. Une brouette est achetée à partir de 0,5 ha et un pousse-pousse à partir de 1 ha.'),
     L('Lines without a sourced price (stakes, trellis, some seeds) stay in the plan with their quantity and a zero cost: get a local quote before committing.', 'Les lignes sans prix sourcé (tuteurs, palissage, certaines semences) restent dans le plan avec leur quantité et un coût nul : demander un devis local avant de s’engager.'),
     L('Long crops (cassava, plantain, avocado) are planned month by month over their horizon. The capital needed is the deepest cumulative deficit of the average outcome plus the 10% reserve; without a price, the costs up to the end of the first harvest.', 'Les cultures longues (manioc, plantain, avocat) sont planifiées mois par mois sur leur horizon. Le capital nécessaire est le déficit cumulé le plus profond de l’issue moyenne plus la réserve de 10 % ; sans prix, les coûts jusqu’à la fin de la première récolte.'),
     L('For long crops the failure outcome sells 10% of the average yield at the first harvest and poor yields afterwards. Equipment is bought again at the end of its life within the horizon; no resale value is counted.', 'Pour les cultures longues, l’issue d’échec vend 10 % du rendement moyen à la première récolte puis des rendements faibles. Le matériel est racheté en fin de vie pendant l’horizon ; aucune valeur de revente n’est comptée.'),
     L('Land rent for long crops counts two seasons a year. Processing costs per tonne of product follow the ratio of each product; the cassava stick uses the gari labour and firewood per tonne of roots.', 'La location de terre des cultures longues compte deux saisons par an. Les coûts de transformation par tonne de produit suivent le taux de chaque produit ; le bâton de manioc reprend le travail et le bois du gari par tonne de racines.'),
     L('Plantain: successive harvests on the same mat 300 days apart, three cycles. Avocado: yield shares by tree age 0, 0, 15, 35, 50, 75, 90 then 100%. Both are Djalumo Agro assumptions fitted to the sources named in each crop.', 'Plantain : récoltes successives sur la même souche à 300 jours d’intervalle, trois cycles. Avocat : part du rendement selon l’âge 0, 0, 15, 35, 50, 75, 90 puis 100 %. Ce sont deux hypothèses de Djalumo Agro calées sur les sources citées pour chaque culture.'),
-    L('Exchange rates are fixed at mid October 2026 values (BCEAO for the CFA franc, 16 October; naira 13 October); they are not live.', 'Les taux de change sont fixés aux valeurs de mi octobre 2026 (BCEAO pour le franc CFA, 16 octobre ; naira 13 octobre) ; ils ne sont pas en temps réel.'),
+    L('Exchange rates are fixed at mid October 2026 values (BCEAO for the CFA franc, 16 October; naira 13 October); they are not live.', 'Les taux de change sont fixés aux valeurs de mi-octobre 2026 (BCEAO pour le franc CFA, 16 octobre ; naira 13 octobre) ; ils ne sont pas en temps réel.'),
     L('Plan length: a long crop or an orchard is analysed over the length the grower chooses (one to three plantain cycles; three, five or ten years for an orchard). Costs and sales outside that length are not counted.', 'Durée du plan : une culture longue ou un verger est analysé sur la durée choisie (un à trois cycles de plantain ; trois, cinq ou dix ans pour un verger). Les coûts et les ventes hors de cette durée ne sont pas comptés.'),
     L('Pineapple: the poor yield (half the Cameroon average), planting at 1,000 suckers a day, induction labour and harvest at 400 kg a day are Djalumo Agro assumptions; the fertilizer program and sucker price come from Benin.', 'Ananas : le rendement faible (moitié de la moyenne camerounaise), la plantation à 1 000 rejets par jour, le travail d’induction et la récolte à 400 kg par jour sont des hypothèses de Djalumo Agro ; le programme d’engrais et le prix des rejets viennent du Bénin.'),
-    L('Cocoa: fungicide and insecticide doses, harvest and post harvest work at 15 kg of dry beans a day and monthly suckering are Djalumo Agro assumptions on the frequencies of Cameroon guides; the plantain grown as temporary shade is neither costed nor sold.', 'Cacao : les doses de fongicide et d’insecticide, la récolte et le post récolte à 15 kg de fèves sèches par jour et l’égourmandage mensuel sont des hypothèses de Djalumo Agro sur les fréquences des guides camerounais ; le plantain cultivé en ombrage temporaire n’est ni chiffré ni vendu.'),
+    L('Cocoa: fungicide and insecticide doses, harvest and post harvest work at 15 kg of dry beans a day and monthly suckering are Djalumo Agro assumptions on the frequencies of Cameroon guides; the plantain grown as temporary shade is neither costed nor sold.', 'Cacao : les doses de fongicide et d’insecticide, la récolte et le post-récolte à 15 kg de fèves sèches par jour et l’égourmandage mensuel sont des hypothèses de Djalumo Agro sur les fréquences des guides camerounais ; le plantain cultivé en ombrage temporaire n’est ni chiffré ni vendu.'),
     L('Oil palm: labour comes from the MINADER amounts at 2,500 FCFA a person day; bunches are sold to a mill by the tonne.', 'Palmier à huile : le travail vient des montants du MINADER à 2 500 FCFA la journée ; les régimes sont vendus à une huilerie à la tonne.'),
     L('Greenhouse and net house prices come from a builder in Côte d’Ivoire, in the same currency zone, until Cameroonian quotes are collected: 15,000 FCFA per m² below 1,000 m² and 13,000 from 1,000 m². A net house costs 84% of a greenhouse, the ratio of the Indian official cost norms. The frame is assumed to last 10 years and the cover 4; each plan is charged the share of their life it uses.', 'Les prix des serres et des maisons filet viennent d’un constructeur de Côte d’Ivoire, dans la même zone monétaire, en attendant des devis camerounais : 15 000 FCFA par m² en dessous de 1 000 m² et 13 000 à partir de 1 000 m². Une maison filet coûte 84 % d’une serre, le rapport des normes de coûts officielles indiennes. L’armature est supposée durer 10 ans et la couverture 4 ; chaque plan supporte la part de leur durée de vie qu’il utilise.'),
     L('Under a ventilated greenhouse the day is assumed 5°C warmer than outside, and 4°C under a net house as measured in Tanzania. No rain reaches the crop under a greenhouse, which is watered by drip, and rain driven disease pressure is lowered by one level. Structures are sized in whole modules of 240 m². A structure already built is not bought again: the plan counts its upkeep, about 0.26 FCFA per m² and per day after the Almería cost survey, and takes the drip system as installed unless told otherwise. Repairs are entered by the grower and, like a new cover, are charged over four years.', 'Sous une serre ventilée, la journée est supposée plus chaude de 5 °C qu’à l’extérieur, et de 4 °C sous une maison filet comme mesuré en Tanzanie. Aucune pluie n’atteint la culture sous serre, qui est arrosée au goutte à goutte, et la pression des maladies liées à la pluie baisse d’un niveau. Les structures sont dimensionnées en modules entiers de 240 m². Une structure déjà construite n’est pas achetée à nouveau : le plan compte son entretien, environ 0,26 FCFA par m² et par jour d’après l’enquête de coûts d’Almería, et considère le goutte à goutte comme installé sauf indication contraire. Les réparations sont saisies par le producteur et, comme une nouvelle couverture, imputées sur quatre ans.'),
@@ -1475,6 +1480,7 @@ def build():
         'tools_kit': TOOLS_KIT,
         'phases': PHASES,
         'units': UNITS,
+        'units_one': UNITS_ONE,
         'crops': {'tomato': tomato(R), 'greenbean': greenbean(), 'pepper': pepper(), 'chili': chili(), 'cucumber': cucumber(), 'zucchini': zucchini(), 'cassava': cassava(), 'plantain': plantain(), 'pineapple': pineapple(), 'avocado': avocado(), 'cocoa': cocoa(), 'oil_palm': oil_palm()},
         'protected': protected(R),
         'machinery': machinery(R),

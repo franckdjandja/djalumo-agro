@@ -1,4 +1,4 @@
-/* ---------- Visual systems: hero signal map, geographic map, simulator, charts, architecture ---------- */
+/* ---------- Visual systems: hero signal map, geographic map, planner, charts, architecture ---------- */
 const CM_I = GEO.countries.findIndex(c => c.id === '120');
 const PLAN_I = ['646', '404'].map(id => GEO.countries.findIndex(c => c.id === id));
 const ISO2 = { '716': 'ZW', '894': 'ZM', '800': 'UG', '788': 'TN', '768': 'TG', '834': 'TZ', '748': 'SZ', '728': 'SS', '729': 'SD', '710': 'ZA', '706': 'SO', '694': 'SL', '690': 'SC', '686': 'SN', '678': 'ST', '646': 'RW', '566': 'NG', '562': 'NE', '516': 'NA', '508': 'MZ', '504': 'MA', '732': 'EH', '480': 'MU', '478': 'MR', '466': 'ML', '454': 'MW', '450': 'MG', '434': 'LY', '430': 'LR', '426': 'LS', '404': 'KE', '624': 'GW', '324': 'GN', '288': 'GH', '270': 'GM', '266': 'GA', '231': 'ET', '232': 'ER', '226': 'GQ', '818': 'EG', '262': 'DJ', '384': 'CI', '180': 'CD', '178': 'CG', '174': 'KM', '148': 'TD', '140': 'CF', '132': 'CV', '120': 'CM', '108': 'BI', '854': 'BF', '072': 'BW', '204': 'BJ', '024': 'AO', '012': 'DZ' };
@@ -175,17 +175,21 @@ function coverageChart(box) {
   box.innerHTML = s + '</svg>';
   bindTips(box);
 }
+/* The roadmap starts on Monday 5 October 2026; the marker follows today's date. */
+const ROAD_START = new Date(2026, 9, 5), ROAD_WEEKS = 32;
+function roadWeek() { const w = Math.floor((Date.now() - ROAD_START.getTime()) / (7 * 864e5)) + 1; return Math.min(Math.max(w, 1), ROAD_WEEKS); }
+function roadPhase() { const w = roadWeek(); return L().about.road.findIndex(r => w >= r[2] && w <= r[3]); }
 function roadChart(box) {
-  const A = L().about, W = 760, X0 = 150, X1 = W - 20, WK = 32, px = w => X0 + (w - 1) / WK * (X1 - X0);
-  const start = new Date(2026, 9, 5);
+  const A = L().about, W = 760, X0 = 150, X1 = W - 20, WK = ROAD_WEEKS, px = w => X0 + (w - 1) / WK * (X1 - X0);
+  const start = ROAD_START, cw = roadWeek(), cp = roadPhase();
   const H = 40 + A.road.length * 40 + 34;
   let s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(A.roadH) + '">';
   for (let w = 1; w <= WK + 1; w += 4) { const d = new Date(start.getTime() + (w - 1) * 7 * 864e5); s += '<line x1="' + px(w) + '" x2="' + px(w) + '" y1="22" y2="' + (H - 30) + '" stroke="#D5E6DD"/><text x="' + px(w) + '" y="' + (H - 16) + '" font-size="10.5" text-anchor="middle" fill="#667E73" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif">' + esc(A.week[0] + w) + '</text><text x="' + px(w) + '" y="' + (H - 3) + '" font-size="10" text-anchor="middle" fill="#8AA096" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif">' + esc(new Intl.DateTimeFormat(L().meta.locale, { day: 'numeric', month: 'short' }).format(d)) + '</text>'; }
-  s += '<line x1="' + px(1) + '" x2="' + px(1) + '" y1="10" y2="' + (H - 30) + '" stroke="#B0832A" stroke-dasharray="3 3"/><text x="' + (px(1) + 4) + '" y="14" font-size="10" fill="#B0832A" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif">' + esc(A.now) + '</text>';
+  s += '<line x1="' + px(cw) + '" x2="' + px(cw) + '" y1="10" y2="' + (H - 30) + '" stroke="#B0832A" stroke-dasharray="3 3"/><text x="' + (px(cw) + 4) + '" y="14" font-size="10" fill="#B0832A" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif">' + esc(A.now) + '</text>';
   A.road.forEach(([p, t, a, b, d, gate], i) => {
     const y = 30 + i * 40, x = px(a), w = px(b + 1) - px(a);
     s += '<text x="0" y="' + (y + 12) + '" font-size="11" fill="#667E73" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif">' + esc(p) + '</text><text x="0" y="' + (y + 27) + '" font-size="13" fill="#0B231A">' + esc(t) + '</text>';
-    s += '<rect class="grow" data-tip="' + esc(p + ' · ' + t + ' · ' + A.week + ' ' + a + (LANG === 'fr' ? ' à ' : ' to ') + b + ' · ' + d) + '" x="' + x + '" y="' + (y + 4) + '" width="' + w + '" height="22" rx="4" fill="' + (i === 2 ? '#127A5B' : i === 0 ? 'rgba(18,122,91,.6)' : 'rgba(18,122,91,.28)') + '"/>';
+    s += '<rect class="grow" data-tip="' + esc(p + ' · ' + t + ' · ' + A.week + ' ' + a + (LANG === 'fr' ? ' à ' : ' to ') + b + ' · ' + d) + '" x="' + x + '" y="' + (y + 4) + '" width="' + w + '" height="22" rx="4" fill="' + (i === 2 ? '#127A5B' : i === cp ? 'rgba(18,122,91,.6)' : 'rgba(18,122,91,.28)') + '"/>';
     s += '<path data-tip="' + esc(A.gate + ' · ' + gate) + '" d="M' + (x + w) + ' ' + (y + 6) + 'l9 9-9 9-9-9z" fill="#B0832A" stroke="#FFFFFF" stroke-width="2"/>';
   });
   box.innerHTML = s + '</svg>';
@@ -239,7 +243,7 @@ function archMount(root) {
     svg.innerHTML = s;
     $$('[data-node]', box).forEach(n => { n.style.opacity = rel.has(n.dataset.node) ? '1' : '.45'; n.setAttribute('aria-pressed', String(n.dataset.node === ARCH_SEL)); });
     const nd = A.nodes[ARCH_SEL];
-    det.innerHTML = '<div><div class="fx-k">' + esc(L().intel.cols[ARCH_COLS.findIndex(c => c.includes(ARCH_SEL))]) + '</div><h4 style="margin-top:6px">' + esc(nd[0]) + '</h4><span class="badge ' + (nd[2] === 'MVP' ? 'real' : 'plan') + '" style="margin-top:10px">' + esc(A.rel + ' · ' + nd[2]) + '</span></div><p class="muted">' + esc(nd[1]) + '</p>';
+    det.innerHTML = '<div><div class="fx-k">' + esc(L().intel.cols[ARCH_COLS.findIndex(c => c.includes(ARCH_SEL))]) + '</div><h4 style="margin-top:6px">' + esc(nd[0]) + '</h4><span class="badge ' + (nd[2] === L().badge.now ? 'real' : 'plan') + '" style="margin-top:10px">' + esc(A.rel + ' · ' + nd[2]) + '</span></div><p class="muted">' + esc(nd[1]) + '</p>';
   }
   box.addEventListener('click', e => { const n = e.target.closest('[data-node]'); if (!n) return; ARCH_SEL = n.dataset.node; draw(); analytics.track('arch_select', { node: ARCH_SEL }); });
   const ro = new ResizeObserver(() => draw()); ro.observe(box);

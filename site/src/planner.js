@@ -55,7 +55,9 @@ const txtCur = (xaf) => fmtCur(xaf).replace(/<[^>]+>/g, '');
 const fmtBoth = (xaf) => PLAN.currency === 'XAF' ? fmtXaf(xaf) : fmtCur(xaf) + ' <span class="faint">· ' + fmtXaf(xaf) + '</span>';
 const plArea = (ha) => { if (!(ha > 0)) return '0 m²'; if (ha < 0.1) return nf(ha * 10000, 0) + ' m²'; return nf(ha, ha < 10 ? 2 : 1) + ' ha'; };
 const fmtDateS = (d) => new Intl.DateTimeFormat(L().meta.locale, { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(d);
-const fmtQty = (q, unit) => { const u = tl((KB.units || {})[unit]) || unit; if (unit === 'unit' || unit === 'stake') return nf(Math.round(q), 0) + ' ' + u; return (q >= 100 ? nf(q, 0) : q >= 10 ? nf(q, 1) : nf(q, 2)) + ' ' + u; };
+// Singular unit for one unit in English and for any quantity below two in French.
+const unitFor = (unit, v) => { const one = (KB.units_one || {})[unit], single = LANG === 'fr' ? Math.abs(v) < 2 : Math.abs(v) === 1; return tl(single && one ? one : (KB.units || {})[unit]) || unit; };
+const fmtQty = (q, unit) => { if (unit === 'unit' || unit === 'stake') { const n = Math.round(q); return nf(n, 0) + ' ' + unitFor(unit, n); } const d = q >= 100 ? 0 : q >= 10 ? 1 : 2; return nf(q, d) + ' ' + unitFor(unit, Number(q.toFixed(d))); };
 /** Plural of a sale unit: last word in English (100 kg sacks), first word in French (sacs de 100 kg). */
 const plU = (u, n) => { if (u === 'kg' || n < 2) return u; const pl = (w) => (/(s|x|z)$/i.test(w) ? w : LANG === 'en' && /(ch|sh)$/i.test(w) ? w + 'es' : w + 's'); const p = u.split(' '); if (LANG === 'fr') p[0] = pl(p[0]); else p[p.length - 1] = pl(p[p.length - 1]); return p.join(' '); };
 const pct = (v) => (v >= 0 ? '+' : '') + nf(v * 100, 0) + (LANG === 'fr' ? '\u00a0%' : '%');
@@ -124,7 +126,7 @@ function plannerFormInner(compact) {
 
 function plannerOutHTML(r, compact) {
   const P = L().planner, long = r.profile && r.profile !== 'season';
-  const msg = (k) => P.states[k] ? P.states[k](fmtCur(r.minXaf), plArea(r.water.maxAreaHa || 0), '') : '';
+  const msg = (k) => !P.states[k] ? '' : k === 'below_min' ? P.states.below_min(fmtCur(r.minXaf), curCode() === 'USD') : P.states[k](fmtCur(r.minXaf), plArea(r.water.maxAreaHa || 0), '');
   const warn = (t) => '<p class="notice" style="border-left-color:var(--warn)">' + esc(t) + '</p>';
   let state = '';
   if (r.state === 'cover_limit') {
@@ -177,6 +179,19 @@ function fieldWorkNote(r) {
 }
 
 const monthYearS = (d) => { const s = new Intl.DateTimeFormat(L().meta.locale, { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(d); return s; };
+// Month names inside a sentence: lower case in French.
+const monthLow = (m, style) => { const s = monthName(m, style); return LANG === 'fr' ? s.toLowerCase() : s; };
+/** A run of months written as a phrase: "from February to April", "in May", or a short list. */
+function monthSpan(arr) {
+  const S = L().planner.span, a = Array.from(new Set(arr || [])), n = a.length;
+  if (!n) return '';
+  if (n === 1) return S.one(monthLow(a[0]));
+  let run = n < 12;
+  for (let i = 1; i < n; i++) if ((((a[i] - a[i - 1]) % 12) + 12) % 12 !== 1) run = false;
+  if (run && n > 2) return S.range(monthLow(a[0]), monthLow(a[n - 1]));
+  if (n === 12) return S.range(monthLow(a[0]), monthLow(a[11]));
+  return S.list(a.slice(0, -1).map(m => monthLow(m)).join(', '), monthLow(a[n - 1]));
+}
 const breakEvenOf = (r) => (r.profile && r.profile !== 'season') ? r.breakEven.pricePerUnit : r.breakEven.priceXafKg;
 
 /** Plain language reading of the plan: status, the key money sentence, the facts and a timeline. */
@@ -225,7 +240,7 @@ function kpiHTML(r) {
   if (priced) cards.push('<div><div class="k">' + esc(K.margin) + '</div><div class="v vsm' + fit(txtCur(sc.margin)) + '" style="color:' + (sc.margin >= 0 ? 'var(--green)' : 'var(--crit)') + '">' + fmtCur(sc.margin) + '</div><div class="s">' + esc(long ? S.marginLong(txtCur(sc.marginPerYear)) : S.marginSeason(pct(sc.roi))) + '</div></div>');
   else cards.push(card(K.breakEven, be ? esc(fmtUnit(be)) : '·', S.breakEven(unit)));
   if (long && priced) cards.push(card(K.payback, cf.paybackIndex !== null ? esc(monthYearS(new Date(Date.UTC(cf.months[cf.paybackIndex].y, cf.months[cf.paybackIndex].m, 1)))) : '·', cf.paybackIndex !== null ? S.payback(cf.paybackIndex + 1) : S.never));
-  else if (long) cards.push(card(K.first, esc(P.when(r.firstHarvestMonths)), S.first(monthYearS(r.calendar.firstHarvest))));
+  else if (long) cards.push(card(K.first, esc(monthYearS(r.calendar.firstHarvest)), S.first(P.when(r.firstHarvestMonths))));
   else if (priced) cards.push(card(K.breakEven, be ? esc(fmtUnit(be)) : '·', S.breakEven(unit)));
   else cards.push(card(P.kSeason, Math.round(r.calendar.totalDays / 7) + '<small>' + esc(L().sim.weeks) + '</small>', fmtDateS(r.calendar.start) + ' → ' + fmtDateS(r.calendar.lastHarvest)));
   return '<div class="kpis kpis4">' + cards.join('') + '</div>';
@@ -255,7 +270,7 @@ function scenarioCards(r, compact) {
 function unpricedNote(r) {
   if (!r.unpriced || !r.unpriced.length) return '';
   const names = r.unpriced.map(k => tl((KB.items[k] || KB.services[k] || {}).label) || k);
-  return '<p class="small notice" style="margin-top:12px">' + esc(L().planner.unpricedNote(names.join(', '))) + '</p>';
+  return '<p class="small notice" style="margin-top:12px">' + esc(L().planner.unpricedNote(names.join(', '), names.length)) + '</p>';
 }
 
 function tabReturn(r) {
@@ -325,8 +340,8 @@ function tabCashflow(r) {
   M.forEach((m, i) => { if (i % step === 0) svg += '<text x="' + (X0 + (i + 0.5) * bw) + '" y="' + (H - 8) + '" font-size="10" text-anchor="middle" fill="#667E73" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif">' + esc(step === 12 ? P.yearShort(i / 12 + 1) : monthName(m.m, 'short')) + '</text>'; });
   svg += '</svg>';
   const peakI = M.reduce((b, m, i) => m.cum < M[b].cum ? i : b, 0);
-  const kv = '<dl class="kv2"><dt>' + esc(P.peakL) + '</dt><dd>' + fmtCur(cf.peakNeed) + ' <span class="faint small">' + esc(P.peakAt(mName(M[peakI]))) + '</span></dd>' +
-    '<dt>' + esc(P.paybackL) + '</dt><dd>' + esc(cf.paybackIndex !== null ? mName(M[cf.paybackIndex]) : P.never) + '</dd><dt>' + esc(P.endL) + '</dt><dd>' + fmtCur(cf.end) + '</dd></dl>';
+  const kv = '<dl class="kv2"><dt>' + esc(P.peakL) + '</dt><dd>' + fmtCur(cf.peakNeed) + ' <span class="faint small">' + esc(P.peakAt(monthYearS(new Date(Date.UTC(M[peakI].y, M[peakI].m, 1))))) + '</span></dd>' +
+    '<dt>' + esc(P.paybackL) + '</dt><dd>' + esc(cf.paybackIndex !== null ? monthYearS(new Date(Date.UTC(M[cf.paybackIndex].y, M[cf.paybackIndex].m, 1))) : P.never) + '</dd><dt>' + esc(P.endL) + '</dt><dd>' + fmtCur(cf.end) + '</dd></dl>';
   let years = '';
   if (M.length > 14) {
     const ys = [];
@@ -389,7 +404,7 @@ function tabItinerary(r) {
   return '<div class="itin">' + Object.keys(phases).map(ph => '<section><h5>' + esc(tl(KB.phases[ph])) + '</h5>' + phases[ph].map(s => '<article class="it"><div class="it-d mono">' + esc(fmtDateS(s.from) + (s.to - s.from > 864e5 ? ' → ' + fmtDateS(s.to) : '')) + (s.occurrences > 1 ? '<span class="it-o">' + esc(P.occurrences(s.occurrences, s.every)) + '</span>' : '') + '</div><div><h6>' + esc(tl(s.label)) + '</h6><p>' + esc(tl(s.detail)) + '</p>' +
     (s.harvest && r.profile === 'orchard' ? '<p class="small faint">' + esc(P.harvestShare(nf(s.share * 100, 0))) + '</p>' : '') +
     (s.inputs.length ? '<ul class="it-in">' + s.inputs.map(i => '<li><span>' + esc(tl(i.label)) + (i.apps > 1 ? ' <span class="faint">· ' + esc(P.apps(i.apps)) + '</span>' : '') + '</span><b class="tnum">' + fmtQty(i.qty, i.unit) + '</b></li>').join('') + '</ul>' : '') +
-    (s.labourDays ? '<p class="small faint">' + esc(P.labourDays(nf(s.labourDays, s.labourDays < 10 ? 1 : 0))) + '</p>' : '') + '<p class="small faint">' + srcLinks(s.src) + '</p></div></article>').join('') + '</section>').join('') + '</div>';
+    (s.labourDays ? '<p class="small faint">' + esc(P.labourDays(nf(s.labourDays, s.labourDays < 10 ? 1 : 0), Number(s.labourDays.toFixed(s.labourDays < 10 ? 1 : 0)))) + '</p>' : '') + '<p class="small faint">' + srcLinks(s.src) + '</p></div></article>').join('') + '</section>').join('') + '</div>';
 }
 
 function tabShopping(r) {
@@ -411,15 +426,14 @@ function tabWater(r) {
   });
   svg += '</svg>';
   const rk = r.risk, item = (k, lvl, text) => '<div class="rk lv' + lvl + '"><div class="rk-h"><span>' + esc(P.riskNames[k]) + '</span><b>' + esc(lv[lvl]) + '</b></div><p>' + esc(text) + '</p></div>';
-  const months = (arr) => arr.map(m => monthName(m, 'short')).join(', ');
   const heatOk = crop.heat_c && rk.flowerMonths && rk.flowerMonths.length && rk.tmaxFlower !== null;
   const risks = '<div class="rks">' +
-    item('water', rk.water, long ? P.waterLong(nf((r.water.establishment || 0) * 100, 0), nf(r.water.coverage * 100, 0), r.water.option) : P.riskText.water(nf(r.water.coverage * 100, 0), nf(wb.deficit, 0), r.water.option)) +
-    item('heat', rk.heat, heatOk ? P.riskText.heat(months(rk.flowerMonths), nf(rk.tmaxFlower, 0), crop.heat_c) + (r.cover ? P.riskText.heatInside(r.cover.tDelta) : '') + (rk.hotShare !== null && rk.hotShare !== undefined ? P.riskText.heatLong(nf(rk.hotShare * 100, 0)) : '') : P.heatNA) +
+    item('water', rk.water, long ? P.waterLong(nf((r.water.establishment || 0) * 100, 0), nf(r.water.coverage * 100, 0), r.water.option) : r.cover && r.cover.rainFactor === 0 ? P.riskText.waterRoof(nf(r.water.coverage * 100, 0), nf(wb.deficit, 0)) : P.riskText.water(nf(r.water.coverage * 100, 0), nf(wb.deficit, 0), r.water.option)) +
+    item('heat', rk.heat, heatOk ? P.riskText.heat(monthSpan(rk.flowerMonths), nf(rk.tmaxFlower, 0), crop.heat_c) + (r.cover ? P.riskText.heatInside(r.cover.tDelta) : '') + (rk.hotShare !== null && rk.hotShare !== undefined ? P.riskText.heatLong(nf(rk.hotShare * 100, 0)) : '') : P.heatNA) +
     item('disease', rk.disease, P.riskText.disease(nf(rk.wetRain, 0), tl(crop.disease_note)) + (r.cover && r.cover.diseaseShift < 0 ? P.riskText.diseaseRoof : '')) +
-    item('market', rk.market, P.riskText.market(months(rk.harvestMonths), nf(rk.priceIndex * 100, 0))) +
+    item('market', rk.market, P.riskText.market(monthSpan(rk.harvestMonths), nf(rk.priceIndex * 100, 0))) +
     '<div class="rk"><div class="rk-h"><span>' + esc(P.riskNames.context) + '</span><b>' + esc(P.check) + '</b></div><p>' + esc(P.riskText.context) + '</p></div></div>';
-  const win = '<div class="wins" role="group" aria-label="' + esc(P.windowsT) + '">' + r.windows.map(w => '<button type="button" data-pwin="' + w.month + '" class="win lv' + Math.min(2, Math.floor(w.risk.score / 2)) + (w.month === r.bestMonth ? ' best' : '') + (new Date(PLAN.start + 'T00:00:00Z').getUTCMonth() === w.month ? ' cur' : '') + '" title="' + esc(monthName(w.month) + ' · ' + P.riskScore + ' ' + w.risk.score + '/8') + '"><span>' + esc(monthName(w.month, 'short')) + '</span><small>' + w.risk.score + '</small></button>').join('') + '</div><p class="small muted" style="margin-top:8px">' + esc(P.bestLine(monthName(r.bestMonth))) + '</p>';
+  const win = '<div class="wins" role="group" aria-label="' + esc(P.windowsT) + '">' + r.windows.map(w => '<button type="button" data-pwin="' + w.month + '" class="win lv' + Math.min(2, Math.floor(w.risk.score / 2)) + (w.month === r.bestMonth ? ' best' : '') + (new Date(PLAN.start + 'T00:00:00Z').getUTCMonth() === w.month ? ' cur' : '') + '" title="' + esc(monthName(w.month) + ' · ' + P.riskScore + ' ' + w.risk.score + '/8') + '"><span>' + esc(monthName(w.month, 'short')) + '</span><small>' + w.risk.score + '</small></button>').join('') + '</div><p class="small muted" style="margin-top:8px">' + esc(P.bestLine(monthLow(r.bestMonth))) + '</p>';
   const wl = (r.water.grossM3 > 0 ? '<p class="small muted">' + esc(P.waterVolume(nf(r.water.grossM3, 0), nf(r.water.balance.deficit, 0))) + '</p>' : '') + (r.cover && r.cover.rainFactor === 0 ? '<p class="small muted">' + esc(P.waterRoof) + '</p>' : '');
   return '<div class="card"><div class="blk-t"><h4>' + esc(P.waterChart) + '</h4><span>' + esc(long ? P.waterSubLong : P.waterSub) + '</span></div><div class="chart-box nomin" data-ptips>' + svg + '</div><div class="risk-legend"><span><i style="background:#127A5B"></i>' + esc(P.cropNeed) + '</span><span><i style="background:#2B7A8F"></i>' + esc(P.rainEff) + '</span></div>' + wl + '</div>' +
     '<h5 class="sub">' + esc(P.risksT) + '</h5>' + risks + '<h5 class="sub">' + esc(P.windowsT) + '</h5>' + win;

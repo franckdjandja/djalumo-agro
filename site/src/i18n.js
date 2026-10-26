@@ -9,14 +9,14 @@ en: {
     pages: { home: 'Agricultural decision intelligence for Africa', planner: 'Season Planner', platform: 'Platform', intelligence: 'Intelligence', solutions: 'Solutions', data: 'Data', impact: 'Impact', about: 'About', contact: 'Contact', demo: 'Request a demo', newsletter: 'Newsletter', privacy: 'Privacy policy', terms: 'Terms of use', admin: 'Team inbox', nf: 'Signal not found' }
   },
   nav: { home: 'Home', planner: 'Planner', platform: 'Platform', intelligence: 'Intelligence', solutions: 'Solutions', data: 'Data', impact: 'Impact', about: 'About', contact: 'Contact', demo: 'Request a demo', newsletter: 'Newsletter', menu: 'Menu', close: 'Close', skip: 'Skip to content', lang: 'Language' },
-  badge: { demo: 'Demo · illustrative', real: 'Sourced data', plan: 'Planned', mvp: 'MVP', v2: 'Version 2', v3: 'Version 3', v4: 'Version 4', field: 'Field record' },
-  cta: { explore: 'Explore the platform', demo: 'Request a demo', contact: 'Contact the team', simulate: 'Simulate', more: 'Learn more', back: 'Return to Djalumo Agro', read: 'Read the field evidence', sim: 'Open the Season Simulator' },
+  badge: { demo: 'Demo · illustrative', real: 'Sourced data', plan: 'Planned', mvp: 'MVP 2027', now: 'Available today', v2: 'Version 2', v3: 'Version 3', v4: 'Version 4', field: 'Field record' },
+  cta: { explore: 'Explore the platform', demo: 'Request a demo', contact: 'Contact the team', simulate: 'Simulate', more: 'Learn more', back: 'Return to Djalumo Agro', read: 'Read the field evidence', sim: 'Open the Season Planner' },
 
   home: {
     eyebrow: 'Agricultural decision intelligence · Africa',
     h1: 'Decide the season before you plant it.',
     lead: 'Djalumo Agro turns any budget, from 100 USD to more than 1 million, into a costed Season Plan: what to grow, on what area, from which date, at what cost and at what risk. Built on climate, soil, market and context data, in English and French.',
-    tryLabel: 'Season Simulator · enter a capital',
+    tryLabel: 'Season Planner · enter a capital',
     tryAria: 'Capital amount',
     chips: ['Pilot zone · Foumbot, Cameroon', 'MVP crop · Tomato', 'Stage · Design and field validation', 'English · French'],
     readTitle: 'System status',
@@ -51,9 +51,9 @@ en: {
     steps: [
       { t: 'Data', d: 'Climate, soil, crop, market and context, from public archives and field records.' },
       { t: 'Intelligence', d: 'An agronomic reference base structures the data by crop, stage and zone.' },
-      { t: 'Prediction', d: 'Models estimate climate risk, disease pressure, yield and price as ranges.' },
+      { t: 'Prediction', d: 'Documented agronomic rules today, and models trained on field data from 2027, estimate climate risk, disease pressure, yield and price as ranges.' },
       { t: 'Decision', d: 'The Season Plan sizes the area to the capital and ranks the planting windows.' },
-      { t: 'Action', d: 'Alerts and the season log guide the work; real results sharpen the next plan.' }
+      { t: 'Action', d: 'The Season Plan guides the work; from the 2027 pilot, the season log compares plan and reality to sharpen the next plan.' }
     ],
 
     sEyebrow: '03 · Season Planner',
@@ -105,11 +105,11 @@ en: {
     price: 'Selling price you expect (FCFA/kg)', pricePh: 'Your local price', priceOptional: 'Optional: leave empty to use this reference, adjusted to your harvest months.',
     kBreakEven: 'Break even price', atAvgYield: 'At the average yield',
     enterPrice: 'Enter your expected selling price in the form to see the four outcomes and the return.',
-    unpricedNote: (list) => 'No sourced price was found for: ' + list + '. These lines keep their quantity but count as zero in the budget: get a local quote before committing.',
+    unpricedNote: (list, n) => n > 1 ? 'No sourced price was found for these lines: ' + list + '. They keep their quantities but count as zero in the budget: get a local quote before committing.' : 'No sourced price was found for this line: ' + list + '. It keeps its quantity but counts as zero in the budget: get a local quote before committing.',
     toQuote: 'Quote',
     unusedCapital: (v) => 'About ' + v + ' of your capital stays unused with this water option.',
     states: {
-      below_min: (min) => 'The capital is below the minimum of 100 USD (' + min + '). A real plot starts from this amount.',
+      below_min: (min, usd) => 'The minimum capital is ' + (usd ? '100 USD' : min + ', the equivalent of 100 USD') + ': below this amount, the budget does not cover a real plot.',
       upfront_exceeds: () => 'The capital does not cover the equipment of the water option chosen. Choose another water option or raise the capital.',
       manual_limit: (min, max) => 'Manual watering is realistic up to about ' + max + ': the plan stops there. For a larger plot, choose a motor pump or drip irrigation.',
       needs_price: (min, max, be) => 'No published farm gate price exists for this crop in Cameroon, so Djalumo Agro does not guess one. Enter the price you expect, in FCFA per kg, to see the four outcomes. At the average yield, the season breaks even from about ' + be + ' FCFA/kg.'
@@ -117,7 +117,7 @@ en: {
     upfrontHint: 'With a small capital: if you can borrow a sprayer and basic tools, tick “I already own basic tools and a sprayer” under More options; start with manual watering or rain fed planting in the rainy season, then invest in equipment from the first season profits.',
     kArea: 'Plot the capital carries', plants: (n) => n + ' plants', kRequired: 'Capital required', kBudget: 'Season budget', inclReserve: 'Includes a 10% contingency reserve',
     kMargin: 'Average outcome margin', roiAvg: (p) => 'Return ' + p + ' on the costs of the season', kSeason: 'Season length',
-    compactNote: 'Average outcome shown. The full plan details the budget line by line, the technical itinerary, the shopping list, the water balance and the risks.',
+    compactNote: 'Only the average outcome is shown here. The full plan details the budget line by line, the technical itinerary, the shopping list, the water balance and the risks.',
     openFull: 'Open the full Season Plan',
     tabs: { return: 'Return', budget: 'Budget', itinerary: 'Technical itinerary', shopping: 'Shopping list', water: 'Water and risks', sources: 'Sources' },
     scen: {
@@ -126,18 +126,18 @@ en: {
       poor: ['Poor harvest', 'Low farmer yield and a weak price.'],
       failure: ['Failure', 'Most of the crop lost (disease, climate, market closure): only a small part is sold.']
     },
-    weight: (n) => 'about ' + n + '%', roi: 'Return',
+    weight: (n) => 'about a ' + n + '% chance', roi: 'Return',
     yieldL: 'Yield', priceL: 'Price', soldL: 'Sold', revenueL: 'Revenue', costsL: 'Season costs',
     chartMargins: 'Margin by outcome', perSeason: 'One season',
     breakEvenT: 'Break even', beYield: 'Yield needed at the average price', bePrice: 'Price needed at the average yield',
-    expected: 'Risk weighted margin', expectedNote: 'Indicative weights by outcome, adjusted to the risks of your window. They will be replaced by measured frequencies once seasons are recorded.',
-    scenNote: '<b>How outcomes are built.</b> Yields come from published references for each crop and season (rainy or dry), adjusted by the water your option supplies (FAO-33 yield response to water). The price is the one you enter; without it, the Cameroon reference adjusted to the months you harvest. Good and poor outcomes move the price by about 17%, the usual spread seen within one market in one month. Costs of equipment that lasts several seasons are spread over its lifespan in the margin; the full purchase is in the budget.',
+    expected: 'Risk weighted margin', expectedNote: 'Each outcome is weighted by an indicative likelihood, adjusted to the risks of your window. These likelihoods will be replaced by measured frequencies once seasons are recorded.',
+    scenNote: '<b>How outcomes are built.</b> Yields come from published references for each crop and season (rainy or dry), adjusted by the water your option supplies (FAO-33 yield response to water). The price is the one you enter; without it, the Cameroon reference adjusted to the months you harvest. In a good or a poor harvest, the price moves by about 17%, the usual spread seen within one market in one month. Costs of equipment that lasts several seasons are spread over its lifespan in the margin; the full purchase is in the budget.',
     cats: { land: 'Land', land_preparation: 'Land preparation', seed: 'Seeds', nursery: 'Nursery', fertilizer: 'Fertilizers', amendment: 'Organic manure and amendments', foliar: 'Foliar feeds and biostimulants', fungicide: 'Fungicides', insecticide: 'Insecticides', herbicide: 'Herbicides', stakes: 'Stakes', trellis: 'Trellis', irrigation: 'Irrigation running costs', labour: 'Labour', advice: 'Agronomist', harvest: 'Harvest, packaging and transport', equipment: 'Equipment bought up front', reserve: 'Contingency reserve (10%)', tools: 'Tools', ppe: 'Protective equipment', packaging: 'Packaging', transport: 'Transport', fuel: 'Fuel', other: 'Other' },
     lifeSeasons: (n) => 'lasts about ' + n + ' seasons',
     totalBudget: 'Total season budget',
     th: { line: 'Line', qty: 'Quantity', unitPrice: 'Unit price (FCFA)', src: 'Source', total: 'Total', item: 'Item', cat: 'Category', need: 'Quantity needed', packs: 'To buy', cost: 'Cost', block: 'Data', conf: 'Confidence', note: 'What it rests on' },
     budgetNote: 'Quantities follow the standard itinerary for your area. Harvest, packaging and transport lines are sized on the average outcome. Unit prices are Cameroon market references; check them with your local supplier.',
-    apps: (n) => n + ' applications', labourDays: (n) => n + ' person days of work',
+    apps: (n) => n + ' applications', labourDays: (n, v) => n + (v === 1 ? ' person day of work' : ' person days of work'),
     shopNote: 'Quantities are rounded up to the packs usually sold. Equipment bought up front is listed last.',
     waterChart: 'Crop water need and rainfall', waterSub: 'mm per month, field period', rainEff: 'dependable rain', deficit: 'deficit', cropNeed: 'crop need (ETc)',
     waterVolume: (m3, mm) => 'Water to supply over the season: about ' + m3 + ' m³ (' + mm + ' mm of crop deficit, after application losses).',
@@ -145,13 +145,14 @@ en: {
     riskNames: { water: 'Water stress', heat: 'Heat at flowering', disease: 'Disease pressure', market: 'Market at harvest', context: 'Context' },
     riskText: {
       water: (cov, def, opt) => 'Water covers about ' + cov + '% of the crop need. Rain leaves a deficit of ' + def + ' mm' + (opt === 'rainfed' ? '; without irrigation the yield falls accordingly.' : '; your water option covers it.'),
-      heat: (months, t, thr) => 'Flowering falls in ' + months + ', with average maxima near ' + t + '°C. Fruit set suffers above about ' + thr + '°C.',
+      heat: (span, t, thr) => 'Flowering falls ' + span + ', with average maxima near ' + t + '°C. Fruit set suffers above about ' + thr + '°C.',
       disease: (mm, note) => 'Up to ' + mm + ' mm of rain per month from flowering to the end of harvest. ' + note,
-      market: (months, idx) => 'Harvest in ' + months + ': the usual price is about ' + idx + '% of the yearly average.',
+      market: (span, idx) => 'Harvest ' + span + ': the usual price is about ' + idx + '% of the yearly average.',
       context: 'Check elections, holidays and road conditions for your harvest weeks before you commit.'
     },
     check: 'Check',
-    windowsT: 'Start month comparison', riskScore: 'risk score', bestLine: (m) => 'Lowest risk start month with your water option: ' + m + '. Select a month to compare.',
+    windowsT: 'Start month comparison', riskScore: 'risk score',
+    span: { one: (m) => 'in ' + m, range: (a, b) => 'from ' + a + ' to ' + b, list: (a, b) => 'in ' + a + ' and ' + b }, bestLine: (m) => 'Lowest risk start month with your water option: ' + m + '. Select a month to compare.',
     levels: ['Low', 'Medium', 'High'],
     conf: { high: 'High', medium: 'Medium', low: 'Low' },
     assumptionsT: 'Assumptions', sourcesT: 'Sources used for this plan',
@@ -195,7 +196,7 @@ en: {
 
   tiers: [
     { n: 'Starter', r: '100 to 1,000 USD', d: 'The crop and plot size the budget can carry, an affordable input list, a nursery and planting calendar, and a clear warning when the budget is too small.', w: 'Household, student, new grower' },
-    { n: 'Smallholder', r: '1,000 to 10,000 USD', d: 'A full Season Plan for one to a few hectares: water plan, pest calendar, sales plan, margin in three scenarios.', w: 'Family farm, young agripreneur' },
+    { n: 'Smallholder', r: '1,000 to 10,000 USD', d: 'A full Season Plan for one to a few hectares: water plan, pest calendar, sales plan, margin in four outcomes.', w: 'Family farm, young agripreneur' },
     { n: 'Commercial', r: '10,000 to 100,000 USD', d: 'Several crops and staggered plantings, irrigation and equipment sizing, packaging and logistics options, labour plan.', w: 'Commercial farm, cooperative, diaspora investor' },
     { n: 'Industrial', r: '100,000 to 1,000,000+ USD', d: 'A portfolio of sites and crops, supply forecasts for buyers and processors, risk reports for lenders and insurers, API access.', w: 'Agribusiness, investor, processor' }
   ],
@@ -208,13 +209,13 @@ en: {
     kStatus: 'Status', kField: 'Field data', kPublic: 'Public layers', kNext: 'Next',
     stPilot: 'Pilot zone · MVP', stPlan: 'Planned · Version 4', stPublic: 'Public data only',
     publicLayers: 'Climate history since 1981, rainfall at about 5 km, soil at 250 m, production statistics since 1961',
-    fieldCm: 'Cam_Agri For Africa pilot: four phases, Sept 2024 to Oct 2025, 97 field photographs, real cost lines',
+    fieldCm: 'Cam_Agri For Africa pilot: four phases, Sept 2024 to Oct 2025, 73 field photographs, real cost lines',
     nextCm: 'Survey of 30 to 50 tomato growers in Foumbot; field pilot with 30 growers from March 2027',
     fieldNone: 'None yet',
     nextPlan: 'Version 4 opens Central, West and East Africa, starting with Rwanda and Kenya, once the model is sustainable in Cameroon.',
     nextNone: 'Expansion follows the release gates of the roadmap.',
     pilotLabel: 'Foumbot · pilot zone',
-    loading: 'Initialising geographic layers',
+    loading: 'Loading the map',
     scaleNote: 'Natural Earth projection · boundaries are indicative'
   },
 
@@ -228,7 +229,7 @@ en: {
   newsletter: {
     eyebrow: 'Newsletter',
     h: 'Stay ahead of agricultural intelligence.',
-    d: 'Field notes from Foumbot, model progress, data sources and release news. Occasional, in English or French. Unsubscribe at any time.',
+    d: 'Field notes from Foumbot, model progress, data sources and release news. Sent occasionally, in English or French. Unsubscribe at any time.',
     email: 'Email address', ph: 'you@organisation.com', btn: 'Subscribe',
     consent: 'I agree to receive Djalumo Agro updates and accept the privacy policy.',
     okT: 'You’re in.', okD: 'You’ll receive Djalumo Agro updates and insights.',
@@ -245,20 +246,20 @@ en: {
       { k: 'Budget first', q: '“I have this amount. What should I do?”', d: 'The platform ranks the crops and planting windows that fit the capital, the location and the season, and explains why.' },
       { k: 'Crop first', q: '“I want to grow tomatoes on one hectare in March.”', d: 'The platform checks whether the capital is sufficient, builds the plan and proposes a better window or a smaller area when the risk or the cost is too high.' }
     ],
-    currency: 'Capital can be entered in CFA franc, US dollar, euro, Rwandan franc, Kenyan shilling, naira or any other currency, converted at the day’s rate.',
+    currency: 'Capital can be entered in CFA franc, US dollar, euro, Rwandan franc, Kenyan shilling or naira, converted at the reference rates of October 2026.',
     planEyebrow: 'The Season Plan',
     planH: 'Ten answers before a single seed is bought.',
-    planLead: 'Every answer is expressed as a range with the evidence behind it. In the demo on the home page, the outputs marked live are computed in your browser.',
-    live: 'Live in demo',
+    planLead: 'Every answer is expressed as a range with the evidence behind it. The answers marked available today are already computed by the Season Planner.',
+    live: 'Available today',
     plan: [
       ['Feasibility', 'The area the capital can carry, or an explicit warning that it cannot carry the area requested.', 1],
       ['Crop calendar', 'Nursery, transplanting, first and last harvest dates, total cycle length.', 1],
       ['Input package and budget', 'Seeds, fertilizer, crop protection, labour, irrigation, transport, packaging and expert support, against the capital.', 1],
-      ['Water plan', 'Crop water needs against expected rainfall, week by week, with the irrigation required and its cost.', 0],
-      ['Yield and revenue ranges', 'Pessimistic, median and optimistic. Never a single number.', 0],
-      ['Market outlook at harvest', 'Expected price trend and risk of a glut in the harvest weeks.', 0],
+      ['Water plan', 'Crop water needs against dependable rainfall, month by month, with the irrigation required and its cost.', 1],
+      ['Yield and revenue ranges', 'Four outcomes, from a good harvest to a failure, each with its likelihood. Never a single number.', 1],
+      ['Market outlook at harvest', 'Usual price level and risk of a glut in the harvest months.', 1],
       ['Sales and packaging plan', 'Buyer channel, packaging format and the price difference it makes.', 0],
-      ['Risk map', 'Climate, pests and diseases, wildlife, market, logistics and context, each rated with its mitigation.', 1],
+      ['Risk map', 'Water, heat at flowering, disease pressure, market and context, each rated for the window chosen.', 1],
       ['Best window', 'The safest and most profitable planting dates, compared with the date requested.', 1],
       ['Confidence index', 'What each figure rests on (local data, regional data, expert opinion) and how reliable it is.', 1]
     ],
@@ -266,7 +267,7 @@ en: {
     prodH: 'Four channels, one account.',
     prodCols: ['Product', 'Users', 'Purpose', 'Release'],
     products: [
-      ['Djalumo Agro Mobile', 'Farmers in the field', 'Season Simulator, season log and alerts; works offline. Android first, iOS next.', 'mvp'],
+      ['Djalumo Agro Mobile', 'Farmers in the field', 'Season Planner, season log and alerts; works offline. Android first, iOS next.', 'mvp'],
       ['Djalumo Agro Web', 'Investors, cooperatives, agribusinesses', 'Full planning dashboard, portfolio of plots and seasons, reports.', 'mvp'],
       ['Djalumo Agro Alerts', 'Every farmer, including basic phones', 'Weather, heat, disease and market alerts by WhatsApp and SMS; simple queries.', 'v2'],
       ['Djalumo Agro Pro and API', 'Banks, insurers, buyers, public institutions', 'Aggregated supply forecasts and season risk profiles, with farmer consent; data services.', 'v3']
@@ -274,7 +275,7 @@ en: {
     modEyebrow: 'Modules',
     modH: 'Nine modules, released behind strict gates.',
     modules: [
-      ['Season Simulator', 'Budget first or crop first planning, Season Plan with ranges and confidence index, context risk calendar.', 'mvp'],
+      ['Season Planner', 'Budget first or crop first planning, Season Plan with ranges and confidence index, context risk calendar.', 'now'],
       ['Climate and weather', '40 years of local history, forecasts for the next 10 days, heat and rainfall alerts.', 'mvp'],
       ['Crop health', 'Pest and disease risk by crop stage (late blight, whiteflies, caterpillars), treatment calendar.', 'mvp'],
       ['Season log', 'Operations, expenses, harvests, sales and photos, entered in seconds.', 'mvp'],
@@ -304,17 +305,17 @@ en: {
   intel: {
     eyebrow: 'Intelligence',
     h1: 'Four layers of knowledge. No black box.',
-    lead: 'The engine combines an agronomic reference base, machine learning models, expert validation and proprietary season data. This combination, rather than machine learning alone, makes predictions credible from the first day and more accurate with every season.',
+    lead: 'The engine is built in four layers: an agronomic reference base, statistical and machine learning models, expert validation and proprietary season data. Today the Season Planner runs on the first layer, documented agronomic rules (FAO, MINADER) applied to sourced data. The models will be trained on the field data of the 2027 pilot, and each recorded season will make them more accurate.',
     archEyebrow: 'Architecture',
     archH: 'From seven data domains to a decision on one plot.',
-    archLead: 'Select any component to see its role, its technology and its release. The technical core, from data collection to models and API, is written in Python.',
+    archLead: 'Select any component to see its role, its technology and its release. Today the planner runs in your browser, and on our server for the PDF reports; the data and model pipelines of the coming releases will be written in Python.',
     cols: ['Data', 'Intelligence engine', 'Intelligence', 'Decisions'],
     layersEyebrow: 'Knowledge layers',
-    layersH: 'Why the predictions can be trusted on day one.',
-    layerCols: ['Layer', 'Role', 'Source of reliability', 'Available'],
+    layersH: 'Why the plans can be trusted before the models exist.',
+    layerCols: ['Layer', 'Role', 'Source of reliability', 'Release'],
     layers: [
-      ['Agronomic reference base', 'Cycle lengths, water needs, temperature thresholds, crop management, standard costs per crop and zone.', 'Established research (FAO and national institutes), validated by agronomists.', 'mvp'],
-      ['Statistical and machine learning models', 'Climate risk, pest and disease risk, yield, harvest price, best window.', 'Trained and tested on historical data with measured error.', 'mvp'],
+      ['Agronomic reference base', 'Cycle lengths, water needs, temperature thresholds, crop management, standard costs per crop and zone.', 'Established research (FAO and national institutes), validated by agronomists.', 'now'],
+      ['Statistical and machine learning models', 'Climate risk, pest and disease risk, yield, harvest price, best window.', 'To be trained and tested on historical and pilot data, with measured error.', 'mvp'],
       ['Expert validation', 'Review of cases the models cover poorly, local calibration.', 'Agronomists who know each zone.', 'v2'],
       ['Proprietary season data', 'Actual costs, yields, prices and incidents recorded by users.', 'Local, recent and unique to Djalumo Agro.', 'grow']
     ],
@@ -351,24 +352,24 @@ en: {
 
   arch: {
     nodes: {
-      weather: ['Weather', 'Daily rainfall, temperature, humidity and radiation since 1981 (NASA POWER), hourly reanalysis (ERA5-Land) and forecasts for the next 10 days.', 'MVP'],
+      weather: ['Weather', 'Daily rainfall, temperature, humidity and radiation since 1981 (NASA POWER), hourly reanalysis (ERA5-Land) and forecasts for the next 10 days.', 'MVP 2027'],
       satellite: ['Satellite', 'Sentinel-2 vegetation index of plots every few days through Google Earth Engine; rainfall estimates at about 5 km (CHIRPS).', 'Version 2'],
       soil: ['Soil', 'pH, organic carbon, texture and nitrogen at 250 m (SoilGrids), verified by reference laboratory tests on selected plots.', 'Version 2'],
-      crop: ['Crop', 'Cycle lengths, water needs, temperature thresholds and sensitive stages by crop, from the agronomic reference base.', 'MVP'],
-      ops: ['Operations', 'The season log: operations, expenses, harvests, sales and photos entered by users, plan against reality.', 'MVP'],
+      crop: ['Crop', 'Cycle lengths, water needs, temperature thresholds and sensitive stages by crop, from the agronomic reference base.', 'Available today'],
+      ops: ['Operations', 'The season log: operations, expenses, harvests, sales and photos entered by users, plan against reality.', 'MVP 2027'],
       markets: ['Markets', 'Weekly price readings in Foumbot and Bafoussam by a paid correspondent, then by the community; public price series.', 'Version 2'],
-      history: ['Historical', 'Production and yields since 1961 (FAOSTAT), the Cam_Agri For Africa pilot as founding dataset, a context calendar.', 'MVP'],
-      ref: ['Agronomic base', 'Reference knowledge validated by agronomists: the floor of reliability from day one.', 'MVP'],
-      ml: ['ML models', 'Python, pandas, scikit-learn, XGBoost, statsmodels; versioned and compared in MLflow.', 'MVP'],
+      history: ['Historical', 'Production and yields since 1961 (FAOSTAT), the Cam_Agri For Africa pilot as founding dataset, a context calendar.', 'MVP 2027'],
+      ref: ['Agronomic base', 'Reference knowledge validated by agronomists: the floor of reliability from day one.', 'Available today'],
+      ml: ['ML models', 'Python, pandas, scikit-learn, XGBoost, statsmodels; versioned and compared in MLflow.', 'MVP 2027'],
       expert: ['Expert validation', 'Agronomists review the cases the models cover poorly and calibrate locally.', 'Version 2'],
       seasons: ['Season data', 'Real costs, yields and prices from every recorded season: the proprietary advantage.', 'Grows each season'],
-      analytics: ['Analytics', 'Data pipelines and quality checks, scheduled daily; PostgreSQL with PostGIS for plots and maps.', 'MVP'],
-      ai: ['AI', 'Classification and regression models with SHAP explanations and prediction intervals.', 'MVP'],
+      analytics: ['Analytics', 'Data pipelines and quality checks, scheduled daily; PostgreSQL with PostGIS for plots and maps.', 'MVP 2027'],
+      ai: ['AI', 'Classification and regression models with SHAP explanations and prediction intervals.', 'MVP 2027'],
       predict: ['Prediction', 'Climate risk, disease pressure, yield and harvest price, each as a range with a confidence index.', 'Progressive'],
       optim: ['Optimization', 'Constrained optimisation: the best crop and window for an acceptable risk within the budget.', 'Version 2'],
-      plan: ['Season Plan', 'Feasible area, calendar, budget, water plan, risks, best window and confidence, through a FastAPI service.', 'MVP'],
+      plan: ['Season Plan', 'Feasible area, calendar, budget, water plan, risks, best window and confidence, computed in the browser and on the server for PDF reports.', 'Available today'],
       alerts: ['Alerts', 'Weather, heat, disease and market alerts by app, WhatsApp and SMS.', 'Version 2'],
-      dash: ['Dashboards', 'Live season dashboards for farmers; portfolio views for investors and cooperatives (React, Next.js).', 'MVP'],
+      dash: ['Dashboards', 'Live season dashboards for farmers; portfolio views for investors and cooperatives (React, Next.js).', 'MVP 2027'],
       api: ['API', 'Aggregated, consented data services for banks, insurers, buyers and public institutions.', 'Version 3']
     },
     hint: 'Select a component',
@@ -419,22 +420,22 @@ en: {
     covNote: 'Start years as published by each provider. SoilGrids is a static map, shown at its current release.',
     srcEyebrow: 'Public data foundation',
     srcH: 'Nine sources, each audited before use.',
-    srcCols: ['Domain', 'Source', 'Coverage and use', 'Status'],
+    srcCols: ['Domain', 'Source', 'Coverage and use', 'Access'],
     sources: [
-      ['Daily weather history', 'NASA POWER', 'https://power.larc.nasa.gov/', 'Rainfall, temperature, humidity, radiation since 1981; direct Python access', 'Free; to be confirmed in the data audit'],
-      ['Rainfall, fine resolution', 'CHIRPS, UCSB', 'https://www.chc.ucsb.edu/data/chirps', 'Rainfall at about 5 km since 1981', 'Free; to be confirmed'],
+      ['Daily weather history', 'NASA POWER', 'https://power.larc.nasa.gov/', 'Rainfall, temperature, humidity, radiation since 1981; direct Python access', 'Free and open'],
+      ['Rainfall, fine resolution', 'CHIRPS, UCSB', 'https://www.chc.ucsb.edu/data/chirps', 'Rainfall at about 5 km since 1981', 'Free and open'],
       ['Reference reanalysis', 'ERA5-Land, Copernicus', 'https://cds.climate.copernicus.eu/', 'Hourly variables at about 9 km', 'Free with registration'],
       ['Soil', 'SoilGrids, ISRIC', 'https://soilgrids.org/', 'pH, organic carbon, texture, nitrogen at 250 m', 'Free, CC BY licence'],
       ['Vegetation', 'Sentinel-2 via Google Earth Engine', 'https://earthengine.google.com/', 'Vegetation index of plots every few days', 'Free for research; commercial terms apply'],
       ['Production and yields', 'FAOSTAT', 'https://www.fao.org/faostat/', 'Area, production and yield by crop, country and year since 1961', 'Free'],
-      ['Food prices', 'WFP prices for Cameroon, HDX', 'https://data.humdata.org/dataset/wfp-food-prices-for-cameroon', 'Market prices 2005 to 2024, mainly northern regions', 'Tomato and West region coverage to be verified'],
-      ['National statistics', 'National Institute of Statistics, MINADER', '', 'Production by region', 'Availability to be verified'],
-      ['Security context', 'ACLED', 'https://acleddata.com/', 'Geolocated events by region', 'Commercial licence to be verified']
+      ['Food prices', 'WFP prices for Cameroon, HDX', 'https://data.humdata.org/dataset/wfp-food-prices-for-cameroon', 'Market prices 2005 to 2024, mainly northern regions', 'Free, open data on HDX'],
+      ['National statistics', 'National Institute of Statistics, MINADER', '', 'Production by region', 'Public statistical yearbooks'],
+      ['Security context', 'ACLED', 'https://acleddata.com/', 'Geolocated events by region', 'Free with registration for non commercial use; separate licence for commercial use']
     ],
     propEyebrow: 'Proprietary data',
     propH: 'The data no competitor can copy.',
     prop: [
-      ['The Cam_Agri For Africa pilot', 'Four documented phases, real cost lines, dated incidents and 97 field photographs, structured as the founding dataset.'],
+      ['The Cam_Agri For Africa pilot', 'Four documented phases, real cost lines, dated incidents and 73 field photographs, structured as the founding dataset.'],
       ['Grower survey', '30 to 50 tomato growers in Foumbot interviewed on their recent seasons: yield, costs, losses, selling prices.'],
       ['Field price survey', 'Two to three price readings per week on the Foumbot and Bafoussam markets, by a paid correspondent, then by the community.'],
       ['Reference soil tests', 'Laboratory analyses on selected plots to verify satellite soil data on the ground.'],
@@ -475,7 +476,7 @@ en: {
       ['Pest pressure', 'Whiteflies, caterpillars, fruit rot', 'Pest and disease risk calendar by crop stage, alerts, photo diagnosis in a later release'],
       ['Site exposure', 'Monkeys, remote site, expensive transport', 'Site score: water, road access, wildlife exposure, distance to market'],
       ['Bulk sales', '50 kg sacks at low prices', 'Sales and packaging plan: channel, format, price per kilogram against bulk'],
-      ['Markets closed', 'An election crisis at harvest time', 'Context risk calendar (elections, holidays, roads, security) from the first release']
+      ['Markets closed', 'An election crisis at harvest time', 'Context risk calendar (elections, holidays, roads, security)']
     ],
     photosEyebrow: 'Field record',
     photosH: 'What the pilot looked like.',
@@ -492,24 +493,29 @@ en: {
   about: {
     eyebrow: 'About',
     h1: 'From a father’s field in Foumbot to an intelligence platform.',
-    lead: 'Djalumo Agro is the outcome of more than ten years of work, from a family farming tradition to a documented, photographed and costed field pilot.',
+    lead: 'Djalumo Agro is the outcome of more than twenty years of work, from the small plots of the founder’s teenage years and his father’s plantations to a documented, photographed and costed field pilot.',
     leadEyebrow: 'Project leader',
     name: 'Franck Junior Djandja Tomwa',
     titles: ['Telecommunications Engineer', 'Data Analyst', 'International Operations Manager'],
     base: 'Based in Kigali, Rwanda · Pilot zone in Foumbot, Cameroon',
     photoAlt: 'Franck Junior Djandja Tomwa holding ripe tomatoes between staked rows, Foumbot area, 2025',
     story: [
-      'The project starts with the founder’s father, a farmer in the Foumbot area who taught him the craft of the land, including the production of excellent seed from his own harvests.',
-      'In September 2021, before travelling to Kigali to present his vision of an industrialised African agriculture driven by technology, the founder spent time on his father’s plantation, where tomato, eggplant and cucumber were grown on plots at different stages.',
-      'From that heritage came Cam_Agri For Africa, a commercial farming pilot run between September 2024 and October 2025. It did not fail for lack of land, labour or commitment. It failed because each critical decision was taken without the information that would have changed it. Djalumo Agro exists to supply that information, for any budget, before capital is committed.'
+      'The project began in the founder’s teenage years. Beside the family gardens, he grew his own small plots of eggplant, cucumber and other vegetables, which already brought him some income, and he followed his father, a farmer in the Foumbot area, through his plantations. His father taught him the craft of the land, including the production of excellent seed from his own harvests.',
+      'His engineering studies in telecommunications then gave him the means to modernise what his father had taught him, by bringing technology into farming. His goal has not changed since: to make agriculture in Cameroon and across Africa a modern, intelligent industry.',
+      'In September 2021, with the project already well advanced, he travelled to Kigali to present this vision to entrepreneurs, people working in the sector and potential investors, after a stay on his father’s plantation, where tomato, eggplant and cucumber were grown on plots at different stages.',
+      'From that heritage came Cam_Agri For Africa, a commercial farming pilot run between September 2024 and October 2025. It did not fail for lack of land, labour or commitment. It failed because each critical decision was taken without the information that would have changed it. Djalumo Agro exists to supply that information, for any budget, before capital is committed.',
+      'Now a data analyst, he adds the piece that was missing: data made useful for decisions. The Season Planner is its first result.'
     ],
     convEyebrow: 'Convictions',
     convH: 'Four convictions behind the work.',
     conv: [['Africa must feed itself.', 'Food security begins with productive, profitable local farms.'], ['Agriculture can offer dignified work.', 'A real alternative to emigration for young Africans.'], ['Farming is a business.', 'Run with numbers, plans and measured risk.'], ['Cameroon is the right start.', 'Arable land, the ports of Douala and Kribi, and buyers from Gabon and Equatorial Guinea.']],
     mileEyebrow: 'Milestones',
-    mileH: 'Ten years of work, in six moments.',
+    mileH: 'More than twenty years of work, in eight moments.',
+    photoCap: ['September 2021', 'Visit to the father’s plantation'],
     miles: [
-      ['September 2021', 'Visit to the father’s plantation', 'Tomato, eggplant and cucumber; then Kigali, to present the vision to entrepreneurs.'],
+      ['Teenage years', 'First plots of his own', 'Eggplant, cucumber and other vegetables beside the family gardens; the craft learnt on his father’s plantations.'],
+      ['Engineering studies', 'Telecommunications engineer', 'The technical training that made it possible to bring technology into farming.'],
+      ['September 2021', 'The vision presented in Kigali', 'After a stay on the father’s plantation (tomato, eggplant, cucumber), the project is presented to entrepreneurs, people in the sector and potential investors.'],
       ['September 2024', 'Cam_Agri For Africa pilot launched', 'Main site of 1 ha, USD 5,000 of own capital; heat, water and packaging problems.'],
       ['Nov 2024 to Jul 2025', 'Secondary marshy site', 'Cucumber, pepper and zucchini, then staked tomato; pests and low prices.'],
       ['Aug to Oct 2025', 'Relaunch of the main site', 'Good crop, but an election crisis closed markets at harvest: total commercial loss.'],
@@ -524,12 +530,13 @@ en: {
       ['Phase 0', 'Framing', 1, 2, 'Founder decisions, structured pilot dataset, report approved in English and French, GitHub repository.', 'MVP scope approved by the founder'],
       ['Phase 1', 'Field validation', 3, 6, 'Survey of 30 to 50 Foumbot growers, market price readings, data audit, paper mockups tested with 10 growers.', 'Need confirmed and willingness to pay measured'],
       ['Phase 2', 'Data and models', 7, 14, 'Certificate PACE project: pipelines, exploration, climate risk, disease risk and yield models, error analysis, published on GitHub.', 'Each model beats its baseline on unseen years'],
-      ['Phase 3', 'Prototype', 15, 20, 'Bilingual Season Simulator connected to the models, tested with 10 growers in Foumbot.', '10 growers rate the Season Plan useful'],
+      ['Phase 3', 'Prototype', 15, 20, 'Bilingual Season Planner connected to the models, tested with 10 growers in Foumbot.', '10 growers rate the Season Plan useful'],
       ['Phase 4', 'MVP pilot', 21, 32, 'Android and web applications, season log, alerts; 30 growers followed over a full season from March 2027.', 'Season completed and plan rated useful']
     ],
     gate: 'Gate', week: 'Week', roadHl: 'Highlighted: Phase 2, the advanced data analytics project (PACE), published on GitHub. Diamonds mark the gates.',
     expEyebrow: 'Expansion',
     expH: 'Crop by crop, region by region.',
+    expLead: 'The Season Planner already covers twelve crops from published references. This sequence concerns the field follow up and the models trained on growers’ own seasons.',
     expCols: ['Release', 'Crops', 'Geography', 'Criterion to move on'],
     exp: [
       ['MVP', 'Tomato', 'Foumbot and surroundings', '30 active growers complete a season and rate the Season Plan useful'],
@@ -538,7 +545,7 @@ en: {
       ['Version 4', 'Broad crop catalogue', 'Central, West and East Africa, starting with Rwanda and Kenya', 'Sustainable business model in Cameroon']
     ],
     refH: 'The reference farm',
-    ref: 'In parallel, and subject to financing of at least USD 100,000, the Cam_Agri For Africa farm will be relaunched as Djalumo Agro’s reference site, where every recommendation is tested at commercial scale with automated irrigation, transport and packaging. USD 20,000 would allow only a partial review.'
+    ref: 'In parallel, and subject to financing of at least USD 100,000, the Cam_Agri For Africa farm will be relaunched as Djalumo Agro’s reference site, where every recommendation is tested at commercial scale with automated irrigation, transport and packaging. USD 20,000 would allow only a partial relaunch.'
   },
 
   contact: {
@@ -549,15 +556,15 @@ en: {
     next: ['Your message is stored securely with its timestamp.', 'The project team reads every message.', 'You receive a reply by email, in the language you wrote in.'],
     whereH: 'Where we work',
     where: [['Project base', 'Kigali, Rwanda'], ['Pilot zone', 'Foumbot, Noun division, West Cameroon'], ['Languages', 'English, French']],
-    demoH: 'Prefer a walkthrough?', demoD: 'Request a guided demo of the Season Simulator with your own numbers.'
+    demoH: 'Prefer a walkthrough?', demoD: 'Request a guided demo of the Season Planner with your own numbers.'
   },
 
   demo: {
     eyebrow: 'Request a demo',
-    h1: 'See the Season Simulator with your own numbers.',
-    lead: 'A guided walkthrough of the Season Simulator, the data foundation and the roadmap, adapted to your crops, budget and region.',
+    h1: 'See the Season Planner with your own numbers.',
+    lead: 'A guided walkthrough of the Season Planner, the data foundation and the roadmap, adapted to your crops, budget and region.',
     coversH: 'What the walkthrough covers',
-    covers: ['The Season Simulator applied to your capital, crop and zone', 'The data foundation and how each figure is sourced', 'The models, their success metrics and the release gates', 'Pilot participation in Foumbot from March 2027'],
+    covers: ['The Season Planner applied to your capital, crop and zone', 'The data foundation and how each figure is sourced', 'The models, their success metrics and the release gates', 'Pilot participation in Foumbot from March 2027'],
     stageH: 'Stage of the product',
     stage: 'Djalumo Agro is in its design and field validation phase. The walkthrough presents the current prototype and the plan, never a finished product.'
   },
@@ -612,12 +619,12 @@ en: {
   },
 
   privacy: {
-    h1: 'Privacy policy', updated: 'Last updated 23 October 2026',
+    h1: 'Privacy policy', updated: 'Last updated 26 October 2026',
     body: [
       ['Who we are', 'Djalumo Agro is an agricultural decision intelligence initiative led by Franck Junior Djandja Tomwa, based in Kigali, Rwanda, with a pilot zone in Foumbot, Cameroon. The legal structure of the initiative is being established; this policy will name it once registered.'],
-      ['What we collect', 'Only what you type into our forms: for a message or a demo request, your name, email, organization, country, optional phone number and message; for the newsletter, your email address, preferred language and the date of your consent. The simulator runs in your browser and sends nothing, unless you ask for a PDF report: your name, email, optional phone number, profile, place, report language and the settings of your simulation are then sent so that the report can be prepared, reviewed by our team and emailed to you.'],
+      ['What we collect', 'Only what you type into our forms: for a message or a demo request, your name, email, organization, country, optional phone number and message; for the newsletter, your email address, preferred language and the date of your consent. The Season Planner runs in your browser and sends nothing, unless you ask for a PDF report: your name, email, optional phone number, profile, place, report language and the settings of your plan are then sent so that the report can be prepared, reviewed by our team and emailed to you.'],
       ['Why we collect it', 'To answer your message, organise a demo you requested, or send the newsletter you subscribed to. We never sell personal data and never use it for advertising.'],
-      ['Where it is stored', 'On this preview link, submissions are kept in storage attached to this page and readable only by its owner. On the public deployment, they are stored in a managed database with encryption in transit and at rest, and access by role.'],
+      ['Where it is stored', 'Submissions are stored in a managed database, encrypted in transit and at rest, with access by role.'],
       ['Cookies and analytics', 'This site sets no tracking cookies and sends no analytics. Your language choice may be remembered in your own browser. If analytics are added later, they will be privacy respecting and announced here before activation.'],
       ['How long we keep it', 'Messages, demo requests and report requests are kept for up to 24 months after the last exchange. Newsletter data is kept until you unsubscribe, after which only the unsubscription date is retained to honour your choice.'],
       ['Your rights', 'You can ask to access, correct, export or delete your data at any time through the contact form. We will answer within 30 days.'],
@@ -625,10 +632,10 @@ en: {
     ]
   },
   terms: {
-    h1: 'Terms of use', updated: 'Last updated 4 October 2026',
+    h1: 'Terms of use', updated: 'Last updated 26 October 2026',
     body: [
       ['Purpose of this site', 'This site presents Djalumo Agro, an agricultural decision platform in its design and field validation phase.'],
-      ['Demonstrations', 'The Season Simulator on this site is a demonstration. It uses illustrative assumptions clearly labelled on screen and is not agronomic, financial or investment advice. No outcome is guaranteed.'],
+      ['The Season Planner', 'The Season Planner gives estimates computed from published sources and from assumptions stated on screen. It is not agronomic, financial or investment advice, and no outcome is guaranteed: check prices and quantities with local suppliers before committing.'],
       ['Data and sources', 'Figures cited from third parties are attributed to their sources. Field photographs belong to the project leader and may not be reused without permission.'],
       ['Intellectual property', 'The name Djalumo Agro, the content, design and code of this site are protected. You may link to any page.'],
       ['Liability', 'We take care to keep information accurate and current, but provide this site as is. Decisions made from it remain the responsibility of the user.'],
@@ -656,14 +663,14 @@ fr: {
     pages: { home: 'Intelligence décisionnelle agricole pour l’Afrique', planner: 'Planificateur de saison', platform: 'Plateforme', intelligence: 'Intelligence', solutions: 'Solutions', data: 'Données', impact: 'Impact', about: 'À propos', contact: 'Contact', demo: 'Demander une démo', newsletter: 'Lettre d’information', privacy: 'Politique de confidentialité', terms: 'Conditions d’utilisation', admin: 'Boîte de réception', nf: 'Signal introuvable' }
   },
   nav: { home: 'Accueil', planner: 'Planificateur', platform: 'Plateforme', intelligence: 'Intelligence', solutions: 'Solutions', data: 'Données', impact: 'Impact', about: 'À propos', contact: 'Contact', demo: 'Demander une démo', newsletter: 'Lettre d’information', menu: 'Menu', close: 'Fermer', skip: 'Aller au contenu', lang: 'Langue' },
-  badge: { demo: 'Démo · illustratif', real: 'Données sourcées', plan: 'Prévu', mvp: 'MVP', v2: 'Version 2', v3: 'Version 3', v4: 'Version 4', field: 'Relevé terrain' },
-  cta: { explore: 'Explorer la plateforme', demo: 'Demander une démo', contact: 'Contacter l’équipe', simulate: 'Simuler', more: 'En savoir plus', back: 'Retour à Djalumo Agro', read: 'Voir les preuves terrain', sim: 'Ouvrir le Simulateur de saison' },
+  badge: { demo: 'Démo · illustratif', real: 'Données sourcées', plan: 'Prévu', mvp: 'MVP 2027', now: 'Disponible aujourd’hui', v2: 'Version 2', v3: 'Version 3', v4: 'Version 4', field: 'Relevé terrain' },
+  cta: { explore: 'Explorer la plateforme', demo: 'Demander une démo', contact: 'Contacter l’équipe', simulate: 'Simuler', more: 'En savoir plus', back: 'Retour à Djalumo Agro', read: 'Voir les preuves terrain', sim: 'Ouvrir le Planificateur de saison' },
 
   home: {
     eyebrow: 'Intelligence décisionnelle agricole · Afrique',
     h1: 'Décidez la saison avant de la planter.',
     lead: 'Djalumo Agro transforme tout budget, de 100 USD à plus d’un million, en un Plan de saison chiffré : quoi cultiver, sur quelle surface, à partir de quelle date, à quel coût et avec quel risque. Fondé sur des données climatiques, pédologiques, de marché et de contexte, en anglais et en français.',
-    tryLabel: 'Simulateur de saison · saisissez un capital',
+    tryLabel: 'Planificateur de saison · saisissez un capital',
     tryAria: 'Montant du capital',
     chips: ['Zone pilote · Foumbot, Cameroun', 'Culture MVP · Tomate', 'Étape · Conception et validation terrain', 'Anglais · Français'],
     readTitle: 'État du système',
@@ -698,9 +705,9 @@ fr: {
     steps: [
       { t: 'Données', d: 'Climat, sol, culture, marché et contexte, issus d’archives publiques et de relevés de terrain.' },
       { t: 'Intelligence', d: 'Une base de référence agronomique structure les données par culture, stade et zone.' },
-      { t: 'Prédiction', d: 'Des modèles estiment le risque climatique, la pression des maladies, le rendement et le prix en fourchettes.' },
+      { t: 'Prédiction', d: 'Des règles agronomiques documentées aujourd’hui, et des modèles entraînés sur les données de terrain dès 2027, estiment le risque climatique, la pression des maladies, le rendement et le prix en fourchettes.' },
       { t: 'Décision', d: 'Le Plan de saison ajuste la surface au capital et classe les fenêtres de plantation.' },
-      { t: 'Action', d: 'Les alertes et le journal de saison guident le travail ; les résultats réels affinent le plan suivant.' }
+      { t: 'Action', d: 'Le Plan de saison guide le travail ; dès le pilote de 2027, le journal de saison compare le plan et la réalité pour affiner le plan suivant.' }
     ],
 
     sEyebrow: '03 · Planificateur de saison',
@@ -719,7 +726,7 @@ fr: {
     eH: 'Conçu à partir d’un vrai pilote, pas d’une présentation.',
     eLead: 'Entre septembre 2024 et octobre 2025, la ferme pilote du fondateur a mené quatre phases de production à Foumbot. Chaque perte renvoie à un facteur que les données auraient pu anticiper.',
 
-    cH: 'Faites entrer Djalumo Agro dans vos fermes, votre portefeuille ou votre programme.',
+    cH: 'Djalumo Agro pour vos fermes, votre portefeuille ou votre programme.',
     cLead: 'Participation au pilote de Foumbot dès mars 2027, partenariats de données, investissement et collaboration institutionnelle.'
   },
 
@@ -752,11 +759,11 @@ fr: {
     price: 'Prix de vente attendu (FCFA/kg)', pricePh: 'Votre prix local', priceOptional: 'Facultatif : laissez vide pour utiliser cette référence, ajustée à vos mois de récolte.',
     kBreakEven: 'Prix d’équilibre', atAvgYield: 'Au rendement moyen',
     enterPrice: 'Saisissez votre prix de vente attendu dans le formulaire pour voir les quatre issues et la rentabilité.',
-    unpricedNote: (list) => 'Aucun prix sourcé n’a été trouvé pour : ' + list + '. Ces lignes gardent leur quantité mais comptent pour zéro dans le budget : demandez un devis local avant de vous engager.',
+    unpricedNote: (list, n) => n > 1 ? 'Aucun prix sourcé n’a été trouvé pour ces lignes : ' + list + '. Elles gardent leurs quantités mais comptent pour zéro dans le budget : demandez un devis local avant de vous engager.' : 'Aucun prix sourcé n’a été trouvé pour cette ligne : ' + list + '. Elle garde sa quantité mais compte pour zéro dans le budget : demandez un devis local avant de vous engager.',
     toQuote: 'Devis',
     unusedCapital: (v) => 'Environ ' + v + ' de votre capital reste inutilisé avec cette option d’eau.',
     states: {
-      below_min: (min) => 'Le capital est inférieur au minimum de 100 USD (' + min + '). Une vraie parcelle commence à partir de ce montant.',
+      below_min: (min, usd) => 'Le capital minimum est de ' + (usd ? '100 USD' : min + ', soit l’équivalent de 100 USD') + ' : en dessous, le budget ne couvre pas une vraie parcelle.',
       upfront_exceeds: () => 'Le capital ne couvre pas l’équipement de l’option d’eau choisie. Choisissez une autre option ou augmentez le capital.',
       manual_limit: (min, max) => 'L’arrosage manuel reste réaliste jusqu’à environ ' + max + ' : le plan s’arrête là. Pour une parcelle plus grande, choisissez une motopompe ou le goutte à goutte.',
       needs_price: (min, max, be) => 'Aucun prix bord champ n’est publié pour cette culture au Cameroun : Djalumo Agro n’en invente pas. Saisissez le prix que vous comptez obtenir, en FCFA par kg, pour voir les quatre issues. Au rendement moyen, la saison est à l’équilibre à partir d’environ ' + be + ' FCFA/kg.'
@@ -764,7 +771,7 @@ fr: {
     upfrontHint: 'Avec un petit capital : si vous pouvez emprunter un pulvérisateur et des outils, cochez « Je possède déjà les outils de base et un pulvérisateur » dans Plus d’options ; commencez par l’arrosage manuel ou une culture pluviale en saison des pluies, puis investissez dans l’équipement avec les bénéfices de la première saison.',
     kArea: 'Parcelle que le capital couvre', plants: (n) => n + ' plants', kRequired: 'Capital nécessaire', kBudget: 'Budget de la saison', inclReserve: 'Réserve de précaution de 10 % comprise',
     kMargin: 'Marge, issue moyenne', roiAvg: (p) => 'Rentabilité ' + p + ' sur les coûts de la saison', kSeason: 'Durée de la saison',
-    compactNote: 'Issue moyenne affichée. Le plan complet détaille le budget ligne par ligne, l’itinéraire technique, la liste d’achats, le bilan hydrique et les risques.',
+    compactNote: 'Seule l’issue moyenne est affichée ici. Le plan complet détaille le budget ligne par ligne, l’itinéraire technique, la liste d’achats, le bilan hydrique et les risques.',
     openFull: 'Ouvrir le Plan de saison complet',
     tabs: { return: 'Rentabilité', budget: 'Budget', itinerary: 'Itinéraire technique', shopping: 'Liste d’achats', water: 'Eau et risques', sources: 'Sources' },
     scen: {
@@ -773,18 +780,18 @@ fr: {
       poor: ['Mauvaise récolte', 'Rendement paysan faible et prix bas.'],
       failure: ['Échec', 'L’essentiel de la culture perdu (maladie, climat, fermeture des marchés) : seule une petite part est vendue.']
     },
-    weight: (n) => 'environ ' + n + ' %', roi: 'Rentabilité',
+    weight: (n) => 'probabilité d’environ ' + n + '\u00a0%', roi: 'Rentabilité',
     yieldL: 'Rendement', priceL: 'Prix', soldL: 'Vendu', revenueL: 'Recettes', costsL: 'Coûts de la saison',
     chartMargins: 'Marge selon l’issue', perSeason: 'Une saison',
     breakEvenT: 'Seuil de rentabilité', beYield: 'Rendement nécessaire au prix moyen', bePrice: 'Prix nécessaire au rendement moyen',
-    expected: 'Marge pondérée par le risque', expectedNote: 'Pondérations indicatives par issue, ajustées aux risques de votre fenêtre. Elles seront remplacées par des fréquences mesurées dès que des saisons seront enregistrées.',
-    scenNote: '<b>Construction des issues.</b> Les rendements proviennent des références publiées pour chaque culture et chaque saison (pluies ou sèche), ajustés à l’eau fournie par votre option (réponse du rendement à l’eau, FAO-33). Le prix est celui que vous saisissez ; sans lui, la référence camerounaise ajustée à vos mois de récolte. Les issues bonne et faible déplacent le prix d’environ 17 %, l’écart habituel observé sur un même marché au cours d’un mois. Le coût d’un équipement qui dure plusieurs saisons est réparti sur sa durée de vie dans la marge ; l’achat complet figure au budget.',
+    expected: 'Marge pondérée par le risque', expectedNote: 'Chaque issue est pondérée par une probabilité indicative, ajustée aux risques de votre fenêtre. Ces probabilités seront remplacées par des fréquences mesurées dès que des saisons seront enregistrées.',
+    scenNote: '<b>Construction des issues.</b> Les rendements proviennent des références publiées pour chaque culture et chaque saison (pluies ou sèche), ajustés à l’eau fournie par votre option (réponse du rendement à l’eau, FAO-33). Le prix est celui que vous saisissez ; sans lui, la référence camerounaise ajustée à vos mois de récolte. Pour une bonne ou une mauvaise récolte, le prix s’écarte d’environ 17 %, l’écart habituel observé sur un même marché au cours d’un mois. Le coût d’un équipement qui dure plusieurs saisons est réparti sur sa durée de vie dans la marge ; l’achat complet figure au budget.',
     cats: { land: 'Terrain', land_preparation: 'Préparation du sol', seed: 'Semences', nursery: 'Pépinière', fertilizer: 'Engrais', amendment: 'Fumure organique et amendements', foliar: 'Engrais foliaires et biostimulants', fungicide: 'Fongicides', insecticide: 'Insecticides', herbicide: 'Herbicides', stakes: 'Tuteurs', trellis: 'Palissage', irrigation: 'Fonctionnement de l’irrigation', labour: 'Main d’œuvre', advice: 'Agronome', harvest: 'Récolte, emballage et transport', equipment: 'Équipement acheté au départ', reserve: 'Réserve de précaution (10 %)', tools: 'Outils', ppe: 'Équipement de protection', packaging: 'Emballage', transport: 'Transport', fuel: 'Carburant', other: 'Autres' },
     lifeSeasons: (n) => 'dure environ ' + n + ' saisons',
     totalBudget: 'Budget total de la saison',
     th: { line: 'Ligne', qty: 'Quantité', unitPrice: 'Prix unitaire (FCFA)', src: 'Source', total: 'Total', item: 'Article', cat: 'Catégorie', need: 'Quantité nécessaire', packs: 'À acheter', cost: 'Coût', block: 'Donnée', conf: 'Confiance', note: 'Fondement' },
     budgetNote: 'Les quantités suivent l’itinéraire standard pour votre surface. Les lignes de récolte, d’emballage et de transport sont calculées sur l’issue moyenne. Les prix unitaires sont des références du marché camerounais ; vérifiez les auprès de votre fournisseur.',
-    apps: (n) => n + ' applications', labourDays: (n) => n + ' jours de travail',
+    apps: (n) => n + ' applications', labourDays: (n, v) => n + (v < 2 ? ' jour de travail' : ' jours de travail'),
     shopNote: 'Quantités arrondies aux conditionnements habituels. L’équipement acheté au départ figure en dernier.',
     waterChart: 'Besoin en eau de la culture et pluie', waterSub: 'mm par mois, période au champ', rainEff: 'pluie fiable', deficit: 'déficit', cropNeed: 'besoin de la culture (ETc)',
     waterVolume: (m3, mm) => 'Eau à apporter sur la saison : environ ' + m3 + ' m³ (' + mm + ' mm de déficit de la culture, pertes d’application comprises).',
@@ -792,13 +799,14 @@ fr: {
     riskNames: { water: 'Stress hydrique', heat: 'Chaleur à la floraison', disease: 'Pression des maladies', market: 'Marché à la récolte', context: 'Contexte' },
     riskText: {
       water: (cov, def, opt) => 'L’eau couvre environ ' + cov + ' % du besoin de la culture. La pluie laisse un déficit de ' + def + ' mm' + (opt === 'rainfed' ? ' ; sans irrigation, le rendement baisse d’autant.' : ' ; votre option d’eau le couvre.'),
-      heat: (months, t, thr) => 'La floraison tombe en ' + months + ', avec des maximales moyennes proches de ' + t + ' °C. La nouaison souffre au delà d’environ ' + thr + ' °C.',
+      heat: (span, t, thr) => 'La floraison a lieu ' + span + ', avec des maximales moyennes proches de ' + t + ' °C. La nouaison souffre au-delà d’environ ' + thr + ' °C.',
       disease: (mm, note) => 'Jusqu’à ' + mm + ' mm de pluie par mois de la floraison à la fin de la récolte. ' + note,
-      market: (months, idx) => 'Récolte en ' + months + ' : le prix habituel est d’environ ' + idx + ' % de la moyenne annuelle.',
+      market: (span, idx) => 'Récolte ' + span + ' : le prix habituel est d’environ ' + idx + ' % de la moyenne annuelle.',
       context: 'Vérifiez les élections, les fêtes et l’état des routes pour vos semaines de récolte avant de vous engager.'
     },
     check: 'À vérifier',
-    windowsT: 'Comparaison des mois de démarrage', riskScore: 'score de risque', bestLine: (m) => 'Mois de démarrage le moins risqué avec votre option d’eau : ' + m + '. Sélectionnez un mois pour comparer.',
+    windowsT: 'Comparaison des mois de démarrage', riskScore: 'score de risque',
+    span: { one: (m) => 'en ' + m, range: (a, b) => (/^[aeiouâéèêîôû]/i.test(a) ? 'd’' : 'de ') + a + ' à ' + b, list: (a, b) => 'en ' + a + ' et ' + b }, bestLine: (m) => 'Mois de démarrage le moins risqué avec votre option d’eau : ' + m + '. Sélectionnez un mois pour comparer.',
     levels: ['Faible', 'Moyen', 'Élevé'],
     conf: { high: 'Élevée', medium: 'Moyenne', low: 'Faible' },
     assumptionsT: 'Hypothèses', sourcesT: 'Sources utilisées pour ce plan',
@@ -842,7 +850,7 @@ fr: {
 
   tiers: [
     { n: 'Démarrage', r: '100 à 1 000 USD', d: 'La culture et la surface que le budget peut porter, une liste d’intrants abordable, un calendrier de pépinière et de plantation, et une alerte claire quand le budget est insuffisant.', w: 'Ménage, étudiant, nouveau producteur' },
-    { n: 'Petit exploitant', r: '1 000 à 10 000 USD', d: 'Un Plan de saison complet pour un à quelques hectares : plan d’eau, calendrier phytosanitaire, plan de vente, marge en trois scénarios.', w: 'Exploitation familiale, jeune agripreneur' },
+    { n: 'Petit exploitant', r: '1 000 à 10 000 USD', d: 'Un Plan de saison complet pour un à quelques hectares : plan d’eau, calendrier phytosanitaire, plan de vente, marge selon quatre issues.', w: 'Exploitation familiale, jeune agripreneur' },
     { n: 'Commercial', r: '10 000 à 100 000 USD', d: 'Plusieurs cultures et plantations échelonnées, dimensionnement de l’irrigation et des équipements, options d’emballage et de logistique, plan de main d’œuvre.', w: 'Ferme commerciale, coopérative, investisseur de la diaspora' },
     { n: 'Industriel', r: '100 000 à plus de 1 000 000 USD', d: 'Un portefeuille de sites et de cultures, des prévisions d’approvisionnement pour acheteurs et transformateurs, des rapports de risque pour prêteurs et assureurs, un accès API.', w: 'Entreprise agroalimentaire, investisseur, transformateur' }
   ],
@@ -855,13 +863,13 @@ fr: {
     kStatus: 'Statut', kField: 'Données terrain', kPublic: 'Couches publiques', kNext: 'Suite',
     stPilot: 'Zone pilote · MVP', stPlan: 'Prévu · version 4', stPublic: 'Données publiques uniquement',
     publicLayers: 'Historique climatique depuis 1981, pluie à environ 5 km, sols à 250 m, statistiques de production depuis 1961',
-    fieldCm: 'Pilote Cam_Agri For Africa : quatre phases, sept. 2024 à oct. 2025, 97 photographies de terrain, coûts réels',
+    fieldCm: 'Pilote Cam_Agri For Africa : quatre phases, sept. 2024 à oct. 2025, 73 photographies de terrain, coûts réels',
     nextCm: 'Enquête auprès de 30 à 50 producteurs de tomate à Foumbot ; pilote terrain avec 30 producteurs dès mars 2027',
     fieldNone: 'Aucune pour l’instant',
     nextPlan: 'La version 4 ouvre l’Afrique centrale, de l’Ouest et de l’Est, en commençant par le Rwanda et le Kenya, une fois le modèle viable au Cameroun.',
     nextNone: 'L’expansion suit les jalons de la feuille de route.',
     pilotLabel: 'Foumbot · zone pilote',
-    loading: 'Initialisation des couches géographiques',
+    loading: 'Chargement de la carte',
     scaleNote: 'Projection Natural Earth · frontières indicatives'
   },
 
@@ -875,9 +883,9 @@ fr: {
   newsletter: {
     eyebrow: 'Lettre d’information',
     h: 'Gardez une longueur d’avance en intelligence agricole.',
-    d: 'Notes de terrain de Foumbot, progrès des modèles, sources de données et nouvelles versions. Ponctuelle, en anglais ou en français. Désinscription à tout moment.',
+    d: 'Notes de terrain de Foumbot, progrès des modèles, sources de données et nouvelles versions. Des envois ponctuels, en anglais ou en français. Désinscription à tout moment.',
     email: 'Adresse électronique', ph: 'vous@organisation.com', btn: 'S’abonner',
-    consent: 'J’accepte de recevoir les actualités de Djalumo Agro et la politique de confidentialité.',
+    consent: 'J’accepte de recevoir les actualités de Djalumo Agro et j’approuve la politique de confidentialité.',
     okT: 'C’est fait.', okD: 'Vous recevrez les actualités et analyses de Djalumo Agro.',
     dupT: 'Déjà inscrit.', dupD: 'Cette adresse figure déjà sur la liste. Rien d’autre à faire.',
     langPref: 'Langue préférée'
@@ -892,20 +900,20 @@ fr: {
       { k: 'Budget d’abord', q: '« J’ai ce montant. Que faire ? »', d: 'La plateforme classe les cultures et les fenêtres de plantation adaptées au capital, au lieu et à la saison, et explique pourquoi.' },
       { k: 'Culture d’abord', q: '« Je veux cultiver de la tomate sur un hectare en mars. »', d: 'La plateforme vérifie si le capital suffit, construit le plan et propose une meilleure fenêtre ou une surface plus petite quand le risque ou le coût est trop élevé.' }
     ],
-    currency: 'Le capital peut être saisi en franc CFA, dollar américain, euro, franc rwandais, shilling kényan, naira ou toute autre devise, converti au cours du jour.',
+    currency: 'Le capital peut être saisi en franc CFA, dollar américain, euro, franc rwandais, shilling kényan ou naira, converti aux taux de référence d’octobre 2026.',
     planEyebrow: 'Le Plan de saison',
     planH: 'Dix réponses avant l’achat de la première semence.',
-    planLead: 'Chaque réponse est exprimée en fourchette, avec les éléments qui la fondent. Dans la démo de la page d’accueil, les sorties marquées « en direct » sont calculées dans votre navigateur.',
-    live: 'En direct dans la démo',
+    planLead: 'Chaque réponse est exprimée en fourchette, avec les éléments qui la fondent. Les réponses marquées « disponible aujourd’hui » sont déjà calculées par le Planificateur de saison.',
+    live: 'Disponible aujourd’hui',
     plan: [
       ['Faisabilité', 'La surface que le capital peut porter, ou une alerte explicite indiquant qu’il ne peut pas porter la surface demandée.', 1],
       ['Calendrier cultural', 'Pépinière, repiquage, dates de première et dernière récolte, durée totale du cycle.', 1],
       ['Intrants et budget', 'Semences, engrais, protection des cultures, main d’œuvre, irrigation, transport, emballage et appui d’experts, comparés au capital.', 1],
-      ['Plan d’eau', 'Besoins en eau de la culture face aux pluies attendues, semaine par semaine, avec l’irrigation nécessaire et son coût.', 0],
-      ['Fourchettes de rendement et de revenu', 'Pessimiste, médiane et optimiste. Jamais un chiffre unique.', 0],
-      ['Perspectives de marché à la récolte', 'Tendance de prix attendue et risque de surproduction pendant les semaines de récolte.', 0],
+      ['Plan d’eau', 'Besoins en eau de la culture face à la pluie fiable, mois par mois, avec l’irrigation nécessaire et son coût.', 1],
+      ['Fourchettes de rendement et de revenu', 'Quatre issues, de la bonne récolte à l’échec, chacune avec sa probabilité. Jamais un chiffre unique.', 1],
+      ['Perspectives de marché à la récolte', 'Niveau de prix habituel et risque de surproduction pendant les mois de récolte.', 1],
       ['Plan de vente et d’emballage', 'Canal d’achat, format d’emballage et différence de prix qu’il apporte.', 0],
-      ['Carte des risques', 'Climat, ravageurs et maladies, faune, marché, logistique et contexte, chacun évalué avec sa mesure d’atténuation.', 1],
+      ['Carte des risques', 'Eau, chaleur à la floraison, pression des maladies, marché et contexte, chacun évalué pour la fenêtre choisie.', 1],
       ['Meilleure fenêtre', 'Les dates de plantation les plus sûres et les plus rentables, comparées à la date demandée.', 1],
       ['Indice de confiance', 'Ce sur quoi repose chaque chiffre (données locales, régionales, avis d’expert) et sa fiabilité.', 1]
     ],
@@ -913,7 +921,7 @@ fr: {
     prodH: 'Quatre canaux, un seul compte.',
     prodCols: ['Produit', 'Utilisateurs', 'Rôle', 'Version'],
     products: [
-      ['Djalumo Agro Mobile', 'Agriculteurs au champ', 'Simulateur de saison, journal de saison et alertes ; fonctionne hors ligne. Android d’abord, iOS ensuite.', 'mvp'],
+      ['Djalumo Agro Mobile', 'Agriculteurs au champ', 'Planificateur de saison, journal de saison et alertes ; fonctionne hors ligne. Android d’abord, iOS ensuite.', 'mvp'],
       ['Djalumo Agro Web', 'Investisseurs, coopératives, entreprises agroalimentaires', 'Tableau de bord complet, portefeuille de parcelles et de saisons, rapports.', 'mvp'],
       ['Djalumo Agro Alertes', 'Tous les agriculteurs, y compris sur téléphone simple', 'Alertes météo, chaleur, maladies et marché par WhatsApp et SMS ; requêtes simples.', 'v2'],
       ['Djalumo Agro Pro et API', 'Banques, assureurs, acheteurs, institutions publiques', 'Prévisions d’approvisionnement agrégées et profils de risque de saison, avec le consentement des agriculteurs ; services de données.', 'v3']
@@ -921,7 +929,7 @@ fr: {
     modEyebrow: 'Modules',
     modH: 'Neuf modules, publiés derrière des jalons stricts.',
     modules: [
-      ['Simulateur de saison', 'Planification budget d’abord ou culture d’abord, Plan de saison avec fourchettes et indice de confiance, calendrier des risques de contexte.', 'mvp'],
+      ['Planificateur de saison', 'Planification budget d’abord ou culture d’abord, Plan de saison avec fourchettes et indice de confiance, calendrier des risques de contexte.', 'now'],
       ['Climat et météo', '40 ans d’historique local, prévisions à 10 jours, alertes de chaleur et de pluie.', 'mvp'],
       ['Santé des cultures', 'Risque de ravageurs et de maladies par stade (mildiou, mouches blanches, chenilles), calendrier de traitement.', 'mvp'],
       ['Journal de saison', 'Opérations, dépenses, récoltes, ventes et photos, saisies en quelques secondes.', 'mvp'],
@@ -951,17 +959,17 @@ fr: {
   intel: {
     eyebrow: 'Intelligence',
     h1: 'Quatre couches de connaissance. Aucune boîte noire.',
-    lead: 'Le moteur combine une base de référence agronomique, des modèles d’apprentissage automatique, une validation par des experts et des données de saison propriétaires. C’est cette combinaison, et non l’apprentissage automatique seul, qui rend les prédictions crédibles dès le premier jour et plus précises à chaque saison.',
+    lead: 'Le moteur est conçu en quatre couches : une base de référence agronomique, des modèles statistiques et d’apprentissage automatique, une validation par des experts et des données de saison propriétaires. Aujourd’hui, le Planificateur de saison s’appuie sur la première, des règles agronomiques documentées (FAO, MINADER) appliquées à des données sourcées. Les modèles seront entraînés sur les données du pilote de 2027, et chaque saison enregistrée les rendra plus précis.',
     archEyebrow: 'Architecture',
     archH: 'De sept domaines de données à une décision sur une parcelle.',
-    archLead: 'Sélectionnez un composant pour voir son rôle, sa technologie et sa version. Le cœur technique, de la collecte des données aux modèles et à l’API, est écrit en Python.',
+    archLead: 'Sélectionnez un composant pour voir son rôle, sa technologie et sa version. Aujourd’hui, le planificateur fonctionne dans votre navigateur, et sur notre serveur pour les rapports PDF ; les chaînes de données et de modèles des prochaines versions seront écrites en Python.',
     cols: ['Données', 'Moteur d’intelligence', 'Intelligence', 'Décisions'],
     layersEyebrow: 'Couches de connaissance',
-    layersH: 'Pourquoi les prédictions sont fiables dès le premier jour.',
-    layerCols: ['Couche', 'Rôle', 'Source de fiabilité', 'Disponible'],
+    layersH: 'Pourquoi les plans sont fiables avant même les modèles.',
+    layerCols: ['Couche', 'Rôle', 'Source de fiabilité', 'Version'],
     layers: [
-      ['Base de référence agronomique', 'Durées de cycle, besoins en eau, seuils de température, conduite des cultures, coûts standard par culture et par zone.', 'Recherche établie (FAO et instituts nationaux), validée par des agronomes.', 'mvp'],
-      ['Modèles statistiques et d’apprentissage automatique', 'Risque climatique, risque de ravageurs et de maladies, rendement, prix à la récolte, meilleure fenêtre.', 'Entraînés et testés sur des données historiques, avec une erreur mesurée.', 'mvp'],
+      ['Base de référence agronomique', 'Durées de cycle, besoins en eau, seuils de température, conduite des cultures, coûts standard par culture et par zone.', 'Recherche établie (FAO et instituts nationaux), validée par des agronomes.', 'now'],
+      ['Modèles statistiques et d’apprentissage automatique', 'Risque climatique, risque de ravageurs et de maladies, rendement, prix à la récolte, meilleure fenêtre.', 'À entraîner et tester sur les données historiques et celles du pilote, avec une erreur mesurée.', 'mvp'],
       ['Validation par des experts', 'Revue des cas que les modèles couvrent mal, calibrage local.', 'Des agronomes qui connaissent chaque zone.', 'v2'],
       ['Données de saison propriétaires', 'Coûts, rendements, prix et incidents réels enregistrés par les utilisateurs.', 'Locales, récentes et propres à Djalumo Agro.', 'grow']
     ],
@@ -998,24 +1006,24 @@ fr: {
 
   arch: {
     nodes: {
-      weather: ['Météo', 'Pluie, température, humidité et rayonnement journaliers depuis 1981 (NASA POWER), réanalyse horaire (ERA5-Land) et prévisions à 10 jours.', 'MVP'],
+      weather: ['Météo', 'Pluie, température, humidité et rayonnement journaliers depuis 1981 (NASA POWER), réanalyse horaire (ERA5-Land) et prévisions à 10 jours.', 'MVP 2027'],
       satellite: ['Satellite', 'Indice de végétation Sentinel-2 des parcelles tous les quelques jours via Google Earth Engine ; estimations de pluie à environ 5 km (CHIRPS).', 'Version 2'],
       soil: ['Sol', 'pH, carbone organique, texture et azote à 250 m (SoilGrids), vérifiés par des analyses de laboratoire de référence.', 'Version 2'],
-      crop: ['Culture', 'Durées de cycle, besoins en eau, seuils de température et stades sensibles par culture, issus de la base de référence agronomique.', 'MVP'],
-      ops: ['Opérations', 'Le journal de saison : opérations, dépenses, récoltes, ventes et photos saisies par les utilisateurs, plan contre réalité.', 'MVP'],
+      crop: ['Culture', 'Durées de cycle, besoins en eau, seuils de température et stades sensibles par culture, issus de la base de référence agronomique.', 'Disponible aujourd’hui'],
+      ops: ['Opérations', 'Le journal de saison : opérations, dépenses, récoltes, ventes et photos saisies par les utilisateurs, plan contre réalité.', 'MVP 2027'],
       markets: ['Marchés', 'Relevés de prix hebdomadaires à Foumbot et Bafoussam par un correspondant rémunéré, puis par la communauté ; séries de prix publiques.', 'Version 2'],
-      history: ['Historique', 'Production et rendements depuis 1961 (FAOSTAT), le pilote Cam_Agri For Africa comme jeu de données fondateur, un calendrier de contexte.', 'MVP'],
-      ref: ['Base agronomique', 'Connaissances de référence validées par des agronomes : le socle de fiabilité dès le premier jour.', 'MVP'],
-      ml: ['Modèles ML', 'Python, pandas, scikit-learn, XGBoost, statsmodels ; versionnés et comparés dans MLflow.', 'MVP'],
+      history: ['Historique', 'Production et rendements depuis 1961 (FAOSTAT), le pilote Cam_Agri For Africa comme jeu de données fondateur, un calendrier de contexte.', 'MVP 2027'],
+      ref: ['Base agronomique', 'Connaissances de référence validées par des agronomes : le socle de fiabilité dès le premier jour.', 'Disponible aujourd’hui'],
+      ml: ['Modèles ML', 'Python, pandas, scikit-learn, XGBoost, statsmodels ; versionnés et comparés dans MLflow.', 'MVP 2027'],
       expert: ['Validation experte', 'Des agronomes revoient les cas mal couverts par les modèles et calibrent localement.', 'Version 2'],
       seasons: ['Données de saison', 'Coûts, rendements et prix réels de chaque saison enregistrée : l’avantage propriétaire.', 'S’enrichit à chaque saison'],
-      analytics: ['Analytique', 'Pipelines de données et contrôles de qualité quotidiens ; PostgreSQL avec PostGIS pour les parcelles et les cartes.', 'MVP'],
-      ai: ['IA', 'Modèles de classification et de régression avec explications SHAP et intervalles de prédiction.', 'MVP'],
+      analytics: ['Analytique', 'Pipelines de données et contrôles de qualité quotidiens ; PostgreSQL avec PostGIS pour les parcelles et les cartes.', 'MVP 2027'],
+      ai: ['IA', 'Modèles de classification et de régression avec explications SHAP et intervalles de prédiction.', 'MVP 2027'],
       predict: ['Prédiction', 'Risque climatique, pression des maladies, rendement et prix à la récolte, chacun en fourchette avec un indice de confiance.', 'Progressif'],
       optim: ['Optimisation', 'Optimisation sous contraintes : la meilleure culture et la meilleure fenêtre pour un risque acceptable dans le budget.', 'Version 2'],
-      plan: ['Plan de saison', 'Surface réalisable, calendrier, budget, plan d’eau, risques, meilleure fenêtre et confiance, via un service FastAPI.', 'MVP'],
+      plan: ['Plan de saison', 'Surface réalisable, calendrier, budget, plan d’eau, risques, meilleure fenêtre et confiance, calculés dans le navigateur et sur le serveur pour les rapports PDF.', 'Disponible aujourd’hui'],
       alerts: ['Alertes', 'Alertes météo, chaleur, maladies et marché par application, WhatsApp et SMS.', 'Version 2'],
-      dash: ['Tableaux de bord', 'Tableaux de bord de saison pour les agriculteurs ; vues de portefeuille pour investisseurs et coopératives (React, Next.js).', 'MVP'],
+      dash: ['Tableaux de bord', 'Tableaux de bord de saison pour les agriculteurs ; vues de portefeuille pour investisseurs et coopératives (React, Next.js).', 'MVP 2027'],
       api: ['API', 'Services de données agrégées et consenties pour banques, assureurs, acheteurs et institutions publiques.', 'Version 3']
     },
     hint: 'Sélectionnez un composant',
@@ -1066,22 +1074,22 @@ fr: {
     covNote: 'Années de départ publiées par chaque fournisseur. SoilGrids est une carte statique, présentée à sa version actuelle.',
     srcEyebrow: 'Socle de données publiques',
     srcH: 'Neuf sources, chacune auditée avant usage.',
-    srcCols: ['Domaine', 'Source', 'Couverture et usage', 'Statut'],
+    srcCols: ['Domaine', 'Source', 'Couverture et usage', 'Accès'],
     sources: [
-      ['Historique météo journalier', 'NASA POWER', 'https://power.larc.nasa.gov/', 'Pluie, température, humidité, rayonnement depuis 1981 ; accès direct en Python', 'Gratuit ; à confirmer lors de l’audit'],
-      ['Pluie, haute résolution', 'CHIRPS, UCSB', 'https://www.chc.ucsb.edu/data/chirps', 'Pluie à environ 5 km depuis 1981', 'Gratuit ; à confirmer'],
+      ['Historique météo journalier', 'NASA POWER', 'https://power.larc.nasa.gov/', 'Pluie, température, humidité, rayonnement depuis 1981 ; accès direct en Python', 'Libre et gratuit'],
+      ['Pluie, haute résolution', 'CHIRPS, UCSB', 'https://www.chc.ucsb.edu/data/chirps', 'Pluie à environ 5 km depuis 1981', 'Libre et gratuit'],
       ['Réanalyse de référence', 'ERA5-Land, Copernicus', 'https://cds.climate.copernicus.eu/', 'Variables horaires à environ 9 km', 'Gratuit avec inscription'],
       ['Sols', 'SoilGrids, ISRIC', 'https://soilgrids.org/', 'pH, carbone organique, texture, azote à 250 m', 'Gratuit, licence CC BY'],
       ['Végétation', 'Sentinel-2 via Google Earth Engine', 'https://earthengine.google.com/', 'Indice de végétation des parcelles tous les quelques jours', 'Gratuit pour la recherche ; conditions commerciales applicables'],
       ['Production et rendements', 'FAOSTAT', 'https://www.fao.org/faostat/', 'Surface, production et rendement par culture, pays et année depuis 1961', 'Gratuit'],
-      ['Prix alimentaires', 'Prix du PAM pour le Cameroun, HDX', 'https://data.humdata.org/dataset/wfp-food-prices-for-cameroon', 'Prix de marché 2005 à 2024, surtout régions septentrionales', 'Couverture tomate et région de l’Ouest à vérifier'],
-      ['Statistiques nationales', 'Institut national de la statistique, MINADER', '', 'Production par région', 'Disponibilité à vérifier'],
-      ['Contexte sécuritaire', 'ACLED', 'https://acleddata.com/', 'Événements géolocalisés par région', 'Licence commerciale à vérifier']
+      ['Prix alimentaires', 'Prix du PAM pour le Cameroun, HDX', 'https://data.humdata.org/dataset/wfp-food-prices-for-cameroon', 'Prix de marché 2005 à 2024, surtout régions septentrionales', 'Gratuit, données ouvertes sur HDX'],
+      ['Statistiques nationales', 'Institut national de la statistique, MINADER', '', 'Production par région', 'Annuaires statistiques publics'],
+      ['Contexte sécuritaire', 'ACLED', 'https://acleddata.com/', 'Événements géolocalisés par région', 'Gratuit après inscription pour un usage non commercial ; licence distincte pour un usage commercial']
     ],
     propEyebrow: 'Données propriétaires',
     propH: 'Les données qu’aucun concurrent ne peut copier.',
     prop: [
-      ['Le pilote Cam_Agri For Africa', 'Quatre phases documentées, des coûts réels, des incidents datés et 97 photographies de terrain, structurés comme jeu de données fondateur.'],
+      ['Le pilote Cam_Agri For Africa', 'Quatre phases documentées, des coûts réels, des incidents datés et 73 photographies de terrain, structurés comme jeu de données fondateur.'],
       ['Enquête producteurs', '30 à 50 producteurs de tomate de Foumbot interrogés sur leurs saisons récentes : rendement, coûts, pertes, prix de vente.'],
       ['Relevé des prix de terrain', 'Deux à trois relevés de prix par semaine sur les marchés de Foumbot et de Bafoussam, par un correspondant rémunéré, puis par la communauté.'],
       ['Analyses de sol de référence', 'Analyses de laboratoire sur des parcelles choisies pour vérifier au sol les données satellitaires.'],
@@ -1122,7 +1130,7 @@ fr: {
       ['Pression des ravageurs', 'Mouches blanches, chenilles, pourriture des fruits', 'Calendrier des risques par stade, alertes, diagnostic par photo dans une version ultérieure'],
       ['Exposition du site', 'Singes, site isolé, transport coûteux', 'Score de site : eau, accès routier, exposition à la faune, distance au marché'],
       ['Ventes en vrac', 'Sacs de 50 kg à bas prix', 'Plan de vente et d’emballage : canal, format, prix au kilo comparé au vrac'],
-      ['Marchés fermés', 'Une crise électorale au moment de la récolte', 'Calendrier des risques de contexte (élections, fêtes, routes, sécurité) dès la première version']
+      ['Marchés fermés', 'Une crise électorale au moment de la récolte', 'Calendrier des risques de contexte (élections, fêtes, routes, sécurité)']
     ],
     photosEyebrow: 'Relevé terrain',
     photosH: 'À quoi ressemblait le pilote.',
@@ -1139,24 +1147,29 @@ fr: {
   about: {
     eyebrow: 'À propos',
     h1: 'Du champ d’un père à Foumbot à une plateforme d’intelligence.',
-    lead: 'Djalumo Agro est le fruit de plus de dix ans de travail, d’une tradition agricole familiale à un pilote de terrain documenté, photographié et chiffré.',
+    lead: 'Djalumo Agro est le fruit de plus de vingt ans de travail, des premiers champs de l’adolescence du fondateur et des plantations de son père à un pilote de terrain documenté, photographié et chiffré.',
     leadEyebrow: 'Porteur du projet',
     name: 'Franck Junior Djandja Tomwa',
     titles: ['Ingénieur en télécommunications', 'Analyste de données', 'Chargé des opérations internationales'],
     base: 'Basé à Kigali, Rwanda · Zone pilote à Foumbot, Cameroun',
     photoAlt: 'Franck Junior Djandja Tomwa tenant des tomates mûres entre des rangs tuteurés, région de Foumbot, 2025',
     story: [
-      'Le projet commence avec le père du fondateur, agriculteur dans la région de Foumbot, qui lui a transmis le métier de la terre, y compris la production d’excellentes semences à partir de ses propres récoltes.',
-      'En septembre 2021, avant de se rendre à Kigali pour présenter sa vision d’une agriculture africaine industrialisée et portée par la technologie, le fondateur a séjourné sur la plantation de son père, où tomate, aubergine et concombre poussaient sur des parcelles à différents stades.',
-      'De cet héritage est né Cam_Agri For Africa, un pilote agricole commercial mené de septembre 2024 à octobre 2025. Il n’a pas échoué faute de terre, de main d’œuvre ou d’engagement. Il a échoué parce que chaque décision critique a été prise sans l’information qui l’aurait changée. Djalumo Agro existe pour fournir cette information, pour tout budget, avant que le capital ne soit engagé.'
+      'Le projet commence à l’adolescence du fondateur. À côté des jardins familiaux, il cultivait ses propres petits champs d’aubergines, de concombres et d’autres légumes, qui lui rapportaient déjà un revenu, et il suivait son père, agriculteur dans la région de Foumbot, dans ses plantations. Son père lui a transmis le métier de la terre, y compris la production d’excellentes semences à partir de ses propres récoltes.',
+      'Sa formation d’ingénieur en télécommunications lui a ensuite donné les moyens de moderniser ce que son père lui avait appris, en alliant la technologie à l’agriculture. Son objectif n’a pas changé depuis : faire de l’agriculture camerounaise et africaine une industrie moderne et intelligente.',
+      'En septembre 2021, le projet déjà bien engagé, il s’est rendu à Kigali pour présenter cette vision à des entrepreneurs, à des acteurs du secteur et à des investisseurs potentiels, après un séjour sur la plantation de son père, où tomate, aubergine et concombre poussaient sur des parcelles à différents stades.',
+      'De cet héritage est né Cam_Agri For Africa, un pilote agricole commercial mené de septembre 2024 à octobre 2025. Il n’a pas échoué faute de terre, de main d’œuvre ou d’engagement. Il a échoué parce que chaque décision critique a été prise sans l’information qui l’aurait changée. Djalumo Agro existe pour fournir cette information, pour tout budget, avant que le capital ne soit engagé.',
+      'Aujourd’hui analyste de données, il y ajoute la pièce qui manquait : des données rendues utiles à la décision. Le Planificateur de saison en est le premier résultat.'
     ],
     convEyebrow: 'Convictions',
     convH: 'Quatre convictions derrière ce travail.',
     conv: [['L’Afrique doit assurer sa propre alimentation.', 'La sécurité alimentaire commence par des fermes locales productives et rentables.'], ['L’agriculture peut offrir un travail digne.', 'Une vraie alternative à l’émigration pour les jeunes Africains.'], ['L’agriculture est une entreprise.', 'Menée avec des chiffres, des plans et un risque mesuré.'], ['Le Cameroun est le bon point de départ.', 'Des terres arables, les ports de Douala et de Kribi, et des acheteurs du Gabon et de Guinée équatoriale.']],
     mileEyebrow: 'Jalons',
-    mileH: 'Dix ans de travail, en six moments.',
+    mileH: 'Plus de vingt ans de travail, en huit moments.',
+    photoCap: ['Septembre 2021', 'Visite de la plantation du père'],
     miles: [
-      ['Septembre 2021', 'Visite de la plantation du père', 'Tomate, aubergine et concombre ; puis Kigali, pour présenter la vision à des entrepreneurs.'],
+      ['Adolescence', 'Premiers champs personnels', 'Aubergines, concombres et autres légumes à côté des jardins familiaux ; le métier appris sur les plantations du père.'],
+      ['Études d’ingénieur', 'Ingénieur en télécommunications', 'La formation technique qui a permis d’allier la technologie à l’agriculture.'],
+      ['Septembre 2021', 'La vision présentée à Kigali', 'Après un séjour sur la plantation du père (tomate, aubergine, concombre), le projet est présenté à des entrepreneurs, à des acteurs du secteur et à des investisseurs potentiels.'],
       ['Septembre 2024', 'Lancement du pilote Cam_Agri For Africa', 'Site principal de 1 ha, 5 000 USD de fonds propres ; problèmes de chaleur, d’eau et d’emballage.'],
       ['Nov. 2024 à juil. 2025', 'Site secondaire marécageux', 'Concombre, poivron et courgette, puis tomate tuteurée ; ravageurs et prix bas.'],
       ['Août à oct. 2025', 'Relance du site principal', 'Belle culture, mais une crise électorale a fermé les marchés à la récolte : perte commerciale totale.'],
@@ -1171,12 +1184,13 @@ fr: {
       ['Phase 0', 'Cadrage', 1, 2, 'Décisions du fondateur, jeu de données pilote structuré, rapport approuvé en anglais et en français, dépôt GitHub.', 'Périmètre du MVP approuvé par le fondateur'],
       ['Phase 1', 'Validation terrain', 3, 6, 'Enquête auprès de 30 à 50 producteurs de Foumbot, relevés de prix, audit des données, maquettes papier testées avec 10 producteurs.', 'Besoin confirmé et disposition à payer mesurée'],
       ['Phase 2', 'Données et modèles', 7, 14, 'Projet PACE du certificat : pipelines, exploration, modèles de risque climatique, de maladies et de rendement, analyse des erreurs, publié sur GitHub.', 'Chaque modèle bat sa référence sur des années jamais vues'],
-      ['Phase 3', 'Prototype', 15, 20, 'Simulateur de saison bilingue connecté aux modèles, testé avec 10 producteurs à Foumbot.', '10 producteurs jugent le Plan de saison utile'],
+      ['Phase 3', 'Prototype', 15, 20, 'Planificateur de saison bilingue connecté aux modèles, testé avec 10 producteurs à Foumbot.', '10 producteurs jugent le Plan de saison utile'],
       ['Phase 4', 'Pilote MVP', 21, 32, 'Applications Android et web, journal de saison, alertes ; 30 producteurs suivis sur une saison complète dès mars 2027.', 'Saison complétée et plan jugé utile']
     ],
     gate: 'Jalon', week: 'Semaine', roadHl: 'En surbrillance : la phase 2, projet d’analyse de données avancée (PACE), publié sur GitHub. Les losanges marquent les jalons.',
     expEyebrow: 'Expansion',
     expH: 'Culture par culture, région par région.',
+    expLead: 'Le Planificateur de saison couvre déjà douze cultures à partir de références publiées. Ce calendrier concerne le suivi terrain et les modèles entraînés sur les saisons des producteurs.',
     expCols: ['Version', 'Cultures', 'Géographie', 'Critère de passage'],
     exp: [
       ['MVP', 'Tomate', 'Foumbot et ses environs', '30 producteurs actifs complètent une saison et jugent le Plan de saison utile'],
@@ -1196,15 +1210,15 @@ fr: {
     next: ['Votre message est enregistré de façon sécurisée, avec son horodatage.', 'L’équipe du projet lit chaque message.', 'Vous recevez une réponse par courriel, dans la langue de votre message.'],
     whereH: 'Où nous travaillons',
     where: [['Base du projet', 'Kigali, Rwanda'], ['Zone pilote', 'Foumbot, département du Noun, Ouest Cameroun'], ['Langues', 'Anglais, français']],
-    demoH: 'Vous préférez une présentation ?', demoD: 'Demandez une démonstration guidée du Simulateur de saison avec vos propres chiffres.'
+    demoH: 'Vous préférez une présentation ?', demoD: 'Demandez une démonstration guidée du Planificateur de saison avec vos propres chiffres.'
   },
 
   demo: {
     eyebrow: 'Demander une démo',
-    h1: 'Voyez le Simulateur de saison avec vos propres chiffres.',
-    lead: 'Une présentation guidée du Simulateur de saison, du socle de données et de la feuille de route, adaptée à vos cultures, à votre budget et à votre région.',
+    h1: 'Voyez le Planificateur de saison avec vos propres chiffres.',
+    lead: 'Une présentation guidée du Planificateur de saison, du socle de données et de la feuille de route, adaptée à vos cultures, à votre budget et à votre région.',
     coversH: 'Ce que couvre la présentation',
-    covers: ['Le Simulateur de saison appliqué à votre capital, votre culture et votre zone', 'Le socle de données et la source de chaque chiffre', 'Les modèles, leurs métriques de succès et les jalons de mise en service', 'La participation au pilote de Foumbot dès mars 2027'],
+    covers: ['Le Planificateur de saison appliqué à votre capital, votre culture et votre zone', 'Le socle de données et la source de chaque chiffre', 'Les modèles, leurs métriques de succès et les jalons de mise en service', 'La participation au pilote de Foumbot dès mars 2027'],
     stageH: 'Stade du produit',
     stage: 'Djalumo Agro est en phase de conception et de validation terrain. La présentation montre le prototype actuel et le plan, jamais un produit fini.'
   },
@@ -1259,12 +1273,12 @@ fr: {
   },
 
   privacy: {
-    h1: 'Politique de confidentialité', updated: 'Dernière mise à jour : 23 octobre 2026',
+    h1: 'Politique de confidentialité', updated: 'Dernière mise à jour : 26 octobre 2026',
     body: [
       ['Qui nous sommes', 'Djalumo Agro est une initiative d’intelligence décisionnelle agricole portée par Franck Junior Djandja Tomwa, basée à Kigali, au Rwanda, avec une zone pilote à Foumbot, au Cameroun. La structure juridique de l’initiative est en cours de création ; cette politique la nommera une fois enregistrée.'],
-      ['Ce que nous collectons', 'Uniquement ce que vous saisissez dans nos formulaires : pour un message ou une demande de démo, vos nom, adresse électronique, organisation, pays, téléphone facultatif et message ; pour la lettre d’information, votre adresse électronique, votre langue et la date de votre consentement. Le simulateur fonctionne dans votre navigateur et n’envoie rien, sauf si vous demandez un rapport PDF : vos nom, adresse électronique, téléphone facultatif, profil, lieu, langue du rapport et les réglages de votre simulation sont alors transmis pour que le rapport soit préparé, vérifié par notre équipe et envoyé par courrier électronique.'],
+      ['Ce que nous collectons', 'Uniquement ce que vous saisissez dans nos formulaires : pour un message ou une demande de démo, vos nom, adresse électronique, organisation, pays, téléphone facultatif et message ; pour la lettre d’information, votre adresse électronique, votre langue et la date de votre consentement. Le Planificateur de saison fonctionne dans votre navigateur et n’envoie rien, sauf si vous demandez un rapport PDF : vos nom, adresse électronique, téléphone facultatif, profil, lieu, langue du rapport et les réglages de votre plan sont alors transmis pour que le rapport soit préparé, vérifié par notre équipe et envoyé par courrier électronique.'],
       ['Pourquoi', 'Pour répondre à votre message, organiser une démo demandée, ou envoyer la lettre à laquelle vous êtes abonné. Nous ne vendons jamais de données personnelles et ne les utilisons jamais à des fins publicitaires.'],
-      ['Où elles sont conservées', 'Sur ce lien d’aperçu, les envois sont conservés dans un stockage rattaché à cette page et lisible par son seul propriétaire. Sur le déploiement public, ils sont conservés dans une base de données gérée, chiffrée en transit et au repos, avec un accès par rôle.'],
+      ['Où elles sont conservées', 'Les envois sont conservés dans une base de données gérée, chiffrée en transit et au repos, avec un accès par rôle.'],
       ['Cookies et mesure d’audience', 'Ce site ne dépose aucun cookie de suivi et n’envoie aucune mesure d’audience. Votre choix de langue peut être mémorisé dans votre propre navigateur. Si une mesure d’audience est ajoutée, elle respectera la vie privée et sera annoncée ici avant activation.'],
       ['Durée de conservation', 'Les messages, demandes de démo et demandes de rapport sont conservés jusqu’à 24 mois après le dernier échange. Les données de la lettre sont conservées jusqu’à votre désinscription, après laquelle seule la date de désinscription est gardée pour respecter votre choix.'],
       ['Vos droits', 'Vous pouvez demander l’accès, la rectification, l’export ou la suppression de vos données à tout moment via le formulaire de contact. Nous répondons sous 30 jours.'],
@@ -1272,10 +1286,10 @@ fr: {
     ]
   },
   terms: {
-    h1: 'Conditions d’utilisation', updated: 'Dernière mise à jour : 4 octobre 2026',
+    h1: 'Conditions d’utilisation', updated: 'Dernière mise à jour : 26 octobre 2026',
     body: [
       ['Objet du site', 'Ce site présente Djalumo Agro, une plateforme de décision agricole en phase de conception et de validation terrain.'],
-      ['Démonstrations', 'Le Simulateur de saison de ce site est une démonstration. Il utilise des hypothèses illustratives clairement signalées à l’écran et ne constitue pas un conseil agronomique, financier ou d’investissement. Aucun résultat n’est garanti.'],
+      ['Le Planificateur de saison', 'Le Planificateur de saison fournit des estimations calculées à partir de sources publiées et d’hypothèses indiquées à l’écran. Il ne constitue pas un conseil agronomique, financier ou d’investissement, et aucun résultat n’est garanti : vérifiez les prix et les quantités auprès de fournisseurs locaux avant de vous engager.'],
       ['Données et sources', 'Les chiffres de tiers sont attribués à leurs sources. Les photographies de terrain appartiennent au porteur du projet et ne peuvent être réutilisées sans autorisation.'],
       ['Propriété intellectuelle', 'Le nom Djalumo Agro, le contenu, le design et le code de ce site sont protégés. Vous pouvez créer un lien vers n’importe quelle page.'],
       ['Responsabilité', 'Nous veillons à l’exactitude et à l’actualité des informations, mais ce site est fourni en l’état. Les décisions prises à partir de ce site restent sous la responsabilité de l’utilisateur.'],

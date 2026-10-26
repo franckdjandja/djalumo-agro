@@ -9,7 +9,7 @@
     when: (m) => m < 24 ? m + ' months' : yearsEn(m),
     chipSeason: (m) => m + ' month cycle',
     chipLong: (t) => 'harvest from ' + t,
-    groupSub: { season: (a, b) => a === b ? a + ' month cycles' : a + ' to ' + b + ' month cycles', long: (a, b) => a === b ? 'first harvest in ' + a : 'first harvest in ' + a + ' to ' + b, orchard: (a, b) => a === b ? 'first harvest in ' + a : 'first harvest in ' + a + ' to ' + b },
+    groupSub: { season: (a, b) => a === b ? a + ' month cycles' : a + ' to ' + b + ' month cycles', long: (a, b) => a === b ? 'first harvest in ' + a : 'first harvest in ' + a + ' to ' + b, orchard: (a, b) => a === b ? 'first harvest in ' + a : 'first harvest in ' + a.replace(/ years?$/, '') + ' to ' + b },
     horizonL: 'Length of the plan',
     horizonHint: { ratoon: 'The successor suckers give a new harvest about every 10 months: two or three cycles include these harvests.', orchard: 'Costs and sales are counted over this length; the trees keep producing well beyond it.' },
     horizonCycles: (n, m) => n + (n > 1 ? ' cycles · ' : ' cycle · ') + m + ' months',
@@ -32,7 +32,7 @@
     th: { unitPrice: 'Unit price' },
     priceLabel: 'Price',
     dataAsOf: (d) => 'Data updated on ' + d,
-    report: { cta: 'Get the full report (PDF)', ctaSub: 'A professional 12 to 15 page report of this plan, sent to you by email after review by the Djalumo Agro team.', unavailable: 'Report sending is being switched on. Please try again in a few days, or use the Contact page.' }
+    report: { cta: 'Request the full report (PDF)', ctaSub: 'A professional 12 to 15 page report of this plan, sent to you by email after review by the Djalumo Agro team.', unavailable: 'Report sending is being switched on. Please try again in a few days, or use the Contact page.' }
   });
   merge('fr', {
     badge: '',
@@ -40,9 +40,9 @@
     when: (m) => m < 24 ? m + ' mois' : yearsFr(m),
     chipSeason: (m) => 'cycle de ' + m + ' mois',
     chipLong: (t) => 'récolte dès ' + t,
-    groupSub: { season: (a, b) => a === b ? 'cycles de ' + a + ' mois' : 'cycles de ' + a + ' à ' + b + ' mois', long: (a, b) => a === b ? '1re récolte en ' + a : '1re récolte en ' + a + ' à ' + b, orchard: (a, b) => a === b ? '1re récolte en ' + a : '1re récolte en ' + a + ' à ' + b },
+    groupSub: { season: (a, b) => a === b ? 'cycles de ' + a + ' mois' : 'cycles de ' + a + ' à ' + b + ' mois', long: (a, b) => a === b ? '1re récolte en ' + a : '1re récolte en ' + a + ' à ' + b, orchard: (a, b) => a === b ? '1re récolte en ' + a : '1re récolte entre ' + a + ' et ' + b },
     horizonL: 'Durée du plan',
-    horizonHint: { ratoon: 'Les rejets successeurs donnent une nouvelle récolte environ tous les 10 mois : 2 ou 3 cycles incluent ces récoltes.', orchard: 'Les coûts et les ventes sont comptés sur cette durée ; les arbres continuent de produire bien au delà.' },
+    horizonHint: { ratoon: 'Les rejets successeurs donnent une nouvelle récolte environ tous les 10 mois : 2 ou 3 cycles incluent ces récoltes.', orchard: 'Les coûts et les ventes sont comptés sur cette durée ; les arbres continuent de produire bien au-delà.' },
     horizonCycles: (n, m) => n + (n > 1 ? ' cycles · ' : ' cycle · ') + m + ' mois',
     horizonYears: (n) => n + ' ans',
     priceIn: (cur, u) => 'Prix de vente attendu (' + cur + ' par ' + u + ')',
@@ -63,7 +63,7 @@
     th: { unitPrice: 'Prix unitaire' },
     priceLabel: 'Prix',
     dataAsOf: (d) => 'Données à jour au ' + d,
-    report: { cta: 'Recevoir le rapport complet (PDF)', ctaSub: 'Un rapport professionnel de 12 à 15 pages sur ce plan, envoyé par courrier électronique après validation par l’équipe Djalumo Agro.', unavailable: 'L’envoi des rapports est en cours d’activation. Réessayez dans quelques jours, ou passez par la page Contact.' }
+    report: { cta: 'Demander le rapport complet (PDF)', ctaSub: 'Un rapport professionnel de 12 à 15 pages sur ce plan, envoyé par courrier électronique après validation par l’équipe Djalumo Agro.', unavailable: 'L’envoi des rapports est en cours d’activation. Réessayez dans quelques jours, ou passez par la page Contact.' }
   });
   ['en', 'fr'].forEach(l => { const c = I18N[l].planner.cats; c.growth_regulator = l === 'fr' ? 'Induction florale' : 'Flower induction'; });
   I18N.en.sim.crops = Object.assign({}, I18N.en.sim.crops, { pineapple: 'Pineapple', cocoa: 'Cocoa', oil_palm: 'Oil palm' });

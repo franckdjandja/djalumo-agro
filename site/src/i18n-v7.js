@@ -32,9 +32,10 @@
     riskText: {
       heatInside: (dT) => ' These temperatures include about ' + dT + '°C of warming under the cover.',
       heatLong: (p) => ' The crop keeps flowering through its harvest; ' + p + '% of these months reach the limit.',
-      diseaseRoof: ' The plastic roof keeps the rain off the leaves and lowers this risk by one level; humidity and soil diseases remain.'
+      diseaseRoof: ' The plastic roof keeps the rain off the leaves and lowers this risk by one level; humidity and soil diseases remain.',
+      waterRoof: (cov, mm) => 'Water covers about ' + cov + '% of the crop need. Under the roof no rain reaches the crop: the drip supplies all of its water, about ' + mm + ' mm over the season.'
     },
-    waterRoof: 'Under the plastic roof no rain reaches the crop: the drip supplies all of its water.',
+    waterRoof: 'The rain bars show the rain outside: under the plastic roof, none of it reaches the crop.',
     systemsT: 'Which production system for this crop?',
     systemsSub: (mode) => mode === 'crop' ? 'Same area, start date and price in each system' : 'Same capital, start date and price in each system',
     systemsNote: 'A cover raises the yield per square metre, but its structure is a large cost paid before the first harvest. Compare the break even prices: a cover pays when you can sell above its break even price, for example out of season.',
@@ -91,9 +92,10 @@
     riskText: {
       heatInside: (dT) => ' Ces températures incluent environ ' + dT + ' °C de réchauffement sous l’abri.',
       heatLong: (p) => ' La culture continue de fleurir pendant sa récolte ; ' + p + ' % de ces mois atteignent la limite.',
-      diseaseRoof: ' Le toit en plastique garde les feuilles au sec et baisse ce risque d’un niveau ; l’humidité et les maladies du sol demeurent.'
+      diseaseRoof: ' Le toit en plastique garde les feuilles au sec et baisse ce risque d’un niveau ; l’humidité et les maladies du sol demeurent.',
+      waterRoof: (cov, mm) => 'L’eau couvre environ ' + cov + ' % du besoin de la culture. Sous le toit, aucune pluie n’atteint la culture : le goutte à goutte apporte toute son eau, environ ' + mm + ' mm sur la saison.'
     },
-    waterRoof: 'Sous le toit en plastique, aucune pluie n’atteint la culture : le goutte à goutte apporte toute son eau.',
+    waterRoof: 'Les barres de pluie montrent la pluie à l’extérieur : sous le toit en plastique, elle n’atteint pas la culture.',
     systemsT: 'Quel système de production pour cette culture ?',
     systemsSub: (mode) => mode === 'crop' ? 'Même surface, même date de départ et même prix dans chaque système' : 'Même capital, même date de départ et même prix dans chaque système',
     systemsNote: 'Un abri augmente le rendement par mètre carré, mais sa structure est une lourde dépense payée avant la première récolte. Comparez les prix d’équilibre : un abri est rentable quand vous pouvez vendre plus cher que son prix d’équilibre, par exemple hors saison.',

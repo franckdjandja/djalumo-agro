@@ -26,7 +26,7 @@ Project leader: Franck Junior Djandja Tomwa · Pilot zone: Foumbot, West Cameroo
 
 Static site generated from plain JavaScript modules (no framework runtime, about 270 KB compressed, map data and the planner knowledge base included), Node 20 serverless functions, Zod validation, the `postgres` driver with parameterised queries. Hosting target: Vercel (any Node host works with `scripts/serve.mjs`).
 
-The product platform itself (models, API, mobile app) follows the architecture in the product report: Python, FastAPI, PostgreSQL with PostGIS, Flutter and Next.js. This repository is the company website.
+The Season Planner runs on this site today. The rest of the product platform (models, API, mobile app) will follow the architecture in the product report: Python, FastAPI, PostgreSQL with PostGIS, Flutter and Next.js. This repository is the company website.
 
 ## Repository structure
 

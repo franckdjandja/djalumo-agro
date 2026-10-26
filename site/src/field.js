@@ -56,7 +56,7 @@ function fieldPageHTML() {
       const tall = FACE_TOP.includes(id);
       return '<figure class="afig"><button type="button" data-lb="' + id + '" aria-label="' + esc(F.open + ': ' + c.text) + '">' + (tall ? fimg(id, c.text).replace('<img ', '<img class="tall" ') : fimg(id, c.text)) + '</button><figcaption>' + esc(c.text) + (c.dateKnown ? '<span>' + esc(c.when) + '</span>' : '') + '</figcaption></figure>';
     }).join('') + '</div></div>' : '';
-    return '<section class="plate" id="plate-' + n + '" data-plate-sec="' + n + '"><div class="wrap"><div class="plate-head"><div>' + meta + '<h2>' + esc(pl.title) + '</h2><p class="cap"><b>' + esc(pl.cap) + '</b> ' + esc(pl.site) + '.</p></div>' + learn + '</div>' + figs + arch + '</div></section>';
+    return '<section class="plate" id="plate-' + n + '" data-plate-sec="' + n + '"><div class="wrap"><div class="plate-head"><div>' + meta + '<h2>' + esc(pl.title) + '</h2><p class="cap">' + esc(pl.site) + '</p></div>' + learn + '</div>' + figs + arch + '</div></section>';
   }).join('');
   const close = sec('<div class="cta-band rv"><div><h2 class="h2" style="max-width:22ch">' + esc(F.ctaH) + '</h2><p class="lead" style="margin-top:16px">' + esc(F.ctaLead) + '</p><p class="register">' + esc(F.register) + '</p></div><div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-primary" href="#planner">' + esc(P.title) + ARROW + '</a><a class="btn btn-ghost" href="#impact">' + esc(L().nav.impact) + '</a></div></div>');
   return hero + nav + plates + close;
