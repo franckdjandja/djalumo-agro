@@ -1,86 +1,427 @@
 {
   "topic": "Protected cultivation for the Season Planner: greenhouses and net houses, their cost, climate and the crops grown under them",
-  "updated": "2026-10-25",
+  "updated": "2026-10-26",
   "module": {
     "m2": 240,
     "notes": "An 8 x 30 m tunnel, the standard module priced by Kenyan builders (S2), close to the 250 m2 entry model sold in Cote d'Ivoire (S1).",
-    "source_ids": ["S1", "S2"]
+    "source_ids": [
+      "S1",
+      "S2"
+    ]
   },
   "structures": {
     "greenhouse": {
       "description": "Ventilated greenhouse: galvanised steel arches, UV stabilised plastic roof of 200 microns, insect net on the walls and vents.",
       "price_xaf_m2": [
-        {"from_m2": 0, "value": 15000, "notes": "250 m2 from 3,800,000 FCFA (15,200 per m2) and 500 m2 from 7,500,000 FCFA (15,000 per m2), galvanised structure, anti UV film and insect net (S1)."},
-        {"from_m2": 1000, "value": 13000, "notes": "1,000 m2 multi tunnel from 13,000,000 FCFA, film of 200 microns and insect net (S1)."}
+        {
+          "from_m2": 0,
+          "value": 15000,
+          "notes": "250 m2 from 3,800,000 FCFA (15,200 per m2) and 500 m2 from 7,500,000 FCFA (15,000 per m2), galvanised structure, anti UV film and insect net (S1)."
+        },
+        {
+          "from_m2": 1000,
+          "value": 13000,
+          "notes": "1,000 m2 multi tunnel from 13,000,000 FCFA, film of 200 microns and insect net (S1)."
+        }
       ],
       "price_check": "Kenyan builders quote 255,000 to 515,000 KES for an 8 x 30 m tunnel with frame, 200 micron film, insect net, vents, drip lines and a 1,000 L tank, about 4,800 to 9,600 FCFA per m2 at the rates of the planner (S2). The Ivorian prices, in the same currency zone as Cameroon, are kept as the reference.",
-      "frame_life_years": {"value": 10, "assumption": true, "notes": "No builder warranty found for the steel frame; Djalumo Agro assumption to confirm with Cameroonian builders."},
-      "cover_share": {"value": 0.16, "derived": true, "notes": "Derived from official Indian cost norms (S3): a naturally ventilated tubular polyhouse costs 844 rupees per m2 and a tubular shade net house 710, so the plastic cover accounts for about 16% of the price (134 / 844)."},
-      "cover_life_years": {"value": 4, "notes": "Greenhouse grade UV stabilised film is warranted for four years or more (S4)."},
-      "temp_delta_c": {"value": 5, "assumption": true, "notes": "Daytime temperature was 4 C higher under insect nets and 15 C higher under plastic film than outside in Tanzania (S5). With insect net walls and open vents, a ventilated greenhouse is assumed 5 C warmer than outside, to be measured during the 2027 pilot."},
+      "frame_life_years": {
+        "value": 10,
+        "assumption": true,
+        "notes": "No builder warranty found for the steel frame; Djalumo Agro assumption to confirm with Cameroonian builders."
+      },
+      "cover_share": {
+        "value": 0.16,
+        "derived": true,
+        "notes": "Derived from official Indian cost norms (S3): a naturally ventilated tubular polyhouse costs 844 rupees per m2 and a tubular shade net house 710, so the plastic cover accounts for about 16% of the price (134 / 844)."
+      },
+      "cover_life_years": {
+        "value": 4,
+        "notes": "Greenhouse grade UV stabilised film is warranted for four years or more (S4); FAO puts the life of greenhouse films at about 45 months today (S17). Thinner 180 micron film lasts two to three years in Tunisia (S13)."
+      },
+      "temp_delta_c": {
+        "value": 5,
+        "assumption": true,
+        "notes": "Daytime temperature was 4 C higher under insect nets and 15 C higher under plastic film than outside in Tanzania (S5). With insect net walls and open vents, a ventilated greenhouse is assumed 5 C warmer than outside, to be measured during the 2027 pilot."
+      },
       "rain_on_crop": 0,
-      "disease_shift": {"value": -1, "assumption": true, "notes": "The plastic roof keeps rain off the leaves, which lowers rain driven disease pressure by one level. Diseases remain under cover: late blight, early blight and bacterial wilt each made about a quarter of the problems reported by Kenyan growers (S10)."},
-      "build_weeks": {"value": [[250, 2], [500, 3], [1000000, 5]], "notes": "Installation in 2 weeks for 250 m2, 3 weeks for 500 m2, 4 to 5 weeks for 1,000 m2 (S1)."},
-      "source_ids": ["S1", "S2", "S3", "S4", "S5", "S10"]
+      "disease_shift": {
+        "value": -1,
+        "assumption": true,
+        "notes": "The plastic roof keeps rain off the leaves, which lowers rain driven disease pressure by one level. Diseases remain under cover: late blight, early blight and bacterial wilt each made about a quarter of the problems reported by Kenyan growers (S10)."
+      },
+      "build_weeks": {
+        "value": [
+          [
+            250,
+            2
+          ],
+          [
+            500,
+            3
+          ],
+          [
+            1000000,
+            5
+          ]
+        ],
+        "notes": "Installation in 2 weeks for 250 m2, 3 weeks for 500 m2, 4 to 5 weeks for 1,000 m2 (S1)."
+      },
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S10",
+        "S13",
+        "S17"
+      ]
     },
     "net": {
       "description": "Net house: steel frame covered with insect net on the roof and walls, no plastic.",
-      "price_ratio_to_greenhouse": {"value": 0.84, "derived": true, "notes": "A tubular shade net house costs 710 rupees per m2 against 844 for a tubular polyhouse in the Indian cost norms (S3); the ratio 0.84 is applied to the Ivorian greenhouse prices (S1)."},
-      "frame_life_years": {"value": 10, "assumption": true, "notes": "Same frame as the greenhouse; Djalumo Agro assumption to confirm with builders."},
-      "cover_share": {"value": 0.16, "assumption": true, "notes": "No price found for insect net alone; the share of the greenhouse film is used until a Cameroonian quote is collected."},
-      "cover_life_years": {"value": 4, "assumption": true, "notes": "No lifespan found for insect net under tropical sun; the four years of greenhouse film are used until a supplier warranty is found."},
-      "temp_delta_c": {"value": 4, "notes": "Daytime temperature 4 C higher under insect nets than outside, Tanzania (S5)."},
+      "price_ratio_to_greenhouse": {
+        "value": 0.84,
+        "derived": true,
+        "notes": "A tubular shade net house costs 710 rupees per m2 against 844 for a tubular polyhouse in the Indian cost norms (S3); the ratio 0.84 is applied to the Ivorian greenhouse prices (S1)."
+      },
+      "frame_life_years": {
+        "value": 10,
+        "assumption": true,
+        "notes": "Same frame as the greenhouse; Djalumo Agro assumption to confirm with builders."
+      },
+      "cover_share": {
+        "value": 0.16,
+        "assumption": true,
+        "notes": "No price found for insect net alone; the share of the greenhouse film is used until a Cameroonian quote is collected."
+      },
+      "cover_life_years": {
+        "value": 4,
+        "assumption": true,
+        "notes": "No lifespan found for insect net under tropical sun; the four years of greenhouse film are used until a supplier warranty is found."
+      },
+      "temp_delta_c": {
+        "value": 4,
+        "notes": "Daytime temperature 4 C higher under insect nets than outside, Tanzania (S5)."
+      },
       "rain_on_crop": 1,
-      "disease_shift": {"value": 0, "notes": "Rain passes through the net, so rain driven disease pressure is unchanged; nets mainly stop insects (S5)."},
-      "build_weeks": {"value": [[250, 2], [500, 3], [1000000, 5]], "notes": "Taken as for a greenhouse of the same size (S1)."},
-      "source_ids": ["S1", "S3", "S5"]
+      "disease_shift": {
+        "value": 0,
+        "notes": "Rain passes through the net, so rain driven disease pressure is unchanged; nets mainly stop insects (S5)."
+      },
+      "build_weeks": {
+        "value": [
+          [
+            250,
+            2
+          ],
+          [
+            500,
+            3
+          ],
+          [
+            1000000,
+            5
+          ]
+        ],
+        "notes": "Taken as for a greenhouse of the same size (S1)."
+      },
+      "source_ids": [
+        "S1",
+        "S3",
+        "S5"
+      ]
     }
   },
   "crops": {
     "tomato": {
       "greenhouse": {
-        "yield_kg_m2": {"poor": 5, "average": 10, "good": 15},
-        "yield_notes": "Survey of 96 greenhouse growers in Nakuru, Kenya: mean 10.53 kg per m2, from 0.33 to 29.13 (S6). Average set at 10 kg per m2, poor and good at half and one and a half times the average, a cautious range to be checked against the first greenhouse seasons of the 2027 pilot. Anna F1 gives about 18 kg per plant over 8 months (S7).",
-        "cycle": {"nursery_days": 30, "to_first_harvest_days": 75, "harvest_days": 240, "flowering_before_harvest_days": 45},
+        "yield_kg_m2": {
+          "poor": 5,
+          "average": 10,
+          "good": 15
+        },
+        "yield_notes": "Survey of 96 greenhouse growers in Nakuru, Kenya: mean 10.53 kg per m2, from 0.33 to 29.13 (S6). Average set at 10 kg per m2, poor and good at half and one and a half times the average, a cautious range to be checked against the first greenhouse seasons of the 2027 pilot. Anna F1 gives about 18 kg per plant over 8 months (S7). Cross check: about 97 t/ha under unheated greenhouses in Tunisia in 2012 (S13) and 130 t/ha over six months of harvest under large tunnels in Morocco (S11).",
+        "cycle": {
+          "nursery_days": 30,
+          "to_first_harvest_days": 75,
+          "harvest_days": 240,
+          "flowering_before_harvest_days": 45
+        },
         "continuous_flowering": true,
         "cycle_notes": "Anna F1 matures 75 days after transplanting and produces over 8 months (S7); KALRO lists Anna F1 for greenhouses with a harvest of up to 8 months (S9). The plant is indeterminate: it keeps flowering while it is harvested, so the heat check covers every month from the first flowers to 45 days before the last harvest.",
-        "source_ids": ["S6", "S7", "S9"]
+        "source_ids": [
+          "S6",
+          "S7",
+          "S9",
+          "S13",
+          "S11"
+        ]
       },
       "net": {
-        "yield_kg_m2": {"poor": 1.68, "average": 3.35, "good": 5.01},
+        "yield_kg_m2": {
+          "poor": 1.68,
+          "average": 3.35,
+          "good": 5.01
+        },
         "yield_notes": "Marketable yields of 16.8 and 50.1 t/ha under fine mesh insect net, against 2.7 and 10.8 t/ha in the open, over two years in Tanzania (S5). Poor and good are the two values, average their midpoint.",
         "cycle_notes": "Same calendar as the open field: the trial grew determinate field varieties.",
-        "source_ids": ["S5"]
+        "source_ids": [
+          "S5"
+        ]
+      }
+    },
+    "greenbean": {
+      "greenhouse": {
+        "yield_kg_m2": {
+          "poor": 2.0,
+          "average": 2.5,
+          "good": 3.0
+        },
+        "yield_notes": "Morocco: 20 t/ha for each crop of green bean under large tunnels, two crops a year (S11); 25 to 30 t/ha under greenhouse against 7 to 10 in the open field, national figures (S12). Poor and good are the bounds of these figures, average 25 t/ha.",
+        "cycle": {
+          "nursery_days": 0,
+          "to_first_harvest_days": 60,
+          "harvest_days": 90,
+          "flowering_before_harvest_days": 18
+        },
+        "cycle_notes": "Climbing varieties are sown in twin rows under greenhouse; picking starts about two months after sowing (S12) and each crop is harvested over three months (S11). Climbing beans need strings tied to the roof wires.",
+        "source_ids": [
+          "S11",
+          "S12"
+        ]
       }
     },
     "pepper": {
       "greenhouse": {
-        "yield_kg_m2": {"poor": 0.82, "average": 1.46, "good": 2.13},
-        "yield_notes": "Nine sweet pepper varieties in a greenhouse in Ghana, dry season 2014 to 2015: 8.20 to 21.34 t/ha, mean 14.62 t/ha, against 5.02 to 12.57 t/ha in the open field of the same trial (S8).",
-        "cycle_notes": "Same calendar as the open field: the trial ran over one dry season.",
-        "source_ids": ["S8"]
+        "yield_kg_m2": {
+          "poor": 3.3,
+          "average": 6.6,
+          "good": 9.9
+        },
+        "yield_notes": "Capsicum under unheated plastic greenhouses in Tunisia, national figures for 2012: 60,703 t on 922 ha, about 66 t/ha or 6.6 kg per m2 (S13). Poor and good at half and one and a half times this average, the rule used when a source gives an average only. The Kenyan capsicum guide reports greenhouse F1 hybrids at about twice their open field yield, with 4 to 6 months of harvest (S18). A single dry season trial in Ghana, with a short harvest, gave 8.2 to 21.34 t/ha under greenhouse against 5.02 to 12.57 in the open (S8).",
+        "cycle": {
+          "nursery_days": 42,
+          "to_first_harvest_days": 75,
+          "harvest_days": 150,
+          "flowering_before_harvest_days": 42
+        },
+        "continuous_flowering": true,
+        "cycle_notes": "Greenhouse hybrids are indeterminate and keep flowering: the Kenyan guide gives 4 to 6 months of harvest under greenhouse against about 10 weeks in the open (S18); Tunisian greenhouse pepper runs from November to July (S13). Five months of harvest are used, with the open field nursery and first harvest dates.",
+        "source_ids": [
+          "S13",
+          "S18",
+          "S8"
+        ]
+      }
+    },
+    "chili": {
+      "greenhouse": {
+        "yield_kg_m2": {
+          "poor": 3.3,
+          "average": 6.6,
+          "good": 9.9
+        },
+        "yield_notes": "Capsicum under unheated plastic greenhouses in Tunisia, where the crop is mostly hot and semi hot pepper, national figures for 2012: 60,703 t on 922 ha, about 66 t/ha or 6.6 kg per m2 (S13). Poor and good at half and one and a half times this average. No greenhouse yield of hot pepper was found south of the Sahara.",
+        "cycle": {
+          "nursery_days": 42,
+          "to_first_harvest_days": 90,
+          "harvest_days": 150,
+          "flowering_before_harvest_days": 45
+        },
+        "continuous_flowering": true,
+        "cycle_notes": "Greenhouse pepper in Tunisia runs from November to July (S13) and greenhouse capsicum is picked for 4 to 6 months in Kenya (S18): five months of harvest are used, with the open field nursery and first harvest dates.",
+        "source_ids": [
+          "S13",
+          "S18"
+        ]
       }
     },
     "cucumber": {
       "greenhouse": {
-        "yield_kg_m2": {"poor": 5.44, "average": 6.54, "good": 7.64},
-        "yield_notes": "Tunnel in soil with drip irrigation in Mayotte, dry season: 54.4 to 76.4 t/ha of marketable fruit 78 days after planting, from the cucumber research file of the planner (CU3). Average at the midpoint.",
+        "yield_kg_m2": {
+          "poor": 5.44,
+          "average": 6.54,
+          "good": 7.64
+        },
+        "yield_notes": "Tunnel in soil with drip irrigation in Mayotte, dry season: 54.4 to 76.4 t/ha of marketable fruit 78 days after planting, from the cucumber research file of the planner (CU3). Average at the midpoint. Cross check: plastic tunnels in the Nile delta gave 4.2 to 10.0 kg per m2 over 67 to 82 days of harvest (S16).",
         "cycle_notes": "Transplanted 16 days after sowing, first harvest 29 to 32 days after transplanting and marketable yield counted 78 days after planting (CU3): about 46 days from sowing to the first harvest and 48 days of harvest, against 50 and 45 in the open field calendar of the planner, which is therefore kept.",
-        "source_ids": ["CU3"]
+        "source_ids": [
+          "CU3",
+          "S16"
+        ]
+      }
+    },
+    "zucchini": {
+      "greenhouse": {
+        "yield_kg_m2": {
+          "poor": 3.75,
+          "average": 7.5,
+          "good": 11.25
+        },
+        "yield_notes": "No greenhouse zucchini yield was found in Africa. Almeria, Spain, official cost survey of the 2022 to 2023 season: 7.5 kg per m2 in the autumn cycle of 123 days and 11.13 kg per m2 in the spring cycle of 176 days (S14). The autumn cycle is used as the average, poor and good at half and one and a half times it; the good value matches the spring cycle.",
+        "cycle": {
+          "nursery_days": 0,
+          "to_first_harvest_days": 58,
+          "harvest_days": 78,
+          "flowering_before_harvest_days": 13
+        },
+        "cycle_notes": "The autumn cycle lasts 123 days from transplanting (S14) and a greenhouse trial in Morocco picked from 45 days after transplanting (S15): about 78 days of harvest, with the open field date of the first harvest from direct sowing.",
+        "source_ids": [
+          "S14",
+          "S15"
+        ]
       }
     }
   },
-  "not_included": "Chili pepper: no yield under cover found in African sources yet. Zucchini and green bean: rarely grown under cover in the sources found. Lettuce, basil, eggplant, African leafy vegetables and seedling nurseries are planned for a second step.",
+  "not_included": "Net house yields were found for tomato only. Lettuce, basil, eggplant, African leafy vegetables and seedling nurseries are planned for a second step.",
   "sources": [
-    {"id": "S1", "title": "Construction de serres agricoles, nos services (tunnels de 250, 500 et 1 000 m2)", "publisher": "Agro Serre Innovation, Cote d'Ivoire", "year": 2026, "url": "https://www.agroserreinnovationci.com/services"},
-    {"id": "S2", "title": "Greenhouse construction service in Nairobi and Kenya: services, costs and top providers", "publisher": "Best Care Services directory, Kenya", "year": 2026, "url": "https://bestcareservices.co.ke/directory/greenhouse-construction-service.html"},
-    {"id": "S3", "title": "Cost norms for horticulture (naturally ventilated polyhouse, shade net house)", "publisher": "National Horticulture Board, Government of India", "year": null, "url": "https://nhb.gov.in/hindi/pdf/Cost Norms.pdf"},
-    {"id": "S4", "title": "Plastic greenhouse film update", "publisher": "University of Massachusetts Amherst, Greenhouse Crops and Floriculture", "year": null, "url": "https://www.umass.edu/agriculture-food-environment/greenhouse-floriculture/fact-sheets/plastic-greenhouse-film-update"},
-    {"id": "S5", "title": "Small mesh nets protect tomato plants from insect pests and increase yields in eastern Africa (Nordey, Deletre, Mlowe, Martin), Journal of Horticultural Science and Biotechnology 95(2)", "publisher": "GOV.UK Research for Development outputs", "year": 2020, "url": "https://www.gov.uk/research-for-development-outputs/small-mesh-nets-protect-tomato-plants-from-insect-pests-and-increase-yields-in-eastern-africa"},
-    {"id": "S6", "title": "Comparison of the profitability of small scale greenhouse and open field tomato production systems in Nakuru North District, Kenya (Wachira, Mshenga, Saidi)", "publisher": "Asian Journal of Agricultural Sciences 6(2)", "year": 2014, "url": "https://www.napopen.com/article/ajas.6.5303"},
-    {"id": "S7", "title": "Tomato production guide (Anna F1 greenhouse tomato)", "publisher": "SHEP PLUS, JICA and Kenya Horticultural Crops Directorate", "year": 2016, "url": "https://www.jica.go.jp/project/english/kenya/015/materials/c8h0vm0000f7o8cj-att/materials_15.pdf"},
-    {"id": "S8", "title": "Growth, yield and consumer acceptance of sweet pepper as influenced by open field and greenhouse production systems (Nkansah, Norman, Martey), Journal of Horticulture 4(4)", "publisher": "Longdom", "year": 2017, "url": "https://www.longdom.org/open-access/growth-yield-and-consumer-acceptance-of-sweet-pepper-capsicum-annuum-l-as-influenced-by-open-field-and-greenhouse-produc-16888.html"},
-    {"id": "S9", "title": "Tomato varieties suitable for greenhouse (pamphlet 73)", "publisher": "KALRO, National Agricultural Value Chain Development Project", "year": 2024, "url": "https://www.kalro.org/navcdp/docs/tomato/Tomato%20varieties%20suitable%20for%20Greenhouse%20Tomato%20pamphlet.pdf"},
-    {"id": "S10", "title": "A survey of constraints to greenhouse and open field tomato production among smallholder farmers in Nakuru County, Kenya (Mwende, Kagiki, Wangari)", "publisher": "Agriculture, Forestry and Fisheries 15(2)", "year": 2026, "url": "https://www.sciencepg.com/article/10.11648/j.aff.20261502.14"}
-  ]
+    {
+      "id": "S1",
+      "title": "Construction de serres agricoles, nos services (tunnels de 250, 500 et 1 000 m2)",
+      "publisher": "Agro Serre Innovation, Cote d'Ivoire",
+      "year": 2026,
+      "url": "https://www.agroserreinnovationci.com/services"
+    },
+    {
+      "id": "S2",
+      "title": "Greenhouse construction service in Nairobi and Kenya: services, costs and top providers",
+      "publisher": "Best Care Services directory, Kenya",
+      "year": 2026,
+      "url": "https://bestcareservices.co.ke/directory/greenhouse-construction-service.html"
+    },
+    {
+      "id": "S3",
+      "title": "Cost norms for horticulture (naturally ventilated polyhouse, shade net house)",
+      "publisher": "National Horticulture Board, Government of India",
+      "year": null,
+      "url": "https://nhb.gov.in/hindi/pdf/Cost Norms.pdf"
+    },
+    {
+      "id": "S4",
+      "title": "Plastic greenhouse film update",
+      "publisher": "University of Massachusetts Amherst, Greenhouse Crops and Floriculture",
+      "year": null,
+      "url": "https://www.umass.edu/agriculture-food-environment/greenhouse-floriculture/fact-sheets/plastic-greenhouse-film-update"
+    },
+    {
+      "id": "S5",
+      "title": "Small mesh nets protect tomato plants from insect pests and increase yields in eastern Africa (Nordey, Deletre, Mlowe, Martin), Journal of Horticultural Science and Biotechnology 95(2)",
+      "publisher": "GOV.UK Research for Development outputs",
+      "year": 2020,
+      "url": "https://www.gov.uk/research-for-development-outputs/small-mesh-nets-protect-tomato-plants-from-insect-pests-and-increase-yields-in-eastern-africa"
+    },
+    {
+      "id": "S6",
+      "title": "Comparison of the profitability of small scale greenhouse and open field tomato production systems in Nakuru North District, Kenya (Wachira, Mshenga, Saidi)",
+      "publisher": "Asian Journal of Agricultural Sciences 6(2)",
+      "year": 2014,
+      "url": "https://www.napopen.com/article/ajas.6.5303"
+    },
+    {
+      "id": "S7",
+      "title": "Tomato production guide (Anna F1 greenhouse tomato)",
+      "publisher": "SHEP PLUS, JICA and Kenya Horticultural Crops Directorate",
+      "year": 2016,
+      "url": "https://www.jica.go.jp/project/english/kenya/015/materials/c8h0vm0000f7o8cj-att/materials_15.pdf"
+    },
+    {
+      "id": "S8",
+      "title": "Growth, yield and consumer acceptance of sweet pepper as influenced by open field and greenhouse production systems (Nkansah, Norman, Martey), Journal of Horticulture 4(4)",
+      "publisher": "Longdom",
+      "year": 2017,
+      "url": "https://www.longdom.org/open-access/growth-yield-and-consumer-acceptance-of-sweet-pepper-capsicum-annuum-l-as-influenced-by-open-field-and-greenhouse-produc-16888.html"
+    },
+    {
+      "id": "S9",
+      "title": "Tomato varieties suitable for greenhouse (pamphlet 73)",
+      "publisher": "KALRO, National Agricultural Value Chain Development Project",
+      "year": 2024,
+      "url": "https://www.kalro.org/navcdp/docs/tomato/Tomato%20varieties%20suitable%20for%20Greenhouse%20Tomato%20pamphlet.pdf"
+    },
+    {
+      "id": "S10",
+      "title": "A survey of constraints to greenhouse and open field tomato production among smallholder farmers in Nakuru County, Kenya (Mwende, Kagiki, Wangari)",
+      "publisher": "Agriculture, Forestry and Fisheries 15(2)",
+      "year": 2026,
+      "url": "https://www.sciencepg.com/article/10.11648/j.aff.20261502.14"
+    },
+    {
+      "id": "S11",
+      "title": "La production horticole sous grands tunnels au Maroc (Villeneuve C.)",
+      "publisher": "MAPAQ, Quebec Ministry of Agriculture, Fisheries and Food",
+      "year": 2007,
+      "url": "https://www.agrireseau.net/legumeschamp/documents/maroc.pdf"
+    },
+    {
+      "id": "S12",
+      "title": "Fiche technique de la culture du haricot vert au Maroc",
+      "publisher": "AgriMaroc",
+      "year": 2024,
+      "url": "https://www.agrimaroc.ma/haricot-vert-maroc/"
+    },
+    {
+      "id": "S13",
+      "title": "Etude de l'encouragement des investissements et de développement de production de légumes sous serres, rapport final de synthèse",
+      "publisher": "APIA, Tunisian Ministry of Agriculture (AGRO SERVICES)",
+      "year": 2015,
+      "url": "https://www.apia.com.tn/medias/files/Etude-de-l-encouragement-des-investissements-et-de-developpement-de-production-de-legumes-sous-serres.pdf"
+    },
+    {
+      "id": "S14",
+      "title": "Hortícolas protegidos: costes de producción de calabacín, campaña 2022/23",
+      "publisher": "Spanish Ministry of Agriculture, Fisheries and Food (MAPA), food chain observatory",
+      "year": 2023,
+      "url": "https://mapa.gob.es/es/alimentacion/temas/observatorio-cadena/14costesdeproduccioncalabacin22_23_tcm30-689093.pdf"
+    },
+    {
+      "id": "S15",
+      "title": "Enhancing the growth and the yield of greenhouse zucchini cultivars using desalinated seawater in semi arid regions (Khouya et al.), International Journal of Plant Biology 17(4)",
+      "publisher": "MDPI",
+      "year": 2026,
+      "url": "https://www.mdpi.com/2037-0164/17/4/30"
+    },
+    {
+      "id": "S16",
+      "title": "Effect of plastic tunnel size on production of cucumber in delta of Egypt (El-Aidy, El-Zawely, Hassan, El-Sawy), Applied Ecology and Environmental Research 5(2)",
+      "publisher": "ALOKI",
+      "year": 2007,
+      "url": "https://www.aloki.hu/pdf/0502_011024.pdf"
+    },
+    {
+      "id": "S17",
+      "title": "Good Agricultural Practices for greenhouse vegetable crops: principles for Mediterranean climate areas (Plant Production and Protection Paper 217)",
+      "publisher": "FAO",
+      "year": 2013,
+      "url": "https://www.fao.org/4/i3284e/i3284e.pdf"
+    },
+    {
+      "id": "S18",
+      "title": "Capsicum production (training material)",
+      "publisher": "SHEP PLUS, JICA and Kenya Ministry of Agriculture",
+      "year": 2019,
+      "url": "https://www.jica.go.jp/project/english/kenya/015/materials/c8h0vm0000f7o8cj-att/materials_07.pdf"
+    }
+  ],
+  "upkeep": {
+    "xaf_m2_day": 0.263,
+    "derived": true,
+    "notes": "Repairs and upkeep of the greenhouse and its equipment in Almeria, official cost survey of the 2022 to 2023 season: 493 EUR per ha over the autumn cycle of 123 days and 706 EUR per ha over the spring cycle of 176 days, about 4.0 EUR per ha and per day in both cycles (S14). At 655.957 FCFA per EUR, 0.263 FCFA per m2 and per day of the plan, counted for every structure, new or already built.",
+    "source_ids": [
+      "S14"
+    ]
+  },
+  "status": {
+    "repairs_life": {
+      "value": "cover",
+      "assumption": true,
+      "notes": "Repairs entered by the grower (doors, gutters, net patches, arches) are assumed to last as long as a new cover, four years, and are charged to the plan for the share of that life it uses."
+    },
+    "repair_weeks": {
+      "value": 1,
+      "assumption": true,
+      "notes": "Repairing a structure is assumed to take one week, before the beds are formed inside."
+    },
+    "notes": "A structure already built is not bought again: the plan counts only its upkeep, and the drip system is taken as already installed unless the grower says otherwise. A structure to repair adds the repairs the grower chooses: a new cover at the reference price, and other repairs at the grower's quote."
+  }
 }

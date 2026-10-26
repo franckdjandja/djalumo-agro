@@ -22,9 +22,11 @@
     coverFact: (label, n, mod, m2, weeks) => label + ' of ' + m2 + ' m², ' + plural(n, 'module', 'modules') + ' of ' + mod + ' m², built in about ' + plural(weeks, 'week', 'weeks') + '.',
     coverCharge: (cost, charged) => 'The structure costs ' + cost + ' up front; this plan is charged ' + charged + ', the share of its life it uses.',
     coverClimate: (dT) => 'Inside, days are about ' + dT + '°C warmer than outside: a gain in the cool months, a risk for flowering in the hot ones.',
-    coverLow: 'Structure prices come from a builder in Côte d’Ivoire and yields from trials in East and West Africa: get a quote from a builder in Cameroon before committing.',
+    coverLow: 'Structure prices come from a builder in Côte d’Ivoire, and yields from trials and national figures in Africa (in Spain for zucchini): get a quote from a builder in Cameroon before committing.',
     states: {
-      below_module: (min, label, mod) => 'One ' + label.toLowerCase() + ' module of ' + mod + ' m² needs a capital of about ' + min + ', with its watering and tools. Raise the capital, or choose the open field in the form.'
+      below_module: (min, label, mod) => 'One ' + label.toLowerCase() + ' module of ' + mod + ' m² needs a capital of about ' + min + ', with its watering and tools. Raise the capital, or choose the open field in the form.',
+      cover_limit: (label, m2, unused) => 'Your ' + label.toLowerCase() + ' of ' + m2 + ' m² is fully planted' + (unused ? ': about ' + unused + ' of your capital stays unused.' : '.'),
+      upfront_cover: () => 'The capital does not cover what must be bought before planting: the repairs, the equipment and the upkeep listed below.'
     },
     cats: { structure: 'Structure (greenhouse or net house)', machinery: 'Hired machines' },
     riskText: {
@@ -39,7 +41,25 @@
     sysFrom: (v) => 'from ' + v,
     sysPick: 'Plan this system',
     th: { system: 'System', capitalNeed: 'Capital', yieldAvg: 'Average yield', margin: 'Average margin' },
-    budgetCoverNote: (su) => 'The structure is listed at its full price. In the margin, the plan is charged ' + plural(su, 'season', 'seasons') + ' of its life, like the other equipment.'
+    budgetCoverNote: (su) => 'The structure is listed at its full price. In the margin, the plan is charged ' + plural(su, 'season', 'seasons') + ' of its life, like the other equipment.',
+    structureL: 'Your structure',
+    structureOpts: { new: 'To build', owned: 'Already built', repair: 'Needs repairs' },
+    structureHint: { new: 'Bought and built for this plan, in modules of 240 m².', owned: 'Built for an earlier season: it is not bought again, only its upkeep is counted.', repair: 'Built for an earlier season: only the repairs you choose are bought.' },
+    structureM2: (label) => 'Size of your ' + label.toLowerCase() + ' (m²)',
+    structureM2Hint: 'The plan plants the whole structure, or the part your capital allows.',
+    dripInPlace: 'The drip system is already installed',
+    dripInPlaceHint: 'Untick it if the drip must be bought again: the drip kit and a motor pump are then added.',
+    coverWaterInPlace: 'The drip system of your greenhouse is already installed: only its fuel and upkeep are counted.',
+    coverWord: { greenhouse: 'film', net: 'insect net' },
+    replaceCover: (word, price) => 'Replace the ' + word + ' (about ' + price + ' at the reference price)',
+    repairQuote: (cur) => 'Other repairs, your quote (' + cur + ' for the whole structure)',
+    repairQuoteHint: 'Doors, gutters, vent nets, arches. Leave it empty if there are none.',
+    areaExisting: 'The plan uses the size of your structure, entered under Production system.',
+    coverOwned: (label, m2, planted) => 'Your ' + label.toLowerCase() + ' of ' + m2 + ' m² is already built: it is not in the budget.' + (planted ? ' The capital plants ' + planted + ' m² of it.' : ''),
+    coverRepair: (cost, charged) => 'The repairs cost ' + cost + ' before planting; this plan is charged ' + charged + ', the share of their life it uses.',
+    coverUpkeep: (v) => 'Upkeep and small repairs of the structure are counted at ' + v + ' over the plan.',
+    coverDrip: 'Its drip system is taken as installed.',
+    budgetOwnedNote: 'Your structure is already built and is not bought again: the budget counts its upkeep and the repairs you chose.'
   });
   merge('fr', {
     system: 'Système de production',
@@ -61,9 +81,11 @@
     coverFact: (label, n, mod, m2, weeks) => label + ' de ' + m2 + ' m², ' + plural(n, 'module', 'modules') + ' de ' + mod + ' m², construite en ' + plural(weeks, 'semaine', 'semaines') + ' environ.',
     coverCharge: (cost, charged) => 'La structure coûte ' + cost + ' au départ ; ce plan en supporte ' + charged + ', la part de sa durée de vie qu’il utilise.',
     coverClimate: (dT) => 'À l’intérieur, les journées sont plus chaudes d’environ ' + dT + ' °C qu’à l’extérieur : un gain pendant les mois frais, un risque pour la floraison pendant les mois chauds.',
-    coverLow: 'Les prix des structures viennent d’un constructeur de Côte d’Ivoire et les rendements d’essais en Afrique de l’Est et de l’Ouest : demandez un devis à un constructeur au Cameroun avant de vous engager.',
+    coverLow: 'Les prix des structures viennent d’un constructeur de Côte d’Ivoire, et les rendements d’essais et de chiffres nationaux en Afrique (en Espagne pour la courgette) : demandez un devis à un constructeur au Cameroun avant de vous engager.',
     states: {
-      below_module: (min, label, mod) => 'Un module de ' + label.toLowerCase() + ' de ' + mod + ' m² demande un capital d’environ ' + min + ', avec son arrosage et ses outils. Augmentez le capital, ou choisissez le plein champ dans le formulaire.'
+      below_module: (min, label, mod) => 'Un module de ' + label.toLowerCase() + ' de ' + mod + ' m² demande un capital d’environ ' + min + ', avec son arrosage et ses outils. Augmentez le capital, ou choisissez le plein champ dans le formulaire.',
+      cover_limit: (label, m2, unused) => 'Votre ' + label.toLowerCase() + ' de ' + m2 + ' m² est entièrement cultivée' + (unused ? ' : environ ' + unused + ' de votre capital reste disponible.' : '.'),
+      upfront_cover: () => 'Le capital ne couvre pas ce qu’il faut acheter avant la plantation : les réparations, l’équipement et l’entretien listés plus bas.'
     },
     cats: { structure: 'Structure (serre ou maison filet)', machinery: 'Location de machines' },
     riskText: {
@@ -78,6 +100,24 @@
     sysFrom: (v) => 'dès ' + v,
     sysPick: 'Planifier ce système',
     th: { system: 'Système', capitalNeed: 'Capital', yieldAvg: 'Rendement moyen', margin: 'Marge moyenne' },
-    budgetCoverNote: (su) => 'La structure figure à son prix complet. Dans la marge, le plan supporte ' + plural(su, 'saison', 'saisons') + ' de sa durée de vie, comme pour les autres équipements.'
+    budgetCoverNote: (su) => 'La structure figure à son prix complet. Dans la marge, le plan supporte ' + plural(su, 'saison', 'saisons') + ' de sa durée de vie, comme pour les autres équipements.',
+    structureL: 'Votre structure',
+    structureOpts: { new: 'À construire', owned: 'Déjà construite', repair: 'À réparer' },
+    structureHint: { new: 'Achetée et construite pour ce plan, en modules de 240 m².', owned: 'Construite pour une saison précédente : elle n’est pas rachetée, seul son entretien est compté.', repair: 'Construite pour une saison précédente : seules les réparations choisies sont achetées.' },
+    structureM2: (label) => 'Taille de votre ' + label.toLowerCase() + ' (m²)',
+    structureM2Hint: 'Le plan cultive toute la structure, ou la part que votre capital permet.',
+    dripInPlace: 'Le goutte à goutte est déjà installé',
+    dripInPlaceHint: 'Décochez la case s’il faut racheter le goutte à goutte : le kit et une motopompe sont alors ajoutés.',
+    coverWaterInPlace: 'Le goutte à goutte de votre serre est déjà installé : seuls son carburant et son entretien sont comptés.',
+    coverWord: { greenhouse: 'le film', net: 'le filet' },
+    replaceCover: (word, price) => 'Remplacer ' + word + ' (environ ' + price + ' au prix de référence)',
+    repairQuote: (cur) => 'Autres réparations, votre devis (' + cur + ' pour toute la structure)',
+    repairQuoteHint: 'Portes, gouttières, filets des aérations, arceaux. Laissez vide s’il n’y en a pas.',
+    areaExisting: 'Le plan utilise la taille de votre structure, saisie dans Système de production.',
+    coverOwned: (label, m2, planted) => 'Votre ' + label.toLowerCase() + ' de ' + m2 + ' m² est déjà construite : elle n’entre pas dans le budget.' + (planted ? ' Le capital en cultive ' + planted + ' m².' : ''),
+    coverRepair: (cost, charged) => 'Les réparations coûtent ' + cost + ' avant la plantation ; ce plan en supporte ' + charged + ', la part de leur durée de vie qu’il utilise.',
+    coverUpkeep: (v) => 'L’entretien et les petites réparations de la structure sont comptés pour ' + v + ' sur la durée du plan.',
+    coverDrip: 'Son goutte à goutte est considéré comme installé.',
+    budgetOwnedNote: 'Votre structure est déjà construite et n’est pas rachetée : le budget compte son entretien et les réparations choisies.'
   });
 })();

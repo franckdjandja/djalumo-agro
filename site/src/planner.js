@@ -5,7 +5,11 @@ const tl = (x) => (x && typeof x === 'object' && !Array.isArray(x)) ? (x[LANG] |
 const PL_CUR = ['USD', 'XAF', 'EUR', 'RWF', 'KES', 'NGN'];
 const PL_WATER = ['rainfed', 'manual', 'existing', 'pump', 'drip'];
 const nextMonthStart = () => { const d = new Date(); return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + 1, 1)).toISOString().slice(0, 10); };
-const PLAN = { capital: 5000, currency: 'USD', mode: 'budget', area: 0.25, crop: 'tomato', water: 'pump', start: nextMonthStart(), land: 'rent', market: 'local', familyLabour: 0, ownTools: false, tab: 'return', prices: {}, products: {}, horizons: {}, system: 'open', coverM2: 240, fieldWork: 'hand', machineQuote: null };
+const PLAN = { capital: 5000, currency: 'USD', mode: 'budget', area: 0.25, crop: 'tomato', water: 'pump', start: nextMonthStart(), land: 'rent', market: 'local', familyLabour: 0, ownTools: false, tab: 'return', prices: {}, products: {}, horizons: {}, system: 'open', coverM2: 240, fieldWork: 'hand', machineQuote: null, structure: 'new', structureM2: 240, replaceCover: false, repairQuote: null, dripInPlace: true };
+/** Structure status in force: a structure already built (or to repair) only makes sense under a cover. */
+const plStructure = () => plSystem(PLAN.crop) !== 'open' && ['owned', 'repair'].includes(PLAN.structure) ? PLAN.structure : 'new';
+/** Reference price of a new cover (film or net) for a structure of m2 square metres, in FCFA. */
+const coverRef = (sys, m2) => { const SY = KB.protected.systems[sys], t = SY.price_tiers.filter(x => m2 >= x.from_m2).pop() || SY.price_tiers[0]; return t.xaf_m2 * SY.cover_share * m2; };
 /** Production system in force for the crop: the one chosen when the crop is offered in it, otherwise the open field. */
 const plSystem = (k) => { const s = AFEngine.systemsFor(KB, k || PLAN.crop); return s.includes(PLAN.system) ? PLAN.system : 'open'; };
 const plModule = () => (KB.protected && KB.protected.module_m2) || 240;
@@ -80,8 +84,16 @@ function plannerFormInner(compact) {
   const syss = AFEngine.systemsFor(KB, S.crop), sys = plSystem(S.crop), covered = sys !== 'open', SY = covered ? KB.protected.systems[sys] : null;
   const sysSel = syss.length > 1 ? '<div class="f"><span class="lbl" id="pl-sys-l">' + esc(P.system) + '</span><div class="seg seg' + syss.length + '" role="group" aria-labelledby="pl-sys-l">' +
     syss.map(k => '<button type="button" data-psys="' + k + '" aria-pressed="' + (sys === k) + '">' + esc(P.systems[k]) + '</button>').join('') + '</div><span class="hint">' + esc(covered ? tl(SY.desc) : P.systemOpenHint) + '</span></div>' : '';
+  // The structure: to build, already built, or already built and to repair.
+  const st = plStructure(), existing = st !== 'new';
+  const structBlock = covered ? '<div class="f"><span class="lbl" id="pl-st-l">' + esc(P.structureL) + '</span><div class="seg seg3" role="group" aria-labelledby="pl-st-l">' +
+    ['new', 'owned', 'repair'].map(k => '<button type="button" data-pst="' + k + '" aria-pressed="' + (st === k) + '">' + esc(P.structureOpts[k]) + '</button>').join('') + '</div><span class="hint">' + esc(P.structureHint[st]) + '</span></div>' +
+    (existing ? '<div class="f"><label for="pl-sm2">' + esc(P.structureM2(P.systems[sys])) + '</label><input class="inp tnum" id="pl-sm2" type="number" min="1" step="1" inputmode="numeric" value="' + esc(S.structureM2) + '"><span class="hint">' + esc(P.structureM2Hint) + '</span></div>' : '') +
+    (st === 'repair' ? '<label class="chk"><input type="checkbox" id="pl-rcover"' + (S.replaceCover ? ' checked' : '') + '> ' + esc(P.replaceCover(P.coverWord[sys], txtCur(coverRef(sys, Math.max(1, S.structureM2 || plModule()))))) + '</label>' +
+      '<div class="f"><label for="pl-rq">' + esc(P.repairQuote(curCode())) + '</label><input class="inp tnum" id="pl-rq" inputmode="decimal" autocomplete="off" value="' + esc(S.repairQuote ? priceShown(S.repairQuote) : '') + '"><span class="hint">' + esc(P.repairQuoteHint) + '</span></div>' : '') : '';
   const waterBlock = SY && SY.water
-    ? '<div class="f"><span class="lbl">' + esc(P.waterT) + '</span><p class="notice info">' + esc(P.coverWater) + '</p></div>'
+    ? '<div class="f"><span class="lbl">' + esc(P.waterT) + '</span><p class="notice info">' + esc(existing && S.dripInPlace ? P.coverWaterInPlace : P.coverWater) + '</p>' +
+      (existing ? '<label class="chk" style="margin-top:10px"><input type="checkbox" id="pl-drip"' + (S.dripInPlace ? ' checked' : '') + '> ' + esc(P.dripInPlace) + '</label><span class="hint">' + esc(P.dripInPlaceHint) + '</span>' : '') + '</div>'
     : '<fieldset class="f" style="border:0;padding:0;margin:0"><legend class="lbl" style="font-size:13px;color:var(--fg-2);font-weight:500;margin-bottom:7px">' + esc(P.waterT) + '</legend><div class="wopts">' + water + '</div></fieldset>';
   // Land preparation by hand or with hired machines, with the grower's own quote when he has one.
   const mRef = machineRef(S.crop), hire = S.fieldWork === 'hire';
@@ -93,10 +105,12 @@ function plannerFormInner(compact) {
     '<div class="row2"><div class="f"><label for="pl-cap">' + esc(P.capital) + '</label><input class="inp tnum" id="pl-cap" inputmode="decimal" autocomplete="off" value="' + esc(nf(S.capital)) + '"><span class="hint">' + esc(P.capitalHint) + '</span></div>' +
     '<div class="f"><label for="pl-cur">' + esc(P.currency) + '</label><select class="inp" id="pl-cur">' + cur + '</select></div></div>' +
     '<div class="f"><span class="lbl" id="pl-mode-l">' + esc(P.approach) + '</span><div class="seg" role="group" aria-labelledby="pl-mode-l"><button type="button" data-pmode="budget" aria-pressed="' + (S.mode === 'budget') + '">' + esc(P.budgetFirst) + '</button><button type="button" data-pmode="crop" aria-pressed="' + (S.mode === 'crop') + '">' + esc(P.areaFirst) + '</button></div></div>' +
-    '<div class="f" data-parea' + (S.mode === 'crop' ? '' : ' hidden') + '>' + (covered
+    '<div class="f" data-parea' + (S.mode === 'crop' ? '' : ' hidden') + '>' + (covered && existing
+      ? '<span class="lbl">' + esc(P.area) + '</span><span class="hint">' + esc(P.areaExisting) + '</span>'
+      : covered
       ? '<label for="pl-m2">' + esc(P.areaCover) + '</label><input class="inp tnum" id="pl-m2" type="number" min="' + plModule() + '" step="' + plModule() + '" inputmode="numeric" value="' + S.coverM2 + '"><span class="hint">' + esc(P.areaCoverHint(plModule())) + '</span>'
       : '<label for="pl-area">' + esc(P.area) + '</label><input class="inp tnum" id="pl-area" type="number" min="0.001" step="0.01" inputmode="decimal" value="' + S.area + '">') + '</div>' +
-    '<div class="f"><span class="lbl" id="pl-crop-l">' + esc(P.crop) + '</span>' + crops + '</div>' + prods + hsel + sysSel +
+    '<div class="f"><span class="lbl" id="pl-crop-l">' + esc(P.crop) + '</span>' + crops + '</div>' + prods + hsel + sysSel + structBlock +
     '<div class="f"><label for="pl-price">' + esc(priceLabel(S.crop)) + '</label><input class="inp tnum" id="pl-price" inputmode="decimal" autocomplete="off" placeholder="' + esc(ref ? priceShown(ref) : P.pricePh) + '" value="' + esc(priceShown(plPrice())) + '"><span class="hint" data-phint>' + esc(priceHint(S.crop)) + '</span></div>' +
     waterBlock +
     '<div class="f"><label for="pl-start">' + esc(isLong(S.crop) ? P.choosePlant : P.start) + '</label><input class="inp" id="pl-start" type="date" value="' + S.start + '"><span class="hint">' + esc(isLong(S.crop) ? P.choosePlantHint : P.startHint) + '</span></div>' +
@@ -111,12 +125,19 @@ function plannerFormInner(compact) {
 function plannerOutHTML(r, compact) {
   const P = L().planner, long = r.profile && r.profile !== 'season';
   const msg = (k) => P.states[k] ? P.states[k](fmtCur(r.minXaf), plArea(r.water.maxAreaHa || 0), '') : '';
-  let state = r.state !== 'ok' && r.state !== 'needs_price' ? '<p class="notice" style="border-left-color:var(--warn)">' + esc(msg(r.state)) + '</p>' : '';
+  const warn = (t) => '<p class="notice" style="border-left-color:var(--warn)">' + esc(t) + '</p>';
+  let state = '';
+  if (r.state === 'cover_limit') {
+    // An existing structure fully planted: say so, and how much capital is left when the plan starts from a budget.
+    const unused = PLAN.mode === 'budget' && r.capitalXaf > r.budget.total * 1.01 ? txtCur(r.capitalXaf - r.budget.total) : null;
+    state = '<p class="notice info">' + esc(P.states.cover_limit(P.systems[r.system], nf(r.cover.m2), unused)) + '</p>';
+  } else if (r.state === 'upfront_exceeds' && r.cover) state = warn(P.states.upfront_cover());
+  else if (r.state !== 'ok' && r.state !== 'needs_price') state = warn(msg(r.state));
   if (r.state === 'manual_limit' && PLAN.mode === 'budget' && r.capitalXaf > r.budget.total) state += '<p class="small muted">' + esc(P.unusedCapital(txtCur(r.capitalXaf - r.budget.total))) + '</p>';
   if (r.state === 'below_module') return '<p class="notice" style="border-left-color:var(--warn)">' + esc(P.states.below_module(txtCur(r.cover.minModuleXaf), P.systems[r.system], r.cover.moduleM2)) + '</p>';
   if (r.state === 'below_min' || r.state === 'upfront_exceeds') {
     if (r.state === 'below_min') return state;
-    const up = r.budget.lines.filter(l => l.upfront);
+    const up = r.budget.lines.filter(l => l.upfront || l.cat === 'structure');
     return state + '<div class="tbl-wrap" style="margin-top:12px"><table class="tbl ptbl"><thead><tr><th>' + esc(P.th.item) + '</th><th>' + esc(P.th.cost) + '</th></tr></thead><tbody>' + up.map(l => '<tr><td>' + esc(tl(l.label)) + '</td><td class="tnum">' + fmtCur(l.total) + '</td></tr>').join('') + '</tbody></table></div><p class="small muted" style="margin-top:10px">' + esc(P.upfrontHint) + '</p>';
   }
   if (compact) {
@@ -133,9 +154,17 @@ function plannerOutHTML(r, compact) {
 function coverNote(r) {
   const P = L().planner, c = r.cover;
   if (!c || !(r.areaHa > 0)) return '';
-  const st = r.budget.lines.filter(l => l.cat === 'structure');
-  const charged = st.reduce((a, l) => a + l.total * Math.min(r.seasonsUsed || 1, l.lifeSeasons || 1) / (l.lifeSeasons || 1), 0);
-  return '<p class="notice info cover-note">' + esc(P.coverFact(P.systems[c.system], c.modules, c.moduleM2, nf(c.m2), c.buildWeeks) + ' ' + P.coverCharge(txtCur(c.structureXaf), txtCur(charged)) + ' ' + P.coverClimate(c.tDelta) + ' ' + P.coverLow) + '</p>';
+  const label = P.systems[c.system], parts = [];
+  if (c.status === 'new') parts.push(P.coverFact(label, c.modules, c.moduleM2, nf(c.m2), c.buildWeeks), P.coverCharge(txtCur(c.structureXaf), txtCur(c.chargedXaf)));
+  else {
+    parts.push(P.coverOwned(label, nf(c.m2), c.plantedM2 < c.m2 ? nf(c.plantedM2) : null));
+    if (c.repairsXaf > 0) parts.push(P.coverRepair(txtCur(c.repairsXaf), txtCur(c.chargedXaf)));
+    if (c.dripInPlace) parts.push(P.coverDrip);
+  }
+  if (c.upkeepXaf > 0) parts.push(P.coverUpkeep(txtCur(c.upkeepXaf)));
+  parts.push(P.coverClimate(c.tDelta));
+  if (c.status !== 'owned') parts.push(P.coverLow);
+  return '<p class="notice info cover-note">' + esc(parts.join(' ')) + '</p>';
 }
 
 /** Land preparation: suggests hired machines when the work by hand needs too many people on the same day. */
@@ -267,7 +296,7 @@ function tabBudget(r) {
     (long
       ? '<tr class="tot"><td colspan="4">' + esc(P.horizonCosts) + '</td><td class="tnum">' + fmtCur(B.horizonCosts) + '</td></tr><tr class="grp"><td colspan="4">' + esc(P.totalNeed) + '</td><td class="tnum">' + fmtCur(B.total) + '</td></tr>'
       : '<tr class="grp"><td colspan="4">' + esc(P.cats.reserve) + '</td><td class="tnum">' + fmtCur(B.reserve) + '</td></tr><tr class="tot"><td colspan="4">' + esc(P.totalBudget) + '</td><td class="tnum">' + fmtCur(B.total) + '</td></tr>');
-  return '<div class="card" style="padding:18px">' + bar + '</div>' + unpricedNote(r) + '<div class="tbl-wrap" style="margin-top:12px"><table class="tbl ptbl"><thead><tr><th>' + esc(P.th.line) + '</th><th>' + esc(P.th.qty) + '</th><th>' + esc(P.th.unitPrice) + '</th><th>' + esc(P.th.src) + '</th><th>' + esc(P.th.total) + '</th></tr></thead><tbody>' + rows + '</tbody></table></div><p class="small faint" style="margin-top:10px">' + esc((long ? P.budgetNoteLong : P.budgetNote) + (r.cover && r.areaHa > 0 ? ' ' + P.budgetCoverNote(r.seasonsUsed || 1) : '')) + '</p>';
+  return '<div class="card" style="padding:18px">' + bar + '</div>' + unpricedNote(r) + '<div class="tbl-wrap" style="margin-top:12px"><table class="tbl ptbl"><thead><tr><th>' + esc(P.th.line) + '</th><th>' + esc(P.th.qty) + '</th><th>' + esc(P.th.unitPrice) + '</th><th>' + esc(P.th.src) + '</th><th>' + esc(P.th.total) + '</th></tr></thead><tbody>' + rows + '</tbody></table></div><p class="small faint" style="margin-top:10px">' + esc((long ? P.budgetNoteLong : P.budgetNote) + (r.cover && r.areaHa > 0 ? ' ' + (r.cover.status === 'new' ? P.budgetCoverNote(r.seasonsUsed || 1) : P.budgetOwnedNote) : '')) + '</p>';
 }
 
 /** Cash position month by month: costs below zero, sales above, and the cumulative line. */
@@ -417,9 +446,10 @@ function tabSources(r) {
 }
 
 function plannerInput() {
-  const sys = plSystem(PLAN.crop);
+  const sys = plSystem(PLAN.crop), st = plStructure(), existing = st !== 'new';
   return Object.assign({}, PLAN, { capital: PLAN.capital, priceXafKg: plPrice(), product: plProduct(PLAN.crop), horizon: plHorizon(PLAN.crop), system: sys,
-    area: sys !== 'open' ? (PLAN.coverM2 || plModule()) / 1e4 : PLAN.area, machineQuoteXafHa: PLAN.fieldWork === 'hire' && PLAN.machineQuote ? PLAN.machineQuote : 0 });
+    area: existing ? (PLAN.structureM2 || plModule()) / 1e4 : sys !== 'open' ? (PLAN.coverM2 || plModule()) / 1e4 : PLAN.area, machineQuoteXafHa: PLAN.fieldWork === 'hire' && PLAN.machineQuote ? PLAN.machineQuote : 0,
+    structure: st, structureM2: PLAN.structureM2 || plModule(), replaceCover: st === 'repair' && !!PLAN.replaceCover, repairXaf: st === 'repair' && PLAN.repairQuote ? PLAN.repairQuote : 0, dripInPlace: PLAN.dripInPlace !== false });
 }
 
 function plannerRender(root, compact) {
@@ -445,6 +475,10 @@ function plannerMount(root, compact) {
     if (id === 'pl-cap') PLAN.capital = parseAmt(e.target.value);
     else if (id === 'pl-area') PLAN.area = Math.max(0, parseFloat(e.target.value) || 0);
     else if (id === 'pl-m2') PLAN.coverM2 = Math.max(0, parseFloat(e.target.value) || 0);
+    else if (id === 'pl-sm2') PLAN.structureM2 = Math.max(0, Math.round(parseFloat(e.target.value) || 0));
+    else if (id === 'pl-rcover') PLAN.replaceCover = e.target.checked;
+    else if (id === 'pl-rq') { const v = parseAmt(e.target.value); PLAN.repairQuote = v > 0 ? v / curRate() : null; }
+    else if (id === 'pl-drip') { PLAN.dripInPlace = e.target.checked; reform('#pl-drip'); }
     else if (id === 'pl-fw') { PLAN.fieldWork = e.target.value; reform('#pl-fw'); }
     else if (id === 'pl-mq') { const v = parseAmt(e.target.value); PLAN.machineQuote = v > 0 ? v / curRate() : null; }
     else if (id === 'pl-cur') {
@@ -461,10 +495,12 @@ function plannerMount(root, compact) {
     else if (e.target.name === 'pwater') PLAN.water = e.target.value;
     changed();
   });
-  form.addEventListener('change', e => { if (e.target.id === 'pl-cap') e.target.value = nf(PLAN.capital); if (e.target.id === 'pl-price') e.target.value = priceShown(plPrice()); if (e.target.id === 'pl-mq') e.target.value = PLAN.machineQuote ? priceShown(PLAN.machineQuote) : ''; });
+  form.addEventListener('change', e => { if (e.target.id === 'pl-cap') e.target.value = nf(PLAN.capital); if (e.target.id === 'pl-price') e.target.value = priceShown(plPrice()); if (e.target.id === 'pl-mq') e.target.value = PLAN.machineQuote ? priceShown(PLAN.machineQuote) : ''; if (e.target.id === 'pl-rq') e.target.value = PLAN.repairQuote ? priceShown(PLAN.repairQuote) : ''; if (e.target.id === 'pl-sm2') reform('#pl-sm2'); });
   form.addEventListener('click', e => {
     const m = e.target.closest('[data-pmode]'), c = e.target.closest('[data-pcrop]'), pr = e.target.closest('[data-pprod]'), hz = e.target.closest('[data-phor]'), sy = e.target.closest('[data-psys]');
     if (sy) { PLAN.system = sy.dataset.psys; reform('[data-psys="' + PLAN.system + '"]'); changed(); return; }
+    const sb = e.target.closest('[data-pst]');
+    if (sb) { PLAN.structure = sb.dataset.pst; reform('[data-pst="' + PLAN.structure + '"]'); changed(); analytics.track('planner_structure', { status: PLAN.structure }); return; }
     if (hz) { PLAN.horizons[PLAN.crop] = +hz.dataset.phor; reform('[data-phor="' + hz.dataset.phor + '"]'); changed(); return; }
     if (m) { PLAN.mode = m.dataset.pmode; $$('[data-pmode]', form).forEach(b => b.setAttribute('aria-pressed', String(b === m))); const a = $('[data-parea]', form); if (a) a.hidden = PLAN.mode !== 'crop'; changed(); }
     if (c) pickCrop(c.dataset.pcrop, true);

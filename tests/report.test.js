@@ -167,7 +167,9 @@ test('PDF report: every crop renders in both languages without long dashes', asy
 });
 
 test('PDF report: a greenhouse plan and a plan with hired machines render in both languages', async () => {
-  const cases = [[{ crop: 'tomato', system: 'greenhouse', capital: 12000000 }, 'fr'], [{ crop: 'pepper', system: 'greenhouse', capital: 12000000 }, 'en'], [{ crop: 'tomato', system: 'net', capital: 12000000 }, 'en'], [{ crop: 'tomato', fieldWork: 'hire', capital: 30000000 }, 'fr']];
+  const cases = [[{ crop: 'tomato', system: 'greenhouse', capital: 12000000 }, 'fr'], [{ crop: 'pepper', system: 'greenhouse', capital: 12000000 }, 'en'], [{ crop: 'tomato', system: 'net', capital: 12000000 }, 'en'], [{ crop: 'tomato', fieldWork: 'hire', capital: 30000000 }, 'fr'],
+    [{ crop: 'greenbean', system: 'greenhouse', capital: 12000000 }, 'fr'], [{ crop: 'chili', system: 'greenhouse', capital: 12000000 }, 'en'], [{ crop: 'zucchini', system: 'greenhouse', capital: 12000000 }, 'fr'],
+    [{ crop: 'cucumber', system: 'greenhouse', structure: 'owned', structureM2: 500 }, 'en'], [{ crop: 'tomato', system: 'greenhouse', structure: 'repair', structureM2: 800, replaceCover: true, repairXaf: 300000 }, 'fr'], [{ crop: 'tomato', system: 'net', structure: 'owned', structureM2: 5000, dripInPlace: false }, 'en']];
   for (const [extra, lang] of cases) {
     const { buffer, pages } = await buildReportPdf({ input: { ...plan, product: null, priceXafKg: null, water: 'pump', ...extra }, request: { name: 'Test', profile: 'other', place: null }, lang, ref: 'DJ2610 TEST', issued: new Date(NOW) });
     assert.equal(buffer.subarray(0, 5).toString(), '%PDF-', JSON.stringify(extra));
@@ -181,6 +183,10 @@ test('report request: the production system and the field work are accepted, unk
   assert.equal(ok.status, 200, ok.body);
   const bad = await call(handler, { body: { ...request, plan: { ...plan, crop: 'tomato', product: null, system: 'hydroponic' } } });
   assert.equal(bad.status, 422);
+  const owned = await call(handler, { body: { ...request, plan: { ...plan, crop: 'zucchini', product: null, system: 'greenhouse', structure: 'repair', structureM2: 500, replaceCover: true, repairXaf: 250000, dripInPlace: true, priceXafKg: 300 } } });
+  assert.equal(owned.status, 200, owned.body);
+  const wrong = await call(handler, { body: { ...request, plan: { ...plan, crop: 'tomato', product: null, system: 'greenhouse', structure: 'rented' } } });
+  assert.equal(wrong.status, 422);
 });
 
 test('config: a Gmail account and its app password are enough to switch reports on', () => {

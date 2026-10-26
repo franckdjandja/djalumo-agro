@@ -217,6 +217,20 @@ function structureLines(SY, sys, areaHa) {
   ];
 }
 
+/** A structure already built that needs work before planting: a new cover at the reference price for its size, and the
+    other repairs at the grower's quote. Both are charged over the life of a cover. */
+function repairLines(kb, SY, sys, m2, input) {
+  const out = [], ST = kb.protected.status;
+  if (!SY || !(m2 > 0)) return out;
+  if (input.replaceCover) {
+    const tier = SY.price_tiers.filter(t => m2 >= t.from_m2).pop() || SY.price_tiers[0], p = tier.xaf_m2 * SY.cover_share;
+    out.push({ cat: 'structure', key: sys + '_cover_new', label: ST.cover_label[sys], qty: m2, unit: 'm2', price: p, unpriced: false, total: m2 * p, lifeSeasons: SY.cover_life_seasons, src: SY.src || [] });
+  }
+  const q = +input.repairXaf > 0 ? +input.repairXaf : 0;
+  if (q) out.push({ cat: 'structure', key: 'structure_repairs', label: ST.repairs_label, qty: m2, unit: 'm2', price: q / m2, unpriced: false, total: q, lifeSeasons: SY.cover_life_seasons, src: [] });
+  return out;
+}
+
 /** Water option: up front items, running costs per hectare, share of the deficit covered, efficiency. */
 function waterPlan(kb, wb, opt, areaHint) {
   const W = kb.water;
@@ -341,12 +355,19 @@ function planSeason(kb, input, crop0) {
   const crop = CC ? coverCrop(crop0, CC) : crop0;
   const env = SY ? { tDelta: SY.temp_delta_c, rain: SY.rain_factor, diseaseShift: SY.disease_shift, continuous: !!CC.continuous_flowering } : OPEN_ENV;
   const waterKey = SY && SY.water ? SY.water : (input.water || 'rainfed');
+  // A structure is built new, or already built (bought before: only its upkeep is counted), or already built and repaired.
+  const status = SY ? (['owned', 'repair'].includes(input.structure) ? input.structure : 'new') : null;
+  const existing = status === 'owned' || status === 'repair';
+  const structM2 = existing ? Math.max(1, Math.round(+input.structureM2 > 0 ? +input.structureM2 : kb.protected.module_m2)) : null;
+  const dripInPlace = existing && SY.water === 'drip' && input.dripInPlace !== false;
   const fw = fieldWorkOpts(kb, input.crop, input, !!SY);
   const opts = { land: input.land || 'rent', familyLabour: input.familyLabour || 0, market: input.market || 'local', ownTools: !!input.ownTools, fw };
 
   const cal = calendar(crop, input.start);
   const wb = waterBalance(kb, crop, cal.field, cal.fieldDays, env.rain);
-  const water = waterPlan(kb, wb, waterKey);
+  const water0 = waterPlan(kb, wb, waterKey);
+  // A drip system already installed in an existing greenhouse is not bought again; its running costs remain.
+  const water = dripInPlace ? Object.assign({}, water0, { capex: [], inPlace: true }) : water0;
   const coverage = clampN((wb.rainMet + wb.deficit * water.covers) / wb.etcTotal, 0, 1);
   const wf = yieldFactor(crop.ky, coverage);
   const risk = risks(kb, crop, cal, wb, waterKey, coverage, env);
@@ -371,18 +392,33 @@ function planSeason(kb, input, crop0) {
   const budgetPerHa = perHaCash + avgSoldKgHa * perKgCash; // cash to finance one hectare until sale
   const reserveRate = kb.limits.reserve_rate;
 
-  // Sizing. Under a cover the area is a whole number of modules and the structure is bought up front.
-  const upAll = (a) => upfrontLines(kb, water, a, opts).concat(structureLines(SY, sys, a));
+  // Sizing. Under a new cover the area is a whole number of modules and the structure is bought up front. Under a cover
+  // already built, the plan plants the structure (or the part the capital allows) and buys only the repairs chosen.
   const sumT = (ls) => ls.reduce((s, l) => s + l.total, 0);
+  const structUp = (a) => !SY ? [] : status === 'new' ? structureLines(SY, sys, a) : status === 'repair' ? repairLines(kb, SY, sys, structM2, input) : [];
+  const upAll = (a) => upfrontLines(kb, water, a, opts).concat(structUp(a));
+  const upkeepPerM2 = SY && kb.protected.upkeep ? kb.protected.upkeep.xaf_m2_day * cal.totalDays : 0;
+  const upkeepOf = (a) => SY ? (existing ? structM2 : a * 1e4) * upkeepPerM2 : 0; // the whole structure is kept up, planted or not
   const modHa = SY ? kb.protected.module_m2 / 1e4 : 0;
   const net = capitalXaf !== null ? capitalXaf / (1 + reserveRate) : 0;
-  const cost = (a) => a * budgetPerHa + sumT(upAll(a));
+  const cost = (a) => a * budgetPerHa + upkeepOf(a) + sumT(upAll(a));
   let area, required = null, state = 'ok', upfront;
   if (input.mode === 'crop') {
-    area = Math.max(0, +input.area || 0);
-    if (SY && area > 0) area = Math.max(1, Math.ceil(area / modHa - 1e-9)) * modHa;
+    area = existing ? structM2 / 1e4 : Math.max(0, +input.area || 0);
+    if (SY && !existing && area > 0) area = Math.max(1, Math.ceil(area / modHa - 1e-9)) * modHa;
     upfront = upAll(area);
-    required = (sumT(upfront) + area * budgetPerHa) * (1 + reserveRate);
+    required = (sumT(upfront) + area * budgetPerHa + upkeepOf(area)) * (1 + reserveRate);
+  } else if (existing) {
+    if (capitalXaf < minXaf) state = 'below_min';
+    // The largest part of the structure the capital can plant (the cost is monotone in the area).
+    const full = structM2 / 1e4;
+    let lo = 0, hi = full;
+    if (cost(hi) <= net) lo = hi;
+    else for (let k = 0; k < 50; k++) { const m = (lo + hi) / 2; if (cost(m) <= net) lo = m; else hi = m; }
+    area = lo * 1e4 < 1 ? 0 : lo;
+    upfront = upAll(area);
+    if (area <= 0 && state === 'ok') state = 'upfront_exceeds';
+    else if (area >= full - 1e-12 && state === 'ok') state = 'cover_limit';
   } else if (SY) {
     if (capitalXaf < minXaf) state = 'below_min';
     // Largest whole number of modules that fits the capital net of the reserve (the cost rises with each module).
@@ -414,10 +450,14 @@ function planSeason(kb, input, crop0) {
   const upTotal = sumT(upfront);
   const upPerSeason = upfront.reduce((a, l) => a + l.total * Math.min(seasonsUsed, l.lifeSeasons || 1) / (l.lifeSeasons || 1), 0);
   const fieldCash = area * perHaCash;
+  // Upkeep of the structure over the plan: a cash cost of every season, whether the structure is new or not.
+  const upkeepCash = area > 0 || existing ? upkeepOf(area) : 0;
+  const upkeepLine = upkeepCash > 0 ? [{ cat: 'structure', key: 'structure_upkeep', label: kb.protected.upkeep.label, qty: existing ? structM2 : Math.round(area * 1e4), unit: 'm2', price: upkeepPerM2, unpriced: false, total: upkeepCash, kind: 'cash', src: kb.protected.upkeep.src || [] }] : [];
 
   // Budget lines for the area (cash), grouped by category
   const lines = ha.map(l => Object.assign({}, l, { qty: l.qty * area, total: cashOf(l) * area }))
     .concat(kgLines.map(k => ({ cat: k.cat, key: k.key, label: k.label, qty: avgSoldKgHa * area, unit: 'kg', price: k.perKg * (k.labour ? 1 - familyShare : 1), total: avgSoldKgHa * area * k.perKg * (k.labour ? 1 - familyShare : 1), src: k.src })))
+    .concat(upkeepLine)
     .concat(upfront.map(l => Object.assign({ upfront: true }, l)));
   const operating = lines.filter(l => !l.upfront).reduce((a, l) => a + l.total, 0);
   const reserve = (operating + upTotal) * reserveRate;
@@ -437,8 +477,8 @@ function planSeason(kb, input, crop0) {
     const soldKg = yHa * 1000 * (1 - loss) * area;
     const revenue = soldKg * price * (1 - kb.services.market_fee_rate.price);
     const harvestCosts = soldKg * perKgCash;
-    const costs = fieldCash + harvestCosts + upPerSeason;
-    const cashCosts = fieldCash + harvestCosts + upTotal;
+    const costs = fieldCash + harvestCosts + upPerSeason + upkeepCash;
+    const cashCosts = fieldCash + harvestCosts + upTotal + upkeepCash;
     const margin = revenue - costs;
     scen[s] = { yieldTHa: yHa, price, soldKg, revenue, costs, cashCosts, margin, roi: costs ? margin / costs : 0, cashAfterSeason: revenue - cashCosts };
   }
@@ -447,7 +487,7 @@ function planSeason(kb, input, crop0) {
   // Break even at the average scenario: yield needed at the average price, and price needed at the average yield
   const sa = scen.average;
   const netPrice = sa.price * (1 - kb.services.market_fee_rate.price) - perKgCash;
-  const fixed = fieldCash + upPerSeason;
+  const fixed = fieldCash + upPerSeason + upkeepCash;
   const beYieldTHa = area > 0 && netPrice > 0 && priceSource ? fixed / (netPrice * 1000 * (1 - loss) * area) : null;
   const beYieldPerUnit = sa.soldKg > 0 ? (fixed / sa.soldKg + perKgCash) / (1 - kb.services.market_fee_rate.price) : null;
 
@@ -473,17 +513,25 @@ function planSeason(kb, input, crop0) {
     return { id: s.id, phase: s.phase, label: s.label, detail: s.detail, from, to, labourDays: (s.labour || 0) * area, inputs: (s.inputs || []).map(i => ({ item: i.item, label: kb.items[i.item].label, qty: i.qty * (i.apps || 1) * area, unit: kb.items[i.item].unit, apps: i.apps || 1, cost: i.qty * (i.apps || 1) * area * (kb.items[i.item].price || 0), unpriced: kb.items[i.item].price == null })), src: s.src || [] };
   });
 
-  // Under a cover, the builder raises the structure once the land is cleared, before the beds are formed inside.
+  // Under a new cover, the builder raises the structure once the land is cleared, before the beds are formed inside;
+  // a structure already built is repaired in the same window when the grower chose repairs.
   const m2 = Math.round(area * 1e4);
   let cover = null;
   if (SY) {
-    const weeks = (SY.build_weeks.find(w => m2 <= w[0]) || SY.build_weeks[SY.build_weeks.length - 1])[1];
+    const ST = kb.protected.status, sizeM2 = existing ? structM2 : m2;
+    const weeks = (SY.build_weeks.find(w => sizeM2 <= w[0]) || SY.build_weeks[SY.build_weeks.length - 1])[1];
     const clr = crop.steps.find(x => x.id === 'clear'), b0 = clr ? clr.day[1] : -30;
-    if (area > 0) itinerary.push({ id: 'build', phase: 'prep', label: SY.build_label, detail: SY.build_detail, from: addDays(cal.field, b0), to: addDays(cal.field, b0 + weeks * 7), labourDays: 0, inputs: [], src: SY.src || [] });
-    const st = structureLines(SY, sys, Math.max(area, modHa));
-    cover = { system: sys, modules: Math.round(m2 / kb.protected.module_m2), m2, moduleM2: kb.protected.module_m2, pricePerM2: st.reduce((a, l) => a + l.price, 0), tDelta: SY.temp_delta_c, rainFactor: SY.rain_factor, diseaseShift: SY.disease_shift,
-      buildWeeks: weeks, frameLifeSeasons: SY.frame_life_seasons, coverLifeSeasons: SY.cover_life_seasons, seasonsUsed, water: waterKey, structureXaf: sumT(structureLines(SY, sys, area)),
-      minModuleXaf: cost(modHa) * (1 + reserveRate), note: CC.note, src: [].concat(SY.src || [], CC.src || []) };
+    const repairs = status === 'repair' ? repairLines(kb, SY, sys, structM2, input) : [];
+    if (area > 0 && status === 'new') itinerary.push({ id: 'build', phase: 'prep', label: SY.build_label, detail: SY.build_detail, from: addDays(cal.field, b0), to: addDays(cal.field, b0 + weeks * 7), labourDays: 0, inputs: [], src: SY.src || [] });
+    if (area > 0 && repairs.length) itinerary.push({ id: 'repair', phase: 'prep', label: ST.repair_step, detail: ST.repair_detail, from: addDays(cal.field, b0), to: addDays(cal.field, b0 + ST.repair_weeks * 7), labourDays: 0, inputs: [], src: SY.src || [] });
+    const st = structureLines(SY, sys, existing ? structM2 / 1e4 : Math.max(area, modHa));
+    const bought = status === 'new' ? structureLines(SY, sys, area) : repairs;
+    const charged = bought.reduce((a, l) => a + l.total * Math.min(seasonsUsed, l.lifeSeasons || 1) / (l.lifeSeasons || 1), 0);
+    cover = { system: sys, status, modules: status === 'new' ? Math.round(m2 / kb.protected.module_m2) : null, m2: sizeM2, plantedM2: m2, moduleM2: kb.protected.module_m2,
+      pricePerM2: st.reduce((a, l) => a + l.price, 0), tDelta: SY.temp_delta_c, rainFactor: SY.rain_factor, diseaseShift: SY.disease_shift,
+      buildWeeks: status === 'new' ? weeks : null, repairWeeks: repairs.length ? ST.repair_weeks : null, frameLifeSeasons: SY.frame_life_seasons, coverLifeSeasons: SY.cover_life_seasons, seasonsUsed,
+      water: waterKey, dripInPlace, structureXaf: sumT(bought), chargedXaf: charged, repairsXaf: sumT(repairs), upkeepXaf: upkeepCash, full: existing && area >= structM2 / 1e4 - 1e-12,
+      minModuleXaf: status === 'new' ? cost(modHa) * (1 + reserveRate) : null, note: CC.note, src: [].concat(SY.src || [], CC.src || [], kb.protected.upkeep.src || []) };
   }
 
   itinerary.sort((a, b) => (a.from - b.from) || (a.to - b.to));
@@ -501,7 +549,7 @@ function planSeason(kb, input, crop0) {
     breakEven: { yieldTHa: beYieldTHa, priceXafKg: beYieldPerUnit },
     risk, windows, bestMonth: best, itinerary, shopping: Object.values(shop),
     system: sys, cover, seasonsUsed, fieldWork: fieldWorkSummary(kb, crop, fw, area),
-    cashflow: seasonCashflow(kb, crop, cal, wb, ha, kgLines, upfront, area, scen, familyShare, cashOf)
+    cashflow: seasonCashflow(kb, crop, cal, wb, ha, kgLines, upfront, area, scen, familyShare, cashOf, upkeepCash)
   };
 }
 
@@ -543,7 +591,7 @@ function ledgerClose(L) {
 
 /** Month by month cash flow of a season plan: each cost at the date of its step, water costs in the months that need
     water, equipment at the start, harvest costs and sales over the harvest weeks. Reports every scenario. */
-function seasonCashflow(kb, crop, cal, wb, ha, kgLines, upfront, area, scen, familyShare, cashOf) {
+function seasonCashflow(kb, crop, cal, wb, ha, kgLines, upfront, area, scen, familyShare, cashOf, upkeep) {
   const months = monthsBetween(cal.start, cal.lastHarvest).length;
   const stepDates = {};
   crop.steps.forEach(s => { const b = s.ref === 'start' ? cal.start : s.ref === 'harvest' ? cal.firstHarvest : cal.field; stepDates[s.id] = [addDays(b, s.day[0]), addDays(b, s.day[1])]; });
@@ -560,6 +608,7 @@ function seasonCashflow(kb, crop, cal, wb, ha, kgLines, upfront, area, scen, fam
       else ledgerAdd(L, cal.field, cal.lastHarvest, amt, 'costs');
     }
     ledgerAdd(L, cal.start, cal.start, upfront.reduce((a, l) => a + l.total, 0), 'costs');
+    if (upkeep) ledgerAdd(L, cal.start, cal.lastHarvest, upkeep, 'costs');
     ledgerAdd(L, cal.firstHarvest, cal.lastHarvest, scen[s].soldKg * perKgCash, 'costs');
     ledgerAdd(L, cal.firstHarvest, cal.lastHarvest, scen[s].soldKg * scen[s].price * (1 - fee), 'revenue');
     return ledgerClose(L);
@@ -891,7 +940,8 @@ function compare(kb, input) {
 /** Runs the same plan in each production system the crop is offered in: same capital (or area), start date and price. */
 function compareSystems(kb, input) {
   return systemsFor(kb, input.crop).map(sys => {
-    const r = plan(kb, Object.assign({}, input, { system: sys })), sa = r.scenarios.average;
+    // The structure status applies to the system the grower plans; another cover is compared as a new build.
+    const r = plan(kb, Object.assign({}, input, { system: sys }, sys === input.system ? {} : { structure: 'new' })), sa = r.scenarios.average;
     return { system: sys, areaHa: r.areaHa, m2: r.cover ? r.cover.m2 : null, modules: r.cover ? r.cover.modules : null, state: r.state, budget: r.budget.total, required: r.requiredXaf, upfront: r.budget.upfront,
       months: r.horizonMonths, yieldTHa: sa.yieldTHa, soldKg: sa.soldKg, priceSource: r.priceSource, margin: r.priceSource ? sa.margin : null, roi: r.priceSource ? sa.roi : null,
       marginPerMonth: r.priceSource ? r.marginPerMonth : null, breakEven: r.breakEven.priceXafKg, risk: r.risk.score, heat: r.risk.heat, disease: r.risk.disease, bestMonth: r.bestMonth, minModuleXaf: r.cover ? r.cover.minModuleXaf : null };

@@ -7869,9 +7869,11 @@
      "PR3",
      "PR4",
      "PR5",
-     "PR10"
+     "PR10",
+     "PR13",
+     "PR17"
     ],
-    "basis": "Derived from official Indian cost norms (PR3): a naturally ventilated tubular polyhouse costs 844 rupees per m2 and a tubular shade net house 710, so the plastic cover accounts for about 16% of the price (134 / 844). Greenhouse grade UV stabilised film is warranted for four years or more (PR4). Daytime temperature was 4 C higher under insect nets and 15 C higher under plastic film than outside in Tanzania (PR5). With insect net walls and open vents, a ventilated greenhouse is assumed 5 C warmer than outside, to be measured during the 2027 pilot. The plastic roof keeps rain off the leaves, which lowers rain driven disease pressure by one level. Diseases remain under cover: late blight, early blight and bacterial wilt each made about a quarter of the problems reported by Kenyan growers (PR10). 250 m2 from 3,800,000 FCFA (15,200 per m2) and 500 m2 from 7,500,000 FCFA (15,000 per m2), galvanised structure, anti UV film and insect net (PR1). 1,000 m2 multi tunnel from 13,000,000 FCFA, film of 200 microns and insect net (PR1). Kenyan builders quote 255,000 to 515,000 KES for an 8 x 30 m tunnel with frame, 200 micron film, insect net, vents, drip lines and a 1,000 L tank, about 4,800 to 9,600 FCFA per m2 at the rates of the planner (PR2). The Ivorian prices, in the same currency zone as Cameroon, are kept as the reference."
+    "basis": "Derived from official Indian cost norms (PR3): a naturally ventilated tubular polyhouse costs 844 rupees per m2 and a tubular shade net house 710, so the plastic cover accounts for about 16% of the price (134 / 844). Greenhouse grade UV stabilised film is warranted for four years or more (PR4); FAO puts the life of greenhouse films at about 45 months today (PR17). Thinner 180 micron film lasts two to three years in Tunisia (PR13). Daytime temperature was 4 C higher under insect nets and 15 C higher under plastic film than outside in Tanzania (PR5). With insect net walls and open vents, a ventilated greenhouse is assumed 5 C warmer than outside, to be measured during the 2027 pilot. The plastic roof keeps rain off the leaves, which lowers rain driven disease pressure by one level. Diseases remain under cover: late blight, early blight and bacterial wilt each made about a quarter of the problems reported by Kenyan growers (PR10). 250 m2 from 3,800,000 FCFA (15,200 per m2) and 500 m2 from 7,500,000 FCFA (15,000 per m2), galvanised structure, anti UV film and insect net (PR1). 1,000 m2 multi tunnel from 13,000,000 FCFA, film of 200 microns and insect net (PR1). Kenyan builders quote 255,000 to 515,000 KES for an 8 x 30 m tunnel with frame, 200 micron film, insect net, vents, drip lines and a 1,000 L tank, about 4,800 to 9,600 FCFA per m2 at the rates of the planner (PR2). The Ivorian prices, in the same currency zone as Cameroon, are kept as the reference."
    }
   },
   "crops": {
@@ -7885,13 +7887,15 @@
      "src": [
       "PR6",
       "T15",
-      "PR9"
+      "PR9",
+      "PR13",
+      "PR11"
      ],
      "note": {
       "en": "Kenyan greenhouse survey (mean 10.5 kg per m²) and the Anna F1 guide: about 75 days to the first harvest, then 8 months of picking.",
       "fr": "Enquête kenyane sous serre (moyenne 10,5 kg par m²) et guide de la variété Anna F1 : environ 75 jours jusqu’à la première récolte, puis 8 mois de cueillette."
      },
-     "basis": "Survey of 96 greenhouse growers in Nakuru, Kenya: mean 10.53 kg per m2, from 0.33 to 29.13 (PR6). Average set at 10 kg per m2, poor and good at half and one and a half times the average, a cautious range to be checked against the first greenhouse seasons of the 2027 pilot. Anna F1 gives about 18 kg per plant over 8 months (T15). Anna F1 matures 75 days after transplanting and produces over 8 months (T15); KALRO lists Anna F1 for greenhouses with a harvest of up to 8 months (PR9). The plant is indeterminate: it keeps flowering while it is harvested, so the heat check covers every month from the first flowers to 45 days before the last harvest.",
+     "basis": "Survey of 96 greenhouse growers in Nakuru, Kenya: mean 10.53 kg per m2, from 0.33 to 29.13 (PR6). Average set at 10 kg per m2, poor and good at half and one and a half times the average, a cautious range to be checked against the first greenhouse seasons of the 2027 pilot. Anna F1 gives about 18 kg per plant over 8 months (T15). Cross check: about 97 t/ha under unheated greenhouses in Tunisia in 2012 (PR13) and 130 t/ha over six months of harvest under large tunnels in Morocco (PR11). Anna F1 matures 75 days after transplanting and produces over 8 months (T15); KALRO lists Anna F1 for greenhouses with a harvest of up to 8 months (PR9). The plant is indeterminate: it keeps flowering while it is harvested, so the heat check covers every month from the first flowers to 45 days before the last harvest.",
      "cycle": {
       "nursery_days": 30,
       "to_first_harvest_days": 75,
@@ -7916,21 +7920,79 @@
      "basis": "Marketable yields of 16.8 and 50.1 t/ha under fine mesh insect net, against 2.7 and 10.8 t/ha in the open, over two years in Tanzania (PR5). Poor and good are the two values, average their midpoint. Same calendar as the open field: the trial grew determinate field varieties."
     }
    },
+   "greenbean": {
+    "greenhouse": {
+     "yield_t_ha": {
+      "poor": 20.0,
+      "average": 25.0,
+      "good": 30.0
+     },
+     "src": [
+      "PR11",
+      "PR12"
+     ],
+     "note": {
+      "en": "Moroccan greenhouses with climbing varieties: 20 to 30 t/ha per crop, picked over about three months.",
+      "fr": "Serres marocaines avec des variétés à rames : 20 à 30 t/ha par culture, cueillies pendant environ trois mois."
+     },
+     "basis": "Morocco: 20 t/ha for each crop of green bean under large tunnels, two crops a year (PR11); 25 to 30 t/ha under greenhouse against 7 to 10 in the open field, national figures (PR12). Poor and good are the bounds of these figures, average 25 t/ha. Climbing varieties are sown in twin rows under greenhouse; picking starts about two months after sowing (PR12) and each crop is harvested over three months (PR11). Climbing beans need strings tied to the roof wires.",
+     "cycle": {
+      "nursery_days": 0,
+      "to_first_harvest_days": 60,
+      "harvest_days": 90,
+      "flowering_before_harvest_days": 18
+     }
+    }
+   },
    "pepper": {
     "greenhouse": {
      "yield_t_ha": {
-      "poor": 8.2,
-      "average": 14.6,
-      "good": 21.3
+      "poor": 33.0,
+      "average": 66.0,
+      "good": 99.0
      },
      "src": [
+      "PR13",
+      "P2",
       "PR8"
      ],
      "note": {
-      "en": "Nine varieties in a greenhouse in Ghana over one dry season, open field calendar.",
-      "fr": "Neuf variétés sous serre au Ghana pendant une saison sèche, calendrier du plein champ."
+      "en": "National average of Capsicum under unheated greenhouses in Tunisia, about 6.6 kg per m², with five months of picking as for greenhouse hybrids in Kenya.",
+      "fr": "Moyenne nationale des Capsicum sous serre froide en Tunisie, environ 6,6 kg par m², avec cinq mois de cueillette comme pour les hybrides sous serre au Kenya."
      },
-     "basis": "Nine sweet pepper varieties in a greenhouse in Ghana, dry season 2014 to 2015: 8.20 to 21.34 t/ha, mean 14.62 t/ha, against 5.02 to 12.57 t/ha in the open field of the same trial (PR8). Same calendar as the open field: the trial ran over one dry season."
+     "basis": "Capsicum under unheated plastic greenhouses in Tunisia, national figures for 2012: 60,703 t on 922 ha, about 66 t/ha or 6.6 kg per m2 (PR13). Poor and good at half and one and a half times this average, the rule used when a source gives an average only. The Kenyan capsicum guide reports greenhouse F1 hybrids at about twice their open field yield, with 4 to 6 months of harvest (P2). A single dry season trial in Ghana, with a short harvest, gave 8.2 to 21.34 t/ha under greenhouse against 5.02 to 12.57 in the open (PR8). Greenhouse hybrids are indeterminate and keep flowering: the Kenyan guide gives 4 to 6 months of harvest under greenhouse against about 10 weeks in the open (P2); Tunisian greenhouse pepper runs from November to July (PR13). Five months of harvest are used, with the open field nursery and first harvest dates.",
+     "cycle": {
+      "nursery_days": 42,
+      "to_first_harvest_days": 75,
+      "harvest_days": 150,
+      "flowering_before_harvest_days": 42
+     },
+     "continuous_flowering": true
+    }
+   },
+   "chili": {
+    "greenhouse": {
+     "yield_t_ha": {
+      "poor": 33.0,
+      "average": 66.0,
+      "good": 99.0
+     },
+     "src": [
+      "PR13",
+      "P2"
+     ],
+     "note": {
+      "en": "National average of Capsicum under unheated greenhouses in Tunisia, mostly hot pepper, about 6.6 kg per m² over five months of picking.",
+      "fr": "Moyenne nationale des Capsicum sous serre froide en Tunisie, surtout du piment, environ 6,6 kg par m² sur cinq mois de cueillette."
+     },
+     "basis": "Capsicum under unheated plastic greenhouses in Tunisia, where the crop is mostly hot and semi hot pepper, national figures for 2012: 60,703 t on 922 ha, about 66 t/ha or 6.6 kg per m2 (PR13). Poor and good at half and one and a half times this average. No greenhouse yield of hot pepper was found south of the Sahara. Greenhouse pepper in Tunisia runs from November to July (PR13) and greenhouse capsicum is picked for 4 to 6 months in Kenya (P2): five months of harvest are used, with the open field nursery and first harvest dates.",
+     "cycle": {
+      "nursery_days": 42,
+      "to_first_harvest_days": 90,
+      "harvest_days": 150,
+      "flowering_before_harvest_days": 45
+     },
+     "continuous_flowering": true
     }
    },
    "cucumber": {
@@ -7941,15 +8003,77 @@
       "good": 76.4
      },
      "src": [
-      "CU3"
+      "CU3",
+      "PR16"
      ],
      "note": {
-      "en": "Tunnel trial in Mayotte with drip irrigation; its calendar is close to the open field one.",
-      "fr": "Essai sous tunnel à Mayotte avec goutte à goutte ; son calendrier est proche de celui du plein champ."
+      "en": "Tunnel trial in Mayotte with drip irrigation, checked against plastic tunnels in Egypt; its calendar is close to the open field one.",
+      "fr": "Essai sous tunnel à Mayotte avec goutte à goutte, recoupé avec des tunnels plastiques en Égypte ; son calendrier est proche de celui du plein champ."
      },
-     "basis": "Tunnel in soil with drip irrigation in Mayotte, dry season: 54.4 to 76.4 t/ha of marketable fruit 78 days after planting, from the cucumber research file of the planner (CU3). Average at the midpoint. Transplanted 16 days after sowing, first harvest 29 to 32 days after transplanting and marketable yield counted 78 days after planting (CU3): about 46 days from sowing to the first harvest and 48 days of harvest, against 50 and 45 in the open field calendar of the planner, which is therefore kept."
+     "basis": "Tunnel in soil with drip irrigation in Mayotte, dry season: 54.4 to 76.4 t/ha of marketable fruit 78 days after planting, from the cucumber research file of the planner (CU3). Average at the midpoint. Cross check: plastic tunnels in the Nile delta gave 4.2 to 10.0 kg per m2 over 67 to 82 days of harvest (PR16). Transplanted 16 days after sowing, first harvest 29 to 32 days after transplanting and marketable yield counted 78 days after planting (CU3): about 46 days from sowing to the first harvest and 48 days of harvest, against 50 and 45 in the open field calendar of the planner, which is therefore kept."
+    }
+   },
+   "zucchini": {
+    "greenhouse": {
+     "yield_t_ha": {
+      "poor": 37.5,
+      "average": 75.0,
+      "good": 112.5
+     },
+     "src": [
+      "PR14",
+      "PR15"
+     ],
+     "note": {
+      "en": "No African reference found: official survey of Almeria greenhouses in Spain, 7.5 kg per m² in a cycle of about four months.",
+      "fr": "Aucune référence africaine trouvée : enquête officielle sur les serres d’Almería en Espagne, 7,5 kg par m² sur un cycle d’environ quatre mois."
+     },
+     "basis": "No greenhouse zucchini yield was found in Africa. Almeria, Spain, official cost survey of the 2022 to 2023 season: 7.5 kg per m2 in the autumn cycle of 123 days and 11.13 kg per m2 in the spring cycle of 176 days (PR14). The autumn cycle is used as the average, poor and good at half and one and a half times it; the good value matches the spring cycle. The autumn cycle lasts 123 days from transplanting (PR14) and a greenhouse trial in Morocco picked from 45 days after transplanting (PR15): about 78 days of harvest, with the open field date of the first harvest from direct sowing.",
+     "cycle": {
+      "nursery_days": 0,
+      "to_first_harvest_days": 58,
+      "harvest_days": 78,
+      "flowering_before_harvest_days": 13
+     }
     }
    }
+  },
+  "upkeep": {
+   "xaf_m2_day": 0.263,
+   "label": {
+    "en": "Upkeep and small repairs of the structure",
+    "fr": "Entretien et petites réparations de la structure"
+   },
+   "src": [
+    "PR14"
+   ],
+   "basis": "Repairs and upkeep of the greenhouse and its equipment in Almeria, official cost survey of the 2022 to 2023 season: 493 EUR per ha over the autumn cycle of 123 days and 706 EUR per ha over the spring cycle of 176 days, about 4.0 EUR per ha and per day in both cycles (PR14). At 655.957 FCFA per EUR, 0.263 FCFA per m2 and per day of the plan, counted for every structure, new or already built."
+  },
+  "status": {
+   "repair_weeks": 1,
+   "repairs_label": {
+    "en": "Repairs to the structure (your quote)",
+    "fr": "Réparations de la structure (votre devis)"
+   },
+   "cover_label": {
+    "greenhouse": {
+     "en": "New greenhouse film, UV treated",
+     "fr": "Nouveau film de serre traité contre les UV"
+    },
+    "net": {
+     "en": "New insect net cover",
+     "fr": "Nouvelle couverture en filet anti insectes"
+    }
+   },
+   "repair_step": {
+    "en": "Repair the structure",
+    "fr": "Réparer la structure"
+   },
+   "repair_detail": {
+    "en": "Replace what is worn before planting: the cover, the doors, the gutters and the net of the vents; check that the arches are sound and tight.",
+    "fr": "Remplacer ce qui est usé avant la plantation : la couverture, les portes, les gouttières et le filet des aérations ; vérifier que les arceaux sont sains et bien tendus."
+   },
+   "basis": "A structure already built is not bought again: the plan counts only its upkeep, and the drip system is taken as already installed unless the grower says otherwise. A structure to repair adds the repairs the grower chooses: a new cover at the reference price, and other repairs at the grower's quote. Repairs entered by the grower (doors, gutters, net patches, arches) are assumed to last as long as a new cover, four years, and are charged to the plan for the share of that life it uses. Repairing a structure is assumed to take one week, before the beds are formed inside."
   },
   "confidence": {
    "block": {
@@ -7958,8 +8082,8 @@
    },
    "level": "low",
    "note": {
-    "en": "Structure prices from Côte d’Ivoire and Kenya, yields from Kenya, Tanzania, Ghana and Mayotte; no Cameroon reference yet. Get a builder’s quote before committing.",
-    "fr": "Prix des structures en Côte d’Ivoire et au Kenya, rendements au Kenya, en Tanzanie, au Ghana et à Mayotte ; pas encore de référence camerounaise. Demander un devis à un constructeur avant de s’engager."
+    "en": "Structure prices from Côte d’Ivoire and Kenya; yields from Kenya, Tanzania, Ghana, Mayotte, Morocco and Tunisia, and from Spain for zucchini; no Cameroon reference yet. Get a builder’s quote before committing.",
+    "fr": "Prix des structures en Côte d’Ivoire et au Kenya ; rendements au Kenya, en Tanzanie, au Ghana, à Mayotte, au Maroc et en Tunisie, et en Espagne pour la courgette ; pas encore de référence camerounaise. Demander un devis à un constructeur avant de s’engager."
    }
   }
  },
@@ -8250,12 +8374,12 @@
    "fr": "Les prix des serres et des maisons filet viennent d’un constructeur de Côte d’Ivoire, dans la même zone monétaire, en attendant des devis camerounais : 15 000 FCFA par m² en dessous de 1 000 m² et 13 000 à partir de 1 000 m². Une maison filet coûte 84 % d’une serre, le rapport des normes de coûts officielles indiennes. L’armature est supposée durer 10 ans et la couverture 4 ; chaque plan supporte la part de leur durée de vie qu’il utilise."
   },
   {
-   "en": "Under a ventilated greenhouse the day is assumed 5°C warmer than outside, and 4°C under a net house as measured in Tanzania. No rain reaches the crop under a greenhouse, which is watered by drip, and rain driven disease pressure is lowered by one level. Structures are sized in whole modules of 240 m².",
-   "fr": "Sous une serre ventilée, la journée est supposée plus chaude de 5 °C qu’à l’extérieur, et de 4 °C sous une maison filet comme mesuré en Tanzanie. Aucune pluie n’atteint la culture sous serre, qui est arrosée au goutte à goutte, et la pression des maladies liées à la pluie baisse d’un niveau. Les structures sont dimensionnées en modules entiers de 240 m²."
+   "en": "Under a ventilated greenhouse the day is assumed 5°C warmer than outside, and 4°C under a net house as measured in Tanzania. No rain reaches the crop under a greenhouse, which is watered by drip, and rain driven disease pressure is lowered by one level. Structures are sized in whole modules of 240 m². A structure already built is not bought again: the plan counts its upkeep, about 0.26 FCFA per m² and per day after the Almería cost survey, and takes the drip system as installed unless told otherwise. Repairs are entered by the grower and, like a new cover, are charged over four years.",
+   "fr": "Sous une serre ventilée, la journée est supposée plus chaude de 5 °C qu’à l’extérieur, et de 4 °C sous une maison filet comme mesuré en Tanzanie. Aucune pluie n’atteint la culture sous serre, qui est arrosée au goutte à goutte, et la pression des maladies liées à la pluie baisse d’un niveau. Les structures sont dimensionnées en modules entiers de 240 m². Une structure déjà construite n’est pas achetée à nouveau : le plan compte son entretien, environ 0,26 FCFA par m² et par jour d’après l’enquête de coûts d’Almería, et considère le goutte à goutte comme installé sauf indication contraire. Les réparations sont saisies par le producteur et, comme une nouvelle couverture, imputées sur quatre ans."
   },
   {
-   "en": "Yields under cover replace the season references. Greenhouse tomato is planned at 5, 10 and 15 kg per m² over eight months of harvest, a cautious range around the Kenyan survey mean of 10.5 kg; its care, protection and watering are extended to the longer harvest. As it flowers throughout the harvest, its heat risk is high when more than a third of the flowering months reach its heat limit inside the greenhouse, and medium when at least one month comes within 2°C of it.",
-   "fr": "Les rendements sous abri remplacent les références de saison. La tomate sous serre est planifiée à 5, 10 et 15 kg par m² sur huit mois de récolte, une fourchette prudente autour de la moyenne de 10,5 kg de l’enquête kenyane ; son entretien, sa protection et son arrosage sont prolongés sur cette récolte plus longue. Comme elle fleurit pendant toute la récolte, son risque de chaleur est fort quand plus d’un tiers des mois de floraison atteignent sa limite de chaleur dans la serre, et moyen quand au moins un mois s’en approche à moins de 2 °C."
+   "en": "Yields under cover replace the season references. Greenhouse tomato is planned at 5, 10 and 15 kg per m² over eight months of harvest, a cautious range around the Kenyan survey mean of 10.5 kg; sweet pepper and chili at 3.3, 6.6 and 9.9 kg over five months, around the Tunisian national average; green bean from 2 to 3 kg and zucchini from 3.75 to 11.25 kg. Where a source gives only an average, poor and good are half and one and a half times it. Care, protection and watering are extended to the longer harvests. Tomato and peppers flower throughout the harvest under cover: their heat risk is high when more than a third of the flowering months reach their heat limit inside the greenhouse, and medium when at least one month comes within 2°C of it.",
+   "fr": "Les rendements sous abri remplacent les références de saison. La tomate sous serre est planifiée à 5, 10 et 15 kg par m² sur huit mois de récolte, une fourchette prudente autour de la moyenne de 10,5 kg de l’enquête kenyane ; le poivron et le piment à 3,3, 6,6 et 9,9 kg sur cinq mois, autour de la moyenne nationale tunisienne ; le haricot vert de 2 à 3 kg et la courgette de 3,75 à 11,25 kg. Quand une source ne donne qu’une moyenne, les issues faible et bonne valent la moitié et une fois et demie cette moyenne. L’entretien, la protection et l’arrosage sont prolongés sur les récoltes plus longues. La tomate et les piments fleurissent pendant toute la récolte sous abri : leur risque de chaleur est fort quand plus d’un tiers des mois de floraison atteignent leur limite de chaleur dans la serre, et moyen quand au moins un mois s’en approche à moins de 2 °C."
   },
   {
    "en": "Hired machine prices are the midpoints of the ranges of one Cameroonian tomato budget of June 2026 and carry low confidence: enter a local quote when you have one. A tenth of the hand work of a mechanised step remains (half for chili, whose planting holes are dug by hand). Machines are suggested when land preparation needs more than 15 workers on the same day.",
@@ -9138,6 +9262,48 @@
    "publisher": "Agriculture, Forestry and Fisheries 15(2)",
    "year": 2026,
    "url": "https://www.sciencepg.com/article/10.11648/j.aff.20261502.14"
+  },
+  "PR11": {
+   "title": "La production horticole sous grands tunnels au Maroc (Villeneuve C.)",
+   "publisher": "MAPAQ, Quebec Ministry of Agriculture, Fisheries and Food",
+   "year": 2007,
+   "url": "https://www.agrireseau.net/legumeschamp/documents/maroc.pdf"
+  },
+  "PR12": {
+   "title": "Fiche technique de la culture du haricot vert au Maroc",
+   "publisher": "AgriMaroc",
+   "year": 2024,
+   "url": "https://www.agrimaroc.ma/haricot-vert-maroc/"
+  },
+  "PR13": {
+   "title": "Etude de l'encouragement des investissements et de développement de production de légumes sous serres, rapport final de synthèse",
+   "publisher": "APIA, Tunisian Ministry of Agriculture (AGRO SERVICES)",
+   "year": 2015,
+   "url": "https://www.apia.com.tn/medias/files/Etude-de-l-encouragement-des-investissements-et-de-developpement-de-production-de-legumes-sous-serres.pdf"
+  },
+  "PR14": {
+   "title": "Hortícolas protegidos: costes de producción de calabacín, campaña 2022/23",
+   "publisher": "Spanish Ministry of Agriculture, Fisheries and Food (MAPA), food chain observatory",
+   "year": 2023,
+   "url": "https://mapa.gob.es/es/alimentacion/temas/observatorio-cadena/14costesdeproduccioncalabacin22_23_tcm30-689093.pdf"
+  },
+  "PR15": {
+   "title": "Enhancing the growth and the yield of greenhouse zucchini cultivars using desalinated seawater in semi arid regions (Khouya et al.), International Journal of Plant Biology 17(4)",
+   "publisher": "MDPI",
+   "year": 2026,
+   "url": "https://www.mdpi.com/2037-0164/17/4/30"
+  },
+  "PR16": {
+   "title": "Effect of plastic tunnel size on production of cucumber in delta of Egypt (El-Aidy, El-Zawely, Hassan, El-Sawy), Applied Ecology and Environmental Research 5(2)",
+   "publisher": "ALOKI",
+   "year": 2007,
+   "url": "https://www.aloki.hu/pdf/0502_011024.pdf"
+  },
+  "PR17": {
+   "title": "Good Agricultural Practices for greenhouse vegetable crops: principles for Mediterranean climate areas (Plant Production and Protection Paper 217)",
+   "publisher": "FAO",
+   "year": 2013,
+   "url": "https://www.fao.org/4/i3284e/i3284e.pdf"
   },
   "T1": {
    "title": "Technical and Economic Data Sheet for Tomato Production and Post-Production (PARPAC)",
