@@ -57,7 +57,8 @@ const urlOf = (k) => (k === 'home' ? SITE_URL + '/' : `${SITE_URL}/${k}`);
 function page(k, assets) {
   let html = template;
   const head = target === 'production'
-    ? [`<link rel="canonical" href="${urlOf(k)}">`, `<meta property="og:url" content="${urlOf(k)}">`,
+    ? ['<link rel="icon" href="/favicon.ico" sizes="48x48">', '<link rel="icon" href="/favicon.svg" type="image/svg+xml">', '<link rel="apple-touch-icon" href="/apple-touch-icon.png">', '<link rel="manifest" href="/manifest.webmanifest">',
+       `<link rel="canonical" href="${urlOf(k)}">`, `<meta property="og:url" content="${urlOf(k)}">`,
        `<meta property="og:image" content="${SITE_URL}/img/djalumo-agro-preview.png">`, '<meta property="og:image:type" content="image/png">', '<meta property="og:image:width" content="1200">', '<meta property="og:image:height" content="627">',
        '<meta property="og:image:alt" content="Djalumo Agro, agricultural decision intelligence for Africa">', `<meta name="twitter:image" content="${SITE_URL}/img/djalumo-agro-preview.png">`,
        `<link rel="stylesheet" href="/assets/${assets.css}">`, `<script defer src="/assets/${assets.js}"></script>`].join('\n')
@@ -67,6 +68,8 @@ function page(k, assets) {
     .replace(/(<meta property="og:title" content=")[^"]*(">)/, `$1${attr(titleOf(k))}$2`)
     .replace(/(<meta property="og:description" content=")[^"]*(">)/, `$1${attr(leadOf(k))}$2`);
   if (target === 'production') {
+    // Icon files served from the site root replace the inline icon (browser tab, bookmarks, iPhone home screen).
+    html = html.replace(/<link rel="icon" type="image\/svg\+xml" href="data:[^"]*">\n/, '');
     html = html.replace('<style>\n/*CSS*/\n</style>', head).replace('<script>\n/*JS*/\n</script>', '');
   } else {
     html = html.replace('/*CSS*/', () => css).replace('/*JS*/', () => js);
@@ -112,6 +115,7 @@ if (target === 'android') {
   for (const k of ROUTES) fs.writeFileSync(path.join(out, k === 'home' ? 'index.html' : `${k}.html`), page(k, assets));
   fs.writeFileSync(path.join(out, '404.html'), page('home', assets).replace(/<title>[^<]*<\/title>/, '<title>Signal not found · Djalumo Agro</title>').replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex">'));
   copyImages(path.join(out, 'img'));
+  for (const f of fs.readdirSync(path.join(root, 'icons'))) fs.copyFileSync(path.join(root, 'icons', f), path.join(out, f));
   const today = new Date().toISOString().slice(0, 10);
   fs.writeFileSync(path.join(out, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${ROUTES.map((k) => `  <url><loc>${urlOf(k)}</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>${k === 'home' ? '1.0' : ['privacy', 'terms'].includes(k) ? '0.3' : '0.8'}</priority></url>`).join('\n')}\n</urlset>\n`);
   fs.writeFileSync(path.join(out, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /api/\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);

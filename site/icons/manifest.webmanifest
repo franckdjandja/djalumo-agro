@@ -1,0 +1,14 @@
+{
+  "name": "Djalumo Agro",
+  "short_name": "Djalumo Agro",
+  "description": "Agricultural decision intelligence for Africa: any budget turned into a costed Season Plan.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#EDF6F1",
+  "theme_color": "#0A3D2E",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

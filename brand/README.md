@@ -24,8 +24,9 @@ Manrope ExtraBold for DJALUMO and Manrope SemiBold for AGRO, a free Google Fonts
 | `DJALUMO-AGRO_blanc` | Photographs or coloured backgrounds |
 | `DJALUMO-AGRO_noir` | Single colour printing, stamps |
 | `DJALUMO_marque-mere_*` | DJALUMO alone, the parent brand for all projects |
-| `DJALUMO_icone_*` | The Africa O alone: favicon, social networks |
-| `DJALUMO_icone-app_*` | Application icon on a rounded tile |
+| `DJALUMO_icone_*` | The Africa O alone: social networks |
+| `DJALUMO_icone-app_*` | Android application icon on a rounded tile |
+| `DJALUMO-AGRO_favicon` | Website icon: the D that holds Africa, on Djalumo green, shown in browser tabs, bookmarks and on the iPhone home screen |
 
 SVG files are vector graphics and keep their quality at any size, on screen and in print. Leave a clear space around the logo at least equal to the height of the word AGRO.
 
@@ -57,7 +58,8 @@ Manrope ExtraBold pour DJALUMO et Manrope SemiBold pour AGRO, une police libre d
 | `DJALUMO-AGRO_blanc` | Photographies ou fonds colorés |
 | `DJALUMO-AGRO_noir` | Impression en une couleur, tampons |
 | `DJALUMO_marque-mere_*` | DJALUMO seul, marque mère de tous les projets |
-| `DJALUMO_icone_*` | Le O en forme d'Afrique seul : favicon, réseaux sociaux |
-| `DJALUMO_icone-app_*` | Icône d'application sur tuile arrondie |
+| `DJALUMO_icone_*` | Le O en forme d'Afrique seul : réseaux sociaux |
+| `DJALUMO_icone-app_*` | Icône de l'application Android sur tuile arrondie |
+| `DJALUMO-AGRO_favicon` | Icône du site : le D qui porte l'Afrique, sur le vert Djalumo, visible dans les onglets du navigateur, les favoris et sur l'écran d'accueil de l'iPhone |
 
 Les fichiers SVG sont vectoriels et gardent leur qualité à toutes les tailles, à l'écran comme à l'impression. Laisser autour du logo un espace libre au moins égal à la hauteur du mot AGRO.
