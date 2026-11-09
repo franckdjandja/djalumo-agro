@@ -15,9 +15,10 @@ const read = (p) => fs.readFileSync(path.join(root, p), 'utf8');
 
 // On Vercel, the production address of the project is used, so a stale SITE_URL can never break links or previews.
 // Elsewhere, SITE_URL is used.
-const SITE_URL = ((process.env.VERCEL_PROJECT_PRODUCTION_URL ? 'https://' + process.env.VERCEL_PROJECT_PRODUCTION_URL : '') || process.env.SITE_URL || 'https://djalumo.example').replace(/\/$/, '');
+// The public address of the site. SITE_URL overrides it, for instance on a test deployment.
+const SITE_URL = (process.env.SITE_URL || 'https://agro.djalumo.com').replace(/\/$/, '');
 // The application sends its forms to the public site: APP_SITE_URL, or the current Vercel address by default.
-const APP_SITE_URL = (process.env.APP_SITE_URL || 'https://djalumo-agro.vercel.app').replace(/\/$/, '');
+const APP_SITE_URL = (process.env.APP_SITE_URL || 'https://agro.djalumo.com').replace(/\/$/, '');
 const pkg = JSON.parse(fs.readFileSync(path.join(repo, 'package.json'), 'utf8'));
 const config = {
   siteUrl: target === 'android' ? APP_SITE_URL : SITE_URL,

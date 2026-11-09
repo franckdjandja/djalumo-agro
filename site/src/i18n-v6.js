@@ -79,7 +79,7 @@
     links: {
       about: ['About', 'The founder, the method and the roadmap'], platform: ['Platform', 'Four products, one engine'], impact: ['Impact', 'What the platform changes in the field'],
       contact: ['Contact', 'Partnership, pilot, investment, data'], demo: ['Book a demonstration', 'A guided session on your case'], newsletter: ['Newsletter', 'News from the pilot, twice a month at most'],
-      privacy: ['Privacy', 'How your data is handled'], terms: ['Terms of use', 'Rules of use of the platform'], site: ['Website', 'djalumo-agro.vercel.app']
+      privacy: ['Privacy', 'How your data is handled'], terms: ['Terms of use', 'Rules of use of the platform'], site: ['Website', 'agro.djalumo.com']
     },
     tagline: 'Rooted in Africa. Grown by light.'
   };
@@ -162,7 +162,7 @@
     links: {
       about: ['À propos', 'Le fondateur, la méthode et la feuille de route'], platform: ['Plateforme', 'Quatre produits, un seul moteur'], impact: ['Impact', 'Ce que la plateforme change sur le terrain'],
       contact: ['Contact', 'Partenariat, pilote, investissement, données'], demo: ['Réserver une démonstration', 'Une séance guidée sur votre cas'], newsletter: ['Lettre d’information', 'Les nouvelles du pilote, deux fois par mois au plus'],
-      privacy: ['Confidentialité', 'Le traitement de vos données'], terms: ['Conditions d’utilisation', 'Les règles d’utilisation de la plateforme'], site: ['Site web', 'djalumo-agro.vercel.app']
+      privacy: ['Confidentialité', 'Le traitement de vos données'], terms: ['Conditions d’utilisation', 'Les règles d’utilisation de la plateforme'], site: ['Site web', 'agro.djalumo.com']
     },
     tagline: 'Enraciné en Afrique, porté par la lumière.'
   };

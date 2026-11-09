@@ -8,9 +8,9 @@
 <h3 align="center">L'intelligence décisionnelle agricole pour l'Afrique</h3>
 
 <p align="center">
-  <a href="https://djalumo-agro.vercel.app"><b>Site en ligne</b></a> ·
-  <a href="https://djalumo-agro.vercel.app/planner">Planificateur de saison</a> ·
-  <a href="https://djalumo-agro.vercel.app/field">Preuves terrain</a> ·
+  <a href="https://agro.djalumo.com"><b>Site en ligne</b></a> ·
+  <a href="https://agro.djalumo.com/planner">Planificateur de saison</a> ·
+  <a href="https://agro.djalumo.com/field">Preuves terrain</a> ·
   <a href="docs/TECHNICAL.fr.md">Documentation technique</a> ·
   <a href="README.md">English version</a>
 </p>

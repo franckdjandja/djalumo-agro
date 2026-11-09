@@ -8,9 +8,9 @@
 <h3 align="center">Agricultural decision intelligence for Africa</h3>
 
 <p align="center">
-  <a href="https://djalumo-agro.vercel.app"><b>Live site</b></a> ·
-  <a href="https://djalumo-agro.vercel.app/planner">Season Planner</a> ·
-  <a href="https://djalumo-agro.vercel.app/field">Field evidence</a> ·
+  <a href="https://agro.djalumo.com"><b>Live site</b></a> ·
+  <a href="https://agro.djalumo.com/planner">Season Planner</a> ·
+  <a href="https://agro.djalumo.com/field">Field evidence</a> ·
   <a href="docs/TECHNICAL.md">Technical documentation</a> ·
   <a href="README.fr.md">Version française</a>
 </p>

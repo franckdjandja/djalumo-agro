@@ -69,10 +69,10 @@ With the Vercel CLI you can use `npm run dev` instead of `scripts/serve.mjs`.
 
 ## Deploy
 
-1. Import the repository in Vercel. Build command and output folder are set in `vercel.json`. The site goes live at `your-project.vercel.app`; this address is detected automatically, no `SITE_URL` needed.
+1. Import the repository in Vercel. Build command and output folder are set in `vercel.json`. The site answers at `your-project.vercel.app` and at `https://agro.djalumo.com`, its public address. Set `SITE_URL` to build it for another address.
 2. In the Vercel project, open Storage and create a Neon PostgreSQL database connected to the project. It provides `DATABASE_URL`.
 3. Redeploy: every build applies `db/schema.sql` automatically (idempotent), so the tables are created without any manual step.
-4. Add the optional variables from `.env.example` (email, Turnstile, `RATE_LIMIT_SALT`). With your own domain, also set `SITE_URL` and `ALLOWED_ORIGINS`.
+4. Add the optional variables from `.env.example` (email, Turnstile, `RATE_LIMIT_SALT`). To restrict the forms to the public address, set `ALLOWED_ORIGINS`.
 5. Check `https://your-domain/api/health`: it must answer `"database":"ok"`.
 
 ## Environment variables
@@ -162,7 +162,7 @@ The application is built with Capacitor 8 from the same sources as the website. 
 | --- | --- |
 | Application identifier | `com.djalumo.agro` (permanent once published on Google Play) |
 | Minimum Android version | Android 7.0 (API 24), target API 36 |
-| Forms and reports | Sent to `APP_SITE_URL` (default `https://djalumo-agro.vercel.app`); the API accepts the application origin `https://localhost` and answers it with cross origin headers |
+| Forms and reports | Sent to `APP_SITE_URL` (default `https://agro.djalumo.com`); the API accepts the application origin `https://localhost` and answers it with cross origin headers |
 | External links | Open in the browser of the phone |
 | Back button | Closes the open viewer, dialog or menu, then goes back through the pages, then leaves the application |
 

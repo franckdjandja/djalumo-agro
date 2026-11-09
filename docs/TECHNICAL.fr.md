@@ -69,10 +69,10 @@ Avec l’outil Vercel, `npm run dev` remplace `scripts/serve.mjs`.
 
 ## Déployer
 
-1. Importer le dépôt dans Vercel. La commande de construction et le dossier de sortie sont définis dans `vercel.json`. Le site est en ligne à l’adresse `votre-projet.vercel.app`, détectée automatiquement, sans `SITE_URL`.
+1. Importer le dépôt dans Vercel. La commande de construction et le dossier de sortie sont définis dans `vercel.json`. Le site répond à l’adresse `votre-projet.vercel.app` et à `https://agro.djalumo.com`, son adresse publique. Régler `SITE_URL` pour le construire pour une autre adresse.
 2. Dans le projet Vercel, ouvrir Storage et créer une base PostgreSQL Neon reliée au projet. Elle fournit `DATABASE_URL`.
 3. Redéployer : chaque construction applique `db/schema.sql` automatiquement (rejouable), les tables sont donc créées sans aucune manipulation.
-4. Ajouter les variables facultatives de `.env.example` (courriels, Turnstile, `RATE_LIMIT_SALT`). Avec votre propre domaine, régler aussi `SITE_URL` et `ALLOWED_ORIGINS`.
+4. Ajouter les variables facultatives de `.env.example` (courriels, Turnstile, `RATE_LIMIT_SALT`). Pour réserver les formulaires à l’adresse publique, régler `ALLOWED_ORIGINS`.
 5. Vérifier `https://votre-domaine/api/health` : la réponse doit contenir `"database":"ok"`.
 
 ## Variables d’environnement
@@ -155,7 +155,7 @@ L'application est construite avec Capacitor 8 à partir des mêmes sources que l
 | --- | --- |
 | Identifiant de l'application | `com.djalumo.agro` (définitif une fois publié sur Google Play) |
 | Version minimale d'Android | Android 7.0 (API 24), API cible 36 |
-| Formulaires et rapports | Envoyés à `APP_SITE_URL` (par défaut `https://djalumo-agro.vercel.app`) ; l'API accepte l'origine de l'application `https://localhost` et lui répond avec les en têtes d'accès croisé |
+| Formulaires et rapports | Envoyés à `APP_SITE_URL` (par défaut `https://agro.djalumo.com`) ; l'API accepte l'origine de l'application `https://localhost` et lui répond avec les en têtes d'accès croisé |
 | Liens externes | Ouverts dans le navigateur du téléphone |
 | Bouton retour | Ferme la visionneuse, la fenêtre ou le menu ouvert, puis revient aux pages précédentes, puis quitte l'application |
 
