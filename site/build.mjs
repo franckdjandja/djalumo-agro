@@ -181,6 +181,8 @@ if (target === 'android') {
       if (lang === 'fr' && k === 'home') fs.writeFileSync(path.join(out, 'fr.html'), page(k, assets, lang, body));
     }
   }
+  // On the host, a page without its text would be invisible to search engines: the deployment stops instead.
+  if (process.env.VERCEL && prerendered < ROUTES.length * 2) throw new Error(`only ${prerendered} of ${ROUTES.length * 2} pages were prerendered`);
   fs.writeFileSync(path.join(out, '404.html'), page('home', assets).replace(/<title>[^<]*<\/title>/, '<title>Signal not found · Djalumo Agro</title>').replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex">').replace(/<link rel="(canonical|alternate)"[^>]*>\n/g, ''));
   copyImages(path.join(out, 'img'));
   for (const f of fs.readdirSync(path.join(root, 'icons'))) fs.copyFileSync(path.join(root, 'icons', f), path.join(out, f));
