@@ -150,7 +150,7 @@ const PAGES = {
   contact: {
     html() {
       const C = L().contact;
-      return pageHero(C.eyebrow, C.h1, C.lead) + sec('<div class="form-wrap"><div class="rv">' + formHTML('contact', 'f-contact') + '</div><aside class="aside rv"><div class="card"><h3>' + esc(C.nextH) + '</h3><ul class="list-check" style="margin-top:14px">' + C.next.map(t => '<li>' + esc(t) + '</li>').join('') + '</ul></div><div class="card"><h3>' + esc(C.whereH) + '</h3><dl class="kv" style="display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin:14px 0 0;font-size:14px">' + C.where.map(([k, v]) => '<dt class="faint mono" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding-top:2px">' + esc(k) + '</dt><dd style="margin:0" class="muted">' + esc(v) + '</dd>').join('') + '</dl></div><div class="card"><h3>' + esc(C.demoH) + '</h3><p>' + esc(C.demoD) + '</p><a class="btn btn-ghost btn-sm" style="margin-top:14px" href="#demo">' + esc(L().cta.demo) + ARROW + '</a></div></aside></div>');
+      return pageHero(C.eyebrow, C.h1, C.lead) + sec('<div class="form-wrap"><div class="rv">' + formHTML('contact', 'f-contact') + '</div><aside class="aside rv"><div class="card"><h3>' + esc(C.nextH) + '</h3><ul class="list-check" style="margin-top:14px">' + C.next.map(t => '<li>' + esc(t) + '</li>').join('') + '</ul></div><div class="card"><h3>' + esc(C.whereH) + '</h3><dl class="kv" style="display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin:14px 0 0;font-size:14px">' + C.where.map(([k, v]) => '<dt class="faint mono" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding-top:2px">' + esc(k) + '</dt><dd style="margin:0" class="muted">' + (/^[^\s@]+@[^\s@]+$/.test(v) ? '<a href="mailto:' + esc(v) + '">' + esc(v) + '</a>' : esc(v)) + '</dd>').join('') + '</dl></div><div class="card"><h3>' + esc(C.demoH) + '</h3><p>' + esc(C.demoD) + '</p><a class="btn btn-ghost btn-sm" style="margin-top:14px" href="#demo">' + esc(L().cta.demo) + ARROW + '</a></div></aside></div>');
     },
     mount(root) { bindForm($('#f-contact', root)); }
   },
@@ -246,8 +246,9 @@ function footerHTML() {
 }
 
 /* Routing: hash tokens in the artifact preview, clean paths (/platform) in production for SEO. */
-const routeOf = (href) => { if (!href) return null; const t = href.replace(/^#/, '').replace(/^\/+|\/+$/g, '').replace(/\.html$/, '').replace(/^index$/, ''); const k = t === '' ? 'home' : t; return (PAGES[k] && k !== 'nf') ? k : null; };
-const pathOf = (k) => k === 'home' ? '/' : '/' + k;
+const routeOf = (href) => { if (!href) return null; const t = href.replace(/^#/, '').replace(/^\/+|\/+$/g, '').replace(/\.html$/, '').replace(/^fr(\/|$)/, '').replace(/^index$/, ''); const k = t === '' ? 'home' : t; return (PAGES[k] && k !== 'nf') ? k : null; };
+/* Address of a page in a language: /about in English, /fr/about in French. */
+const pathOf = (k, lang) => { const pre = PATH_MODE && (lang || LANG) === 'fr' ? '/fr' : ''; return k === 'home' ? (pre || '/') : pre + '/' + k; };
 function linkify(root) { if (!PATH_MODE) return; $$('a[href^="#"]', root).forEach(a => { const k = routeOf(a.getAttribute('href')); if (k) a.setAttribute('href', pathOf(k)); }); }
 const Router = {
   current: null, cleanups: [],
@@ -255,7 +256,9 @@ const Router = {
     if (PATH_MODE) { Router.pendingAnchor = anchor; if (location.pathname !== pathOf(page)) history.pushState(null, '', pathOf(page)); Router.render(false); return; }
     if (location.hash !== '#' + page) { Router.pendingAnchor = anchor; location.hash = page; } else if (anchor) { const t = D.getElementById(anchor); if (t) t.scrollIntoView({ behavior: RM.matches ? 'auto' : 'smooth' }); } },
   render(initial, keepScroll) {
-    const raw = PATH_MODE ? (location.pathname.replace(/^\/+|\/+$/g, '').replace(/\.html$/, '').replace(/^index$/, '') || 'home') : (location.hash || '#home').slice(1).split(/[?&]/)[0];
+    // Going back or forward can cross languages: the address decides.
+    if (PATH_MODE) { const pl = /^\/fr(\/|$)/.test(location.pathname) ? 'fr' : 'en'; if (pl !== LANG) { LANG = pl; renderChrome(); } }
+    const raw = PATH_MODE ? (location.pathname.replace(/^\/+|\/+$/g, '').replace(/\.html$/, '').replace(/^fr(\/|$)/, '').replace(/^index$/, '') || 'home') : (location.hash || '#home').slice(1).split(/[?&]/)[0];
     if (!PATH_MODE && raw === 'main') { const m = D.getElementById('main'); if (m) m.focus(); history.replaceState(null, '', '#' + (Router.current || 'home')); return; }
     const key = raw === '' ? 'home' : (PAGES[raw] && raw !== 'nf' ? raw : 'nf');
     Router.cleanups.forEach(f => { try { f && f(); } catch (e) { /* cleanup */ } }); Router.cleanups = []; lazy.length = 0;
@@ -267,9 +270,13 @@ const Router = {
     if (P.mount) P.mount(root);
     // newsletter bands
     $$('form.nlf', root).forEach(f => bindForm(f, { compact: true }));
-    D.title = key === 'home' ? L().meta.title : L().meta.pages[key] + ' · Djalumo Agro';
+    const seo = (L().seo || {})[key];
+    D.title = seo ? seo[0] : key === 'home' ? L().meta.title : L().meta.pages[key] + ' · Djalumo Agro';
+    const md = $('meta[name="description"]'); if (md && seo) md.setAttribute('content', seo[1]);
     linkify(root);
-    const canon = $('link[rel="canonical"]'); if (canon && CFG.siteUrl) canon.setAttribute('href', CFG.siteUrl.replace(/\/$/, '') + (key === 'nf' ? '/' : pathOf(key)));
+    const base = String(CFG.siteUrl || '').replace(/\/$/, ''), canon = $('link[rel="canonical"]');
+    if (canon && base) canon.setAttribute('href', base + (key === 'nf' ? '/' : pathOf(key)));
+    if (base && key !== 'nf') [['en', 'en'], ['fr', 'fr'], ['x-default', 'en']].forEach(([h, l]) => { const a = $('link[rel="alternate"][hreflang="' + h + '"]'); if (a) a.setAttribute('href', base + pathOf(key, l)); });
     $$('[data-nav]').forEach(a => { if (a.dataset.nav === key) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
     reveal(root); mountLazy();
     if (keepScroll) window.scrollTo(0, y);
@@ -301,7 +308,6 @@ function mountLazy() {
 
 function renderChrome() {
   D.documentElement.lang = LANG;
-  const md = $('meta[name="description"]'); if (md) md.setAttribute('content', L().meta.desc);
   $('#chrome-top').innerHTML = headerHTML();
   $('#chrome-bottom').innerHTML = footerHTML();
   $$('form.nlf', $('#chrome-bottom')).forEach(f => bindForm(f, { compact: true }));
@@ -310,6 +316,7 @@ function renderChrome() {
 }
 function setLang(l) {
   if (l === LANG) return; LANG = l; store.set('af.lang', l);
+  if (PATH_MODE && Router.current && Router.current !== 'nf') history.replaceState(null, '', pathOf(Router.current) + location.hash);
   closeSheet(); renderChrome(); Router.render(false, true);
   analytics.track('language_change', { lang: l });
 }
@@ -337,6 +344,8 @@ function bindBackButton() {
 }
 function boot() {
   D.documentElement.classList.add('js');
+  // A visitor who chose a language before keeps it: the address follows that choice.
+  if (PATH_MODE) { const pref = store.get('af.lang'); if ((pref === 'fr' || pref === 'en') && pref !== LANG) { const k = routeOf(location.pathname); LANG = pref; if (k) history.replaceState(null, '', pathOf(k) + location.search + location.hash); } }
   if (APP) { D.documentElement.classList.add('app'); bindBackButton(); }
   renderChrome();
   D.addEventListener('click', e => {

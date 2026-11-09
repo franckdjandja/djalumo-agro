@@ -133,6 +133,10 @@ A future `/admin` area needs: authentication through an identity provider (Auth.
 
 Every visible string lives in `site/src/i18n.js`, in two parallel objects: `en` (reference) and `fr`. To add Swahili, copy the `en` object as `sw`, translate it, and add a button in the language switch. Content models (solutions, modules, data sources, KPIs, roadmap, milestones) are arrays in the same file and can later be served by a headless CMS.
 
+## Search engines
+
+Each page exists in English at `/page` and in French at `/fr/page`; the address sets the language, and a visitor who chose a language before is taken to it. The build runs the site script in jsdom to write the header, the text of the page and the footer into every HTML file, so search engines and link previews read the content without running the script; the world map, the heaviest drawing, is left to the browser. Titles and descriptions come from `site/src/i18n-seo.js`. Each page carries its canonical address, `hreflang` links to both languages and structured data describing the organization, its founder, the site and the page. The sitemap lists the 28 addresses with their language alternates.
+
 ## Analytics
 
 `window.DjalumoAnalytics` queues events: `page_view`, `cta_click`, `planner_run`, `planner_tab`, `planner_window`, `map_select`, `map_layer`, `arch_select`, `persona_select`, `form_submitted`, `form_invalid`, `form_error`, `language_change`. Nothing is sent until a provider is configured. To add another platform:

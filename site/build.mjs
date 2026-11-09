@@ -13,8 +13,6 @@ const args = Object.fromEntries(process.argv.slice(2).map((a) => a.replace(/^--/
 const target = ['artifact', 'android'].includes(args.target) ? args.target : 'production';
 const read = (p) => fs.readFileSync(path.join(root, p), 'utf8');
 
-// On Vercel, the production address of the project is used, so a stale SITE_URL can never break links or previews.
-// Elsewhere, SITE_URL is used.
 // The public address of the site. SITE_URL overrides it, for instance on a test deployment.
 const SITE_URL = (process.env.SITE_URL || 'https://agro.djalumo.com').replace(/\/$/, '');
 // The application sends its forms to the public site: APP_SITE_URL, or the current Vercel address by default.
@@ -28,7 +26,7 @@ const config = {
   analytics: process.env.ANALYTICS_PROVIDER ? { provider: process.env.ANALYTICS_PROVIDER, id: process.env.ANALYTICS_ID || '' } : null
 };
 
-const i18nSrc = read('src/i18n.js') + '\n' + read('src/i18n-v3.js') + '\n' + read('src/i18n-v4.js') + '\n' + read('src/i18n-v5.js') + '\n' + read('src/i18n-v6.js') + '\n' + read('src/i18n-v7.js');
+const i18nSrc = read('src/i18n.js') + '\n' + read('src/i18n-v3.js') + '\n' + read('src/i18n-v4.js') + '\n' + read('src/i18n-v5.js') + '\n' + read('src/i18n-v6.js') + '\n' + read('src/i18n-v7.js') + '\n' + read('src/i18n-seo.js');
 const I18N = vm.runInNewContext(i18nSrc + ';I18N');
 const geo = JSON.parse(read('geo.json'));
 const geoWorld = JSON.parse(read('geo-world.json'));
@@ -46,36 +44,92 @@ const template = read('template.html');
 
 const ROUTES = ['home', 'planner', 'field', 'platform', 'intelligence', 'solutions', 'data', 'impact', 'about', 'contact', 'demo', 'newsletter', 'privacy', 'terms'];
 const EN = I18N.en;
-const leadOf = (k) => ({
-  home: EN.meta.desc, planner: EN.planner.lead, field: EN.field.lead, platform: EN.platform.lead, intelligence: EN.intel.lead, solutions: EN.solutions.lead, data: EN.data.lead,
-  impact: EN.impact.lead, about: EN.about.lead, contact: EN.contact.lead, demo: EN.demo.lead, newsletter: EN.nl.lead,
-  privacy: 'How Djalumo Agro collects, uses and protects personal data.', terms: 'Terms of use of the Djalumo Agro website.'
-}[k]);
-const titleOf = (k) => (k === 'home' ? EN.meta.title : `${EN.meta.pages[k]} · Djalumo Agro`);
+const titleOf = (k, lang = 'en') => I18N[lang].seo[k][0];
+const descOf = (k, lang = 'en') => I18N[lang].seo[k][1];
 const attr = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
-const urlOf = (k) => (k === 'home' ? SITE_URL + '/' : `${SITE_URL}/${k}`);
+/** Public address of a page: /about in English, /fr/about in French. */
+const pathOf = (k, lang = 'en') => (lang === 'fr' ? (k === 'home' ? '/fr' : '/fr/' + k) : (k === 'home' ? '/' : '/' + k));
+const urlOf = (k, lang = 'en') => SITE_URL + pathOf(k, lang);
 
-function page(k, assets) {
+/** What search engines learn about Djalumo Agro: the organization, its founder, the site and the page itself. */
+function structuredData(k, lang) {
+  const org = SITE_URL + '/#organization', site = SITE_URL + '/#website', founder = SITE_URL + '/about#founder';
+  const graph = [
+    { '@type': 'Organization', '@id': org, name: 'Djalumo Agro', alternateName: 'Djalumo', url: SITE_URL + '/',
+      logo: { '@type': 'ImageObject', url: SITE_URL + '/icon-512.png', width: 512, height: 512 },
+      image: SITE_URL + '/img/djalumo-agro-preview.png', description: I18N.en.seo.home[1], email: 'franck.djandja@djalumo.com',
+      founder: { '@id': founder }, areaServed: 'Africa', knowsLanguage: ['en', 'fr'],
+      knowsAbout: ['agricultural decision intelligence', 'farm budgeting', 'crop planning', 'agricultural data analysis'],
+      sameAs: ['https://github.com/franckdjandja/djalumo-agro'] },
+    { '@type': 'Person', '@id': founder, name: 'Franck Junior Djandja Tomwa',
+      jobTitle: ['Founder of Djalumo Agro', 'Telecommunications Engineer', 'Data Analyst'], worksFor: { '@id': org },
+      sameAs: ['https://github.com/franckdjandja'] },
+    { '@type': 'WebSite', '@id': site, url: SITE_URL + '/', name: 'Djalumo Agro', alternateName: 'Djalumo', inLanguage: ['en', 'fr'], publisher: { '@id': org } },
+    { '@type': k === 'about' ? 'AboutPage' : k === 'contact' ? 'ContactPage' : 'WebPage', '@id': urlOf(k, lang) + '#webpage', url: urlOf(k, lang),
+      name: titleOf(k, lang), description: descOf(k, lang), inLanguage: lang, isPartOf: { '@id': site }, about: { '@id': org } }
+  ];
+  return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c');
+}
+
+function page(k, assets, lang = 'en', body) {
   let html = template;
-  const head = target === 'production'
-    ? ['<link rel="icon" href="/favicon.ico" sizes="48x48">', '<link rel="icon" href="/favicon.svg" type="image/svg+xml">', '<link rel="apple-touch-icon" href="/apple-touch-icon.png">', '<link rel="manifest" href="/manifest.webmanifest">',
-       `<link rel="canonical" href="${urlOf(k)}">`, `<meta property="og:url" content="${urlOf(k)}">`,
-       `<meta property="og:image" content="${SITE_URL}/img/djalumo-agro-preview.png">`, '<meta property="og:image:type" content="image/png">', '<meta property="og:image:width" content="1200">', '<meta property="og:image:height" content="627">',
-       '<meta property="og:image:alt" content="Djalumo Agro, agricultural decision intelligence for Africa">', `<meta name="twitter:image" content="${SITE_URL}/img/djalumo-agro-preview.png">`,
-       `<link rel="stylesheet" href="/assets/${assets.css}">`, `<script defer src="/assets/${assets.js}"></script>`].join('\n')
-    : '';
-  html = html.replace(/<title>[^<]*<\/title>/, `<title>${target !== 'production' ? 'Djalumo Agro' : attr(titleOf(k))}</title>`)
-    .replace(/(<meta name="description" content=")[^"]*(">)/, `$1${attr(leadOf(k))}$2`)
-    .replace(/(<meta property="og:title" content=")[^"]*(">)/, `$1${attr(titleOf(k))}$2`)
-    .replace(/(<meta property="og:description" content=")[^"]*(">)/, `$1${attr(leadOf(k))}$2`);
   if (target === 'production') {
-    // Icon files served from the site root replace the inline icon (browser tab, bookmarks, iPhone home screen).
-    html = html.replace(/<link rel="icon" type="image\/svg\+xml" href="data:[^"]*">\n/, '');
-    html = html.replace('<style>\n/*CSS*/\n</style>', head).replace('<script>\n/*JS*/\n</script>', '');
+    const alt = [['en', 'en'], ['fr', 'fr'], ['x-default', 'en']].map(([h, l]) => `<link rel="alternate" hreflang="${h}" href="${urlOf(k, l)}">`);
+    const head = [`<link rel="canonical" href="${urlOf(k, lang)}">`, ...alt, `<meta property="og:url" content="${urlOf(k, lang)}">`,
+      `<meta property="og:image" content="${SITE_URL}/img/djalumo-agro-preview.png">`, '<meta property="og:image:type" content="image/png">', '<meta property="og:image:width" content="1200">', '<meta property="og:image:height" content="627">',
+      `<meta property="og:image:alt" content="${attr(lang === 'fr' ? 'Djalumo Agro, intelligence agricole pour l’Afrique' : 'Djalumo Agro, agricultural decision intelligence for Africa')}">`, `<meta name="twitter:image" content="${SITE_URL}/img/djalumo-agro-preview.png">`,
+      '<link rel="icon" href="/favicon.ico" sizes="48x48">', '<link rel="icon" href="/favicon.svg" type="image/svg+xml">', '<link rel="apple-touch-icon" href="/apple-touch-icon.png">', '<link rel="manifest" href="/manifest.webmanifest">',
+      `<link rel="stylesheet" href="/assets/${assets.css}">`, `<script defer src="/assets/${assets.js}"></script>`].join('\n');
+    html = html.replace('<html lang="en">', `<html lang="${lang}">`)
+      .replace(/<title>[^<]*<\/title>/, `<title>${attr(titleOf(k, lang))}</title>`)
+      .replace(/(<meta name="description" content=")[^"]*(">)/, `$1${attr(descOf(k, lang))}$2`)
+      .replace(/(<meta property="og:title" content=")[^"]*(">)/, `$1${attr(titleOf(k, lang))}$2`)
+      .replace(/(<meta property="og:description" content=")[^"]*(">)/, `$1${attr(descOf(k, lang))}$2`)
+      .replace(/(<meta name="twitter:title" content=")[^"]*(">)/, `$1${attr(titleOf(k, lang))}$2`)
+      .replace(/(<meta name="twitter:description" content=")[^"]*(">)/, `$1${attr(descOf(k, lang))}$2`)
+      .replace(/(<meta property="og:locale" content=")[^"]*(">)/, `$1${lang === 'fr' ? 'fr_FR' : 'en_US'}$2`)
+      .replace(/(<meta property="og:locale:alternate" content=")[^"]*(">)/, `$1${lang === 'fr' ? 'en_US' : 'fr_FR'}$2`)
+      .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, () => `<script type="application/ld+json">${structuredData(k, lang)}</script>`)
+      // Icon files served from the site root replace the inline icon (browser tab, bookmarks, iPhone home screen).
+      .replace(/<link rel="icon" type="image\/svg\+xml" href="data:[^"]*">\n/, '')
+      .replace('<style>\n/*CSS*/\n</style>', () => head).replace('<script>\n/*JS*/\n</script>', '');
+    // The text of the page is written into the HTML, so search engines and link previews read it without running the script.
+    if (body) html = html.replace('<div id="chrome-top"></div>', () => `<div id="chrome-top">${body.top}</div>`)
+      .replace(/<main id="main" tabindex="-1">[\s\S]*?<\/main>/, () => `<main id="main" tabindex="-1">${body.main}</main>`)
+      .replace('<div id="chrome-bottom"></div>', () => `<div id="chrome-bottom">${body.bottom}</div>`);
   } else {
-    html = html.replace('/*CSS*/', () => css).replace('/*JS*/', () => js);
+    html = html.replace(/<title>[^<]*<\/title>/, '<title>Djalumo Agro</title>')
+      .replace(/(<meta name="description" content=")[^"]*(">)/, `$1${attr(descOf(k))}$2`)
+      .replace('/*CSS*/', () => css).replace('/*JS*/', () => js);
   }
   return html;
+}
+
+/** Renders a page with the site's own script in a simulated browser and returns the header, page and footer HTML. */
+async function prerender(html, url) {
+  const { JSDOM, VirtualConsole } = await import('jsdom');
+  const dom = new JSDOM(html, { url, runScripts: 'outside-only', pretendToBeVisual: true, virtualConsole: new VirtualConsole() });
+  const w = dom.window;
+  w.matchMedia = () => ({ matches: false, addEventListener() {}, removeEventListener() {}, addListener() {}, removeListener() {} });
+  w.IntersectionObserver = class { observe() {} unobserve() {} disconnect() {} };
+  w.ResizeObserver = class { observe() {} unobserve() {} disconnect() {} };
+  w.scrollTo = () => {};
+  w.fetch = () => Promise.reject(new Error('no network at build time'));
+  w.HTMLCanvasElement.prototype.getContext = () => null;
+  w.HTMLElement.prototype.focus = function () {};
+  w.SVGElement.prototype.getBBox = () => ({ x: 0, y: 0, width: 0, height: 0 });
+  w.SVGElement.prototype.getComputedTextLength = () => 0;
+  w.SVGElement.prototype.getTotalLength = () => 0;
+  w.SVGElement.prototype.getPointAtLength = () => ({ x: 0, y: 0 });
+  w.SVGElement.prototype.getScreenCTM = () => null;
+  w.eval(js);
+  await new Promise((r) => setTimeout(r, 30));
+  // Large drawings such as the world map are left to the script: they add weight and no text.
+  for (const svg of w.document.querySelectorAll('#main svg')) if (svg.outerHTML.length > 8000) svg.remove();
+  const get = (id) => w.document.getElementById(id).innerHTML;
+  const out = { top: get('chrome-top'), main: get('main'), bottom: get('chrome-bottom') };
+  w.close();
+  return out;
 }
 
 function copyImages(dest) {
@@ -113,12 +167,29 @@ if (target === 'android') {
   const assets = { js: `app.${h(js)}.js`, css: `app.${h(css)}.css` };
   fs.writeFileSync(path.join(out, 'assets', assets.js), js);
   fs.writeFileSync(path.join(out, 'assets', assets.css), css);
-  for (const k of ROUTES) fs.writeFileSync(path.join(out, k === 'home' ? 'index.html' : `${k}.html`), page(k, assets));
-  fs.writeFileSync(path.join(out, '404.html'), page('home', assets).replace(/<title>[^<]*<\/title>/, '<title>Signal not found · Djalumo Agro</title>').replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex">'));
+  // Every page exists in English at /page and in French at /fr/page, with its text already written in the HTML.
+  fs.mkdirSync(path.join(out, 'fr'), { recursive: true });
+  let prerendered = 0;
+  for (const lang of ['en', 'fr']) {
+    for (const k of ROUTES) {
+      const shell = page(k, assets, lang);
+      let body = null;
+      try { body = await prerender(shell, urlOf(k, lang)); prerendered++; } catch (e) { console.warn(`prerender failed for ${lang} ${k}: ${e.message}`); }
+      const file = lang === 'fr' ? path.join('fr', k === 'home' ? 'index.html' : `${k}.html`) : (k === 'home' ? 'index.html' : `${k}.html`);
+      fs.writeFileSync(path.join(out, file), page(k, assets, lang, body));
+      // /fr itself: served from fr.html as well as fr/index.html, whatever the host's folder rules.
+      if (lang === 'fr' && k === 'home') fs.writeFileSync(path.join(out, 'fr.html'), page(k, assets, lang, body));
+    }
+  }
+  fs.writeFileSync(path.join(out, '404.html'), page('home', assets).replace(/<title>[^<]*<\/title>/, '<title>Signal not found · Djalumo Agro</title>').replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex">').replace(/<link rel="(canonical|alternate)"[^>]*>\n/g, ''));
   copyImages(path.join(out, 'img'));
   for (const f of fs.readdirSync(path.join(root, 'icons'))) fs.copyFileSync(path.join(root, 'icons', f), path.join(out, f));
+  // The sitemap lists both languages of every page and tells search engines they are translations of each other.
   const today = new Date().toISOString().slice(0, 10);
-  fs.writeFileSync(path.join(out, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${ROUTES.map((k) => `  <url><loc>${urlOf(k)}</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>${k === 'home' ? '1.0' : ['privacy', 'terms'].includes(k) ? '0.3' : '0.8'}</priority></url>`).join('\n')}\n</urlset>\n`);
+  const prio = (k) => (k === 'home' ? '1.0' : ['privacy', 'terms'].includes(k) ? '0.3' : '0.8');
+  const alts = (k) => ['en', 'fr'].map((l) => `<xhtml:link rel="alternate" hreflang="${l}" href="${urlOf(k, l)}"/>`).join('') + `<xhtml:link rel="alternate" hreflang="x-default" href="${urlOf(k, 'en')}"/>`;
+  const urls = ['en', 'fr'].flatMap((l) => ROUTES.map((k) => `  <url><loc>${urlOf(k, l)}</loc>${alts(k)}<lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>${prio(k)}</priority></url>`));
+  fs.writeFileSync(path.join(out, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join('\n')}\n</urlset>\n`);
   fs.writeFileSync(path.join(out, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /api/\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
-  console.log(`production build: ${ROUTES.length} pages, ${assets.js} (${(js.length / 1024).toFixed(0)} KB), ${assets.css}`);
+  console.log(`production build: ${ROUTES.length} pages in English and French (${prerendered} prerendered), ${assets.js} (${(js.length / 1024).toFixed(0)} KB), ${assets.css}`);
 }

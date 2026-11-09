@@ -27,3 +27,36 @@ test('the android bundle builds offline: one page, hash routes, forms sent to th
   assert.match(site, /artifact build/);
   assert.doesNotMatch(fs.readFileSync(new URL('../dist-artifact/index.html', import.meta.url), 'utf8'), /function appBoot\(\)/);
 });
+
+test('search engines get every page in English and French, with its text, its language links and the organization', async () => {
+  const fs = await import('node:fs');
+  const out = execFileSync(process.execPath, ['site/build.mjs', '--target=production'], { cwd: root, encoding: 'utf8', env: { ...process.env, SITE_URL: 'https://agro.djalumo.com' } });
+  assert.match(out, /28 prerendered/);
+  const read = (p) => fs.readFileSync(new URL('../public/' + p, import.meta.url), 'utf8');
+  const titles = new Set();
+  for (const [file, lang, url] of [['about.html', 'en', '/about'], ['fr/about.html', 'fr', '/fr/about'], ['index.html', 'en', '/'], ['fr/index.html', 'fr', '/fr'], ['fr/planner.html', 'fr', '/fr/planner']]) {
+    const html = read(file);
+    assert.match(html, new RegExp(`<html lang="${lang}">`), file);
+    assert.match(html, new RegExp(`<link rel="canonical" href="https://agro.djalumo.com${url.replace(/\//g, '\\/')}">`), file);
+    assert.match(html, /<link rel="alternate" hreflang="fr" href="https:\/\/agro\.djalumo\.com\/fr[^"]*">/, file);
+    assert.match(html, /<link rel="alternate" hreflang="x-default"/, file);
+    const t = html.match(/<title>([^<]*)<\/title>/)[1];
+    assert.ok(t.length <= 60 && !titles.has(t), 'title ' + t);
+    titles.add(t);
+    const d = html.match(/<meta name="description" content="([^"]*)">/)[1];
+    assert.ok(d.length >= 80 && d.length <= 160, 'description length ' + file);
+    const main = html.match(/<main id="main" tabindex="-1">([\s\S]*?)<\/main>/)[1];
+    assert.ok(main.replace(/<[^>]+>/g, '').length > 1500, 'prerendered text ' + file);
+    assert.doesNotMatch(main, /href="#(planner|about|field|contact)"/, 'links are real paths ' + file);
+    const ld = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
+    const types = ld['@graph'].map((n) => n['@type']);
+    assert.ok(types.includes('Organization') && types.includes('WebSite') && types.includes('Person'), file);
+  }
+  assert.match(read('about.html'), /Franck Junior Djandja Tomwa/);
+  assert.match(read('fr/about.html'), /plus de vingt ans de travail/);
+  assert.match(read('fr/contact.html'), /mailto:franck\.djandja@djalumo\.com/);
+  const map = read('sitemap.xml');
+  assert.equal((map.match(/<url>/g) || []).length, 28);
+  assert.match(map, /<loc>https:\/\/agro\.djalumo\.com\/fr\/field<\/loc><xhtml:link rel="alternate" hreflang="en" href="https:\/\/agro\.djalumo\.com\/field"\/>/);
+  assert.ok(read('index.html').length < 120000, 'the home page stays light: the world map is drawn by the script');
+});

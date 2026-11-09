@@ -9,7 +9,7 @@ function fieldCaption(id) {
   const when = p.date ? F.dated + ' ' + fdate(p.date) : pl.period;
   return { text, plate: F.plate + ' ' + p.plate + (p.panel ? ' · ' + p.panel : ''), stage: pl.stage + ' · ' + pl.period + ' · ' + pl.site, when, dateKnown: !!p.date, title: pl.title };
 }
-const fimg = (id, alt, big, eager) => { const p = FP(id); return '<img src="img/field/' + id + (big ? '' : '-s') + '.webp" width="' + (big ? p.w : p.sw) + '" height="' + (big ? p.h : p.sh) + '" alt="' + esc(alt) + '" ' + (eager ? 'fetchpriority="high"' : 'loading="lazy"') + ' decoding="async" style="background:' + p.c + '">'; };
+const fimg = (id, alt, big, eager) => { const p = FP(id); return '<img src="' + IMG_BASE + 'field/' + id + (big ? '' : '-s') + '.webp" width="' + (big ? p.w : p.sw) + '" height="' + (big ? p.h : p.sh) + '" alt="' + esc(alt) + '" ' + (eager ? 'fetchpriority="high"' : 'loading="lazy"') + ' decoding="async" style="background:' + p.c + '">'; };
 
 /* Home: phase strip and the eight plate cards */
 function fieldHomeHTML() {
@@ -85,7 +85,7 @@ function lightbox(list, i, opener) {
     $('[data-lb-img]', box).innerHTML = fimg(id, c.text, true, true);
     $('[data-lb-n]', box).textContent = (i + 1) + ' ' + F.of + ' ' + list.length;
     $('[data-lb-cap]', box).innerHTML = '<div class="k">' + esc(c.plate + ' · ' + c.title) + '</div><p>' + esc(c.text) + '</p><small>' + esc(c.stage) + (c.dateKnown ? ' · ' + esc(c.when) : '') + '</small>';
-    [list[i + 1], list[i - 1]].forEach(n => { if (n) { const im = new Image(); im.src = 'img/field/' + n + '.webp'; } });
+    [list[i + 1], list[i - 1]].forEach(n => { if (n) { const im = new Image(); im.src = IMG_BASE + 'field/' + n + '.webp'; } });
     analytics.track('photo_view', { id });
   };
   const close = () => { D.removeEventListener('keydown', key); box.remove(); D.body.style.overflow = ''; if (opener && opener.focus) opener.focus(); };

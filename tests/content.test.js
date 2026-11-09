@@ -68,7 +68,7 @@ test('English and French have the same structure for the new content', () => {
 });
 
 test('no em or en dash in the new copy', () => {
-  for (const f of ['site/src/i18n-v3.js', 'site/src/i18n-v7.js', 'site/src/world.js', 'site/src/field.js']) assert.doesNotMatch(read(f), /[–—]/, f);
+  for (const f of ['site/src/i18n-v3.js', 'site/src/i18n-v7.js', 'site/src/i18n-seo.js', 'site/src/world.js', 'site/src/field.js']) assert.doesNotMatch(read(f), /[–—]/, f);
 });
 
 test('visitor copy reads as written by people: no file or metadata talk, no development jargon in the field and planner text', () => {

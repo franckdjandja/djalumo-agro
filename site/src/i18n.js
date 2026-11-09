@@ -554,8 +554,8 @@ en: {
     lead: 'Partnerships, pilot participation, investment or data collaboration. Tell us what you are working on, in English or French.',
     nextH: 'What happens next',
     next: ['Your message is stored securely with its timestamp.', 'The project team reads every message.', 'You receive a reply by email, in the language you wrote in.'],
-    whereH: 'Where we work',
-    where: [['Project base', 'Kigali, Rwanda'], ['Pilot zone', 'Foumbot, Noun division, West Cameroon'], ['Languages', 'English, French']],
+    whereH: 'Contact details',
+    where: [['Email', 'franck.djandja@djalumo.com'], ['Project base', 'Kigali, Rwanda'], ['Pilot zone', 'Foumbot, Noun division, West Cameroon'], ['Languages', 'English, French']],
     demoH: 'Prefer a walkthrough?', demoD: 'Request a guided demo of the Season Planner with your own numbers.'
   },
 
@@ -627,7 +627,7 @@ en: {
       ['Where it is stored', 'Submissions are stored in a managed database, encrypted in transit and at rest, with access by role.'],
       ['Cookies and analytics', 'This site sets no tracking cookies and sends no analytics. Your language choice may be remembered in your own browser. If analytics are added later, they will be privacy respecting and announced here before activation.'],
       ['How long we keep it', 'Messages, demo requests and report requests are kept for up to 24 months after the last exchange. Newsletter data is kept until you unsubscribe, after which only the unsubscription date is retained to honour your choice.'],
-      ['Your rights', 'You can ask to access, correct, export or delete your data at any time through the contact form. We will answer within 30 days.'],
+      ['Your rights', 'You can ask to access, correct, export or delete your data at any time through the contact form or by writing to franck.djandja@djalumo.com. We will answer within 30 days.'],
       ['Applicable law', 'We apply Rwanda’s law relating to the protection of personal data and privacy, Cameroon’s personal data legislation, and the rules of each new country of operation.']
     ]
   },
@@ -1208,8 +1208,8 @@ fr: {
     lead: 'Partenariats, participation au pilote, investissement ou collaboration sur les données. Présentez votre projet, en anglais ou en français.',
     nextH: 'La suite',
     next: ['Votre message est enregistré de façon sécurisée, avec son horodatage.', 'L’équipe du projet lit chaque message.', 'Vous recevez une réponse par courriel, dans la langue de votre message.'],
-    whereH: 'Où nous travaillons',
-    where: [['Base du projet', 'Kigali, Rwanda'], ['Zone pilote', 'Foumbot, département du Noun, Ouest Cameroun'], ['Langues', 'Anglais, français']],
+    whereH: 'Coordonnées',
+    where: [['Courriel', 'franck.djandja@djalumo.com'], ['Base du projet', 'Kigali, Rwanda'], ['Zone pilote', 'Foumbot, département du Noun, Ouest Cameroun'], ['Langues', 'Anglais, français']],
     demoH: 'Vous préférez une présentation ?', demoD: 'Demandez une démonstration guidée du Planificateur de saison avec vos propres chiffres.'
   },
 
@@ -1281,7 +1281,7 @@ fr: {
       ['Où elles sont conservées', 'Les envois sont conservés dans une base de données gérée, chiffrée en transit et au repos, avec un accès par rôle.'],
       ['Cookies et mesure d’audience', 'Ce site ne dépose aucun cookie de suivi et n’envoie aucune mesure d’audience. Votre choix de langue peut être mémorisé dans votre propre navigateur. Si une mesure d’audience est ajoutée, elle respectera la vie privée et sera annoncée ici avant activation.'],
       ['Durée de conservation', 'Les messages, demandes de démo et demandes de rapport sont conservés jusqu’à 24 mois après le dernier échange. Les données de la lettre sont conservées jusqu’à votre désinscription, après laquelle seule la date de désinscription est gardée pour respecter votre choix.'],
-      ['Vos droits', 'Vous pouvez demander l’accès, la rectification, l’export ou la suppression de vos données à tout moment via le formulaire de contact. Nous répondons sous 30 jours.'],
+      ['Vos droits', 'Vous pouvez demander l’accès, la rectification, l’export ou la suppression de vos données à tout moment via le formulaire de contact ou en écrivant à franck.djandja@djalumo.com. Nous répondons sous 30 jours.'],
       ['Droit applicable', 'Nous appliquons la loi rwandaise relative à la protection des données à caractère personnel et de la vie privée, la législation camerounaise sur les données personnelles, et les règles de chaque nouveau pays d’opération.']
     ]
   },

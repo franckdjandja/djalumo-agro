@@ -8,12 +8,16 @@ const store = {
   get(k) { try { return window.localStorage.getItem(k); } catch (e) { return null; } },
   set(k, v) { try { window.localStorage.setItem(k, v); } catch (e) { /* storage unavailable */ } }
 };
-let LANG = store.get('af.lang') === 'fr' ? 'fr' : 'en';
+/* On the public site the language is part of the address: /fr/... is French, everything else English. */
+const PATH_LANG = typeof AF_TARGET !== 'undefined' && AF_TARGET === 'production' ? (/^\/fr(\/|$)/.test(location.pathname) ? 'fr' : 'en') : null;
+let LANG = PATH_LANG || (store.get('af.lang') === 'fr' ? 'fr' : 'en');
+/* Images are served from the site root on the public site, next to the page in the application. */
+const IMG_BASE = PATH_LANG ? '/img/' : 'img/';
 const L = () => I18N[LANG];
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const IMG = { 'bulk-sacks': [645, 860], 'clearing': [645, 860], 'cucumber-field': [645, 860], 'father-2021': [524, 860], 'founder-tomato': [484, 860], 'harvest-2025': [535, 860], 'heat-damage': [484, 860], 'nursery': [484, 860], 'pump': [645, 860], 'relaunch-field': [487, 860], 'tomato-rows': [645, 860] };
-const img = (name, alt, eager) => '<img src="img/' + name + '.webp" alt="' + esc(alt) + '" width="' + IMG[name][0] + '" height="' + IMG[name][1] + '" ' + (eager ? 'fetchpriority="high"' : 'loading="lazy"') + ' decoding="async">';
+const img = (name, alt, eager) => '<img src="' + IMG_BASE + name + '.webp" alt="' + esc(alt) + '" width="' + IMG[name][0] + '" height="' + IMG[name][1] + '" ' + (eager ? 'fetchpriority="high"' : 'loading="lazy"') + ' decoding="async">';
 const nf = (v, d = 0) => new Intl.NumberFormat(L().meta.locale, { maximumFractionDigits: d, minimumFractionDigits: d }).format(v);
 const money = (v, cur) => {
   try { return new Intl.NumberFormat(L().meta.locale, { style: 'currency', currency: cur, maximumFractionDigits: Math.abs(v) >= 100 || v === 0 || cur === 'XAF' || cur === 'RWF' || cur === 'NGN' || cur === 'KES' ? 0 : 2 }).format(v); }

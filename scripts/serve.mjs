@@ -6,7 +6,7 @@ import path from 'node:path';
 
 const root = path.resolve(new URL('../public', import.meta.url).pathname);
 const apiDir = new URL('../api/', import.meta.url);
-const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.webp': 'image/webp', '.xml': 'application/xml', '.txt': 'text/plain; charset=utf-8', '.json': 'application/json' };
+const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.webp': 'image/webp', '.xml': 'application/xml', '.txt': 'text/plain; charset=utf-8', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.ico': 'image/x-icon', '.webmanifest': 'application/manifest+json' };
 const handlers = {};
 
 const server = http.createServer(async (req, res) => {
@@ -24,7 +24,7 @@ const server = http.createServer(async (req, res) => {
   if (rel.endsWith('/')) rel += 'index';
   let file = path.join(root, rel);
   if (!file.startsWith(root)) { res.statusCode = 400; return res.end(); }
-  if (!path.extname(file)) file += '.html';
+  if (!path.extname(file)) file = !fs.existsSync(file + '.html') && fs.existsSync(path.join(file, 'index.html')) ? path.join(file, 'index.html') : file + '.html';
   let status = 200;
   if (!fs.existsSync(file)) { file = path.join(root, '404.html'); status = 404; }
   res.writeHead(status, { 'Content-Type': TYPES[path.extname(file)] || 'application/octet-stream' });

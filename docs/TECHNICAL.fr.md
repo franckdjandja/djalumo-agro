@@ -126,6 +126,10 @@ Un futur espace `/admin` demandera : une authentification par un fournisseur d�
 
 Chaque texte visible se trouve dans `site/src/i18n.js`, en deux objets parallèles : `en` (référence) et `fr`. Pour ajouter le swahili, copier l’objet `en` sous le nom `sw`, le traduire et ajouter un bouton au sélecteur de langue. Les modèles de contenu (solutions, modules, sources de données, indicateurs, feuille de route, jalons) sont des tableaux du même fichier et pourront plus tard venir d’un CMS sans tête.
 
+## Moteurs de recherche
+
+Chaque page existe en anglais à `/page` et en français à `/fr/page` ; l’adresse fixe la langue, et un visiteur qui a déjà choisi une langue y est conduit. La construction exécute le script du site dans jsdom pour écrire l’en-tête, le texte de la page et le pied de page dans chaque fichier HTML : les moteurs de recherche et les aperçus de liens lisent ainsi le contenu sans exécuter le script ; la carte du monde, le dessin le plus lourd, reste dessinée par le navigateur. Les titres et descriptions viennent de `site/src/i18n-seo.js`. Chaque page porte son adresse canonique, des liens `hreflang` vers les deux langues et des données structurées décrivant l’organisation, son fondateur, le site et la page. Le plan du site liste les 28 adresses avec leurs équivalents dans l’autre langue.
+
 ## Mesure d’audience
 
 `window.DjalumoAnalytics` met en file les événements : `page_view`, `cta_click`, `planner_run`, `planner_tab`, `planner_window`, `map_select`, `map_layer`, `arch_select`, `persona_select`, `form_submitted`, `form_invalid`, `form_error`, `language_change`. Rien n’est envoyé tant qu’aucun fournisseur n’est configuré. Pour en brancher un autre :
@@ -155,7 +159,7 @@ L'application est construite avec Capacitor 8 à partir des mêmes sources que l
 | --- | --- |
 | Identifiant de l'application | `com.djalumo.agro` (définitif une fois publié sur Google Play) |
 | Version minimale d'Android | Android 7.0 (API 24), API cible 36 |
-| Formulaires et rapports | Envoyés à `APP_SITE_URL` (par défaut `https://agro.djalumo.com`) ; l'API accepte l'origine de l'application `https://localhost` et lui répond avec les en têtes d'accès croisé |
+| Formulaires et rapports | Envoyés à `APP_SITE_URL` (par défaut `https://agro.djalumo.com`) ; l'API accepte l'origine de l'application `https://localhost` et lui répond avec les en-têtes d'accès croisé |
 | Liens externes | Ouverts dans le navigateur du téléphone |
 | Bouton retour | Ferme la visionneuse, la fenêtre ou le menu ouvert, puis revient aux pages précédentes, puis quitte l'application |
 
