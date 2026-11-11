@@ -63,7 +63,7 @@ function structuredData(k, lang) {
       sameAs: ['https://github.com/franckdjandja/djalumo-agro'] },
     { '@type': 'Person', '@id': founder, name: 'Franck Junior Djandja Tomwa',
       jobTitle: ['Founder of Djalumo Agro', 'Telecommunications Engineer', 'Data Analyst'], worksFor: { '@id': org },
-      sameAs: ['https://github.com/franckdjandja'] },
+      sameAs: ['https://www.linkedin.com/in/franck-junior-djandja-tomwa-87761522b', 'https://github.com/franckdjandja'] },
     { '@type': 'WebSite', '@id': site, url: SITE_URL + '/', name: 'Djalumo Agro', alternateName: 'Djalumo', inLanguage: ['en', 'fr'], publisher: { '@id': org } },
     { '@type': k === 'about' ? 'AboutPage' : k === 'contact' ? 'ContactPage' : 'WebPage', '@id': urlOf(k, lang) + '#webpage', url: urlOf(k, lang),
       name: titleOf(k, lang), description: descOf(k, lang), inLanguage: lang, isPartOf: { '@id': site }, about: { '@id': org } }
