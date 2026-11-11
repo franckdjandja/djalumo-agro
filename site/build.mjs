@@ -60,7 +60,7 @@ function structuredData(k, lang) {
       image: SITE_URL + '/img/djalumo-agro-preview.png', description: I18N.en.seo.home[1], email: 'franck.djandja@djalumo.com',
       founder: { '@id': founder }, areaServed: 'Africa', knowsLanguage: ['en', 'fr'],
       knowsAbout: ['agricultural decision intelligence', 'farm budgeting', 'crop planning', 'agricultural data analysis'],
-      sameAs: ['https://github.com/franckdjandja/djalumo-agro'] },
+      sameAs: ['https://www.linkedin.com/company/djalumo-agro/', 'https://github.com/franckdjandja/djalumo-agro'] },
     { '@type': 'Person', '@id': founder, name: 'Franck Junior Djandja Tomwa',
       jobTitle: ['Founder of Djalumo Agro', 'Telecommunications Engineer', 'Data Analyst'], worksFor: { '@id': org },
       sameAs: ['https://www.linkedin.com/in/franck-junior-djandja-tomwa-87761522b', 'https://github.com/franckdjandja'] },
