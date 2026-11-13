@@ -183,6 +183,10 @@ function guideData() {
     const src = new Set([].concat(c.src || [], c.price.src || [], c.harvest_src || [], ...r.itinerary.map((st) => st.src || []), quoted));
     const rows = (r.water.balance && r.water.balance.rows) || [];
     const y = c.yield_t_ha, product = c.products ? Object.values(c.products)[0] : null;
+    // The same hectare when the farmer already owns part of what the reference case buys; labour stays hired.
+    const costOf = (o) => { const v = E.plan(kb, { ...base, start: r.input.start, ...o }); return Math.round(season ? v.budget.total : v.requiredXaf); };
+    const have = (season ? [['land', { land: 'own' }], ['irrigation', { water: 'existing' }], ['tools', { ownTools: true }], ['all', { land: 'own', water: 'existing', ownTools: true }]]
+      : [['land', { land: 'own' }], ['tools', { ownTools: true }], ['allLong', { land: 'own', ownTools: true }]]).map(([k, o]) => [k, costOf(o)]);
     out[id] = {
       profile, season, group: season ? 'season' : profile === 'orchard' ? 'orchard' : 'long', bestMonth: best, horizon,
       cost: Math.round(season ? r.budget.total : r.requiredXaf), reserve: Math.round(r.budget.reserve || 0),
@@ -197,7 +201,8 @@ function guideData() {
       firstMonths: season ? null : c.first_harvest_months || r.firstHarvestMonths,
       steps, harvestDetail: c.harvest_detail || null, disease: c.disease_note, heat: c.heat_c || null,
       water: { option: base.water, need: Math.round(rows.reduce((a, x) => a + x.etc, 0)), rain: Math.round(rows.reduce((a, x) => a + Math.min(x.peff, x.etc), 0)), m3: Math.round(r.water.grossM3 || 0) },
-      sources: [...src].filter((k) => kb.sources[k])
+      sources: [...src].filter((k) => kb.sources[k]),
+      have, covered: E.systemsFor(kb, id).length > 1
     };
   }
   return out;

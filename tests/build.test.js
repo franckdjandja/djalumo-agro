@@ -73,6 +73,7 @@ test('every crop guide is built from the planner figures, in both languages', as
       const html = read(file), t = text(html);
       assert.match(t, lang === 'en' ? /What a hectare costs/ : /Ce que coûte un hectare/, file);
       assert.match(t, lang === 'en' ? /Break even price \d/ : /Prix d’équilibre \d/, file);
+      assert.match(t, lang === 'en' ? /What you already have changes the budget/ : /Ce que vous avez déjà change le budget/, file);
       assert.match(t, /\[[A-Z]{1,2}\d+\]/, 'sources listed ' + file);
       assert.doesNotMatch(t, /NaN|undefined|Infinity|\$NaN/, file);
       assert.match(html, new RegExp('href="' + (lang === 'fr' ? '/fr' : '') + '/planner\\?crop=' + id + '"'), 'planner link ' + file);

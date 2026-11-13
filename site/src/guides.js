@@ -47,6 +47,9 @@ function guidePage(id) {
   const longRows = g.cats.map(([k, v]) => ['<b>' + esc(P.cats[k] || k) + '</b>', '<span class="tnum">' + gAmt(v) + '</span>', '<span class="tnum">' + gShare(v / sum) + '</span>']).concat([['<b>' + esc(G.total) + '</b>', '<b class="tnum">' + gAmt(sum) + '</b>', '']]);
   const cost = sec(head('', g.season ? G.costH : G.costHLong(durLabel(g.horizon)), g.season ? G.costLead(water, month) : G.costLeadLong(water, month, durLabel(g.horizon))) + table(G.cols, g.season ? cats : longRows, 'gtbl'));
 
+  const H = G.have, haveRows = g.have.map(([k, v]) => ['<b>' + esc(H.rows[k]) + '</b>', '<span class="tnum">' + gAmt(v) + '</span>', '<span class="tnum">' + (v < g.cost ? '\u2212' + gAmt(g.cost - v) : gAmt(0)) + '</span>']);
+  const have = sec(head('', H.h, H.lead) + table(g.season ? H.cols : H.colsLong, haveRows, 'gtbl') + (g.covered ? '<p class="small muted rv" style="margin-top:14px">' + esc(H.covered) + '</p>' : ''));
+
   const when = (s) => {
     if (s.to < 0) return g.season ? G.before : G.beforeLong;
     if (g.season) return G.weeks(Math.max(1, Math.floor(s.from / 7) + 1), Math.max(1, Math.ceil(s.to / 7)));
@@ -73,7 +76,7 @@ function guidePage(id) {
   const plan = PATH_MODE ? pathOf('planner') + '?crop=' + id : '#planner';
   const cta = sec('<div class="cta-band rv"><div><h2 class="h2" style="max-width:20ch">' + esc(g.season ? G.ctaH : G.ctaHLong) + '</h2><p class="lead" style="margin-top:16px">' + esc(G.ctaLead) + '</p></div><div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center"><a class="btn btn-primary" href="' + esc(plan) + '" data-gcrop="' + id + '">' + esc(G.cta) + ARROW + '</a></div></div>');
   const related = sec(head('', G.related) + '<div class="gchips rv">' + GUIDE_IDS.filter((x) => x !== id).map((x) => '<a class="gchip" href="' + gHref(x) + '">' + esc(gName(x)) + '</a>').join('') + '</div>');
-  return hero + sec(kpis) + cost + cal + yieldSec + risk + cta + sources + related;
+  return hero + sec(kpis) + cost + have + cal + yieldSec + risk + cta + sources + related;
 }
 
 const fmtBuilt = () => new Intl.DateTimeFormat(L().meta.locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(KB.built + 'T00:00:00Z'));
