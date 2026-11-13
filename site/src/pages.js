@@ -49,6 +49,8 @@ const PAGES = {
 
   planner: {
     html() {
+      // A link from a crop guide opens the planner on that crop: /planner?crop=tomato.
+      if (PATH_MODE && location.search) { const q = new URLSearchParams(location.search).get('crop'); if (q && KB.crops[q]) { PLAN.crop = q; history.replaceState(null, '', location.pathname + location.hash); } }
       const P = L().planner;
       return pageHero(P.eyebrow, P.h1, P.lead) + sec('<div class="panel planner" data-plroot>' + plannerFormHTML(false) + '<div class="planner-out" data-pout aria-live="polite"></div></div>', ' id="plan"') + ctaBand();
     },
@@ -186,6 +188,7 @@ const PAGES = {
     }
   }
 };
+Object.assign(PAGES, guidePages());
 
 function tiersHTML() { return '<div class="tiers rv">' + L().tiers.map(t => '<div><div class="rng">' + esc(t.r) + '</div><h3>' + esc(t.n) + '</h3><p>' + esc(t.d) + '</p><div class="who">' + esc(t.w) + '</div></div>').join('') + '</div>'; }
 function phasesHTML() {
@@ -240,7 +243,7 @@ function footerHTML() {
   const F = L().footer, N = L().nav;
   const col = (h, ks) => '<div><h5>' + esc(h) + '</h5><ul>' + ks.map(k => '<li><a href="#' + k + '">' + esc(N[k] || L().meta.pages[k]) + '</a></li>').join('') + '</ul></div>';
   return '<footer class="ftr"><div class="wrap"><div class="ftr-grid"><div><a class="brand" href="#home" aria-label="Djalumo Agro">' + LOGO + '<span class="brand-sub">Agro</span></a><p class="muted small" style="margin-top:16px;max-width:34ch">' + esc(F.tag) + '</p><div class="status-row" style="margin-top:18px"><span class="chip ok"><i></i>' + esc(F.status) + '</span></div></div>' +
-    col(F.cols[0], ['planner', 'field', 'platform', 'intelligence', 'data']) + col(F.cols[1], ['solutions', 'impact', 'about']) + col(F.cols[2], ['contact', 'demo', 'newsletter']) +
+    col(F.cols[0], ['planner', 'crops', 'field', 'platform', 'intelligence', 'data']) + col(F.cols[1], ['solutions', 'impact', 'about']) + col(F.cols[2], ['contact', 'demo', 'newsletter']) +
     '<div><h5>' + esc(F.nlH) + '</h5><div class="nl-foot">' + formHTML('newsletter', 'nl-foot', { compact: true }) + '</div></div></div>' +
     '<div class="ftr-bot"><span>' + esc(F.rights) + '</span><span>' + esc(F.place) + ' · ' + esc(F.noTrack) + ' · <a href="#privacy">' + esc(L().meta.pages.privacy) + '</a> · <a href="#terms">' + esc(L().meta.pages.terms) + '</a> · <a href="https://www.linkedin.com/company/djalumo-agro/" target="_blank" rel="noopener">LinkedIn</a></span></div></div></footer>';
 }

@@ -123,6 +123,9 @@ p{margin:0}
 .sheet .btn-primary{background:#fff;color:var(--deep)}
 @media (max-width:1440px){.hdr-cta{display:none}}
 @media (max-width:1240px){.nav{display:none}.menu-btn{display:inline-flex}.hdr-tools{margin-left:auto}}
+/* Small Android phones (360px and less): the logo, the language switch and the menu share the line. */
+@media (max-width:380px){.hdr .brand{gap:8px}.hdr .brand-sub{letter-spacing:.2em}.hdr-tools{gap:6px}}
+@media (max-width:340px){.hdr .brand-sub{display:none}}
 
 /* ---------- Sections ---------- */
 main{display:block}
@@ -285,6 +288,11 @@ table.tbl{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
 .tbl td:first-child{color:var(--fg);font-weight:500}
 .tbl a{color:var(--green);text-decoration:none}
 .tbl a:hover{text-decoration:underline}
+/* Guide tables have two or three short columns: they fit a phone without scrolling sideways. */
+table.tbl.gtbl{min-width:0}
+@media (max-width:374px){.kpis.gkpis{grid-template-columns:1fr}}
+.gtbl td+td,.gtbl th+th{white-space:nowrap}
+@media (max-width:560px){.gtbl th,.gtbl td{padding:12px 12px}.gtbl{font-size:14px}}
 
 /* cards grid */
 .g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
@@ -887,3 +895,20 @@ h1[tabindex]:focus{outline:none}
 @media (max-width:620px){.v-main{font-size:16px}.verdict{padding:16px}}
 .kpis .v.vxs{font-size:clamp(15px,1.2vw,18px);letter-spacing:-.01em;white-space:nowrap}
 
+
+/* Crop guides */
+.crumbs{color:rgba(255,255,255,.72);margin-bottom:18px}
+.crumbs a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.crumbs [aria-current]{color:#fff}
+.gcard{display:flex;flex-direction:column;gap:12px;color:inherit;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}
+.gcard:hover{transform:translateY(-2px);box-shadow:var(--shadow-3,var(--shadow-2))}
+.gcard h3{font-size:19px}
+.gdl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0;font-size:14px}
+.gdl dt{color:var(--fg-3)}
+.gdl dd{margin:0;text-align:right;color:var(--fg)}
+.glink{margin-top:auto;display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--green)}
+.gsrc{list-style:none;padding:0;margin:0;display:grid;gap:8px;max-width:90ch}
+.gsrc li{color:var(--fg-2);line-height:1.5}
+.gchips{display:flex;flex-wrap:wrap;gap:8px}
+.gchip{display:inline-block;padding:8px 14px;border-radius:999px;background:#fff;box-shadow:var(--shadow-2);color:var(--fg);text-decoration:none;font-size:14px}
+.gchip:hover{color:var(--green)}

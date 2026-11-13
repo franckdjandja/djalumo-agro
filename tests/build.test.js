@@ -31,10 +31,10 @@ test('the android bundle builds offline: one page, hash routes, forms sent to th
 test('search engines get every page in English and French, with its text, its language links and the organization', async () => {
   const fs = await import('node:fs');
   const out = execFileSync(process.execPath, ['site/build.mjs', '--target=production'], { cwd: root, encoding: 'utf8', env: { ...process.env, SITE_URL: 'https://agro.djalumo.com' } });
-  assert.match(out, /28 prerendered/);
+  assert.match(out, /54 prerendered/);
   const read = (p) => fs.readFileSync(new URL('../public/' + p, import.meta.url), 'utf8');
   const titles = new Set();
-  for (const [file, lang, url] of [['about.html', 'en', '/about'], ['fr/about.html', 'fr', '/fr/about'], ['index.html', 'en', '/'], ['fr/index.html', 'fr', '/fr'], ['fr/planner.html', 'fr', '/fr/planner']]) {
+  for (const [file, lang, url] of [['about.html', 'en', '/about'], ['fr/about.html', 'fr', '/fr/about'], ['index.html', 'en', '/'], ['fr/index.html', 'fr', '/fr'], ['fr/planner.html', 'fr', '/fr/planner'], ['crops.html', 'en', '/crops'], ['crops/tomato.html', 'en', '/crops/tomato'], ['fr/crops/avocado.html', 'fr', '/fr/crops/avocado']]) {
     const html = read(file);
     assert.match(html, new RegExp(`<html lang="${lang}">`), file);
     assert.match(html, new RegExp(`<link rel="canonical" href="https://agro.djalumo.com${url.replace(/\//g, '\\/')}">`), file);
@@ -56,7 +56,27 @@ test('search engines get every page in English and French, with its text, its la
   assert.match(read('fr/about.html'), /plus de vingt ans de travail/);
   assert.match(read('fr/contact.html'), /mailto:franck\.djandja@djalumo\.com/);
   const map = read('sitemap.xml');
-  assert.equal((map.match(/<url>/g) || []).length, 28);
+  assert.equal((map.match(/<url>/g) || []).length, 54);
+  assert.match(map, /<loc>https:\/\/agro\.djalumo\.com\/fr\/crops\/cassava<\/loc>/);
   assert.match(map, /<loc>https:\/\/agro\.djalumo\.com\/fr\/field<\/loc><xhtml:link rel="alternate" hreflang="en" href="https:\/\/agro\.djalumo\.com\/field"\/>/);
   assert.ok(read('index.html').length < 120000, 'the home page stays light: the world map is drawn by the script');
+});
+
+test('every crop guide is built from the planner figures, in both languages', async () => {
+  const fs = await import('node:fs');
+  const read = (p) => fs.readFileSync(new URL('../public/' + p, import.meta.url), 'utf8');
+  const text = (html) => html.match(/<main id="main" tabindex="-1">([\s\S]*?)<\/main>/)[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+  const ids = fs.readdirSync(new URL('../public/crops/', import.meta.url)).map((f) => f.replace('.html', ''));
+  assert.equal(ids.length, 12);
+  for (const id of ids) {
+    for (const [file, lang] of [['crops/' + id + '.html', 'en'], ['fr/crops/' + id + '.html', 'fr']]) {
+      const html = read(file), t = text(html);
+      assert.match(t, lang === 'en' ? /What a hectare costs/ : /Ce que coûte un hectare/, file);
+      assert.match(t, lang === 'en' ? /Break even price \d/ : /Prix d’équilibre \d/, file);
+      assert.match(t, /\[[A-Z]{1,2}\d+\]/, 'sources listed ' + file);
+      assert.doesNotMatch(t, /NaN|undefined|Infinity|\$NaN/, file);
+      assert.match(html, new RegExp('href="' + (lang === 'fr' ? '/fr' : '') + '/planner\\?crop=' + id + '"'), 'planner link ' + file);
+    }
+  }
+  assert.match(text(read('crops/greenbean.html')), /Sowing with DAP in the furrow Week 1/);
 });

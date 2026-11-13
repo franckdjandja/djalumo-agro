@@ -1,0 +1,166 @@
+/* ---------- Crop guides: one page per crop, figures computed by the Season Planner at build time ---------- */
+I18N.en.nav.crops = 'Crop guides';
+I18N.fr.nav.crops = 'Guides des cultures';
+I18N.en.meta.pages.crops = 'Crop guides';
+I18N.fr.meta.pages.crops = 'Guides des cultures';
+I18N.en.guides = {
+  hub: {
+    h1: 'Crop guides for Cameroon.',
+    lead: 'Twelve crops grown in Cameroon. For each one, the cost of a hectare, the calendar, the expected yields and the break even price, calculated by the Season Planner from published sources.',
+    groups: { season: 'Vegetables, three to eight months', long: 'Long cycle crops', orchard: 'Tree crops' },
+    budget: 'Budget for one hectare', capital: 'Capital for one hectare', first: 'First harvest', read: 'Read the guide',
+    assumH: 'How these figures are calculated',
+    assum: [
+      'Each guide runs the Season Planner on one hectare in the Foumbot area, in the West Region of Cameroon, on rented land with hired labour, starting in the least risky month. Vegetables are watered with a motor pump; long cycle and tree crops are rain fed.',
+      'Quantities and costs come from the knowledge base of the planner, built on technical guides and price sources from research centres, ministries and development agencies. The sources used for each crop are listed on its guide. Equipment bought at the start is counted in full, and a reserve of 10% is added for the unexpected.',
+      'A margin is shown only where a reference price exists for Cameroon. Otherwise the guide gives the break even price, the price per kilogram or per bag from which the hectare covers its costs, to compare with the price offered at the farm gate.',
+      'These are estimates for planning, not a promise of results: soil, weather, pests and prices change from one farm and one year to the next. The planner adapts every figure to your own capital, area, water option and start date.'
+    ]
+  },
+  crumb: 'Crop guides',
+  k: {
+    budget: 'Budget for 1 ha', budgetSub: 'one season, 10% reserve included',
+    capital: 'Capital for 1 ha', capitalSub: (d) => 'peak cash need over ' + d + ', 10% reserve included',
+    yield: 'Yield', yieldSub: 'per hectare, average harvest', yieldRef: (m) => 'per hectare, average for a start in ' + m, yieldMature: 'per hectare at full production',
+    be: 'Break even price', beSub: (u) => 'per ' + u + ', at the average yield',
+    first: 'First harvest', firstSeason: 'after sowing', firstLong: 'after planting'
+  },
+  usd: (v) => '≈ ' + v,
+  costH: 'What a hectare costs',
+  costLead: (water, month) => 'Budget of the Season Planner for one hectare in the Foumbot area, on rented land with hired labour, ' + water + ', for a start in ' + month + '. Equipment bought at the start is counted in full.',
+  costHLong: (d) => 'What a hectare costs over ' + d,
+  costLeadLong: (water, month, d) => 'All the costs of one hectare in the Foumbot area over the ' + d + ' of the plan, on rented land with hired labour, ' + water + ', planted in ' + month + '. The capital needed, above, is lower than this total because the harvests pay for part of the work.',
+  water: { pump: 'with a motor pump for watering', rainfed: 'on rain alone' },
+  cols: ['Item', 'Amount', 'Share'], reserve: 'Contingency reserve (10%)', total: 'Total',
+  calH: 'Calendar',
+  calLead: 'Weeks are counted from sowing, or from the nursery for transplanted crops.',
+  calLeadLong: 'Time is counted from planting.',
+  calCols: ['Step', 'When'],
+  before: 'Before sowing', beforeLong: 'Before planting',
+  weeks: (a, b) => a === b ? 'Week ' + a : 'Weeks ' + a + ' to ' + b,
+  months: (a, b) => a === b ? 'Month ' + a : 'Months ' + a + ' to ' + b,
+  years: (a, b) => a === b ? 'Year ' + a : 'Years ' + a + ' to ' + b,
+  yieldH: 'Yield and price',
+  wet: 'Rainy season', dry: 'Dry season, irrigated', mature: 'At full production', cycle: 'Per cycle', any: 'In either season',
+  range: (p, a, g) => p + ' to ' + g + ' t/ha, ' + a + ' t/ha on average',
+  margin: (m, roi) => 'At this reference price, the average outcome leaves a margin of ' + m + ' on one hectare, ' + roi + ' on the costs.',
+  noSeries: 'No farm gate price series is published for Cameroon.',
+  beLine: (be, u) => 'The plan covers its costs from ' + be + ' per ' + u + ' at the average yield.',
+  riskH: 'Water and risks',
+  waterNeed: (need, rain) => 'Over the season the crop needs about ' + need + ' mm of water, and dependable rain brings ' + rain + ' mm for this start.',
+  waterPump: (m3) => ' The motor pump supplies the rest, about ' + m3 + ' m³ per hectare including losses.',
+  waterCovered: ' Rain covers the need at this time of year.',
+  waterCoveredPump: ' Rain covers the need at this time of year; the motor pump in the budget serves for dry spells and for later seasons.',
+  best: (m) => 'Least risky start month with this water option: ' + m + '.',
+  heat: (t) => 'Fruit set suffers above about ' + t + '°C.',
+  srcH: 'Sources',
+  methodH: 'How these figures are made',
+  method: (d) => 'The figures are computed by the Season Planner with the data available on ' + d + '. They are estimates for one hectare in the Foumbot area: check prices and quantities with local suppliers before committing.',
+  ctaH: 'Plan your own season',
+  ctaHLong: 'Plan your own plantation',
+  ctaLead: 'Enter your capital or your area, your water option and your start date: the planner adapts the budget, the calendar and the risks to your case.',
+  cta: 'Plan this crop',
+  related: 'Other crop guides',
+  crops: {
+    tomato: { lower: 'tomato', h1: 'Growing tomato in Cameroon', intro: 'Tomato is one of the main market garden crops of the West highlands, and the Foumbot basin is one of the areas that supply Douala and Yaoundé. The figures below come from the 2024 MINADER data sheet for Cameroon, cross checked with trials in Dschang and East Cameroon, and from dated market prices.' },
+    greenbean: { lower: 'green beans', h1: 'Growing green beans in Cameroon', intro: 'Green beans are sown directly in the field and picked from about seven weeks after sowing, over six weeks or so. They suit the cool highlands, where rust and anthracnose are the diseases to watch. No farm gate price series is published for Cameroon, so this guide gives the price the crop must fetch to cover its costs.' },
+    pepper: { lower: 'sweet pepper', h1: 'Growing sweet pepper in Cameroon', intro: 'Sweet pepper is raised in a nursery for about six weeks, as Foumbot growers do, then transplanted and picked over about two months. The wet season brings anthracnose and phytophthora, and growers around Foumbot report disease losses above half of the crop.' },
+    chili: { lower: 'chili pepper', h1: 'Growing chili pepper in Cameroon', intro: 'Chili pepper stays longer in the field than most vegetables: about six weeks in the nursery, then picking over about three months. Its price swings widely through the year, as observations on the Yaoundé markets show.' },
+    cucumber: { lower: 'cucumber', h1: 'Growing cucumber in Cameroon', intro: 'Cucumber is sown directly, trained on a trellis and picked from about seven weeks after sowing. In Cameroonian French, “concombre” often means the seed cucurbit known as ngon; this guide covers the table cucumber, Cucumis sativus.' },
+    zucchini: { lower: 'zucchini', h1: 'Growing zucchini in Cameroon', intro: 'Zucchini is one of the shortest crops in the planner: the first fruit comes about eight weeks after sowing and the harvest lasts about a month. It does best at the start of the dry season, as heavy rain splits the stems and favours mildew.' },
+    cassava: { lower: 'cassava', h1: 'Growing cassava in Cameroon', intro: 'Cassava is planted from cuttings at the start of the main rainy season and lifted from about twelve months. The roots spoil within two days of harvest, so they are sold or processed at once, fresh or as dried chips.' },
+    plantain: { lower: 'plantain', h1: 'Growing plantain in Cameroon', intro: 'Plantain is planted from PIF plantlets, grown from stem fragments, and gives its first bunches after about thirteen months; the suckers then bring a new harvest about every ten months. Weevils and nematodes are the main threats.' },
+    pineapple: { lower: 'pineapple', h1: 'Growing pineapple in Cameroon', intro: 'Pineapple is planted from suckers sorted by weight, so that each block flowers at the same time after flower induction. The fruit ripens about five months after induction, around thirteen months after planting, and is picked over six weeks.' },
+    avocado: { lower: 'avocado', h1: 'Growing avocado in Cameroon', intro: 'Grafted avocado trees start bearing after about two and a half years and give two harvests a year in Cameroon, from February to May and from July to September. The Bamboutos highlands are the main production area, and the fruit sells by the 100 kg sack.' },
+    cocoa: { lower: 'cocoa', h1: 'Growing cocoa in Cameroon', intro: 'Cocoa is a long term investment: improved seedlings are planted under temporary shade, often plantain, and the first pods come after about two and a half years. The beans are fermented and sun dried before sale, and black pod is the main loss in wet months.' },
+    oil_palm: { lower: 'oil palm', h1: 'Growing oil palm in Cameroon', intro: 'Selected tenera palms start bearing after about three years. Ripe bunches are cut every seven to ten days and must reach the mill within 48 hours; more than three quarters of the crop comes from December to May.' }
+  },
+  seo: {
+    hub: ['Crop guides for Cameroon: costs per hectare · Djalumo Agro', 'Twelve crop guides for Cameroon, from tomato to cocoa: the cost of a hectare, the calendar, yields and break even prices, calculated from published sources.'],
+    // The brand follows the title only when both fit in the 60 characters that search results show.
+    title: (name) => ((t) => (t.length <= 45 ? t + ' · Djalumo Agro' : t))(name + ' farming in Cameroon: cost per hectare'),
+    season: (lower, amt, p, g) => 'What one hectare of ' + lower + ' costs in Cameroon (about ' + amt + ' FCFA), the season calendar, yields of ' + p + ' to ' + g + ' t/ha and the break even price.',
+    long: (lower, amt) => 'The capital needed for one hectare of ' + lower + ' in Cameroon (about ' + amt + ' FCFA), the time to first harvest, yields and the break even price.',
+    million: (v) => v + ' million'
+  }
+};
+I18N.fr.guides = {
+  hub: {
+    h1: 'Guides des cultures au Cameroun.',
+    lead: 'Douze cultures pratiquées au Cameroun. Pour chacune, le coût d’un hectare, le calendrier, les rendements attendus et le prix d’équilibre, calculés par le Planificateur de saison à partir de sources publiées.',
+    groups: { season: 'Légumes, de trois à huit mois', long: 'Cultures à cycle long', orchard: 'Cultures pérennes' },
+    budget: 'Budget pour un hectare', capital: 'Capital pour un hectare', first: 'Première récolte', read: 'Lire le guide',
+    assumH: 'Comment ces chiffres sont calculés',
+    assum: [
+      'Chaque guide applique le Planificateur de saison à un hectare dans la zone de Foumbot, dans la région de l’Ouest du Cameroun, sur terrain loué avec une main d’œuvre payée, avec un démarrage au mois le moins risqué. Les légumes sont arrosés à la motopompe ; les cultures à cycle long et pérennes sont conduites sous pluie seule.',
+      'Les quantités et les coûts proviennent de la base de connaissances du planificateur, construite sur des guides techniques et des sources de prix de centres de recherche, de ministères et d’agences de développement. Les sources utilisées pour chaque culture sont listées dans son guide. L’équipement acheté au départ est compté en entier et une réserve de 10\u00a0% est ajoutée pour les imprévus.',
+      'Une marge n’est indiquée que lorsqu’un prix de référence existe pour le Cameroun. Sinon, le guide donne le prix d’équilibre, c’est-à-dire le prix au kilo ou au sac à partir duquel l’hectare couvre ses coûts, à comparer au prix proposé bord champ.',
+      'Ce sont des estimations pour planifier, pas une promesse de résultat : le sol, la météo, les ravageurs et les prix changent d’une exploitation et d’une année à l’autre. Le planificateur adapte chaque chiffre à votre capital, votre surface, votre option d’eau et votre date de départ.'
+    ]
+  },
+  crumb: 'Guides des cultures',
+  k: {
+    budget: 'Budget pour 1 ha', budgetSub: 'une saison, réserve de 10 % comprise',
+    capital: 'Capital pour 1 ha', capitalSub: (d) => 'besoin de trésorerie maximal sur ' + d + ', réserve de 10 % comprise',
+    yield: 'Rendement', yieldSub: 'par hectare, récolte moyenne', yieldRef: (m) => 'par hectare, moyenne pour un démarrage en ' + m, yieldMature: 'par hectare en pleine production',
+    be: 'Prix d’équilibre', beSub: (u) => 'par ' + u + ', au rendement moyen',
+    first: 'Première récolte', firstSeason: 'après le semis', firstLong: 'après la plantation'
+  },
+  usd: (v) => '≈ ' + v,
+  costH: 'Ce que coûte un hectare',
+  costLead: (water, month) => 'Budget du Planificateur de saison pour un hectare dans la zone de Foumbot, sur terrain loué avec une main d’œuvre payée, ' + water + ', pour un démarrage en ' + month + '. L’équipement acheté au départ est compté en entier.',
+  costHLong: (d) => 'Ce que coûte un hectare sur ' + d,
+  costLeadLong: (water, month, d) => 'Tous les coûts d’un hectare dans la zone de Foumbot sur les ' + d + ' du plan, sur terrain loué avec une main d’œuvre payée, ' + water + ', avec une plantation en ' + month + '. Le capital nécessaire, plus haut, est inférieur à ce total, car les récoltes paient une partie du travail.',
+  water: { pump: 'avec une motopompe pour l’arrosage', rainfed: 'sous pluie seule' },
+  cols: ['Poste', 'Montant', 'Part'], reserve: 'Réserve de précaution (10 %)', total: 'Total',
+  calH: 'Calendrier',
+  calLead: 'Les semaines sont comptées à partir du semis, ou de la pépinière pour les cultures repiquées.',
+  calLeadLong: 'Le temps est compté à partir de la plantation.',
+  calCols: ['Étape', 'Quand'],
+  before: 'Avant le semis', beforeLong: 'Avant la plantation',
+  weeks: (a, b) => a === b ? 'Semaine ' + a : 'Semaines ' + a + ' à ' + b,
+  months: (a, b) => a === b ? 'Mois ' + a : 'Mois ' + a + ' à ' + b,
+  years: (a, b) => a === b ? 'Année ' + a : 'Années ' + a + ' à ' + b,
+  yieldH: 'Rendement et prix',
+  wet: 'Saison des pluies', dry: 'Saison sèche, irriguée', mature: 'En pleine production', cycle: 'Par cycle', any: 'En toute saison',
+  range: (p, a, g) => 'de ' + p + ' à ' + g + ' t/ha, ' + a + ' t/ha en moyenne',
+  margin: (m, roi) => 'À ce prix de référence, l’issue moyenne laisse une marge de ' + m + ' sur un hectare, soit ' + roi + ' des coûts.',
+  noSeries: 'Aucune série de prix bord champ n’est publiée pour le Cameroun.',
+  beLine: (be, u) => 'Le plan couvre ses coûts à partir de ' + be + ' par ' + u + ' au rendement moyen.',
+  riskH: 'Eau et risques',
+  waterNeed: (need, rain) => 'Sur la saison, la culture a besoin d’environ ' + need + ' mm d’eau, et la pluie fiable en apporte ' + rain + ' mm pour ce démarrage.',
+  waterPump: (m3) => ' La motopompe fournit le reste, environ ' + m3 + ' m³ par hectare, pertes comprises.',
+  waterCovered: ' La pluie couvre le besoin à cette période de l’année.',
+  waterCoveredPump: ' La pluie couvre le besoin à cette période de l’année ; la motopompe du budget sert pendant les périodes sèches et pour les saisons suivantes.',
+  best: (m) => 'Mois de démarrage le moins risqué avec cette option d’eau : ' + m + '.',
+  heat: (t) => 'La nouaison souffre au-delà d’environ ' + t + ' °C.',
+  srcH: 'Sources',
+  methodH: 'Comment ces chiffres sont établis',
+  method: (d) => 'Les chiffres sont calculés par le Planificateur de saison avec les données disponibles au ' + d + '. Ce sont des estimations pour un hectare dans la zone de Foumbot : vérifiez les prix et les quantités auprès de fournisseurs locaux avant de vous engager.',
+  ctaH: 'Planifier votre propre saison',
+  ctaHLong: 'Planifier votre propre plantation',
+  ctaLead: 'Saisissez votre capital ou votre surface, votre option d’eau et votre date de départ : le planificateur adapte le budget, le calendrier et les risques à votre cas.',
+  cta: 'Planifier cette culture',
+  related: 'Autres guides',
+  crops: {
+    tomato: { de: 'de tomate', title: 'Culture de la tomate', h1: 'Cultiver la tomate au Cameroun', intro: 'La tomate est l’une des principales cultures maraîchères des hauts plateaux de l’Ouest, et le bassin de Foumbot fait partie des zones qui approvisionnent Douala et Yaoundé. Les chiffres ci-dessous viennent de la fiche technique 2024 du MINADER pour le Cameroun, recoupée avec des essais à Dschang et à l’Est, et de prix de marché datés.' },
+    greenbean: { de: 'de haricot vert', title: 'Culture du haricot vert', h1: 'Cultiver le haricot vert au Cameroun', intro: 'Le haricot vert se sème directement au champ et se récolte à partir d’environ sept semaines après le semis, pendant six semaines environ. Il convient aux hauts plateaux frais, où la rouille et l’anthracnose sont les maladies à surveiller. Aucune série de prix bord champ n’étant publiée pour le Cameroun, ce guide donne le prix que la culture doit atteindre pour couvrir ses coûts.' },
+    pepper: { de: 'de poivron', title: 'Culture du poivron', h1: 'Cultiver le poivron au Cameroun', intro: 'Le poivron passe environ six semaines en pépinière, comme le font les producteurs de Foumbot, puis il est repiqué et récolté sur deux mois environ. La saison des pluies apporte l’anthracnose et le phytophthora, et les producteurs de la zone de Foumbot signalent des pertes dues aux maladies supérieures à la moitié de la récolte.' },
+    chili: { de: 'de piment', title: 'Culture du piment', h1: 'Cultiver le piment au Cameroun', intro: 'Le piment reste plus longtemps au champ que la plupart des légumes : environ six semaines en pépinière, puis une récolte étalée sur trois mois environ. Son prix varie fortement au cours de l’année, comme le montrent les relevés sur les marchés de Yaoundé.' },
+    cucumber: { de: 'de concombre', title: 'Culture du concombre', h1: 'Cultiver le concombre au Cameroun', intro: 'Le concombre se sème directement, se conduit sur palissage et se récolte à partir d’environ sept semaines après le semis. Au Cameroun, « concombre » désigne souvent la cucurbitacée à graines appelée ngon ; ce guide porte sur le concombre de table, Cucumis sativus.' },
+    zucchini: { de: 'de courgette', title: 'Culture de la courgette', h1: 'Cultiver la courgette au Cameroun', intro: 'La courgette est l’une des cultures les plus courtes du planificateur : le premier fruit arrive environ huit semaines après le semis et la récolte dure un mois environ. Elle réussit le mieux en début de saison sèche, car les fortes pluies fendent les tiges et favorisent l’oïdium.' },
+    cassava: { de: 'de manioc', title: 'Culture du manioc', h1: 'Cultiver le manioc au Cameroun', intro: 'Le manioc se plante par boutures au début de la grande saison des pluies et s’arrache à partir d’environ douze mois. Les racines s’abîment en deux jours après la récolte : elles sont vendues ou transformées aussitôt, fraîches ou en cossettes.' },
+    plantain: { de: 'de banane plantain', title: 'Culture de la banane plantain', h1: 'Cultiver la banane plantain au Cameroun', intro: 'La banane plantain se plante à partir de plants PIF, issus de fragments de tige, et donne ses premiers régimes après environ treize mois ; les rejets apportent ensuite une nouvelle récolte environ tous les dix mois. Le charançon et les nématodes sont les principales menaces.' },
+    pineapple: { de: 'd’ananas', title: 'Culture de l’ananas', h1: 'Cultiver l’ananas au Cameroun', intro: 'L’ananas se plante à partir de rejets triés par poids, pour que chaque parcelle fleurisse en même temps après l’induction florale. Le fruit mûrit environ cinq mois après l’induction, vers treize mois après la plantation, et se cueille sur six semaines.' },
+    avocado: { de: 'd’avocatiers', title: 'Culture de l’avocatier', h1: 'Cultiver l’avocatier au Cameroun', intro: 'Les avocatiers greffés entrent en production après environ deux ans et demi et donnent deux récoltes par an au Cameroun, de février à mai et de juillet à septembre. Les hauts plateaux des Bamboutos sont la principale zone de production, et les fruits se vendent au sac de 100 kg.' },
+    cocoa: { de: 'de cacaoyers', title: 'Culture du cacao', h1: 'Cultiver le cacao au Cameroun', intro: 'Le cacao est un investissement de long terme : les plants améliorés sont installés sous un ombrage temporaire, souvent du plantain, et les premières cabosses arrivent après environ deux ans et demi. Les fèves sont fermentées et séchées au soleil avant la vente, et la pourriture brune est la principale perte des mois pluvieux.' },
+    oil_palm: { de: 'de palmiers à huile', title: 'Culture du palmier à huile', h1: 'Cultiver le palmier à huile au Cameroun', intro: 'Les palmiers tenera sélectionnés entrent en production après environ trois ans. Les régimes mûrs se coupent tous les sept à dix jours et doivent arriver à l’huilerie sous 48 heures ; plus des trois quarts de la récolte arrivent de décembre à mai.' }
+  },
+  seo: {
+    hub: ['Guides des cultures au Cameroun · Djalumo Agro', 'Douze cultures au Cameroun, de la tomate au cacao : coût d’un hectare, calendrier, rendements et prix d’équilibre, calculés à partir de sources publiées.'],
+    title: (name, c) => ((t) => (t.length <= 45 ? t + ' · Djalumo Agro' : t))(c.title + ' au Cameroun : coût à l’hectare'),
+    season: (de, amt, p, g) => 'Coût d’un hectare ' + de + ' au Cameroun (environ ' + amt + ' FCFA), calendrier, rendements de ' + p + ' à ' + g + ' t/ha, prix d’équilibre.',
+    long: (de, amt) => 'Capital pour un hectare ' + de + ' au Cameroun (environ ' + amt + ' FCFA), délai de première récolte, rendements, prix d’équilibre.',
+    million: (v) => v + ' millions de'
+  }
+};

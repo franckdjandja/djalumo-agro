@@ -6,6 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import crypto from 'node:crypto';
+import { createRequire } from 'node:module';
 
 const root = path.dirname(new URL(import.meta.url).pathname);
 const repo = path.resolve(root, '..');
@@ -26,7 +27,7 @@ const config = {
   analytics: process.env.ANALYTICS_PROVIDER ? { provider: process.env.ANALYTICS_PROVIDER, id: process.env.ANALYTICS_ID || '' } : null
 };
 
-const i18nSrc = read('src/i18n.js') + '\n' + read('src/i18n-v3.js') + '\n' + read('src/i18n-v4.js') + '\n' + read('src/i18n-v5.js') + '\n' + read('src/i18n-v6.js') + '\n' + read('src/i18n-v7.js') + '\n' + read('src/i18n-seo.js');
+const i18nSrc = read('src/i18n.js') + '\n' + read('src/i18n-v3.js') + '\n' + read('src/i18n-v4.js') + '\n' + read('src/i18n-v5.js') + '\n' + read('src/i18n-v6.js') + '\n' + read('src/i18n-v7.js') + '\n' + read('src/i18n-seo.js') + '\n' + read('src/i18n-guides.js');
 const I18N = vm.runInNewContext(i18nSrc + ';I18N');
 const geo = JSON.parse(read('geo.json'));
 const geoWorld = JSON.parse(read('geo-world.json'));
@@ -36,13 +37,26 @@ if (target === 'production') parts.push(read('src/analytics.js'));
 // Season Plan engine v2 and its knowledge base (data with source ids), isolated in their own scope
 const kb = JSON.parse(read('data/kb.json'));
 parts.push(`const KB = ${JSON.stringify(kb, (k, v) => (k === 'basis' ? undefined : v))};`, `const AFEngine = (function () { const module = undefined;\n${read('src/engine.cjs')}\nreturn AFEngine; })();`);
-parts.push(read('src/viz.js'), read('src/planner.js'), read('src/report.js'), read('src/world.js'), read('src/field.js'), read('src/pages.js'));
+const GUIDES = guideData();
+const guideSeo = { en: {}, fr: {} };
+for (const lang of ['en', 'fr']) {
+  const G = I18N[lang].guides, S = G.seo;
+  guideSeo[lang].crops = S.hub;
+  for (const [id, g] of Object.entries(GUIDES)) {
+    const c = G.crops[id], amt = S.million(new Intl.NumberFormat(lang === 'fr' ? 'fr-FR' : 'en-US', { maximumFractionDigits: 1 }).format(Math.round(g.cost / 1e5) / 10));
+    const ys = g.yields.flatMap((y) => [y.poor, y.good]), nf1 = (v) => new Intl.NumberFormat(lang === 'fr' ? 'fr-FR' : 'en-US', { maximumFractionDigits: 1 }).format(v);
+    guideSeo[lang]['crops/' + id] = [lang === 'fr' ? S.title(null, c) : S.title(kb.crops[id].name.en), g.season ? S.season(lang === 'fr' ? c.de : c.lower, amt, nf1(Math.min(...ys)), nf1(Math.max(...ys))) : S.long(lang === 'fr' ? c.de : c.lower, amt)];
+  }
+  Object.assign(I18N[lang].seo, guideSeo[lang]);
+}
+parts.push(`const GUIDES = ${JSON.stringify(GUIDES)};`, `Object.assign(I18N.en.seo, ${JSON.stringify(guideSeo.en)}); Object.assign(I18N.fr.seo, ${JSON.stringify(guideSeo.fr)});`);
+parts.push(read('src/viz.js'), read('src/planner.js'), read('src/report.js'), read('src/world.js'), read('src/field.js'), read('src/guides.js'), read('src/pages.js'));
 if (target === 'android') parts.push(read('src/app.js'));
 const js = '(function(){\n' + parts.join('\n') + '\n})();';
 const css = read('src/styles.css') + (target === 'android' ? '\n' + read('src/app.css') : '');
 const template = read('template.html');
 
-const ROUTES = ['home', 'planner', 'field', 'platform', 'intelligence', 'solutions', 'data', 'impact', 'about', 'contact', 'demo', 'newsletter', 'privacy', 'terms'];
+const ROUTES = ['home', 'planner', 'field', 'platform', 'intelligence', 'solutions', 'data', 'impact', 'about', 'contact', 'demo', 'newsletter', 'privacy', 'terms', 'crops', ...Object.keys(kb.crops).map((id) => 'crops/' + id)];
 const EN = I18N.en;
 const titleOf = (k, lang = 'en') => I18N[lang].seo[k][0];
 const descOf = (k, lang = 'en') => I18N[lang].seo[k][1];
@@ -68,6 +82,14 @@ function structuredData(k, lang) {
     { '@type': k === 'about' ? 'AboutPage' : k === 'contact' ? 'ContactPage' : 'WebPage', '@id': urlOf(k, lang) + '#webpage', url: urlOf(k, lang),
       name: titleOf(k, lang), description: descOf(k, lang), inLanguage: lang, isPartOf: { '@id': site }, about: { '@id': org } }
   ];
+  // A crop guide sits under the guides hub: the trail lets search results show where the page belongs.
+  if (k.startsWith('crops/')) {
+    const G = I18N[lang].guides;
+    graph[3].breadcrumb = { '@id': urlOf(k, lang) + '#breadcrumb' };
+    graph.push({ '@type': 'BreadcrumbList', '@id': urlOf(k, lang) + '#breadcrumb', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: G.crumb, item: urlOf('crops', lang) },
+      { '@type': 'ListItem', position: 2, name: kb.crops[k.slice(6)].name[lang], item: urlOf(k, lang) }] });
+  }
   return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c');
 }
 
@@ -132,6 +154,55 @@ async function prerender(html, url) {
   return out;
 }
 
+/**
+ * Crop guides: the Season Planner run once per crop on a reference hectare in the Foumbot area, rented land,
+ * hired labour, a motor pump for the vegetables and rain alone for the long crops, starting in the least risky
+ * month. Long crops use their longest plan so that the break even price reflects full production.
+ */
+function guideData() {
+  const E = createRequire(import.meta.url)('./src/engine.cjs');
+  const day = 864e5, out = {};
+  for (const [id, c] of Object.entries(kb.crops)) {
+    const profile = c.profile || 'season', season = profile === 'season';
+    const horizon = season ? null : (c.horizon_options || []).reduce((m, o) => Math.max(m, o.months), 0) || c.horizon_months;
+    const base = { capital: 0, currency: 'XAF', mode: 'crop', area: 1, crop: id, water: season ? 'pump' : 'rainfed', start: '2027-01-01', land: 'rent', market: 'local',
+      familyLabour: 0, ownTools: false, system: 'open', fieldWork: 'hand', structure: 'new', priceXafKg: null, product: null, horizon };
+    const best = E.plan(kb, base).bestMonth;
+    const r = E.plan(kb, { ...base, start: '2027-' + String(best + 1).padStart(2, '0') + '-01' });
+    const start = new Date(r.calendar.start).getTime();
+    const cats = {};
+    r.budget.lines.forEach((l) => { const k = l.upfront ? 'equipment' : l.cat; cats[k] = (cats[k] || 0) + l.total; });
+    const seen = new Set(), steps = [];
+    for (const st of r.itinerary) {
+      if (seen.has(st.id)) continue; seen.add(st.id);
+      const from = Math.round((new Date(st.from).getTime() - start) / day), to = Math.round((new Date(st.to).getTime() - start) / day);
+      if (!season && from > 400) continue;
+      steps.push({ label: st.label, from, to });
+    }
+    const quoted = JSON.stringify([c.disease_note, c.harvest_detail || '', c.price]).match(/\b[A-Z]{1,2}\d+\b/g) || [];
+    const src = new Set([].concat(c.src || [], c.price.src || [], c.harvest_src || [], ...r.itinerary.map((st) => st.src || []), quoted));
+    const rows = (r.water.balance && r.water.balance.rows) || [];
+    const y = c.yield_t_ha, product = c.products ? Object.values(c.products)[0] : null;
+    out[id] = {
+      profile, season, group: season ? 'season' : profile === 'orchard' ? 'orchard' : 'long', bestMonth: best, horizon,
+      cost: Math.round(season ? r.budget.total : r.requiredXaf), reserve: Math.round(r.budget.reserve || 0),
+      cats: Object.entries(cats).filter(([, v]) => v >= 500).sort((a, b) => b[1] - a[1]).map(([k, v]) => [k, Math.round(v)]),
+      yields: season ? (JSON.stringify(y.wet) === JSON.stringify(y.dry) ? [{ k: 'both', ...y.wet }] : [{ k: 'wet', ...y.wet }, { k: 'dry', ...y.dry }]) : [{ k: profile === 'orchard' ? 'mature' : 'cycle', ...y }],
+      refYield: season ? r.scenarios.average.yieldTHa : null,
+      be: Math.round(season ? r.breakEven.priceXafKg : (r.breakEven.pricePerUnit || r.breakEven.priceXafKg)),
+      unit: product && product.unit_label ? product.unit_label : null,
+      refPrice: c.price.reference_xaf_kg || null, price: c.price.reference_xaf_kg ? c.price.note : (c.price.observed || null),
+      margin: r.priceSource === 'reference' ? { margin: Math.round(r.scenarios.average.margin), roi: r.scenarios.average.roi } : null,
+      firstDays: season ? Math.round((new Date(r.calendar.firstHarvest).getTime() - start) / day) : null,
+      firstMonths: season ? null : c.first_harvest_months || r.firstHarvestMonths,
+      steps, harvestDetail: c.harvest_detail || null, disease: c.disease_note, heat: c.heat_c || null,
+      water: { option: base.water, need: Math.round(rows.reduce((a, x) => a + x.etc, 0)), rain: Math.round(rows.reduce((a, x) => a + Math.min(x.peff, x.etc), 0)), m3: Math.round(r.water.grossM3 || 0) },
+      sources: [...src].filter((k) => kb.sources[k])
+    };
+  }
+  return out;
+}
+
 function copyImages(dest) {
   fs.mkdirSync(dest, { recursive: true });
   fs.cpSync(path.join(root, 'img'), dest, { recursive: true });
@@ -176,6 +247,7 @@ if (target === 'android') {
       let body = null;
       try { body = await prerender(shell, urlOf(k, lang)); prerendered++; } catch (e) { console.warn(`prerender failed for ${lang} ${k}: ${e.message}`); }
       const file = lang === 'fr' ? path.join('fr', k === 'home' ? 'index.html' : `${k}.html`) : (k === 'home' ? 'index.html' : `${k}.html`);
+      fs.mkdirSync(path.dirname(path.join(out, file)), { recursive: true });
       fs.writeFileSync(path.join(out, file), page(k, assets, lang, body));
       // /fr itself: served from fr.html as well as fr/index.html, whatever the host's folder rules.
       if (lang === 'fr' && k === 'home') fs.writeFileSync(path.join(out, 'fr.html'), page(k, assets, lang, body));
