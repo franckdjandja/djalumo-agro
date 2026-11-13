@@ -73,6 +73,10 @@ function structuredData(k, lang) {
       logo: { '@type': 'ImageObject', url: SITE_URL + '/icon-512.png', width: 512, height: 512 },
       image: SITE_URL + '/img/djalumo-agro-preview.png', description: I18N.en.seo.home[1], email: 'franck.djandja@djalumo.com',
       founder: { '@id': founder }, areaServed: 'Africa', knowsLanguage: ['en', 'fr'],
+      // The same two places as the LinkedIn page: the farm first, then the office for investors.
+      location: [
+        { '@type': 'Place', name: 'Field operations and pilot farm', address: { '@type': 'PostalAddress', addressLocality: 'Foumbot', addressRegion: 'West Region', addressCountry: 'CM' } },
+        { '@type': 'Place', name: 'Investor relations, East Africa', address: { '@type': 'PostalAddress', addressLocality: 'Kigali', addressRegion: 'Kigali City', addressCountry: 'RW' } }],
       knowsAbout: ['agricultural decision intelligence', 'farm budgeting', 'crop planning', 'agricultural data analysis'],
       sameAs: ['https://www.linkedin.com/company/djalumo-agro/', 'https://github.com/franckdjandja/djalumo-agro'] },
     { '@type': 'Person', '@id': founder, name: 'Franck Junior Djandja Tomwa',

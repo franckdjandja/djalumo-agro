@@ -497,7 +497,7 @@ en: {
     leadEyebrow: 'Project leader',
     name: 'Franck Junior Djandja Tomwa',
     titles: ['Telecommunications Engineer', 'Data Analyst', 'International Operations Manager'],
-    base: 'Based in Kigali, Rwanda · Pilot zone in Foumbot, Cameroon',
+    base: 'Field operations in Foumbot, Cameroon · Investor relations in Kigali, Rwanda',
     photoAlt: 'Franck Junior Djandja Tomwa holding ripe tomatoes between staked rows, Foumbot area, 2025',
     story: [
       'The project began in the founder’s teenage years. Beside the family gardens, he grew his own small plots of eggplant, cucumber and other vegetables, which already brought him some income, and he followed his father, a farmer in the Foumbot area, through his plantations. His father taught him the craft of the land, including the production of excellent seed from his own harvests.',
@@ -555,7 +555,7 @@ en: {
     nextH: 'What happens next',
     next: ['Your message is stored securely with its timestamp.', 'The project team reads every message.', 'You receive a reply by email, in the language you wrote in.'],
     whereH: 'Contact details',
-    where: [['Email', 'franck.djandja@djalumo.com'], ['Project base', 'Kigali, Rwanda'], ['Pilot zone', 'Foumbot, Noun division, West Cameroon'], ['Languages', 'English, French']],
+    where: [['Email', 'franck.djandja@djalumo.com'], ['Field operations', 'Foumbot, Noun division, West Cameroon'], ['Investor relations', 'Kigali, Rwanda'], ['Languages', 'English, French']],
     demoH: 'Prefer a walkthrough?', demoD: 'Request a guided demo of the Season Planner with your own numbers.'
   },
 
@@ -621,7 +621,7 @@ en: {
   privacy: {
     h1: 'Privacy policy', updated: 'Last updated 26 October 2026',
     body: [
-      ['Who we are', 'Djalumo Agro is an agricultural decision intelligence initiative led by Franck Junior Djandja Tomwa, based in Kigali, Rwanda, with a pilot zone in Foumbot, Cameroon. The legal structure of the initiative is being established; this policy will name it once registered.'],
+      ['Who we are', 'Djalumo Agro is an agricultural decision intelligence initiative led by Franck Junior Djandja Tomwa, with its field operations in Foumbot, Cameroon, and its investor relations in Kigali, Rwanda. The legal structure of the initiative is being established; this policy will name it once registered.'],
       ['What we collect', 'Only what you type into our forms: for a message or a demo request, your name, email, organization, country, optional phone number and message; for the newsletter, your email address, preferred language and the date of your consent. The Season Planner runs in your browser and sends nothing, unless you ask for a PDF report: your name, email, optional phone number, profile, place, report language and the settings of your plan are then sent so that the report can be prepared, reviewed by our team and emailed to you.'],
       ['Why we collect it', 'To answer your message, organise a demo you requested, or send the newsletter you subscribed to. We never sell personal data and never use it for advertising.'],
       ['Where it is stored', 'Submissions are stored in a managed database, encrypted in transit and at rest, with access by role.'],
@@ -648,7 +648,7 @@ en: {
     cols: ['Product', 'Company', 'Engage', 'Legal'],
     nlH: 'Field notes, in your inbox',
     rights: '© 2026 Djalumo Agro. Project led by Franck Junior Djandja Tomwa.',
-    place: 'Kigali · Foumbot',
+    place: 'Foumbot · Kigali',
     status: 'Design and field validation phase',
     noTrack: 'No tracking cookies'
   },
@@ -1151,7 +1151,7 @@ fr: {
     leadEyebrow: 'Porteur du projet',
     name: 'Franck Junior Djandja Tomwa',
     titles: ['Ingénieur en télécommunications', 'Analyste de données', 'Chargé des opérations internationales'],
-    base: 'Basé à Kigali, Rwanda · Zone pilote à Foumbot, Cameroun',
+    base: 'Opérations de terrain à Foumbot, Cameroun · Relations investisseurs à Kigali, Rwanda',
     photoAlt: 'Franck Junior Djandja Tomwa tenant des tomates mûres entre des rangs tuteurés, région de Foumbot, 2025',
     story: [
       'Le projet commence à l’adolescence du fondateur. À côté des jardins familiaux, il cultivait ses propres petits champs d’aubergines, de concombres et d’autres légumes, qui lui rapportaient déjà un revenu, et il suivait son père, agriculteur dans la région de Foumbot, dans ses plantations. Son père lui a transmis le métier de la terre, y compris la production d’excellentes semences à partir de ses propres récoltes.',
@@ -1209,7 +1209,7 @@ fr: {
     nextH: 'La suite',
     next: ['Votre message est enregistré de façon sécurisée, avec son horodatage.', 'L’équipe du projet lit chaque message.', 'Vous recevez une réponse par courriel, dans la langue de votre message.'],
     whereH: 'Coordonnées',
-    where: [['Courriel', 'franck.djandja@djalumo.com'], ['Base du projet', 'Kigali, Rwanda'], ['Zone pilote', 'Foumbot, département du Noun, Ouest Cameroun'], ['Langues', 'Anglais, français']],
+    where: [['Courriel', 'franck.djandja@djalumo.com'], ['Opérations de terrain', 'Foumbot, département du Noun, Ouest Cameroun'], ['Relations investisseurs', 'Kigali, Rwanda'], ['Langues', 'Anglais, français']],
     demoH: 'Vous préférez une présentation ?', demoD: 'Demandez une démonstration guidée du Planificateur de saison avec vos propres chiffres.'
   },
 
@@ -1275,7 +1275,7 @@ fr: {
   privacy: {
     h1: 'Politique de confidentialité', updated: 'Dernière mise à jour : 26 octobre 2026',
     body: [
-      ['Qui nous sommes', 'Djalumo Agro est une initiative d’intelligence décisionnelle agricole portée par Franck Junior Djandja Tomwa, basée à Kigali, au Rwanda, avec une zone pilote à Foumbot, au Cameroun. La structure juridique de l’initiative est en cours de création ; cette politique la nommera une fois enregistrée.'],
+      ['Qui nous sommes', 'Djalumo Agro est une initiative d’intelligence décisionnelle agricole portée par Franck Junior Djandja Tomwa, avec ses opérations de terrain à Foumbot, au Cameroun, et ses relations investisseurs à Kigali, au Rwanda. La structure juridique de l’initiative est en cours de création ; cette politique la nommera une fois enregistrée.'],
       ['Ce que nous collectons', 'Uniquement ce que vous saisissez dans nos formulaires : pour un message ou une demande de démo, vos nom, adresse électronique, organisation, pays, téléphone facultatif et message ; pour la lettre d’information, votre adresse électronique, votre langue et la date de votre consentement. Le Planificateur de saison fonctionne dans votre navigateur et n’envoie rien, sauf si vous demandez un rapport PDF : vos nom, adresse électronique, téléphone facultatif, profil, lieu, langue du rapport et les réglages de votre plan sont alors transmis pour que le rapport soit préparé, vérifié par notre équipe et envoyé par courrier électronique.'],
       ['Pourquoi', 'Pour répondre à votre message, organiser une démo demandée, ou envoyer la lettre à laquelle vous êtes abonné. Nous ne vendons jamais de données personnelles et ne les utilisons jamais à des fins publicitaires.'],
       ['Où elles sont conservées', 'Les envois sont conservés dans une base de données gérée, chiffrée en transit et au repos, avec un accès par rôle.'],
@@ -1302,7 +1302,7 @@ fr: {
     cols: ['Produit', 'Entreprise', 'Échanger', 'Légal'],
     nlH: 'Notes de terrain, dans votre boîte',
     rights: '© 2026 Djalumo Agro. Projet porté par Franck Junior Djandja Tomwa.',
-    place: 'Kigali · Foumbot',
+    place: 'Foumbot · Kigali',
     status: 'Phase de conception et de validation terrain',
     noTrack: 'Aucun cookie de suivi'
   },
