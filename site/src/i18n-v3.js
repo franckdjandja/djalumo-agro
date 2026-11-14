@@ -81,7 +81,7 @@
     field: {
       eyebrow: 'Field evidence',
       h1: 'The pilot, photographed from the first clearing to the last harvest.',
-      lead: 'Seventy-three photographs taken by the founder and his team in the Foumbot area: the father’s plantation in 2021, then the four phases of the Cam_Agri For Africa pilot, from September 2024 to October 2025. Each plate says what the images show, when they were taken and what the season taught.',
+      lead: 'Seventy-three photographs taken by the founder and his team in the Foumbot area: a visit to the father’s plantation in 2021, then the four phases of the Cam_Agri For Africa pilot, from September 2024 to October 2025. Each plate says what the images show, when they were taken and what the season taught.',
       counts: [['73', 'photographs'], ['8', 'plates'], ['4', 'production phases'], ['2', 'sites in Foumbot']],
       plate: 'Plate', resultL: 'Phase result', readL: 'Reading of the plate', probL: 'Field problem', reqL: 'Djalumo Agro requirement', nowL: 'In the Season Planner today',
       archiveH: (n) => 'From the field archive · ' + (n === 1 ? 'one more photograph' : n + ' more photographs'),
@@ -95,17 +95,17 @@
       homeLead: 'Before the first line of code, a real farm: two sites in Foumbot, four production phases, every cost recorded and seventy-three photographs. These plates are the founding dataset of Djalumo Agro.',
       photosN: (n) => n + ' photos',
       timeline: [
-        ['2021', 'Heritage', 'The father’s plantation', 'Where the craft and the seed come from', ''],
+        ['2021', 'Heritage', 'A visit to the father’s plantation', 'Where the founder learned the craft as a child', ''],
         ['Phase 1', 'Sept to Oct 2024', 'Launch on 1 ha', 'Main site', 'Partial harvest, negative result'],
         ['Phase 2', 'Nov 2024 to Mar 2025', 'Secondary marshy site', '0.25 ha', 'Costs covered at best'],
         ['Phase 3', 'Apr to Jul 2025', 'Staked tomato', 'Secondary site', 'No profit'],
         ['Phase 4', 'Aug to Oct 2025', 'Relaunch of the main site', '1 ha', 'Total commercial loss']
       ],
       plates: [
-        { stage: 'Heritage', period: 'September 2021', site: 'Father’s plantation, Foumbot area', cover: 'p1a', title: 'The father’s plantation',
-          cap: 'The father’s plantation, Foumbot area, September 2021.',
+        { stage: 'Heritage', period: 'September 2021', site: 'Father’s plantation, Foumbot area', cover: 'p1a', title: 'A visit to the father’s plantation',
+          cap: 'A visit to the father’s plantation, Foumbot area, September 2021.',
           panels: { A: 'Tomato field at production stage, staked with bamboo.', B: 'Young tomato plants three weeks after transplanting on dark volcanic soil.', C: 'The founder on his father’s plantation, among the staked tomato rows.' },
-          read: 'The roots of the project. The founder’s father, a farmer in the Foumbot area, taught him the craft of the land, including the production of excellent seed from his own harvests.' },
+          read: 'The roots of the project go back to the founder’s childhood and adolescence among his family’s plantations, where his father, a farmer in the Foumbot area, taught him the craft of the land, including the production of excellent seed from his own harvests. These photographs were taken during a visit in September 2021, shortly before the project was presented in Kigali.' },
         { stage: 'Phase 1', period: 'Sept to Oct 2024', site: 'Main site, 1 ha', cover: 'p2b', title: 'Land preparation and establishment',
           cap: 'Land preparation and establishment on the main site, 2024.',
           panels: { A: 'Sowing among charred stumps after clearing.', B: 'Burnt crop residues beside freshly planted rows.', C: 'Emergence on ridges built by hand.' },
@@ -274,7 +274,7 @@
     field: {
       eyebrow: 'Preuves terrain',
       h1: 'Le pilote, photographié du premier défrichage à la dernière récolte.',
-      lead: 'Soixante-treize photographies prises par le fondateur et son équipe dans la zone de Foumbot : la plantation du père en 2021, puis les quatre phases du pilote Cam_Agri For Africa, de septembre 2024 à octobre 2025. Chaque planche dit ce que montrent les images, quand elles ont été prises et ce que la saison a appris.',
+      lead: 'Soixante-treize photographies prises par le fondateur et son équipe dans la zone de Foumbot : une visite de la plantation du père en 2021, puis les quatre phases du pilote Cam_Agri For Africa, de septembre 2024 à octobre 2025. Chaque planche dit ce que montrent les images, quand elles ont été prises et ce que la saison a appris.',
       counts: [['73', 'photographies'], ['8', 'planches'], ['4', 'phases de production'], ['2', 'sites à Foumbot']],
       plate: 'Planche', resultL: 'Résultat de la phase', readL: 'Lecture de la planche', probL: 'Problème terrain', reqL: 'Exigence Djalumo Agro', nowL: 'Aujourd’hui dans le Planificateur de saison',
       archiveH: (n) => 'Archives terrain · ' + (n === 1 ? 'une photographie de plus' : n + ' photographies de plus'),
@@ -288,17 +288,17 @@
       homeLead: 'Avant la première ligne de code, une vraie ferme : deux sites à Foumbot, quatre phases de production, chaque coût enregistré et soixante-treize photographies. Ces planches sont le jeu de données fondateur de Djalumo Agro.',
       photosN: (n) => n + ' photos',
       timeline: [
-        ['2021', 'Héritage', 'La plantation du père', 'D’où viennent le métier et la semence', ''],
+        ['2021', 'Héritage', 'Visite de la plantation du père', 'Là où le fondateur a appris le métier enfant', ''],
         ['Phase 1', 'Sept. à oct. 2024', 'Lancement sur 1 ha', 'Site principal', 'Récolte partielle, résultat négatif'],
         ['Phase 2', 'Nov. 2024 à mars 2025', 'Site secondaire marécageux', '0,25 ha', 'Coûts couverts au mieux'],
         ['Phase 3', 'Avr. à juil. 2025', 'Tomate tuteurée', 'Site secondaire', 'Aucun bénéfice'],
         ['Phase 4', 'Août à oct. 2025', 'Relance du site principal', '1 ha', 'Perte commerciale totale']
       ],
       plates: [
-        { stage: 'Héritage', period: 'Septembre 2021', site: 'Plantation du père, zone de Foumbot', title: 'La plantation du père',
-          cap: 'La plantation du père, zone de Foumbot, septembre 2021.',
+        { stage: 'Héritage', period: 'Septembre 2021', site: 'Plantation du père, zone de Foumbot', title: 'Visite de la plantation du père',
+          cap: 'Visite de la plantation du père, zone de Foumbot, septembre 2021.',
           panels: { A: 'Champ de tomates en production, tuteuré au bambou.', B: 'Plants de tomate trois semaines après le repiquage, sur sol volcanique sombre.', C: 'Le fondateur sur la plantation de son père, entre les rangs de tomates tuteurées.' },
-          read: 'Les racines du projet. Le père du fondateur, agriculteur de la zone de Foumbot, lui a transmis le métier de la terre, y compris la production d’excellentes semences à partir de ses propres récoltes.' },
+          read: 'Les racines du projet remontent à l’enfance et à l’adolescence du fondateur, au milieu des plantations familiales, où son père, agriculteur de la zone de Foumbot, lui a transmis le métier de la terre, y compris la production d’excellentes semences à partir de ses propres récoltes. Ces photographies ont été prises lors d’une visite en septembre 2021, peu avant la présentation du projet à Kigali.' },
         { stage: 'Phase 1', period: 'Sept. à oct. 2024', site: 'Site principal, 1 ha', title: 'Préparation du terrain et levée',
           cap: 'Préparation du terrain et levée sur le site principal, 2024.',
           panels: { A: 'Semis entre les souches calcinées après le défrichement.', B: 'Résidus brûlés à côté des rangs fraîchement plantés.', C: 'Levée sur des buttes formées à la main.' },
