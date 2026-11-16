@@ -267,6 +267,8 @@ if (target === 'android') {
   fs.writeFileSync(path.join(out, '404.html'), page('home', assets).replace(/<title>[^<]*<\/title>/, '<title>Signal not found · Djalumo Agro</title>').replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex">').replace(/<link rel="(canonical|alternate)"[^>]*>\n/g, ''));
   copyImages(path.join(out, 'img'));
   for (const f of fs.readdirSync(path.join(root, 'icons'))) fs.copyFileSync(path.join(root, 'icons', f), path.join(out, f));
+  // Franck Djandja's digital business card: /franck and its contact file /franck.vcf.
+  for (const f of fs.readdirSync(path.join(root, 'card'))) fs.copyFileSync(path.join(root, 'card', f), path.join(out, f));
   // The sitemap lists both languages of every page and tells search engines they are translations of each other.
   const today = new Date().toISOString().slice(0, 10);
   const prio = (k) => (k === 'home' ? '1.0' : ['privacy', 'terms'].includes(k) ? '0.3' : '0.8');
