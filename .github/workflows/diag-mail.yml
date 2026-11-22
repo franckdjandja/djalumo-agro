@@ -1,0 +1,21 @@
+name: Mail diagnostic
+on:
+  push:
+    branches: [diag-mail]
+permissions:
+  statuses: write
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Health and test message
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          post() { curl -s -X POST -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" "https://api.github.com/repos/${{ github.repository }}/statuses/${{ github.sha }}" -d "$(jq -n --arg c "$1" --arg d "$2" '{state:"success",context:$c,description:($d|.[0:139])}')" > /dev/null; }
+          H=$(curl -s -m 20 https://agro.djalumo.com/api/health)
+          echo "health: $H"; post "diag/health" "$H"
+          BODY='{"name":"Test Djalumo Agro","email":"franck.djandja@djalumo.com","organization":"Test","country":"CM","subject":"OTHER","message":"Test message from the site diagnostic. Please ignore.","consent":true,"uiLanguage":"fr","website":"","elapsedMs":9000}'
+          R=$(curl -s -m 30 -o /tmp/r.json -w "%{http_code}" -X POST -H "Content-Type: application/json" -H "Accept: application/json" -H "Origin: https://agro.djalumo.com" --data "$BODY" https://agro.djalumo.com/api/contact)
+          echo "contact: $R $(cat /tmp/r.json)"; post "diag/contact" "HTTP $R $(cat /tmp/r.json)"
