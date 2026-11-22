@@ -84,7 +84,8 @@ Avec l’outil Vercel, `npm run dev` remplace `scripts/serve.mjs`.
 | `ALLOWED_ORIGINS` | serveur | Origines autorisées à envoyer vers `/api` |
 | `EMAIL_PROVIDER`, `EMAIL_API_KEY`, `EMAIL_FROM` | serveur | Notifications (`resend`, `brevo`, `console`, `none`) |
 | `CONTACT_EMAIL` | serveur | Adresse publique de Djalumo Agro, destinataire principal de chaque formulaire (par défaut `franck.djandja@djalumo.com`) ; elle reçoit aussi les réponses aux courriels envoyés aux visiteurs |
-| `CONTACT_NOTIFICATION_EMAIL` | serveur | Destinataires supplémentaires des formulaires. La boîte d’envoi (`GMAIL_USER`) reçoit toujours une copie de secours : un message arrive même si l’une des deux boîtes est indisponible |
+| `CONTACT_NOTIFICATION_EMAIL` | serveur | Destinataires supplémentaires des formulaires, par exemple une boîte de secours : un message arrive même si l’une des boîtes est indisponible. Une boîte d’envoi Gmail (`GMAIL_USER`) reçoit aussi une copie |
+| `SMTP_HOST`, `SMTP_USER`, `SMTP_PASS` | serveur | Envoi par la boîte Zoho de Djalumo Agro : `smtppro.zoho.com` (ou `smtppro.zoho.eu`), l’adresse `franck.djandja@djalumo.com` et un mot de passe d’application Zoho. Port 465 par défaut ; l’expéditeur affiché est « Djalumo Agro » |
 | `NEWSLETTER_NOTIFY`, `NEWSLETTER_SEND_CONFIRMATION` | serveur | Alerte interne et confirmation à l’abonné, en option |
 | `NEWSLETTER_PROVIDER`, `NEWSLETTER_PROVIDER_KEY`, `NEWSLETTER_LIST_ID` | serveur | Synchronisation optionnelle avec Brevo ou Mailchimp |
 | `TURNSTILE_SITE_KEY` / `TURNSTILE_SECRET_KEY` | construction / serveur | Vérification Cloudflare Turnstile |
@@ -113,7 +114,7 @@ Le planificateur propose un rapport PDF premium du plan en cours. Rien n’est t
 3. L’administrateur (`REPORT_ADMIN_EMAIL`) reçoit le résumé et le PDF tel qu’il serait envoyé, avec un lien d’examen.
 4. Sur la page d’examen, l’administrateur valide (le PDF est régénéré et envoyé au demandeur) ou refuse (avec un message courtois facultatif).
 
-Sans nom de domaine, un compte Gmail suffit : renseigner `GMAIL_USER` et `GMAIL_APP_PASSWORD` (mot de passe d’application, après activation de la validation en deux étapes) dans Vercel puis redéployer. Le rapport validé est envoyé en pièce jointe et par un lien de téléchargement valable 60 jours. Variables facultatives : `REPORT_ADMIN_EMAIL`, `REPORT_ADMIN_LANG` (`fr` par défaut), `REPORT_SIGNING_SECRET`, `REPORTS_ENABLED=false` pour couper le service. Les liens sont signés (HMAC) et expirent (7 jours pour confirmer, 30 jours pour examiner). Avec une base de données, chaque décision est à usage unique et enregistrée dans `report_requests` ; sans base, le circuit fonctionne avec les liens signés.
+Les messages partent de la boîte Zoho de Djalumo Agro (`SMTP_HOST`, `SMTP_USER`, `SMTP_PASS`) ; un compte Gmail avec `GMAIL_USER` et `GMAIL_APP_PASSWORD` fonctionne aussi. Après tout changement de ces variables dans Vercel, redéployer, puis ouvrir `/api/health?mail=verify` : la réponse doit contenir `"mail":"ok"` (connexion au serveur d’envoi, sans envoyer de message). Sans service d’envoi, les formulaires restent enregistrés dans la base mais aucun courriel ne part. Le rapport validé est envoyé en pièce jointe et par un lien de téléchargement valable 60 jours. Variables facultatives : `REPORT_ADMIN_EMAIL`, `REPORT_ADMIN_LANG` (`fr` par défaut), `REPORT_SIGNING_SECRET`, `REPORTS_ENABLED=false` pour couper le service. Les liens sont signés (HMAC) et expirent (7 jours pour confirmer, 30 jours pour examiner). Avec une base de données, chaque décision est à usage unique et enregistrée dans `report_requests` ; sans base, le circuit fonctionne avec les liens signés.
 
 ## Base de données
 

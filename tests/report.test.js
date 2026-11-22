@@ -209,3 +209,12 @@ test('config: forms reach the Djalumo address first, with the sending mailbox as
   assert.deepEqual(c.notifyTo, ['franck.djandja@djalumo.com', 'team@example.org', 'backup@example.org']);
   assert.deepEqual(getConfig({}).notifyTo, ['franck.djandja@djalumo.com']);
 });
+
+test('config: the Djalumo mailbox can send through its own SMTP server, signed Djalumo Agro, with a backup copy', () => {
+  const c = getConfig({ SMTP_HOST: 'smtppro.zoho.com', SMTP_USER: 'franck.djandja@djalumo.com', SMTP_PASS: 'x', CONTACT_NOTIFICATION_EMAIL: 'backup@example.org' });
+  assert.equal(c.emailProvider, 'smtp');
+  assert.deepEqual([c.smtp.host, c.smtp.port, c.smtp.secure], ['smtppro.zoho.com', 465, true]);
+  assert.equal(c.emailFrom, 'Djalumo Agro <franck.djandja@djalumo.com>');
+  assert.deepEqual(c.notifyTo, ['franck.djandja@djalumo.com', 'backup@example.org']);
+  assert.equal(c.reportsEnabled, true);
+});
