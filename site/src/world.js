@@ -22,10 +22,10 @@ const wmGroupOf = (k) => { const r = WM_R.find(x => x[3] === k); return r ? r[1]
 const WMS = { group: 'all' };
 const SEA_KMH = 14 * 1.852;
 
-function worldHeroHTML() {
+function worldHeroHTML(withDemo) {
   const Wd = L().world, H = L().home, C = L().cta, S = L().sim;
   const cur = PL_CUR.map(c => '<option' + (PLAN.currency === c ? ' selected' : '') + '>' + c + '</option>').join('');
-  const top = '<div class="wh-h"><h1 class="display" tabindex="-1">' + esc(Wd.h1) + '</h1>' + '<div class="hero-links"><a href="#planner" data-cta="hero_plan">' + esc(C.plan) + ' ›</a><a href="#field" data-cta="hero_field">' + esc(C.field) + ' ›</a></div>' + '</div>' +
+  const top = '<div class="wh-h"><h1 class="display" tabindex="-1">' + esc(Wd.h1) + '</h1>' + '<div class="hero-links"><a href="#planner" data-cta="hero_plan">' + esc(C.plan) + ' ›</a><a href="#field" data-cta="hero_field">' + esc(C.field) + ' ›</a></div>' + (withDemo ? teaserHTML() : '') + '</div>' +
     '<div class="wh-l"><p class="lead">' + esc(Wd.lead) + '</p>' +
     '<form class="try" data-try novalidate><label for="try-amt">' + esc(H.tryLabel) + '</label><div class="try-row"><div class="field"><input id="try-amt" class="tnum" inputmode="decimal" autocomplete="off" value="' + esc(nf(PLAN.capital)) + '" aria-label="' + esc(H.tryAria) + '"><select aria-label="' + esc(S.currency) + '" data-try-cur>' + cur + '</select></div><button class="btn btn-green" type="submit">' + esc(C.simulate) + ARROW + '</button></div></form>' +
     '<p class="try-note">' + esc(H.tryNote) + '</p></div>';
@@ -38,6 +38,29 @@ function worldHeroHTML() {
     '<div class="wm-foot"><div class="wm-inset" data-wm-inset><h5>' + esc(Wd.insetH) + '</h5></div><div class="wm-detcol"><div class="wm-det" aria-live="polite" data-wm-det></div><p class="wm-note">' + esc(Wd.honest) + '</p></div></div></div>';
   const facts = '<div class="facts wh-f rv">' + Wd.facts.map(([v, u, l, s, url]) => '<div class="fact"><div class="v">' + esc(v) + '<small>' + esc(u) + '</small></div><p>' + esc(l) + '</p><a href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(s) + ' ↗</a></div>').join('') + '</div>';
   return '<section class="whero"><div class="wrap whero-grid">' + top + map + facts + '</div></section>';
+}
+
+/* Home: a short, silent loop of the Season Planner, linked to the full demonstration. */
+const isNarrow = () => typeof matchMedia === 'function' && matchMedia('(max-width:700px)').matches;
+function teaserHTML() {
+  const T = L().home.teaser, D = L().demo, V = IMG_BASE + 'demo/planner-teaser-' + LANG;
+  return '<figure class="wh-demo"><a class="whd-media" href="#demo" data-cta="hero_demo" aria-label="' + esc(D.watch) + '">' +
+    '<video autoplay muted loop playsinline preload="auto" disablepictureinpicture poster="' + V + (isNarrow() ? '-m' : '') + '.jpg" aria-label="' + esc(T.aria) + '" data-teaser>' +
+    '<source media="(max-width:700px)" src="' + V + '-m.mp4" type="video/mp4"><source src="' + V + '.mp4" type="video/mp4"></video>' +
+    '<span class="whd-chip"><i aria-hidden="true"></i>' + esc(T.chip) + '</span></a>' +
+    '<figcaption><span><b>' + esc(T.k) + '.</b> ' + esc(T.cap) + '</span><a class="whd-link" href="#demo" data-cta="hero_demo_link">' + esc(D.watch) + ARROW + '</a></figcaption></figure>';
+}
+function teaserMount(root) {
+  const v = $('[data-teaser]', root);
+  if (!v) return () => {};
+  const still = (typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches) || (navigator.connection && navigator.connection.saveData);
+  if (still) { v.removeAttribute('autoplay'); v.preload = 'none'; v.pause(); return () => {}; }
+  v.muted = true;
+  const play = () => { const r = v.play(); if (r && r.catch) r.catch(() => {}); };
+  if (!('IntersectionObserver' in window)) { play(); return () => {}; }
+  const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) play(); else v.pause(); }, { threshold: 0.15 });
+  io.observe(v);
+  return () => io.disconnect();
 }
 
 function worldDetHTML(g) {

@@ -22,10 +22,11 @@ const PAGES = {
       const how = sec(head(H.hEyebrow, H.hH, H.hLead) + '<div class="pipe rv"><span class="pulse" aria-hidden="true"></span>' + H.steps.map((s, i) => '<div class="st"><div class="n">' + (i + 1) + '</div><h3>' + esc(s.t) + '</h3><p>' + esc(s.d) + '</p></div>').join('') + '</div>');
       const sim = sec(head(H.sEyebrow, H.sH, H.sLead) + '<div class="panel planner home-planner" data-plroot>' + plannerFormHTML(true) + '<div class="planner-out" data-pout aria-live="polite"></div></div>', ' id="simulator"');
       const tiers = sec(head(H.tEyebrow, H.tH, H.tLead) + tiersHTML());
-      return worldHeroHTML() + evidence + problem + how + sim + tiers + nlBand('nl-home') + ctaBand();
+      return worldHeroHTML(true) + evidence + problem + how + sim + tiers + nlBand('nl-home') + ctaBand();
     },
     mount(root) {
       Router.cleanups.push(worldMount(root));
+      Router.cleanups.push(teaserMount(root));
       Router.cleanups.push(plannerMount($('[data-plroot]', root), true));
       fieldHomeMount(root);
       const tf = $('[data-try]', root);
@@ -159,9 +160,9 @@ const PAGES = {
 
   demo: {
     html() {
-      const M = L().demo;
+      const M = L().demo, V = IMG_BASE + 'demo/planner-demo-' + LANG;
       return pageHero(M.eyebrow, M.h1, M.lead) +
-        sec(head('', M.videoH, M.videoNote) + '<div class="demo-video rv"><video src="' + IMG_BASE + 'demo/planner-demo-' + LANG + '.mp4" poster="' + IMG_BASE + 'demo/planner-demo-' + LANG + '.jpg" width="1280" height="720" autoplay muted loop playsinline controls preload="metadata" aria-label="' + esc(M.videoLabel) + '"></video></div>') +
+        sec(head('', M.videoH, M.videoNote) + '<div class="demo-video rv"><video poster="' + V + (isNarrow() ? '-m' : '') + '.jpg" width="1920" height="1080" autoplay muted loop playsinline controls preload="metadata" aria-label="' + esc(M.videoLabel) + '"><source media="(max-width:700px)" src="' + V + '-m.mp4" type="video/mp4"><source src="' + V + '.mp4" type="video/mp4"></video></div>') +
         sec(head('', M.stepsH) + '<ol class="demo-steps rv">' + M.steps.map(([h, d], n) => '<li><span class="mono">' + String(n + 1).padStart(2, '0') + '</span><h3>' + esc(h) + '</h3><p>' + esc(d) + '</p></li>').join('') + '</ol><p class="ins-follow rv"><a class="btn btn-primary" href="#planner">' + esc(M.open) + ARROW + '</a></p>', ' style="padding-top:0"') +
         sec(head('', M.sessionH, M.sessionLead) + '<div class="form-wrap"><div class="rv">' + formHTML('demo', 'f-demo') + '</div><aside class="aside rv"><div class="card"><h3>' + esc(M.coversH) + '</h3><ul class="list-check" style="margin-top:14px">' + M.covers.map(t => '<li>' + esc(t) + '</li>').join('') + '</ul></div><div class="card"><h3>' + esc(M.stageH) + '</h3><p>' + esc(M.stage) + '</p></div><figure class="rv crop43" style="margin:0;border-radius:12px;overflow:hidden;border:1px solid var(--line)">' + img('relaunch-field', LANG === 'fr' ? 'Champ de concombre en croissance, relance du site principal, 2025' : 'Cucumber field in growth, relaunch of the main site, 2025') + '</figure></aside></div>', ' id="session"');
     },
@@ -235,7 +236,7 @@ async function adminMount(box) {
 function headerHTML() {
   const N = L().nav;
   return '<a class="skip" href="#main" data-skip>' + esc(N.skip) + '</a><header class="hdr"><div class="wrap hdr-in"><a class="brand" href="#home" aria-label="Djalumo Agro">' + LOGO + '<span class="brand-sub">Agro</span></a>' +
-    '<nav class="nav" aria-label="Primary">' + NAV.map(k => '<a href="#' + k + '" data-nav="' + k + '">' + esc(N[k]) + '</a>').join('') + '</nav>' +
+    '<nav class="nav" aria-label="Primary">' + ['home'].concat(NAV).map(k => '<a href="#' + k + '" data-nav="' + k + '">' + esc(N[k]) + '</a>').join('') + '</nav>' +
     '<div class="hdr-tools"><div class="lang" role="group" aria-label="' + esc(N.lang) + '"><button type="button" data-lang="en" aria-pressed="' + (LANG === 'en') + '" lang="en">EN</button><button type="button" data-lang="fr" aria-pressed="' + (LANG === 'fr') + '" lang="fr">FR</button></div>' +
     '<a class="btn btn-primary btn-sm hdr-cta" href="#demo" data-cta="header_demo">' + esc(N.demo) + '</a><button type="button" class="menu-btn" aria-expanded="false" aria-controls="sheet" aria-label="' + esc(N.menu) + '" data-menu><span></span></button></div></div></header>' +
     '<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="' + esc(N.menu) + '" hidden><div class="sheet-top"><a class="brand" href="#home" aria-label="Djalumo Agro">' + LOGO + '<span class="brand-sub">Agro</span></a><button type="button" class="btn btn-ghost btn-sm" data-close>' + esc(N.close) + '</button></div>' +

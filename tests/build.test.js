@@ -63,7 +63,12 @@ test('search engines get every page in English and French, with its text, its la
   assert.ok(artLd.some((n) => n['@type'] === 'Article' && n.datePublished === '2026-11-22'));
   assert.ok(artLd.some((n) => n['@type'] === 'BreadcrumbList'));
   assert.match(read('fr/insights.html'), /Actualités et analyses/);
+  // The demonstration: a desktop and a portrait phone version, and a short loop on the home page that leads to it.
+  assert.match(read('demo.html'), /<source media="\(max-width:700px\)" src="\/img\/demo\/planner-demo-en-m\.mp4"/);
   assert.match(read('demo.html'), /planner-demo-en\.mp4/);
+  assert.match(read('index.html'), /planner-teaser-en-m\.mp4[\s\S]*planner-teaser-en\.mp4/);
+  assert.match(read('fr/index.html'), /planner-teaser-fr\.mp4/);
+  assert.match(read('index.html'), /<nav class="nav" aria-label="Primary"><a href="\/" data-nav="home"/);
   assert.match(read('index.html'), /franck\.djandja@djalumo\.com/);
   const map = read('sitemap.xml');
   assert.equal((map.match(/<url>/g) || []).length, 74);

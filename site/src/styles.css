@@ -960,3 +960,26 @@ h1[tabindex]:focus{outline:none}
 @media (max-width:1000px){.ins-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ins-art{grid-template-columns:minmax(0,1fr)}.ins-aside{position:static;max-width:420px}}
 @media (max-width:640px){.ins-grid,.demo-steps{grid-template-columns:minmax(0,1fr)}.ins-text p{font-size:16.5px}.ins-text .ins-lead{font-size:18px}}
 .hero-link a svg{margin-left:6px}
+/* Navigation with Home first: tighter items so the full row stays on one line down to 1241px. */
+.nav{gap:0}
+.nav a{font-size:13px;padding:7px 8px}
+@media (max-width:1600px){.hdr-cta{display:none}}
+/* Home: compact looping demonstration of the Season Planner, under the headline */
+.wh-demo{margin:clamp(26px,2.6vw,36px) 0 0;max-width:520px}
+.whd-media{position:relative;display:block;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#0A3D2E;box-shadow:0 22px 50px rgba(0,0,0,.32);isolation:isolate;transition:transform .3s var(--ease),box-shadow .3s}
+.whd-media:hover{transform:translateY(-2px);box-shadow:0 28px 60px rgba(0,0,0,.38)}
+.whd-media video{display:block;width:100%;height:100%;object-fit:cover;object-position:center top}
+.whd-media::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.10);pointer-events:none}
+.whd-chip{position:absolute;left:12px;bottom:12px;display:inline-flex;align-items:center;gap:7px;font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#F5EFE1;background:rgba(8,51,42,.88);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:6px 11px 6px 9px}
+.whd-chip i{width:6px;height:6px;border-radius:50%;background:#7DD8B3;box-shadow:0 0 0 3px rgba(125,216,179,.22)}
+.wh-demo figcaption{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 18px;margin-top:14px;font-size:14px;line-height:1.5;color:var(--on-deep-2)}
+.wh-demo figcaption b{color:#fff;font-weight:600}
+.whd-link{display:inline-flex;align-items:center;color:#fff;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.32);padding-bottom:2px;transition:border-color .2s;white-space:nowrap}
+.whd-link:hover{border-color:#fff}
+.whd-link svg{margin-left:6px}
+@media (max-width:700px){.wh-demo{max-width:none;margin-top:24px}.whd-media{aspect-ratio:1/1}}
+/* Demonstration page: the whole video always fits the screen */
+.demo-video{width:min(100%,calc((100vh - 150px) * 16 / 9));margin-inline:auto}
+@supports (height:100svh){.demo-video{width:min(100%,calc((100svh - 150px) * 16 / 9))}}
+.demo-video video{object-fit:contain;background:var(--deep)}
+@media (max-width:700px){.demo-video{width:min(100%,calc((100svh - 130px) * 828 / 1792))}.demo-video video{aspect-ratio:828/1792}}

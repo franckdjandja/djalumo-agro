@@ -91,3 +91,19 @@
   I18N.en.seo.demo = ['Season Planner demo · Djalumo Agro', 'Watch how a project is entered in the Season Planner and how its plan is read: capital, crop, water, start date, break-even price and four outcomes.'];
   I18N.fr.seo.demo = ['Démonstration du Planificateur de saison · Djalumo Agro', 'Voyez comment un projet se saisit dans le Planificateur de saison et comment son plan se lit : capital, culture, eau, date, prix d’équilibre et quatre issues.'];
 })();
+
+/* Home: the short looping demonstration of the Season Planner */
+(function () {
+  I18N.en.home.teaser = {
+    k: 'Season Planner',
+    chip: 'Demonstration',
+    cap: 'A full season planned in under a minute: 500,000 USD of open-field tomato in West Cameroon.',
+    aria: 'Short demonstration of the Season Planner, without sound'
+  };
+  I18N.fr.home.teaser = {
+    k: 'Planificateur de saison',
+    chip: 'Démonstration',
+    cap: 'Une saison complète planifiée en moins d’une minute : 500 000 USD de tomate en plein champ dans l’Ouest du Cameroun.',
+    aria: 'Courte démonstration du planificateur de saison, sans son'
+  };
+})();
