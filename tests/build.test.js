@@ -31,7 +31,7 @@ test('the android bundle builds offline: one page, hash routes, forms sent to th
 test('search engines get every page in English and French, with its text, its language links and the organization', async () => {
   const fs = await import('node:fs');
   const out = execFileSync(process.execPath, ['site/build.mjs', '--target=production'], { cwd: root, encoding: 'utf8', env: { ...process.env, SITE_URL: 'https://agro.djalumo.com' } });
-  assert.match(out, /54 prerendered/);
+  assert.match(out, /74 prerendered/);
   const read = (p) => fs.readFileSync(new URL('../public/' + p, import.meta.url), 'utf8');
   const titles = new Set();
   for (const [file, lang, url] of [['about.html', 'en', '/about'], ['fr/about.html', 'fr', '/fr/about'], ['index.html', 'en', '/'], ['fr/index.html', 'fr', '/fr'], ['fr/planner.html', 'fr', '/fr/planner'], ['crops.html', 'en', '/crops'], ['crops/tomato.html', 'en', '/crops/tomato'], ['fr/crops/avocado.html', 'fr', '/fr/crops/avocado']]) {
@@ -55,8 +55,18 @@ test('search engines get every page in English and French, with its text, its la
   assert.match(read('about.html'), /Franck Junior Djandja Tomwa/);
   assert.match(read('fr/about.html'), /plus de vingt ans de travail/);
   assert.match(read('fr/contact.html'), /mailto:franck\.djandja@djalumo\.com/);
+  // Insights: each publication is an article with its date, its own sharing image and a trail back to the hub.
+  const art = read('insights/youth-jobs-and-agricultural-investment.html');
+  assert.match(art, /<meta property="og:type" content="article">/);
+  assert.match(art, /<meta property="og:image" content="https:\/\/agro\.djalumo\.com\/img\/insights\/youth-jobs-and-agricultural-investment-share\.jpg">/);
+  const artLd = JSON.parse(art.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
+  assert.ok(artLd.some((n) => n['@type'] === 'Article' && n.datePublished === '2026-11-22'));
+  assert.ok(artLd.some((n) => n['@type'] === 'BreadcrumbList'));
+  assert.match(read('fr/insights.html'), /Actualités et analyses/);
+  assert.match(read('demo.html'), /planner-demo-en\.mp4/);
+  assert.match(read('index.html'), /franck\.djandja@djalumo\.com/);
   const map = read('sitemap.xml');
-  assert.equal((map.match(/<url>/g) || []).length, 54);
+  assert.equal((map.match(/<url>/g) || []).length, 74);
   assert.match(map, /<loc>https:\/\/agro\.djalumo\.com\/fr\/crops\/cassava<\/loc>/);
   assert.match(map, /<loc>https:\/\/agro\.djalumo\.com\/fr\/field<\/loc><xhtml:link rel="alternate" hreflang="en" href="https:\/\/agro\.djalumo\.com\/field"\/>/);
   assert.ok(read('index.html').length < 120000, 'the home page stays light: the world map is drawn by the script');

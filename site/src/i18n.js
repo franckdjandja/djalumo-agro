@@ -15,7 +15,7 @@ en: {
   home: {
     eyebrow: 'Agricultural decision intelligence · Africa',
     h1: 'Decide the season before you plant it.',
-    lead: 'Djalumo Agro turns any budget, from 100 USD to more than 1 million, into a costed Season Plan: what to grow, on what area, from which date, at what cost and at what risk. Built on climate, soil, market and context data, in English and French.',
+    lead: 'Djalumo Agro turns an investment budget, at any scale and beyond 1 million USD, into a costed Season Plan: what to grow, on what area, from which date, at what cost and at what risk. Built on climate, soil, market and context data, in English and French.',
     tryLabel: 'Season Planner · enter a capital',
     tryAria: 'Capital amount',
     chips: ['Pilot zone · Foumbot, Cameroon', 'MVP crop · Tomato', 'Stage · Design and field validation', 'English · French'],
@@ -65,7 +65,7 @@ en: {
     mLead: 'Public climate and soil datasets already cover the whole continent. Field data starts in Foumbot, West Cameroon, and expands release by release. Select a country to see what exists today.',
 
     tEyebrow: '05 · Any budget',
-    tH: 'From 100 USD to more than 1 million. One engine.',
+    tH: 'From a pilot plot to a project above 1 million USD. One engine.',
     tLead: 'The tiers describe the depth of the plan, not separate products. A farmer who starts at 500 USD keeps the same account, history and data when the farm grows to 50,000 USD.',
 
     eEyebrow: '06 · Field evidence',
@@ -83,7 +83,7 @@ en: {
     lead: 'Enter your capital, your crop, your water situation and your start date. The planner sizes the plot, follows the standard technical itinerary step by step, splits the budget line by line and estimates the return in four outcomes, from a good harvest to a failure.',
     badge: 'Reference data · v3',
     inputsT: 'Your season',
-    capital: 'Capital available', capitalHint: 'Minimum 100 USD, in any currency',
+    capital: 'Capital available', capitalHint: 'In any currency, at any scale',
     currency: 'Currency',
     approach: 'Approach', budgetFirst: 'Budget first', areaFirst: 'Area first',
     area: 'Area to plant (ha)',
@@ -398,7 +398,7 @@ en: {
     posCols: ['', 'Global farm management platforms', 'Single link digital services', 'Djalumo Agro'],
     pos: [
       ['Starting point', 'Machinery and sensor data', 'One link: advice, credit or market access', 'The user’s capital'],
-      ['Designed for', 'Mechanised, equipped farms', 'One step of the value chain', 'Any budget, from 100 USD'],
+      ['Designed for', 'Mechanised, equipped farms', 'One step of the value chain', 'Any scale, from pilot plot to project'],
       ['Integration', 'Farm operations', 'Single domain', 'Climate, soil, market and context in one costed plan'],
       ['Languages', 'Mostly English', 'Varies', 'English and French from the first screen']
     ]
@@ -669,7 +669,7 @@ fr: {
   home: {
     eyebrow: 'Intelligence décisionnelle agricole · Afrique',
     h1: 'Décidez la saison avant de la planter.',
-    lead: 'Djalumo Agro transforme tout budget, de 100 USD à plus d’un million, en un Plan de saison chiffré : quoi cultiver, sur quelle surface, à partir de quelle date, à quel coût et avec quel risque. Fondé sur des données climatiques, pédologiques, de marché et de contexte, en anglais et en français.',
+    lead: 'Djalumo Agro transforme un budget d’investissement, à toute échelle et au-delà d’un million de dollars, en un Plan de saison chiffré : quoi cultiver, sur quelle surface, à partir de quelle date, à quel coût et avec quel risque. Fondé sur des données climatiques, pédologiques, de marché et de contexte, en anglais et en français.',
     tryLabel: 'Planificateur de saison · saisissez un capital',
     tryAria: 'Montant du capital',
     chips: ['Zone pilote · Foumbot, Cameroun', 'Culture MVP · Tomate', 'Étape · Conception et validation terrain', 'Anglais · Français'],
@@ -719,7 +719,7 @@ fr: {
     mLead: 'Les jeux de données publics sur le climat et les sols couvrent déjà tout le continent. Les données de terrain commencent à Foumbot, dans l’Ouest du Cameroun, et s’étendent version après version. Sélectionnez un pays pour voir ce qui existe aujourd’hui.',
 
     tEyebrow: '05 · Tout budget',
-    tH: 'De 100 USD à plus d’un million. Un seul moteur.',
+    tH: 'De la parcelle pilote au projet de plus d’un million de dollars. Un seul moteur.',
     tLead: 'Les niveaux décrivent la profondeur du plan, pas des produits distincts. Un agriculteur qui commence avec 500 USD garde le même compte, le même historique et les mêmes données quand l’exploitation atteint 50 000 USD.',
 
     eEyebrow: '06 · Preuves terrain',
@@ -737,7 +737,7 @@ fr: {
     lead: 'Saisissez votre capital, votre culture, votre situation en eau et votre date de démarrage. Le planificateur dimensionne la parcelle, suit l’itinéraire technique standard étape par étape, répartit le budget ligne par ligne et estime le retour sur investissement selon quatre issues, de la bonne récolte à l’échec.',
     badge: 'Données de référence · v3',
     inputsT: 'Votre saison',
-    capital: 'Capital disponible', capitalHint: 'Minimum 100 USD, dans toute devise',
+    capital: 'Capital disponible', capitalHint: 'Dans toute devise, à toute échelle',
     currency: 'Devise',
     approach: 'Approche', budgetFirst: 'Budget d’abord', areaFirst: 'Surface d’abord',
     area: 'Surface à planter (ha)',
@@ -1052,7 +1052,7 @@ fr: {
     posCols: ['', 'Plateformes mondiales de gestion d’exploitation', 'Services numériques sur un seul maillon', 'Djalumo Agro'],
     pos: [
       ['Point de départ', 'Données des machines et capteurs', 'Un maillon : conseil, crédit ou accès au marché', 'Le capital de l’utilisateur'],
-      ['Conçu pour', 'Exploitations mécanisées et équipées', 'Une étape de la chaîne de valeur', 'Tout budget, dès 100 USD'],
+      ['Conçu pour', 'Exploitations mécanisées et équipées', 'Une étape de la chaîne de valeur', 'Toute échelle, de la parcelle pilote au projet'],
       ['Intégration', 'Opérations de l’exploitation', 'Un seul domaine', 'Climat, sol, marché et contexte dans un plan chiffré'],
       ['Langues', 'Surtout l’anglais', 'Variable', 'Anglais et français dès le premier écran']
     ]

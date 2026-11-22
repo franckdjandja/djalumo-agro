@@ -1,0 +1,246 @@
+@@ from-ridges-to-harvest-cucumber-foumbot|2026-11-14|Field journal|Journal de terrain|billon-recolte|field
+T: From ridges to harvest: one hectare of cucumber in Foumbot
+T: Du billon à la récolte : un hectare de concombre à Foumbot
+S: The first phase of our commercial pilot, September and October 2024: a field that held, and a result decided elsewhere.
+S: La première phase de notre pilote commercial, septembre et octobre 2024 : un champ qui a tenu, un résultat qui s’est joué ailleurs.
+EN:
+From ridges to harvest: one hectare of cucumber in Foumbot, September and October 2024.
+
+These four photographs follow the first phase of our commercial pilot on the main site. The ridges were built by hand. The young plants took on the ridges. The rows were then staked, so the vines could climb and the fruit stay off the ground. A few weeks later, the cucumbers reached market size.
+
+On the plot itself, the season went as planned: the soil and the team delivered. The result was decided elsewhere. The site was remote, transport was expensive and monkeys came for the crop. The harvest was partial and this phase ended with a loss.
+
+That experience is why a site score, covering access to water, road access, exposure to wildlife and distance to the market, is part of the next version of the Season Planner. A good field in the wrong place remains a risk, in Foumbot as anywhere else in Africa.
+FR:
+Du billon à la récolte : un hectare de concombre à Foumbot, septembre et octobre 2024.
+
+Ces quatre photographies suivent la première phase de notre pilote commercial sur le site principal. Les billons ont été faits à la main. Les jeunes plants ont pris sur les billons. Les rangs ont ensuite été tuteurés, pour que les tiges grimpent et que les fruits restent au-dessus du sol. Quelques semaines plus tard, les concombres atteignaient leur taille commerciale.
+
+Sur la parcelle elle-même, la saison s’est déroulée comme prévu : le sol et l’équipe ont tenu leur rôle. Le résultat s’est joué ailleurs. Le site était isolé, le transport coûteux et les singes s’en prenaient à la culture. La récolte a été partielle et cette phase s’est terminée sur une perte.
+
+C’est pour cette raison qu’un score de site, qui tient compte de l’accès à l’eau, de l’accès routier, de l’exposition à la faune et de la distance au marché, fait partie de la prochaine version du Planificateur de saison. Un bon champ au mauvais endroit reste un risque, à Foumbot comme partout ailleurs en Afrique.
+@@ a-note-from-our-founder|2026-11-15|Perspective|Perspective|mot-du-fondateur|about
+T: A note from our founder
+T: Un mot de notre fondateur
+S: Farming in Africa deserves to be a modern, industrial and respected trade. Capital follows evidence: why Djalumo Agro decides the season before planting it.
+S: En Afrique, l’agriculture mérite d’être un métier moderne, industriel et respecté. Le capital suit la preuve : pourquoi Djalumo Agro décide la saison avant de la planter.
+EN:
+I grew up among my family's plantations. As a child and a teenager I watched farming change around me, learned the craft on my father's land and kept my own small plots of eggplant and cucumber. Very early, one conviction took hold: farming in Africa deserves to be a modern, industrial and respected trade, not the lowly work it is too often taken for.
+
+That conviction followed me through engineering school and beyond. Industrial farming needs large capital that most farmers do not have, so they work small plots to feed their families. I want to go beyond subsistence: farming at scale that creates value and jobs and strengthens our economies.
+
+Capital follows evidence. In 2021 I presented this vision in Kigali to people in the sector and to potential investors. In 2024 and 2025 I tested it on our own plots in Foumbot and recorded every cost, losses included. What failed was rarely the soil or the work, but decisions taken without the right information.
+
+Djalumo Agro is built on that lesson: decide the season before planting it, with figures anyone can check. We start in Cameroon; the ambition is African. In March 2027 we return to the field to collect the data that will sharpen those figures. I hope you will follow that season with us.
+
+Franck Junior Djandja Tomwa, Founder, Djalumo Agro
+FR:
+J’ai grandi au milieu des plantations familiales. Enfant puis adolescent, j’ai vu l’agriculture évoluer autour de moi, appris le métier sur les terres de mon père et tenu mes propres petites parcelles d’aubergine et de concombre. Très tôt, une conviction s’est imposée : en Afrique, l’agriculture mérite d’être un métier moderne, industriel et respecté, et non le travail ingrat qu’on y voit trop souvent.
+
+Cette conviction m’a suivi à l’école d’ingénieurs, puis au-delà. L’agriculture industrielle demande de gros capitaux que la plupart des agriculteurs n’ont pas ; ils exploitent donc de petites parcelles pour nourrir leur famille. Je veux aller au-delà de la subsistance : une agriculture à grande échelle, qui crée de la valeur et des emplois et renforce nos économies.
+
+Le capital suit la preuve. En 2021, j’ai présenté cette vision à Kigali à des acteurs du secteur et à des investisseurs potentiels. En 2024 et 2025, je l’ai mise à l’épreuve sur nos propres parcelles à Foumbot, en relevant chaque coût, pertes comprises. Ce qui a échoué, c’est rarement le sol ou le travail, mais des décisions prises sans la bonne information.
+
+Djalumo Agro est bâti sur cette leçon : décider la saison avant de la planter, avec des chiffres que chacun peut vérifier. Nous commençons au Cameroun ; l’ambition est africaine. En mars 2027, nous retournons au champ pour recueillir les données qui affineront ces chiffres. J’espère que vous suivrez cette saison avec nous.
+
+Franck Junior Djandja Tomwa, fondateur de Djalumo Agro
+@@ decide-the-season-before-you-plant-it|2026-11-16|Launch|Lancement|lancement-v2|planner
+T: Decide the season before you plant it
+T: Décider la saison avant de la planter
+S: A farming season is decided in its first weeks. The Season Planner brings the facts forward, before the capital is committed, at any scale.
+S: Une saison agricole se joue dans ses premières semaines. Le Planificateur de saison donne les faits avant l’engagement du capital, à toute échelle.
+EN:
+A farming season is decided in its first weeks, when land, seed, fertilizer and labour absorb the capital. The facts that decide the outcome arrive later.
+
+Djalumo Agro exists to bring those facts forward, before the capital is committed. The Season Planner turns an investment budget, at any scale and beyond 1 million USD, into a costed season. It starts from the assets already in place, land, water, equipment or greenhouses, and sets out the area the budget can carry, every input, the work calendar, the price and yield needed to break even, and four outcomes from a good harvest to a failure.
+
+It was built from the field. From September 2024 to October 2025, we ran a commercial pilot in Foumbot, West Cameroon, and recorded every cost. Twelve crops are now modelled on more than 180 documented sources, from FAO methods to the technical sheets of Cameroon's Ministry of Agriculture, MINADER.
+
+We start in Cameroon, but the question is African: how to commit capital to agriculture with the facts in hand. Here we will share what we measure, what we learn and how the 2027 pilot season takes shape, with the companies, investors and institutions that finance African agriculture, among them the African Development Bank Group, IFAD and AGRA.
+FR:
+Une saison agricole se joue dans ses premières semaines, quand le terrain, les semences, les engrais et la main d’œuvre absorbent le capital. Les faits qui décident du résultat arrivent plus tard.
+
+Djalumo Agro existe pour les connaître avant que le capital ne soit engagé. Le Planificateur de saison transforme un budget d’investissement, à toute échelle et au-delà d’un million de dollars, en saison chiffrée. Il part des actifs déjà en place, terrain, eau, équipements ou serres, et établit la surface que le budget permet, chaque intrant, le calendrier des travaux, le prix et le rendement nécessaires pour couvrir les coûts, et quatre issues, de la bonne récolte à l’échec.
+
+Il est né du terrain. De septembre 2024 à octobre 2025, nous avons conduit un pilote commercial à Foumbot, dans l’Ouest du Cameroun, en relevant chaque coût. Douze cultures sont aujourd’hui modélisées à partir de plus de 180 sources documentées, des méthodes de la FAO aux fiches techniques du ministère de l’Agriculture du Cameroun.
+
+Nous commençons au Cameroun, mais la question est africaine : comment engager du capital dans l’agriculture avec les faits en main. Nous partagerons ici ce que nous mesurons, ce que nous apprenons et la préparation de la saison pilote de 2027, avec les entreprises, les investisseurs et les institutions qui financent l’agriculture africaine, parmi lesquels la Banque africaine de développement, le FIDA et l’AGRA.
+@@ the-field-record-2024-2025|2026-11-17|Field journal|Journal de terrain|post-02_releve-terrain|field
+T: The field record behind Djalumo Agro, 2024 to 2025
+T: Le relevé terrain qui fonde Djalumo Agro, 2024 à 2025
+S: Four production phases, two sites, seventy-three photographs. Each loss had a cause we could name, and each cause is now a line in the Season Plan.
+S: Quatre phases de production, deux sites, soixante-treize photographies. Chaque perte avait une cause identifiable, devenue une ligne du Plan de saison.
+EN:
+Four production phases, two sites and seventy-three photographs: this is the field record behind Djalumo Agro.
+
+Between September 2024 and October 2025, our pilot in Foumbot grew cucumber, green bean, pepper and tomato. The soil and the team delivered. The results did not: a partial harvest, then costs covered at best, then no profit, then a commercial loss.
+
+Each loss had a cause we could name.
+
+Heat at flowering yellowed the cucumbers and destroyed the pepper.
+
+Pumping water by hand from a marshy source cost fuel, labour and time, and still fell short.
+
+Selling in reused 50 kg sacks cut the price per kilogram.
+
+A remote site meant costly transport and crop damage by monkeys.
+
+Each of these is now a line in the Season Plan, priced before any capital is committed: a heat risk score for every planting month, a water budget, a packaging and sales plan, a site score.
+
+None of these causes is specific to Foumbot. Heat at flowering, water and post-harvest handling weigh on agricultural projects across Africa, and they are at the heart of the work of the World Vegetable Center and CGIAR.
+FR:
+Quatre phases de production, deux sites et soixante-treize photographies : voici le relevé terrain qui fonde Djalumo Agro.
+
+De septembre 2024 à octobre 2025, notre pilote de Foumbot a cultivé concombre, haricot vert, poivron et tomate. Le sol et l’équipe ont tenu leur rôle. Les résultats, non : une récolte partielle, puis des coûts tout juste couverts, puis aucun bénéfice, puis une perte commerciale.
+
+Chaque perte avait une cause identifiable.
+
+La chaleur à la floraison a jauni les concombres et détruit le poivron.
+
+L’arrosage manuel depuis une source marécageuse a coûté carburant, main d’œuvre et temps, sans suffire.
+
+La vente en sacs de 50 kg réutilisés a fait baisser le prix au kilo.
+
+Un site isolé a imposé un transport coûteux et des dégâts de singes.
+
+Chacune est désormais une ligne du Plan de saison, chiffrée avant tout engagement de capital : un score de risque de chaleur pour chaque mois de plantation, un budget d’eau, un plan d’emballage et de vente, un score de site.
+
+Aucune de ces causes n’est propre à Foumbot. La chaleur à la floraison, l’eau et la manutention après récolte pèsent sur les projets agricoles de toute l’Afrique, et elles sont au cœur des travaux du World Vegetable Center et du CGIAR.
+@@ petrol-pump-or-solar-pump|2026-11-18|Solutions and technologies|Solutions et technologies|pompe-solaire-v2|planner
+T: Petrol pump or solar pump? The answer is in the operating account
+T: Motopompe ou pompe solaire ? La réponse est dans le compte d’exploitation
+S: On one hectare of dry-season tomato, petrol costs about 735,000 FCFA over three seasons; about 126,000 USD at 100 hectares. What solar changes.
+S: Sur un hectare de tomate de saison sèche, l’essence coûte environ 735 000 FCFA sur trois saisons ; environ 126 000 USD sur 100 hectares. Ce que change le solaire.
+EN:
+Petrol pump or solar pump? For an irrigated project, the answer is not in the purchase price but in the operating account.
+
+In Cameroon, a petrol motor pump costs about 200,000 FCFA. Its real cost comes later. On one hectare of open-field tomato planted in December, the Season Planner counts some 290 litres of petrol for the dry season, about 245,000 FCFA at 840 FCFA per litre. Over three dry seasons, that is about 735,000 FCFA, or 1,260 USD, per hectare. At the same rate, a 100-hectare project would burn about 126,000 USD of fuel.
+
+Solar turns that recurring bill into an upfront investment. Entry-level solar pumps started at about 600 USD in 2021, and Efficiency for Access estimated that once fuel is counted, they pay for themselves in under 18 months. At commercial scale, the system is sized to the area, the depth of the water and the hours of sunshine.
+
+The same arithmetic holds across sub-Saharan Africa, where solar irrigation is studied in the field by the International Water Management Institute (IWMI).
+
+The useful question is which energy cost the project carries over its life, per hectare and per season. The Season Planner prices the pump, its fuel and drip irrigation for every planting month.
+FR:
+Motopompe ou pompe solaire ? Pour un projet irrigué, la réponse n’est pas dans le prix d’achat mais dans le compte d’exploitation.
+
+Au Cameroun, une motopompe à essence coûte environ 200 000 FCFA. Son vrai coût arrive ensuite. Sur un hectare de tomate en plein champ planté en décembre, le Planificateur de saison compte quelque 290 litres d’essence pour la saison sèche, soit environ 245 000 FCFA à 840 FCFA le litre. Sur trois saisons sèches, cela fait environ 735 000 FCFA, soit 1 260 USD, par hectare. Au même rythme, un projet de 100 hectares brûlerait environ 126 000 USD de carburant.
+
+Le solaire transforme cette facture récurrente en investissement initial. Les pompes solaires d’entrée de gamme démarraient autour de 600 USD en 2021, et Efficiency for Access estimait qu’une fois le carburant compté, elles sont rentabilisées en moins de 18 mois. À l’échelle commerciale, le système se dimensionne selon la surface, la profondeur de l’eau et l’ensoleillement.
+
+Le même calcul vaut en Afrique subsaharienne, où l’irrigation solaire est étudiée sur le terrain par l’Institut international de gestion de l’eau (IWMI).
+
+La bonne question est celle du coût énergétique que le projet porte sur sa durée, par hectare et par saison. Le Planificateur de saison chiffre la pompe, son carburant et le goutte à goutte pour chaque mois de plantation.
+SRC: MINADER, tomato technical and economic sheet, 2024|MINADER, fiche technico-économique de la tomate, 2024|
+SRC: Efficiency for Access, Solar Water Pumps brief, June 2021|Efficiency for Access, note sur les pompes solaires, juin 2021|
+@@ the-dry-season-has-begun-in-west-cameroon|2026-11-19|Climate and season|Climat et saison|saison-seche|planner
+T: The dry season has begun in West Cameroon
+T: La saison sèche a commencé dans l’Ouest du Cameroun
+S: From November to February, Foumbot receives about 78 mm of rain against 556 mm of evaporative demand. Three decisions for any dry-season investment.
+S: De novembre à février, Foumbot reçoit environ 78 mm de pluie pour 556 mm de demande évaporative. Trois décisions pour tout investissement de saison sèche.
+EN:
+The dry season has begun in West Cameroon. From November to February, Foumbot receives on average about 78 mm of rain in total, while evaporative demand reaches about 556 mm over the same four months.
+
+Almost all the water a crop needs from now until March will have to come from irrigation. Of those 78 mm, only about 27 are dependable enough to count on, and nearly all of them fall in November. December and January bring 3 to 4 mm each.
+
+Heat adds to the pressure. The average maximum temperature climbs from 29 °C in December to 32 °C in February, the hottest month of the year. That is the threshold the Season Planner uses for tomato fruit set; sweet pepper already suffers from 30 °C.
+
+Three decisions follow for any dry-season investment. Secure the water source and its cost before buying seed. Choose the planting date so that flowering avoids the February heat. Budget irrigation as a line of its own: equipment, energy and labour. They apply at every scale, from the Cameroon highlands to the Sahel.
+
+The rains usually return in March and settle in April. The Season Planner scores every planting month for water and heat.
+FR:
+La saison sèche a commencé dans l’Ouest du Cameroun. De novembre à février, Foumbot reçoit en moyenne environ 78 mm de pluie au total, alors que la demande évaporative atteint environ 556 mm sur les mêmes quatre mois.
+
+Presque toute l’eau dont une culture aura besoin d’ici mars devra venir de l’irrigation. Sur ces 78 mm, seuls 27 environ sont assez fiables pour compter dessus, et ils tombent presque tous en novembre. Décembre et janvier en apportent 3 à 4 mm chacun.
+
+La chaleur ajoute à la pression. La température maximale moyenne passe de 29 °C en décembre à 32 °C en février, le mois le plus chaud de l’année. C’est le seuil que le Planificateur de saison retient pour la nouaison de la tomate ; le poivron souffre déjà dès 30 °C.
+
+Trois décisions en découlent pour tout investissement de saison sèche. Sécuriser la source d’eau et son coût avant d’acheter la semence. Choisir la date de plantation pour que la floraison évite la chaleur de février. Budgéter l’irrigation comme une ligne à part entière : équipement, énergie et main d’œuvre. Elles valent à toutes les échelles, des hauts plateaux du Cameroun au Sahel.
+
+Les pluies reviennent en général en mars et s’installent en avril. Le Planificateur de saison évalue chaque mois de plantation pour l’eau et la chaleur.
+SRC: Climate-Data.org, modelled climatology 1991 to 2021, Foumbot|Climate-Data.org, climatologie modélisée 1991 à 2021, Foumbot|https://en.climate-data.org
+SRC: FAO, Irrigation and Drainage Paper 56, Hargreaves method|FAO, Bulletin d’irrigation et de drainage 56, méthode de Hargreaves|https://www.fao.org/4/x0490e/x0490e00.htm
+@@ this-week-in-agriculture-1|2026-11-20|This week in agriculture No. 1|L’essentiel agricole n° 1|essentiel-agricole-01|home
+T: This week in agriculture: five facts for those who invest in African farming
+T: L’essentiel agricole : cinq faits pour ceux qui investissent dans l’agriculture africaine
+S: Rice in Ndop, Cameroon’s milk gap, African Development Bank capital through local banks, COP31 and the climate finance gap for agriculture.
+S: Le riz de Ndop, le déficit de lait du Cameroun, la Banque africaine de développement et les banques locales, la COP31 et le financement climatique de l’agriculture.
+EN:
+This week in agriculture: five facts for those who invest in African farming.
+
+1. Cameroon puts CFA7 billion into rice. The money goes to new rice land in the Ndop plain, where a mill of 20 tonnes an hour opened on 13 November and more than 5,000 additional hectares are planned. The country imported 869,039 tonnes of rice in 2025. (Business in Cameroon, 17 Nov)
+
+2. Milk is the next gap. Cameroon produced 183,286 tonnes of milk in 2025, 52% of its 2026 target, and imported 17,880 tonnes of milk powder. (Dairy Business MEA, 14 Nov)
+
+3. Capital through local banks. The African Development Bank Group approved a 102 million USD package for Sterling Bank in Nigeria, including an agri-SME loan meant to reach more than 5,000 smallholders and agricultural businesses. (Nairametrics, 17 Nov)
+
+4. COP31 agriculture talks stall. In Antalya, countries again failed to agree on the UN agriculture track, now sent back to Bonn. (Carbon Brief, 18 Nov)
+
+5. A finance gap in plain sight. FAO's Kaveh Zahedi said agriculture and food systems receive only about 5% of climate-related development finance. (Global Agriculture, 17 Nov)
+
+Our reading: the demand is here, imports prove it, but the capital is not yet where the need is. Projects costed before they start will be first in line.
+FR:
+Cette semaine en agriculture : cinq faits pour ceux qui investissent dans l’agriculture africaine.
+
+1. Le Cameroun met 7 milliards de FCFA dans le riz. La somme va à de nouvelles rizières dans la plaine de Ndop, où une rizerie de 20 tonnes à l’heure a ouvert le 13 novembre et où plus de 5 000 hectares supplémentaires sont prévus. Le pays a importé 869 039 tonnes de riz en 2025. (Business in Cameroon, 17 nov.)
+
+2. Le lait, prochain déficit. Le Cameroun a produit 183 286 tonnes de lait en 2025, soit 52 % de son objectif 2026, et importé 17 880 tonnes de lait en poudre. (Dairy Business MEA, 14 nov.)
+
+3. Le capital passe par les banques locales. La Banque africaine de développement a approuvé 102 millions USD pour Sterling Bank au Nigeria, dont un prêt aux PME agricoles qui doit toucher plus de 5 000 petits producteurs et entreprises agricoles. (Nairametrics, 17 nov.)
+
+4. La COP31 bloque sur l’agriculture. À Antalya, les pays n’ont de nouveau pas trouvé d’accord sur le volet agricole de l’ONU, renvoyé à Bonn. (Carbon Brief, 18 nov.)
+
+5. Un déficit de financement visible. Selon Kaveh Zahedi, de la FAO, l’agriculture et les systèmes alimentaires ne reçoivent qu’environ 5 % du financement climatique du développement. (Global Agriculture, 17 nov.)
+
+Notre lecture : la demande est là, les importations le prouvent, mais le capital n’est pas encore là où est le besoin. Les projets chiffrés avant de démarrer seront les premiers servis.
+@@ staked-tomato-from-nursery-to-fruit-set|2026-11-21|Field journal|Journal de terrain|tomate-tuteuree|field
+T: Staked tomato, from nursery to fruit set
+T: La tomate tuteurée, de la pépinière à la nouaison
+S: About 25,000 stakes per hectare, 2.5 million for 100 hectares: at project scale, staking becomes a supply question. Our secondary site in Foumbot, 2025.
+S: Environ 25 000 tuteurs par hectare, 2,5 millions pour 100 hectares : à l’échelle d’un projet, le tuteurage devient une question d’approvisionnement.
+EN:
+Staked tomato, from nursery to fruit set: our secondary site in Foumbot, 2025.
+
+These four photographs follow one cycle. A nursery under insect netting. Young plants staked one by one after transplanting. Rows weeded in May. Plants at fruit set.
+
+Staking is quiet work, but it shapes the harvest. A staked plant keeps its fruit clean and ventilated, which limits rot and speeds up picking. The norm the Season Planner applies, from Cameroon's Ministry of Agriculture, is one stake per plant: about 25,000 per hectare, 2 m tall for indeterminate varieties, tied in two passes.
+
+At project scale it becomes a supply question. One hundred hectares need about 2.5 million stakes, cut, transported and renewed. No reliable market price is published for them, so the Planner keeps the quantity in every plan and flags a local quote before any commitment.
+
+On this site, quality followed. The margin did not: whiteflies, caterpillars and fruit rot had to be fought all season, and local prices stayed low. Staking protects the crop; only a pest calendar and a sales plan protect the result.
+FR:
+La tomate tuteurée, de la pépinière à la nouaison : notre site secondaire de Foumbot, 2025.
+
+Ces quatre photographies suivent un cycle. Une pépinière sous filet anti-insectes. De jeunes plants tuteurés un à un après le repiquage. Des rangs désherbés en mai. Des plants à la nouaison.
+
+Le tuteurage est un travail discret, mais il façonne la récolte. Un plant tuteuré garde ses fruits propres et aérés, ce qui limite la pourriture et accélère la cueillette. La norme appliquée par le Planificateur de saison, issue du ministère de l’Agriculture du Cameroun, est d’un tuteur par plant : environ 25 000 par hectare, de 2 m pour les variétés indéterminées, attachés en deux passages.
+
+À l’échelle d’un projet, cela devient une question d’approvisionnement. Cent hectares demandent environ 2,5 millions de tuteurs, coupés, transportés et renouvelés. Aucun prix de marché fiable n’est publié, alors le Planificateur garde la quantité dans chaque plan et signale un devis local avant tout engagement.
+
+Sur ce site, la qualité a suivi. La marge, non : mouches blanches, chenilles et pourriture des fruits ont dû être combattues toute la saison, et les prix locaux sont restés bas. Le tuteurage protège la culture ; seuls un calendrier phytosanitaire et un plan de vente protègent le résultat.
+@@ youth-jobs-and-agricultural-investment|2026-11-22|Perspective|Perspective|emploi-jeunes|home
+T: Youth, jobs and agricultural investment in Africa
+T: Jeunes, emploi et investissement agricole en Afrique
+S: More than 330 million young people in Sub-Saharan Africa will reach working age between 2025 and 2035. Africa’s jobs question is largely an agricultural investment question.
+S: Plus de 330 millions de jeunes d’Afrique subsaharienne atteindront l’âge de travailler entre 2025 et 2035. L’emploi en Afrique est largement une question d’investissement agricole.
+EN:
+Between 2025 and 2035, more than 330 million young people in Sub-Saharan Africa will reach working age.
+
+The World Bank put that figure at the centre of its Global Jobs Challenge in March 2026. In the same region, agriculture already employs almost half of all workers, most of them on small plots that feed a family but rarely build a career.
+
+Our view is that Africa's jobs question is, to a large extent, an agricultural investment question. The jobs young people choose come with scale: irrigated production, mechanisation, nurseries, processing, logistics and sales. Each of these needs capital, and capital needs projects it can read before it commits.
+
+The money is starting to move. The World Bank Group plans to more than double its agribusiness support, to 9 billion USD a year, and writes that agribusiness has the potential to anchor job creation. Where that capital lands will depend on the quality of the projects in front of it: costed, located, with their risks stated.
+
+That is the work Djalumo Agro has chosen, starting in Cameroon and built for the continent.
+FR:
+Entre 2025 et 2035, plus de 330 millions de jeunes d’Afrique subsaharienne atteindront l’âge de travailler.
+
+La Banque mondiale a placé ce chiffre au cœur de son rapport The Global Jobs Challenge, en mars 2026. Dans la même région, l’agriculture emploie déjà près de la moitié des travailleurs, le plus souvent sur de petites parcelles qui nourrissent une famille mais construisent rarement une carrière.
+
+Notre analyse : la question de l’emploi en Afrique est, pour une large part, une question d’investissement agricole. Les emplois que les jeunes choisissent viennent avec l’échelle : production irriguée, mécanisation, pépinières, transformation, logistique et vente. Chacun demande du capital, et le capital a besoin de projets lisibles avant de s’engager.
+
+L’argent commence à bouger. Le Groupe de la Banque mondiale prévoit de plus que doubler son soutien à l’agro-industrie, à 9 milliards USD par an, et écrit que l’agro-industrie peut ancrer la création d’emplois. Là où ce capital ira dépendra de la qualité des projets qu’on lui présentera : chiffrés, localisés, avec leurs risques exposés.
+
+C’est le travail que Djalumo Agro a choisi, à partir du Cameroun et pour tout le continent.
+SRC: World Bank, The Global Jobs Challenge, March 2026|Banque mondiale, The Global Jobs Challenge, mars 2026|

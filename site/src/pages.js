@@ -1,5 +1,5 @@
 /* ---------- Page templates, router, chrome ---------- */
-const NAV = ['planner', 'field', 'platform', 'intelligence', 'solutions', 'data', 'impact', 'about', 'contact'];
+const NAV = ['planner', 'field', 'insights', 'platform', 'intelligence', 'solutions', 'data', 'impact', 'about', 'contact'];
 const ey = () => ''; // v4: no label or rule above titles
 const head = (e, h, lead) => '<div class="sec-head rv"><h2 class="h2">' + esc(h) + '</h2>' + (lead ? '<p class="lead">' + esc(lead) + '</p>' : '<span></span>') + '</div>';
 const sec = (inner, attrs) => '<section class="sec"' + (attrs || '') + '><div class="wrap">' + inner + '</div></section>';
@@ -52,7 +52,7 @@ const PAGES = {
       // A link from a crop guide opens the planner on that crop: /planner?crop=tomato.
       if (PATH_MODE && location.search) { const q = new URLSearchParams(location.search).get('crop'); if (q && KB.crops[q]) { PLAN.crop = q; history.replaceState(null, '', location.pathname + location.hash); } }
       const P = L().planner;
-      return pageHero(P.eyebrow, P.h1, P.lead) + sec('<div class="panel planner" data-plroot>' + plannerFormHTML(false) + '<div class="planner-out" data-pout aria-live="polite"></div></div>', ' id="plan"') + ctaBand();
+      return pageHero(P.eyebrow, P.h1, P.lead, '<p class="hero-link"><a href="#demo">' + esc(L().demo.watch) + ARROW + '</a></p>') + sec('<div class="panel planner" data-plroot>' + plannerFormHTML(false) + '<div class="planner-out" data-pout aria-live="polite"></div></div>', ' id="plan"') + ctaBand();
     },
     mount(root) { Router.cleanups.push(plannerMount($('[data-plroot]', root), false)); }
   },
@@ -160,7 +160,10 @@ const PAGES = {
   demo: {
     html() {
       const M = L().demo;
-      return pageHero(M.eyebrow, M.h1, M.lead) + sec('<div class="form-wrap"><div class="rv">' + formHTML('demo', 'f-demo') + '</div><aside class="aside rv"><div class="card"><h3>' + esc(M.coversH) + '</h3><ul class="list-check" style="margin-top:14px">' + M.covers.map(t => '<li>' + esc(t) + '</li>').join('') + '</ul></div><div class="card"><h3>' + esc(M.stageH) + '</h3><p>' + esc(M.stage) + '</p></div><figure class="rv crop43" style="margin:0;border-radius:12px;overflow:hidden;border:1px solid var(--line)">' + img('relaunch-field', LANG === 'fr' ? 'Champ de concombre en croissance, relance du site principal, 2025' : 'Cucumber field in growth, relaunch of the main site, 2025') + '</figure></aside></div>');
+      return pageHero(M.eyebrow, M.h1, M.lead) +
+        sec(head('', M.videoH, M.videoNote) + '<div class="demo-video rv"><video src="' + IMG_BASE + 'demo/planner-demo-' + LANG + '.mp4" poster="' + IMG_BASE + 'demo/planner-demo-' + LANG + '.jpg" width="1280" height="720" autoplay muted loop playsinline controls preload="metadata" aria-label="' + esc(M.videoLabel) + '"></video></div>') +
+        sec(head('', M.stepsH) + '<ol class="demo-steps rv">' + M.steps.map(([h, d], n) => '<li><span class="mono">' + String(n + 1).padStart(2, '0') + '</span><h3>' + esc(h) + '</h3><p>' + esc(d) + '</p></li>').join('') + '</ol><p class="ins-follow rv"><a class="btn btn-primary" href="#planner">' + esc(M.open) + ARROW + '</a></p>', ' style="padding-top:0"') +
+        sec(head('', M.sessionH, M.sessionLead) + '<div class="form-wrap"><div class="rv">' + formHTML('demo', 'f-demo') + '</div><aside class="aside rv"><div class="card"><h3>' + esc(M.coversH) + '</h3><ul class="list-check" style="margin-top:14px">' + M.covers.map(t => '<li>' + esc(t) + '</li>').join('') + '</ul></div><div class="card"><h3>' + esc(M.stageH) + '</h3><p>' + esc(M.stage) + '</p></div><figure class="rv crop43" style="margin:0;border-radius:12px;overflow:hidden;border:1px solid var(--line)">' + img('relaunch-field', LANG === 'fr' ? 'Champ de concombre en croissance, relance du site principal, 2025' : 'Cucumber field in growth, relaunch of the main site, 2025') + '</figure></aside></div>', ' id="session"');
     },
     mount(root) { bindForm($('#f-demo', root)); }
   },
@@ -188,7 +191,7 @@ const PAGES = {
     }
   }
 };
-Object.assign(PAGES, guidePages());
+Object.assign(PAGES, guidePages(), insightPages());
 
 function tiersHTML() { return '<div class="tiers rv">' + L().tiers.map(t => '<div><div class="rng">' + esc(t.r) + '</div><h3>' + esc(t.n) + '</h3><p>' + esc(t.d) + '</p><div class="who">' + esc(t.w) + '</div></div>').join('') + '</div>'; }
 function phasesHTML() {
@@ -232,7 +235,7 @@ async function adminMount(box) {
 function headerHTML() {
   const N = L().nav;
   return '<a class="skip" href="#main" data-skip>' + esc(N.skip) + '</a><header class="hdr"><div class="wrap hdr-in"><a class="brand" href="#home" aria-label="Djalumo Agro">' + LOGO + '<span class="brand-sub">Agro</span></a>' +
-    '<nav class="nav" aria-label="Primary">' + ['home'].concat(NAV).map(k => '<a href="#' + k + '" data-nav="' + k + '">' + esc(N[k]) + '</a>').join('') + '</nav>' +
+    '<nav class="nav" aria-label="Primary">' + NAV.map(k => '<a href="#' + k + '" data-nav="' + k + '">' + esc(N[k]) + '</a>').join('') + '</nav>' +
     '<div class="hdr-tools"><div class="lang" role="group" aria-label="' + esc(N.lang) + '"><button type="button" data-lang="en" aria-pressed="' + (LANG === 'en') + '" lang="en">EN</button><button type="button" data-lang="fr" aria-pressed="' + (LANG === 'fr') + '" lang="fr">FR</button></div>' +
     '<a class="btn btn-primary btn-sm hdr-cta" href="#demo" data-cta="header_demo">' + esc(N.demo) + '</a><button type="button" class="menu-btn" aria-expanded="false" aria-controls="sheet" aria-label="' + esc(N.menu) + '" data-menu><span></span></button></div></div></header>' +
     '<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="' + esc(N.menu) + '" hidden><div class="sheet-top"><a class="brand" href="#home" aria-label="Djalumo Agro">' + LOGO + '<span class="brand-sub">Agro</span></a><button type="button" class="btn btn-ghost btn-sm" data-close>' + esc(N.close) + '</button></div>' +
@@ -242,8 +245,8 @@ function headerHTML() {
 function footerHTML() {
   const F = L().footer, N = L().nav;
   const col = (h, ks) => '<div><h5>' + esc(h) + '</h5><ul>' + ks.map(k => '<li><a href="#' + k + '">' + esc(N[k] || L().meta.pages[k]) + '</a></li>').join('') + '</ul></div>';
-  return '<footer class="ftr"><div class="wrap"><div class="ftr-grid"><div><a class="brand" href="#home" aria-label="Djalumo Agro">' + LOGO + '<span class="brand-sub">Agro</span></a><p class="muted small" style="margin-top:16px;max-width:34ch">' + esc(F.tag) + '</p><div class="status-row" style="margin-top:18px"><span class="chip ok"><i></i>' + esc(F.status) + '</span></div></div>' +
-    col(F.cols[0], ['planner', 'crops', 'field', 'platform', 'intelligence', 'data']) + col(F.cols[1], ['solutions', 'impact', 'about']) + col(F.cols[2], ['contact', 'demo', 'newsletter']) +
+  return '<footer class="ftr"><div class="wrap"><div class="ftr-grid"><div><a class="brand" href="#home" aria-label="Djalumo Agro">' + LOGO + '<span class="brand-sub">Agro</span></a><p class="muted small" style="margin-top:16px;max-width:34ch">' + esc(F.tag) + '</p><p class="small ftr-mail"><a href="mailto:franck.djandja@djalumo.com">franck.djandja@djalumo.com</a></p><div class="status-row" style="margin-top:18px"><span class="chip ok"><i></i>' + esc(F.status) + '</span></div></div>' +
+    col(F.cols[0], ['planner', 'crops', 'field', 'platform', 'intelligence', 'data']) + col(F.cols[1], ['insights', 'solutions', 'impact', 'about']) + col(F.cols[2], ['contact', 'demo', 'newsletter']) +
     '<div><h5>' + esc(F.nlH) + '</h5><div class="nl-foot">' + formHTML('newsletter', 'nl-foot', { compact: true }) + '</div></div></div>' +
     '<div class="ftr-bot"><span>' + esc(F.rights) + '</span><span>' + esc(F.place) + ' · ' + esc(F.noTrack) + ' · <a href="#privacy">' + esc(L().meta.pages.privacy) + '</a> · <a href="#terms">' + esc(L().meta.pages.terms) + '</a> · <a href="https://www.linkedin.com/company/djalumo-agro/" target="_blank" rel="noopener">LinkedIn</a></span></div></div></footer>';
 }

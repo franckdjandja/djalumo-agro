@@ -17,12 +17,12 @@
     cta: { plan: 'Plan a season', field: 'See the field evidence', fieldAll: 'Open the full field record' },
     home: {
       pEyebrow: '02 · The problem', hEyebrow: '03 · How it works', sEyebrow: '04 · Season Planner', tEyebrow: '05 · Any budget',
-      tryLabel: 'Season Planner · start with your capital', tryNote: 'From 100 USD, in any currency. The plan opens below.'
+      tryLabel: 'Season Planner · start with your capital', tryNote: 'In any currency, at any scale. The plan opens below.'
     },
     world: {
       eyebrow: 'Agricultural decision intelligence · Africa to the world',
       h1: 'From African fields to world markets.',
-      lead: 'Djalumo Agro industrialises African agriculture with data. It plans every season from any budget, starting at 100 USD, and connects the harvest to the markets that pay for it: in Cameroon, across Central Africa and, through the ports of Douala and Kribi, to the world.',
+      lead: 'Djalumo Agro industrialises African agriculture with data. It plans every season before the capital is committed, from a pilot plot to a project above 1 million USD, and connects the harvest to the markets that pay for it: in Cameroon, across Central Africa and, through the ports of Douala and Kribi, to the world.',
       chips: ['Pilot zone · Foumbot, Cameroon', 'Ports · Douala and Kribi', 'English · French'],
       mapTitle: 'Trade corridors from the Foumbot production zone',
       mapAria: 'World map. Flows leave the Foumbot production zone in West Cameroon, reach the ports of Douala and Kribi by road and continue by sea to West and East Africa, Europe, the Middle East, China, the United States and South America. Road corridors lead to Gabon, Equatorial Guinea, Chad and the Central African Republic.',
@@ -210,12 +210,12 @@
     cta: { plan: 'Planifier une saison', field: 'Voir les preuves terrain', fieldAll: 'Ouvrir le relevé terrain complet' },
     home: {
       pEyebrow: '02 · Le problème', hEyebrow: '03 · Fonctionnement', sEyebrow: '04 · Planificateur de saison', tEyebrow: '05 · Tout budget',
-      tryLabel: 'Planificateur de saison · commencez par votre capital', tryNote: 'Dès 100 USD, dans toute devise. Le plan s’ouvre plus bas.'
+      tryLabel: 'Planificateur de saison · commencez par votre capital', tryNote: 'Dans toute devise, à toute échelle. Le plan s’ouvre plus bas.'
     },
     world: {
       eyebrow: 'Intelligence décisionnelle agricole · de l’Afrique au monde',
       h1: 'Des champs africains aux marchés du monde.',
-      lead: 'Djalumo Agro industrialise l’agriculture africaine par la donnée. Il planifie chaque saison à partir de tout budget, dès 100 USD, et relie la récolte aux marchés qui la paient : au Cameroun, en Afrique centrale et, par les ports de Douala et de Kribi, dans le monde entier.',
+      lead: 'Djalumo Agro industrialise l’agriculture africaine par la donnée. Il planifie chaque saison avant l’engagement du capital, de la parcelle pilote au projet de plus d’un million de dollars, et relie la récolte aux marchés qui la paient : au Cameroun, en Afrique centrale et, par les ports de Douala et de Kribi, dans le monde entier.',
       chips: ['Zone pilote · Foumbot, Cameroun', 'Ports · Douala et Kribi', 'Anglais · français'],
       mapTitle: 'Corridors commerciaux depuis la zone de production de Foumbot',
       mapAria: 'Carte du monde. Les flux partent de la zone de production de Foumbot, dans l’Ouest du Cameroun, rejoignent par la route les ports de Douala et de Kribi, puis continuent par la mer vers l’Afrique de l’Ouest et de l’Est, l’Europe, le Moyen-Orient, la Chine, les États-Unis et l’Amérique du Sud. Des corridors routiers mènent au Gabon, à la Guinée équatoriale, au Tchad et à la Centrafrique.',

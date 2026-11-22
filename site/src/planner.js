@@ -5,7 +5,7 @@ const tl = (x) => (x && typeof x === 'object' && !Array.isArray(x)) ? (x[LANG] |
 const PL_CUR = ['USD', 'XAF', 'EUR', 'RWF', 'KES', 'NGN'];
 const PL_WATER = ['rainfed', 'manual', 'existing', 'pump', 'drip'];
 const nextMonthStart = () => { const d = new Date(); return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + 1, 1)).toISOString().slice(0, 10); };
-const PLAN = { capital: 5000, currency: 'USD', mode: 'budget', area: 0.25, crop: 'tomato', water: 'pump', start: nextMonthStart(), land: 'rent', market: 'local', familyLabour: 0, ownTools: false, tab: 'return', prices: {}, products: {}, horizons: {}, system: 'open', coverM2: 240, fieldWork: 'hand', machineQuote: null, structure: 'new', structureM2: 240, replaceCover: false, repairQuote: null, dripInPlace: true };
+const PLAN = { capital: 100000, currency: 'USD', mode: 'budget', area: 0.25, crop: 'tomato', water: 'pump', start: nextMonthStart(), land: 'rent', market: 'local', familyLabour: 0, ownTools: false, tab: 'return', prices: {}, products: {}, horizons: {}, system: 'open', coverM2: 240, fieldWork: 'hand', machineQuote: null, structure: 'new', structureM2: 240, replaceCover: false, repairQuote: null, dripInPlace: true };
 /** Structure status in force: a structure already built (or to repair) only makes sense under a cover. */
 const plStructure = () => plSystem(PLAN.crop) !== 'open' && ['owned', 'repair'].includes(PLAN.structure) ? PLAN.structure : 'new';
 /** Reference price of a new cover (film or net) for a structure of m2 square metres, in FCFA. */
@@ -232,7 +232,7 @@ function timelineHTML(r) {
 function kpiHTML(r) {
   const P = L().planner, K = P.k, S = P.kSub, long = r.profile && r.profile !== 'season', pi = prodInfo(PLAN.crop), unit = pi.unit, sc = r.scenarios.average, priced = !!r.priceSource;
   const be = breakEvenOf(r), cf = r.cashflow;
-  const fit = (v) => v.replace(/<[^>]+>/g, '').length > 12 ? ' vxs' : '';
+  const fit = (v) => v.replace(/<[^>]+>/g, '').length > 9 ? ' vxs' : '';
   const card = (k, v, s, cls) => '<div' + (cls ? ' class="' + cls + '"' : '') + '><div class="k">' + esc(k) + '</div><div class="v vsm' + fit(v) + '">' + v + '</div><div class="s">' + esc(s) + '</div></div>';
   const cap = PLAN.mode === 'crop' ? r.requiredXaf : r.budget.total;
   const cards = [card(K.area, plArea(r.areaHa), P.trees ? P.trees(nf(r.plants)) : nf(r.plants)),

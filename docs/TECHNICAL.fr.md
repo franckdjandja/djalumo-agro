@@ -83,7 +83,8 @@ Avec l’outil Vercel, `npm run dev` remplace `scripts/serve.mjs`.
 | `DATABASE_URL` | serveur | Connexion PostgreSQL |
 | `ALLOWED_ORIGINS` | serveur | Origines autorisées à envoyer vers `/api` |
 | `EMAIL_PROVIDER`, `EMAIL_API_KEY`, `EMAIL_FROM` | serveur | Notifications (`resend`, `brevo`, `console`, `none`) |
-| `CONTACT_NOTIFICATION_EMAIL` | serveur | Destinataires de « New Djalumo Agro website inquiry » et « New Demo Request » |
+| `CONTACT_EMAIL` | serveur | Adresse publique de Djalumo Agro, destinataire principal de chaque formulaire (par défaut `franck.djandja@djalumo.com`) ; elle reçoit aussi les réponses aux courriels envoyés aux visiteurs |
+| `CONTACT_NOTIFICATION_EMAIL` | serveur | Destinataires supplémentaires des formulaires. La boîte d’envoi (`GMAIL_USER`) reçoit toujours une copie de secours : un message arrive même si l’une des deux boîtes est indisponible |
 | `NEWSLETTER_NOTIFY`, `NEWSLETTER_SEND_CONFIRMATION` | serveur | Alerte interne et confirmation à l’abonné, en option |
 | `NEWSLETTER_PROVIDER`, `NEWSLETTER_PROVIDER_KEY`, `NEWSLETTER_LIST_ID` | serveur | Synchronisation optionnelle avec Brevo ou Mailchimp |
 | `TURNSTILE_SITE_KEY` / `TURNSTILE_SECRET_KEY` | construction / serveur | Vérification Cloudflare Turnstile |
@@ -126,6 +127,14 @@ Un futur espace `/admin` demandera : une authentification par un fournisseur d�
 
 Chaque texte visible se trouve dans `site/src/i18n.js`, en deux objets parallèles : `en` (référence) et `fr`. Pour ajouter le swahili, copier l’objet `en` sous le nom `sw`, le traduire et ajouter un bouton au sélecteur de langue. Les modèles de contenu (solutions, modules, sources de données, indicateurs, feuille de route, jalons) sont des tableaux du même fichier et pourront plus tard venir d’un CMS sans tête.
 
+
+### Actualités
+
+Chaque publication de la page LinkedIn devient un article daté du site, en anglais et en français, à `/insights/<identifiant>` et `/fr/insights/<identifiant>`. Les articles sont écrits dans `site/data/insights.txt` : une ligne `@@ identifiant|date|rubrique anglaise|rubrique française|visuel|page liée`, deux lignes `T:` (titres), deux lignes `S:` (résumés), puis `EN:` et `FR:` suivis des paragraphes séparés par une ligne vide, et des lignes `SRC: source anglaise|source française|adresse` facultatives. Le visuel est `site/img/insights/<identifiant>.webp` (864 × 1080) et l’image de partage `site/img/insights/<identifiant>-share.jpg` (1200 × 627). La construction refuse un article incomplet ou sans visuel. Chaque article reçoit ses données structurées `Article`, son fil d’Ariane, sa date dans le plan du site et sa propre image d’aperçu.
+
+### Démonstration
+
+La page Démo montre une vidéo du Planificateur de saison, enregistrée sur le site lui-même, en anglais (`site/img/demo/planner-demo-en.mp4`) et en français (`planner-demo-fr.mp4`), avec leur image d’attente. L’application Android n’embarque pas les vidéos.
 ## Moteurs de recherche
 
 Chaque page existe en anglais à `/page` et en français à `/fr/page` ; l’adresse fixe la langue, et un visiteur qui a déjà choisi une langue y est conduit. La construction exécute le script du site dans jsdom pour écrire l’en-tête, le texte de la page et le pied de page dans chaque fichier HTML : les moteurs de recherche et les aperçus de liens lisent ainsi le contenu sans exécuter le script ; la carte du monde, le dessin le plus lourd, reste dessinée par le navigateur. Les titres et descriptions viennent de `site/src/i18n-seo.js`. Chaque page porte son adresse canonique, des liens `hreflang` vers les deux langues et des données structurées décrivant l’organisation, son fondateur, le site et la page. Le plan du site liste les 54 adresses avec leurs équivalents dans l’autre langue.

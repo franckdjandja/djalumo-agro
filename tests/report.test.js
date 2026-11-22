@@ -197,8 +197,15 @@ test('config: a Gmail account and its app password are enough to switch reports 
   assert.equal(c.emailFrom, 'Djalumo Agro <franck@example.org>');
   assert.equal(c.reportsEnabled, true);
   assert.ok(c.reportSecret.length >= 32);
-  assert.deepEqual(c.reportAdmin, ['franck@example.org']);
-  assert.deepEqual(c.notifyTo, ['franck@example.org']);
+  assert.deepEqual(c.reportAdmin, ['franck.djandja@djalumo.com', 'franck@example.org']);
+  assert.deepEqual(c.notifyTo, ['franck.djandja@djalumo.com', 'franck@example.org']);
   assert.equal(getConfig({ GMAIL_USER: 'a@b.org', GMAIL_APP_PASSWORD: 'x', REPORTS_ENABLED: 'false' }).reportsEnabled, false);
   assert.equal(getConfig({}).reportsEnabled, false);
+});
+
+test('config: forms reach the Djalumo address first, with the sending mailbox as a backup and no duplicates', () => {
+  const c = getConfig({ GMAIL_USER: 'Backup@Example.org', GMAIL_APP_PASSWORD: 'x', CONTACT_NOTIFICATION_EMAIL: 'franck.djandja@djalumo.com, team@example.org' });
+  assert.equal(c.contactEmail, 'franck.djandja@djalumo.com');
+  assert.deepEqual(c.notifyTo, ['franck.djandja@djalumo.com', 'team@example.org', 'backup@example.org']);
+  assert.deepEqual(getConfig({}).notifyTo, ['franck.djandja@djalumo.com']);
 });

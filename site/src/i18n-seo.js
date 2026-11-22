@@ -1,6 +1,6 @@
 /* ---------- Search: the title and description of every page, as search engines and link previews show them ---------- */
 I18N.en.seo = {
-  home: ['Djalumo Agro · Agricultural decision intelligence for Africa', 'Djalumo Agro plans a farming season from any budget, from 100 USD: what to grow, when, at what cost and at what risk. Piloted in Foumbot, Cameroon.'],
+  home: ['Djalumo Agro · Agricultural decision intelligence for Africa', 'Djalumo Agro plans a farming season before capital is committed, at any scale: what to grow, when, at what cost and at what risk. Piloted in Foumbot, Cameroon.'],
   planner: ['Season Planner for African farms · Djalumo Agro', 'Enter your capital, crop and water option. The Season Planner sizes the plot, costs each input and estimates the return, from a good harvest to a failure.'],
   field: ['Field evidence from Foumbot, Cameroon · Djalumo Agro', 'Seventy-three photographs and the real costs of a commercial pilot in Foumbot, Cameroon, in 2024 and 2025: the field record behind Djalumo Agro.'],
   platform: ['Platform: Season Plan, data and apps · Djalumo Agro', 'The Season Plan, the planner, the PDF report and the mobile app to come: what Djalumo Agro offers today and what arrives with the 2027 pilot.'],
@@ -16,7 +16,7 @@ I18N.en.seo = {
   terms: ['Terms of use · Djalumo Agro', 'Terms of use of the Djalumo Agro website and Season Planner.']
 };
 I18N.fr.seo = {
-  home: ['Djalumo Agro · Intelligence agricole pour l’Afrique', 'Djalumo Agro planifie une saison agricole dès 100 USD : quoi cultiver, quand, à quel coût et avec quel risque. Piloté à Foumbot, au Cameroun.'],
+  home: ['Djalumo Agro · Intelligence agricole pour l’Afrique', 'Djalumo Agro planifie une saison agricole avant l’engagement du capital, à toute échelle : quoi cultiver, quand, à quel coût et avec quel risque.'],
   planner: ['Planificateur de saison agricole · Djalumo Agro', 'Saisissez votre capital, votre culture et votre option d’eau. Le Planificateur dimensionne la parcelle, chiffre chaque intrant et estime le résultat.'],
   field: ['Preuves terrain à Foumbot, Cameroun · Djalumo Agro', 'Soixante-treize photographies et les coûts réels d’un pilote commercial à Foumbot, au Cameroun, en 2024 et 2025 : le relevé terrain de Djalumo Agro.'],
   platform: ['Plateforme : Plan de saison et applications · Djalumo Agro', 'Plan de saison, planificateur, rapport PDF et application mobile : ce que Djalumo Agro propose aujourd’hui et ce qui arrive avec le pilote de 2027.'],

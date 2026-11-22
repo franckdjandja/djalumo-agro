@@ -27,7 +27,7 @@ const config = {
   analytics: process.env.ANALYTICS_PROVIDER ? { provider: process.env.ANALYTICS_PROVIDER, id: process.env.ANALYTICS_ID || '' } : null
 };
 
-const i18nSrc = read('src/i18n.js') + '\n' + read('src/i18n-v3.js') + '\n' + read('src/i18n-v4.js') + '\n' + read('src/i18n-v5.js') + '\n' + read('src/i18n-v6.js') + '\n' + read('src/i18n-v7.js') + '\n' + read('src/i18n-seo.js') + '\n' + read('src/i18n-guides.js');
+const i18nSrc = read('src/i18n.js') + '\n' + read('src/i18n-v3.js') + '\n' + read('src/i18n-v4.js') + '\n' + read('src/i18n-v5.js') + '\n' + read('src/i18n-v6.js') + '\n' + read('src/i18n-v7.js') + '\n' + read('src/i18n-seo.js') + '\n' + read('src/i18n-guides.js') + '\n' + read('src/i18n-v8.js');
 const I18N = vm.runInNewContext(i18nSrc + ';I18N');
 const geo = JSON.parse(read('geo.json'));
 const geoWorld = JSON.parse(read('geo-world.json'));
@@ -50,13 +50,18 @@ for (const lang of ['en', 'fr']) {
   Object.assign(I18N[lang].seo, guideSeo[lang]);
 }
 parts.push(`const GUIDES = ${JSON.stringify(GUIDES)};`, `Object.assign(I18N.en.seo, ${JSON.stringify(guideSeo.en)}); Object.assign(I18N.fr.seo, ${JSON.stringify(guideSeo.fr)});`);
-parts.push(read('src/viz.js'), read('src/planner.js'), read('src/report.js'), read('src/world.js'), read('src/field.js'), read('src/guides.js'), read('src/pages.js'));
+// Insights: each publication of the LinkedIn page, kept on the site as a dated article (site/data/insights.txt).
+const INSIGHTS = insightData();
+for (const lang of ['en', 'fr']) for (const a of INSIGHTS) I18N[lang].seo['insights/' + a.slug] = [a.title[lang] + ' · Djalumo Agro', a.summary[lang]];
+parts.push(`const INSIGHTS = ${JSON.stringify(INSIGHTS)};`, `for (const a of INSIGHTS) { I18N.en.seo['insights/' + a.slug] = [a.title.en + ' · Djalumo Agro', a.summary.en]; I18N.fr.seo['insights/' + a.slug] = [a.title.fr + ' · Djalumo Agro', a.summary.fr]; }`);
+parts.push(read('src/viz.js'), read('src/planner.js'), read('src/report.js'), read('src/world.js'), read('src/field.js'), read('src/guides.js'), read('src/insights.js'), read('src/pages.js'));
 if (target === 'android') parts.push(read('src/app.js'));
 const js = '(function(){\n' + parts.join('\n') + '\n})();';
 const css = read('src/styles.css') + (target === 'android' ? '\n' + read('src/app.css') : '');
 const template = read('template.html');
 
-const ROUTES = ['home', 'planner', 'field', 'platform', 'intelligence', 'solutions', 'data', 'impact', 'about', 'contact', 'demo', 'newsletter', 'privacy', 'terms', 'crops', ...Object.keys(kb.crops).map((id) => 'crops/' + id)];
+const ROUTES = ['home', 'planner', 'field', 'platform', 'intelligence', 'solutions', 'data', 'impact', 'about', 'contact', 'demo', 'newsletter', 'privacy', 'terms', 'crops', ...Object.keys(kb.crops).map((id) => 'crops/' + id), 'insights', ...INSIGHTS.map((a) => 'insights/' + a.slug)];
+const insightOf = (k) => (k.startsWith('insights/') ? INSIGHTS.find((a) => 'insights/' + a.slug === k) : null);
 const EN = I18N.en;
 const titleOf = (k, lang = 'en') => I18N[lang].seo[k][0];
 const descOf = (k, lang = 'en') => I18N[lang].seo[k][1];
@@ -86,6 +91,19 @@ function structuredData(k, lang) {
     { '@type': k === 'about' ? 'AboutPage' : k === 'contact' ? 'ContactPage' : 'WebPage', '@id': urlOf(k, lang) + '#webpage', url: urlOf(k, lang),
       name: titleOf(k, lang), description: descOf(k, lang), inLanguage: lang, isPartOf: { '@id': site }, about: { '@id': org } }
   ];
+  // The insights hub lists articles; each article is a dated piece by the founder, published by Djalumo Agro.
+  if (k === 'insights') graph[3]['@type'] = 'CollectionPage';
+  const art = insightOf(k);
+  if (art) {
+    graph[3].breadcrumb = { '@id': urlOf(k, lang) + '#breadcrumb' };
+    graph[3].primaryImageOfPage = SITE_URL + '/img/insights/' + art.slug + '-share.jpg';
+    graph.push({ '@type': 'Article', '@id': urlOf(k, lang) + '#article', headline: art.title[lang], description: art.summary[lang], inLanguage: lang,
+      datePublished: art.date, dateModified: art.date, image: [SITE_URL + '/img/insights/' + art.slug + '-share.jpg', SITE_URL + '/img/insights/' + art.slug + '.webp'],
+      articleSection: art.rubric[lang], author: { '@id': founder }, publisher: { '@id': org }, mainEntityOfPage: { '@id': urlOf(k, lang) + '#webpage' }, isPartOf: { '@id': site } });
+    graph.push({ '@type': 'BreadcrumbList', '@id': urlOf(k, lang) + '#breadcrumb', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: I18N[lang].insights.crumb, item: urlOf('insights', lang) },
+      { '@type': 'ListItem', position: 2, name: art.title[lang], item: urlOf(k, lang) }] });
+  }
   // A crop guide sits under the guides hub: the trail lets search results show where the page belongs.
   if (k.startsWith('crops/')) {
     const G = I18N[lang].guides;
@@ -101,9 +119,10 @@ function page(k, assets, lang = 'en', body) {
   let html = template;
   if (target === 'production') {
     const alt = [['en', 'en'], ['fr', 'fr'], ['x-default', 'en']].map(([h, l]) => `<link rel="alternate" hreflang="${h}" href="${urlOf(k, l)}">`);
+    const art = insightOf(k), share = art ? `${SITE_URL}/img/insights/${art.slug}-share.jpg` : `${SITE_URL}/img/djalumo-agro-preview.png`;
     const head = [`<link rel="canonical" href="${urlOf(k, lang)}">`, ...alt, `<meta property="og:url" content="${urlOf(k, lang)}">`,
-      `<meta property="og:image" content="${SITE_URL}/img/djalumo-agro-preview.png">`, '<meta property="og:image:type" content="image/png">', '<meta property="og:image:width" content="1200">', '<meta property="og:image:height" content="627">',
-      `<meta property="og:image:alt" content="${attr(lang === 'fr' ? 'Djalumo Agro, intelligence agricole pour l’Afrique' : 'Djalumo Agro, agricultural decision intelligence for Africa')}">`, `<meta name="twitter:image" content="${SITE_URL}/img/djalumo-agro-preview.png">`,
+      `<meta property="og:image" content="${share}">`, `<meta property="og:image:type" content="image/${art ? 'jpeg' : 'png'}">`, '<meta property="og:image:width" content="1200">', '<meta property="og:image:height" content="627">',
+      `<meta property="og:image:alt" content="${attr(art ? art.title[lang] : lang === 'fr' ? 'Djalumo Agro, intelligence agricole pour l’Afrique' : 'Djalumo Agro, agricultural decision intelligence for Africa')}">`, `<meta name="twitter:image" content="${share}">`, ...(art ? [`<meta property="article:published_time" content="${art.date}">`] : []),
       '<link rel="icon" href="/favicon.ico" sizes="48x48">', '<link rel="icon" href="/favicon.svg" type="image/svg+xml">', '<link rel="apple-touch-icon" href="/apple-touch-icon.png">', '<link rel="manifest" href="/manifest.webmanifest">',
       `<link rel="stylesheet" href="/assets/${assets.css}">`, `<script defer src="/assets/${assets.js}"></script>`].join('\n');
     html = html.replace('<html lang="en">', `<html lang="${lang}">`)
@@ -113,6 +132,7 @@ function page(k, assets, lang = 'en', body) {
       .replace(/(<meta property="og:description" content=")[^"]*(">)/, `$1${attr(descOf(k, lang))}$2`)
       .replace(/(<meta name="twitter:title" content=")[^"]*(">)/, `$1${attr(titleOf(k, lang))}$2`)
       .replace(/(<meta name="twitter:description" content=")[^"]*(">)/, `$1${attr(descOf(k, lang))}$2`)
+      .replace('<meta property="og:type" content="website">', () => `<meta property="og:type" content="${art ? 'article' : 'website'}">`)
       .replace(/(<meta property="og:locale" content=")[^"]*(">)/, `$1${lang === 'fr' ? 'fr_FR' : 'en_US'}$2`)
       .replace(/(<meta property="og:locale:alternate" content=")[^"]*(">)/, `$1${lang === 'fr' ? 'en_US' : 'fr_FR'}$2`)
       .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, () => `<script type="application/ld+json">${structuredData(k, lang)}</script>`)
@@ -212,9 +232,36 @@ function guideData() {
   return out;
 }
 
+/**
+ * Insights, newest first, from site/data/insights.txt. Each article starts with
+ * "@@ slug|date|rubric in English|rubric in French|visual|related page", then two "T:" lines (titles), two "S:" lines
+ * (summaries), "EN:" and "FR:" followed by paragraphs separated by blank lines, and optional "SRC: English|French|address" lines.
+ */
+function insightData() {
+  const text = read('data/insights.txt');
+  const out = [];
+  for (const block of text.split(/^@@ /m).slice(1)) {
+    const lines = block.split('\n');
+    const [slug, date, rubEn, rubFr, , related] = lines[0].split('|').map((x) => x.trim());
+    const pick = (tag) => lines.filter((l) => l.startsWith(tag + ': ')).map((l) => l.slice(tag.length + 2).trim());
+    const [tEn, tFr] = pick('T'), [sEn, sFr] = pick('S');
+    const en = block.indexOf('\nEN:\n'), fr = block.indexOf('\nFR:\n'), src = block.search(/\nSRC: /);
+    const paras = (from, to) => block.slice(from, to < 0 ? undefined : to).split(/\n\s*\n/).map((x) => x.replace(/\s*\n\s*/g, ' ').trim()).filter(Boolean);
+    const sources = pick('SRC').map((l) => { const [e, f, u] = l.split('|').map((x) => x.trim()); return { label: { en: e, fr: f || e }, url: u || '' }; });
+    if (!slug || !/^\d{4}-\d{2}-\d{2}$/.test(date) || !tEn || !tFr || !sEn || !sFr || en < 0 || fr < 0) throw new Error('insights.txt: incomplete article ' + (slug || '?'));
+    if (!fs.existsSync(path.join(root, 'img/insights', slug + '.webp'))) throw new Error('insights.txt: missing visual for ' + slug);
+    // French typography: thousands and units stay on one line, and no line starts with a colon or a semicolon.
+    const frt = (t) => t.replace(/(\d) (?=\d{3}\b)/g, '$1\u202f').replace(/(\d) (?=(FCFA|USD|%|°C|mm|ha|kg|t|m|millions?|milliards?)\b)/g, '$1\u00a0').replace(/ ([:;?!])/g, '\u00a0$1');
+    out.push({ slug, date, rubric: { en: rubEn, fr: frt(rubFr) }, related: related || 'home', title: { en: tEn, fr: frt(tFr) }, summary: { en: sEn, fr: frt(sFr) },
+      body: { en: paras(en + 5, fr), fr: paras(fr + 5, src).map(frt) }, sources });
+  }
+  return out.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
+}
+
 function copyImages(dest) {
   fs.mkdirSync(dest, { recursive: true });
-  fs.cpSync(path.join(root, 'img'), dest, { recursive: true });
+  // The demonstration videos stay on the website: the application bundle keeps only their posters.
+  fs.cpSync(path.join(root, 'img'), dest, { recursive: true, filter: (f) => target === 'production' || !f.endsWith('.mp4') });
 }
 
 if (target === 'android') {
@@ -271,9 +318,9 @@ if (target === 'android') {
   for (const f of fs.readdirSync(path.join(root, 'card'))) fs.copyFileSync(path.join(root, 'card', f), path.join(out, f));
   // The sitemap lists both languages of every page and tells search engines they are translations of each other.
   const today = new Date().toISOString().slice(0, 10);
-  const prio = (k) => (k === 'home' ? '1.0' : ['privacy', 'terms'].includes(k) ? '0.3' : '0.8');
+  const prio = (k) => (k === 'home' ? '1.0' : ['privacy', 'terms'].includes(k) ? '0.3' : insightOf(k) ? '0.7' : '0.8');
   const alts = (k) => ['en', 'fr'].map((l) => `<xhtml:link rel="alternate" hreflang="${l}" href="${urlOf(k, l)}"/>`).join('') + `<xhtml:link rel="alternate" hreflang="x-default" href="${urlOf(k, 'en')}"/>`;
-  const urls = ['en', 'fr'].flatMap((l) => ROUTES.map((k) => `  <url><loc>${urlOf(k, l)}</loc>${alts(k)}<lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>${prio(k)}</priority></url>`));
+  const urls = ['en', 'fr'].flatMap((l) => ROUTES.map((k) => `  <url><loc>${urlOf(k, l)}</loc>${alts(k)}<lastmod>${insightOf(k) ? insightOf(k).date : today}</lastmod><changefreq>${k === 'insights' ? 'weekly' : 'monthly'}</changefreq><priority>${prio(k)}</priority></url>`));
   fs.writeFileSync(path.join(out, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join('\n')}\n</urlset>\n`);
   fs.writeFileSync(path.join(out, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /api/\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
   console.log(`production build: ${ROUTES.length} pages in English and French (${prerendered} prerendered), ${assets.js} (${(js.length / 1024).toFixed(0)} KB), ${assets.css}`);
