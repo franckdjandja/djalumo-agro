@@ -33,17 +33,18 @@ jobs:
         run: |
           git config user.name "Franck Junior Djandja Tomwa"
           git config user.email "49753238+franckdjandja@users.noreply.github.com"
+          OUT="$GITHUB_WORKSPACE/veille-out"; WT="$RUNNER_TEMP/veille-branch"
           if git ls-remote --exit-code --heads origin veille-data > /dev/null; then
-            git fetch --depth=1 origin veille-data
-            git worktree add data origin/veille-data
-            cd data && git checkout -B veille-data
+            git fetch --depth=1 origin +veille-data:refs/remotes/origin/veille-data
+            git worktree add "$WT" origin/veille-data
+            cd "$WT" && git checkout -B veille-data
           else
-            git worktree add --detach data
-            cd data && git checkout --orphan veille-data && git rm -rfq . && git clean -fdxq
+            git worktree add --detach "$WT"
+            cd "$WT" && git checkout --orphan veille-data && git rm -rfq . && git clean -fdxq
             printf '%s\n' "Données de veille de Djalumo Agro, produites chaque nuit par .github/workflows/veille.yml sur la branche main." > README.md
           fi
           mkdir -p veille
-          cp ../veille-out/*.json veille/
+          cp "$OUT"/*.json veille/
           find veille -name '20??-??-??.json' -mtime +90 -delete
           git add -A
           git commit -qm "Veille du $(date -u +%F)" || echo "Rien de nouveau"
