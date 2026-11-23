@@ -29,6 +29,16 @@ jobs:
           echo "::notice title=health::$health"
           echo "$health" | grep -q '"database":"ok"' || { echo "::error title=database::not ok"; fail=1; }
           echo "$health" | grep -q '"mail":"ok"' || { echo "::error title=mail::not ok"; fail=1; }
+          # Every page of the sitemap, in both languages
+          curl -s "$SITE/sitemap.xml" | grep -o '<loc>[^<]*</loc>' | sed 's/<[^>]*>//g' > urls.txt
+          total=$(wc -l < urls.txt); bad=0
+          while read -r u; do code=$(curl -s -o /dev/null -w '%{http_code}' "$u"); [ "$code" = "200" ] || { echo "::error title=sitemap page::$u HTTP $code"; bad=$((bad+1)); }; done < urls.txt
+          [ "$bad" = "0" ] && echo "::notice title=sitemap::all $total pages answer 200" || fail=1
+          # Script, style sheet, robots and the demonstration videos
+          curl -s "$SITE/" > home.html
+          for a in $(grep -o '/assets/[^"]*\.\(js\|css\)' home.html | sort -u) /robots.txt /img/demo/planner-demo-en.mp4 /img/demo/planner-demo-fr-m.mp4 /img/demo/planner-teaser-fr.mp4; do
+            code=$(curl -s -o /dev/null -I -w '%{http_code}' "$SITE$a"); [ "$code" = "200" ] && echo "::notice title=asset::$a 200" || { echo "::error title=asset::$a HTTP $code"; fail=1; }
+          done
           for f in quote contact; do
             body=$(curl -s -o resp.json -w '%{http_code}' -X POST -H 'Content-Type: application/json' -H "Origin: $SITE" --data '{"email":"not-an-address"}' "$SITE/api/$f")
             if [ "$body" = "422" ]; then echo "::notice title=api $f::refuses an invalid request ($(cat resp.json))"; else echo "::error title=api $f::HTTP $body $(cat resp.json)"; fail=1; fi

@@ -1,0 +1,30 @@
+# End to end test of the live forms: one quote request and one message, marked TEST, stored in the database
+# and notified by email. Runs when this file changes or on demand, never on ordinary deployments.
+name: Forms end to end
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/forms-e2e.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Wait for the deployment
+        run: sleep 120
+      - name: Send a test quote request and a test message
+        env:
+          SITE: https://agro.djalumo.com
+        run: |
+          fail=0
+          quote='{"offer":"ESSENTIAL","name":"TEST Djalumo verification","email":"franck.djandja@djalumo.com","country":"CM","profile":"OTHER","crop":"Tomate","budget":"K5_25","timing":"LATER","message":"TEST de verification automatique du formulaire de devis, 23 novembre 2026. Ne pas repondre.","consent":true,"elapsedMs":15000,"website":"","uiLanguage":"fr"}'
+          contact='{"name":"TEST Djalumo verification","email":"franck.djandja@djalumo.com","country":"CM","subject":"OTHER","message":"TEST de verification automatique du formulaire de contact, 23 novembre 2026. Ne pas repondre.","consent":true,"elapsedMs":15000,"website":"","uiLanguage":"fr"}'
+          for f in quote contact; do
+            body=$([ "$f" = "quote" ] && echo "$quote" || echo "$contact")
+            code=$(curl -s -o resp.json -w '%{http_code}' -X POST -H 'Content-Type: application/json' -H "Origin: $SITE" --data "$body" "$SITE/api/$f")
+            if [ "$code" = "200" ] && grep -q '"status":"ok"' resp.json; then echo "::notice title=$f::stored and notified ($(cat resp.json))"; else echo "::error title=$f::HTTP $code $(cat resp.json)"; fail=1; fi
+          done
+          exit $fail
