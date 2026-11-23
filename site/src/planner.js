@@ -149,7 +149,7 @@ function plannerOutHTML(r, compact) {
   if (!tabs.includes(PLAN.tab)) PLAN.tab = 'return';
   const tabBar = '<div class="tabs" role="tablist" aria-label="' + esc(P.title) + '">' + tabs.map(t => '<button type="button" role="tab" id="pt-' + t + '" aria-selected="' + (PLAN.tab === t) + '" aria-controls="pt-panel" tabindex="' + (PLAN.tab === t ? 0 : -1) + '" data-ptab="' + t + '">' + esc(P.tabs[t]) + '</button>').join('') + '</div>';
   const panel = { return: tabReturn, budget: tabBudget, cashflow: tabCashflow, itinerary: tabItinerary, shopping: tabShopping, water: tabWater, compare: tabCompare, sources: tabSources }[PLAN.tab](r);
-  return state + verdictHTML(r) + kpiHTML(r) + coverNote(r) + fieldWorkNote(r) + reportCta() + tabBar + '<div id="pt-panel" role="tabpanel" aria-labelledby="pt-' + PLAN.tab + '" class="ptab">' + panel + '</div>';
+  return state + verdictHTML(r) + kpiHTML(r) + coverNote(r) + fieldWorkNote(r) + reportCta() + offersCta() + tabBar + '<div id="pt-panel" role="tabpanel" aria-labelledby="pt-' + PLAN.tab + '" class="ptab">' + panel + '</div>';
 }
 
 /** What a structure under cover means for this plan: its size, its cost, the share charged and the climate inside. */
@@ -250,6 +250,26 @@ function reportCta() {
   const R = L().planner.report;
   if (!R || !API_MODE) return '';
   return '<div class="rep-cta"><div class="rep-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M6 2.8h8.2L19 7.6V20a1.2 1.2 0 0 1-1.2 1.2H6A1.2 1.2 0 0 1 4.8 20V4A1.2 1.2 0 0 1 6 2.8Z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M14 3v5h5M8 13h8M8 16.5h8M8 9.5h3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div><div><b>' + esc(R.cta) + '</b><p class="small muted">' + esc(R.ctaSub) + '</p></div><button type="button" class="btn btn-primary btn-sm" data-preport>' + esc(R.cta) + ARROW + '</button></div>';
+}
+
+/* From a plan to a quote request: the Offers page opens with the plan already described. */
+function offersCta() {
+  const O = L().offers;
+  if (!O) return '';
+  return '<div class="rep-cta offers-cta"><div class="rep-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M4 19.5h16M6.5 16V10M11 16V6M15.5 16v-4M20 16V8.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div><div><b>' + esc(O.plannerH) + '</b><p class="small muted">' + esc(O.plannerSub) + '</p></div><button type="button" class="btn btn-ghost btn-sm" data-poffers>' + esc(O.plannerBtn) + ARROW + '</button></div>';
+}
+function quoteFromPlan() {
+  const r = PLAN.last, O = L().offers, crop = KB.crops[PLAN.crop];
+  const usd = PLAN.capital / (KB.fx[PLAN.currency] || 1);
+  const budget = usd < 5000 ? 0 : usd <= 25000 ? 1 : usd <= 100000 ? 2 : 3;
+  const area = r && r.areaHa ? nf(r.areaHa, r.areaHa < 10 ? 2 : 1) + ' ha' : '';
+  const start = r && r.calendar && r.calendar.start ? monthYearS(r.calendar.start) : '';
+  const st = FORM_STATE['f-quote'] || (FORM_STATE['f-quote'] = {});
+  const intro = O.fromPlan(crop ? crop.name[LANG] : PLAN.crop, money(PLAN.capital, PLAN.currency), area, start);
+  const prev = String(st.message || '').replace(/^(From the Season Planner|Plan du Planificateur de saison)[^\n]*\n*/, '');
+  Object.assign(st, { crop: crop ? crop.name[LANG] : '', budget: String(budget), message: intro + prev });
+  analytics.track('cta_click', { cta: 'planner_offers' });
+  Router.go('offers', 'quote');
 }
 
 function scenarioCards(r, compact) {
@@ -531,6 +551,7 @@ function plannerMount(root, compact) {
     if (fwb) { PLAN.fieldWork = fwb.dataset.pfw; PLAN.advOpen = true; reform(); changed(); analytics.track('planner_fieldwork', { method: PLAN.fieldWork }); return; }
     const go = e.target.closest('[data-pgo]');
     if (go) { PLAN.tab = 'return'; pickCrop(go.dataset.pgo, false); const f = $('[data-pcrop="' + PLAN.crop + '"]', form); if (f) f.scrollIntoView({ behavior: RM.matches ? 'auto' : 'smooth', block: 'center' }); analytics.track('planner_compare_pick', { crop: PLAN.crop }); return; }
+    if (e.target.closest('[data-poffers]')) { quoteFromPlan(); return; }
     const rp = e.target.closest('[data-preport]');
     if (rp && typeof openReportDialog === 'function') { openReportDialog(plannerInput(), PLAN.last); return; }
     const wn = e.target.closest('[data-pwin]');

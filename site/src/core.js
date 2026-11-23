@@ -115,6 +115,23 @@ const FORM_DEFS = {
       { n: 'consent', k: 'consent', req: 1, full: 1 }
     ]
   },
+  quote: {
+    col: 'quoteRequests', submit: 'sendQuote', ok: ['okQuoteT', 'okQuoteD'], again: 'againQuote',
+    fields: [
+      { n: 'offer', k: 'select', opts: 'offers', req: 1, full: 1 },
+      { n: 'name', k: 'text', req: 1, min: 2, max: 100, ac: 'name' },
+      { n: 'email', k: 'email', req: 1, max: 254, ac: 'email' },
+      { n: 'country', k: 'country', req: 1, ac: 'country' },
+      { n: 'phone', k: 'tel', max: 30, ac: 'tel', opt: 1 },
+      { n: 'profile', k: 'select', opts: 'profiles', req: 1 },
+      { n: 'organization', k: 'text', lab: 'org', max: 150, ac: 'organization', opt: 1 },
+      { n: 'crop', k: 'text', max: 80, opt: 1 },
+      { n: 'budget', k: 'select', opts: 'budgets', opt: 1 },
+      { n: 'timing', k: 'select', opts: 'timings', opt: 1, full: 1 },
+      { n: 'message', k: 'textarea', lab: 'need', req: 1, min: 20, max: 2000, full: 1 },
+      { n: 'consent', k: 'consent', req: 1, full: 1 }
+    ]
+  },
   newsletter: {
     col: 'subscribers', submit: 'btn', ok: ['okT', 'okD'],
     fields: [
@@ -246,7 +263,11 @@ const CODES = {
   subjects: ['PARTNERSHIP', 'PILOT', 'INVESTMENT', 'DATA', 'MEDIA', 'OTHER'],
   interests: ['FARM_PLANNING', 'INVESTMENT', 'COOPERATIVE', 'SUPPLY', 'RISK', 'PUBLIC_PROGRAMME', 'FOUMBOT_PILOT'],
   scales: ['UNDER_1_HA', 'HA_1_10', 'HA_10_100', 'OVER_100_HA', 'NOT_APPLICABLE'],
-  methods: ['EMAIL', 'PHONE', 'WHATSAPP']
+  methods: ['EMAIL', 'PHONE', 'WHATSAPP'],
+  offers: ['ESSENTIAL', 'EXPERT', 'BANKABLE', 'MONITORING', 'INSTITUTIONS', 'PRO_WAITLIST'],
+  profiles: ['INDIVIDUAL', 'DIASPORA', 'SME', 'COOPERATIVE', 'LARGE_COMPANY', 'FINANCE', 'PUBLIC', 'INTERNATIONAL', 'OTHER'],
+  budgets: ['UNDER_5K', 'K5_25', 'K25_100', 'OVER_100K', 'UNDECIDED'],
+  timings: ['WITHIN_1_MONTH', 'MONTHS_1_3', 'MONTHS_3_6', 'LATER']
 };
 const CODE = (k, i) => (i === '' || i == null) ? null : (CODES[k][+i] || null);
 const orNull = v => (v === '' || v == null) ? null : v;
@@ -259,6 +280,7 @@ async function persistApi(type, v, form, mountedAt) {
   const base = { name: v.name, email: v.email, organization: orNull(v.organization), country: orNull(v.country), phone: orNull(v.phone), organizationType: CODE('orgTypes', v.orgType), message: orNull(v.message), consent: !!v.consent };
   const payload = type === 'newsletter' ? { email: v.email, language: v.language === 'fr' ? 'fr' : 'en', consent: !!v.consent }
     : type === 'contact' ? Object.assign(base, { subject: CODE('subjects', v.subject) })
+    : type === 'quote' ? Object.assign(base, { organizationType: undefined, offer: CODE('offers', v.offer), profile: CODE('profiles', v.profile), crop: orNull(v.crop), budget: CODE('budgets', v.budget), timing: CODE('timings', v.timing) })
     : Object.assign(base, { role: v.role, interest: CODE('interests', v.interest), scale: CODE('scales', v.scale), contactMethod: CODE('methods', v.method === '' || v.method == null ? '0' : v.method) });
   payload.uiLanguage = LANG; payload.website = v.website || ''; payload.elapsedMs = Date.now() - mountedAt;
   const tk = form.querySelector('[name="cf-turnstile-response"]'); if (tk && tk.value) payload.turnstileToken = tk.value;
@@ -285,6 +307,8 @@ async function persist(type, v) {
   const base = { name: v.name, email: v.email.toLowerCase(), organization: v.organization || null, country: v.country || null, countryName: v.country ? countryName(v.country, 'en') : null, phone: v.phone || null, orgType: EN_OPT('orgTypes', v.orgType), message: v.message || null, status: 'NEW', language: LANG, source: 'website', consent: true, createdAt: now, updatedAt: now };
   const rec = type === 'contact'
     ? Object.assign(base, { subject: EN_OPT('subjects', v.subject) })
+    : type === 'quote'
+    ? Object.assign(base, { offer: EN_OPT('offers', v.offer), profile: EN_OPT('profiles', v.profile), crop: v.crop || null, budget: EN_OPT('budgets', v.budget), timing: EN_OPT('timings', v.timing) })
     : Object.assign(base, { role: v.role, interest: EN_OPT('interests', v.interest), scale: EN_OPT('scales', v.scale), contactMethod: EN_OPT('methods', v.method), phone: v.method !== '0' ? (v.phone || null) : (v.phone || null) });
   const col = FORM_DEFS[type].col;
   await db.collection(col + '/' + uid + '/items').add(rec);
@@ -384,7 +408,7 @@ function bindForm(form, opts) {
     holder.className = opts.compact ? '' : 'panel';
     const again = kind === 'pre'
       ? '<button class="btn btn-ghost btn-sm" type="button" data-edit>' + esc(F.edit) + '</button>'
-      : (isNl ? '' : '<button class="btn btn-ghost btn-sm" type="button" data-again>' + esc(F.again) + '</button>') + '<a class="btn btn-ghost btn-sm" href="#home">' + esc(L().nav.home) + '</a>';
+      : (isNl ? '' : '<button class="btn btn-ghost btn-sm" type="button" data-again>' + esc(F[def.again || 'again']) + '</button>') + '<a class="btn btn-ghost btn-sm" href="#home">' + esc(L().nav.home) + '</a>';
     holder.innerHTML = resultHTML(kind === 'pre' ? 'pre' : 'ok', t, d, again);
     wrap.replaceChild(holder, form);
     const r = holder.querySelector('.result'); if (r) r.focus({ preventScroll: false });

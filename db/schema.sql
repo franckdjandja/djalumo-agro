@@ -68,6 +68,32 @@ create index if not exists demo_requests_email_idx on demo_requests (lower(email
 drop trigger if exists demo_requests_updated_at on demo_requests;
 create trigger demo_requests_updated_at before update on demo_requests for each row execute function set_updated_at();
 
+-- Quote requests (Offers page) --------------------------------------------
+create table if not exists quote_requests (
+  id                uuid primary key default gen_random_uuid(),
+  offer             text not null check (offer in ('ESSENTIAL', 'EXPERT', 'BANKABLE', 'MONITORING', 'INSTITUTIONS', 'PRO_WAITLIST')),
+  name              text not null check (char_length(name) between 2 and 100),
+  email             text not null check (char_length(email) <= 254),
+  organization      text check (char_length(organization) <= 150),
+  country           char(2) not null check (country ~ '^[A-Z]{2}$'),
+  phone             text check (char_length(phone) <= 30),
+  profile           text not null,
+  crop              text check (char_length(crop) <= 80),
+  budget            text,
+  timing            text,
+  message           text not null check (char_length(message) between 20 and 2000),
+  language          char(2) not null default 'en' check (language in ('en', 'fr')),
+  status            inquiry_status not null default 'NEW',
+  source            text not null default 'website',
+  consent_at        timestamptz not null,
+  created_at        timestamptz not null default now(),
+  updated_at        timestamptz not null default now()
+);
+create index if not exists quote_requests_status_created_idx on quote_requests (status, created_at desc);
+create index if not exists quote_requests_email_idx on quote_requests (lower(email));
+drop trigger if exists quote_requests_updated_at on quote_requests;
+create trigger quote_requests_updated_at before update on quote_requests for each row execute function set_updated_at();
+
 -- Newsletter --------------------------------------------------------------
 -- Only what is needed: the address, its language and the consent record.
 create table if not exists newsletter_subscribers (

@@ -962,7 +962,7 @@ h1[tabindex]:focus{outline:none}
 .hero-link a svg{margin-left:6px}
 /* Navigation with Home first: tighter items so the full row stays on one line down to 1241px. */
 .nav{gap:0}
-.nav a{font-size:13px;padding:7px 8px}
+.nav a{font-size:13px;padding:7px 6px}
 @media (max-width:1600px){.hdr-cta{display:none}}
 /* Home: compact looping demonstration of the Season Planner, under the headline */
 .wh-demo{margin:clamp(26px,2.6vw,36px) 0 0;max-width:520px}
@@ -983,3 +983,29 @@ h1[tabindex]:focus{outline:none}
 @supports (height:100svh){.demo-video{width:min(100%,calc((100svh - 150px) * 16 / 9))}}
 .demo-video video{object-fit:contain;background:var(--deep)}
 @media (max-width:700px){.demo-video{width:min(100%,calc((100svh - 130px) * 828 / 1792))}.demo-video video{aspect-ratio:828/1792}}
+
+/* Offers page: work on written quote */
+.offer-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:1100px){.offer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:700px){.offer-grid{grid-template-columns:1fr}}
+.offer{display:flex;flex-direction:column;gap:12px;padding:26px 24px}
+.offer .top{margin-bottom:0;align-items:flex-start}
+.offer h3{font-size:22px;letter-spacing:-.02em}
+.offer .k{display:block;font-size:12.5px;font-weight:600;color:var(--green);margin-bottom:3px}
+.offer p.offer-for{margin:0;color:var(--fg-2);font-size:15px}
+.offer .list-check{gap:8px}
+.offer .list-check li{font-size:14.5px;line-height:1.5}
+.offer-meta{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:10px}
+.offer-meta p{margin:0;font-size:14.5px;color:var(--fg-2)}
+.offer-meta p.offer-note{font-size:13.5px;color:var(--fg-3)}
+.offer-meta .btn{align-self:flex-start}
+.offer.soon{background:var(--panel-2,#F6F8F7);box-shadow:none;border:1px dashed var(--line-2)}
+.offers-cta{background:#fff}
+.offer-free{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr) auto;gap:28px;align-items:center;background:#fff;border-radius:var(--radius);padding:22px 26px;box-shadow:var(--shadow-2);margin-bottom:14px}
+.offer-free .top{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.offer-free h3{font-size:22px;letter-spacing:-.02em}
+.offer-free .k{display:block;font-size:12.5px;font-weight:600;color:var(--green);margin-bottom:3px}
+.offer-free p.offer-for{margin:0;color:var(--fg-2);font-size:15px}
+.offer-free .list-check{gap:8px}
+.offer-free .list-check li{font-size:14.5px}
+@media (max-width:900px){.offer-free{grid-template-columns:1fr;gap:16px;align-items:start}.offer-free .btn{justify-self:start}}

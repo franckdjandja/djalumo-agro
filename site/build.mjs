@@ -27,7 +27,7 @@ const config = {
   analytics: process.env.ANALYTICS_PROVIDER ? { provider: process.env.ANALYTICS_PROVIDER, id: process.env.ANALYTICS_ID || '' } : null
 };
 
-const i18nSrc = read('src/i18n.js') + '\n' + read('src/i18n-v3.js') + '\n' + read('src/i18n-v4.js') + '\n' + read('src/i18n-v5.js') + '\n' + read('src/i18n-v6.js') + '\n' + read('src/i18n-v7.js') + '\n' + read('src/i18n-seo.js') + '\n' + read('src/i18n-guides.js') + '\n' + read('src/i18n-v8.js');
+const i18nSrc = read('src/i18n.js') + '\n' + read('src/i18n-v3.js') + '\n' + read('src/i18n-v4.js') + '\n' + read('src/i18n-v5.js') + '\n' + read('src/i18n-v6.js') + '\n' + read('src/i18n-v7.js') + '\n' + read('src/i18n-seo.js') + '\n' + read('src/i18n-guides.js') + '\n' + read('src/i18n-v8.js') + '\n' + read('src/i18n-v9.js');
 const I18N = vm.runInNewContext(i18nSrc + ';I18N');
 const geo = JSON.parse(read('geo.json'));
 const geoWorld = JSON.parse(read('geo-world.json'));
@@ -60,7 +60,7 @@ const js = '(function(){\n' + parts.join('\n') + '\n})();';
 const css = read('src/styles.css') + (target === 'android' ? '\n' + read('src/app.css') : '');
 const template = read('template.html');
 
-const ROUTES = ['home', 'planner', 'field', 'platform', 'intelligence', 'solutions', 'data', 'impact', 'about', 'contact', 'demo', 'newsletter', 'privacy', 'terms', 'crops', ...Object.keys(kb.crops).map((id) => 'crops/' + id), 'insights', ...INSIGHTS.map((a) => 'insights/' + a.slug)];
+const ROUTES = ['home', 'planner', 'field', 'platform', 'intelligence', 'solutions', 'data', 'impact', 'about', 'contact', 'demo', 'offers', 'newsletter', 'privacy', 'terms', 'crops', ...Object.keys(kb.crops).map((id) => 'crops/' + id), 'insights', ...INSIGHTS.map((a) => 'insights/' + a.slug)];
 const insightOf = (k) => (k.startsWith('insights/') ? INSIGHTS.find((a) => 'insights/' + a.slug === k) : null);
 const EN = I18N.en;
 const titleOf = (k, lang = 'en') => I18N[lang].seo[k][0];

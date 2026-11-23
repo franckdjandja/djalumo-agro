@@ -6,7 +6,7 @@ import { getConfig } from '../lib/config.js';
 import { createMemoryRateStore } from '../lib/security.js';
 
 function fakeDeps(env = {}) {
-  const store = { inquiries: [], demos: [], subs: new Map() };
+  const store = { inquiries: [], demos: [], quotes: [], subs: new Map() };
   const mails = [];
   const rate = createMemoryRateStore();
   const deps = {
@@ -14,10 +14,11 @@ function fakeDeps(env = {}) {
     repo: () => ({
       async insertInquiry(d) { store.inquiries.push(d); return { id: 'x' }; },
       async insertDemoRequest(d) { store.demos.push(d); return { id: 'y' }; },
+      async insertQuoteRequest(d) { store.quotes.push(d); return { id: 'q' }; },
       async subscribe(d) { if (store.subs.has(d.email)) return { duplicate: true }; store.subs.set(d.email, d); return { duplicate: false, token: 't'.repeat(32) }; }
     }),
     rateStore: () => rate,
-    mailer: () => ({ notifyInquiry: async (d) => { mails.push(['inquiry', d.email]); return { ok: true }; }, notifyDemo: async (d) => { mails.push(['demo', d.email]); return { ok: true }; }, notifySubscriber: async () => ({ ok: true }), confirmSubscription: async () => ({ ok: true }) }),
+    mailer: () => ({ notifyInquiry: async (d) => { mails.push(['inquiry', d.email]); return { ok: true }; }, notifyDemo: async (d) => { mails.push(['demo', d.email]); return { ok: true }; }, notifyQuote: async (d) => { mails.push(['quote', d.offer, d.email]); return { ok: true }; }, notifySubscriber: async () => ({ ok: true }), confirmSubscription: async () => ({ ok: true }) }),
     newsletter: () => ({ add: async () => ({ ok: true, skipped: true }) }),
     fetch: async () => ({ json: async () => ({ success: false }) }),
     log: { info() {}, error() {} }
@@ -91,6 +92,20 @@ test('demo: stored with notification', async () => {
   const body = { name: 'Jean Fotso', email: 'jean@coop.cm', organization: 'Coop Noun', country: 'CM', role: 'Manager', organizationType: 'COOPERATIVE', interest: 'FOUMBOT_PILOT', contactMethod: 'PHONE', phone: '+237 699 00 00 00', consent: true, elapsedMs: 12000 };
   const r = await call(createFormHandler('demo', deps), { body });
   assert.equal(r.status, 200); assert.equal(store.demos.length, 1); assert.equal(mails[0][0], 'demo');
+});
+
+test('quote: stored with its offer and notified; an unknown offer is refused', async () => {
+  const { deps, store, mails } = fakeDeps();
+  const h = createFormHandler('quote', deps);
+  const quote = { offer: 'EXPERT', name: 'Paul Mbarga', email: 'paul@example.org', country: 'FR', profile: 'DIASPORA', crop: 'Tomato', budget: 'K25_100', timing: 'MONTHS_1_3', message: 'Open field tomato near Foumbot, about two hectares, planting in March.', consent: true, elapsedMs: 12000, website: '' };
+  const r = await call(h, { body: quote, ip: '7.7.7.1' });
+  assert.equal(r.status, 200); assert.deepEqual(r.json, { status: 'ok' });
+  assert.equal(store.quotes.length, 1); assert.equal(store.quotes[0].offer, 'EXPERT'); assert.equal(store.quotes[0].organization, null);
+  assert.deepEqual(mails, [['quote', 'EXPERT', 'paul@example.org']]);
+  const bad = await call(h, { body: { ...quote, offer: 'PLATINUM' }, ip: '7.7.7.2' });
+  assert.equal(bad.status, 422); assert.equal(bad.json.fields.offer, 'invalid'); assert.equal(store.quotes.length, 1);
+  const noProfile = await call(h, { body: { ...quote, profile: undefined }, ip: '7.7.7.3' });
+  assert.equal(noProfile.status, 422); assert.equal(noProfile.json.fields.profile, 'required');
 });
 
 test('newsletter: duplicate detection', async () => {

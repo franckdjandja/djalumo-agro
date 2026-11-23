@@ -1,5 +1,5 @@
 /* ---------- Page templates, router, chrome ---------- */
-const NAV = ['planner', 'field', 'insights', 'platform', 'intelligence', 'solutions', 'data', 'impact', 'about', 'contact'];
+const NAV = ['planner', 'field', 'insights', 'platform', 'intelligence', 'solutions', 'offers', 'data', 'impact', 'about', 'contact'];
 const ey = () => ''; // v4: no label or rule above titles
 const head = (e, h, lead) => '<div class="sec-head rv"><h2 class="h2">' + esc(h) + '</h2>' + (lead ? '<p class="lead">' + esc(lead) + '</p>' : '<span></span>') + '</div>';
 const sec = (inner, attrs) => '<section class="sec"' + (attrs || '') + '><div class="wrap">' + inner + '</div></section>';
@@ -21,7 +21,7 @@ const PAGES = {
         '<p class="close-line rv">' + esc(H.pClose) + '</p>');
       const how = sec(head(H.hEyebrow, H.hH, H.hLead) + '<div class="pipe rv"><span class="pulse" aria-hidden="true"></span>' + H.steps.map((s, i) => '<div class="st"><div class="n">' + (i + 1) + '</div><h3>' + esc(s.t) + '</h3><p>' + esc(s.d) + '</p></div>').join('') + '</div>');
       const sim = sec(head(H.sEyebrow, H.sH, H.sLead) + '<div class="panel planner home-planner" data-plroot>' + plannerFormHTML(true) + '<div class="planner-out" data-pout aria-live="polite"></div></div>', ' id="simulator"');
-      const tiers = sec(head(H.tEyebrow, H.tH, H.tLead) + tiersHTML());
+      const tiers = sec(head(H.tEyebrow, H.tH, H.tLead) + tiersHTML() + '<p class="ins-follow rv"><a class="btn btn-ghost" href="#offers">' + esc(L().offers.plannerBtn) + ARROW + '</a></p>');
       return worldHeroHTML(true) + evidence + problem + how + sim + tiers + nlBand('nl-home') + ctaBand();
     },
     mount(root) {
@@ -96,6 +96,7 @@ const PAGES = {
         sec(head('01 · ' + S.who, S.whoH) + '<div class="rv"><div class="tabs" role="tablist" aria-label="' + esc(S.who) + '">' + S.personas.map((p, i) => '<button type="button" role="tab" id="tab-' + i + '" aria-controls="persona" aria-selected="' + (i === 0) + '" tabindex="' + (i === 0 ? 0 : -1) + '" data-p="' + i + '">' + esc(p[0]) + '</button>').join('') + '</div><div id="persona" role="tabpanel" aria-labelledby="tab-0" data-persona>' + personaHTML(0) + '</div></div>') +
         sec(head('02 · ' + S.tiersEyebrow, S.tiersH) + tiersHTML()) +
         sec(head('03 · ' + S.posEyebrow, S.posH) + table(S.posCols, S.pos.map(r => ['<span class="faint mono small">' + esc(r[0]) + '</span>', esc(r[1]), esc(r[2]), '<b style="color:var(--fg)">' + esc(r[3]) + '</b>']))) +
+        sec(head('04 · ' + L().offers.eyebrow, L().offers.solutionsH, L().offers.solutionsLead) + '<div class="rv" style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-primary" href="#offers">' + esc(L().offers.plannerBtn) + ARROW + '</a></div>') +
         ctaBand();
     },
     mount(root) {
@@ -167,6 +168,37 @@ const PAGES = {
         sec(head('', M.sessionH, M.sessionLead) + '<div class="form-wrap"><div class="rv">' + formHTML('demo', 'f-demo') + '</div><aside class="aside rv"><div class="card"><h3>' + esc(M.coversH) + '</h3><ul class="list-check" style="margin-top:14px">' + M.covers.map(t => '<li>' + esc(t) + '</li>').join('') + '</ul></div><div class="card"><h3>' + esc(M.stageH) + '</h3><p>' + esc(M.stage) + '</p></div><figure class="rv crop43" style="margin:0;border-radius:12px;overflow:hidden;border:1px solid var(--line)">' + img('relaunch-field', LANG === 'fr' ? 'Champ de concombre en croissance, relance du site principal, 2025' : 'Cucumber field in growth, relaunch of the main site, 2025') + '</figure></aside></div>', ' id="session"');
     },
     mount(root) { bindForm($('#f-demo', root)); }
+  },
+
+  offers: {
+    html() {
+      const O = L().offers, F = O.free;
+      const card = (tag, cls, o, btn) => '<article class="card offer' + (o.soon ? ' soon' : '') + '"><div class="top"><h3>' + esc(o.n) + '</h3><span class="badge ' + cls + '">' + esc(tag) + '</span></div>' +
+        '<p class="offer-for"><span class="k">' + esc(O.forL) + '</span>' + esc(o.w) + '</p>' +
+        '<div class="k">' + esc(O.getL) + '</div><ul class="list-check">' + o.d.map(t => '<li>' + esc(t) + '</li>').join('') + '</ul>' +
+        '<div class="offer-meta"><p><span class="k">' + esc(O.timeL) + '</span>' + esc(o.t) + '</p>' + (o.note ? '<p class="offer-note">' + esc(o.note) + '</p>' : '') + btn + '</div></article>';
+      const free = '<div class="offer-free rv"><div><div class="top"><h3>' + esc(F.n) + '</h3><span class="badge real">' + esc(O.freeTag) + '</span></div><p class="offer-for"><span class="k">' + esc(O.forL) + '</span>' + esc(F.w) + '</p></div><ul class="list-check">' + F.d.map(t => '<li>' + esc(t) + '</li>').join('') + '</ul><a class="btn btn-ghost btn-sm" href="#planner">' + esc(F.cta) + ARROW + '</a></div>';
+      const cards = O.items.map((o, i) => card(o.soon ? O.soonTag : O.quoteTag, o.soon ? 'plan' : 'real', o, '<button type="button" class="btn ' + (o.soon ? 'btn-ghost' : 'btn-primary') + ' btn-sm" data-offer="' + i + '">' + esc(o.cta || O.ctaQuote) + ARROW + '</button>')).join('');
+      return pageHero(O.eyebrow, O.h1, O.lead, '<p class="hero-link"><a href="#offers" data-to-quote>' + esc(O.ctaQuote) + ARROW + '</a></p>') +
+        sec(head('', O.listH, O.listLead) + free + '<div class="offer-grid rv">' + cards + '</div>') +
+        sec(head('', O.howH) + '<div class="pipe c4 rv"><span class="pulse" aria-hidden="true"></span>' + O.how.map(([t, d], i) => '<div class="st"><div class="n">' + (i + 1) + '</div><h3>' + esc(t) + '</h3><p>' + esc(d) + '</p></div>').join('') + '</div>') +
+        sec(head('', O.formH, O.formLead) + '<div class="form-wrap"><div class="rv">' + formHTML('quote', 'f-quote') + '</div><aside class="aside rv"><div class="card"><h3>' + esc(O.rulesH) + '</h3><ul class="list-check" style="margin-top:14px">' + O.rules.map(t => '<li>' + esc(t) + '</li>').join('') + '</ul></div><div class="card"><h3>' + esc(O.asideH) + '</h3><ul class="list-check" style="margin-top:14px">' + O.aside.map(t => '<li>' + esc(t) + '</li>').join('') + '</ul><a class="btn btn-ghost btn-sm" style="margin-top:16px" href="#contact">' + esc(L().nav.contact) + ARROW + '</a></div></aside></div>', ' id="quote"');
+    },
+    mount(root) {
+      bindForm($('#f-quote', root));
+      const toForm = (focusSel) => { const t = $('#quote', root); if (t) t.scrollIntoView({ behavior: RM.matches ? 'auto' : 'smooth', block: 'start' }); const f = focusSel && $(focusSel, root); if (f) setTimeout(() => f.focus({ preventScroll: true }), RM.matches ? 0 : 500); };
+      root.addEventListener('click', e => {
+        const b = e.target.closest('[data-offer]');
+        if (b) {
+          const sel = $('#f-quote-offer', root);
+          if (sel) { sel.value = b.dataset.offer; sel.dispatchEvent(new Event('input', { bubbles: true })); }
+          toForm('#f-quote-name');
+          analytics.track('cta_click', { cta: 'offer_' + b.dataset.offer });
+          return;
+        }
+        if (e.target.closest('[data-to-quote]')) { e.preventDefault(); e.stopPropagation(); toForm('#f-quote-offer'); }
+      });
+    }
   },
 
   newsletter: {
@@ -247,7 +279,7 @@ function footerHTML() {
   const F = L().footer, N = L().nav;
   const col = (h, ks) => '<div><h5>' + esc(h) + '</h5><ul>' + ks.map(k => '<li><a href="#' + k + '">' + esc(N[k] || L().meta.pages[k]) + '</a></li>').join('') + '</ul></div>';
   return '<footer class="ftr"><div class="wrap"><div class="ftr-grid"><div><a class="brand" href="#home" aria-label="Djalumo Agro">' + LOGO + '<span class="brand-sub">Agro</span></a><p class="muted small" style="margin-top:16px;max-width:34ch">' + esc(F.tag) + '</p><p class="small ftr-mail"><a href="mailto:franck.djandja@djalumo.com">franck.djandja@djalumo.com</a></p><div class="status-row" style="margin-top:18px"><span class="chip ok"><i></i>' + esc(F.status) + '</span></div></div>' +
-    col(F.cols[0], ['planner', 'crops', 'field', 'platform', 'intelligence', 'data']) + col(F.cols[1], ['insights', 'solutions', 'impact', 'about']) + col(F.cols[2], ['contact', 'demo', 'newsletter']) +
+    col(F.cols[0], ['planner', 'crops', 'field', 'platform', 'intelligence', 'data']) + col(F.cols[1], ['insights', 'solutions', 'offers', 'impact', 'about']) + col(F.cols[2], ['contact', 'demo', 'newsletter']) +
     '<div><h5>' + esc(F.nlH) + '</h5><div class="nl-foot">' + formHTML('newsletter', 'nl-foot', { compact: true }) + '</div></div></div>' +
     '<div class="ftr-bot"><span>' + esc(F.rights) + '</span><span>' + esc(F.place) + ' · ' + esc(F.noTrack) + ' · <a href="#privacy">' + esc(L().meta.pages.privacy) + '</a> · <a href="#terms">' + esc(L().meta.pages.terms) + '</a> · <a href="https://www.linkedin.com/company/djalumo-agro/" target="_blank" rel="noopener">LinkedIn</a></span></div></div></footer>';
 }
