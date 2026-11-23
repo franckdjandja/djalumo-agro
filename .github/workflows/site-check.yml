@@ -1,0 +1,36 @@
+# After each deployment of the site: the public pages answer, the forms refuse a bad request,
+# and the health check sees the database and the mail server. Results appear as notices on the run.
+name: Site check
+on:
+  push:
+    branches: [main]
+    paths: ['site/**', 'api/**', 'lib/**', 'db/**', '.github/workflows/site-check.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Wait for the deployment
+        run: sleep 150
+      - name: Check the live site
+        env:
+          SITE: https://agro.djalumo.com
+        run: |
+          fail=0
+          for p in / /fr /offers /fr/offers /planner /fr/contact; do
+            code=$(curl -s -o page.html -w '%{http_code}' "$SITE$p")
+            if [ "$code" = "200" ]; then echo "::notice title=page $p::HTTP $code"; else echo "::error title=page $p::HTTP $code"; fail=1; fi
+          done
+          curl -s "$SITE/fr/offers" | grep -q 'id="f-quote"' && echo "::notice title=offers form::present" || { echo "::error title=offers form::missing"; fail=1; }
+          health=$(curl -s "$SITE/api/health?mail=verify")
+          echo "::notice title=health::$health"
+          echo "$health" | grep -q '"database":"ok"' || { echo "::error title=database::not ok"; fail=1; }
+          echo "$health" | grep -q '"mail":"ok"' || { echo "::error title=mail::not ok"; fail=1; }
+          for f in quote contact; do
+            body=$(curl -s -o resp.json -w '%{http_code}' -X POST -H 'Content-Type: application/json' -H "Origin: $SITE" --data '{"email":"not-an-address"}' "$SITE/api/$f")
+            if [ "$body" = "422" ]; then echo "::notice title=api $f::refuses an invalid request ($(cat resp.json))"; else echo "::error title=api $f::HTTP $body $(cat resp.json)"; fail=1; fi
+          done
+          exit $fail
