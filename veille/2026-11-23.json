@@ -1,0 +1,2170 @@
+{
+ "date": "2026-11-23",
+ "generatedAt": "2026-11-23T16:03:25.037Z",
+ "windowHours": 72,
+ "sources": [
+  {
+   "id": "gn-fr-cameroun",
+   "name": "Google Actualités, agriculture Cameroun",
+   "ok": true,
+   "found": 5,
+   "kept": 5
+  },
+  {
+   "id": "gn-fr-afrique",
+   "name": "Google Actualités, agro-industrie Afrique",
+   "ok": true,
+   "found": 23,
+   "kept": 23
+  },
+  {
+   "id": "gn-fr-technique",
+   "name": "Google Actualités, irrigation et serres en Afrique",
+   "ok": true,
+   "found": 10,
+   "kept": 10
+  },
+  {
+   "id": "gn-en-investment",
+   "name": "Google News, African agriculture investment",
+   "ok": true,
+   "found": 32,
+   "kept": 32
+  },
+  {
+   "id": "gn-en-agritech",
+   "name": "Google News, agritech Africa",
+   "ok": true,
+   "found": 4,
+   "kept": 4
+  },
+  {
+   "id": "gn-en-ai",
+   "name": "Google News, AI and data in African farming",
+   "ok": true,
+   "found": 31,
+   "kept": 31
+  },
+  {
+   "id": "gn-en-kenya",
+   "name": "Google News, Kenya agriculture",
+   "ok": true,
+   "found": 34,
+   "kept": 34
+  },
+  {
+   "id": "gn-en-rwanda",
+   "name": "Google News, Rwanda agriculture",
+   "ok": true,
+   "found": 19,
+   "kept": 19
+  },
+  {
+   "id": "gn-en-irrigation",
+   "name": "Google News, irrigation and greenhouses in Africa",
+   "ok": true,
+   "found": 31,
+   "kept": 31
+  },
+  {
+   "id": "gn-en-prices",
+   "name": "Google News, food prices Africa",
+   "ok": true,
+   "found": 31,
+   "kept": 31
+  },
+  {
+   "id": "techcabal",
+   "name": "TechCabal",
+   "ok": true,
+   "found": 10,
+   "kept": 0
+  },
+  {
+   "id": "disrupt-africa",
+   "name": "Disrupt Africa",
+   "ok": true,
+   "found": 10,
+   "kept": 0
+  },
+  {
+   "id": "agfunder",
+   "name": "AgFunder News",
+   "ok": true,
+   "found": 50,
+   "kept": 1
+  },
+  {
+   "id": "howwemadeit",
+   "name": "How We Made It In Africa",
+   "ok": true,
+   "found": 20,
+   "kept": 0
+  },
+  {
+   "id": "cgiar",
+   "name": "CGIAR",
+   "ok": false,
+   "error": "HTTP 410"
+  },
+  {
+   "id": "iita",
+   "name": "IITA",
+   "ok": true,
+   "found": 1,
+   "kept": 0
+  },
+  {
+   "id": "fao",
+   "name": "FAO",
+   "ok": false,
+   "error": "HTTP 404"
+  },
+  {
+   "id": "ifad",
+   "name": "FIDA",
+   "ok": false,
+   "error": "HTTP 403"
+  },
+  {
+   "id": "afdb",
+   "name": "Banque africaine de développement",
+   "ok": false,
+   "error": "HTTP 403"
+  },
+  {
+   "id": "investir-cameroun",
+   "name": "Investir au Cameroun, agriculture",
+   "ok": true,
+   "found": 10,
+   "kept": 0
+  },
+  {
+   "id": "ecofin-agro",
+   "name": "Agence Ecofin, agro",
+   "ok": false,
+   "error": "HTTP 403"
+  },
+  {
+   "id": "newtimes",
+   "name": "The New Times, Rwanda",
+   "ok": true,
+   "found": 0,
+   "kept": 0
+  }
+ ],
+ "count": 150,
+ "items": [
+  {
+   "title": "Murang’a Coffee farmers receive high-yielding seedlings in production boost drive",
+   "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOVzI2d1ptY3JEZmQxTmRQdC1KdlE1TTk1ejhiN1hHcnBSandtN1V5UzlHYkhMaVRlbE1Ubmgwc3dVRW9qQ0E2Yno3NU92MF95cTRCRThLNXUtYVNNREZVZENURzl0YVJrQkdHVXdYbnJOT3ZlbWVvUzhtM3JLSUlBcElLTzJCZi1xY1lKRkE3VDNrSktWcmdBWEFXeW1sX1Ixd1FhLXNGbEFSNmRjRnc?oc=5",
+   "publisher": "Kenya News Agency",
+   "publisherUrl": "https://www.kenyanews.go.ke",
+   "published": "2026-11-21T17:59:14.000Z",
+   "summary": "Murang’a Coffee farmers receive high-yielding seedlings in production boost drive &nbsp;&nbsp; Kenya News Agency",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [
+    "KE"
+   ],
+   "score": 10
+  },
+  {
+   "title": "Principal Secretary (PS) in the State Department for Blue Economy and Fisheries Ms. Betsy Muthoni Njagi (left) and Kisumu Deputy Governor Dr. Mathews Owili (in blue cap) inspect fish products during an exhibition at the national World Fisheries Day celebrat",
+   "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxPNEUxT2M1Mlo4TFlpb0l3RWx6b1NPbTVWWWJFckd3bUJIbjBDRUlSaXRxejdyX3JPS2VLN1JicnhzaF9vWWZIX0NWeThvSHBDLWNuY19MdkhDX0tJcEppNmV0LUhUVkVlWDkwSlVQT3BUVWliVW9aQ1NGVndwLXp3QWJnRXItZjFOV3pUMTZPaFlWZmpsZEdyaU9fSmxhdS1FQjhDNUQwNW9POU9kT0NMV2ZZc2ZiSDcycDZUZDZpWFR3ZFZLWFBIMUtJSDg0M2lRSU9kcHB5UGxnajNZRTZn?oc=5",
+   "publisher": "Facebook",
+   "publisherUrl": "https://www.facebook.com",
+   "published": "2026-11-23T15:03:00.000Z",
+   "summary": "Principal Secretary (PS) in the State Department for Blue Economy and Fisheries Ms. Betsy Muthoni Njagi (left) and Kisumu Deputy Governor Dr. Mathews Owili (in blue cap) inspect fish products during an exhibition at the national World Fisheries Day celebrat &nbsp;&nbsp; Facebook",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [
+    "KE"
+   ],
+   "score": 8
+  },
+  {
+   "title": "Ruto Pushes for Coffee and Dairy as Western Kenya's Next Income Frontier",
+   "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOa18yd2NrRS1mM2VDSjNMcWZlckRjT3daem9tNVo3YzVXd0NXa1hGS1JtWVRmSzJjckFlV2JLN3dFdVhSTTc0cXlYS1pRdmdZVWljajZrdlBPRWVQQmlNUTVWVS1aMmhQZGhDc2xBamZmcm5WT1lBT1lRQTRLdnFUZjhYdmNYczZBckNwZ3lHQ2d0X2Vla0d5cnFEVGEyNkZ1Snhv?oc=5",
+   "publisher": "Dawan Africa",
+   "publisherUrl": "https://www.dawan.africa",
+   "published": "2026-11-23T09:14:45.000Z",
+   "summary": "Ruto Pushes for Coffee and Dairy as Western Kenya's Next Income Frontier &nbsp;&nbsp; Dawan Africa",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [
+    "KE",
+    "AF"
+   ],
+   "score": 8
+  },
+  {
+   "title": "Lack of awareness about cold storage leaves Rwanda’s farmers facing post-harvest losses",
+   "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOdXBHdEFKNVMzSDk2RjlRQk5HLXNtNnFxZ3E3OHpCM2ljQXZqSHFpRnZQS0g1dlVxOHExdWZOc1B5UjczajRDSzBwZDg3SDhTd1BHaU1wSzZZMVVPSVA4NmNnZGsyQnY5WDhPMjA5VFdZeUpyZ2duNnN0c3IxUGZUa0N4aUg1WXdERXNEcnh2ZG02U0RhZHk2UUJhdENKWjhORUg2VlRFM01tVG9PTG5R?oc=5",
+   "publisher": "Umunota.com",
+   "publisherUrl": "https://umunota.com",
+   "published": "2026-11-22T10:15:00.000Z",
+   "summary": "Lack of awareness about cold storage leaves Rwanda’s farmers facing post-harvest losses &nbsp;&nbsp; Umunota.com",
+   "lang": "en",
+   "source": "gn-en-rwanda",
+   "regions": [
+    "RW"
+   ],
+   "score": 8
+  },
+  {
+   "title": "Tawi Fresh Kenya agritech signs buyers before farmers plant",
+   "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOczhXWmVqa3oxbFQtQ1RNRm9TVlQ5UnpTdVYzUktnNWU2OEt6UFdiVUxpVkJzd1U0OG91M2R4cHk4VHhJS1BlV0JYbDdjX1JsbGhxNk43LTFmTHFsUUNkRkdjdmh1TUFXaVFTeHVucFN3X3dBN1lrcFhsUmc0T1lHZ24zYmdoZGtVdzBmQ3EwWDAzTW1MMnBR?oc=5",
+   "publisher": "Geeky Nigeria",
+   "publisherUrl": "https://geeky.com.ng",
+   "published": "2026-11-21T14:41:51.000Z",
+   "summary": "Tawi Fresh Kenya agritech signs buyers before farmers plant &nbsp;&nbsp; Geeky Nigeria",
+   "lang": "en",
+   "source": "gn-en-agritech",
+   "regions": [
+    "KE",
+    "AF"
+   ],
+   "score": 8
+  },
+  {
+   "title": "Farmers urged to safeguard irrigation Infrastructure",
+   "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPMDNkeFgzb0ZLWG56YzVBQVpYblVnN3ZiUFBNdlIzaU9lNExYWTRCcWh1NnJCbUVZd1Rta241YmhJZWdtQzhSdmhvR1p2NkxybkFjeHJES1UzWVg2cW9PeWI5OTQxSlBTaDNVVjlSZkczUUx5WUtONFZBREZhejFqeUJsNWN4UDFM?oc=5",
+   "publisher": "Kenya News Agency",
+   "publisherUrl": "https://www.kenyanews.go.ke",
+   "published": "2026-11-21T10:35:30.000Z",
+   "summary": "Farmers urged to safeguard irrigation Infrastructure &nbsp;&nbsp; Kenya News Agency",
+   "lang": "en",
+   "source": "gn-en-irrigation",
+   "regions": [
+    "KE"
+   ],
+   "score": 8
+  },
+  {
+   "title": "Officials from the Farm to Market Alliance (FtMA), Cereal Growers Association (CGA) and partner organisations display the nine-year Endline Evaluation Report of the Farm to Market Alliance Kenya Programme during the FtMA National Stakeholder Forum 202",
+   "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxNMTlVQkVDSFR4NUlkSjIzakUtc3JxeS1mTS1MZ0RlUC1tOHNuQU9XN180cmhsdDJQTC13S3ViRUdNUnpXdWZLQTlGSzNsZWdzREdOWGJrUVdORmIwM2RjV291ZkNmcG4yc3lqM0hzcVJqaWZJLVg1dVEyR1hGZl9DWW4takw3NF84YUwwdlFVOHhxRHRHY19DMFZRZ25EOFd2RjZ5RnY2RnNsSFFPeWZGRklvZWJraU5fRTlvLTcwUnlpcXRQVWFDeG9HY1M1cTJMbzVTX01HS1h1QzZMMmpj?oc=5",
+   "publisher": "Facebook",
+   "publisherUrl": "https://www.facebook.com",
+   "published": "2026-11-21T05:02:39.000Z",
+   "summary": "Officials from the Farm to Market Alliance (FtMA), Cereal Growers Association (CGA) and partner organisations display the nine-year Endline Evaluation Report of the Farm to Market Alliance Kenya Programme during the FtMA National Stakeholder Forum 202 &nbsp;&nbsp; Facebook",
+   "lang": "en",
+   "source": "gn-en-ai",
+   "regions": [
+    "KE"
+   ],
+   "score": 8
+  },
+  {
+   "title": "Gaz à effet de serre : les émissions du Cameroun hors terres et forêts ont augmenté de 72,6 % en 14 ans",
+   "link": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxOWXdFbmtnb3V3WUlkRGRCbll0SEJIVFFDZDQtU2dIY2lMU211MjJEWG9RU3loS2ZUMTVBbHBiT3AydHRBck1SaXJCNG13SmVmVF9CVG4ta2tvVkJLRm1pZlgtdHM0V2p4Z3ZmTng3YndjdV91MzlMTnc5d01tNEdwd1RON1lfcE9CekNRc0hybTFsS1UwTDBRNUk5S2dEd2k4cEgxRFVKLUZ1SWJzSDJhM3I5Y3BUQ21fcjczdVdvUk5hSm9KVjZrdkdYcjN0RXR0ZThaaDg5RjlHbXNrQXNjNzZxOHU1THkyRVdSS1JRNl8?oc=5",
+   "publisher": "Investir au Cameroun",
+   "publisherUrl": "https://www.investiraucameroun.com",
+   "published": "2026-11-23T04:48:00.000Z",
+   "summary": "Gaz à effet de serre : les émissions du Cameroun hors terres et forêts ont augmenté de 72,6 % en 14 ans &nbsp;&nbsp; Investir au Cameroun",
+   "lang": "fr",
+   "source": "gn-fr-cameroun",
+   "regions": [
+    "CM"
+   ],
+   "score": 7
+  },
+  {
+   "title": "New HEIFER assessment identifies opportunities to strengthen Kenya’s dairy sector",
+   "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQRE1mWVE1WGRSdnhhbnhuUEo5NXFEYVNxZE1NMmkxaHdtOTZ1REF4bFZJa2JtV2RmejdOc0FKRXp3NjhnMTczdzdLcTZWQVhPTWYyeDd3OVFLUWM5YWowSW43ZE1IV2tlelcyZTZ3NmxVN1VXQTBYd3QwNTU1eWQyRmpJR1AyNlZhRkFLYXNqU0Q3aHBQbzlXbk5NYjI2TFIyTnJ2b1dRRXhXSHZ2NEJ1VFByQQ?oc=5",
+   "publisher": "Farmers Review Africa",
+   "publisherUrl": "https://farmersreviewafrica.com",
+   "published": "2026-11-21T13:00:13.000Z",
+   "summary": "New HEIFER assessment identifies opportunities to strengthen Kenya’s dairy sector &nbsp;&nbsp; Farmers Review Africa",
+   "lang": "en",
+   "source": "gn-en-irrigation",
+   "regions": [
+    "KE",
+    "AF"
+   ],
+   "score": 7
+  },
+  {
+   "title": "Atari Irrigation Scheme Reaches 90 Percent Completion, Farmers Report Higher Rice Yields",
+   "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOVS1IT0V5cm5Nd2k4QVFrcWJzQm9JZnZyWW5HVkhHUXpzX0gzb0dVdV91bDlRNXA3UmNFY0NHRFBVel80ejM2YW5USDBmVUVpbzJ6RU1HejdaNnZGOWoybXhDYzhVOUx1eE95WWdnUlJ5M3V1Q0tPWlVqeTlfV1BKcEIwekIzc25JSF9iN0lyS2d4OHJhT0pYdnB2U0FCLWFPcm9FWFJQNzVNVkM2YTBGMU01SXA4Vkk5RVdJeVRHa0g1UQ?oc=5",
+   "publisher": "Uganda Radionetwork",
+   "publisherUrl": "https://ugandaradionetwork.net",
+   "published": "2026-11-21T10:34:51.000Z",
+   "summary": "Atari Irrigation Scheme Reaches 90 Percent Completion, Farmers Report Higher Rice Yields &nbsp;&nbsp; Uganda Radionetwork",
+   "lang": "en",
+   "source": "gn-en-irrigation",
+   "regions": [
+    "AF"
+   ],
+   "score": 7
+  },
+  {
+   "title": "Farmers Document Indigenous Seeds to Protect Crop Diversity in East Africa",
+   "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPMW1fSEZMSHFCTUlrYngzSXRSa0s5bndMTm8yZW1lcmJyd21TTUVfSDF1N2hNbTFaeU5sUFFQYTk1dUVranZiLW5qakEwRXRVaXA0MUtNZmZDVkNSWkppX3NuaXBhQi01NjdZVm9lMzlKVVRGYXJpd2JPTXNZdXdHMjA4UmhfbDVSb01oZkpISmoycjBUMnppU1JKbGlJN2lHWVR1dEZWWQ?oc=5",
+   "publisher": "Talk Africa",
+   "publisherUrl": "https://www.talkafrica.co.ke",
+   "published": "2026-11-21T01:20:17.000Z",
+   "summary": "Farmers Document Indigenous Seeds to Protect Crop Diversity in East Africa &nbsp;&nbsp; Talk Africa",
+   "lang": "en",
+   "source": "gn-en-ai",
+   "regions": [
+    "AF"
+   ],
+   "score": 7
+  },
+  {
+   "title": "National Assembly Speaker Moses Wetang’ula to sugarcane farmers: Hii Kiwanda (Nzoia Factory) ni mali yenu, we want Kenya to be self-sufficient in sugar production. President William Ruto presided over the payment of the sugarcane bonus to Nzoia Factor",
+   "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQZTMxbkxKMlNwaFByWGg3QnB2MnVKSlhRYl9OWlVsSGF3WFMxZi1qNWRPNDZqRjFnOW96NGhTcGp1enB3ak81RkYxZy1QX0FEaUtBOGlMYWZSNlpCV1BCdDhaWUVRUVJuaFFJSjdpZFd4akY4Z2piVlNMUHoxdFRIMk0yZlZqc2xubHVfOTY3Wkw0NkU0aDZpakFtTzVJbS1TMFMxLWtCUzA1X2hCbzJ2TEFrZFdxNGVEaUwzTXF6ZU9VaVNlcnhIU04wTjZnS19oWG5rZ3g1cUhGYmx5VVg0?oc=5",
+   "publisher": "Facebook",
+   "publisherUrl": "https://www.facebook.com",
+   "published": "2026-11-23T15:44:50.000Z",
+   "summary": "National Assembly Speaker Moses Wetang’ula to sugarcane farmers: Hii Kiwanda (Nzoia Factory) ni mali yenu, we want Kenya to be self-sufficient in sugar production. President William Ruto presided over the payment of the sugarcane bonus to Nzoia Factor &nbsp;&nbsp; Facebook",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [
+    "KE"
+   ],
+   "score": 6
+  },
+  {
+   "title": "Kenya News Agency - KNA. . Agriculture principal secretary Dr Paul Rono: Sugar production has increased to 900,000 MT",
+   "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQalR5ejROblpNMWpOQmhNdDN6SS1WdFViRXNhcUhRajdCb1FrRDIwV2h1MnZpSnBtb1haM1lhYk9DWDhEWmhKYk9iYkpsNEhIZHEyQWFmaHZnZEt3dm1oWHhmcVAtUzBWMUdXUzFmX3Jrd3dlbzRfcTB1MkZocG1kSm5ZLS15c2tQM2hGbHFGUWZYMVRWWTV6ajlTNVVqQ2V2c3h6OGdLdEMwdG9NWGlSYm9UUzFzY0VGRHNLbEdITGlUWnU1TFZXQjFDR1FXYUFJQ0dzTVNqWHpRRjVvTVpz?oc=5",
+   "publisher": "Facebook",
+   "publisherUrl": "https://www.facebook.com",
+   "published": "2026-11-23T15:23:36.000Z",
+   "summary": "Kenya News Agency - KNA. . Agriculture principal secretary Dr Paul Rono: Sugar production has increased to 900,000 MT &nbsp;&nbsp; Facebook",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [
+    "KE"
+   ],
+   "score": 6
+  },
+  {
+   "title": "Kenya News Agency - KNA. . President William Samoei Ruto- We are going to pay a Sh195 million bonus to farmers",
+   "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQN191U1czaEFpMVVRcHYwY1dsSlB3RTBsLW16VnRTYWJCN3N6dUNod0xpZUd2cW4tTjBkaGRIYWpRZ18yQUJPN0dXekFZOHI3U3pSU0tXcmVFUTM5UGFZR1AtOVllclZLXzR1ZnV4UTRWR0ppS2w5bXgwS0ZZM0VnUHVKaV9TRmtIM0R4eVN2SHU1YlJTR1c3NlBXS0xuMlUwUGpVUkRuRzRVS0J0WjNaMExRTVZweEh5TkN0akJ0d2VPNkFmNVRoalVJUk04VXhCZk9DUFAzRkJ5RElUTHNr?oc=5",
+   "publisher": "Facebook",
+   "publisherUrl": "https://www.facebook.com",
+   "published": "2026-11-23T14:59:33.000Z",
+   "summary": "Kenya News Agency - KNA. . President William Samoei Ruto- We are going to pay a Sh195 million bonus to farmers &nbsp;&nbsp; Facebook",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [
+    "KE"
+   ],
+   "score": 6
+  },
+  {
+   "title": "Kenya Turns to UNOPS to Unlock Private Investment in One Million-Acre Irrigation Drive",
+   "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQeFJTeldNYXBBT2tuWEg1LUZSR0EyQWkycTBGb2pRX2xHYmk4cXV3WnRiSzJoMGVxZkY1RWZfSXJhRTlRUXBSN3RfZFJrRHpyTko4TzUtLW1aZ3Vuckw4NEVBeUNMN3BBYjdFdndMUjFxLWhmTnlXSlBBVnZ0WDVTMHRlREQ0NzhJR3pRZ3QxUDJEbnVUcXZRNHlZM3V4Z3NVcXVtV3dqMFBLdnhJaHdHd2pGeGtxZw?oc=5",
+   "publisher": "Kenya News Agency",
+   "publisherUrl": "https://www.kenyanews.go.ke",
+   "published": "2026-11-23T13:08:46.000Z",
+   "summary": "Kenya Turns to UNOPS to Unlock Private Investment in One Million-Acre Irrigation Drive &nbsp;&nbsp; Kenya News Agency",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [
+    "KE"
+   ],
+   "score": 6
+  },
+  {
+   "title": "Kenya taps UNOPS in plans to place one million acres under irrigation",
+   "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOeUJxLXJJN0F1Z3VfV0ZBdG5DVEphNm1feDNQSE45aWFvQ1JPakZxS25fdy1Nalg0bHlzWDB2RzhmM0xocVItRklhQXNJRG80T214UWpjdVNlb3cyb29VVi1XZ1NTRWJfOEc1SC1uWXExT3Z2Q2FGNFhEZ2hXWWI1UnBJWTBDaWQ2YnpLLUlsWVZzTzFhRUI0?oc=5",
+   "publisher": "KBC Digital",
+   "publisherUrl": "https://www.kbc.co.ke",
+   "published": "2026-11-23T12:28:40.000Z",
+   "summary": "Kenya taps UNOPS in plans to place one million acres under irrigation &nbsp;&nbsp; KBC Digital",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [
+    "KE"
+   ],
+   "score": 6
+  },
+  {
+   "title": "UK opens 41,000 farm jobs, sets pay at Sh2,288 per hour; How to apply",
+   "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE92QXFwUWxUZmxIUWNnMFBZc0djQkpWQkQyX2VITWdSYm9uTnRFZ2RhQjZHaENDYUUzVmloaGNXTjRWeFE3YkZrUzNOOHkyck5FT01jaDlUT1RMZUlrdDFvNkZsRW9EQQ?oc=5",
+   "publisher": "Bizna Kenya",
+   "publisherUrl": "https://biznakenya.com",
+   "published": "2026-11-23T09:15:49.000Z",
+   "summary": "UK opens 41,000 farm jobs, sets pay at Sh2,288 per hour; How to apply &nbsp;&nbsp; Bizna Kenya",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [
+    "KE"
+   ],
+   "score": 6
+  },
+  {
+   "title": "Kenya’s small farmers feed the nation but are losing the battle",
+   "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNdDVPNXFha0hPZ0Z1bFI1Y2otbWVpSVRIai1CY1IwdWxSYkZQNFJ1YjM5Y0kyQXRuU2NCMlFxcHJLUlhXQTdaM1lLbXljMjkzRDJqNXJ2bENiYnhjanVSQkZsWVAwTWM2dHRXblNXdFQzVzBEd2cwQXFoQTZZRmFBNTljZw?oc=5",
+   "publisher": "The Mt Kenya Times",
+   "publisherUrl": "https://mountkenyatimes.co.ke",
+   "published": "2026-11-22T16:29:13.000Z",
+   "summary": "Kenya’s small farmers feed the nation but are losing the battle &nbsp;&nbsp; The Mt Kenya Times",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [
+    "KE"
+   ],
+   "score": 6
+  },
+  {
+   "title": "Mécanisation agricole : Agrodrive déploie son parc au service de la campagne labours-semailles 2026-2027",
+   "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPRTNqYThuc1FyWFBUa29NUS0xcVd5Si1pQXdRaFBiazJFdnRhTVFTTFV0czVjZEJqcmE4eHlIZU4zTjJtTW5CbGFTV3VRZU9RTnJPMXBUeGJ0RXM0R0doc0NMOElOa1FZcW1KU3pBTmVuYU04QVFXRVZPdi00SFA1MXl5SVIxZ0xfUU56TWd0NS1LTy1Xa3ZMbkU1dzNxWkZVNXZiQVBlb2xaRjJvN0E4d3BKZE9sd2hPNXNmY2huRWlKRTJRQ2dWMzNVM0tzRFlyck5YUw?oc=5",
+   "publisher": "Algerie Eco",
+   "publisherUrl": "https://algerie-eco.com",
+   "published": "2026-11-22T14:14:46.000Z",
+   "summary": "Mécanisation agricole : Agrodrive déploie son parc au service de la campagne labours-semailles 2026-2027 &nbsp;&nbsp; Algerie Eco",
+   "lang": "fr",
+   "source": "gn-fr-technique",
+   "regions": [],
+   "score": 6
+  },
+  {
+   "title": "Kenya Sugarcane Farmers Prepare for High-Stakes Sugar Board Vote",
+   "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPZnVxMGVLaXBib3M0MUVCRnNyekJTUUxTSzA4UGUtT3Y3Wkw5b2E5bHFKbmpIY3EtSkVSOXprZWlqdlE0X00tN2g3SzFKZFF1enFtc3ZBN3JxYThCZXNYZUZYTTlfS016aFVrZ0d6NE11U0xzeFNqUWNnZEszaGZfUU5PSDgyOUxha2ctS2dUbHhBa1NJdXdGcEJYN2Jlczg?oc=5",
+   "publisher": "https://streamlinefeed.co.ke/",
+   "publisherUrl": "https://streamlinefeed.co.ke",
+   "published": "2026-11-22T11:22:00.000Z",
+   "summary": "Kenya Sugarcane Farmers Prepare for High-Stakes Sugar Board Vote &nbsp;&nbsp; https://streamlinefeed.co.ke/",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [
+    "KE"
+   ],
+   "score": 6
+  },
+  {
+   "title": "Campaigns for the Kenya Sugar Board (KSB) grower representatives’ elections have entered a fever pitch ahead of Tuesday’s crucial poll, where thousands of sugarcane farmers will head to the ballot to elect five representatives to the industry’s top decision-",
+   "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxOdUd0cWo2Um5zTmZlczZDN3NidEtjZjJRMkFpeDBTQXRMYUpfNWE2Y1NTVWtHQUQyei10WUJMWEczNHpjLXJNaGZfLTAwaGoxMkt6TVRaTWowTHV5UFRKZW5Teno3amFVc1RocVNoc184dDJocnlNcWV1VWVCX1hacE9qWFlvdjNXSEJGXzlCcFJzU3c0WGszT3dicmxVU01HdWFWZkJQbGNRUVNXcHRZUXZYYkxoSmt2YlhGdnJ6UXdaWHBUSmpyUXBLVmdSLTA1RThwa1RueDUzTXN6M0E?oc=5",
+   "publisher": "Facebook",
+   "publisherUrl": "https://www.facebook.com",
+   "published": "2026-11-22T10:34:43.000Z",
+   "summary": "Campaigns for the Kenya Sugar Board (KSB) grower representatives’ elections have entered a fever pitch ahead of Tuesday’s crucial poll, where thousands of sugarcane farmers will head to the ballot to elect five representatives to the industry’s top decision- &nbsp;&nbsp; Facebook",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [
+    "KE"
+   ],
+   "score": 6
+  },
+  {
+   "title": "Where private capital is flowing in Africa’s food chain – and what it means for farmers and agro-processors",
+   "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOMVNtUnV5bzYtaHRFMGJnaVpLcFRaMHJnbzBiVHFmM3dzZWZzZmRET2JhXzRLbzRfaVN2eE5jX3RUVkNZeEgxWW5EaWZXdFQzampuVlhTZEhyTlRIYzBzWXZMTlh4dEtGZFZ2QThYQy14SmlPUnZtVHE4SXY1SEhQRjZ6eU81aTdPRTVqNGpZa0RLaENmSXkyZU9abGIzN0NNcGc?oc=5",
+   "publisher": "African Farming",
+   "publisherUrl": "https://www.africanfarming.com",
+   "published": "2026-11-22T10:00:00.000Z",
+   "summary": "Where private capital is flowing in Africa’s food chain – and what it means for farmers and agro-processors &nbsp;&nbsp; African Farming",
+   "lang": "en",
+   "source": "gn-en-investment",
+   "regions": [
+    "AF"
+   ],
+   "score": 6
+  },
+  {
+   "title": "Government to distribute 6.16 million fruit tree seedlings to farmers in 2027/28 to boost agricultural production",
+   "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxPTTBtTFA0Z2JGdjk2SFBtSXhUcnd1NHBINVhOWWQxWXBFY0RkUjRFV3g5Nm9lb3dEWHpUYkZZc09BNXVHN2tFQkFNb1kwSGQycjdMaEo4eF9xdGR0TXczeVYxM1Ryb20yRV9GTWNVREFMRlZ6c1N0M2U2TFBTSkhTVThiMExHcFYtcWZJakE5ekY0RWFPWWZMMWxHMEQyZ2VCVGI4dWxCLWhBUExSSjNWUE9aVklET29ESXZsV2REbUJ1blhOTDBveHNTdFNwWG5tM2FDQVI4SUIwVThHZmdpcG1PWGtuRUU?oc=5",
+   "publisher": "The Eastleigh Voice",
+   "publisherUrl": "https://eastleighvoice.co.ke",
+   "published": "2026-11-22T06:22:20.000Z",
+   "summary": "Government to distribute 6.16 million fruit tree seedlings to farmers in 2027/28 to boost agricultural production &nbsp;&nbsp; The Eastleigh Voice",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [],
+   "score": 6
+  },
+  {
+   "title": "Governor Kihika commissions water, agricultural projects in Kuresoi North",
+   "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPckFCeTVxN0tXeHU2WjBEQlpJMG5lYWQxbnRSOUFiMUt1Tjc5UmFZS2hjTFNTSTJwZUhFeGdGY0t0YWxOWS1DaktLRXFqckd6OWJkc1dnQ1RDUHJSWVZ0UU00aXVZU09SWVhReVVxT2N1OTc3aUlWcV9Na2FwN2tQeGhUWVozd3ZydlpFS3Z0QmdqeFR2ZmNwZW5pOWY3SHRfcGNN?oc=5",
+   "publisher": "Kenya News Agency",
+   "publisherUrl": "https://www.kenyanews.go.ke",
+   "published": "2026-11-21T17:29:03.000Z",
+   "summary": "Governor Kihika commissions water, agricultural projects in Kuresoi North &nbsp;&nbsp; Kenya News Agency",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [
+    "KE"
+   ],
+   "score": 6
+  },
+  {
+   "title": "How IWMI is helping Kenya unlock irrigation potential",
+   "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOWGxYVk9IeXROZmQwWHVMV0dpb3hTTHVXTnJkQXN6UEtZVk1WUXdWVkxvR2hhZGJCeHN1OFQ3ZXVxNEFUMDJvQjhkckUwNHJDMnYwQ3dVWlJCb0VNamNpemdObm5kcmJ4Rm9OZi1pUGRtcS15ZmVvQ1o4VG5vX3RsN01QR3c5ZXhIbFU0QW9yWGF6RG5rZEVUa2tlbmRKaS1heGc?oc=5",
+   "publisher": "Daily Nation",
+   "publisherUrl": "https://nation.africa",
+   "published": "2026-11-21T05:10:57.000Z",
+   "summary": "How IWMI is helping Kenya unlock irrigation potential &nbsp;&nbsp; Daily Nation",
+   "lang": "en",
+   "source": "gn-en-irrigation",
+   "regions": [
+    "KE"
+   ],
+   "score": 6
+  },
+  {
+   "title": "FMO backs Seed Co to strengthen climate adaptation, food security in Africa",
+   "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE13X0pLaUZ3dUNDWDN5V2t0REdsYWsyRTdRRHc1MlFaaHo4dHlWekk1d1l5V09SNmR4VGtLODFxNGpfenRDSVkyUWcyY1pNazjSAU9BVV95cUxNd19KS2lGd3VDQ1gzeVdrdERHbGFrMkU3UUR3NTJRWmh6OHR5VnpJNXdZeVdPUjZkeFRrSzgxcTRqX3p0Q0lZMlFnMmNaTWs4?oc=5",
+   "publisher": "Mmegi Online",
+   "publisherUrl": "https://www.mmegi.bw",
+   "published": "2026-11-23T13:52:55.000Z",
+   "summary": "FMO backs Seed Co to strengthen climate adaptation, food security in Africa &nbsp;&nbsp; Mmegi Online",
+   "lang": "en",
+   "source": "gn-en-irrigation",
+   "regions": [
+    "AF"
+   ],
+   "score": 5
+  },
+  {
+   "title": "Cameroun : Raymond Fotso Kaptouom prend les rênes du secrétariat exécutif de l’ASAC",
+   "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPNGZrTlJBMkI5WDczdEhmcXcwTm1qWHBTc0tFMVRBNHdVZXRSUzkzbEg0MUxtaXRsNG5yNGo1bFZkbGYwR2FvZFA4bkY0RlJsYUxhcVNVNUNaSk14ZUxIem1kekZnSUlKaXpWVGhlWkZndFZHVFh1UFdRR0NiTm53c3ktQ3p4dFNOU2Z2WU1TS1dqcnhjQkJtNjJFOHFHNXh5ZFhqSEpnLWlFbUJBLU1FUVNBRkwxZ185N0E1U3h2WTU?oc=5",
+   "publisher": "Financial Afrik",
+   "publisherUrl": "https://www.financialafrik.com",
+   "published": "2026-11-23T12:30:39.000Z",
+   "summary": "Cameroun : Raymond Fotso Kaptouom prend les rênes du secrétariat exécutif de l’ASAC &nbsp;&nbsp; Financial Afrik",
+   "lang": "fr",
+   "source": "gn-fr-cameroun",
+   "regions": [
+    "CM"
+   ],
+   "score": 5
+  },
+  {
+   "title": "CIF 2026 au Cameroun : contrats et lauriers pour les entreprises",
+   "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOd2hHYXFseDVYY2xKblNZYkhUc1pzRDFHNTIyWjgyM0hkSk45M2N6X2xrclg4VXBtVWhNSWZSUmRyYjdCOUJsODdRampWT3pzVEY5NWZVZ3FVbV9IWllXWTZ0dXVIT3AtTVJuc2VZSzVIMHVjN2tDWUNNYV9pVnZmNlN3VUpQd1hM?oc=5",
+   "publisher": "News du Cameroun",
+   "publisherUrl": "https://www.newsducamer.com",
+   "published": "2026-11-23T12:00:00.000Z",
+   "summary": "CIF 2026 au Cameroun : contrats et lauriers pour les entreprises &nbsp;&nbsp; News du Cameroun",
+   "lang": "fr",
+   "source": "gn-fr-afrique",
+   "regions": [
+    "CM"
+   ],
+   "score": 5
+  },
+  {
+   "title": "Promesse tenue",
+   "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNcFFzUkVoMGZDTWNtUmxtblVqdjhtR3lSS2g0UDNKZXJJRWo5XzNseUhZRFZJZDlPWGJQeS1zNVZ4T0NaSkdneFkwcUxPWThfUGlLRTZSaGVqcU1qekZWUzhYZGxXSnlBTjBOYmZJd0UybXpzQ3RqdnNlLUZ5Z3ZEUU1JdU5nWktfOFZZeUVNclNET2ZRWnJ1YWNXT01BMDllSzRaQVJBVG9XTE9zLUE0?oc=5",
+   "publisher": "Cameroon-Tribune",
+   "publisherUrl": "http://www.cameroon-tribune.cm",
+   "published": "2026-11-23T11:55:00.000Z",
+   "summary": "Promesse tenue &nbsp;&nbsp; Cameroon-Tribune",
+   "lang": "fr",
+   "source": "gn-fr-cameroun",
+   "regions": [
+    "CM"
+   ],
+   "score": 5
+  },
+  {
+   "title": "Super El Niño could leave South Africa short of grazing. Timing of livestock fodder crops is crucial",
+   "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPenpqYUNzVlZLbmJmVHZoTkNsZFlraGhOZDRtRTU4UkNjUnlfUFVKbW9pMUN3SHNNeC01bVFIeTdtTWNIazc0eV81cklpZkJiazhNYWxVWEJvOXk5clVsWnVNOFpBeTNscFpNYUdNRmsyVG43eDJUYjIwd3YtbDlFUE5sbmNudVZQd1E3dU1PRTVTeUt1c1FhazBid1VfV2VBSFdrUlZGWlZwQWtoVWM0bXZFazU2VHVvU1FYRU9KeFBScVl5MkROazlKR2dmZ25QbjJFTEdkVm1ERmct?oc=5",
+   "publisher": "Bizcommunity",
+   "publisherUrl": "https://www.bizcommunity.com",
+   "published": "2026-11-23T08:48:36.000Z",
+   "summary": "Super El Niño could leave South Africa short of grazing. Timing of livestock fodder crops is crucial &nbsp;&nbsp; Bizcommunity",
+   "lang": "en",
+   "source": "gn-en-irrigation",
+   "regions": [
+    "AF"
+   ],
+   "score": 5
+  },
+  {
+   "title": "Dangote Deepens Farm Investment In Northern Nigeria, Sponsors Agric Show",
+   "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPbHJNYU9jNVJ4dURXRkJtSlRfNDBRNVIybnE4ZmVyNGRidXo5MGhDbjFKTFdzX1NSOVA3eWthb1BWNHdtU3RtVjBYX3Z5ZE5rUTZkUmJnU1VfZzczamNYUTJNSWlRMTRKVHJfSEhfVlRZbl9IaGJTLXJLUHVxVy0zU05wS1MtY1dfdlNNRG42ZWV5TGxFeUE?oc=5",
+   "publisher": "https://thefact.ng/",
+   "publisherUrl": "https://thefact.ng",
+   "published": "2026-11-23T04:52:12.000Z",
+   "summary": "Dangote Deepens Farm Investment In Northern Nigeria, Sponsors Agric Show &nbsp;&nbsp; https://thefact.ng/",
+   "lang": "en",
+   "source": "gn-en-investment",
+   "regions": [
+    "AF"
+   ],
+   "score": 5
+  },
+  {
+   "title": "Drought strains Mauritius' agricultural sector pushing up food prices",
+   "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQRF9NRWw5eWFoV1hOUFd3VkYwczhub2Z2NEpkRnpIbEFuMnZ4aWM3R1ZvQVFfM3oyVEFLNS04cjhaZUZOWTRPeVNCN0RGWWljWWlOcVBpcTFMTG9EY2JTOGlfVFcwM0RZN29UemY1STNKR0Z0Y1N0TU1hZ0pRdEVzS2ZnWlNYWDYzaUVtdWpkVzUwcW95c2luaGd0enZLUjI0VUE2NGJVUGd2UG_SAbABQVVfeXFMUGpVckxIRUFIUzlia1llcHVHUXVqZFlQTkRlWV83akl4UTBNZnBoczBsYUlxUzFCeVRpeUNueWYyUFJsOUNrUTBJdWUtVFQtOWh1YXRpOTFwNE5UbFhKaFVkSUhKVnJ5WS1YSWNvNjJhVTBhMXk3VlJUaF9WTzY1cTNNcXdzcXJfZHJtVTRjN0tpSGNWdlZiZW1GSVk1aWpIUTVKX3BGUVdIWmwwQ3A0aUk?oc=5",
+   "publisher": "Africanews",
+   "publisherUrl": "https://www.africanews.com",
+   "published": "2026-11-22T13:28:00.000Z",
+   "summary": "Drought strains Mauritius' agricultural sector pushing up food prices &nbsp;&nbsp; Africanews",
+   "lang": "en",
+   "source": "gn-en-prices",
+   "regions": [
+    "AF"
+   ],
+   "score": 5
+  },
+  {
+   "title": "Eastern Africa seed conference ends with calls for food security",
+   "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOYk1EZnBNRnlWOFVUNnlPZmhJN2hBbE5acnZIQWktNjA1QTVrWDYydXBkLXBUVVUxZ0VQUWl5R2l4dDNxR0NCVVpqRVNleG1QQ0gyYjZxWEJnZDBjS0l0THg4R3NPM1ljTnNZWHZySHNBZU5za05zeTZwRzNEZ2hyNHY5ZE1kMlh0Ni0xRUZac2VtWkY0S0ZhbWVabFRiUnFzbUhRcVJFTUN5REoxOWFzLTVGZHdGUQ?oc=5",
+   "publisher": "The Eastleigh Voice",
+   "publisherUrl": "https://eastleighvoice.co.ke",
+   "published": "2026-11-22T05:16:55.000Z",
+   "summary": "Eastern Africa seed conference ends with calls for food security &nbsp;&nbsp; The Eastleigh Voice",
+   "lang": "en",
+   "source": "gn-en-irrigation",
+   "regions": [
+    "AF"
+   ],
+   "score": 5
+  },
+  {
+   "title": "Integrated plant nutrition key to healthier soils and farm margins",
+   "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQNFVJYUtVVjBxYW1iQXVDZjZCQ19jZHU1UWM4VC1McVAwSWpUTFcwc0J3TTFoaGdjQ2c3aGgxaFpnQmtlWWh0RXZpYTNXWXJOV0Y4cnVUN0Y1Q1JjVnRBckdIQ0JidFlqdFhHbDEtY082NkJiX0lCSnhSQThROVpic29CdmxIUllHdl81c1Y2aHJ0YkM5UjFSTE9OLTd6UGl1U3h5bzlmMXdpMms5dk9jTXJMOUw5VTQtUmdXZHNSOA?oc=5",
+   "publisher": "Farmer's Weekly SA",
+   "publisherUrl": "https://www.farmersweekly.co.za",
+   "published": "2026-11-22T03:00:48.000Z",
+   "summary": "Integrated plant nutrition key to healthier soils and farm margins &nbsp;&nbsp; Farmer's Weekly SA",
+   "lang": "en",
+   "source": "gn-en-irrigation",
+   "regions": [],
+   "score": 5
+  },
+  {
+   "title": "Why Africa’s Farming Pledges Keep Missing the Farmer",
+   "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQcDlkc19KcHExU0dqc19Vdjl6U0Y1a2J0MVJ1SWNUWlZMNkNtalEtVzJYUzFPS2tuWnN5VUphWHQ4STZkVkZnQ3oxYm1ldGk4NmNxSl95TXJlbklpemtNa3FTa0ZpeTlVUkxxUmZyM29TcFFvR1pfQjNLVGNVcktKa0k3OGlrZU1HaTkyUHdaTVNwZw?oc=5",
+   "publisher": "Ethiopian Business Review",
+   "publisherUrl": "https://ethiopianbusinessreview.net",
+   "published": "2026-11-21T08:00:00.000Z",
+   "summary": "Why Africa’s Farming Pledges Keep Missing the Farmer &nbsp;&nbsp; Ethiopian Business Review",
+   "lang": "en",
+   "source": "gn-en-ai",
+   "regions": [
+    "AF"
+   ],
+   "score": 5
+  },
+  {
+   "title": "Rwanda and Papua New Guinea had big energy access plans: study compares what happened",
+   "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPbUlILS1WUnU1dlFsZ2pQcS1MSUwteHpBUFhaSXQxSWhFYXFVamtMRE9RczhEVmpOS0VTV3BhVTE5SUNfcUZhazQ2d3dvSXFVOTUxSGZHeVlrUkpEc2tEc3ptSlFmNjJPUGpoNzB6UmJCSFJpR0tQWUpRX1VZdERjV3BHRDBwcUZTSVBkRnQwOEZCZzFLQ0ZkZ3plVFVGbkhhUjBiSUphY1ltNEU4QTZaMkhSWkpsV0MtT2x3?oc=5",
+   "publisher": "The Conversation",
+   "publisherUrl": "https://theconversation.com",
+   "published": "2026-11-23T13:56:54.000Z",
+   "summary": "Rwanda and Papua New Guinea had big energy access plans: study compares what happened &nbsp;&nbsp; The Conversation",
+   "lang": "en",
+   "source": "gn-en-rwanda",
+   "regions": [
+    "RW"
+   ],
+   "score": 4
+  },
+  {
+   "title": "‎𝐋𝐢𝐯𝐞𝐬𝐭𝐨𝐜𝐤 𝐟𝐚𝐫𝐦𝐞𝐫𝐬 𝐬𝐞𝐞𝐤 𝐒𝐞𝐧𝐚𝐭𝐞 𝐢𝐧𝐭𝐞𝐫𝐯𝐞𝐧𝐭𝐢𝐨𝐧 𝐨𝐯𝐞𝐫 𝐩𝐨𝐨𝐫 𝐦𝐚𝐫𝐤𝐞𝐭𝐬 ‎Livestock farmers in Tharaka Nithi County have raised concern over poor market infrastructure and limited value-addition opportunities that they claim adversely affect",
+   "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9PM09IN3N3NzR4YjFDemtESWlGRlJLZzg1cmJ3S21WVUUyVkpnTzdRNzFLakNST3BHWm4wc1AtUzdsRjZ3cU5Od1luYXZoT1dMNkNVRmpzdS1sTlAwalc2UE1QNFRGQVUwRnAzVlNEV0J0S2s?oc=5",
+   "publisher": "Facebook",
+   "publisherUrl": "https://www.facebook.com",
+   "published": "2026-11-23T13:29:54.000Z",
+   "summary": "‎𝐋𝐢𝐯𝐞𝐬𝐭𝐨𝐜𝐤 𝐟𝐚𝐫𝐦𝐞𝐫𝐬 𝐬𝐞𝐞𝐤 𝐒𝐞𝐧𝐚𝐭𝐞 𝐢𝐧𝐭𝐞𝐫𝐯𝐞𝐧𝐭𝐢𝐨𝐧 𝐨𝐯𝐞𝐫 𝐩𝐨𝐨𝐫 𝐦𝐚𝐫𝐤𝐞𝐭𝐬 ‎Livestock farmers in Tharaka Nithi County have raised concern over poor market infrastructure and limited value-addition opportunities that they claim adversely affect &nbsp;&nbsp; Facebook",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [],
+   "score": 4
+  },
+  {
+   "title": "Meru is next in line for a big celebration as Kenya Cane",
+   "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNSks2Ml8yMTVmdkpXNE5BRUlwVllQVF9zeVhMbnNFT1BKbVpIZ0w1allkV2o1Tkk3RjRqS2tMUFF5OHJIcnhBRUdheXRYWWlkOTZWdHdPSF84MjBvV0hJY3FzWVJaRFFLSlJ4czEwQl8xUmFmc3dRcDBuNG14ZnhxQ0lXZ0xSUU5UdWc?oc=5",
+   "publisher": "https://newstrends.co.ke/",
+   "publisherUrl": "https://newstrends.co.ke",
+   "published": "2026-11-23T13:13:26.000Z",
+   "summary": "Meru is next in line for a big celebration as Kenya Cane &nbsp;&nbsp; https://newstrends.co.ke/",
+   "lang": "en",
+   "source": "gn-en-ai",
+   "regions": [
+    "KE"
+   ],
+   "score": 4
+  },
+  {
+   "title": "Misuse of pesticides threatens Kenya’s honey production",
+   "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNeUxRYVhtRmxDQ2ROd0xwWEN4ZXFyQ2daLUwyR2ozMGZiOFJ5dHhGckp2MEoyQ19mcFhRQTFZQlFRWFB2LUY4TG5zZEtRaW5idTdjeV9QQmNvTGhPUGY0MnpoQVcyNDhCVllwbG1mSklxanFpWTg1MzlMNFpWTkk4UUwyQzd2Yk1PNzZIaXZIY3cxNjVpZFBCZUJtSU8xSVNvanc?oc=5",
+   "publisher": "Daily Nation",
+   "publisherUrl": "https://nation.africa",
+   "published": "2026-11-23T11:39:30.000Z",
+   "summary": "Misuse of pesticides threatens Kenya’s honey production &nbsp;&nbsp; Daily Nation",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [
+    "KE"
+   ],
+   "score": 4
+  },
+  {
+   "title": "A look at deals Rwanda secured at UN climate summit| The New Times",
+   "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOMF9kQVlJVU12UC02cTNROWxiZnk0TjlNaTVUNXZFYWdvU1RseWZyRGdsbHZMSTRDWE1VZm1uWkpjYmstRjJRLWl4aEJnV3lrb2c5dUNPTkFaZ2tadFZUSDU4VHNnV0VSRWhhN2ktaUgzRERsdlNnNGExejFWR0J5RUpWNUdZYVlCRFE0UXdQeDV0Q2VFVGVHOFp3ZFhSTzBjX1B0VDV4MWRZRHMtMVpmNDJyTdIBswFBVV95cUxOMF9kQVlJVU12UC02cTNROWxiZnk0TjlNaTVUNXZFYWdvU1RseWZyRGdsbHZMSTRDWE1VZm1uWkpjYmstRjJRLWl4aEJnV3lrb2c5dUNPTkFaZ2tadFZUSDU4VHNnV0VSRWhhN2ktaUgzRERsdlNnNGExejFWR0J5RUpWNUdZYVlCRFE0UXdQeDV0Q2VFVGVHOFp3ZFhSTzBjX1B0VDV4MWRZRHMtMVpmNDJyTQ?oc=5",
+   "publisher": "The New Times",
+   "publisherUrl": "https://www.newtimes.co.rw",
+   "published": "2026-11-23T11:11:59.000Z",
+   "summary": "A look at deals Rwanda secured at UN climate summit| The New Times &nbsp;&nbsp; The New Times",
+   "lang": "en",
+   "source": "gn-en-rwanda",
+   "regions": [
+    "RW"
+   ],
+   "score": 4
+  },
+  {
+   "title": "Women farmers are still left out in agricultural loans",
+   "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPZVJleWRvSHFlMy11cmtWa1JLVzJNX3ZVS25jWlVGOEdPSE1wNk8xbFJ6aS1TaTU5R0ItYU9zZmViWVYtRjM3ZWFRYzRkQUNHbGp2bjc5MTBYNGJSVzJhWUdKSzRnY3doTHRta2JnMmd6LVc4TGZZTlV6SE82UUxPc0ZCOXlBZDBWcGRNTmw0anhJR3BTaEpRcFVKeTdxejJyUFNXNnBMMlVseUlyckg0UA?oc=5",
+   "publisher": "Daily Monitor",
+   "publisherUrl": "https://www.monitor.co.ug",
+   "published": "2026-11-23T10:02:30.000Z",
+   "summary": "Women farmers are still left out in agricultural loans &nbsp;&nbsp; Daily Monitor",
+   "lang": "en",
+   "source": "gn-en-irrigation",
+   "regions": [],
+   "score": 4
+  },
+  {
+   "title": "Primus wins Bronze Loerie for giving Rwanda's beer-crate seats an upgrade",
+   "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPRzBxZ0pDNDh6TkdnT1JxNWlkOUlzZ1Z6Rmx4bmFwcDRWNWI0MlRDenFRUU1RbTI4YmwzTXdmdFlwNTlUbnhBNjVlVFEtNHNOQUdzX2FfcFhPMFV4c19ZZThwcFhxQVBPODBrTG5RTTA3SW5CVkNSUzYxcHZqdzBYQ0tGZzg0OWlqeGxCUEhCT1hZRVJqakVOTnM5ako0azZMdnhCTVFfRVY5aTNoWmJtMzc3eTgyQUk?oc=5",
+   "publisher": "Bizcommunity",
+   "publisherUrl": "https://www.bizcommunity.com",
+   "published": "2026-11-23T09:21:53.000Z",
+   "summary": "Primus wins Bronze Loerie for giving Rwanda's beer-crate seats an upgrade &nbsp;&nbsp; Bizcommunity",
+   "lang": "en",
+   "source": "gn-en-rwanda",
+   "regions": [
+    "RW"
+   ],
+   "score": 4
+  },
+  {
+   "title": "Kenya sugar production nearly doubles to 900,000 tonnes",
+   "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNcHBpZnVfWEhEZlRWR3k1QnFNemkwRHNRYWZ0c3hoZl8wNTdKRFBMWUhBUktKOXRmRXdYWVZ1ZTMzNTZ2bF9LdVJncVpCZDhvNk1qVDhtSTVfckhvd3M0NUhYWFM4dUc5NXJpSjJ5VE5WeGU1MFZraXJFR1Q5TFpVaksxZmRvNjA?oc=5",
+   "publisher": "Capital FM Africa",
+   "publisherUrl": "https://capitalfm.africa",
+   "published": "2026-11-23T08:36:18.000Z",
+   "summary": "Kenya sugar production nearly doubles to 900,000 tonnes &nbsp;&nbsp; Capital FM Africa",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [
+    "KE",
+    "AF"
+   ],
+   "score": 4
+  },
+  {
+   "title": "Sheep farming 101 | How nutrition can unlock your flock’s potential",
+   "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQc3RVTTlSUVNxOXVRU2FWTXhkZGI1V2YyTHRmdF80MlVYZHcyMU9ZMzVHdS11eDJTRWVkdW1TZ2tmVkVEeXpxTjVBYjBnQ2RmRHdyZnpkVzRDWUtIekhPSGJINkJKTGJNZU5zQjJycFJMS1MzaDYwQlVZaTkyVDA0NHA4V3phNjRZMjItM2tzNG14SlVUUWF6LW9NaXVKN0lkQVcwbDRSeFNEVU0?oc=5",
+   "publisher": "African Farming",
+   "publisherUrl": "https://www.africanfarming.com",
+   "published": "2026-11-23T05:00:00.000Z",
+   "summary": "Sheep farming 101 | How nutrition can unlock your flock’s potential &nbsp;&nbsp; African Farming",
+   "lang": "en",
+   "source": "gn-en-ai",
+   "regions": [
+    "AF"
+   ],
+   "score": 4
+  },
+  {
+   "title": "Water shortage threatens farming expansion as new irrigation training begins",
+   "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxORXBrTFJ3ZnRKbmg1ZWtyTWZWd0Z2U1l5V0VtQXhHRXl0NXg0eTdIaktsYVZBc2NWb25XdW1ESGtDZHpleVdZbjRuem13d0xuQTBGVEljU3B3UWN3bXVuYjk1VzZOWmFneld4enp1TEIydjFIckROMlpXMm9NQTcyODB4QjFPYVFIZlFqVUpCYmp0UVA1SmlXM0dWTy15VW1yb2tEZ1hPMDU?oc=5",
+   "publisher": "Antigua Observer Newspaper",
+   "publisherUrl": "https://antiguaobserver.com",
+   "published": "2026-11-23T01:15:51.000Z",
+   "summary": "Water shortage threatens farming expansion as new irrigation training begins &nbsp;&nbsp; Antigua Observer Newspaper",
+   "lang": "en",
+   "source": "gn-en-irrigation",
+   "regions": [],
+   "score": 4
+  },
+  {
+   "title": "Systemic Analysis Reveals Key Gaps in Agricultural Mechanization Across Developing Nations",
+   "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPdUY0d0N1YmRBOXpjMUtvWHNWd3hmRWtsWngxVzBjN19oVllUTlE0bk4wNlN4cnZqdXlPbkNPZWRaRHV2NE9VamtLdmlHQWVGQ0tuZTFTRlV6ZGZhU0R2WXoxZUx3ZklfQTNlYlNndFkweHFaTHJjQnNyVEZLR2JDQ21nVzR6bWVoQ0ViVV9ZNmw0YUd4WVlVdTNIeTdzZWgxalotX3RVMV83WFhuakdibjVyZm1Mdw?oc=5",
+   "publisher": "Bioengineer.org",
+   "publisherUrl": "https://bioengineer.org",
+   "published": "2026-11-22T22:39:09.000Z",
+   "summary": "Systemic Analysis Reveals Key Gaps in Agricultural Mechanization Across Developing Nations &nbsp;&nbsp; Bioengineer.org",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [],
+   "score": 4
+  },
+  {
+   "title": "Polish technology aims to cut Rwanda’s milk losses",
+   "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQNFlpUHVMaGR6N05mQzI0S293YW5lV2dsa0xEZnYwUnJSZUphSjdvUi0zMDhNc2lPazFNdGtzSWkxTk84YWprbHB5ZG5BV285SHljemI1Y2t1OWFId2lEa0NPb1ZHdlh0SmRuOVNDQkdRSktPdUk4aVYtdUMyUVF6UWl1Y2hFR0hqTXc?oc=5",
+   "publisher": "TVP World",
+   "publisherUrl": "https://tvpworld.com",
+   "published": "2026-11-22T19:51:00.000Z",
+   "summary": "Polish technology aims to cut Rwanda’s milk losses &nbsp;&nbsp; TVP World",
+   "lang": "en",
+   "source": "gn-en-rwanda",
+   "regions": [
+    "RW"
+   ],
+   "score": 4
+  },
+  {
+   "title": "Musina emerging farmers deliver 4,000 tonnes of tomatoes to Tiger Brands",
+   "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNUTA5RTl2TFZfZUcwYlozZHY5WjktNGxzN0xHMThCZUV3RXMtdC1aN1YwWm5JZHFLdDE1dnN5SzBOcnBXUU1wRmVYcTZVd2gta0VmNmhKSW1HUzYyNUNibGI1N01lbHRfUnVsRUY1U2IybURfSHRsZTZXcmtnMm5MSjA0REdHUmkxRzlRQ2hweUZjMTB0RWItZUVRUGJaZU53dFRuX1FqbXhCYWFRbi0tLVdLT1o5cjA?oc=5",
+   "publisher": "Bizcommunity",
+   "publisherUrl": "https://www.bizcommunity.com",
+   "published": "2026-11-22T19:11:06.000Z",
+   "summary": "Musina emerging farmers deliver 4,000 tonnes of tomatoes to Tiger Brands &nbsp;&nbsp; Bizcommunity",
+   "lang": "en",
+   "source": "gn-en-irrigation",
+   "regions": [],
+   "score": 4
+  },
+  {
+   "title": "Five EU countries, Rwanda plan first migrant return hub beyond Europe",
+   "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE95LTdQalRQQmVEVk9RSmpsQnk0ci1hdVhQTWhmZVVKNVk1cnRlN3hkSFFmbG5RYVM1bXpXcmhlLVpJQTVhRFpUVElLZy04TW1VN1BEQXozSm8?oc=5",
+   "publisher": "TRT World",
+   "publisherUrl": "https://www.trtworld.com",
+   "published": "2026-11-22T16:30:35.000Z",
+   "summary": "Five EU countries, Rwanda plan first migrant return hub beyond Europe &nbsp;&nbsp; TRT World",
+   "lang": "en",
+   "source": "gn-en-rwanda",
+   "regions": [
+    "RW"
+   ],
+   "score": 4
+  },
+  {
+   "title": "Kigali to Host Africa’s Business Heroes Finale as 10 Entrepreneurs Compete for $1.5 Million",
+   "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOVG4xR1NEUmZtMGNybVp1UEx3dzRyZ2FTaFR1R3lkcS1XS2lYUUxEX3Z2ZlJCRUlhX1VXZzI2X0YwOXNIMUtJR2NpbVgtV3ZrMklZb0hEWWJ1ZHdMUXFZbXdSbTVvd2dCLVdsbkp6SFdwS08tMXJMMWFSTHJ0NGxyOTJUMVRGb3JqV1g1eWNjNG1KVFlwT0sxX2JLVm15R2VEZTc1TTY1Y3JVYTBxOWJzejNQNklYVkVIbFY3Rw?oc=5",
+   "publisher": "Taarifa Rwanda",
+   "publisherUrl": "https://taarifa.rw",
+   "published": "2026-11-22T14:03:06.000Z",
+   "summary": "Kigali to Host Africa’s Business Heroes Finale as 10 Entrepreneurs Compete for $1.5 Million &nbsp;&nbsp; Taarifa Rwanda",
+   "lang": "en",
+   "source": "gn-en-rwanda",
+   "regions": [
+    "RW",
+    "AF"
+   ],
+   "score": 4
+  },
+  {
+   "title": "Sugar Board campaigns enter homestretch ahead of Tuesday’s high-stakes vote",
+   "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPazdRckpGN21ORS1SVnY4T2hmUFkyZXNSRG9PR215SG5RU3RRZHpmTjF5ektmVkY5akNMYXJjbVZkeFR0akhQcVNpaXRqRVY5NVpWams5NWZLc1pwdEpHQ3dnLURYaGVjY0dMY3hOa3hlNWxSeEk0azVjd25mR29taDZUYjJuVXFEU3hHTHZOV2JIdTZDNUp3WFpjVmFla1MzdEtZc1Zn?oc=5",
+   "publisher": "Kenya News Agency",
+   "publisherUrl": "https://www.kenyanews.go.ke",
+   "published": "2026-11-22T12:54:26.000Z",
+   "summary": "Sugar Board campaigns enter homestretch ahead of Tuesday’s high-stakes vote &nbsp;&nbsp; Kenya News Agency",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [
+    "KE"
+   ],
+   "score": 4
+  },
+  {
+   "title": "Mt Kenya Growers Demand Full Tea Act Enforcement",
+   "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNeGQzZkpCNkgzX016d2stZkVxeXE2aVNJd0ZsM2xuU2RCa2dDbVo5V1loQTRnb2QzdlRvQWVLSlN2b3lKRkFBNTROandRaS00cVZPVUs5RWxsMHlCOXJOQVBEOFFENDZ4NFU4N3ZUaUh2cHpKM3oxelItYUZSdkVnclVLTU5mc0RfUFE?oc=5",
+   "publisher": "https://streamlinefeed.co.ke/",
+   "publisherUrl": "https://streamlinefeed.co.ke",
+   "published": "2026-11-22T11:22:00.000Z",
+   "summary": "Mt Kenya Growers Demand Full Tea Act Enforcement &nbsp;&nbsp; https://streamlinefeed.co.ke/",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [
+    "KE"
+   ],
+   "score": 4
+  },
+  {
+   "title": "Kenya Sugar Board Polls Enter Final Stretch Amid Zoning Disputes",
+   "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxObFJ4TlFxQTdxdldXVjRhMDZjQWRjZVpmcnNYdm81N1ZNNUF4NWxUaWxWbjVkbmNDNVFUb3o5cTA2ZVlZRXRaWnpRSmhRMGVibEFTVmdqTFJiQU84VjQ4TkhjQXJfSFRNSWZ3M0I2YXkxSG5TTnI1MXhjS3EzeHEzbFpGbk4yNkdMVUxianF6ZTFTeGVTcnJMSS13V05Kb2s?oc=5",
+   "publisher": "https://streamlinefeed.co.ke/",
+   "publisherUrl": "https://streamlinefeed.co.ke",
+   "published": "2026-11-22T11:12:00.000Z",
+   "summary": "Kenya Sugar Board Polls Enter Final Stretch Amid Zoning Disputes &nbsp;&nbsp; https://streamlinefeed.co.ke/",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [
+    "KE"
+   ],
+   "score": 4
+  },
+  {
+   "title": "How an Iraqi Refugee’s Search for Belonging Found New Meaning in Rwanda",
+   "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOV2RPR19YY19SNzYzdFFIY29ydE5xQVRVOE1FZ09xUzk4UU1BNTltQjZmTEFlTHNkN2RaV1d2MVV3ZUxpS0pKNGhjSldCU3F2SXZjMVdTX3hybU9NcE1LaUhkRU8yRnAwYXNTdjc2eHpKcjBKb1VFYUVDdzk2TndpcFFvRG56UWdmXzBadkFhOHRmWFZELUtrb05nd2xnZmJGNU5PaQ?oc=5",
+   "publisher": "KT PRESS -",
+   "publisherUrl": "https://www.ktpress.rw",
+   "published": "2026-11-22T10:12:54.000Z",
+   "summary": "How an Iraqi Refugee’s Search for Belonging Found New Meaning in Rwanda &nbsp;&nbsp; KT PRESS -",
+   "lang": "en",
+   "source": "gn-en-rwanda",
+   "regions": [
+    "RW"
+   ],
+   "score": 4
+  },
+  {
+   "title": "Five EU countries are preparing a deportation center in Rwanda for migrants with rejected asylum",
+   "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNSnVrbnFsLVlVM0FLc04tMU82Z1hpUm5FZk9NcFEwMk5Hb2pnQlZKbTFiNDJERXdUR2UzemJwMGlIdlptM1lZQWsyUDlKSkFJM1NEeEpvbDAzcks4Q21Ebm52ZlBEWVRlbjRnSkRXZk5zQnl2YXBMNGI1QVc1TGhINGpyeldnQjYyaFZQMy13azMtdWVrRk1yMmRuQ0VaelE0aUJTVTVjOW02Nk5rVXhkdWNSUUs3X0JPMmNiNmM4R2FKTTJXWnFuNXVyb25uOHfSAdQBQVVfeXFMTTA4d0lONTVSSHJldG54dmNtbGF4cTA4VFNiVVhiZThtNHk5NDFiTnc0ZWM4U3ZrR3M0eklZOUNvWm1BTXBTS3hwMmtJcE8zcy10aGdpZm56YU5JUmdGaW41MkpaUFJ1Ql9CdnVzSkRwalBZR0FtUm1INlhOLXJUbUR6VEg3aDFRYm02VFJ2MzlVVlFjc2xxSk0xXzFydmc1OFM0SnFuNlZSWG9Nb0dpUkhnRC1zMTZjakhCY2lyeTBhVG1KazhtTFFfWlN3ZDRWVWVXLWQ?oc=5",
+   "publisher": "Demócrata",
+   "publisherUrl": "https://www.democrata.es",
+   "published": "2026-11-22T09:05:33.000Z",
+   "summary": "Five EU countries are preparing a deportation center in Rwanda for migrants with rejected asylum &nbsp;&nbsp; Demócrata",
+   "lang": "en",
+   "source": "gn-en-rwanda",
+   "regions": [
+    "RW"
+   ],
+   "score": 4
+  },
+  {
+   "title": "Meat and Dairy Lobbying Derails COP31 Climate Talks",
+   "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPYmNrRTFVbmRCUU9tcTMzWHlhSUVaWUdweE9qY2d4cFNTTktiVGltUW5WMmdjSVExNDFreWdWSm5ZNERfLUo3UUtyVXA2ek1qNmZ1Uy1rcVRTZ1d2aUI4VlFtSWNEY3Z2cDQ4SEZGTXlicU0yS1JJa0ZqdmVkSkM2dW9xeTFpRnROOTZxWQ?oc=5",
+   "publisher": "Farmers Review Africa",
+   "publisherUrl": "https://farmersreviewafrica.com",
+   "published": "2026-11-22T06:34:26.000Z",
+   "summary": "Meat and Dairy Lobbying Derails COP31 Climate Talks &nbsp;&nbsp; Farmers Review Africa",
+   "lang": "en",
+   "source": "gn-en-irrigation",
+   "regions": [
+    "AF"
+   ],
+   "score": 4
+  },
+  {
+   "title": "Mécanisation agricole et lait infantile : Alger et Minsk passent aux projets concrets",
+   "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPeTBSRFZWWDY1eXpjY2ppWDJRQndPWUhlaFdIVTFXS1N5TjF6V0Jodm9Fdm5WUXFLcERKam15M2FKQWNobHNKNUJmV3FCV2x0X1ZtWDVaQ0wtd0xiNmM4RF9sYzVrNzlkeGRuSElpb1JNRVBzVU1rcHg4ZVNUWkFxS2lyV0k3VzBwcnlXYkpvcVdCcHRHNkhvejBiQlk0LXFyMENIbUpRU25EQURjNGFxQ0hGOFRWenp3empfVnF1UDlQYV8wdGdxWHlR?oc=5",
+   "publisher": "El Moudjahid",
+   "publisherUrl": "https://www.elmoudjahid.dz",
+   "published": "2026-11-22T00:47:26.000Z",
+   "summary": "Mécanisation agricole et lait infantile : Alger et Minsk passent aux projets concrets &nbsp;&nbsp; El Moudjahid",
+   "lang": "fr",
+   "source": "gn-fr-technique",
+   "regions": [],
+   "score": 4
+  },
+  {
+   "title": "Marché des pinces à balles à l'horizon 2035 : la mécanisation agricole et la biomasse accélèrent la demande - Actualités et statistiques",
+   "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQczZmZmswVlJMTTdXVkVIYWxlaHJQS3YwWW5nM2kwQlhsU242aWF2bWNBVEFtU3ZaQ1RISENMZGhtbzZ5alRlOVI5eXJPMUFJbDVYd19rRDd5U2pLTmtsVFNPTnE0U3dBMTZNcGI3UGJCMll4d29UQi1oSEx0LU84NDZMRmEyT2E3bG9yeG1fR0R2YUMzVWs1Rk5TWVcxUGM3RlFVQjZHMDJWM0JqbDkzRkZpamZ5aFBBd0IwVl9tdTFnYUV4Wk00?oc=5",
+   "publisher": "IndexBox",
+   "publisherUrl": "https://www.indexbox.io",
+   "published": "2026-11-21T18:41:05.000Z",
+   "summary": "Marché des pinces à balles à l'horizon 2035 : la mécanisation agricole et la biomasse accélèrent la demande - Actualités et statistiques &nbsp;&nbsp; IndexBox",
+   "lang": "fr",
+   "source": "gn-fr-technique",
+   "regions": [],
+   "score": 4
+  },
+  {
+   "title": "Africa’s Business Heroes top 10 finalists head to Rwanda for the 2026 grand finale",
+   "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPcXZCb0NHamRfMmMxRGh4U0FKMXdfRklRNHRGZWpLUV9OZzJsRHZLX3hRNTgtR0wyd1A0OW9vTUZVRFFpY25lMlhKa2JRXzk5bXVnaU9sbFQ2Y0dUbkpCeV90ZnJFQmJxQkN5ZUVFVk5pNGJRVGpvLVlDeThIQVd6bG9zZHZBQnF0UFFVQmdVMVZsaDRLVHZyMTFhaXdkVDl4ZTZRbjVfcGVnbU0xaWxYMV9yREtKZ2ZTYjQ4?oc=5",
+   "publisher": "IGIHE",
+   "publisherUrl": "https://en.igihe.com",
+   "published": "2026-11-21T15:21:56.000Z",
+   "summary": "Africa’s Business Heroes top 10 finalists head to Rwanda for the 2026 grand finale &nbsp;&nbsp; IGIHE",
+   "lang": "en",
+   "source": "gn-en-rwanda",
+   "regions": [
+    "RW",
+    "AF"
+   ],
+   "score": 4
+  },
+  {
+   "title": "Poisoned profits: How counterfeit seeds are fleecing Kenyan farmers and fuelling food insecurity",
+   "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxPSXo1VXdRT0JMUlR6aHB5R055UkF5aUdEQllfLVBLSThmRXJZdDBPd2l4dFp2LVdtYnNxUWhGUEwzMERqbVBldkgxaEMxdC1TTVRfcmZIRFpvR01BWnJHck9NbkpBWG9pZEhOelFqa0w4QXlCeFlIWnFOYVN0QklUZV9aWjFQbldCSjdBS2U3cGhMdXBYTWN1TEVjZ2tKNF9wcklIdGZmWi1FZHVMT1VkUXVZMWpZQlFBVFBSWVI1NUlQcElIcm02bmRyNjM5RnF5SjJqS3pBcTV3RVR4cXVPNXJsT05BQjZJMVE?oc=5",
+   "publisher": "Daily Nation",
+   "publisherUrl": "https://nation.africa",
+   "published": "2026-11-21T08:00:00.000Z",
+   "summary": "Poisoned profits: How counterfeit seeds are fleecing Kenyan farmers and fuelling food insecurity &nbsp;&nbsp; Daily Nation",
+   "lang": "en",
+   "source": "gn-en-ai",
+   "regions": [],
+   "score": 4
+  },
+  {
+   "title": "The government has urged farmers to maintain effective Operation and Maintenance (O&M) practices so as to protect the country’s irrigation infrastructure and ensure long-term sustainability of their projects. Speaking during the ongoing week-long training of f",
+   "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQelVCQ1pONVNkU29tWkNJUDJ0TjRNSjJXLUVLdFlJWmFzcDlIeVMxRjZ1eUVCeUotb2tSdl9PSUc0VjhnQ3Y1NGJwdWFKQkFMZzdFRUttbGU3TVI5ZVd0aEFKREV0cHpJaDc3eTM1dDJhZHZnTEJ6Y2t3RXpmTEFEallueFEwUFZnZnRjMWpFQ2E1eVY0Slo4WWJ1SU1uNFU0OGF1a21hUXdyaHpnRGNUbHFUSVRKQmtEdlNXUlB4N0ZMSFRVZXpvRXBHYTVxNWZXVDA2aUs1bjFZRVhiTXc?oc=5",
+   "publisher": "Facebook",
+   "publisherUrl": "https://www.facebook.com",
+   "published": "2026-11-21T07:41:44.000Z",
+   "summary": "The government has urged farmers to maintain effective Operation and Maintenance (O&M) practices so as to protect the country’s irrigation infrastructure and ensure long-term sustainability of their projects. Speaking during the ongoing week-long training of f &nbsp;&nbsp; Facebook",
+   "lang": "en",
+   "source": "gn-en-irrigation",
+   "regions": [],
+   "score": 4
+  },
+  {
+   "title": "Sheep farming 101 | Four steps to improving your flock",
+   "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPbVRnVkJWSWYwN2kyamtZVFlOV2FZNlJLZ0cwdXJ3UU9XVmY5UlpseUpPU0ZZZkhUaHNfeEN4VzZGS2UxeFhXS2phbDZSZHNDOGl5aHc4cER6NUlFOU5Lc1Y2V29fZW5vai15UzdLMFVHc2RvaDZzbkF5cGZPaVFITGR1VnZNNXJLcFpCNXdHN1JUSFdRRy15Rkk5UQ?oc=5",
+   "publisher": "African Farming",
+   "publisherUrl": "https://www.africanfarming.com",
+   "published": "2026-11-21T05:00:00.000Z",
+   "summary": "Sheep farming 101 | Four steps to improving your flock &nbsp;&nbsp; African Farming",
+   "lang": "en",
+   "source": "gn-en-ai",
+   "regions": [
+    "AF"
+   ],
+   "score": 4
+  },
+  {
+   "title": "Promouvoir la coopération du secteur privé entre le Vietnam et l'Afrique dans le secteur agricole.",
+   "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPbDVHaE1VSzJYZkwwN3B2UE5xTjRFWnVMckRVSjA3YnlIRjBnSWk2SnprdURSZU1NRUlqcVVkM0NqeWNTMzRPQlYzQzBmYXl1VkxyODUtV1FpT19UY3RzNXVaTTZpb0NjaWFOWUkzVnhpbjdiakJjM21jZEIzQmtQWVNxZjZQd3ZwVTVDVlkyRFEtdV9VMzZzd0NBMkdZQldUSlUwQXJB?oc=5",
+   "publisher": "Vietnam.vn",
+   "publisherUrl": "https://www.vietnam.vn",
+   "published": "2026-11-23T15:44:25.000Z",
+   "summary": "Promouvoir la coopération du secteur privé entre le Vietnam et l'Afrique dans le secteur agricole. &nbsp;&nbsp; Vietnam.vn",
+   "lang": "fr",
+   "source": "gn-fr-afrique",
+   "regions": [
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "UPESI veut faire du numérique un levier de l'agrobusiness",
+   "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOWFdDdktOcVY2cm03ZVpyS1pfR1prbGVaa3RPdXpCaEY3c1Z5LXVwNWVDRDZtMVU0THNEd1JSWWpPb0p2NXFHaWdkVGE2dndPUU1Oc1UzTUcyMnVBd0tpMG81N3NaQk9OcE1iYklkdlFsUWlFTGdhNG9PMzF4STh3WVlzdHVtN3VXNGQzd3lndms3MllFci0zWg?oc=5",
+   "publisher": "Agridigitale",
+   "publisherUrl": "https://www.agridigitale.net",
+   "published": "2026-11-23T14:53:38.000Z",
+   "summary": "UPESI veut faire du numérique un levier de l'agrobusiness &nbsp;&nbsp; Agridigitale",
+   "lang": "fr",
+   "source": "gn-fr-afrique",
+   "regions": [],
+   "score": 3
+  },
+  {
+   "title": "L'agriculture ouvre la voie aux entreprises vietnamiennes pour accéder au marché africain",
+   "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOemUtT2hBQjd3dFZwajJJQmRHcHZxS0M4eGJlUVJtUXRDeFAwWm9wdklRdUM2a3AzcWtqUDU1SEpkZUw5ZjEtY3JTSUt1a3BWSEY0TFl4OGg2ZGRvMGY0UEtvWFg1aFVOaTdNVTdTN1EwZE1RTndycElMTTBZYVI3MEZONHNuVWJZMXg5V0ZSU2RmYTNaNHIxZzRYNjJVdTBwUXhjeVlLQmR5eUZoTjZMQXQxLWd3M0k?oc=5",
+   "publisher": "Laodong.vn",
+   "publisherUrl": "https://fr.laodong.vn",
+   "published": "2026-11-23T14:34:43.000Z",
+   "summary": "L'agriculture ouvre la voie aux entreprises vietnamiennes pour accéder au marché africain &nbsp;&nbsp; Laodong.vn",
+   "lang": "fr",
+   "source": "gn-fr-afrique",
+   "regions": [
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "Agriculture opens the way for Vietnamese businesses to access the African market",
+   "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOVUlsSjloVDR4UExJc1paNzB3bnd2SEowOTNUUWRHYkxjbTFqUmNzc1hrWmo5THc1WTZTeU5WU0RqS0VySXljeGlFRGNlRWJWNWlNWlB4UG9IZGxjTG53NUl4aE54NnNvTENqNHFpX1lDdk02MDU1S1lOUjZmYmdMdnl6M1J4YVgzMmtkSmliNHRLX0lBTXpkTmo5UXNSWUNMVXJGRFJOMzA1cjRhUldFM3ZzNDI4czZ6b2c?oc=5",
+   "publisher": "Laodong.vn",
+   "publisherUrl": "https://news.laodong.vn",
+   "published": "2026-11-23T14:34:43.000Z",
+   "summary": "Agriculture opens the way for Vietnamese businesses to access the African market &nbsp;&nbsp; Laodong.vn",
+   "lang": "en",
+   "source": "gn-en-investment",
+   "regions": [
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "Vietnam, Africa seek to expand agricultural cooperation",
+   "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQT3JHWWRWcnFNMmFhVXl5X2R1cEhHbDR5Sl94dXpxYThjRFlyYWV2anNMM2lDTlRieDVYU2VVT3hOcVZVTGFBcUVhaTA4VUFHUGZaWkdncnVkTVVTWVNfU3JiRVlwa2M5RVBLdDdfcXNCN0ZHTVlSVkxkQTBaU0ZXMzE4NWctSHlGajluSjZxLUxDUHZpWEJn?oc=5",
+   "publisher": "Báo VietNamNet",
+   "publisherUrl": "https://vietnamnet.vn",
+   "published": "2026-11-23T14:32:00.000Z",
+   "summary": "Vietnam, Africa seek to expand agricultural cooperation &nbsp;&nbsp; Báo VietNamNet",
+   "lang": "en",
+   "source": "gn-en-investment",
+   "regions": [
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "Super El Niño Tests SA Farms as Water Cuts, Heat, and Wildfire Risks Mount",
+   "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9pcXRyRFhyWDk5Uml1R2lOYWlxSm54RUZzWWlLQ1JfMml5M0NaYTRhWXU2c1h3VGl6MVRlQkNISnBJNWJSdWd4cEM3bFdTNHJJdXZqbU9kdWZ6UVFDRHNwSWdFTjRyMW1URmpZS0loUmlXUk1B?oc=5",
+   "publisher": "https://agrinews.co.za/",
+   "publisherUrl": "https://agrinews.co.za",
+   "published": "2026-11-23T13:33:55.000Z",
+   "summary": "Super El Niño Tests SA Farms as Water Cuts, Heat, and Wildfire Risks Mount &nbsp;&nbsp; https://agrinews.co.za/",
+   "lang": "en",
+   "source": "gn-en-irrigation",
+   "regions": [],
+   "score": 3
+  },
+  {
+   "title": "Future Farming Investment Scheme 2027 to open on November 30",
+   "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNcDQya1g1aFRPOHM1Ty1ZSGJKWUhRZmhzNEYzLWZ2TWhibm1NN1l4WVdhS1RTc1RRRG53cHJkRDhkZzVMVGx3ZTZFNHlTc0dYN3dSWVdhR1o1MG1ISC1VMHBqd1JIVVc4NFpfdllQUFM1ZWFPbXFWdW85OEZKOGFvX0dxSDl3WkVRLTJ6UTU4RmxGX01IVmlvdk1PbmJUcUx5ZjVN?oc=5",
+   "publisher": "Agriland UK",
+   "publisherUrl": "https://www.agriland.co.uk",
+   "published": "2026-11-23T13:00:00.000Z",
+   "summary": "Future Farming Investment Scheme 2027 to open on November 30 &nbsp;&nbsp; Agriland UK",
+   "lang": "en",
+   "source": "gn-en-investment",
+   "regions": [],
+   "score": 3
+  },
+  {
+   "title": "Promoting private sector cooperation between Vietnam and Africa in the agricultural sector.",
+   "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPTVFUcHIzclJSTWZUOVdhM3A4c2NSVVhNcERZUW1YcTZHeGdiRHAwR2R1bEtoaVpRcWJqSGdYOTBEYkhEdUVkblBmYkFDRVVTQ0VnNGhRNld5ZVp6NzZjdVpac19qSzNkUUo0eUUxdnlUSGVSZmp2T0FJU2lQM0RlQnVsYjIxdXhnVXFHNHV0cWVlWTF3LUlDM18zelVIcjJyY3l6bGhB?oc=5",
+   "publisher": "Vietnam.vn",
+   "publisherUrl": "https://www.vietnam.vn",
+   "published": "2026-11-23T11:56:47.000Z",
+   "summary": "Promoting private sector cooperation between Vietnam and Africa in the agricultural sector. &nbsp;&nbsp; Vietnam.vn",
+   "lang": "en",
+   "source": "gn-en-investment",
+   "regions": [
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "Mettre en relation les entreprises vietnamiennes et africaines dans la production, la transformation et la consommation de produits agricoles.",
+   "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPYU42NEFyc2l6UUUwMUJOUzdfOTlhaW9rYXZGNHNnS3ZQSUU0ZW5uOV84dWtGLUZBcVJSQjMzNjVINmwxRzZSTlBFYUlCU1laN3VKY082WkVwUnEwMEFLTE9BUDN1bkFEblRPS2VjRmNtS0RuS2lMeWF2QVMwb2Z4MU90Yl9NZDFMUVRJTlZVTEJrODAySmlJOGNsV2hiaU5mVXFJZ0xoMG5ZVGIyM2pPN0Z3?oc=5",
+   "publisher": "Vietnam.vn",
+   "publisherUrl": "https://www.vietnam.vn",
+   "published": "2026-11-23T11:34:14.000Z",
+   "summary": "Mettre en relation les entreprises vietnamiennes et africaines dans la production, la transformation et la consommation de produits agricoles. &nbsp;&nbsp; Vietnam.vn",
+   "lang": "fr",
+   "source": "gn-fr-afrique",
+   "regions": [
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "Atelier visant à promouvoir la coopération du secteur privé entre le Vietnam et l'Afrique dans le secteur agricole.",
+   "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOWEtlX2w3TUZpUkFlOEJBVWRzcEJ5bmhsZFd0ZXFtWmhoZFVYODA4ektsbWlZQ0xtWEpHUFlMSkUzSkpURGVvaHlpUEpJTVowX2p2REdPeDB4eGpkNmdiZ3B5SDQ2LTVmMGFfQnFiMEhGNE9LTUxHc0M0YkZMOTdzVWpoOFMwRUxIUlM1WjIwMEwwU0RkTHJ2WUx3SVJIdVhNQnROMnJDWWhTMEMxY3QtSjdn?oc=5",
+   "publisher": "Vietnam.vn",
+   "publisherUrl": "https://www.vietnam.vn",
+   "published": "2026-11-23T11:12:43.000Z",
+   "summary": "Atelier visant à promouvoir la coopération du secteur privé entre le Vietnam et l'Afrique dans le secteur agricole. &nbsp;&nbsp; Vietnam.vn",
+   "lang": "fr",
+   "source": "gn-fr-afrique",
+   "regions": [
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "Irrigation : l’américain Valmont veut faire du Nigeria un nouveau relais de croissance en Afrique",
+   "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxOUHpzT29OMmpYTDhSdEU1d2VLenNfZmdZeVdJY1JRMW5JLVBmZUl3enBzVUVDSHJXTEIzbS05UjU3aHJib1BmNWp3cVI5SnB2Q2pOc29XeVdRanVTdHN5cXBwRDBOaTRLNXdUai05N1hkVXBQR0o5TGFYaFh1VVFOUThPZ3ZiODhFMTFWXy1XRUM2SWtwamlTVzlIeTRDajVDMlVIVEdUbkg3dHRqYUdTU1AwdlQxUktVcGNVZmxuZTZ2eEhLdkFjaWkyTF8ySHpyVmgzZ01NS2ItaUtPWFhPS3A3QjhiYlk?oc=5",
+   "publisher": "AGENCE ECOFIN",
+   "publisherUrl": "https://www.agenceecofin.com",
+   "published": "2026-11-23T10:00:00.000Z",
+   "summary": "Irrigation : l’américain Valmont veut faire du Nigeria un nouveau relais de croissance en Afrique &nbsp;&nbsp; AGENCE ECOFIN",
+   "lang": "fr",
+   "source": "gn-fr-afrique",
+   "regions": [
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "Digital Agriculture Moves Towards Connected Systems Across Africa",
+   "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNei1FQkgxRk9XX0RsUklZYzd0X09xVE5FOHRmSmdvTE9rcWt6Y2FCeGdMVl9sSGVNdVAydGJYTnNDVmlBOWMwWjdKT0ZKR0w5bmpSeUxldDFXc2tlaWZGaDdaY3Yyczh0ZHJrSzBxcGJfYnM3SFM3NTJCcW1DTExkVUkzc0NUNHhJSng1MTRXVkdUQW5qVlktQ0NZN1k5RW9DdWl6X0R3M0V5N3RaT2xxajZqSnVKVDFIa3pIaVprVkM2SXc?oc=5",
+   "publisher": "Legal 500",
+   "publisherUrl": "https://www.legal500.com",
+   "published": "2026-11-23T09:23:19.000Z",
+   "summary": "Digital Agriculture Moves Towards Connected Systems Across Africa &nbsp;&nbsp; Legal 500",
+   "lang": "en",
+   "source": "gn-en-ai",
+   "regions": [
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "Kajiado Partners with Nawiri Impact Africa in Five-Year Food Security and Climate Resilience Plan",
+   "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPcnBOYm16bTZoYXpGaVZWMWstWmJuVUFMc1pFdVNFMWFrRUVqNFh2bEVaZnYwYXF2cWZzelRjYllFRUwxRFA2cmRyQ0hYRXVZWDhfNUpLdTljOWNFdE9TWWV2MDFKUHItWS1IWUh4cEkzQ185d05PRHRQVHpsNExiUUx5eFB0eU9qaVBGVjNoODgyWE9RMm5VdGx2V1VaejhTdm1QdWJCcFRMZGtESXJZZ0VicnhXa21YZkpCVEpwYVdIV0lwYlNKQ3JXLWhYc1Vpb3c?oc=5",
+   "publisher": "Kilimo News",
+   "publisherUrl": "https://kilimonews.co.ke",
+   "published": "2026-11-23T09:20:00.000Z",
+   "summary": "Kajiado Partners with Nawiri Impact Africa in Five-Year Food Security and Climate Resilience Plan &nbsp;&nbsp; Kilimo News",
+   "lang": "en",
+   "source": "gn-en-prices",
+   "regions": [
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "Ruto Oversees KSh 195 Million Bonus Payment to Sugarcane Farmers at Nzoia",
+   "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPSVowbk4xWjI0bUdqOU0xQ28ya1FRT01iVi1kVm9LSDR5V090RVBfMGxBaUVwbEpWTHRqRHhzUGNRZlZ0U1Ywdk1WTU9iSDlrdVNFRGJmQWNFT3hFc0ZaZlJCNFoxbVdrWGtkQ0ZNNHVRNHdMNDdpSlpueVNmYVNhb0c3bnlwT3VXSG1DMm9iemxFUXRZNkxkLVUtaGFncU1oOVBwb3VB?oc=5",
+   "publisher": "Dawan Africa",
+   "publisherUrl": "https://www.dawan.africa",
+   "published": "2026-11-23T09:10:49.000Z",
+   "summary": "Ruto Oversees KSh 195 Million Bonus Payment to Sugarcane Farmers at Nzoia &nbsp;&nbsp; Dawan Africa",
+   "lang": "en",
+   "source": "gn-en-ai",
+   "regions": [
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "Nzoia Sugar farmers get Sh195 million bonus as payout doubles",
+   "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOdlVhQXVBTG51bHZCMVkxajVseXRDOFBhcGFpZE5yem5XMlBZV1RkSVY0MjE1MjJDV3A5M2d5WENjaUo3cXQ2alczREJLLTFIZTVoMEpwelBNeUNkbXhSYTBPQWVER204X0dFOUFJY0IwdDZjZTJ3Y0ZtWlNyVHhlVVBkQ1NJRTdoS3hmdEpNVWI?oc=5",
+   "publisher": "Capital FM Africa",
+   "publisherUrl": "https://capitalfm.africa",
+   "published": "2026-11-23T07:40:05.000Z",
+   "summary": "Nzoia Sugar farmers get Sh195 million bonus as payout doubles &nbsp;&nbsp; Capital FM Africa",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "Why farmers should focus on margins, not turnover",
+   "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPZHRvaFEzcm95bVNXV1JrUTJ5czhJMkNTbnNQeHhiWnNsMHViVU5xOElxQjk0Z3pCYmM5SDMwcmMyR0Zyb1lFU1JJcmk5eU50OFJCbHNzWU9RU20xcGcxUEtGUUhuT0Ywb1BVMFp2UlVDa3FWQ0NlcFczaWZDYVBrcHFTQ0c3WS1HbTNWRWFiNzVveEw5N2hUaVpkekpQbXBDUm1MdGJPVQ?oc=5",
+   "publisher": "Farmer's Weekly SA",
+   "publisherUrl": "https://www.farmersweekly.co.za",
+   "published": "2026-11-23T03:00:56.000Z",
+   "summary": "Why farmers should focus on margins, not turnover &nbsp;&nbsp; Farmer's Weekly SA",
+   "lang": "en",
+   "source": "gn-en-ai",
+   "regions": [],
+   "score": 3
+  },
+  {
+   "title": "Cacao : les pays d’Afrique de l’Est veulent accroître leur poids dans la production africaine",
+   "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxQUWZFWDFaUHBBd1RfaVZHU212dzB3ZEVqcnJ3RHptNnE0b1hCVHczeHhRVVc1SHVqcHY4UXptcGZuS2ZhOEpTZERyU2UxU0V4YmlVRHpIUGlwMEhQeml3NjJyLUR5dVI0MEZHa05ES1M0VUV5UzJSREFUNGNfSmVzcFRBLUFZc19IYmlVWnM2TnB4TmdnSlYyTnEtYWVSNFZPODZXODh3X2N6SnJ5YnVkZmRnWm83LWtsMHZzQ1ZiTm0zaEdCemtiSFd3UXdxV1REeU02UzV1YWZuQnZWaEY2UVRB?oc=5",
+   "publisher": "AGENCE ECOFIN",
+   "publisherUrl": "https://www.agenceecofin.com",
+   "published": "2026-11-23T02:43:00.000Z",
+   "summary": "Cacao : les pays d’Afrique de l’Est veulent accroître leur poids dans la production africaine &nbsp;&nbsp; AGENCE ECOFIN",
+   "lang": "fr",
+   "source": "gn-fr-afrique",
+   "regions": [
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "South Africa smallholder farmers sustain produce trade through lockdown supply chain",
+   "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQbVdKdmJ1SDk3WDRlVzZxYWc3YUtraXVBUi1EdmV1SVVmN1Qybk9FTG02OEN1X0JseDFDajE4NXJKdDA1Zkk3RTVvQjcxSHhwSHpVYUtTOVBYRkRveFl0Ry1MYlFrTnhfam5NTURWOTd6MnpLMW0tVXBnaGlTZjBoYkxQZm5pUmVSUlVSUk9hdlF3eXh6S19XNXN0QzV2VXBDTWpCRHNzN1M?oc=5",
+   "publisher": "Traders Union",
+   "publisherUrl": "https://tradersunion.com",
+   "published": "2026-11-23T02:25:32.000Z",
+   "summary": "South Africa smallholder farmers sustain produce trade through lockdown supply chain &nbsp;&nbsp; Traders Union",
+   "lang": "en",
+   "source": "gn-en-ai",
+   "regions": [
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "Congo : la banque néerlandaise FMO prévoit 150 millions USD pour le projet de biocarburants d'Eni",
+   "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQNEM2MF9oRjFhdV9fbC13Z1lsc1dpVmduUWs4TGZUMjlKLTlYU2VqTHF6ZFBpTVZvNVA0RmJjal9tWmdjWXlkZVA0SE9HWG1mZWVXaFhFNkZQaDBxX1RBX2ZvX3hLREJ5c21WUEVPcy1FZnNEcHZOR2xaMm9POWh5MlE0dEVqUEpPdHdYdVVIenlFVEhnVldLeVl0MjU1NWlSdDVvUzJXN29sUzQ5cXQ5MWN4aXB3QQ?oc=5",
+   "publisher": "EcoMatin",
+   "publisherUrl": "https://ecomatin.net",
+   "published": "2026-11-23T02:01:12.000Z",
+   "summary": "Congo : la banque néerlandaise FMO prévoit 150 millions USD pour le projet de biocarburants d'Eni &nbsp;&nbsp; EcoMatin",
+   "lang": "fr",
+   "source": "gn-fr-cameroun",
+   "regions": [
+    "CEMAC"
+   ],
+   "score": 3
+  },
+  {
+   "title": "Dutch Devt Bank Commits $25m To Support Climate-Smart Agric In Africa",
+   "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNVzVLdi1yaDhSWXNQY1ExUHVxcFIyR3B1WEh3ajJkdElFa1pkaG5sV3NZVXJDU0xmem1Lc2lwMmhzcmV3TU9tVUVKSXBoTDVKZDN0MnlWdzl3ckIwa0RFSHlzSV9pdlVnWWR0QlhuZFNleDRQRk5qTHN6WGRyMDM3My1BWTcybW5TTzhDcU5GTTcza3R0Tmg1RGxtcng?oc=5",
+   "publisher": "New Telegraph",
+   "publisherUrl": "https://newtelegraphng.com",
+   "published": "2026-11-23T00:16:43.000Z",
+   "summary": "Dutch Devt Bank Commits $25m To Support Climate-Smart Agric In Africa &nbsp;&nbsp; New Telegraph",
+   "lang": "en",
+   "source": "gn-en-irrigation",
+   "regions": [
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "Inflation Falls to 14.06%, But Why Are Nigerians Still Struggling With High Food Prices?",
+   "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQQkRGMnd4aGdBRVlpNDVRenJzMmZWNEF4emZHQ0NuTWlHN0Z6U3lwSnd6ZmVpLXNLQTR4QjdtX3REVjBZd2pJQ1FUa0RFQWc5S2dwTXZaRDBLRVBqMmpjU3RGb1MzMEJUM2I2UDctVTVHMm9hdzNNSC1mWVRmanQwSm9LNkl2YWJQY2pPOEpYckc2T0M5cnNwYkxEUkVJR3MyNVdVcTVvYndqNzg5VjhTN1lLMHozUQ?oc=5",
+   "publisher": "MSME Africa",
+   "publisherUrl": "https://msmeafricaonline.com",
+   "published": "2026-11-22T18:08:29.000Z",
+   "summary": "Inflation Falls to 14.06%, But Why Are Nigerians Still Struggling With High Food Prices? &nbsp;&nbsp; MSME Africa",
+   "lang": "en",
+   "source": "gn-en-prices",
+   "regions": [
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "From commitment to momentum: Africa's agrifood policy is finally delivering",
+   "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOZGxWSzdpTUFDUU1na2haSWxBU2txU2dvVDJhalFsb19XZGpCTnBndWdvNUE4dlFsWDhqRDB0Ym5Qb0hyTEEteS1PV2lDeUNEZlZNT1EwSWRFVHlHZlZWQUYwVVZiSExENGJCWGNad0ducFdPbGtWaFN6MHN6TzR4TC0xREFiTDdMR3ZqVDMwLU94NVU?oc=5",
+   "publisher": "Daily Nation",
+   "publisherUrl": "https://nation.africa",
+   "published": "2026-11-22T17:56:11.000Z",
+   "summary": "From commitment to momentum: Africa's agrifood policy is finally delivering &nbsp;&nbsp; Daily Nation",
+   "lang": "en",
+   "source": "gn-en-investment",
+   "regions": [
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "Elever des poissons en mer : pourquoi plusieurs pays africains explorent cette filière",
+   "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOOW5xVy1GbXllT2pPNlM4NEIteVNLbHpnQlJEQWpucDRzQ1pWV3RZNXMtQmYyai1XQmhCM3pqUXZLWlJLZDRkWGVpYUdYTEV5QkFBaC1CZW5hYVh0N2Jmb08yUEtHUmdEZnRtVkNSTHNwbjNoNlpUWGFNNzRRbXFaaTFUSFlNX3pRZGV2UzZsTG9HdjR3eC1HLTk0MzZyZW1ZQng1bkZuWWpNdVpjdFh4TVA3Q2lidzZiUm9HRWhGeVAyN003MXBVZzVqZGhYN0dlNWEyRl83elI?oc=5",
+   "publisher": "AGENCE ECOFIN",
+   "publisherUrl": "https://www.agenceecofin.com",
+   "published": "2026-11-22T16:46:00.000Z",
+   "summary": "Elever des poissons en mer : pourquoi plusieurs pays africains explorent cette filière &nbsp;&nbsp; AGENCE ECOFIN",
+   "lang": "fr",
+   "source": "gn-fr-afrique",
+   "regions": [
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "Diamonds are losing so much value that South African miners are abandoning their mines to take up farming",
+   "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQQXpVQUpRblZfdURLUmdWUFZRcFV3dzQ4WGNQVW1BMFdyclczbE5lcVN5THhEams5cmZkYUZ5YXRpZXdZSHg2ZWNva095NF9DNXVWWUpRSmo3WXVDb2diSzRpc09Vckh4bExjYjRLb205bFBSTG5YMkRzNGREWTBPRE5QdFY5N0VFSDBFRm5qVnc5a0NFVzV5MUEzcm1zZmltdmlmc1FkczYzRm9aNlVGVjRhTUtHSzFuTjQwQnRLWkJSZTFYUkQxUWlwczRrWERXeTc0UlpfWmd1Z2hFdkNz?oc=5",
+   "publisher": "Daily Investor",
+   "publisherUrl": "https://dailyinvestor.com",
+   "published": "2026-11-22T15:00:00.000Z",
+   "summary": "Diamonds are losing so much value that South African miners are abandoning their mines to take up farming &nbsp;&nbsp; Daily Investor",
+   "lang": "en",
+   "source": "gn-en-investment",
+   "regions": [
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "Centrafrique – FIP : quête de nouveaux partenaires financiers",
+   "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPUnp1TVlIRF9peDVmb25FcTRRN3h4Y1RXRVNFaldkbE1OanZpS0FqTmNlMms2ZFR2RWFQSXdBcHY4RTk4WnZpd0hBNHRTb2hCN3VQLUVvQ0NZUGhYdm9JTldnX1hIaVJLb19TQkdmNlF0bGFyWmJoUkIwd3pjYkFpdXFObkRvb3pI?oc=5",
+   "publisher": "Africa24 TV",
+   "publisherUrl": "https://africa24tv.com",
+   "published": "2026-11-22T14:08:00.000Z",
+   "summary": "Centrafrique – FIP : quête de nouveaux partenaires financiers &nbsp;&nbsp; Africa24 TV",
+   "lang": "fr",
+   "source": "gn-fr-afrique",
+   "regions": [
+    "CEMAC",
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "Gity sacrée meilleur projet d’agriculture intelligente du CESAO",
+   "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOY1ZQME45b2gybUhmUEM0bmtJX0VwdUYtMTVzMHExQWYySFdxaFFmSFh6MDhaeUcwNXhJRmQxY0ZJaXM5MlBKcDM2VmRxc3UwQ3hrckl2YzZQMDRWbHk3akJoV1Q0TlFhTFBsV3JYMFQ0NndxUXNNeGhhaFplSmFNQTF5M1dNc1Jwb1VhRXI1bHF0T0dwOFgweGt6aklUTDk1SDNkWUdfSkhYVER6MTB0dUMxanNfeTRFMVJMYmJB?oc=5",
+   "publisher": "African Manager",
+   "publisherUrl": "https://africanmanager.com",
+   "published": "2026-11-22T13:53:20.000Z",
+   "summary": "Gity sacrée meilleur projet d’agriculture intelligente du CESAO &nbsp;&nbsp; African Manager",
+   "lang": "fr",
+   "source": "gn-fr-afrique",
+   "regions": [
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "Maurice : la chaleur et la sécheresse menacent la production agricole",
+   "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNR3YtY3hJYXdSdW15R1hMOXFVbkFjR3RrbEJ1bkd2bkZGcDNNYmVuQkhmQnVqeXpKeEg5X2F4cEtRZm1nVHd0M2Q2MkdDZVkwYWd5YWo1VGlsUENTQzJqeXBwakRDZ2ZoQzloYnlMY2dhYUtxLWZtb3g2SWwwcFRSTTdON0ZDaGpFa2ZSeFdfaTI5Um9iZ0RCLW9pZ1ZuZlF4MDRqZ3lNdDbSAa4BQVVfeXFMUFo3VjdJZXNIWWpNNVNOU3RpUldja3dIX1RkVUdLbEFMWW9PdmlLSl9ad3EyMEIxU2EyZW5oMmw5MHRhTHQtYUk2TnBQNEVvbjNxbVZrQ2d3RVpYV2FwZGozTTBFMEU1TTZZVDZBNWFjb1pzTHNNZ1EwMkdhdUVxTmplYVAzNHNLVE8yb25LRHk2WVBsM2FlclRhNERuekdxYWVaN0wtMDBDZVFBT193?oc=5",
+   "publisher": "Africanews",
+   "publisherUrl": "https://fr.africanews.com",
+   "published": "2026-11-22T13:34:21.000Z",
+   "summary": "Maurice : la chaleur et la sécheresse menacent la production agricole &nbsp;&nbsp; Africanews",
+   "lang": "fr",
+   "source": "gn-fr-technique",
+   "regions": [
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "Western Cape agriculture faces 15% reduction in water allocations",
+   "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPYmtRSnVWVnp0ZGw2a19ud2tibWpmTE10aTNFdGZuaDdjZjlJRmhxU2syRTRvb1d5VjdCM2hPVHVEQVQtRzN3d1ZSZHRxT2lZc24xR1l6bmRQRDNPQWdGQkZiX1d5RGpYUS14Z25kc3ZmalpmMWRHWHpHTEUwcTFGcDVMY2lYZVBMWlh5NUk0RzNITkZYcU5VYVRJTW5GLWYwcU51dUNOakxMV1EwaXJXTk9nRVNIenBkYVZwOQ?oc=5",
+   "publisher": "Farmer's Weekly SA",
+   "publisherUrl": "https://www.farmersweekly.co.za",
+   "published": "2026-11-22T09:05:58.000Z",
+   "summary": "Western Cape agriculture faces 15% reduction in water allocations &nbsp;&nbsp; Farmer's Weekly SA",
+   "lang": "en",
+   "source": "gn-en-irrigation",
+   "regions": [],
+   "score": 3
+  },
+  {
+   "title": "Senegal’s farmers are working on climate change’s front line",
+   "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPWjdKenZpVnp5ZHRkYk85U00yWkVrRjRvanZzR0RBeVhEamk4LUM1UFdfWTZQYV9WVklfQkxBWF9NeXozeUthclRBMTBsUEV1Mmp5UjMzNHVhWkxRRWI4dThuREpMeE9saEFBME4wel9KRmFaeXhQdGtSYjBCdTE5ZzRpUzJGVE4tZkMyYnp4REpGa3dxOGI2NGhfMVpNQk1HSlJkeU51N0hDOGtib0N2NThZSDk0aU0?oc=5",
+   "publisher": "The Washington Post",
+   "publisherUrl": "https://www.washingtonpost.com",
+   "published": "2026-11-22T00:55:00.000Z",
+   "summary": "Senegal’s farmers are working on climate change’s front line &nbsp;&nbsp; The Washington Post",
+   "lang": "en",
+   "source": "gn-en-irrigation",
+   "regions": [
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "Chinese Agricultural Machinery Makers Eye Growing African Market",
+   "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxONmlyWWY5RmdTVDFCdGgtNXFpNUxxR2Q4MmY4Rl8wWWdqOG1XcHBocjBEaEE1ZzhZcmZtbGlUVTZWa3lQSExmeUtUY2N4RkxuSl9BTmtFUWpwNXhjZTNXMTFKbjFMNy1kREVGWVBKVWlNaDlfZHRDOXdzSVlIb0lOa3pyZ19lZ0R6TlJDenc4YTByaFN2?oc=5",
+   "publisher": "African Times",
+   "publisherUrl": "https://www.atnews.co.za",
+   "published": "2026-11-21T14:41:12.000Z",
+   "summary": "Chinese Agricultural Machinery Makers Eye Growing African Market &nbsp;&nbsp; African Times",
+   "lang": "en",
+   "source": "gn-en-irrigation",
+   "regions": [
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "El Niño threatens banana supplies as US import costs climb",
+   "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQRmY1Q3Q0MHBHbHdxZVowSU84eEdpZVpkbjYyTzVnTEoyOWFzcm40M1hRYTYzazVqTUNlaFJYTlJOdzY4VE1ESVA5bllmNmpwUks4S3lwa1lzYTJpbWx4cU5Jck5PQ0haQmgwUkE5X3FDT1o4MHh3UjVyMnhhWkYxOXk2eHFJTEN0VEk1dlR1YmRYWmlsTnc?oc=5",
+   "publisher": "Food Business Middle East & Africa",
+   "publisherUrl": "https://www.foodbusinessmea.com",
+   "published": "2026-11-21T08:00:00.000Z",
+   "summary": "El Niño threatens banana supplies as US import costs climb &nbsp;&nbsp; Food Business Middle East & Africa",
+   "lang": "en",
+   "source": "gn-en-prices",
+   "regions": [
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "Water restrictions loom for Western Cape farmers",
+   "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOMklXcGZUM0xydXBkODhxdVI3cms5SzA0MzJYSmROZ2dtalRyekppQ29WWE1JMXl5VzlITEZOM082amJkd2tiT2NjWFFIUEFac3Jma1NVc3VUQktQTjJmWmt6X2JHdFlEX25BUUVIMUl2VWs5TWJRbm4xQlB6T3ZiOHJUbm5DZzdiV01PQk8tSDF2Qy1QS0xYbkVUUllFUTBjaEdjbDM4Yw?oc=5",
+   "publisher": "Farmer's Weekly SA",
+   "publisherUrl": "https://www.farmersweekly.co.za",
+   "published": "2026-11-21T03:00:58.000Z",
+   "summary": "Water restrictions loom for Western Cape farmers &nbsp;&nbsp; Farmer's Weekly SA",
+   "lang": "en",
+   "source": "gn-en-irrigation",
+   "regions": [],
+   "score": 3
+  },
+  {
+   "title": "Kampala allocates $54m to irrigation project to tackle climate-related risks",
+   "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNNE96NVlEUG1uQVVHZl96YTI1YlBFYlJzQzdnSWtXWFpoLTNqTU8wdXZVV3hfUDJ1R1VQcnZMUjcyZXcteXVSTDg1c2xwZVJHVUFCeG14b2VwNUhCTjY4bHhLSHRwZHRxcUxGU1BrMjcySnRfdTM1TnBSRHNrYXJJUmtocXBrTXhEaEVXLURGbzZDWXhhTm5IUmZiMXhjOXBHMV9TcUt1OFRtbzI1WVc0aVZ5RmgwOTBIWXJ3bDV3?oc=5",
+   "publisher": "africabusinessplus.com",
+   "publisherUrl": "https://www.africabusinessplus.com",
+   "published": "2026-11-20T21:17:55.000Z",
+   "summary": "Kampala allocates $54m to irrigation project to tackle climate-related risks &nbsp;&nbsp; africabusinessplus.com",
+   "lang": "en",
+   "source": "gn-en-irrigation",
+   "regions": [
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "The Other Black Gold: Nigeria’s Coffee Sector Wants A Shot",
+   "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPSzUwVXhJUHF0Sm1WQW9sT19lLUZUeWxBYWRfX2t3b1lVSTBfNVNCek1iejJrck5jdjAzU1VZM09uSHYyN3lNMEd6V3gxSTg2aWI1ZU9fM3pXeXRld0N2Q0hQSVVlVF96NXNUN2p6Uktzd1RJaDRaeDZLa1p5RmFvc3pVSmRyUndNRXNXb2s5QnM3Tm8zVDZqMXY2RQ?oc=5",
+   "publisher": "Channels Television",
+   "publisherUrl": "https://www.channelstv.com",
+   "published": "2026-11-20T19:12:46.000Z",
+   "summary": "The Other Black Gold: Nigeria’s Coffee Sector Wants A Shot &nbsp;&nbsp; Channels Television",
+   "lang": "en",
+   "source": "gn-en-rwanda",
+   "regions": [
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "Moroccan tomato prices fall in Europe as government restricts exports to Africa",
+   "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPMEUycjBDcTVSWmxubE43OHZCQWF2azFyZXVERXZhN0JKMFZtV094QU0xeERCZ0RxMThhV0labmFzSGNJbXByaloxNy1KYVpjeFdZNWlaTThGc3RCUW9FV2RRMk5MZXB0bksyWkpqMDhnQ3ZlRmtsdW50VHltU3JQRmFiZlh6TnNRc3NCcXBOZjZ5ZTJ1ZHVQekNfNUZuSGZ2T3dIa0Ryb0l4ZXNrRlowajVNQVZEUQ?oc=5",
+   "publisher": "HESPRESS English - Morocco News",
+   "publisherUrl": "https://en.hespress.com",
+   "published": "2026-11-20T19:08:19.000Z",
+   "summary": "Moroccan tomato prices fall in Europe as government restricts exports to Africa &nbsp;&nbsp; HESPRESS English - Morocco News",
+   "lang": "en",
+   "source": "gn-en-prices",
+   "regions": [
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "Kampala décaisse 54 millions de dollars pour son projet d’irrigation face aux aléas climatiques",
+   "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOV3BoRnl0ZHNUR1ZKZXc5YTNWNC1LbTE2OE5PNTliekI1X290a3Z5d0ZkMFV4aDJiVUN5dFdPR0JNS2RHYWNzTG9pZDBXUU1pdTRFOEJ0MS1QeEtPbDZvbk9DMXBrX2c1NHRsNVplM0JLNUctQWc4RWVhODNTV0w4NWxCbWZablRicV9TaGN0WDVoVGgxRzJGVEFueXY1d1o2SkwxMXB0RkhydGRtSHVycVRMYnZrU0xXSFhxQVJCaVNRQ0FDLXltcnk0dEZvd2RZSVAzTjBrUQ?oc=5",
+   "publisher": "africabusinessplus.com",
+   "publisherUrl": "https://www.africabusinessplus.com",
+   "published": "2026-11-20T18:33:00.000Z",
+   "summary": "Kampala décaisse 54 millions de dollars pour son projet d’irrigation face aux aléas climatiques &nbsp;&nbsp; africabusinessplus.com",
+   "lang": "fr",
+   "source": "gn-fr-technique",
+   "regions": [
+    "AF"
+   ],
+   "score": 3
+  },
+  {
+   "title": "Agriculture principal secretary Dr Paul Rono: Sugar production has increased to 900,000 MT",
+   "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxNV080NEZYeFlOb1VHSUlOUDU4QjlMWFZmRUlNeDBzWTRRbjBXdTFCcGZ0SHNfQVlNU2FNMDhkZmlHMGR6T0UwYzU1c0JFdlk0S0IzdU5VTFUwMlNhWmFESGR4a3l0c1p1QkZwNk9kamVCdmx5OEtyc2ZhdURlUWpCUDV3WmFocGk2Qm1PY2g1czRkRnYtSTU3Vm9tc2ZPMGN2TVZrRUhWVE5MOGtaQjBPRV9UYWJaSDl0SGpRZnkyRHQ2OG9Ld0ZhbENzcWpjdVJ1VGF3S1RPaVFhNFZ2M1E?oc=5",
+   "publisher": "Facebook",
+   "publisherUrl": "https://www.facebook.com",
+   "published": "2026-11-23T15:27:44.000Z",
+   "summary": "Agriculture principal secretary Dr Paul Rono: Sugar production has increased to 900,000 MT &nbsp;&nbsp; Facebook",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "President William Samoei Ruto- We are going to pay a Sh195 million bonus to farmers",
+   "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxNLWJ6VkZqNVZfbHBBaGNwX3AxUVRBaU5fYk5mRnN0cDRpaXVUd1l4NnZjdWpwT0trZ3l3YnhMWUVqbjN6ZFNzN3hLQkpaZldSa25vMWg4VkZzbE0yRFVqY2licExEdk9RV3hadjE3SlBOaHlpUXdMVTJVS3ZSSWo5SmpJZ3QyMnVoRkFCYXpZekJrNjRldjhsbkI0QkoxY254YmV1N0FkLUlSSVNETGlRNmxCdGpBTVpMcEwyYWdlNUVPclZncjhIcEZUQ2xnRE9RTUNPTjh3UzNUSW5xNmc?oc=5",
+   "publisher": "Facebook",
+   "publisherUrl": "https://www.facebook.com",
+   "published": "2026-11-23T15:18:55.000Z",
+   "summary": "President William Samoei Ruto- We are going to pay a Sh195 million bonus to farmers &nbsp;&nbsp; Facebook",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "When to plant fodder radish for better livestock feed in droughts",
+   "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQU0NfTHVPejBTbEtjdUNDeU9QXy1wTTVYQ2dIWFdsUjREZnlSSlFsV3k4OHBKQVpHSkRwMThPUFNONjliNTNzVmZJRW5VMm9yd2RjNW5idUxvaW03SjdzeUxfajgxNUxVallpYWR6T21nQkY4UzF4blJYYmlWSjJFRVRQZXFkb1NKb2ctZ3dxVmZnUWJqM2g4RDhFb2JWb1E?oc=5",
+   "publisher": "Food For Mzansi",
+   "publisherUrl": "https://www.foodformzansi.co.za",
+   "published": "2026-11-23T13:34:38.000Z",
+   "summary": "When to plant fodder radish for better livestock feed in droughts &nbsp;&nbsp; Food For Mzansi",
+   "lang": "en",
+   "source": "gn-en-ai",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "President William Samoei Ruto presides over the payment of the sugarcane bonus to Nzoia Factory farmers in Kanduyi, Bungoma County.",
+   "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9VUnZWUmVNTHhVaDQzZzNLV2JlLWNXbDJoRUdDWnhXOGlKUEtBYzBkMV9jWmZLdnF6TkpkU1VuUDhmU2pOX3cyckV5al9pSVNBQW5HRHBiSzlsTDNIaEZ4LVJjSWYwWnY3SENJeTdnUkpJZ1k?oc=5",
+   "publisher": "Facebook",
+   "publisherUrl": "https://www.facebook.com",
+   "published": "2026-11-23T13:01:39.000Z",
+   "summary": "President William Samoei Ruto presides over the payment of the sugarcane bonus to Nzoia Factory farmers in Kanduyi, Bungoma County. &nbsp;&nbsp; Facebook",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "Cocoa prices could surge by over 50% in six months as supply risks mount",
+   "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxObUs0bE5MSWY5ZlZ2bmpZVUZjbk5hSEhfZ3BvOGJJMU96dTZtQ2NuS2JGOWYyNnZKSDQ5a1VSR3gtTFNwNElkektRV0h4bWNpRjJHbFNyU2tWa18xQ2RZZkM2bElBNXZYUDhFc3hUZjlUcHp5V2FJZHdFRlFRVHFwdkVpeTBmZDYtUko1MjBGR1VLY1dhVFpoRXhTZ1lvY0duSTVyQm1pbFUyZXVycnhGNjdsNmFxdUZBeHJrajVn?oc=5",
+   "publisher": "FoodNavigator.com",
+   "publisherUrl": "https://www.foodnavigator.com",
+   "published": "2026-11-23T12:47:07.000Z",
+   "summary": "Cocoa prices could surge by over 50% in six months as supply risks mount &nbsp;&nbsp; FoodNavigator.com",
+   "lang": "en",
+   "source": "gn-en-prices",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "Global Farm Output Rises 3.1% to $4.2 Trillion",
+   "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPN1RLVVYtYjg5RXl5UkFMR0xadkFVVkNKWklVNk84OWZKS3l6YlBQVmdJRjVPamdMbHVDcG5vNFdxWi00am9UVWhKcU56Z1ZEWW5JZGU1RkluM0pDeVU0UW5jd0xkalRNMnlKUWVnai1Fc3MwNm1paDc5Ujl0X2FOLU9uLW9Eb2s?oc=5",
+   "publisher": "Wisevoter",
+   "publisherUrl": "https://wisevoter.com",
+   "published": "2026-11-23T09:14:06.000Z",
+   "summary": "Global Farm Output Rises 3.1% to $4.2 Trillion &nbsp;&nbsp; Wisevoter",
+   "lang": "en",
+   "source": "gn-en-ai",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "SADC Needs One Shared Economic Vision to Unlock Regional Growth",
+   "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPaWpYanBGM21Eck54TV9SYjVpN1ptb2loQnF0SjV0R0k2TUpFQkxTTWlPVDVYdmpwVTdfMHhTWEVlX1ZfQmtSZFIwMlYzbDVjRXk2Z21hTjhDaXdhTXY3WmdEX21SV1pKTXhTc0R5VHBnN0ZvUk9OSHQ5NHBtRzZmbFlyVDBPb2ttSFNBY1c5SXJDX0loSXJJTC04X20?oc=5",
+   "publisher": "Farmers Review Africa",
+   "publisherUrl": "https://farmersreviewafrica.com",
+   "published": "2026-11-23T09:06:45.000Z",
+   "summary": "SADC Needs One Shared Economic Vision to Unlock Regional Growth &nbsp;&nbsp; Farmers Review Africa",
+   "lang": "en",
+   "source": "gn-en-investment",
+   "regions": [
+    "AF"
+   ],
+   "score": 2
+  },
+  {
+   "title": "Tanzania deploys AI to tackle milk supply shortage",
+   "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNTC1vUkZYMjlBR25falVKWngzd1JnM0JYQ0tLWWtPVW02WFVMYXJJa2M3UlhPdndsa291ZldyRnRHQ2c3OEs5Um1MMlBRd21FWG1uT1RENnF5QlB1blU4WktVSVA1bWRTLWhIU1pYY0daZFo5SjJ5ZHhBSkszNWJFZWRWcEkyb2hGVEtENlJIRURsR3Z1X3c?oc=5",
+   "publisher": "Dairy Business Middle East & Africa",
+   "publisherUrl": "https://dairybusinessmea.com",
+   "published": "2026-11-23T08:35:06.000Z",
+   "summary": "Tanzania deploys AI to tackle milk supply shortage &nbsp;&nbsp; Dairy Business Middle East & Africa",
+   "lang": "en",
+   "source": "gn-en-ai",
+   "regions": [
+    "AF"
+   ],
+   "score": 2
+  },
+  {
+   "title": "Unpaid invoices leave agricultural suppliers short of cash",
+   "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQSk1GNjdhZFJmUUFrdDVSWHp4RndRcjZmWDM3WUdBQ3ZUSU5ROWJVRmlRUkVkU2VQeXpHS29faXNqdXFDbmFtcEJuOVJ6ai1GcU1Lbkx6bnVtVk9PLXY5OWN1M3FiNzZiQ3NlaGM5M1hNcWYzaktVT05BNG5uZkNSbHhsNkNQQWRfS0hJZ3Rn?oc=5",
+   "publisher": "Sacco Review",
+   "publisherUrl": "https://saccoreview.co.ke",
+   "published": "2026-11-23T08:26:01.000Z",
+   "summary": "Unpaid invoices leave agricultural suppliers short of cash &nbsp;&nbsp; Sacco Review",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "Sunflower market update: SAFEX futures, Black Sea seed and oil prices — CMB News",
+   "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNd1F0eDB3aWczZ1RHbHhfOUxXcEVOMXh3Q21pczRubE0zc09hTktOT0ZBUmdWWUpYOUIzTEhsUDZDNFFvTFhZM1pkQ2Mxa1RiLWlwX2w4cWJ6N180WWU1NkctaE5IYUtaX0dSOWVtMTl2cDhvUjZRZUhKZkRZWXVhZDAySzdkc0Z5cE5VMmxqSlVudFFR?oc=5",
+   "publisher": "CMB News",
+   "publisherUrl": "https://commodity-board.com",
+   "published": "2026-11-23T07:45:06.000Z",
+   "summary": "Sunflower market update: SAFEX futures, Black Sea seed and oil prices — CMB News &nbsp;&nbsp; CMB News",
+   "lang": "en",
+   "source": "gn-en-prices",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "How Community-Private Partnerships Are Quietly Transforming Land Reform",
+   "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPX2prVUhmN29zYUhGRnBlMnlBR01iaWl3RHZyczdiUHhyUGc3Und6aWNpYl9PUGZXcUhVTzA3M1dKWlp4aUVaZlB3REExMkxtRWtsenEzYmR3b1NOaFo5LWZ6OC1EaGVMd2RDRnluM25xcHJIa2I5SVhvejVGQUVGNzR3WUxPNXZYdEtIRHJWbTZiVEJDR1EyUlJwa0FXblo3RnY3UENrbw?oc=5",
+   "publisher": "Farmers Review Africa",
+   "publisherUrl": "https://farmersreviewafrica.com",
+   "published": "2026-11-23T07:39:06.000Z",
+   "summary": "How Community-Private Partnerships Are Quietly Transforming Land Reform &nbsp;&nbsp; Farmers Review Africa",
+   "lang": "en",
+   "source": "gn-en-investment",
+   "regions": [
+    "AF"
+   ],
+   "score": 2
+  },
+  {
+   "title": "Kenyan government outlines agricultural priorities for the 2027/28 financial year",
+   "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOUGVneTl4a2hXWXlvTEJieFRYVmx3c1BJV1F2LWkxQWtLaHlUSlJYVnhSZTBrQWQtWmpnT2dqUVVpdFRaWEczVTFncVl0QzhmcWFDNnd5LVlSVEtUZjgxeW9rejMtTmZEeW5zSjlkU0FVVHYtd2drMHFpaDBGbE9lbkloaVYtb0x3ZWZOT0JKNWJDU2l2alN6R1hkRnV4QlBTeWF6bHQ1bWJPa1VTcGJCQ1doa3B0a2ZJRjBnM2RFd0taZnMwaDVqcnJHWQ?oc=5",
+   "publisher": "Fruitnet",
+   "publisherUrl": "https://www.fruitnet.com",
+   "published": "2026-11-23T07:37:51.000Z",
+   "summary": "Kenyan government outlines agricultural priorities for the 2027/28 financial year &nbsp;&nbsp; Fruitnet",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "𝐇𝐞𝐚𝐯𝐲 𝐫𝐚𝐢𝐧𝐬 𝐝𝐢𝐬𝐫𝐮𝐩𝐭 𝐩𝐫𝐨𝐝𝐮𝐜𝐞 𝐬𝐮𝐩𝐩𝐥𝐲, 𝐬𝐥𝐨𝐰 𝐛𝐮𝐬𝐢𝐧𝐞𝐬𝐬 𝐢𝐧 𝐊𝐞𝐧𝐨𝐥 Small-scale traders in Kenol Market, Maragua Constituency, are counting losses as ongoing rains disrupt the transportation of farm produce, reduce customer turnout and e",
+   "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxPS1g2SW1oVmZJZV9ZWXhSdGtvQno3UmV2VlZBX2tNQjNmRUxhRUl4TlVyVFY3VjlELVJjZ2JVVmVaMUlnYm05ZTVCQVYyZUVRUXJLTjhpX1dudHphUFI2cmVkTWl2Z2h1bUhmS2xMOGtzdVh0XzRsS2tLWmc2WjZyQ1JIRm1yMWh2V3FGV0hJM3BGS1I0Z1VzTkJ0XzFYa1VQMzhVdFEzQThnVTg4Z3Q0UHpHTTBIelMxc1dhaGhqclBpVlRrLUQyd29WOXVvX1h0MUpibXoxcC1mME5MNnc?oc=5",
+   "publisher": "Facebook",
+   "publisherUrl": "https://www.facebook.com",
+   "published": "2026-11-23T07:31:03.000Z",
+   "summary": "𝐇𝐞𝐚𝐯𝐲 𝐫𝐚𝐢𝐧𝐬 𝐝𝐢𝐬𝐫𝐮𝐩𝐭 𝐩𝐫𝐨𝐝𝐮𝐜𝐞 𝐬𝐮𝐩𝐩𝐥𝐲, 𝐬𝐥𝐨𝐰 𝐛𝐮𝐬𝐢𝐧𝐞𝐬𝐬 𝐢𝐧 𝐊𝐞𝐧𝐨𝐥 Small-scale traders in Kenol Market, Maragua Constituency, are counting losses as ongoing rains disrupt the transportation of farm produce, reduce customer turnout and e &nbsp;&nbsp; Facebook",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "Bukura students take agricultural lessons to the field in KALRO Alupe tour",
+   "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQSUpyRWNGdGtuTVBKc3pQSG1QU2VxTk85Qm92dEczWDR5THVJSFE3WFpUOWxQaHU5anRLcHByZVN6NWRaQk1ZYzhoVzJzbVk1MXdfcDVKVmhiY2o3U3hteGlTM0hBdHU2ZDB5Z09zT0hiS2RTc09LWTM5MGxLdDZkdXBsd1Z4cFRkc1N5TXUyN3ljM1UtbnpYZnpZWkRNWlBXVUZEMUtsTjBoaUU?oc=5",
+   "publisher": "Education News",
+   "publisherUrl": "https://educationnews.co.ke",
+   "published": "2026-11-23T07:28:53.000Z",
+   "summary": "Bukura students take agricultural lessons to the field in KALRO Alupe tour &nbsp;&nbsp; Education News",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "Fruit Exports Under Pressure: Can AI Fix the Cost of Delayed Ships?",
+   "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPQkRGb1RHcmNEel8yVHVZeTVsT1g4RnpwbHNNd1I5b256bGYyTWJZTGtLeDFqUlVnemhtRGs2Z3ZFZktTbzRHMjF2Y2ZIeDlFX3ZqSDVsZ3FyN3VPYlB2aUtiNm5aTlhjLWYtZmduLTBwYW1ObEVDV3FKdU5KU1ZCYmhPTXZsV0JKM0JTMlYybVR1d21JWjRYbmRER3VLV1U?oc=5",
+   "publisher": "Farmers Review Africa",
+   "publisherUrl": "https://farmersreviewafrica.com",
+   "published": "2026-11-23T07:24:52.000Z",
+   "summary": "Fruit Exports Under Pressure: Can AI Fix the Cost of Delayed Ships? &nbsp;&nbsp; Farmers Review Africa",
+   "lang": "en",
+   "source": "gn-en-ai",
+   "regions": [
+    "AF"
+   ],
+   "score": 2
+  },
+  {
+   "title": "Inside ADM’s New Strategy for Feed Additives and Ingredients",
+   "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOeTI3d2VtNGhvT1R2OFVjeXhoREFQZmVaTy1wdi1yWWdpR2ptcE9LaDE4SjF6Rk9rTTh2Y3NWaERXSl9IZzB4Y3VUdjV4a0J6WUlpdjBwcC1ZQnQ1ZngtRTgzWl9uR1o2MUdDLU55ZjgxOFhnaF8yZFV3all6cTczdzdGMnBjal9ad3pQdFlGVjd4TXh3N293?oc=5",
+   "publisher": "Farmers Review Africa",
+   "publisherUrl": "https://farmersreviewafrica.com",
+   "published": "2026-11-23T07:07:27.000Z",
+   "summary": "Inside ADM’s New Strategy for Feed Additives and Ingredients &nbsp;&nbsp; Farmers Review Africa",
+   "lang": "en",
+   "source": "gn-en-ai",
+   "regions": [
+    "AF"
+   ],
+   "score": 2
+  },
+  {
+   "title": "Beyond timber: How farmers can profit from multi-purpose trees",
+   "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPTTRtOW1Mdm1ncjExWmszRnZsaldDd01JemY3MG4zODQyYWo3aXRMNmNZZnQ0Nl9xQnVFV080VFlMUnR4N012b3ZFZVpwY2VuYXE4cHhFdm9yZE44TXQyTzF1Q2NySTBqR29LeGdhRFZQT1BiSE55eUFhRXQ4Qm1qR0dPcTVTU2MtcjJqTmNfSW1JNXZpY0FfTXZB?oc=5",
+   "publisher": "Food For Mzansi",
+   "publisherUrl": "https://www.foodformzansi.co.za",
+   "published": "2026-11-23T07:01:04.000Z",
+   "summary": "Beyond timber: How farmers can profit from multi-purpose trees &nbsp;&nbsp; Food For Mzansi",
+   "lang": "en",
+   "source": "gn-en-ai",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "Paul Dick Takes the Helm as CNH President, North America",
+   "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxORTZwdXY4SnFVSVdvWGhiSzFGT3BWV1ZVaGF0bm1HaVpYaTVBdU00OUFCX0tvWldVMHZLZGx2QXYtMTNmdkZUc3dXS0VndVdqcG9DdTFZaGNzd1oyTDVDdzVwREhSajRUTzNjSFZPSXNESEY2ajJHUE5XdlVWOTJWX2tRb3M3NGJlV0FBVDVzcVhUZw?oc=5",
+   "publisher": "Farmers Review Africa",
+   "publisherUrl": "https://farmersreviewafrica.com",
+   "published": "2026-11-23T06:56:32.000Z",
+   "summary": "Paul Dick Takes the Helm as CNH President, North America &nbsp;&nbsp; Farmers Review Africa",
+   "lang": "en",
+   "source": "gn-en-ai",
+   "regions": [
+    "AF"
+   ],
+   "score": 2
+  },
+  {
+   "title": "El Niño famine warnings rise despite near-record global harvests",
+   "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOTTZ6Q293Mm1QZ3FFam91X2lzaFYwa3hRX0s4X3pIb3FXYXNnbjd1ZUgtWXBabDhvREhVaXVlbVRFeHQzRDhPMnE4NldwamhlYVNZdkhMeDFXdHlmQjk0QTB1MWpXbFlCSW9xVm9jbmFLenRidmRhZzRKQUxUdzNCaUNKXzlfbEpndThhMlBtXzQ3SWFrdGczVkI3OGdFLUE?oc=5",
+   "publisher": "https://streamlinefeed.co.ke/",
+   "publisherUrl": "https://streamlinefeed.co.ke",
+   "published": "2026-11-23T06:17:03.000Z",
+   "summary": "El Niño famine warnings rise despite near-record global harvests &nbsp;&nbsp; https://streamlinefeed.co.ke/",
+   "lang": "en",
+   "source": "gn-en-prices",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "A potato that beats the blight is ready. Why Indian farmers can't grow it yet",
+   "link": "https://news.google.com/rss/articles/CBMihAJBVV95cUxQSjJsZE16WnR5b1J3ZUZrekhkRG41Q1dRdXJZdnFMcXZ5bkViTzliUmp2QmNoRDFyOVhrRENhSTVfRXBRSEV4QkNNaFJkTUkzbzRJWWl1b2NqbWw2N1h5UFFEUTNNOHZHOEs2c0JLc25KRy13OE9QTTU3YjdmcTZoOUF3eHJ5U3hzMmpBRkx5OHZHdEJId2pSM3BfZVoxR1J2c3IwSjI3czNPVFpIblExeDFqTk1lbko0MUIyT1VJbzQwdjdheElWUFVpZUhQMjJ6bFR1RVRJTzR3VjNlRFM3MGd2eUl0NC1RM3JpeXdCTWQ0dkh2Ylh5VmNXQVRWZU1RYjRITtIBigJBVV95cUxQQVF3V1NueUxrdkVZRzNFY0xjSjRkNGlSWDJfajBacWhDWjFyZzZlWXIySzJqcVVRMjA1VnNLRnZDekNUOHdndmFSYTJYREFxWXU1M1BYZVcxR0Vvb082NWJnU1FybzZiSVZxQ3JYNEhPckJMX240ekV6RnJFODRlbWhCejZfYUpfRDk3TzViVWFmYWhFLTdQYzd6SW9FdHhwT056aGlpS1BrTGVtOHdhQVF4Yy13M3hPUWVhYk5mS184THBiVWRjU242YkdieUNOaW9LdlNSc0h0bzJvN1NpSGlnNFZsQmJDSXRKUjBDQkpGb2RDZFNrYWI2QkR1OExnZWdIUXhYMkN0dw?oc=5",
+   "publisher": "India Today",
+   "publisherUrl": "https://www.indiatoday.in",
+   "published": "2026-11-23T06:04:02.000Z",
+   "summary": "A potato that beats the blight is ready. Why Indian farmers can't grow it yet &nbsp;&nbsp; India Today",
+   "lang": "en",
+   "source": "gn-en-rwanda",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "APC-PCC Lists More Tinubu Achievements, Cites N450bn Food Security Fund",
+   "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOc1lxSXB0SkV4QUJQY085cTlWamYtS09aN05QTmJIU1ZYU1RFNTdKazJicXpLNEE3NjIzQkxuUl9Mb1FIVkpldDJLUnoySngxWE9kWGtoTkpoV0xRaEJHLXVESm5qOExLNVZURlk3NkpmQ0ZuX2o3eXhIQWpBb1A5RmpSbm5jbFp1M3JfRU5FY2x5Z2xrcTNaOEZqQ3NhTjJxcXhKX2F0ODQ3cVFhSmRv?oc=5",
+   "publisher": "THISDAYLIVE",
+   "publisherUrl": "https://www.thisdaylive.com",
+   "published": "2026-11-23T04:40:16.000Z",
+   "summary": "APC-PCC Lists More Tinubu Achievements, Cites N450bn Food Security Fund &nbsp;&nbsp; THISDAYLIVE",
+   "lang": "en",
+   "source": "gn-en-irrigation",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "Western Cape water restrictions put farmers and tourism on alert",
+   "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPZ2ZaQzBOaC1xUm9BVVhYWlVQS0V6alJFNHE3bnhlSmJPMDR6VFY3SVVveS0xX3gwVEd5UTJxQVlPZHh4NURJcHNLUld4bXZ5N0ZTeEt2N09TaENhR1FfY0RtaTROSHBjd1ZyUm42X21KN3lyZzEzbzM4cmJ3cld4amJvU1Ytd0dYSEdWTk9sZkZ4S0hRVWVDY01waGRNOHBqSVN6cWUwY05XMlV4ZE9ka2trMXpBOE0?oc=5",
+   "publisher": "thenational.co.za",
+   "publisherUrl": "https://thenational.co.za",
+   "published": "2026-11-23T03:00:00.000Z",
+   "summary": "Western Cape water restrictions put farmers and tourism on alert &nbsp;&nbsp; thenational.co.za",
+   "lang": "en",
+   "source": "gn-en-irrigation",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "Storage Losses Drive Enugu Onion Surge Before Northern Harvest",
+   "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQVkt1WVlWc2ZLbkVld2hybzJFVU8zZ21hV2swMmFHRTdNblNZOTNxZUJkM1VVaUNLMS1zYWhrQjJ5OWNteFpibnI0Q0NaSVNERXhTUW9GOWh6TXJHcjF5VVRPdTkxUTBZWGY2ZklVbkdqbnhrVkRZUVdDb3pEMkhweXo4bXV5VTREMHotMkhlQVJWS3VpR3RDS1FXeVM?oc=5",
+   "publisher": "https://streamlinefeed.co.ke/",
+   "publisherUrl": "https://streamlinefeed.co.ke",
+   "published": "2026-11-22T11:12:00.000Z",
+   "summary": "Storage Losses Drive Enugu Onion Surge Before Northern Harvest &nbsp;&nbsp; https://streamlinefeed.co.ke/",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "Western Cape Irrigation Cut Set at 15%",
+   "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQOUpicjNpMGota1BtbERTV0x5SGlsTDAwWklXVUJDV3djUU1yN2VMM2FudjdEYVdCMURZRHNlZ2Y2SG8yLU15RmN2aUlyNjRmcWkzbV9na2pna2pyUDd2T0xWVUtGVC1sNVN5SDl1N0lJZVBxZnhJMmZaNi1ILTFXTjRPYkQ1S0V5RWszeHRoRGk?oc=5",
+   "publisher": "Wisevoter",
+   "publisherUrl": "https://wisevoter.com",
+   "published": "2026-11-22T09:43:39.000Z",
+   "summary": "Western Cape Irrigation Cut Set at 15% &nbsp;&nbsp; Wisevoter",
+   "lang": "en",
+   "source": "gn-en-irrigation",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "GABS: Agritech in focus + Top of the Table: The award winners",
+   "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNUGhqZl9mQ3FCU3dVMzZwd0NsR2xIdmc4OWJrMUJheXl5YzN6MGhyRXF0RG1jUXVBcHdHaVJZODV2cld5UU9EOUlQSkxJQk1PMzJpY0ZMR1pPUXJhZjY5ZEJwcWdqb2t1TWxXcmpvU1JYSDBURWRxR3ZCak14ZXJ3UFRlQlgteXZCendIcnU3VnNoOWFJT2NtdGIwbFpEUWNGRkVJeGpscUhmY1p1VV85dG5QYw?oc=5",
+   "publisher": "Table.Briefings",
+   "publisherUrl": "https://table.media",
+   "published": "2026-11-22T08:37:45.000Z",
+   "summary": "GABS: Agritech in focus + Top of the Table: The award winners &nbsp;&nbsp; Table.Briefings",
+   "lang": "en",
+   "source": "gn-en-investment",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "Summer rains temporary relief as SA farmers brace themselves for drought",
+   "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQM095YW1yRU9sd1NjYjQyUFdqSUVrZmswZGoxT05ZVzR2dWpibi1tcEt5aVN0UktXY2VyTkNiYkhCbzZWUXVBcXFtRmFqVUE0bXgtUFQwRl9JZ3gyM2R1dTlOdXJTWHNDdHNUWjdkZGw4YjFMeW0yRGh3djBSU184ZV8yUzZVNEJMaDluTWhSUjVnLXQ1MUZIMmJSSzRKUXp3SUVoY093VUNQRWlsTkdmdkJwN0c?oc=5",
+   "publisher": "eNCA",
+   "publisherUrl": "https://www.enca.com",
+   "published": "2026-11-22T08:01:30.000Z",
+   "summary": "Summer rains temporary relief as SA farmers brace themselves for drought &nbsp;&nbsp; eNCA",
+   "lang": "en",
+   "source": "gn-en-ai",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "Reports say hackers breached US agriculture and FBI systems",
+   "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5mUGhZUklGMl9xRmFRd1ZhdUowTkdhLXR0clVLdHMwSm4tQlNvNjhDcjRaMXBRQWJOdjlxMEMyYnhSRDVqM0dfbEoxam93bEtuUnVPcjRlZ1hnWnJFTmdhelQ4R0JnYzg?oc=5",
+   "publisher": "5050 Markets",
+   "publisherUrl": "https://5050markets.com",
+   "published": "2026-11-21T21:36:57.000Z",
+   "summary": "Reports say hackers breached US agriculture and FBI systems &nbsp;&nbsp; 5050 Markets",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "Powerful El Niño threatens global growth as food prices and energy costs face fresh pressure",
+   "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxONEZrVS0xdXA1eTktaWo3QXlpZVU2WHB0UFMydzg0bmNZSWdHRExyYjQ1cnlvX2NkQkNLYkJ2ZFJ3MUpscFBSd1gwWFNWa1hoOW9FZDhRVjBMcnBiZWRfVXQ3d3UwckZXWlVPMDhXQzB3WUhCOWp0aHozbmdxU3BqMXBOUUFNdHV6RnVJTTZsLWhKSmF0WDQ4N3RXU2JCdGx2cWlRUWZ5MWlnYU5fd3A5Yktwd3daR3djUXlPQ0RZSXFSdUxyVURTTUYzd19zSE1aRHMwNw?oc=5",
+   "publisher": "IOL",
+   "publisherUrl": "https://iol.co.za",
+   "published": "2026-11-21T13:00:00.000Z",
+   "summary": "Powerful El Niño threatens global growth as food prices and energy costs face fresh pressure &nbsp;&nbsp; IOL",
+   "lang": "en",
+   "source": "gn-en-prices",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "Urban female farmers defeat hunger in Zimbabwe",
+   "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNM0l1aVFzY0d0c3V1eUFnS0FYWUtpbndVUUhkRzc0LWJyYW04T09EM0l1UTJLbURfcGVpYllBNmIxeW45bWxHV0VrNkJVd190QnljandPUXdmam82TUFVMjJGWHBHbWI4R2xXLThoSy14UTlob0c2M1ZBcG5SY3M5UjNrTjdfdWZUSEhZc3ZB?oc=5",
+   "publisher": "Yeni Safak English",
+   "publisherUrl": "https://en.yenisafak.com",
+   "published": "2026-11-21T09:10:29.000Z",
+   "summary": "Urban female farmers defeat hunger in Zimbabwe &nbsp;&nbsp; Yeni Safak English",
+   "lang": "en",
+   "source": "gn-en-ai",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "Good records can make or break your agribusiness",
+   "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQUG5OY1BzM2JkZk9TdzY5RzlyOXZCOFIyZEYxU1Z0Sm5md1VoSlFuRy1EM2VfUFY3TTZacmxhdVpoYWRvdnlkdjNtb2lKaXdXQzZ0Q1RnSVlzbWZVLUFiSzFjdXduWFR0RFJ3c3B1OTBjMFVUZkVRNmtFejRQWkdoaEJ6R285SVY5WHg3bUJnQ2hhU3VuN3ZQY2h3VDNkZXhQdlRBZkpTdFh2bzdn?oc=5",
+   "publisher": "Daily Nation",
+   "publisherUrl": "https://nation.africa",
+   "published": "2026-11-21T06:30:00.000Z",
+   "summary": "Good records can make or break your agribusiness &nbsp;&nbsp; Daily Nation",
+   "lang": "en",
+   "source": "gn-en-ai",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "Sunshine powers sustainable farming future",
+   "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPUUpmeGNDWFRyd2pOV3RhZGpwS20zb05GcEJDZGdINlZwVGtIaTMtRTQ0V19TSU9YbjJMYzRtYThUVjZTaENId3lvUWY0ZGN6X2lZOFJxMFQtRmNTNms4ZzhZQUUxUjhUYmVTTVRwS3hvdkFtM1FqbnlXeC1EdzcxRDR0SUdTWGpyVzNMS0NodUNuRVFhbzJ1TU4ybEFISWM?oc=5",
+   "publisher": "The Portugal News",
+   "publisherUrl": "https://www.theportugalnews.com",
+   "published": "2026-11-21T05:45:05.000Z",
+   "summary": "Sunshine powers sustainable farming future &nbsp;&nbsp; The Portugal News",
+   "lang": "en",
+   "source": "gn-en-irrigation",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "Julius Malema says he will meet with white Afrikaner farmers to clear up misunderstandings",
+   "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPMmdlaXZ4Q0Z1WkhfRDEzSGljLVVlbi1oQ1BHaWNJSXpWaURWNG10d3hBNlF3TXNjTk5SNUh0RFVWZE4xeFkyelVqTV93OHQwM3U3U25wcFZuRXplWWFkVTNjb2R5V2NmRHdybkZTLVFVWThjNmZGUDdpelJERHh6SWVPSkJUR2tMQUF4UnhQQndYRWQzbkhPNXp4ZnQtZkU1NklqbWIya0xNcXhxdkw2VHNEQlR3VTlYWjduNVJYdVhyVGRtLTBiRHg3V08?oc=5",
+   "publisher": "newsday.co.za",
+   "publisherUrl": "https://newsday.co.za",
+   "published": "2026-11-21T04:03:09.000Z",
+   "summary": "Julius Malema says he will meet with white Afrikaner farmers to clear up misunderstandings &nbsp;&nbsp; newsday.co.za",
+   "lang": "en",
+   "source": "gn-en-ai",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "From fuel subsidy to farm support: Will ordinary Nigerians benefit?",
+   "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxORkUxTWJ4WGt6S0g2dEtkRnN0TkI1VHB6ejhrTWJWanBheXRqNTZhUC0tVDJfcjNqcTJJWWhMRkZQaXc2d0t0U0ZNY1VFWEM0aDJIQ2FHUExDT01DdENpVXVjSGF4UFRjanMxWTR5S2p1TjF5U040YUZOaEJWY3ROdll3ZnRydDFjYUR2cV92bWc?oc=5",
+   "publisher": "Blueprint Newspapers",
+   "publisherUrl": "https://blueprint.ng",
+   "published": "2026-11-21T03:56:50.000Z",
+   "summary": "From fuel subsidy to farm support: Will ordinary Nigerians benefit? &nbsp;&nbsp; Blueprint Newspapers",
+   "lang": "en",
+   "source": "gn-en-irrigation",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "John Deere Orchard Robotics deal signals growing value of actionable farm data, says ag robotics OG",
+   "link": "https://agfundernews.com/john-deere-orchard-robotics-deal-signals-growing-value-of-actionable-farm-data-says-ag-robotics-og",
+   "publisher": "AgFunder News",
+   "publisherUrl": "",
+   "published": "2026-11-20T18:15:54.000Z",
+   "summary": "\"This is a trend that will continue, driven by cheaper cameras and new sensors paired with AI to process the data and produce novel insights,\" says ag robotics OG Jorge Heraud. The post John Deere Orchard Robotics deal signals growing value of actionable farm data, says ag robotics OG appeared first on AgFunderNews .",
+   "lang": "en",
+   "source": "agfunder",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "South-East Commission SEDC Plans 50,000-Hectare Farm Project To Boost Food Production, Tackle Erosion",
+   "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPNXFLNFVER05sRVNpUGtCMUlnd0pwQjBzT0t3N216bXJia0xpcDY4NmhLdHFleUYwaEFhUGw3Q1ExMHdXWmpBV3E3b3IwTWloM19QcmVsLTZuSkllbXF3LTlSV2F1SGxHdHlXVTlLcWdLbnJyeHl3WmhlS2NmUW51czhPZlRfNnF1S3prSlhvZWpRZmdkbTkzWWt2UnhZVDZSS3ZrTHhsUkRKdDFPVmVwVFljN1daSGtib0xlalVYUGh0Vk5LOVE?oc=5",
+   "publisher": "Sahara Reporters",
+   "publisherUrl": "https://saharareporters.com",
+   "published": "2026-11-20T17:06:17.000Z",
+   "summary": "South-East Commission SEDC Plans 50,000-Hectare Farm Project To Boost Food Production, Tackle Erosion &nbsp;&nbsp; Sahara Reporters",
+   "lang": "en",
+   "source": "gn-en-irrigation",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "South Africa pushes for climate finance at COP31",
+   "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPUDFfeTB0YzRaZ2lrLXpRNDc5ZWd4MkI1V0JveDFyMjFYTHBqTHNvZHBJNmJQUTNCcUJUb1RVUzByWTR4dnl5T19zNjJscnA3TlZUSUJGdWZvWHRrX0tTVk1lNDJIS2tUd2ROVGhMSEhDLV84eXp3ai1wTVN6ZWRZdXl6TXN2OWRjdTBMN3lqQzZZb3k4SHY5Q3RfMnk1dDdvLVZJYjczWQ?oc=5",
+   "publisher": "Farmer's Weekly SA",
+   "publisherUrl": "https://www.farmersweekly.co.za",
+   "published": "2026-11-20T17:00:07.000Z",
+   "summary": "South Africa pushes for climate finance at COP31 &nbsp;&nbsp; Farmer's Weekly SA",
+   "lang": "en",
+   "source": "gn-en-ai",
+   "regions": [
+    "AF"
+   ],
+   "score": 2
+  },
+  {
+   "title": "How agricultural waste could be turned into a business opportunity| The New Times",
+   "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQaEZWZnRpVGMtQ1JNNFNJYWJPT3ExYWJnbzhacGRaWXFjNWE4UXJaVEFOWjVLc3hCVDVNWGtjVHNsbkRENFRDU3lUdzdQSWhsQjBTWkw2QUxxTm5KTDNsM19QQjg4c1R1VTA4aTRPS3dKU1F2YVFuaUlQLUw0cmQ0aWZMbHZlQ0VDeVFVZGNwdWc1OWFTcG9Xa0FfR25QV2xINWJTTXp2MmI4X0cxcTRlVWQ5YU9KeG9EY09tQ3NMWEk4NWt4VlZR0gHHAUFVX3lxTFBoRlZmdGlUYy1DUk00U0lhYk9PcTFhYmdvOFpwZFpZcWM1YThRclpUQU5aNUtzeEJUNU1Ya2NUc2xuREQ0VENTeVR3N1BJaGxCMFNaTDZBTHFObkpMM2wzX1BCODhzVHVVMDhpNE9Ld0pTUXZhUW5pSVAtTDRyZDRpZkxsdmVDRUN5UVVkY3B1ZzU5YVNwb1drQV9HblBXbEg1YlNNenYyYjhfRzFxNGVVZDlhT0p4b0RjT21Dc0xYSTg1a3hWVlE?oc=5",
+   "publisher": "The New Times",
+   "publisherUrl": "https://www.newtimes.co.rw",
+   "published": "2026-11-20T16:07:08.000Z",
+   "summary": "How agricultural waste could be turned into a business opportunity| The New Times &nbsp;&nbsp; The New Times",
+   "lang": "en",
+   "source": "gn-en-rwanda",
+   "regions": [],
+   "score": 2
+  },
+  {
+   "title": "Casablanca Finance City lance la troisième édition de son Africa Tour en Afrique Centrale",
+   "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPUDhqLXFvSjdlMXFDN1ZEQTFHcmgwWlluWHlSUkg3OEc1SzlPT1l0MkMzNWZvbXQ3S083V2MtTzNRUjZjYlVtUk9qMTh4THlnLS1JUHdzZW45d1R5eERVY0RDaVctNWRjbXdfbFM5c0EyY013a2xCbGRWMTFaZGFJX2J1NGc5TmUwZmk3WVBnd1RNTFJ0NTRXT0prTE9XRlYxdGhRaTZ6bGM5Y2ZhVnNfc2lsbGpWS0Faa3lPa0p6U1MzVFM1YmNTY1pQR09SZ09mdFBqeVJOZk5zRjAyLUNUWFI2RQ?oc=5",
+   "publisher": "AGENCE ECOFIN",
+   "publisherUrl": "https://www.agenceecofin.com",
+   "published": "2026-11-23T15:55:00.000Z",
+   "summary": "Casablanca Finance City lance la troisième édition de son Africa Tour en Afrique Centrale &nbsp;&nbsp; AGENCE ECOFIN",
+   "lang": "fr",
+   "source": "gn-fr-afrique",
+   "regions": [
+    "AF"
+   ],
+   "score": 1
+  },
+  {
+   "title": "These everyday foods are getting more expensive in South Africa",
+   "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNeTZfanlBbE9KdFVTMDNCS0Fmdmlsekt3NG16N2dYZzlURHZ4Q1RwVngzWDdHN0NWNTA2bnhQWVd6aU1tQWVFZ3hBX0c1OFFURGo4YktEakJBcS1ORW53UGYtTVJLYkFHcEVXYkt3ZUhNRzF6cVAzMm96bl9QX0czVkFpREZrNXdhSlB1MEhHc2gwb0EyaWg1cFZDUVZFcW5NUy16SXZNaHZheVVWd2VjM3U1d3NaUWxMcHJXRkQ2UQ?oc=5",
+   "publisher": "The South African",
+   "publisherUrl": "https://www.thesouthafrican.com",
+   "published": "2026-11-23T15:14:07.000Z",
+   "summary": "These everyday foods are getting more expensive in South Africa &nbsp;&nbsp; The South African",
+   "lang": "en",
+   "source": "gn-en-prices",
+   "regions": [
+    "AF"
+   ],
+   "score": 1
+  },
+  {
+   "title": "South African households face festive-season squeeze as costs rise",
+   "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNdFczcmNjWnVybFpLSWw2TWEtY0JKbVJmYVZJSWc5TzNVMkVYLXVSYVdiOWxHRWdKUEpUSUhCRDFQUVp3RkVKTy1PWC1BMUI3NktHSWtvX0p6MF9fbjdka1ByaHRRelJmbmJtZ1ZfR1VZUHRoUE14LUdyOG44OWZxYkNWTTVGR0Njc2F3ZmJLSUdOamV5TnQ3VDdLaTh5SkEweE5CWA?oc=5",
+   "publisher": "Cape Times",
+   "publisherUrl": "https://capetimes.co.za",
+   "published": "2026-11-23T15:01:28.000Z",
+   "summary": "South African households face festive-season squeeze as costs rise &nbsp;&nbsp; Cape Times",
+   "lang": "en",
+   "source": "gn-en-prices",
+   "regions": [
+    "AF"
+   ],
+   "score": 1
+  },
+  {
+   "title": "develoPPP Ventures launches new call in South Africa: €100,000 to enable high-potential startups unlock private investment",
+   "link": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxPREFvZEpRNW9ncEVQellDSTJSTVpOQWxicDdxdW5IcHFrZ2RRWDdwRlVNYTRlUmJkdDN5NVJ4dDB5c055SnRVb2RzREg1cDZNeEVWcWFZb3RBRWtLTzUwNHFDM2VLUnRCMGVPX2pLWG9OeVR2RlRPR01KcFltUXhZd2dJbnZvWHhWdTd5QVZ2M3lJMEdWeUlfSVBma0xxYkUwR3BtMEhvcjRyNUd1Tjk5YjJsVFVWRVRsTktGUUZyOUwySl9RZHFBb21OU1RfWDZQS1ZfQ1MzZFN3NF82WjAwN1d6VklUVUdXcmZZRXcwR3FVVlFsdmlF?oc=5",
+   "publisher": "Bizcommunity",
+   "publisherUrl": "https://www.bizcommunity.com",
+   "published": "2026-11-23T14:28:16.000Z",
+   "summary": "develoPPP Ventures launches new call in South Africa: €100,000 to enable high-potential startups unlock private investment &nbsp;&nbsp; Bizcommunity",
+   "lang": "en",
+   "source": "gn-en-investment",
+   "regions": [
+    "AF"
+   ],
+   "score": 1
+  },
+  {
+   "title": "Solar power and green energy in West Africa get US$150mn boost",
+   "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQQ05qMENOX0ZOdUVlT1REWG5EMmxEQm15X1RROFlvLUZTSFc3aDBVS1dKU1FHNUR4N3NCUjFvSkhMeWFfZVktYW9CeHVLRHFKbmo2eTd0cUZsRlVTTkd4UmM1anhoaUxiUzhfMUFvTmlxcXlhQ0tXb1M3YXRfVTAxZDFtd3FxOGNhVV9ya0YxTXV1VWpKcjlPSmpURmcyaFVnM3ZSQkZpNmdiczlOX1l6WDhEYVg2NDBkQkZ0OUV2djE1ZFE?oc=5",
+   "publisher": "Technical Review Middle East",
+   "publisherUrl": "https://technicalreviewmiddleeast.com",
+   "published": "2026-11-23T14:20:57.000Z",
+   "summary": "Solar power and green energy in West Africa get US$150mn boost &nbsp;&nbsp; Technical Review Middle East",
+   "lang": "en",
+   "source": "gn-en-investment",
+   "regions": [
+    "AF"
+   ],
+   "score": 1
+  },
+  {
+   "title": "À Tokyo, Dr Sidi Ould Tah appelle les entreprises japonaises à investir davantage dans la transformation locale des ressources africaines",
+   "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPT3VaMHFmTE5WUk91WklJNHNqc192REZJSDhCVlgzOHJpUzhJX0hNRzZiMXhEUnM0QnlZeUlXY3R5bi1wX1NlNFNZVE9HSERCSlF0UXE4VEh2OUFNR1FHMG5vY0JvMVBvel9adHBXWmhMaUNDYUlwQkVGX2NKaTE2MWlGU1R6cldjMU1CY2JmT0czdjZaZFhFLWhaNS1McElrT2I0bkJ3?oc=5",
+   "publisher": "African Development Bank Group",
+   "publisherUrl": "https://www.afdb.org",
+   "published": "2026-11-23T13:34:59.000Z",
+   "summary": "À Tokyo, Dr Sidi Ould Tah appelle les entreprises japonaises à investir davantage dans la transformation locale des ressources africaines &nbsp;&nbsp; African Development Bank Group",
+   "lang": "fr",
+   "source": "gn-fr-afrique",
+   "regions": [
+    "AF"
+   ],
+   "score": 1
+  },
+  {
+   "title": "In Tokyo, Dr Sidi Ould Tah calls on Japanese companies to invest more in local value addition to African resources",
+   "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOR25yOWlnTWVHcHlnc1d0enVQekhwQXY0b3ZadVd5SC1BTTk5Mmk2NkpzYU16VmtYdVBkdmJsUmRueDgtZF85Wi1SU0Q4aTFTd2Q2U1p1OTdqQ3d0b3RYOGN0ZjE5eVRBUHNOZVJ0MHlPVG1HYXFkQkFQeW5rYzZKN29yeDZlMHNicGVPdGZGck5nZXA0MTduUTllRzlNYk9tSUhpWkpIUjJxX2I4?oc=5",
+   "publisher": "African Development Bank Group",
+   "publisherUrl": "https://www.afdb.org",
+   "published": "2026-11-23T13:19:26.000Z",
+   "summary": "In Tokyo, Dr Sidi Ould Tah calls on Japanese companies to invest more in local value addition to African resources &nbsp;&nbsp; African Development Bank Group",
+   "lang": "en",
+   "source": "gn-en-investment",
+   "regions": [
+    "AF"
+   ],
+   "score": 1
+  },
+  {
+   "title": "Next UN Secretary-General must understand what Africa is asking for",
+   "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPdURKTEQ0WlgwMUg1REc1REYyclladXdGUXdxeWw5M2lYRjJDV1EzQlBOQlBDOXVtNHQ2cWU5OURvWWRGa0Z6U2N3UkFlWEo0SUZ5dHRacHdIYzJReWktZ3FJWWJSSWotNkRLOHhjeXhKOUE5T3hmUlJmR3BjS2NzZnhMY1piNTJlNFdfZTZxX2NORElWcmZrYUNHRDdKWjEtQlR2NVlhNNIBrAFBVV95cUxOUnZ5MWxhaGtEUTZpSllvOEFianZWNXJwcDF0c2xsazgzMHZKRWNJVmMxY1BOdXVsV1M1VjAwb20wME9RVFFvQjZxMzA5TDlJeEdNdkpwYVZwa1BBNjF2dlFSWTRKS0xCRlJOYUsxazJ1UGR2eThNZVJSU1hqcVR6azhvN2cxN1Z6MnQ3eS1fTlFKb1prdVpPcWgxYzFJQnhhUFBBMkNjZTVxS3RN?oc=5",
+   "publisher": "Vanguard News",
+   "publisherUrl": "https://www.vanguardngr.com",
+   "published": "2026-11-23T13:07:30.000Z",
+   "summary": "Next UN Secretary-General must understand what Africa is asking for &nbsp;&nbsp; Vanguard News",
+   "lang": "en",
+   "source": "gn-en-investment",
+   "regions": [
+    "AF"
+   ],
+   "score": 1
+  },
+  {
+   "title": "UAE-West Africa Trade Surges as Investment Stakes Rise",
+   "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPdENlWE40RmlGSEc3WkdrdEZhT1RJdHpkRDVBbmlBSTNXN3BGMU1ZVHA0SUJVdUJPazlmVE5uemNPS2kteEx2SjNJSXNpcGp0NzFLVkd4bDVHZTA5QXo2c3I2ZklSQkI0ZWhhZ3hlSFlraGVtZ01UQWNwc0JtamZZamZ1UjMzcTA?oc=5",
+   "publisher": "Serrari Group",
+   "publisherUrl": "https://serrarigroup.com",
+   "published": "2026-11-23T13:01:26.000Z",
+   "summary": "UAE-West Africa Trade Surges as Investment Stakes Rise &nbsp;&nbsp; Serrari Group",
+   "lang": "en",
+   "source": "gn-en-investment",
+   "regions": [
+    "AF"
+   ],
+   "score": 1
+  },
+  {
+   "title": "Fact-check: 10 claims from Kenyan president William Ruto’s 2026 state of the nation address",
+   "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOZ0VTOE9QMVBHczNOVVdkSExjaUZXaUtQWG1wdmwxMjVKWG8tSmN4cXlqckthU0xRcWtGekswWklmVFdsQm9NNkl4X0tmWk9VaFlSQTgxQzVELUxJeDV6MEhubVZDRW5SVVRGdGhScm9sTWZJRTBYRGd2V09DdzhnbkxLYXVlVjQxNEZjb0FQZzQxSzJNMjRNaE1JbThGQW5MQjY1T29yOGhORmI4U2U2UE9BZEhOSHliR1ZDeXdn?oc=5",
+   "publisher": "Africa Check",
+   "publisherUrl": "https://africacheck.org",
+   "published": "2026-11-23T12:56:53.000Z",
+   "summary": "Fact-check: 10 claims from Kenyan president William Ruto’s 2026 state of the nation address &nbsp;&nbsp; Africa Check",
+   "lang": "en",
+   "source": "gn-en-kenya",
+   "regions": [
+    "AF"
+   ],
+   "score": 1
+  },
+  {
+   "title": "Afrique du Nord : La BAD scrute l’investissement à impact pour les TPME et l’emploi",
+   "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPb0xMX0ZINVpGcWJCbWFJUGdYTU1OWi1ra0pfOTBHcXh4WWpaR0tROE5Rd3JUNlliVFhFblhsR3RnSlBVWERIOE1BNVpNSUNnRlZsaHRMUWpGdEs2VFJoZWdlYm81TUg3ejVRd0RYTmdlT3FMQWcxd2FKa293TkdBMG9KTXlObFRJMFZncFRCUmVYZnY3bUtUZVgtalJmcXIyNHVOZUpmUVdpR0VrYzRvMVdfZUMwcXFrZFl0Zw?oc=5",
+   "publisher": "L'Economiste",
+   "publisherUrl": "https://www.leconomiste.com",
+   "published": "2026-11-23T12:34:00.000Z",
+   "summary": "Afrique du Nord : La BAD scrute l’investissement à impact pour les TPME et l’emploi &nbsp;&nbsp; L'Economiste",
+   "lang": "fr",
+   "source": "gn-fr-afrique",
+   "regions": [
+    "AF"
+   ],
+   "score": 1
+  },
+  {
+   "title": "Afrique du Nord : vers une nouvelle génération d’instruments d’investissement à impact pour les TPME et l’emploi",
+   "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPRGNDdlY3OWVVd1hIeFR4WWtSMTc2N2YtaHVCY2FvS0J0cjN4Ul9zZTktLXQwZnFWcWxHYVhXNm1ON3UwYjc5LTBVYXpMclVmamxBV05qVU1nVF9NV0xKVXU4djlmTDlWa0ZqNzFCVmRMTEh3Q2FBeUxfWkYyZWNxbVpMblptMGgxeGVPalcwajVXYUhrWTdnRXdOX2M2bDdpYzVWNUE4dmwyQQ?oc=5",
+   "publisher": "African Development Bank Group",
+   "publisherUrl": "https://www.afdb.org",
+   "published": "2026-11-23T12:12:34.000Z",
+   "summary": "Afrique du Nord : vers une nouvelle génération d’instruments d’investissement à impact pour les TPME et l’emploi &nbsp;&nbsp; African Development Bank Group",
+   "lang": "fr",
+   "source": "gn-fr-afrique",
+   "regions": [
+    "AF"
+   ],
+   "score": 1
+  },
+  {
+   "title": "Eau et sécheresse | À Agadir, les réponses du Souss-Massa au cœur d’une conférence internationale",
+   "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQY29CT3hNNVFYdFdPR1dqcU9wNlBIWndMRndIV1FKMU9MMlB3TmYwVFdNSVZKemN3T19rV3ZWbzNtUEFZT2NzV0k4VHZTcndCa2RKUGR0NUxvdkg3Ny1yU290dUdVMjRpNXE4YWNuUVVTMmktZlMzYmppNEtLLUhqY2s0cDJVUDAtTjJ4bndreW54d0RhS0F4bDdFblhZRkNVWGZlVGh5Sy1qekJUMUczSkZURGI1YzNf?oc=5",
+   "publisher": "Industrie du Maroc",
+   "publisherUrl": "https://industries.ma",
+   "published": "2026-11-23T11:47:16.000Z",
+   "summary": "Eau et sécheresse | À Agadir, les réponses du Souss-Massa au cœur d’une conférence internationale &nbsp;&nbsp; Industrie du Maroc",
+   "lang": "fr",
+   "source": "gn-fr-technique",
+   "regions": [
+    "AF"
+   ],
+   "score": 1
+  },
+  {
+   "title": "S&P: Stronger Domestic Capital Markets Critical to Unlocking Africa’s Potential",
+   "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPZW9fSXhNLWFtQ010d292NVg0d2NSdkFua0kzb2JGZjJQU2xwckdEVWdJdDZJWjZhUllNYWdMeDIxYjJ4c3pLak10S2ZmaTFCNDlvUUIybWk2NHpNSkhONTJqOEl1a2FfT0RTVjZRWXhydkVrbGliRzBxb005SUZUR0ZCNTNvLUVuMWhjVlRfOTNxOTlPUGVVVC1KOFU2Vi1MY0pVT1ZWR3V0UXlCdHZNMFJza1kza2xCS0dEZ0FoWGJILUU?oc=5",
+   "publisher": "African Business",
+   "publisherUrl": "https://african.business",
+   "published": "2026-11-23T11:44:58.000Z",
+   "summary": "S&P: Stronger Domestic Capital Markets Critical to Unlocking Africa’s Potential &nbsp;&nbsp; African Business",
+   "lang": "en",
+   "source": "gn-en-prices",
+   "regions": [
+    "AF"
+   ],
+   "score": 1
+  },
+  {
+   "title": "Engen set to build R40 billion gas power plant in South Africa",
+   "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPVl9HeXVaMEdsYzJmbjRENkgyY0RoclNnbDhpWVkteFFnbzk5M1ExSlJpbEttNU1YMmNVVzViYW9xUm9YaU40YmhVaHhXWVhIdW9lWGd3SkltVmp3WXNhRUZ6bm9GUGtta2NEYmtRX3VxbDEta2lwM2tSak5sRDBkOTJWT3V3VHJYdXgzQUlTVXB2U0lUbDdGX2ZZSXNSMDh3NkdtR2JB?oc=5",
+   "publisher": "Daily Investor",
+   "publisherUrl": "https://dailyinvestor.com",
+   "published": "2026-11-23T11:15:49.000Z",
+   "summary": "Engen set to build R40 billion gas power plant in South Africa &nbsp;&nbsp; Daily Investor",
+   "lang": "en",
+   "source": "gn-en-investment",
+   "regions": [
+    "AF"
+   ],
+   "score": 1
+  }
+ ]
+}
