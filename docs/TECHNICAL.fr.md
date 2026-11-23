@@ -160,7 +160,10 @@ En activant un fournisseur, ajouter son domaine à la politique de sécurité du
 ```bash
 npm test                                                   # tests de validation et des points d’accès
 TEST_DATABASE_URL=postgres://... npm test                  # ajoute les tests d’intégration PostgreSQL
+npm run check:reports                                      # contrôle complet des rapports PDF
 ```
+
+`npm run check:reports` construit le rapport PDF pour environ 120 choix de visiteurs (toutes les cultures et leurs produits, les deux langues, des budgets de 1 000 USD à 5 millions USD, plusieurs devises, les modes d’irrigation, le plein champ, l’ombrière et la serre, des noms et des lieux très longs) et échoue si une page montre un défaut : rapport qui ne se construit pas, page hors A4, texte hors des marges ou sur un autre texte, valeur vide ou cassée, caractère absent de la police. Il demande `pdftotext` (poppler) et le module Python `fonttools`. Il tourne aussi sur GitHub à chaque changement du rapport, du moteur ou de ses données (`.github/workflows/report-check.yml`) ; un échec est signalé par courrier électronique au propriétaire du dépôt.
 
 ## Version d’aperçu en un seul fichier
 

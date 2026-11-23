@@ -15,6 +15,7 @@
     "geo": "node scripts/geo.mjs",
     "db:migrate": "node scripts/migrate.mjs",
     "test": "node --test \"tests/*.test.js\"",
+    "check:reports": "node scripts/report-qa/gen.mjs && python3 scripts/report-qa/check.py",
     "dev": "vercel dev",
     "geo:world": "node scripts/geo-world.mjs",
     "photos": "python3 scripts/photos/build_photos.py"

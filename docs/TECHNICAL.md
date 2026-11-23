@@ -154,7 +154,10 @@ If you enable a provider, add its domain to the Content Security Policy in `verc
 ```bash
 npm test                                                   # validation and endpoint tests
 TEST_DATABASE_URL=postgres://... npm test                  # adds PostgreSQL integration tests
+npm run check:reports                                      # full check of the PDF reports
 ```
+
+`npm run check:reports` builds the PDF report for about 120 visitor choices (every crop and product, both languages, budgets from 1,000 USD to 5 million USD, several currencies, water options, open field, shade net and greenhouse, very long names and places) and fails if any page shows a defect: a report that does not build, a page that is not A4, text outside the margins or over other text, an empty or broken value, a character missing from the font. It needs `pdftotext` (poppler) and the Python module `fonttools`. It also runs on GitHub whenever the report, the engine or its data change (`.github/workflows/report-check.yml`); a failure is emailed to the repository owner.
 
 ## Single file preview build
 
