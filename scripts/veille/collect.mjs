@@ -7,13 +7,15 @@ import path from 'path';
 
 const OUT = process.argv[2] || 'veille-out';
 const WINDOW_HOURS = Number(process.env.WINDOW_HOURS) || 36;
-const MAX_ITEMS = 150;
+const MAX_ITEMS = 150, MAX_PER_SOURCE = 25;
+// Réseaux sociaux et agrégateurs vidéo : pas des sources citables.
+const SOCIAL = /(facebook|instagram|tiktok|youtube|linkedin|twitter|x\.com|threads\.net|whatsapp)/i;
 const UA = 'Mozilla/5.0 (compatible; DjalumoAgroVeille/1.0; +https://agro.djalumo.com)';
 const { sources } = JSON.parse(fs.readFileSync(new URL('./sources.json', import.meta.url), 'utf8'));
 
 const W0 = '(?<![\\p{L}\\p{N}])', W1 = '(?![\\p{L}\\p{N}])';
 const words = (body, flags) => new RegExp(W0 + '(' + body + ')' + W1, flags);
-const AGRI = words(String.raw`agri\w*|agro\w*|farm\w*|crop\w*|harvest\w*|irrigat\w*|greenhouse\w*|fertili[sz]\w*|seed\w*|soil\w*|livestock|dairy|poultry|fisher\w*|aquacult\w*|food (?:security|prices?|systems?|imports?|inflation)|cocoa|coffee|cassava|maize|rice|tomato\w*|plantain\w*|banana\w*|palm oil|horticult\w*|agtech|agritech|agribusiness|tractor\w*|mechani[sz]ation|FAO|IFAD|FIDA|CGIAR|IITA|AGRA|agricult\w*|paysan\w*|récolte\w*|maraîch\w*|engrais|semence\w*|élevage|pêche|sécurité alimentaire|denrées|cacao|café|manioc|maïs|riz|tomate\w*|filière\w*|serres?|mécanisation|tracteur\w*|vivrier\w*|intrants?`, 'giu');
+const AGRI = words(String.raw`agri\w*|agro\w*|farm\w*|crop\w*|harvest\w*|irrigat\w*|greenhouse\w*|fertili[sz]\w*|seed\w*|soil\w*|livestock|dairy|poultry|fisher\w*|aquacult\w*|food (?:security|prices?|systems?|imports?|inflation)|cocoa|coffee|cassava|maize|rice|tomato\w*|plantain\w*|banana\w*|palm oil|horticult\w*|agtech|agritech|agribusiness|tractor\w*|mechani[sz]ation|FAO|IFAD|FIDA|CGIAR|IITA|AGRA|agricult\w*|paysan\w*|récolte\w*|maraîch\w*|engrais|semence\w*|élevage|pêche|sécurité alimentaire|denrées|cacao|café|manioc|maïs|riz|tomate\w*|filière\w*|sous serre|serres? (?:agricoles?|maraîchères?)|mécanisation|tracteur\w*|vivrier\w*|intrants?`, 'giu');
 const REGIONS = [
   ['CM', words(String.raw`cameroun|cameroon|yaoundé|yaounde|douala|bafoussam|foumbot|kribi|garoua|bamenda`, 'iu')],
   ['RW', words(String.raw`rwanda|kigali`, 'iu')],
@@ -74,6 +76,9 @@ async function main() {
         const text = it.title + ' ' + it.summary;
         const hits = (text.match(AGRI) || []).length;
         if (src.filter && hits === 0) continue;
+        if (SOCIAL.test(it.publisher + ' ' + it.publisherUrl + ' ' + it.link)) continue;
+        if (kept >= MAX_PER_SOURCE) break;
+        it.kind = src.kind || 'news';
         it.regions = REGIONS.filter(([, re]) => re.test(text)).map(([k]) => k);
         it.score = hits + (it.regions.includes('CM') ? 4 : 0) + (it.regions.includes('RW') || it.regions.includes('KE') ? 3 : 0) + (it.regions.includes('CEMAC') ? 2 : 0) + (it.regions.length ? 1 : 0);
         all.push(it); kept++;
@@ -83,15 +88,15 @@ async function main() {
       health.push({ id: src.id, name: src.name, ok: false, error: String(e && e.message || e).slice(0, 120) });
     }
   }
-  const seen = new Set(), items = [];
+  // Actualités et opportunités (appels d'offres, appels à projets) sont plafonnées séparément.
+  const seen = new Set(), items = [], cap = { news: MAX_ITEMS, opportunity: 30 }, n = { news: 0, opportunity: 0 };
   for (const it of all.sort((a, b) => b.score - a.score || String(b.published).localeCompare(String(a.published)))) {
     const key = norm(it.title).slice(0, 90);
-    if (seen.has(key)) continue;
-    seen.add(key); items.push(it);
-    if (items.length >= MAX_ITEMS) break;
+    if (seen.has(key) || n[it.kind] >= cap[it.kind]) continue;
+    seen.add(key); items.push(it); n[it.kind]++;
   }
   const day = new Date(now).toISOString().slice(0, 10);
-  const doc = { date: day, generatedAt: new Date(now).toISOString(), windowHours: WINDOW_HOURS, sources: health, count: items.length, items };
+  const doc = { date: day, generatedAt: new Date(now).toISOString(), windowHours: WINDOW_HOURS, sources: health, count: items.length, opportunities: n.opportunity, items };
   fs.mkdirSync(OUT, { recursive: true });
   fs.writeFileSync(path.join(OUT, day + '.json'), JSON.stringify(doc, null, 1));
   fs.writeFileSync(path.join(OUT, 'latest.json'), JSON.stringify(doc, null, 1));
