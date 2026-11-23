@@ -1,0 +1,14 @@
+{
+  "lang": "fr",
+  "ref": "EXEMPLE-2026-01",
+  "preparedFor": "Exemple : projet de tomate dans l’Ouest du Cameroun",
+  "preparedBy": "Djalumo Agro",
+  "reviewedBy": "",
+  "pricesDate": "2026-11-23",
+  "currency2": "USD",
+  "variants": [
+    { "name": "A", "input": { "capital": 100000, "currency": "USD", "mode": "budget", "crop": "tomato", "water": "pump", "start": "2026-12-01", "land": "rent", "market": "local", "familyLabour": 0, "ownTools": false, "system": "open" } },
+    { "name": "B", "input": { "capital": 100000, "currency": "USD", "mode": "budget", "crop": "tomato", "water": "drip", "start": "2026-12-01", "land": "rent", "market": "local", "familyLabour": 0, "ownTools": false, "system": "open" } },
+    { "name": "C", "input": { "capital": 100000, "currency": "USD", "mode": "budget", "crop": "tomato", "water": "rainfed", "start": "2027-03-01", "land": "rent", "market": "local", "familyLabour": 0, "ownTools": false, "system": "open" } }
+  ]
+}

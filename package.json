@@ -18,7 +18,9 @@
     "check:reports": "node scripts/report-qa/gen.mjs && python3 scripts/report-qa/check.py",
     "dev": "vercel dev",
     "geo:world": "node scripts/geo-world.mjs",
-    "photos": "python3 scripts/photos/build_photos.py"
+    "photos": "python3 scripts/photos/build_photos.py",
+    "model": "node scripts/model/make.mjs",
+    "check:model": "python3 scripts/model/check_model.py"
   },
   "dependencies": {
     "nodemailer": "^10.2.1",

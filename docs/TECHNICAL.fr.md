@@ -101,7 +101,7 @@ Les secrets ne sont lus que sur le serveur. Le navigateur ne reçoit que `SITE_U
 
 * Les erreurs de validation renvoient `422` avec le nom des champs invalides ; le formulaire les signale.
 * Les robots qui remplissent le pot de miel ou envoient trop vite reçoivent un `200` normal et rien n’est stocké.
-* Limites : 5 demandes de contact ou de démo et 8 inscriptions par client et par tranche de 10 minutes, partagées entre instances via PostgreSQL.
+* Limites : 5 demandes de contact, de démo ou de devis et 8 inscriptions par client et par tranche de 10 minutes, partagées entre instances via PostgreSQL.
 * Un courriel en échec ne fait jamais perdre un envoi : l’enregistrement est stocké d’abord.
 * Les erreurs n’exposent jamais d’informations internes : `{"status":"error","error":"server_error"}`.
 
@@ -116,9 +116,23 @@ Le planificateur propose un rapport PDF premium du plan en cours. Rien n’est t
 
 Les messages partent de la boîte Zoho de Djalumo Agro (`SMTP_HOST`, `SMTP_USER`, `SMTP_PASS`) ; un compte Gmail avec `GMAIL_USER` et `GMAIL_APP_PASSWORD` fonctionne aussi. Après tout changement de ces variables dans Vercel, redéployer, puis ouvrir `/api/health?mail=verify` : la réponse doit contenir `"mail":"ok"` (connexion au serveur d’envoi, sans envoyer de message). Sans service d’envoi, les formulaires restent enregistrés dans la base mais aucun courriel ne part. Le rapport validé est envoyé en pièce jointe et par un lien de téléchargement valable 60 jours. Variables facultatives : `REPORT_ADMIN_EMAIL`, `REPORT_ADMIN_LANG` (`fr` par défaut), `REPORT_SIGNING_SECRET`, `REPORTS_ENABLED=false` pour couper le service. Les liens sont signés (HMAC) et expirent (7 jours pour confirmer, 30 jours pour examiner). Avec une base de données, chaque décision est à usage unique et enregistrée dans `report_requests` ; sans base, le circuit fonctionne avec les liens signés.
 
+## Offres sur devis
+
+La page `/offers` (`/fr/offers`) décrit les offres sans prix : Découverte (gratuite), Essentiel, Expert, Plan bancable, Suivi de projet (Ouest du Cameroun), Institutions et la liste d’attente de Djalumo Pro. Les prix figurent dans chaque devis. Le formulaire envoie à `POST /api/quote` l’offre, le profil, la culture, l’ordre de grandeur du budget, le calendrier et le message ; la demande est stockée dans `quote_requests` puis notifiée à `CONTACT_NOTIFICATION_EMAIL` avec l’adresse du demandeur en réponse. Depuis un plan, le bouton « Voir les offres » ouvre la page avec la culture, le budget et le résumé du plan déjà remplis. Le courriel qui livre un rapport PDF renvoie aussi vers cette page. Les textes sont dans `site/src/i18n-v9.js`.
+
+### Modèle financier modifiable (offres Essentiel, Expert et Plan bancable)
+
+`node scripts/model/make.mjs commande.json sortie.xlsx` fait tourner le moteur du planificateur sur une à trois variantes et écrit un classeur Excel dont chaque chiffre est une formule : synthèse comparée, un onglet Plan par variante (hypothèses, quatre issues, budget détaillé ligne par ligne), un onglet Trésorerie par variante (mois par mois, pour chaque issue) et les sources. La commande suit `scripts/model/example.fr.json` : langue, client, référence, relecteur, date des prix, seconde monnaie, et pour chaque variante les réglages du planificateur (`crop`, `capital` ou `mode: "crop"` avec `area`, `water`, `start`, `land`, `market`, `familyLabour`, `system`, `priceXafKg` quand la culture n’a pas de prix de référence). Seules les cultures de saison sont prises en charge (tomate, haricot vert, poivron, piment, concombre, courgette).
+
+Avant toute livraison, recalculer le classeur (Excel, ou LibreOffice en mode sans interface) puis lancer `python3 scripts/model/check_model.py sortie.xlsx` : le contrôle compare le budget, les marges des quatre issues, la trésorerie, le besoin maximal et les seuils d’équilibre avec les chiffres du moteur, écrits à côté dans `sortie.engine.json` (fichier interne, à ne pas envoyer au client). Python 3 et openpyxl sont nécessaires.
+
+## Veille quotidienne
+
+Chaque nuit à 01 h 30 UTC, le flux `.github/workflows/veille.yml` lance `scripts/veille/collect.mjs` : 23 sources (recherches Google Actualités en français et en anglais, flux de TechCabal, Disrupt Africa, AgFunder, How We Made It in Africa, Investir au Cameroun, The New Times…), filtrées par mots-clés agricoles et par pays (Cameroun et CEMAC, Rwanda, Kenya, Afrique), sans réseaux sociaux, 25 articles au plus par source. Le résultat est écrit sur la branche `veille-data` (`veille/AAAA-MM-JJ.json` et `veille/latest.json`, 90 jours gardés), que Vercel ne déploie pas. La liste des sources est dans `scripts/veille/sources.json`. Chaque matin, une session de veille lit ce fichier, vérifie les sources, alimente la bibliothèque de faits et propose trois sujets ; rien n’est publié sans validation.
+
 ## Base de données
 
-Tables : `contact_inquiries`, `demo_requests`, `newsletter_subscribers`, `rate_limits`, `admin_users`, `submission_events`. Statuts : `NEW`, `CONTACTED`, `IN_PROGRESS`, `COMPLETED`, `ARCHIVED`. Les listes déroulantes sont stockées sous forme de codes indépendants de la langue (par exemple `subject = PILOT`, `interest = FOUMBOT_PILOT`), prêts pour un CRM ou un tableau d’administration.
+Tables : `contact_inquiries`, `demo_requests`, `quote_requests`, `newsletter_subscribers`, `report_requests`, `rate_limits`, `admin_users`, `submission_events`. Statuts : `NEW`, `CONTACTED`, `IN_PROGRESS`, `COMPLETED`, `ARCHIVED`. Les listes déroulantes sont stockées sous forme de codes indépendants de la langue (par exemple `subject = PILOT`, `interest = FOUMBOT_PILOT`), prêts pour un CRM ou un tableau d’administration.
 
 ### Préparation de l’administration
 

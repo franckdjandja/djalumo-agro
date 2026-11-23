@@ -104,7 +104,7 @@ Secrets are read on the server only. The browser bundle receives `SITE_URL`, the
 
 * Validation errors return `422` with the names of the invalid fields; the form highlights them.
 * Bots that fill the honeypot or submit too fast receive a normal `200` and nothing is stored.
-* Rate limits: 5 contact or demo requests and 8 newsletter requests per client per 10 minutes, shared across instances through PostgreSQL.
+* Rate limits: 5 contact, demo or quote requests and 8 newsletter requests per client per 10 minutes, shared across instances through PostgreSQL.
 * A failed email never loses a submission: the record is stored first.
 * Errors never expose internals: `{"status":"error","error":"server_error"}`.
 
@@ -121,9 +121,23 @@ Mail leaves from the Djalumo Agro Zoho mailbox (`SMTP_HOST`, `SMTP_USER`, `SMTP_
 
 The PDF is built on the server with the same engine and data as the planner (`lib/report/pdf.js`, PDFKit, Manrope under the SIL Open Font License). Links are HMAC signed and expire (7 days to confirm, 30 days to review). With a database, decisions are single use and stored in `report_requests`; without one the workflow still runs from the signed links.
 
+## Offers on quote
+
+The `/offers` page (`/fr/offers`) describes the offers without prices: Discovery (free), Essential, Expert, Bankable plan, Project monitoring (West Cameroon), Institutions and the Djalumo Pro waiting list. Prices are given in each quote. The form sends the offer, profile, crop, budget range, timing and message to `POST /api/quote`; the request is stored in `quote_requests` and notified to `CONTACT_NOTIFICATION_EMAIL` with the requester as reply address. From a plan, the "See the offers" button opens the page with the crop, budget and plan summary filled in. The email that delivers a PDF report links to the page too. The copy lives in `site/src/i18n-v9.js`.
+
+### Editable financial model (Essential, Expert and Bankable offers)
+
+`node scripts/model/make.mjs order.json out.xlsx` runs the planner engine on one to three variants and writes an Excel workbook in which every figure is a formula: a comparison summary, one Plan sheet per variant (assumptions, four outcomes, line by line budget), one Cash flow sheet per variant (month by month, for each outcome) and the sources. The order follows `scripts/model/example.fr.json`: language, client, reference, reviewer, prices date, second currency, and for each variant the planner settings (`crop`, `capital` or `mode: "crop"` with `area`, `water`, `start`, `land`, `market`, `familyLabour`, `system`, `priceXafKg` when the crop has no reference price). Seasonal crops only (tomato, green bean, sweet pepper, chili, cucumber, zucchini).
+
+Before any delivery, recalculate the workbook (Excel, or LibreOffice headless) and run `python3 scripts/model/check_model.py out.xlsx`: it compares the budget, the margins of the four outcomes, the cash position, the deepest cash need and the break-even points with the engine figures written next to it in `out.engine.json` (internal file, not for the client). Requires Python 3 and openpyxl.
+
+## Daily watch
+
+Every night at 01:30 UTC the `.github/workflows/veille.yml` workflow runs `scripts/veille/collect.mjs`: 23 sources (Google News searches in French and English, feeds from TechCabal, Disrupt Africa, AgFunder, How We Made It in Africa, Investir au Cameroun, The New Times…), filtered by farming keywords and by country (Cameroon and CEMAC, Rwanda, Kenya, Africa), no social media, at most 25 articles per source. The result goes to the `veille-data` branch (`veille/YYYY-MM-DD.json` and `veille/latest.json`, 90 days kept), which Vercel does not deploy. The source list is `scripts/veille/sources.json`. Each morning a watch session reads the file, checks the sources, adds verified facts to the fact library and proposes three subjects; nothing is published without approval.
+
 ## Database
 
-Tables: `contact_inquiries`, `demo_requests`, `newsletter_subscribers`, `report_requests`, `rate_limits`, `admin_users`, `submission_events`. Statuses: `NEW`, `CONTACTED`, `IN_PROGRESS`, `COMPLETED`, `ARCHIVED`. Select fields are stored as language independent codes (for example `subject = PILOT`, `interest = FOUMBOT_PILOT`), so the data is ready for a CRM or an admin dashboard.
+Tables: `contact_inquiries`, `demo_requests`, `quote_requests`, `newsletter_subscribers`, `report_requests`, `rate_limits`, `admin_users`, `submission_events`. Statuses: `NEW`, `CONTACTED`, `IN_PROGRESS`, `COMPLETED`, `ARCHIVED`. Select fields are stored as language independent codes (for example `subject = PILOT`, `interest = FOUMBOT_PILOT`), so the data is ready for a CRM or an admin dashboard.
 
 ### Admin readiness
 
