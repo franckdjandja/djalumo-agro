@@ -4,6 +4,12 @@
   "outputDirectory": "public",
   "cleanUrls": true,
   "trailingSlash": false,
+  "git": {
+    "deploymentEnabled": {
+      "veille-data": false,
+      "diag-mail": false
+    }
+  },
   "functions": {
     "api/contact.js": {
       "maxDuration": 10,

@@ -1,0 +1,50 @@
+name: Veille
+# Collecte chaque nuit les actualités agricoles des sources de scripts/veille/sources.json
+# et les range sur la branche veille-data (veille/AAAA-MM-JJ.json et veille/latest.json).
+# Cette branche ne contient que des données : Vercel ne la déploie pas (voir vercel.json).
+on:
+  schedule:
+    - cron: '30 1 * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/veille/**'
+      - '.github/workflows/veille.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: veille
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Collecte
+        run: node scripts/veille/collect.mjs veille-out
+        env:
+          WINDOW_HOURS: ${{ github.event_name == 'schedule' && '36' || '72' }}
+      - name: Enregistrement sur la branche veille-data
+        run: |
+          git config user.name "Franck Junior Djandja Tomwa"
+          git config user.email "49753238+franckdjandja@users.noreply.github.com"
+          if git ls-remote --exit-code --heads origin veille-data > /dev/null; then
+            git fetch --depth=1 origin veille-data
+            git worktree add data origin/veille-data
+            cd data && git checkout -B veille-data
+          else
+            git worktree add --detach data
+            cd data && git checkout --orphan veille-data && git rm -rfq . && git clean -fdxq
+            printf '%s\n' "Données de veille de Djalumo Agro, produites chaque nuit par .github/workflows/veille.yml sur la branche main." > README.md
+          fi
+          mkdir -p veille
+          cp ../veille-out/*.json veille/
+          find veille -name '20??-??-??.json' -mtime +90 -delete
+          git add -A
+          git commit -qm "Veille du $(date -u +%F)" || echo "Rien de nouveau"
+          git push -q origin veille-data

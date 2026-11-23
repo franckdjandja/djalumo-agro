@@ -1,0 +1,27 @@
+{
+  "about": "Sources lues chaque nuit par collect.mjs. type rss couvre RSS et Atom. filter true = seuls les articles qui parlent d'agriculture sont gardés. Une source en erreur est signalée dans le fichier du jour sans bloquer les autres.",
+  "sources": [
+    { "id": "gn-fr-cameroun", "name": "Google Actualités, agriculture Cameroun", "url": "https://news.google.com/rss/search?q=agriculture+Cameroun+when:2d&hl=fr&gl=CM&ceid=CM:fr", "lang": "fr", "filter": false },
+    { "id": "gn-fr-afrique", "name": "Google Actualités, agro-industrie Afrique", "url": "https://news.google.com/rss/search?q=(agro-industrie+OR+agrobusiness+OR+agriculture)+Afrique+investissement+when:2d&hl=fr&gl=CM&ceid=CM:fr", "lang": "fr", "filter": false },
+    { "id": "gn-fr-technique", "name": "Google Actualités, irrigation et serres en Afrique", "url": "https://news.google.com/rss/search?q=(irrigation+OR+serre+OR+m%C3%A9canisation+agricole)+Afrique+when:3d&hl=fr&gl=CM&ceid=CM:fr", "lang": "fr", "filter": false },
+    { "id": "gn-en-investment", "name": "Google News, African agriculture investment", "url": "https://news.google.com/rss/search?q=African+agriculture+investment+when:2d&hl=en&gl=KE&ceid=KE:en", "lang": "en", "filter": false },
+    { "id": "gn-en-agritech", "name": "Google News, agritech Africa", "url": "https://news.google.com/rss/search?q=(agritech+OR+agtech)+Africa+when:3d&hl=en&gl=KE&ceid=KE:en", "lang": "en", "filter": false },
+    { "id": "gn-en-ai", "name": "Google News, AI and data in African farming", "url": "https://news.google.com/rss/search?q=(%22artificial+intelligence%22+OR+AI+OR+data)+farmers+Africa+when:3d&hl=en&gl=KE&ceid=KE:en", "lang": "en", "filter": false },
+    { "id": "gn-en-kenya", "name": "Google News, Kenya agriculture", "url": "https://news.google.com/rss/search?q=Kenya+agriculture+when:2d&hl=en&gl=KE&ceid=KE:en", "lang": "en", "filter": false },
+    { "id": "gn-en-rwanda", "name": "Google News, Rwanda agriculture", "url": "https://news.google.com/rss/search?q=Rwanda+agriculture+when:3d&hl=en&gl=RW&ceid=RW:en", "lang": "en", "filter": false },
+    { "id": "gn-en-irrigation", "name": "Google News, irrigation and greenhouses in Africa", "url": "https://news.google.com/rss/search?q=(irrigation+OR+greenhouse+OR+mechanisation)+Africa+farmers+when:3d&hl=en&gl=KE&ceid=KE:en", "lang": "en", "filter": false },
+    { "id": "gn-en-prices", "name": "Google News, food prices Africa", "url": "https://news.google.com/rss/search?q=(food+prices+OR+fertilizer+prices)+Africa+when:3d&hl=en&gl=KE&ceid=KE:en", "lang": "en", "filter": false },
+    { "id": "techcabal", "name": "TechCabal", "url": "https://techcabal.com/feed/", "lang": "en", "filter": true },
+    { "id": "disrupt-africa", "name": "Disrupt Africa", "url": "https://disrupt-africa.com/feed/", "lang": "en", "filter": true },
+    { "id": "agfunder", "name": "AgFunder News", "url": "https://agfundernews.com/feed", "lang": "en", "filter": true },
+    { "id": "howwemadeit", "name": "How We Made It In Africa", "url": "https://www.howwemadeitinafrica.com/feed/", "lang": "en", "filter": true },
+    { "id": "cgiar", "name": "CGIAR", "url": "https://www.cgiar.org/feed/", "lang": "en", "filter": false },
+    { "id": "iita", "name": "IITA", "url": "https://www.iita.org/feed/", "lang": "en", "filter": false },
+    { "id": "fao", "name": "FAO", "url": "https://www.fao.org/newsroom/rss/en", "lang": "en", "filter": true },
+    { "id": "ifad", "name": "FIDA", "url": "https://www.ifad.org/en/web/latest/news/rss", "lang": "en", "filter": false },
+    { "id": "afdb", "name": "Banque africaine de développement", "url": "https://www.afdb.org/en/rss/news", "lang": "en", "filter": true },
+    { "id": "investir-cameroun", "name": "Investir au Cameroun, agriculture", "url": "https://www.investiraucameroun.com/agriculture?format=feed&type=rss", "lang": "fr", "filter": false },
+    { "id": "ecofin-agro", "name": "Agence Ecofin, agro", "url": "https://www.agenceecofin.com/agro?format=feed&type=rss", "lang": "fr", "filter": false },
+    { "id": "newtimes", "name": "The New Times, Rwanda", "url": "https://www.newtimes.co.rw/rss", "lang": "en", "filter": true }
+  ]
+}
