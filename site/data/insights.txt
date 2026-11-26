@@ -244,3 +244,158 @@ L’argent commence à bouger. Le Groupe de la Banque mondiale prévoit de plus 
 
 C’est le travail que Djalumo Agro a choisi, à partir du Cameroun et pour tout le continent.
 SRC: World Bank, The Global Jobs Challenge, March 2026|Banque mondiale, The Global Jobs Challenge, mars 2026|
+@@ the-break-even-price-in-one-minute|2026-11-23|Understand|Comprendre|prix-equilibre|planner
+T: The break-even price, in one minute
+T: Le prix d’équilibre, en une minute
+S: One hectare of irrigated tomato planted in December breaks even at 121 FCFA per kilogram: the price can fall by half before it loses money.
+S: Un hectare de tomate irriguée planté en décembre s’équilibre à 121 FCFA le kilogramme : le prix peut baisser de moitié avant la perte.
+EN:
+At what price does a hectare of tomatoes stop losing money? That number is the break-even price, and it is the first line we read in a plan.
+
+Take one hectare of open-field tomato in West Cameroon, planted in December 2026, starting from nothing: rented land, hired labour, a motor pump and tools bought, sale at the farm gate. The Season Planner adds up every cost of the season, spreads the equipment over its useful life and divides by an average harvest, about 34.6 tonnes sold.
+
+The result: 121 FCFA per kilogram (0.21 USD), or about 2,400 FCFA for a 20 kg crate.
+
+The plan expects about 251 FCFA per kilogram at harvest, from March to May. The price can therefore fall by half before this hectare loses money, if the yield is average. The other way round: at the expected price, it covers its costs from about 15 tonnes per hectare, against 35 in an average irrigated dry season.
+
+At project scale the logic holds and the stakes grow. Every 10 FCFA per kilogram lost at sale removes about 346,000 FCFA per hectare, some 34.6 million FCFA (59,000 USD) over 100 hectares.
+
+A break-even price predicts nothing. It measures the room a project has before the capital is committed.
+FR:
+À quel prix un hectare de tomates cesse-t-il de perdre de l’argent ? Ce chiffre, c’est le prix d’équilibre, et c’est la première ligne que nous lisons dans un plan.
+
+Prenons un hectare de tomate en plein champ dans l’Ouest du Cameroun, planté en décembre 2026, en partant de zéro : terrain loué, main-d’œuvre salariée, motopompe et outils achetés, vente bord champ. Le Planificateur de saison additionne tous les coûts de la saison, répartit le matériel sur sa durée de vie et divise par une récolte moyenne, environ 34,6 tonnes vendues.
+
+Résultat : 121 FCFA le kilogramme (0,21 USD), soit environ 2 400 FCFA le cageot de 20 kg.
+
+Le plan attend environ 251 FCFA le kilogramme à la récolte, de mars à mai. Le prix peut donc baisser de moitié avant que cet hectare ne perde de l’argent, si le rendement est moyen. À l’inverse, au prix attendu, il couvre ses coûts dès 15 tonnes par hectare environ, contre 35 en saison sèche irriguée moyenne.
+
+À l’échelle d’un projet, la logique reste et les montants changent. Chaque baisse de 10 FCFA le kilogramme à la vente retire environ 346 000 FCFA par hectare, soit 34,6 millions de FCFA (59 000 USD) sur 100 hectares.
+
+Un prix d’équilibre ne prédit rien. Il mesure la marge de manœuvre d’un projet avant l’engagement du capital.
+SRC: MINADER, tomato technical and economic sheet, 2024|MINADER, fiche technico-économique de la tomate, 2024|
+@@ 500000-usd-of-tomato-four-outcomes|2026-11-24|The numbers|Les chiffres|planificateur-500k|planner
+T: 500,000 USD of tomato: four outcomes, not a forecast
+T: 500 000 USD de tomate : quatre issues, pas une prévision
+S: The Season Planner on 39 hectares of tomato in West Cameroon: an expected margin of about 177,000 USD, and about one chance in seven of losing 194,000 USD.
+S: Le Planificateur de saison sur 39 hectares de tomate dans l’Ouest du Cameroun : une marge attendue d’environ 177 000 USD, et environ une chance sur sept de perdre 194 000 USD.
+EN:
+About one season in seven, according to our Season Planner, a 500,000 USD tomato project in Cameroon loses about 194,000 USD.
+
+We gave the Season Planner a real brief: open-field tomato in West Cameroon, planted in December 2026, starting from nothing. Rented land, hired labour, drip irrigation and tools bought, a 10% reserve, sale at the farm gate. The capital covers about 39 hectares and close to a million plants, harvested from March to May 2027.
+
+The plan returns four outcomes, not one forecast:
+
+Good harvest, 14%: a margin of about 653,000 USD
+
+Average harvest, 39%: about 287,000 USD
+
+Poor harvest, 32%: about 6,000 USD
+
+Failure, 15%: a loss of about 194,000 USD, close to 40% of the capital
+
+Weighted, the season is worth about 177,000 USD. A single forecast would show 287,000 and leave out the two lines an investor needs most.
+
+The plan also raises the next decision, before anyone plants: at average yield, 1,350 tonnes arrive in three months. Who buys them? Contracts, city wholesale, processing?
+
+If you invest in or run farms in Africa: which of the four lines do you look at first?
+FR:
+Environ une saison sur sept, selon notre Planificateur de saison, un projet de tomate à 500 000 USD au Cameroun perd environ 194 000 USD.
+
+Nous avons confié au Planificateur de saison un vrai cahier des charges : tomate en plein champ dans l’Ouest du Cameroun, plantée en décembre 2026, en partant de zéro. Terrain loué, main-d’œuvre salariée, goutte-à-goutte et outils achetés, réserve de 10 %, vente bord champ. Le capital couvre environ 39 hectares et près d’un million de plants, récoltés de mars à mai 2027.
+
+Le plan donne quatre issues, pas une prévision :
+
+Bonne récolte, 14 % : une marge d’environ 653 000 USD
+
+Récolte moyenne, 39 % : environ 287 000 USD
+
+Récolte faible, 32 % : environ 6 000 USD
+
+Échec, 15 % : une perte d’environ 194 000 USD, près de 40 % du capital
+
+Pondérée, la saison vaut environ 177 000 USD. Une prévision unique afficherait 287 000 et laisserait de côté les deux lignes dont un investisseur a le plus besoin.
+
+Le plan pose aussi la décision suivante, avant de planter : au rendement moyen, 1 350 tonnes arrivent en trois mois. Qui les achète ? Contrats, vente en gros en ville, transformation ?
+
+Vous investissez ou produisez en Afrique : quelle ligne regardez-vous en premier ?
+@@ read-the-soil-before-committing-capital|2026-11-25|Solutions and technologies|Solutions et technologies|analyse-sols|planner
+T: Read the soil before committing capital
+T: Lire le sol avant d’engager le capital
+S: Cameroon is mapping its soils with 27,300 samples. On 100 hectares of tomato, some 142 million FCFA of fertiliser rest on a recommendation a soil test can confirm.
+S: Le Cameroun cartographie ses sols avec 27 300 échantillons. Sur 100 hectares de tomate, quelque 142 millions de FCFA d’engrais reposent sur une recommandation qu’une analyse de sol peut confirmer.
+EN:
+In our tomato plans, a quarter of the season budget goes into fertiliser and manure. Cameroon has started mapping its soils.
+
+On 1 October 2026, Cameroon began collecting 27,300 georeferenced soil samples across 1.4 million hectares. Led by CIFOR-ICRAF, the work will feed an online soil fertility map to guide fertilisation and crop choice.
+
+The continent needs it. When the African Union met on fertiliser and soil health in May 2024, average use was about 18 kg per hectare, under half the Abuja target of 50 kg.
+
+Three tools now work together:
+
+1. A map. iSDAsoil, from iSDA, gives soil pH and nutrients across Africa at 30 m, free of charge, though less precisely in the dense forests of Central Africa.
+
+2. A test. A laboratory analysis of the plot confirms or corrects the map.
+
+3. A plan. Fertilisation sized to the result.
+
+On one hectare of tomato, fertiliser and manure cost about 1.42 million FCFA in our plan. Over 100 hectares, some 142 million FCFA (about 243,000 USD) rest on a recommendation a soil test can confirm. At that scale, a soil survey belongs in due diligence, next to the land title and the water source.
+
+Growers and agronomists: when did a soil test last change what you put in the ground?
+FR:
+Dans nos plans de tomate, un quart du budget de la saison part en engrais et fumier. Le Cameroun a commencé à cartographier ses sols.
+
+Le 1er octobre 2026, le Cameroun a lancé la collecte de 27 300 échantillons de sol géoréférencés sur 1,4 million d’hectares. Conduits par le Centre mondial d’agroforesterie (ICRAF), ces travaux alimenteront une carte en ligne de la fertilité des sols, pour guider la fumure et le choix des cultures.
+
+Le continent en a besoin. Au sommet de l’Union africaine sur les engrais et la santé des sols, en mai 2024, l’usage moyen était d’environ 18 kg par hectare, moins de la moitié de l’objectif d’Abuja de 50 kg.
+
+Trois outils travaillent désormais ensemble :
+
+1. Une carte. iSDAsoil, de iSDA, donne le pH et les éléments nutritifs des sols africains à 30 m, gratuitement, avec moins de précision dans les forêts denses d’Afrique centrale.
+
+2. Une analyse. Le laboratoire, sur la parcelle, confirme ou corrige la carte.
+
+3. Un plan. Une fumure dosée selon le résultat.
+
+Sur un hectare de tomate, engrais et fumier coûtent environ 1,42 million de FCFA dans notre plan. Sur 100 hectares, quelque 142 millions de FCFA (environ 243 000 USD) reposent sur une recommandation qu’une analyse de sol peut confirmer. À cette échelle, l’étude des sols fait partie des vérifications préalables, avec le titre foncier et la source d’eau.
+
+Producteurs, agronomes : quand une analyse de sol a-t-elle changé pour la dernière fois ce que vous mettez en terre ?
+SRC: Cameroon Tribune, 2 October 2026|Cameroon Tribune, 2 octobre 2026|
+SRC: African Union, Africa Fertilizer and Soil Health Summit, 2024|Union africaine, sommet sur les engrais et la santé des sols, 2024|
+SRC: Hengl et al., African soil properties and nutrients mapped at 30 m, Scientific Reports, 2021|Hengl et al., propriétés et éléments nutritifs des sols africains à 30 m, Scientific Reports, 2021|
+@@ tomato-in-cameroon-month-by-month|2026-11-26|Markets and prices|Marchés et prix|tomate-mois-par-mois|planner
+T: Tomato in Cameroon, month by month
+T: La tomate au Cameroun, mois par mois
+S: Foumbot supplies almost 40% of Cameroon’s tomatoes, and in March 2026 a crate sold below its cost. What the price calendar says, and when it fails.
+S: Foumbot fournit près de 40 % des tomates du Cameroun, et en mars 2026 le cageot se vendait sous son coût. Ce que dit le calendrier des prix, et quand il se trompe.
+EN:
+Foumbot supplies almost 40% of Cameroon's tomatoes. In March 2026, a crate sold for less than it cost to grow.
+
+Our field work is in Foumbot, so the tomato price calendar is our first planning tool.
+
+In Yaoundé, a crate fetched 10,000 to 15,000 FCFA, then 1,000 to 2,500 FCFA a few months later, in February and March 2026, when the basins harvested together. Agronomists quoted by KOACI put the cost at about 2,700 FCFA a crate.
+
+The calendar is a guide, not a law. In September 2026, a month our calendar rates as high, favourable rains brought several basins to maturity at once, and the crate fell from 5,800 to 6,500 FCFA in mid-July to 3,000 to 4,000 FCFA.
+
+Low prices also come with high yields. In our 2026 plans, a December planting with irrigation averages 35 t/ha against 17.5 t/ha in April, and earns 1.6 to 1.9 times the expected margin per hectare, provided water is secured.
+
+For investors, the glut months show what is missing behind Cameroon's 890,000 tonnes a year: storage, and processing into paste or dried tomato.
+
+When do you plant, and what decides it: the price, the rain or the water?
+FR:
+Foumbot fournit près de 40 % des tomates du Cameroun. En mars 2026, le cageot se vendait moins cher qu’il ne coûtait à produire.
+
+Notre travail de terrain se fait à Foumbot : le calendrier des prix de la tomate est notre premier outil de planification.
+
+À Yaoundé, le cageot valait 10 000 à 15 000 FCFA, puis 1 000 à 2 500 FCFA quelques mois plus tard, en février et mars 2026, quand les bassins récoltaient ensemble. Des agronomes cités par KOACI estiment son coût à environ 2 700 FCFA.
+
+Le calendrier guide, il ne décide pas. En septembre 2026, un mois que notre calendrier classe parmi les plus chers, des pluies favorables ont fait mûrir plusieurs bassins à la fois, et le cageot est passé de 5 800 à 6 500 FCFA à la mi-juillet à 3 000 à 4 000 FCFA.
+
+Les prix bas vont aussi avec les rendements hauts. Dans nos plans 2026, une plantation de décembre irriguée donne en moyenne 35 t/ha contre 17,5 t/ha en avril, et rapporte 1,6 à 1,9 fois la marge attendue par hectare, si l’eau est assurée.
+
+Pour les investisseurs, les mois d’abondance montrent ce qui manque derrière les 890 000 tonnes annuelles du Cameroun : le stockage et la transformation en concentré ou en tomate séchée.
+
+Quand plantez-vous, et qu’est-ce qui décide : le prix, la pluie ou l’eau ?
+SRC: Ministry of Agriculture, quoted by EcoMatin, 23 September 2026|Ministère de l’Agriculture, cité par EcoMatin, 23 septembre 2026|
+SRC: KOACI, 9 March 2026|KOACI, 9 mars 2026|
+SRC: Pressenza, 25 February 2026|Pressenza, 25 février 2026|
