@@ -31,7 +31,7 @@ test('the android bundle builds offline: one page, hash routes, forms sent to th
 test('search engines get every page in English and French, with its text, its language links and the organization', async () => {
   const fs = await import('node:fs');
   const out = execFileSync(process.execPath, ['site/build.mjs', '--target=production'], { cwd: root, encoding: 'utf8', env: { ...process.env, SITE_URL: 'https://agro.djalumo.com' } });
-  assert.match(out, /84 prerendered/);
+  assert.match(out, /86 prerendered/);
   const read = (p) => fs.readFileSync(new URL('../public/' + p, import.meta.url), 'utf8');
   const titles = new Set();
   for (const [file, lang, url] of [['about.html', 'en', '/about'], ['fr/about.html', 'fr', '/fr/about'], ['index.html', 'en', '/'], ['fr/index.html', 'fr', '/fr'], ['fr/planner.html', 'fr', '/fr/planner'], ['crops.html', 'en', '/crops'], ['crops/tomato.html', 'en', '/crops/tomato'], ['fr/crops/avocado.html', 'fr', '/fr/crops/avocado']]) {
@@ -76,7 +76,7 @@ test('search engines get every page in English and French, with its text, its la
   for (const html of [offers, offersFr]) { const cards = html.match(/<div class="offer-grid[\s\S]*?<\/section>/)[0]; assert.doesNotMatch(cards, /\d\s?(USD|FCFA|\$)/, 'no price on the offer cards'); }
   assert.match(read('planner.html'), /href="\/offers"/);
   const map = read('sitemap.xml');
-  assert.equal((map.match(/<url>/g) || []).length, 84);
+  assert.equal((map.match(/<url>/g) || []).length, 86);
   assert.match(map, /<loc>https:\/\/agro\.djalumo\.com\/fr\/crops\/cassava<\/loc>/);
   assert.match(map, /<loc>https:\/\/agro\.djalumo\.com\/fr\/field<\/loc><xhtml:link rel="alternate" hreflang="en" href="https:\/\/agro\.djalumo\.com\/field"\/>/);
   assert.ok(read('index.html').length < 120000, 'the home page stays light: the world map is drawn by the script');

@@ -399,3 +399,49 @@ Quand plantez-vous, et qu’est-ce qui décide : le prix, la pluie ou l’eau ?
 SRC: Ministry of Agriculture, quoted by EcoMatin, 23 September 2026|Ministère de l’Agriculture, cité par EcoMatin, 23 septembre 2026|
 SRC: KOACI, 9 March 2026|KOACI, 9 mars 2026|
 SRC: Pressenza, 25 February 2026|Pressenza, 25 février 2026|
+@@ this-week-in-agriculture-2|2026-11-27|This week in agriculture No. 2|L’essentiel agricole n° 2|essentiel-agricole-02|home
+T: This week in agriculture: where capital went in African farming
+T: L’essentiel agricole : où est allé le capital agricole en Afrique
+S: Projects screened in Yaoundé, irrigation prepared in Kenya, long-term money for seed, a fund for cooperatives and tickets for food processors.
+S: Des projets triés à Yaoundé, l’irrigation préparée au Kenya, du capital long pour les semences, un fonds pour les coopératives et des tickets pour les transformateurs.
+EN:
+In Yaoundé this week, 26 of the 43 projects shown to investors were kept for follow-up.
+
+This week in agriculture No. 2: where capital went in African farming.
+
+1. Cameroon screens its projects. The Cameroon Investment Forum closed on 20 November: about 2,000 participants from 13 countries, 210 business meetings, 26 of 43 bankable projects kept. (Africa24, 22 Nov)
+
+2. Kenya prepares before it builds. A five-year agreement with UNOPS, signed on 23 November, will prepare irrigation projects toward one million more acres by 2035. It brings studies and procurement, not money. (KBC, 23 Nov)
+
+3. Seed gets long-term money. FMO signed an eight-year, 25 million USD facility with Seed Co for seed processing, storage and loans to seed growers. (FMO, 19 Nov)
+
+4. Cooperatives through a fund. FMO put 20 million USD into the Fairtrade Access Fund, whose borrowers reached over 545,000 smallholders in 2025. (FMO, 18 Nov)
+
+5. Processors, ticket by ticket. Grounded Investment Company closed 12 million EUR for African food processors that buy from smallholders, with first tickets of 300,000 to 750,000 EUR. (Africa Private Equity News, 17 Nov)
+
+Our reading: capital went around the field more than into it. A farm project gets in line when it arrives costed.
+
+Investors and agri lenders: what makes you keep a farm project after the first meeting?
+FR:
+À Yaoundé cette semaine, 26 des 43 projets présentés aux investisseurs ont été retenus pour un suivi.
+
+L’essentiel agricole n° 2 : où est allé le capital agricole en Afrique.
+
+1. Le Cameroun trie ses projets. Le Cameroon Investment Forum s’est clos le 20 novembre : environ 2 000 participants de 13 pays, 210 rencontres d’affaires, 26 projets bancables retenus sur 43. (Africa24, 22 nov.)
+
+2. Le Kenya prépare avant de construire. Un accord de cinq ans avec l’UNOPS, signé le 23 novembre, préparera les projets d’irrigation visant un million d’acres de plus d’ici 2035. Il apporte études et passation des marchés, pas d’argent. (KBC, 23 nov.)
+
+3. Les semences trouvent du capital long. FMO a signé avec Seed Co une facilité de 25 millions USD sur huit ans pour le traitement et le stockage des semences et des prêts aux multiplicateurs. (FMO, 19 nov.)
+
+4. Les coopératives par un fonds. FMO a placé 20 millions USD dans le Fairtrade Access Fund, dont les emprunteurs ont touché plus de 545 000 petits producteurs en 2025. (FMO, 18 nov.)
+
+5. Les transformateurs, ticket par ticket. Grounded Investment Company a réuni 12 millions EUR pour des transformateurs africains qui achètent aux petits producteurs, avec des premiers tickets de 300 000 à 750 000 EUR. (Africa Private Equity News, 17 nov.)
+
+Notre lecture : le capital est allé autour du champ plus que dans le champ. Un projet agricole entre dans la file quand il arrive chiffré.
+
+Investisseurs et banquiers agricoles : qu’est-ce qui vous fait garder un projet agricole après le premier rendez-vous ?
+SRC: Africa24, 22 November 2026|Africa24, 22 novembre 2026|
+SRC: KBC, 23 November 2026|KBC, 23 novembre 2026|https://www.kbc.co.ke/kenya-taps-unops-in-plans-to-place-one-million-acres-under-irrigation/
+SRC: FMO, 19 November 2026|FMO, 19 novembre 2026|https://www.fmo.nl/news-detail/5ef74f96-7f4e-4b48-8fde-0dc38e3dee6f/fmo-backs-seed-co-to-strengthen-climate-adaptation-and-food-security-in-africa
+SRC: FMO, 18 November 2026|FMO, 18 novembre 2026|
+SRC: Africa Private Equity News, 17 November 2026|Africa Private Equity News, 17 novembre 2026|
